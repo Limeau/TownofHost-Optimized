@@ -31,18 +31,31 @@
 [![Total Downloads](https://img.shields.io/github/downloads/TOHOptimized/TownofHost-Optimized/total)](../../releases)
 
 **Credit to these mods and their developers for the code and help:**
-### :star: [TOH: Enhanced](https://github.com/EnhancedNetwork/TownofHost-Enhanced)
+### :star: [EHR (Formerly TOHE+)](https://github.com/Gurge44/EndlessHostRoles)
 >
-> - TOHO was forked from Town of Host: Enhacned.=
+> - /spectate command
+> - Provided roles: Pyromaniac, Necromancer, Head Hunter (Huntsman), Alchemist, and others
+> - Game Mode: FFA
+> - The Ability to create dead bodies
+> - Improved Role Summary
+> - Dark Theme
+> - Improved Role Spawns
+> - Improve text box (TextBoxPatch.cs)
+> - Some ideas to improve performance
+> - Many fixes to updates were from EHR.
+>
+### :star: [TOH: Enhanced](https://github.com/EnhancedNetwork/TownofHost-Enhanced) (TOHEN) :
+>
+> - TOHO was forked from Town of Host: Enhacned
 > - Game Mode: Cops & Robbers (Ryuk but unmerged PR)
 >
-### :star: [TOHRE](https://github.com/Loonie-Toons/) 
+### :star: [TOH: Re-Edited](https://github.com/Loonie-Toons/) (TOHRE) :
 > 
 > - Town of Host: Enhanced was forked from Town of Host: Re-Edited.
 >
-### :star: [TOHE](https://github.com/KARPED1EM/TownOfHostEdited) :
+### :star: [TOH: Edited](https://github.com/KARPED1EM/TownOfHostEdited) (TOHE/TONX) :
 > 
-> - Town of Host: Re-Edited was forked from Town of Host: Edited. (TONX)
+> - Town of Host: Re-Edited was forked from Town of Host: Edited.
 > 
 ### :star: [TOH](https://github.com/tukasa0001/TownOfHost) :
 > 
@@ -56,20 +69,21 @@
 > - Ported new UI for settings (for version AU v2024.6.18)
 > - Reference: Role-Basis changer fix
 > 
-### :star: [TOH:TOR](https://github.com/discus-sions/TownOfHost-TheOtherRoles) :
-> 
+### :star: [Project: Lotus](https://github.com/discus-sions/TownOfHost-TheOtherRoles) (PL/TOH:TOR) :
+>
+> - Ideas for some roles (Alchemist, Crusader, Chameleon.. more)
 > - Many role ideas
 > - Reference: Exile Confirm
 > - Reference: Split RPC Pack
 > 
-### :star: [SNR](https://github.com/ykundesu/SuperNewRoles) :
+### :star: [Super New Roles](https://github.com/ykundesu/SuperNewRoles) (SNR):
 > 
 > - Reference: Credentials menu
 > - Reference: Switch Horse Mode
 > - Reference: Search Mod Game
 > - Reference: Custom Button
 >
-### :star: [TOP](https://github.com/tugaru1975/TownOfPlus) :
+### :star: [Town Of Plus](https://github.com/tugaru1975/TownOfPlus) (TOP):
 > 
 > - Reference: Zoom
 > 
@@ -82,21 +96,6 @@
 > - Provided roles: Shapeshifter, Engineer, Scientist, Marshall, Poisoner, Necroview, Sidekick
 > - Bait and Beartrap as add-ons
 >
-### :star: [Project: Lotus](https://github.com/Lotus-AU/LotusContinued)
->
-> - Ideas for some roles (Alchemist, Crusader, Chameleon.. more)
-> 
-### :star: [EHR (Formerly TOHE+)](https://github.com/Gurge44/EndlessHostRoles)
->
-> - /spectate command
-> - Provided roles: Pyromaniac, Necromancer, Head Hunter (Huntsman), Alchemist, and others
-> - Game Mode: FFA
-> - The Ability to create dead bodies
-> - Improved Role Summary
-> - Dark Theme
-> - Improved Role Spawns
-> - Improve text box (TextBoxPatch.cs)
-> - Some ideas to improve performance
 ### :star: [TONEX (Formerly TOHEX)](https://github.com/XtremeWave/TownOfNewEpic_Xtreme)
 >
 > - Provided roles: Swapper, Berserker, Randomizer and Blackmailer
