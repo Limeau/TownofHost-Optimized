@@ -15,6 +15,7 @@ public enum CustomGameMode
     FFA = 0x02,
     CandR = 0x03,
     UltimateTeam = 0x04,
+    TrickorTreat = 0x05,
     HidenSeekTOHO = 0x08, // HidenSeekTOHO must be after other Gamemodes
     All = int.MaxValue
 }
@@ -52,7 +53,8 @@ public static class Options
             1 => CustomGameMode.FFA,
             2 => CustomGameMode.CandR,
             3 => CustomGameMode.UltimateTeam,
-            4 => CustomGameMode.HidenSeekTOHO, // HidenSeekTOHO must be after other Gamemodes
+            4 => CustomGameMode.TrickorTreat,
+            5 => CustomGameMode.HidenSeekTOHO, // HidenSeekTOHO must be after other Gamemodes
             _ => CustomGameMode.Standard
         };
     public static int GetGameModeInt(CustomGameMode mode)
@@ -70,6 +72,7 @@ public static class Options
         "FFA",
         "C&R",
         "UltimateTeam",
+        "TrickorTreat",
 
         "Hide&SeekTOHO", // HidenSeekTOHO must be after other Gamemodes
     ];
@@ -134,7 +137,7 @@ public static class Options
         "CamouflageMode.OnlyRandomColor",
         "CamouflageMode.Karpe",
         "CamouflageMode.Lauryn",
-        "CamouflageMode.Moe",
+        "CamouflageMode.Lime",
         "CamouflageMode.Pyro",
         "CamouflageMode.ryuk",
         "CamouflageMode.Gurge44",
@@ -179,6 +182,7 @@ public static class Options
     public static OptionItem PresidentAbilityUseGainWithEachTaskCompleted;
     public static OptionItem KeeperAbilityUseGainWithEachTaskCompleted;
     public static OptionItem ConstableAbilityUseGainWithEachTaskCompleted;
+    public static OptionItem CleanserAbilityUseGainWithEachTaskCompleted;
 
     //public static OptionItem EnableGM;
     public static float DefaultKillCooldown = Main.NormalOptions?.KillCooldown ?? 20;
@@ -622,6 +626,7 @@ public static class Options
     public static OptionItem CrewCanBeInLove;
     public static OptionItem NeutralCanBeInLove;
     public static OptionItem CovenCanBeInLove;
+    public static OptionItem WidowChance;
 
     // Experimental Roles
 
@@ -1356,6 +1361,8 @@ public static class Options
 
         //Ultimate Team
         UltimateTeam.SetupCustomOption();
+        
+        TrickorTreat.SetupCustomOption();
 
         // Hide & Seek
         TextOptionItem.Create(10000055, "MenuTitle.Hide&Seek", TabGroup.ModSettings)
@@ -2219,6 +2226,10 @@ public static class Options
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
+        WidowChance = IntegerOptionItem.Create(id + 9, "LoverWidowChance", new(0, 100, 5), 20, TabGroup.Addons, false)
+            .SetParent(spawnOption)
+            .SetValueFormat((OptionFormat.Percent))
+            .SetGameMode(customGameMode);
 
         var countOption = IntegerOptionItem.Create(id + 1, "NumberOfLovers", new(2, 2, 1), 2, TabGroup.Addons, false)
             .SetParent(spawnOption)

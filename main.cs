@@ -47,7 +47,7 @@ public class Main : BasePlugin
     public const string PluginGuid = "com.Limeau.townofhostoptimized";
     public const string PluginVersion = "2025.0728.200.02"; // YEAR.MMDD.VERSION.CANARYDEV
     public const string PluginDisplayVersion = "2.0.0";
-    public const string PluginDisplaySuffix = " Pre-Release";
+    public const string PluginDisplaySuffix = "";
     public const string SupportedVersionAU = "2025.9.9"; // Changed becasue Dark theme works at this version.
 
     /******************* Change one of the three variables to true before making a release. *******************/
@@ -59,10 +59,10 @@ public class Main : BasePlugin
 
     public static readonly bool ShowUpdateButton = false;
 
-    public static readonly bool ShowGitHubButton = true;
+    public static readonly bool ShowGitHubButton = false;
     public static readonly string GitHubInviteUrl = "https://github.com/TOHOptimized/TownofHost-Optimized";
 
-    public static readonly bool ShowDiscordButton = true;
+    public static readonly bool ShowDiscordButton = false;
     public static readonly string DiscordInviteUrl = "https://discord.gg/BWh9Vj5UJ2";
 
     public static readonly bool ShowWebsiteButton = false;
@@ -192,7 +192,7 @@ public class Main : BasePlugin
     public static int VotingTime;
     public static float DefaultCrewmateVision;
     public static float DefaultImpostorVision;
-    public static bool IsInitialRelease = DateTime.Now.Month == 1 && DateTime.Now.Day is 17;
+    public static bool IsInitialRelease = DateTime.Now.Month == 7 && DateTime.Now.Day is 27;
     public static bool IsAprilFools = DateTime.Now.Month == 4 && DateTime.Now.Day is 1;
     public static bool ResetOptions = true;
     public static string FirstDied = ""; //Store with hash puid so things can pass through different round
@@ -630,7 +630,6 @@ public class Main : BasePlugin
         handler.Info($"{nameof(ThisAssembly.Git.Tag)}: {ThisAssembly.Git.Tag}");
 
         ClassInjector.RegisterTypeInIl2Cpp<ErrorText>();
-        ClassInjector.RegisterTypeInIl2Cpp<OptionShower>();
         ClassInjector.RegisterTypeInIl2Cpp<MeetingHudPagingBehaviour>();
         ClassInjector.RegisterTypeInIl2Cpp<ShapeShifterPagingBehaviour>();
         ClassInjector.RegisterTypeInIl2Cpp<VitalsPagingBehaviour>();
@@ -804,6 +803,7 @@ public enum CustomRoles
     Doctor,
     Druid,
     Enigma,
+    Exorcist,
     ForensicScientist,
     FortuneTeller,
     Grenadier,
@@ -948,6 +948,7 @@ public enum CustomRoles
     Traitor,
     Troller,
     Bankrupt,
+    Undead,
     Vaporizer,
     Vector,
     VengefulRomantic,
@@ -956,6 +957,8 @@ public enum CustomRoles
     Vulture,
     War,
     Werewolf,
+    Widow,
+    Wight,
     Workaholic,
     Wraith,
 
@@ -991,6 +994,9 @@ public enum CustomRoles
     Red,
     Blue,
 
+    // Trick or Treat
+    TrickorTreater,
+    
     //GM
     GM,
 
@@ -1178,8 +1184,11 @@ public enum CustomWinner
     Mutant = CustomRoles.Mutant,
     Godzilla = CustomRoles.Godzilla,
     Skeleton = CustomRoles.Skeleton,
+    Wight = CustomRoles.Wight,
+    Undead = CustomRoles.Undead,
     Red = CustomRoles.Red,
-    Blue = CustomRoles.Blue
+    Blue = CustomRoles.Blue,
+    TrickorTreat = CustomRoles.TrickorTreater
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

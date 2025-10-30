@@ -753,7 +753,7 @@ class ReportDeadBodyPatch
             return false;
         }
         if (Options.DisableMeeting.GetBool()) return false;
-             if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
+             if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.TrickorTreat or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
 
         if (!CanReport[__instance.PlayerId])
         {
@@ -1507,6 +1507,28 @@ class FixedUpdateInNormalGamePatch
     {
         if (Options.LoverSuicide.GetBool() && Main.isLoversDead == false)
         {
+            var rand = IRandom.Instance;
+            int num = rand.Next(1, 100);
+            if (num <= Options.WidowChance.GetInt())
+            {
+                var count = 0;
+                foreach (var lover in Main.LoversPlayers.ToArray())
+                {
+                    if (lover.IsAlive()) count++;
+                }
+                foreach (var lover in Main.LoversPlayers.ToArray())
+                {
+                    if (count >= 2) return;
+                    if (lover.GetCustomRole() is CustomRoles.Widow) return;
+                    if (lover.IsAlive())
+                    {
+                        lover.RpcChangeRoleBasis(CustomRoles.Widow);
+                        lover.RpcSetCustomRole(CustomRoles.Widow);
+                    }
+                }
+
+                return;
+            }
             foreach (var loversPlayer in Main.LoversPlayers.ToArray())
             {
                 if (loversPlayer.IsAlive() && loversPlayer.PlayerId != deathId) continue;
@@ -1582,6 +1604,10 @@ class CoEnterVentPatch
             return true;
         }
         if (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
+        {
+            return false;
+        }
+        if (Options.CurrentGameMode == CustomGameMode.TrickorTreat)
         {
             return false;
         }
@@ -1715,6 +1741,7 @@ class PlayerControlCompleteTaskPatch
             // Check task complete for Role
             if (roleClass != null)
             {
+                if (Options.CurrentGameMode == CustomGameMode.TrickorTreat) TrickorTreat.OnTaskComplete(player);
                 ret = roleClass.OnTaskComplete(player, taskState.CompletedTasksCount, taskState.AllTasksCount);
             }
 
