@@ -53,10 +53,10 @@ public class MainMenuManagerStartPatch
 
     private static void SetButtonColor(PassiveButton playButton)
     {
-        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = Color.red;
-        playButton.activeSprites.GetComponent<SpriteRenderer>().color = Color.blue;
-        playButton.activeTextColor = Color.red;
-        playButton.inactiveTextColor = Color.blue;
+        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = Color.black;
+        playButton.activeSprites.GetComponent<SpriteRenderer>().color = Color.black;
+        playButton.activeTextColor = Color.white;
+        playButton.inactiveTextColor = Color.white;
     }
     
 }
@@ -160,8 +160,8 @@ public static class MainMenuManagerPatch
         string[] fileNames = assembly.GetManifestResourceNames().Where(resourceName => resourceName.StartsWith(folder) && resourceName.EndsWith(".png")).ToArray();
         int choice = rand.Next(0, fileNames.Length);
 
-        spriteRenderer.sprite = Utils.LoadSprite($"TOHE.Resources.Background.CurrentArtWinner.toho_140.png", 150f);
-
+        spriteRenderer.sprite = Utils.LoadSprite($"TOHE.Resources.Background.CurrentArtWinner.toho_200.png", 275f);
+        
         //__instance.playLocalButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.1647f, 0f, 0.7765f);
         //__instance.PlayOnlineButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.1647f, 0f, 0.7765f);
         //__instance.playLocalButton.transform.position = new Vector3(2.095f, -0.25f, 520f);
