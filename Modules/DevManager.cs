@@ -60,6 +60,8 @@ public static class DevManager
             /*TOHO DEVS ABOVE*/
             /*TESTERS BELOW*/
 
+            new(code: "electpout#2133", color: "#FF7DA7", tag: "<color=#FF7DA7>S</color><color=#ff87ad>i</color><color=#FF90b3>l</color><color=#FF9ab9>l</color><color=#FFa3bf>y</color> <color=#FFadc6>G</color><color=#FFb6cc>o</color><color=#FFc0d2>o</color><color=#FFc9d8>f</color><color=#FFd3de>y</color>", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Clubmore"),
+            
             // BXO
             new(code: "justgust#5169", color: "#07296c", tag: "Tester", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "BXO"),
 
