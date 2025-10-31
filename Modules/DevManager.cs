@@ -16,7 +16,7 @@ public class DevUser(string code = "", string color = "null", string tag = "null
     public string UpName { get; set; } = upName;
 
     public bool HasTag() => Tag != "null";
-    public string GetTag() => Color == "null" ? $"<size=2>{Tag}</size>\r\n" : $"<color={Color}><size=2>{(Tag == "#Dev" ? Translator.GetString("Developer") : Tag)}</size></color>\r\n";
+    public string GetTag() => Color == "null" ? $"<size=2>{Tag}</size>\r\n" : $"<color={Color}><size=2>{(Tag == "#Dev" ? Translator.GetString("Developer") : Tag)}</size></color> - ";
 }
 
 public static class DevManager
@@ -41,7 +41,7 @@ public static class DevManager
             /*TOHO DEVS BELOW*/
 
             // Lime
-            new(code: "closebroom#5902", color: "#00ff00", tag: "The entire circus", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Lime"),
+            new(code: "tighttune#4221", color: "#00ff00", tag: "Mod Developer", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Lime"),
 
             // Ape old
             new(code: "simianpair#1270", color: "#0e2f44", tag: "Executive", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Ape"),
