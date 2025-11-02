@@ -45,8 +45,8 @@ public class Main : BasePlugin
     public static ConfigEntry<string> DebugKeyInput { get; private set; }
 
     public const string PluginGuid = "com.Limeau.townofhostoptimized";
-    public const string PluginVersion = "2025.0728.200.02"; // YEAR.MMDD.VERSION.CANARYDEV
-    public const string PluginDisplayVersion = "2.0.0";
+    public const string PluginVersion = "2025.1101.201.00"; // YEAR.MMDD.VERSION.CANARYDEV
+    public const string PluginDisplayVersion = "2.0.1";
     public const string PluginDisplaySuffix = "";
     public const string SupportedVersionAU = "2025.9.9"; // Changed becasue Dark theme works at this version.
 
