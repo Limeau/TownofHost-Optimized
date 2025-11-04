@@ -4758,5 +4758,13 @@
   "LoverWidowChance": "Widow chance",
   "Widow": "Widow",
   "WidowInfo": "Win to avenge your lover",
-  "WidowInfoLong": "As the Widow you were once a Lover. Now you are a Neutral killer. Kill everyone to win with your Lover."
+  "WidowInfoLong": "As the Widow you were once a Lover. Now you are a Neutral killer. Kill everyone to win with your Lover.",
+  
+  "Trapmaker": "Trapmaker",
+  "TrapmakerInfo": "Create your own dead body as a trap!",
+  "TrapmakerInfoLong": "(Impostors):\nAs the Trapmaker, you can Unshift to create your own dead body, then immediately revive yourself. The Trapmaker can do this only once per round. When someone reports this dead body, they will die.",
+  "TrapmakerCooldown": "Trapmaker shapeshift cooldown",
+  "ReportFakeBody": "Call a meeting when fake bodies are reported",
+  "TrapmakerButtonText": "Place Trap"
 }
+

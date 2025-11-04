@@ -758,6 +758,7 @@ public enum CustomRoles
     YinYanger,
     Swooper,
     TimeThief,
+    Trapmaker,
     Trapster,
     Trickster,
     Twister,
