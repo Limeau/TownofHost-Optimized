@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using static TOHE.Translator;
 using Object = UnityEngine.Object;
 
@@ -12,12 +13,20 @@ public class MainMenuManagerStartPatch
 {
     public static GameObject amongUsLogo;
     public static GameObject Ambience;
+    public static GameObject PlayerParticles;
+    public static GameObject starfield;
+    public static GameObject bgmusic;
+    public static string BGpath = "./TOHO-DATA/background.mp4";
     public static SpriteRenderer ToheLogo { get; private set; }
 
     private static void Postfix(MainMenuManager __instance)
     {
         amongUsLogo = GameObject.Find("LOGO-AU");
-
+        if (amongUsLogo != null)
+        {
+            amongUsLogo.GetComponent<SpriteRenderer>().sprite = Utils.LoadSprite("TOHE.Resources.Images.tohologo.png");
+        }
+        
         var rightpanel = __instance.gameModeButtons.transform.parent;
         var logoObject = new GameObject("titleLogo_TOHE");
         var logoTransform = logoObject.transform;
@@ -29,18 +38,22 @@ public class MainMenuManagerStartPatch
 
         if ((Ambience = GameObject.Find("Ambience")) != null)
         {
-            // Show play button when mod is fully loaded
-            //if (Options.IsLoaded && !__instance.playButton.enabled)
-            //    __instance.playButton.transform.gameObject.SetActive(true);
-
-            //else if (!Options.IsLoaded)
-            //    __instance.playButton?.transform.gameObject.SetActive(false);
-
-            //Logger.Msg($"Play button showed? : Options is loaded: {Options.IsLoaded} - check play button enabled {__instance.playButton.enabled}", "PlayButton");
-
-            Ambience.SetActive(false);
+            Ambience.SetActive(true);
         }
 
+        PlayerParticles = GameObject.Find("PlayerParticles");
+        starfield = GameObject.Find("starfield");
+        SoundManager.Instance.StopNamedSound("MainMenuBgMusic");
+        
+        if (PlayerParticles != null)
+        {
+            PlayerParticles.SetActive(false);
+        }
+        if (starfield != null)
+        {
+            starfield.SetActive(false);
+        }
+        /*
         SetButtonColor(__instance.playButton);
         SetButtonColor(__instance.inventoryButton);
         SetButtonColor(__instance.shopButton); 
@@ -49,14 +62,15 @@ public class MainMenuManagerStartPatch
         SetButtonColor(__instance.settingsButton);
         SetButtonColor(__instance.creditsButton);
         SetButtonColor(__instance.quitButton);
+        */
     }
 
     private static void SetButtonColor(PassiveButton playButton)
     {
-        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = Color.black;
-        playButton.activeSprites.GetComponent<SpriteRenderer>().color = Color.black;
-        playButton.activeTextColor = Color.white;
-        playButton.inactiveTextColor = Color.white;
+        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = Color.red;
+        playButton.activeSprites.GetComponent<SpriteRenderer>().color = Color.yellow;
+        playButton.activeTextColor = Color.red;
+        playButton.inactiveTextColor = Color.yellow;
     }
     
 }
@@ -76,24 +90,6 @@ class MainMenuManagerLateUpdatePatch
             return;
         }
         lateUpdate = 0;
-
-        //LoadingHint = new GameObject("LoadingHint");
-
-        //if (!Options.IsLoaded)
-        //{
-        //    LoadingHint.transform.position = Vector3.down;
-        //    var LoadingHintText = LoadingHint.AddComponent<TextMeshPro>();
-        //    LoadingHintText.text = GetString("SettingsAreLoading");
-        //    LoadingHintText.alignment = TextAlignmentOptions.Center;
-        //    LoadingHintText.fontSize = 3f;
-        //    LoadingHintText.transform.position = GameObject.Find("LOGO-AU").transform.position;
-        //    LoadingHintText.transform.position += new Vector3(-0.2f, -0.9f, 0f);
-        //    LoadingHintText.color = new Color32(0, 255, 8, byte.MaxValue); // new Color32(17, 255, 1, byte.MaxValue);
-        //}
-
-        //LoadingHint?.SetActive(!Options.IsLoaded);
-        //__instance.playButton.transform.gameObject.SetActive(Options.IsLoaded);
-
         var PlayOnlineButton = __instance.PlayOnlineButton;
         if (PlayOnlineButton != null)
         {
@@ -126,116 +122,45 @@ public static class MainMenuManagerPatch
         // FPS
         Application.targetFrameRate = Main.UnlockFPS.Value ? 165 : 60;
 
-        __instance.screenTint.gameObject.transform.localPosition += new Vector3(1000f, 0f);
-        __instance.screenTint.enabled = false;
-        __instance.rightPanelMask.SetActive(true);
-        // The background texture (large sprite asset)
-        __instance.mainMenuUI.FindChild<SpriteRenderer>("BackgroundTexture").transform.gameObject.SetActive(false);
-        // The glint on the Among Us Menu
-        __instance.mainMenuUI.FindChild<SpriteRenderer>("WindowShine").transform.gameObject.SetActive(false);
-        __instance.mainMenuUI.FindChild<Transform>("ScreenCover").gameObject.SetActive(false);
+        var background = GameObject.Find("BackgroundTexture");
 
+        if (background != null)
+        {
+            var render = background.GetComponent<SpriteRenderer>();
+            render.flipY = true;
+            render.color = new Color(126f, 0f, 194f, 1f);
+        }
+        var tint = GameObject.Find("MainUI").transform.GetChild(0).gameObject;
+        if (tint != null)
+        {
+            tint.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            tint.transform.localScale = new Vector3(7.5f, 7.5f, 1f);
+        }
+        
         GameObject leftPanel = __instance.mainMenuUI.FindChild<Transform>("LeftPanel").gameObject;
-        GameObject rightPanel = __instance.mainMenuUI.FindChild<Transform>("RightPanel").gameObject;
-        rightPanel.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        GameObject maskedBlackScreen = rightPanel.FindChild<Transform>("MaskedBlackScreen").gameObject;
-        maskedBlackScreen.GetComponent<SpriteRenderer>().enabled = false;
-        //maskedBlackScreen.transform.localPosition = new Vector3(-3.345f, -2.05f); //= new Vector3(0f, 0f);
-        maskedBlackScreen.transform.localScale = new Vector3(7.35f, 4.5f, 4f);
-
-        __instance.mainMenuUI.gameObject.transform.position += new Vector3(-0.2f, 0f);
-
-        leftPanel.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        leftPanel.gameObject.FindChild<SpriteRenderer>("Divider").enabled = false;
         leftPanel.GetComponentsInChildren<SpriteRenderer>(true).Where(r => r.name == "Shine").ToList().ForEach(r => r.enabled = false);
 
-        GameObject splashArt = new("SplashArt");
-        splashArt.transform.position = new Vector3(0, 0f, 600f); //= new Vector3(0, 0.40f, 600f);
-        var spriteRenderer = splashArt.AddComponent<SpriteRenderer>();
-        string folder = "TOHE.Resources.Background.";
-        IRandom rand = IRandom.Instance;
-        if (rand.Next(0, 100) < 30) folder += "PrevArtWinner";
-        else folder += "CurrentArtWinner";
-        var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-        string[] fileNames = assembly.GetManifestResourceNames().Where(resourceName => resourceName.StartsWith(folder) && resourceName.EndsWith(".png")).ToArray();
-        int choice = rand.Next(0, fileNames.Length);
-
-        spriteRenderer.sprite = Utils.LoadSprite($"TOHE.Resources.Background.CurrentArtWinner.toho_200.png", 275f);
+        leftPanel.gameObject.FindChild<SpriteRenderer>("Divider").enabled = false;
         
-        //__instance.playLocalButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.1647f, 0f, 0.7765f);
-        //__instance.PlayOnlineButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.1647f, 0f, 0.7765f);
-        //__instance.playLocalButton.transform.position = new Vector3(2.095f, -0.25f, 520f);
-        //__instance.PlayOnlineButton.transform.position = new Vector3(0f, -0.25f, 0f);
-
-
-        /*    __instance.playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.35f);
-            __instance.playButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.929f, 0.255f, 0.773f);
-            Color originalColorPlayButton = __instance.playButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorPlayButton * 0.5f;
-            __instance.playButton.activeTextColor = Color.white;
-            __instance.playButton.inactiveTextColor = Color.white;
-            __instance.playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.35f);
-
-            __instance.inventoryButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.35f);
-            __instance.inventoryButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.929f, 0.255f, 0.773f);
-            Color originalColorInventoryButton = __instance.inventoryButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.inventoryButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorInventoryButton * 0.5f;
-            __instance.inventoryButton.activeTextColor = Color.white;
-            __instance.inventoryButton.inactiveTextColor = Color.white;
-            __instance.inventoryButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.35f);
-
-            __instance.shopButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.35f);
-            __instance.shopButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.929f, 0.255f, 0.773f);
-            Color originalColorShopButton = __instance.shopButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.shopButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorShopButton * 0.5f;
-            __instance.shopButton.activeTextColor = Color.white;
-            __instance.shopButton.inactiveTextColor = Color.white;
-            __instance.shopButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.35f);
-
-
-
-            __instance.newsButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.95f, 0f, 1f);
-            __instance.newsButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.85f);
-            Color originalColorNewsButton = __instance.newsButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.newsButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorNewsButton * 0.6f;
-            __instance.newsButton.activeTextColor = Color.white;
-            __instance.newsButton.inactiveTextColor = Color.white;
-
-            __instance.myAccountButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.95f, 0f, 1f);
-            __instance.myAccountButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.85f);
-            Color originalColorMyAccount = __instance.myAccountButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.myAccountButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorMyAccount * 0.6f;
-            __instance.myAccountButton.activeTextColor = Color.white;
-            __instance.myAccountButton.inactiveTextColor = Color.white;
-            __instance.accountButtons.transform.position += new Vector3(0f, 0f, -1f);
-
-            __instance.settingsButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.95f, 0f, 1f);
-            __instance.settingsButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.85f);
-            Color originalColorSettingsButton = __instance.settingsButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.settingsButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorSettingsButton * 0.6f;
-            __instance.settingsButton.activeTextColor = Color.white;
-            __instance.settingsButton.inactiveTextColor = Color.white;
-
-
-
-            //__instance.creditsButton.gameObject.SetActive(false);
-            //__instance.quitButton.gameObject.SetActive(false);
-
-            __instance.quitButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.95f, 0f, 1f);
-            __instance.quitButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.85f);
-            Color originalColorQuitButton = __instance.quitButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.quitButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorQuitButton * 0.6f;
-            __instance.quitButton.activeTextColor = Color.white;
-            __instance.quitButton.inactiveTextColor = Color.white;
-
-            __instance.creditsButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.95f, 0f, 1f);
-            __instance.creditsButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0.85f);
-            Color originalColorCreditsButton = __instance.creditsButton.inactiveSprites.GetComponent<SpriteRenderer>().color;
-            __instance.creditsButton.inactiveSprites.GetComponent<SpriteRenderer>().color = originalColorCreditsButton * 0.6f;
-            __instance.creditsButton.activeTextColor = Color.white;
-            __instance.creditsButton.inactiveTextColor = Color.white; */
-
-
+        GameObject splashArt = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        splashArt.name = "SplashArt";
+        splashArt.transform.position = new Vector3(2f, 0f, 600f);
+        RenderTexture rt = new(512, 512, 0);
+        float videoWidth = rt.width;
+        float videoHeight = rt.height;
+        float aspect = videoWidth / videoHeight;
+        float desiredHeight = 3f * 1.818f;
+        float desiredWidth = 3f * aspect * 3.232f;
+        splashArt.transform.localScale = new Vector3(desiredWidth, desiredHeight, 1f);
+        VideoPlayer vp = splashArt.AddComponent<VideoPlayer>();
+        vp.url = System.IO.Path.GetFullPath("./TOHO-DATA/background.mp4");
+        vp.targetTexture = rt;
+        vp.isLooping = true;
+        vp.Play();
+        Renderer renderer = splashArt.GetComponent<Renderer>();
+        Material mat = new(Shader.Find("Unlit/Texture"));
+        mat.mainTexture = rt;
+        renderer.material = mat;
 
         if (template == null) return;
 
