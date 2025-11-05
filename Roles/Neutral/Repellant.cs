@@ -1,12 +1,12 @@
 ﻿using AmongUs.GameOptions;
 using System;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.Options;
-using static TOHE.Utils;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.Options;
+using static TOHO.Utils;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral
+namespace TOHO.Roles.Neutral
 {
     internal class Repellant : RoleBase
     {

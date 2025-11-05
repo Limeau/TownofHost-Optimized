@@ -1,10 +1,10 @@
 ﻿using AmongUs.GameOptions;
-using static TOHE.MeetingHudStartPatch;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.MeetingHudStartPatch;
+using static TOHO.Options;
+using static TOHO.Translator;
 
 //Thanks TOH_Y
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Workaholic : RoleBase
 {
@@ -38,7 +38,7 @@ internal class Workaholic : RoleBase
             .SetParent(WorkaholicVisibleToEveryone);
         WorkaholicCanGuess = BooleanOptionItem.Create(15706, GeneralOption.CanGuess, true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Workaholic]);
-        OverrideTasksData.Create(15707, TabGroup.NeutralRoles, CustomRoles.Workaholic);
+        Options.OverrideTasksData.Create(15707, TabGroup.NeutralRoles, CustomRoles.Workaholic);
     }
     public override void Init()
     {

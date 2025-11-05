@@ -2,7 +2,7 @@
 using Hazel;
 using UnityEngine;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Undertaker : RoleBase
 {

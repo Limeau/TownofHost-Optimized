@@ -1,7 +1,7 @@
 ﻿using AmongUs.GameOptions;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.AddOns.Common;
+namespace TOHO.Roles.AddOns.Common;
 
 public class Watcher : IAddon
 {

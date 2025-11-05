@@ -1,8 +1,8 @@
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.Options;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class CursedWolf : RoleBase
 {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TOHE.Modules;
+using TOHO.Modules;
 using UnityEngine;
 using static NetworkedPlayerInfo;
-using static TOHE.Options;
-using static TOHE.RoleBase;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.RoleBase;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 internal static class UltimateTeam
 {
     public static OptionItem GameTime;
@@ -34,7 +34,7 @@ internal static class UltimateTeam
         PlayerLives = IntegerOptionItem.Create(67_225_03, "PlayerLives", new(1, 5, 1), 3, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.UltimateTeam)
             .SetValueFormat(OptionFormat.Multiplier);
-        PlayerKillCooldown = FloatOptionItem.Create(67_225_04, GeneralOption.KillCooldown, new(5f, 45f, 2.5f), 15f, TabGroup.ModSettings, false)
+        PlayerKillCooldown = FloatOptionItem.Create(67_225_04, RoleBase.GeneralOption.KillCooldown, new(5f, 45f, 2.5f), 15f, TabGroup.ModSettings, false)
             .SetGameMode (CustomGameMode.UltimateTeam) 
             .SetValueFormat(OptionFormat.Seconds);
     }

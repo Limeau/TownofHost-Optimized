@@ -1,6 +1,6 @@
 ﻿/* WILLS - v1.6.0
-using static TOHE.Options;
-namespace TOHE.Roles.AddOns.Common;
+using static TOHO.Options;
+namespace TOHO.Roles.AddOns.Common;
 internal class Author : IAddon
 {
     public CustomRoles Role => CustomRoles.Author;

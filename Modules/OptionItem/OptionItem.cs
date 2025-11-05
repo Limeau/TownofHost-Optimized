@@ -1,8 +1,8 @@
 using System;
-using TOHE.Modules;
+using TOHO.Modules;
 using UnityEngine;
 
-namespace TOHE;
+namespace TOHO;
 
 public abstract class OptionItem
 {
@@ -242,7 +242,7 @@ public abstract class OptionItem
     {
         AllValues = values;
     }
-    // This Code For Reset All TOHE Setting To Default
+    // This Code For Reset All TOHO Setting To Default
     public virtual void SetValueNoRpc(int value)
     {
         int beforeValue = CurrentValue;

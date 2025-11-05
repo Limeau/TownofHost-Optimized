@@ -1,14 +1,14 @@
-﻿using TOHE.Roles.AddOns.Crewmate;
-using AmongUs.GameOptions;
-using TOHE.Roles.Core;
-using TOHE.Roles.Double;
+﻿using AmongUs.GameOptions;
 using Hazel;
 using InnerNet;
 using System;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Core;
+using TOHO.Roles.Double;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 internal class DarkFairy : RoleBase
 {
     //===========================SETUP================================\\

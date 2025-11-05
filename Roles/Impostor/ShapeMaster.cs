@@ -1,6 +1,6 @@
 ﻿using AmongUs.GameOptions;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class ShapeMaster : RoleBase // Should be deleted tbh, because it's litteraly vanilla shapeshifter
 {

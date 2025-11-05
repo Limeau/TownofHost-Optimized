@@ -1,8 +1,8 @@
-using static TOHE.Options;
-using static TOHE.Translator;
-using TOHE.Roles.Double;
+using static TOHO.Options;
+using static TOHO.Translator;
+using TOHO.Roles.Double;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Exorcist : RoleBase
 {
@@ -24,7 +24,7 @@ internal class Exorcist : RoleBase
                 TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Exorcist])
             .SetValueFormat(OptionFormat.Multiplier);
-        OverrideTasksData.Create(Id + 11, TabGroup.CrewmateRoles, CustomRoles.Exorcist);
+        Options.OverrideTasksData.Create(Id + 11, TabGroup.CrewmateRoles, CustomRoles.Exorcist);
     }
 
     public override bool OnTaskComplete(PlayerControl priest, int completedTaskCount, int totalTaskCount)

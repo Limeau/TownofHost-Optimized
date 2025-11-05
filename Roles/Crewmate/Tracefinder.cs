@@ -1,10 +1,10 @@
 using AmongUs.GameOptions;
 using System;
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Tracefinder : RoleBase
 {

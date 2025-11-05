@@ -1,9 +1,9 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Roles.Double;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.Double;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
 
-namespace TOHE.Roles.Core.AssignManager;
+namespace TOHO.Roles.Core.AssignManager;
 
 public class RoleAssign
 {

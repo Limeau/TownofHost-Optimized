@@ -1,13 +1,13 @@
 using AmongUs.GameOptions;
-using TOHE.Roles.Core;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
-using static TOHE.Main;
-using TOHE.Modules;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
+using static TOHO.Main;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Meteor : RoleBase
 {

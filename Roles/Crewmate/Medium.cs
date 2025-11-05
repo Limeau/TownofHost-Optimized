@@ -1,13 +1,13 @@
 ﻿using Hazel;
 using InnerNet;
-using TOHE.Roles.Core;
-using TOHE.Modules;
-using static TOHE.MeetingHudStartPatch;
-using static TOHE.Translator;
-using static TOHE.Utils;
-using static TOHE.Options;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.MeetingHudStartPatch;
+using static TOHO.Translator;
+using static TOHO.Utils;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Medium : RoleBase
 {
@@ -35,7 +35,7 @@ internal class Medium : RoleBase
         MediumAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 12, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Medium])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Medium);
+        Options.OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Medium);
     }
     public override void Init()
     {

@@ -1,18 +1,18 @@
 using Hazel;
 using System;
 using System.Text.RegularExpressions;
-using TOHE.Modules.ChatManager;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Double;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Modules.ChatManager;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Double;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Coven;
+namespace TOHO.Roles.Coven;
 
 internal class Ritualist : CovenManager
 {
@@ -152,7 +152,7 @@ internal class Ritualist : CovenManager
     private static void TryHideMsgForRitual()
     {
         ChatUpdatePatch.DoBlockChat = true;
-        if (ChatManager.quickChatSpamMode != QuickChatSpamMode.QuickChatSpam_Disabled)
+        if (ChatManager.quickChatSpamMode != Options.QuickChatSpamMode.QuickChatSpam_Disabled)
         {
             ChatManager.SendQuickChatSpam();
             ChatUpdatePatch.DoBlockChat = false;

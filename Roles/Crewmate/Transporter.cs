@@ -1,8 +1,8 @@
-﻿using TOHE.Modules;
-using static TOHE.Options;
-using static TOHE.Utils;
+﻿using TOHO.Modules;
+using static TOHO.Options;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Transporter : RoleBase
 {
@@ -21,7 +21,7 @@ internal class Transporter : RoleBase
         TransporterTeleportMax = IntegerOptionItem.Create(7402, "TransporterTeleportMax", new(1, 100, 1), 5, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Transporter])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Transporter);
+        Options.OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Transporter);
     }
     public override bool OnTaskComplete(PlayerControl player, int completedTaskCount, int totalTaskCount)
     {

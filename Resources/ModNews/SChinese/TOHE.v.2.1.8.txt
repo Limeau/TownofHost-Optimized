@@ -1,7 +1,7 @@
 #Number:100023
 #Title:TownOfHostEdited v2.1.8
 #SubTitle:★★★★同步本家更新★★★★
-#ShortTitle:★TOHE v2.1.8
+#ShortTitle:★TOHO v2.1.8
 #Date:2023-3-21T00:00:00Z
 #-----------------------------
 感觉TOH本家这次更新也挺摆烂的

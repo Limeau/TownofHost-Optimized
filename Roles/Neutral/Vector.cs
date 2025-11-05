@@ -1,12 +1,12 @@
 using AmongUs.GameOptions;
 using System.Text;
-using TOHE.Modules;
+using TOHO.Modules;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Vector : RoleBase
 {

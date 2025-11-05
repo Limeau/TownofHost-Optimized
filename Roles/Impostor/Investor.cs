@@ -1,7 +1,7 @@
 ﻿using AmongUs.GameOptions;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 internal class Investor : RoleBase
 {
     //===========================SETUP================================\\
@@ -21,7 +21,7 @@ internal class Investor : RoleBase
             .SetValueFormat(OptionFormat.Seconds);
         ReductionPerTask = FloatOptionItem.Create(Id + 11, "InvestorTaskReduction", new(0f, 10f, 0.5f), 4f, TabGroup.ImpostorRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Investor])
             .SetValueFormat(OptionFormat.Seconds);
-        OverrideTasksData.Create(Id + 20, TabGroup.ImpostorRoles, CustomRoles.Investor);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.ImpostorRoles, CustomRoles.Investor);
     }
     public static float InitialKCD;
     public static float LowerKCD;

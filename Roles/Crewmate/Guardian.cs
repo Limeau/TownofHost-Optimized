@@ -1,7 +1,7 @@
-﻿using static TOHE.Options;
-using static TOHE.Translator;
+﻿using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Guardian : RoleBase
 {
@@ -15,7 +15,7 @@ internal class Guardian : RoleBase
     public override void SetupCustomOption()
     {
         SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Guardian);
-        OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Guardian);
+        Options.OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Guardian);
     }
     public static bool CannotBeKilled(PlayerControl Guardian) => Guardian.Is(CustomRoles.Guardian) && Guardian.GetPlayerTaskState().IsTaskFinished;
     public override bool OnCheckMurderAsTarget(PlayerControl killer, PlayerControl target)

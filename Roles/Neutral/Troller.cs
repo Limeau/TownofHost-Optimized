@@ -1,11 +1,11 @@
 using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.Utils;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Troller : RoleBase
 {
@@ -50,7 +50,7 @@ internal class Troller : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Troller]);
         CanHaveCallMeetingEvent = BooleanOptionItem.Create(Id + 11, "Troller_CanHaveStartMeetingEvent", false, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Troller]);
-        OverrideTasksData.Create(Id + 15, TabGroup.NeutralRoles, CustomRoles.Troller);
+        Options.OverrideTasksData.Create(Id + 15, TabGroup.NeutralRoles, CustomRoles.Troller);
     }
     public override void Init()
     {

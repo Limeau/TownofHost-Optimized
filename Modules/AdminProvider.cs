@@ -1,7 +1,7 @@
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 
 public static class AdminProvider
 {

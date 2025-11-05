@@ -1,14 +1,14 @@
 using AmongUs.GameOptions;
 using Hazel;
 using System.Text;
-using TOHE.Modules;
-using TOHE.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Chameleon : RoleBase
 {
@@ -40,7 +40,7 @@ internal class Chameleon : RoleBase
         ChameleonAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 6, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Chameleon])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 7, TabGroup.CrewmateRoles, CustomRoles.Chameleon);
+        Options.OverrideTasksData.Create(Id + 7, TabGroup.CrewmateRoles, CustomRoles.Chameleon);
     }
     public override void Init()
     {

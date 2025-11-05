@@ -1,9 +1,9 @@
-﻿using static TOHE.Utils;
-using TOHE.Modules;
+﻿using static TOHO.Utils;
+using TOHO.Modules;
 using MS.Internal.Xml.XPath;
 using static UnityEngine.GraphicsBuffer;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 internal class Druid : RoleBase
 {
     //===========================SETUP================================\\

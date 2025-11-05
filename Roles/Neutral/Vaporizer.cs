@@ -1,7 +1,7 @@
 using System;
-using TOHE.Roles.Core;
-using static TOHE.Options;
-namespace TOHE.Roles.Neutral;
+using TOHO.Roles.Core;
+using static TOHO.Options;
+namespace TOHO.Roles.Neutral;
 
 internal class Vaporizer : RoleBase
 {

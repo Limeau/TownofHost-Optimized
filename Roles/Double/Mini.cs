@@ -1,10 +1,10 @@
 using Hazel;
 using InnerNet;
-using TOHE.Roles.Core;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Roles.Core;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Double;
+namespace TOHO.Roles.Double;
 
 internal class Mini : RoleBase
 {

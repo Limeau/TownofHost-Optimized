@@ -1,9 +1,9 @@
 using AmongUs.GameOptions;
-using TOHE.Modules;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Devourer : RoleBase
 {

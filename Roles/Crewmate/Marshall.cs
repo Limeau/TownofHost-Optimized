@@ -1,9 +1,9 @@
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Marshall : RoleBase
 {
@@ -19,7 +19,7 @@ internal class Marshall : RoleBase
     public override void SetupCustomOption()
     {
         SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Marshall);
-        OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Marshall);
+        Options.OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Marshall);
     }
     private static bool GetExpose(PlayerControl pc)
     {

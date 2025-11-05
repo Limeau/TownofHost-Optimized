@@ -15,7 +15,7 @@
         <option>honoroas</option>
         <option>stripoa</option>
         <option>transformxaml</option>
-        <file dir="D:\TownofHost-Enhanced\bin\Debug\net6.0" name="TOHE.dll" />
+        <file dir="D:\TownofHost-Enhanced\bin\Debug\net6.0" name="TOHO.dll" />
       </inputassembly>
     </asmlist>
   </input>
@@ -35,11 +35,11 @@
         <method name=".*stanc.*" regex="true" />
         <field name=".*stanc.*" regex="true" />
       </type>
-      <type name="TOHE.RoleBase" excludetype="false">
+      <type name="TOHO.RoleBase" excludetype="false">
         <method name="CheckVote" signature="bool(PlayerControl, PlayerControl)" />
         <method name="UnShapeShiftButton" signature="void(PlayerControl)" />
       </type>
-      <type name="TOHE.Patches.Crowded.AbstractPagingBehaviour">
+      <type name="TOHO.Patches.Crowded.AbstractPagingBehaviour">
         <method name="Cycle" signature="void(bool)" />
         <method name="OnPageChanged" signature="void()" />
         <method name="Start" signature="void()" />
@@ -54,7 +54,7 @@
         <propertymember name="MaxPerPage" />
         <propertymember name="PageIndex" />
       </type>
-      <type name="TOHE.Patches.Crowded.MeetingHudPagingBehaviour">
+      <type name="TOHO.Patches.Crowded.MeetingHudPagingBehaviour">
         <method name="OnPageChanged" signature="void()" />
         <method name="Start" signature="void()" />
         <method name="Update" signature="void()" />
@@ -64,12 +64,12 @@
         <propertymember name="MaxPageIndex" />
         <propertymember name="Targets" />
       </type>
-      <type name="TOHE.Patches.Crowded.MeetingHudPagingBehaviour/&lt;&gt;c">
+      <type name="TOHO.Patches.Crowded.MeetingHudPagingBehaviour/&lt;&gt;c">
         <method name="&lt;get_Targets&gt;b__3_0" signature="bool(PlayerVoteArea)" />
-        <field name="&lt;&gt;9" signature="TOHE.Patches.Crowded.MeetingHudPagingBehaviour/&lt;&gt;c" />
+        <field name="&lt;&gt;9" signature="TOHO.Patches.Crowded.MeetingHudPagingBehaviour/&lt;&gt;c" />
         <field name="&lt;&gt;9__3_0" signature="System.Func`2&lt;PlayerVoteArea,bool&gt;" />
       </type>
-      <type name="TOHE.Patches.Crowded.ShapeShifterPagingBehaviour">
+      <type name="TOHO.Patches.Crowded.ShapeShifterPagingBehaviour">
         <method name="OnPageChanged" signature="void()" />
         <method name="Start" signature="void()" />
         <method name="get_MaxPageIndex" signature="int32()" />
@@ -79,7 +79,7 @@
         <propertymember name="MaxPageIndex" />
         <propertymember name="Targets" />
       </type>
-      <type name="TOHE.Patches.Crowded.VitalsPagingBehaviour">
+      <type name="TOHO.Patches.Crowded.VitalsPagingBehaviour">
         <method name="OnPageChanged" signature="void()" />
         <method name="Start" signature="void()" />
         <method name="get_MaxPageIndex" signature="int32()" />
@@ -126,7 +126,7 @@
       <type name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=16" />
       <type name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=20" />
       <type name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=32" />
-      <type name="TOHE_ProcessedByFody">
+      <type name="TOHO_ProcessedByFody">
         <field name="Costura" signature="string" />
         <field name="FodyVersion" signature="string" />
       </type>

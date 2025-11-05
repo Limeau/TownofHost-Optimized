@@ -4,21 +4,21 @@ using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using TOHE.Roles.Core;
-using TOHE.Roles.Core.AssignManager;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 using AmongUs.InnerNet.GameDataMessages;
-using static TOHE.RPC;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using TOHO.Roles.Core.AssignManager;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
+using static TOHO.RPC;
 
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(ChatController), nameof(ChatController.SendChat))]
 internal class ChatCommands

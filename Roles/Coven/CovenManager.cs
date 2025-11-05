@@ -1,10 +1,10 @@
 ﻿using AmongUs.GameOptions;
 using Hazel;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE;
+namespace TOHO;
 public abstract class CovenManager : RoleBase // NO, THIS IS NOT A ROLE
 {
     public static byte necroHolder = byte.MaxValue;

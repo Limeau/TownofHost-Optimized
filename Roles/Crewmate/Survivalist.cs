@@ -1,14 +1,14 @@
 using AmongUs.GameOptions;
-using TOHE.Modules;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using static TOHO.Options;
+using static TOHO.Translator;
 using System.Collections.Generic;
 using System.Linq;
 using Hazel;
 using UnityEngine;
-using TOHE.Roles.AddOns.Common;
+using TOHO.Roles.AddOns.Common;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Survivalist : RoleBase
 {

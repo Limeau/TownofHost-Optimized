@@ -2,11 +2,11 @@
 using Hazel;
 using System;
 using System.Runtime.CompilerServices;
-using TOHE.Modules;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.Core;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Core;
+using TOHO.Modules;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class AntiBlackout
 {

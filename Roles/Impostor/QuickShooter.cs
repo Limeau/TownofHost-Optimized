@@ -2,10 +2,10 @@
 using Hazel;
 using InnerNet;
 using System;
-using TOHE.Modules;
-using TOHE.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class QuickShooter : RoleBase
 {

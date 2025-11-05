@@ -1,13 +1,13 @@
-using static TOHE.Options;
-using static TOHE.Translator;
-using TOHE.Roles.Core;
+using static TOHO.Options;
+using static TOHO.Translator;
 using UnityEngine;
-using static TOHE.MeetingHudStartPatch;
+using static TOHO.MeetingHudStartPatch;
 using AmongUs.GameOptions;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Impostor;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Impostor;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class ForensicScientist : RoleBase
 {

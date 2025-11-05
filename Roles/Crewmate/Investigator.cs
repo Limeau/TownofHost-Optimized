@@ -1,10 +1,10 @@
 using AmongUs.GameOptions;
 using Hazel;
-using TOHE.Modules;
-using TOHE.Roles.Coven;
-using static TOHE.Options;
+using TOHO.Modules;
+using TOHO.Roles.Coven;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Investigator : RoleBase
 {

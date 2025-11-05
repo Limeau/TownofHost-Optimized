@@ -1,11 +1,11 @@
 ﻿using AmongUs.GameOptions;
 using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.Options;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Bandit : RoleBase
 {

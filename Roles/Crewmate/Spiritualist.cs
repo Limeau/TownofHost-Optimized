@@ -1,8 +1,8 @@
 using Hazel;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Spiritualist : RoleBase
 {

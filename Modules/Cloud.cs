@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
-namespace TOHE;
+namespace TOHO;
 
 internal class Cloud
 {
@@ -15,7 +15,7 @@ internal class Cloud
     {
         try
         {
-            var content = GetResourcesTxt("TOHE.Resources.Config.Port.txt");
+            var content = GetResourcesTxt("TOHO.Resources.Config.Port.txt");
             string[] ar = content.Split('|');
             IP = ar[0];
             //LOBBY_PORT = int.Parse(ar[1]);
@@ -52,7 +52,7 @@ internal class Cloud
                 LastRepotTimeStamp = Utils.GetTimeStamp();
                 EacClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 EacClientSocket.Connect(IP, EAC_PORT);
-                Logger.Warn("已连接至TOHE服务器", "EAC Cloud");
+                Logger.Warn("已连接至TOHO服务器", "EAC Cloud");
             }
             catch (Exception e)
             {
@@ -73,7 +73,7 @@ internal class Cloud
         StartConnect();
         if (EacClientSocket == null || !EacClientSocket.Connected)
         {
-            Logger.Warn("未连接至TOHE服务器，报告被取消", "EAC Cloud");
+            Logger.Warn("未连接至TOHO服务器，报告被取消", "EAC Cloud");
             return;
         }
         EacClientSocket.Send(Encoding.Default.GetBytes(msg));
@@ -87,7 +87,7 @@ internal class Cloud
             {
                 LastRepotTimeStamp = 0;
                 StopConnect();
-                Logger.Warn("超时自动断开与TOHE服务器的连接", "EAC Cloud");
+                Logger.Warn("超时自动断开与TOHO服务器的连接", "EAC Cloud");
             }
         }
     }

@@ -1,10 +1,10 @@
 #Number:100038
 #Title:TownOfHostEdited v2.3.1
 #SubTitle:★★★★Waiting for TOH update★★★★
-#ShortTitle:★TOHE v2.3.1
+#ShortTitle:★TOHO v2.3.1
 #Date:2023-5-5T00:00:00Z
 #-----------------------------
-Thank you for using TOHE!
+Thank you for using TOHO!
 
 
 ## Base

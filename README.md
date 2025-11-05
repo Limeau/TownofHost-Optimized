@@ -96,7 +96,7 @@
 > - Provided roles: Shapeshifter, Engineer, Scientist, Marshall, Poisoner, Necroview, Sidekick
 > - Bait and Beartrap as add-ons
 >
-### :star: [TONEX (Formerly TOHEX)](https://github.com/XtremeWave/TownOfNewEpic_Xtreme)
+### :star: [TONEX (Formerly TOHOX)](https://github.com/XtremeWave/TownOfNewEpic_Xtreme)
 >
 > - Provided roles: Swapper, Berserker, Randomizer and Blackmailer
 > - Improve chat spam system (ChatManager.cs)

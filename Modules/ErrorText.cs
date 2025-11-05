@@ -1,7 +1,7 @@
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [Obfuscation(Exclude = true, ApplyToMembers = true)]
 public class ErrorText : MonoBehaviour

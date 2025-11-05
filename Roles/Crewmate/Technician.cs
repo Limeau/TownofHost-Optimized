@@ -1,9 +1,9 @@
-﻿using static TOHE.Options;
-using static TOHE.Utils;
-using TOHE.Roles.Neutral;
-using static TOHE.Translator;
+﻿using static TOHO.Options;
+using static TOHO.Utils;
+using TOHO.Roles.Neutral;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Technician : RoleBase
 {

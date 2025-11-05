@@ -1,12 +1,12 @@
 using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Impostor;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Impostor;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Pacifist : RoleBase
 {
@@ -31,7 +31,7 @@ internal class Pacifist : RoleBase
             .SetValueFormat(OptionFormat.Times);
         PacifistAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(12, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Pacifist])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Pacifist);
+        Options.OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Pacifist);
     }
     public override void Add(byte playerId)
     {

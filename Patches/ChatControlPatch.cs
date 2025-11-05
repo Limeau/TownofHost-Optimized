@@ -1,7 +1,7 @@
 using AmongUs.Data;
 using UnityEngine;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(ChatController), nameof(ChatController.Update))]
 class ChatControllerUpdatePatch
@@ -35,17 +35,17 @@ class ChatControllerUpdatePatch
             if (QuickChatIcon == null)
                 QuickChatIcon = GameObject.Find("QuickChatIcon")?.transform.GetComponent<SpriteRenderer>();
             else
-                QuickChatIcon.sprite = Utils.LoadSprite("TOHE.Resources.Images.DarkQuickChat.png", 100f);
+                QuickChatIcon.sprite = Utils.LoadSprite("TOHO.Resources.Images.DarkQuickChat.png", 100f);
 
             if (OpenBanMenuIcon == null)
                 OpenBanMenuIcon = GameObject.Find("OpenBanMenuIcon")?.transform.GetComponent<SpriteRenderer>();
             else
-                OpenBanMenuIcon.sprite = Utils.LoadSprite("TOHE.Resources.Images.DarkReport.png", 100f);
+                OpenBanMenuIcon.sprite = Utils.LoadSprite("TOHO.Resources.Images.DarkReport.png", 100f);
 
             if (OpenKeyboardIcon == null)
                 OpenKeyboardIcon = GameObject.Find("OpenKeyboardIcon")?.transform.GetComponent<SpriteRenderer>();
             else
-                OpenKeyboardIcon.sprite = Utils.LoadSprite("TOHE.Resources.Images.DarkKeyboard.png", 100f);
+                OpenKeyboardIcon.sprite = Utils.LoadSprite("TOHO.Resources.Images.DarkKeyboard.png", 100f);
         }
         else
         {

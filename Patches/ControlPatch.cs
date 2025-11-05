@@ -1,11 +1,11 @@
 using System;
 using System.Text;
-using TOHE.Modules;
-using TOHE.Patches;
+using TOHO.Modules;
+using TOHO.Patches;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(ControllerManager), nameof(ControllerManager.Update))]
 internal class ControllerManagerUpdatePatch
@@ -41,7 +41,7 @@ internal class ControllerManagerUpdatePatch
                     var lp = PlayerControl.LocalPlayer;
                     var sb = new StringBuilder();
                     sb.Append(GetString(role.ToString()) + Utils.GetRoleMode(role) + lp.GetRoleInfo(true));
-                    HudManager.Instance.ShowPopUp(sb.ToString() + "<size=0%>tohe</size>");
+                    HudManager.Instance.ShowPopUp(sb.ToString() + "<size=0%>TOHO</size>");
                 }
                 catch (Exception ex)
                 {
@@ -65,7 +65,7 @@ internal class ControllerManagerUpdatePatch
 
                     addonInfoIndex++;
                     if (addonInfoIndex >= addDes.Count) addonInfoIndex = 0;
-                    HudManager.Instance.ShowPopUp(addDes[addonInfoIndex] + "<size=0%>tohe</size>");
+                    HudManager.Instance.ShowPopUp(addDes[addonInfoIndex] + "<size=0%>TOHO</size>");
                 }
                 catch (Exception ex)
                 {
@@ -109,7 +109,7 @@ internal class ControllerManagerUpdatePatch
 
                     addonSettingsIndex++;
                     if (addonSettingsIndex >= addSett.Count) addonSettingsIndex = 0;
-                    HudManager.Instance.ShowPopUp(addSett[addonSettingsIndex] + "<size=0%>tohe</size>");
+                    HudManager.Instance.ShowPopUp(addSett[addonSettingsIndex] + "<size=0%>TOHO</size>");
                 }
                 catch (Exception ex)
                 {
@@ -247,7 +247,7 @@ internal class ControllerManagerUpdatePatch
                 Utils.ShowActiveSettings();
             }
 
-            // Reset All TOHE Setting To Default
+            // Reset All TOHO Setting To Default
             if (GameStates.IsLobby && GetKeysDown(KeyCode.LeftControl, KeyCode.LeftShift, KeyCode.Return, KeyCode.Delete))
             {
                 OptionItem.AllOptions.ToArray().Where(x => x.Id > 0).Do(x => x.SetValueNoRpc(x.DefaultValue));

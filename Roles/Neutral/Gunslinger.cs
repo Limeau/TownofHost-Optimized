@@ -2,15 +2,15 @@
 using Hazel;
 using InnerNet;
 using System.Text.RegularExpressions;
-using TOHE.Modules.ChatManager;
-using TOHE.Roles.Core;
-using TOHE.Roles.Double;
+using TOHO.Modules.ChatManager;
+using TOHO.Roles.Core;
+using TOHO.Roles.Double;
 using UnityEngine;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 internal class Gunslinger : RoleBase
 {
     //===========================SETUP================================\\

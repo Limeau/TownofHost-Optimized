@@ -1,13 +1,13 @@
 ﻿using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using TOHE.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Coroner : RoleBase
 {
@@ -37,7 +37,7 @@ internal class Coroner : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Coroner])
             .SetValueFormat(OptionFormat.Times);
         InformKillerBeingTracked = BooleanOptionItem.Create(Id + 14, "CoronerInformKillerBeingTracked", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Coroner]);
-        OverrideTasksData.Create(Id + 15, TabGroup.CrewmateRoles, CustomRoles.Coroner);
+        Options.OverrideTasksData.Create(Id + 15, TabGroup.CrewmateRoles, CustomRoles.Coroner);
     }
     public override void Init()
     {

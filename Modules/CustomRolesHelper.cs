@@ -1,15 +1,15 @@
 using AmongUs.GameOptions;
 using System;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Core;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
-using static TOHE.Roles.Core.CustomRoleManager;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Core;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
+using static TOHO.Roles.Core.CustomRoleManager;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class CustomRolesHelper
 {

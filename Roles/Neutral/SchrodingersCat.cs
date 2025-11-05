@@ -1,9 +1,9 @@
 ﻿using Hazel;
 using InnerNet;
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
 
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class SchrodingersCat : RoleBase
 {

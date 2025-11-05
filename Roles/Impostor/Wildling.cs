@@ -3,10 +3,10 @@ using Hazel;
 using InnerNet;
 using System;
 using System.Text;
-using TOHE.Roles.Core;
-using static TOHE.Options;
+using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Wildling : RoleBase
 {

@@ -2,13 +2,13 @@
 using Hazel;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using InnerNet;
-using TOHE.Modules;
+using TOHO.Modules;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Coven;
+namespace TOHO.Roles.Coven;
 
 internal class Sacrifist : CovenManager
 {

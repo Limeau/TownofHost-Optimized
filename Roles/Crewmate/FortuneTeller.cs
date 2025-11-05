@@ -1,12 +1,12 @@
 using System;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class FortuneTeller : RoleBase
 {
@@ -36,7 +36,7 @@ internal class FortuneTeller : RoleBase
         ShowSpecificRole = BooleanOptionItem.Create(Id + 13, "ShowSpecificRole", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.FortuneTeller]);
         FortuneTellerAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 15, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.FortuneTeller])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.FortuneTeller);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.FortuneTeller);
     }
     public override void Add(byte playerId)
     {

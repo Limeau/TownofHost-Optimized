@@ -2,12 +2,12 @@ using AmongUs.GameOptions;
 using AmongUs.InnerNet.GameDataMessages;
 using Hazel;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Neutral;
-using TOHE.Modules;
+using TOHO.Modules;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Neutral;
 
-namespace TOHE;
+namespace TOHO;
 
 class DisableTasks
 {

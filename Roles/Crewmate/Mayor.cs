@@ -1,11 +1,11 @@
 ﻿using AmongUs.GameOptions;
 using System.Text;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal partial class Mayor : RoleBase
 {
@@ -46,7 +46,7 @@ internal partial class Mayor : RoleBase
         MayorVoteGainWithEachTaskCompleted = IntegerOptionItem.Create(Id + 16, "VoteGainMayor", new(0, 3, 1), 1, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Mayor])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 15, TabGroup.CrewmateRoles, CustomRoles.Mayor);
+        Options.OverrideTasksData.Create(Id + 15, TabGroup.CrewmateRoles, CustomRoles.Mayor);
     }
 
     public override void Init()

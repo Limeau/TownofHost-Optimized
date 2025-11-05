@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TOHE;
+namespace TOHO;
 
 static class DoubleTrigger
 {

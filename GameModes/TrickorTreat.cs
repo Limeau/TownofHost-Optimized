@@ -1,8 +1,8 @@
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 internal static class TrickorTreat
 {
     public static OptionItem GameTime;

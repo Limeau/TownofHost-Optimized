@@ -1,13 +1,13 @@
 using AmongUs.GameOptions;
 using System;
-using TOHE.Modules;
-using TOHE.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class TimeMaster : RoleBase
 {
@@ -39,7 +39,7 @@ internal class TimeMaster : RoleBase
             .SetValueFormat(OptionFormat.Times);
         TimeMasterAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 13, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.TimeMaster])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 14, TabGroup.CrewmateRoles, CustomRoles.TimeMaster);
+        Options.OverrideTasksData.Create(Id + 14, TabGroup.CrewmateRoles, CustomRoles.TimeMaster);
     }
     public override void Init()
     {

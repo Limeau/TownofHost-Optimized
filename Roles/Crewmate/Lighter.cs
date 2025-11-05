@@ -1,12 +1,12 @@
 using AmongUs.GameOptions;
 using System;
 using UnityEngine;
-using TOHE.Modules;
-using static TOHE.Translator;
-using static TOHE.Utils;
-using static TOHE.Options;
+using TOHO.Modules;
+using static TOHO.Translator;
+using static TOHO.Utils;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Lighter : RoleBase
 {
@@ -41,7 +41,7 @@ internal class Lighter : RoleBase
             .SetValueFormat(OptionFormat.Times);
         LighterAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 15, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Lighter])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 16, TabGroup.CrewmateRoles, CustomRoles.Lighter);
+        Options.OverrideTasksData.Create(Id + 16, TabGroup.CrewmateRoles, CustomRoles.Lighter);
 
     }
     public override void Init()

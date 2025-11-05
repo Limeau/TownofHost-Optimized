@@ -1,9 +1,9 @@
 ﻿using AmongUs.GameOptions;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Astral : RoleBase
 {
@@ -26,7 +26,7 @@ internal class Astral : RoleBase
     public override void SetupCustomOption()
     {
         SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Astral);
-        OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.Astral);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.Astral);
     }
 
     public override void OnEnterVent(PlayerControl shapeshifter, Vent vent)

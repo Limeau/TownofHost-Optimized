@@ -1,9 +1,9 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Crewmate;
+using TOHO.Modules;
+using TOHO.Roles.Crewmate;
 using UnityEngine;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Bomber : RoleBase
 {

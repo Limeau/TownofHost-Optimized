@@ -1,11 +1,11 @@
 using Hazel;
 using InnerNet;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using static TOHE.Options;
-using static TOHE.Utils;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using static TOHO.Options;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Psychic : RoleBase
 {

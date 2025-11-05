@@ -1,6 +1,6 @@
 ﻿using AmongUs.GameOptions;
 
-namespace TOHE.Roles.Vanilla;
+namespace TOHO.Roles.Vanilla;
 
 internal class PhantomTOHO : RoleBase
 {

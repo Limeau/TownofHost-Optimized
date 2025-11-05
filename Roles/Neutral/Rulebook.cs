@@ -1,8 +1,8 @@
-﻿using static TOHE.Options;
-using static TOHE.CovenManager;
-using TOHE.Modules;
+﻿using static TOHO.Options;
+using static TOHO.CovenManager;
+using TOHO.Modules;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 internal class Rulebook : RoleBase
 {
     //===========================SETUP================================\\

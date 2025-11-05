@@ -1,14 +1,14 @@
 using AmongUs.GameOptions;
-using TOHE.Roles.Core;
-using static TOHE.Utils;
-using static TOHE.Main;
-using static TOHE.Options;
-using TOHE.Modules;
-using TOHE.Roles;
+using static TOHO.Utils;
+using static TOHO.Main;
+using static TOHO.Options;
+using TOHO.Modules;
+using TOHO.Roles;
 using System.Collections.Generic;
+using TOHO.Roles.Core;
 using UnityEngine;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Nuancer : RoleBase
 {

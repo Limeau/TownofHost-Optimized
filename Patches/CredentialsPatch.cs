@@ -1,10 +1,10 @@
 using System.Text;
 using TMPro;
-using TOHE.Modules;
+using TOHO.Modules;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
 class PingTrackerUpdatePatch
@@ -162,9 +162,9 @@ class VersionShowerStartPatch
 
         VersionChecker.Check();
 
-        if (SpecialEventText == null && MainMenuManagerStartPatch.ToheLogo != null)
+        if (SpecialEventText == null && MainMenuManagerStartPatch.TOHOLogo != null)
         {
-            SpecialEventText = Object.Instantiate(__instance.text, MainMenuManagerStartPatch.ToheLogo.transform);
+            SpecialEventText = Object.Instantiate(__instance.text, MainMenuManagerStartPatch.TOHOLogo.transform);
             SpecialEventText.name = "SpecialEventText";
             SpecialEventText.text = "";
             SpecialEventText.color = Color.white;

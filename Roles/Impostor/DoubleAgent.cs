@@ -1,16 +1,16 @@
 using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Neutral;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class DoubleAgent : RoleBase
 {

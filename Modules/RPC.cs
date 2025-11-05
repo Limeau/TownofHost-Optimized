@@ -3,17 +3,17 @@ using Hazel;
 using InnerNet;
 using System;
 using System.Threading.Tasks;
-using TOHE.Modules;
-using TOHE.Patches;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
-using static TOHE.Translator;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using TOHO.Modules;
+using TOHO.Patches;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [Obfuscation(Exclude = true)]
 public enum CustomRPC : byte // 185/255 USED
@@ -21,7 +21,7 @@ public enum CustomRPC : byte // 185/255 USED
     // RpcCalls can increase with each AU version
     // On version 2024.6.18 the last id in RpcCalls: 65
 
-    // Adding Role rpcs that overrides TOHE section and changing BetterCheck will be rejected
+    // Adding Role rpcs that overrides TOHO section and changing BetterCheck will be rejected
     // Sync Role Skill can be used under most cases so you should not make a new rpc unless it's necessary
     VersionCheck = 80,
     RequestRetryVersionCheck = 81,
@@ -31,7 +31,7 @@ public enum CustomRPC : byte // 185/255 USED
     PlaySound,
     SetCustomRole,
 
-    // TOHE
+    // TOHO
     AntiBlackout,
     SetRealKiller,
     PlayCustomSound,
@@ -430,7 +430,7 @@ internal class RPCHandlerPatch
             case CustomRPC.BetterCheck: // Better Among Us RPC
                 {
                     var SetBetterUser = reader.ReadBoolean(); // Used to set player as better user, boolean is used for a future for BAU later on.
-                    var IsBetterHost = reader.ReadBoolean(); // Used to set the player as better host, this should never be flagged for a TOHE lobby, if it is it's a spoofed RPC
+                    var IsBetterHost = reader.ReadBoolean(); // Used to set the player as better host, this should never be flagged for a TOHO lobby, if it is it's a spoofed RPC
                     var Signature = reader.ReadString(); // Used to verify that the RPC isn't spoofed, only possible in BAU mod due to a special signature that can't really be replicated easily
                     var Version = reader.ReadString(); // Used to read players BAU version
 

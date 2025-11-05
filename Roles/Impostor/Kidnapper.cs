@@ -1,10 +1,10 @@
-﻿using static TOHE.Options;
-using static TOHE.Utils;
-using static TOHE.Main;
-using TOHE.Modules;
+﻿using static TOHO.Options;
+using static TOHO.Utils;
+using static TOHO.Main;
+using TOHO.Modules;
 using MS.Internal.Xml.XPath;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 internal class Kidnapper : RoleBase
 {
     //===========================SETUP================================\\

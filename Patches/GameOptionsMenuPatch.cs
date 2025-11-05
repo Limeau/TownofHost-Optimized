@@ -1,12 +1,12 @@
 using BepInEx.Unity.IL2CPP.Utils.Collections;
 using System;
 using TMPro;
-using TOHE.Patches;
+using TOHO.Patches;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 using Object = UnityEngine.Object;
 
-namespace TOHE;
+namespace TOHO;
 
 // Thanks: https://github.com/Yumenopai/TownOfHost_Y/blob/main/Patches/GameOptionsMenuPatch.cs
 public static class ModGameOptionsMenu

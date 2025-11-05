@@ -1,11 +1,11 @@
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Oracle : RoleBase
 {
@@ -37,7 +37,7 @@ internal class Oracle : RoleBase
             .SetValueFormat(OptionFormat.Times);
         ChangeRecruitTeam = BooleanOptionItem.Create(Id + 15, "OracleCheckAddons", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Oracle]);
-        OverrideTasksData.Create(Id + 16, TabGroup.CrewmateRoles, CustomRoles.Oracle);
+        Options.OverrideTasksData.Create(Id + 16, TabGroup.CrewmateRoles, CustomRoles.Oracle);
     }
     public override void Add(byte playerId)
     {

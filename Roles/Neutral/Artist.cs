@@ -1,10 +1,10 @@
 ﻿using AmongUs.GameOptions;
 using Hazel;
-using TOHE.Modules;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral
+namespace TOHO.Roles.Neutral
 {
     internal class Artist : RoleBase
     {

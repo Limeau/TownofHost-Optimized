@@ -1,6 +1,6 @@
-﻿using static TOHE.Options;
+﻿using static TOHO.Options;
 
-namespace TOHE.Roles.AddOns.Impostor;
+namespace TOHO.Roles.AddOns.Impostor;
 public class Quota : IAddon
 {
     public CustomRoles Role => CustomRoles.Quota;

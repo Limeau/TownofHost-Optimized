@@ -1,9 +1,9 @@
 ﻿using AmongUs.Data;
 using System;
-using TOHE.Roles.Core;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.Core;
+using TOHO.Roles.Neutral;
 
-namespace TOHE;
+namespace TOHO;
 
 class ExileControllerWrapUpPatch
 {

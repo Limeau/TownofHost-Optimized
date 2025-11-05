@@ -1,11 +1,11 @@
-using TOHE.Roles.Core;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.Core;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Coven;
+namespace TOHO.Roles.Coven;
 
 internal class Necromancer : CovenManager
 {

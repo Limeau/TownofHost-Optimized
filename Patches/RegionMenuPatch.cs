@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace TOHE.Patches;
+namespace TOHO.Patches;
 
 [HarmonyPatch(typeof(RegionMenu))]
 public static class RegionMenuPatch

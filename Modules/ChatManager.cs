@@ -3,11 +3,11 @@ using Hazel;
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using TOHE.Roles.Impostor;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Roles.Impostor;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Modules.ChatManager
+namespace TOHO.Modules.ChatManager
 {
     public class ChatManager
     {
@@ -16,7 +16,7 @@ namespace TOHE.Modules.ChatManager
         private static readonly Dictionary<byte, string> LastSystemChatMsg = [];
         private const int maxHistorySize = 20;
         public static List<string> ChatSentBySystem = [];
-        public static QuickChatSpamMode quickChatSpamMode => (QuickChatSpamMode)UseQuickChatSpamCheat.GetInt();
+        public static Options.QuickChatSpamMode quickChatSpamMode => (Options.QuickChatSpamMode)UseQuickChatSpamCheat.GetInt();
         public static void ResetHistory()
         {
             chatHistory.Clear();
@@ -171,11 +171,11 @@ namespace TOHE.Modules.ChatManager
             firstAlivePlayer.Data.PlayerName = title;
             switch (quickChatSpamMode)
             {
-                case QuickChatSpamMode.QuickChatSpam_Disabled:
+                case Options.QuickChatSpamMode.QuickChatSpam_Disabled:
                     Logger.Info("QuickChatSpam disabled but trying to spam?", "SendQuickChatSpam");
-                    goto case QuickChatSpamMode.QuickChatSpam_Random20;
+                    goto case Options.QuickChatSpamMode.QuickChatSpam_Random20;
                 // Send as random 20 here
-                case QuickChatSpamMode.QuickChatSpam_Random20:
+                case Options.QuickChatSpamMode.QuickChatSpam_Random20:
                     var random = IRandom.Instance;
                     var stringNamesValues = Enum.GetValues(typeof(StringNames)).Cast<StringNames>().ToArray();
                     for (int i = 0; i < 25; i++)
@@ -189,7 +189,7 @@ namespace TOHE.Modules.ChatManager
                         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(firstAlivePlayer, GetString(randomString), false);
                     }
                     break;
-                case QuickChatSpamMode.QuickChatSpam_How2PlayNormal:
+                case Options.QuickChatSpamMode.QuickChatSpam_How2PlayNormal:
                     foreach (var names in Main.how2playN)
                     {
                         writer.AutoStartRpc(firstAlivePlayer.NetId, (byte)RpcCalls.SendQuickChat);
@@ -204,7 +204,7 @@ namespace TOHE.Modules.ChatManager
                         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(firstAlivePlayer, GetString(names), false);
                     }
                     break;
-                case QuickChatSpamMode.QuickChatSpam_How2PlayHidenSeek:
+                case Options.QuickChatSpamMode.QuickChatSpam_How2PlayHidenSeek:
                     foreach (var names in Main.how2playHnS)
                     {
                         writer.AutoStartRpc(firstAlivePlayer.NetId, (byte)RpcCalls.SendQuickChat);
@@ -219,7 +219,7 @@ namespace TOHE.Modules.ChatManager
                         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(firstAlivePlayer, GetString(names), false);
                     }
                     break;
-                case QuickChatSpamMode.QuickChatSpam_EzHacked:
+                case Options.QuickChatSpamMode.QuickChatSpam_EzHacked:
                     foreach (var names in Main.how2playEzHacked)
                     {
                         writer.AutoStartRpc(firstAlivePlayer.NetId, (byte)RpcCalls.SendQuickChat);
@@ -249,7 +249,7 @@ namespace TOHE.Modules.ChatManager
             //This should never function for non host
             if (GameStates.IsExilling && chatHistory.Count < 20)
             {
-                if (quickChatSpamMode != QuickChatSpamMode.QuickChatSpam_Disabled)
+                if (quickChatSpamMode != Options.QuickChatSpamMode.QuickChatSpam_Disabled)
                 {
                     SendQuickChatSpam();
                 }

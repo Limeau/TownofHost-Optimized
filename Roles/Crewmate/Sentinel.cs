@@ -1,8 +1,8 @@
-﻿using TOHE.Modules;
-using static TOHE.Options;
+﻿using TOHO.Modules;
+using static TOHO.Options;
 using static UnityEngine.GraphicsBuffer;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Sentinel : RoleBase
 {
@@ -22,7 +22,7 @@ internal class Sentinel : RoleBase
         AbilityUses = IntegerOptionItem.Create(Id + 10, "AbilityUses337", new(1, 5, 1), 2, TabGroup.CrewmateRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Sentinel]).SetValueFormat(OptionFormat.Times);
         SentinelAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 11, "AbilityUseGainWithEachTaskCompleted", new(0f, 2f, 0.5f), 1f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Sentinel])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.Sentinel);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.Sentinel);
     }
     public override void Add(byte playerId)
     {

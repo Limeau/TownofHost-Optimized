@@ -1,10 +1,10 @@
 #Number:100033
 #Title:TownOfHostEdited v2.2.9
 #SubTitle:★★★★还是修Bug★★★★
-#ShortTitle:★TOHE v2.2.9
+#ShortTitle:★TOHO v2.2.9
 #Date:2023-4-16T00:00:00Z
 #-----------------------------
-感谢您对TOHE的支持！！！
+感谢您对TOHO的支持！！！
 
 
 ## 对应官方版本

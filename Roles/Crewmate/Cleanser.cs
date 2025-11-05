@@ -1,10 +1,10 @@
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Cleanser : RoleBase
 {
@@ -32,7 +32,7 @@ internal class Cleanser : RoleBase
         CleanserAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 12, "AbilityUseGainWithEachTaskCompleted", new(0f, 2f, 0.5f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Cleanser])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 12, TabGroup.CrewmateRoles, CustomRoles.Cleanser);
+        Options.OverrideTasksData.Create(Id + 12, TabGroup.CrewmateRoles, CustomRoles.Cleanser);
 
     }
     public override void Add(byte playerId)

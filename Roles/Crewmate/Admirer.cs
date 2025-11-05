@@ -1,15 +1,15 @@
 using Hazel;
-using TOHE.Modules;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Double;
-using TOHE.Roles.Neutral;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Double;
+using TOHO.Roles.Neutral;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Admirer : RoleBase
 {

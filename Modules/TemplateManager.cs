@@ -4,9 +4,9 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class TemplateManager
 {
@@ -106,7 +106,7 @@ public static class TemplateManager
                 };
             else fileName = "English";
             if (!Directory.Exists(@"TOHO-DATA")) Directory.CreateDirectory(@"TOHO-DATA");
-            var defaultTemplateMsg = GetResourcesTxt($"TOHE.Resources.Config.template.{fileName}.txt");
+            var defaultTemplateMsg = GetResourcesTxt($"TOHO.Resources.Config.template.{fileName}.txt");
             if (!File.Exists(@"./TOHO-DATA/Default_Teamplate.txt")) //default template
             {
                 Logger.Warn("Creating Default_Template.txt", "TemplateManager");

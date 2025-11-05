@@ -1,7 +1,7 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 // 来源：https://github.com/Yumenopai/TownOfHost_Y
 internal class Stalker : RoleBase

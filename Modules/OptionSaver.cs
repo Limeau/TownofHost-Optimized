@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
 
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 
 // https://github.com/tukasa0001/TownOfHost/blob/main/Modules/OptionSaver.cs
 public static class OptionSaver

@@ -2,10 +2,10 @@ using AmongUs.GameOptions;
 using Hazel;
 using System.Text;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class EvilTracker : RoleBase
 {

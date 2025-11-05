@@ -2,17 +2,17 @@ using Hazel;
 using System;
 using System.Text;
 using TMPro;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using TOHE.Roles.Core;
-using TOHE.Roles.Core.AssignManager;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using TOHO.Roles.Core;
+using TOHO.Roles.Core.AssignManager;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
 class EndGamePatch

@@ -1,10 +1,10 @@
-﻿using TOHE.Roles.Core;
-using static TOHE.Options;
-using static TOHE.Utils;
-using static TOHE.CustomWinnerHolder;
-using static TOHE.Translator;
+﻿using TOHO.Roles.Core;
+using static TOHO.Options;
+using static TOHO.Utils;
+using static TOHO.CustomWinnerHolder;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 internal class Predator : RoleBase
 {
     //===========================SETUP================================\\

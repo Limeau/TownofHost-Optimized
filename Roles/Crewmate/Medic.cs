@@ -1,13 +1,13 @@
 using AmongUs.GameOptions;
 using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using TOHE.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Medic : RoleBase
 {

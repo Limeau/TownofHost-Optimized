@@ -1,11 +1,11 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Double;
-using TOHE.Roles.Neutral;
+using TOHO.Modules;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Double;
+using TOHO.Roles.Neutral;
 using UnityEngine;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Warlock : RoleBase
 {

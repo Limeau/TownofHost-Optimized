@@ -1,16 +1,16 @@
 using Hazel;
 using System;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Inspector : RoleBase
 {
@@ -48,7 +48,7 @@ internal class Inspector : RoleBase
         InspectorAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 18, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Inspector])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.Inspector);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.CrewmateRoles, CustomRoles.Inspector);
     }
     public override void Init()
     {
@@ -371,7 +371,7 @@ internal class Inspector : RoleBase
     }
     private static void TryHideMsgForCompare()
     {
-        if (ChatManager.quickChatSpamMode != QuickChatSpamMode.QuickChatSpam_Disabled)
+        if (ChatManager.quickChatSpamMode != Options.QuickChatSpamMode.QuickChatSpam_Disabled)
         {
             ChatManager.SendQuickChatSpam();
             ChatUpdatePatch.DoBlockChat = false;

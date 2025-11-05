@@ -1,10 +1,10 @@
-﻿using TOHE.Roles.Crewmate;
-using TOHE.Roles.Double;
-using TOHE.Roles.Neutral;
-using static TOHE.Options;
+﻿using TOHO.Roles.Crewmate;
+using TOHO.Roles.Double;
+using TOHO.Roles.Neutral;
+using static TOHO.Options;
 
 
-namespace TOHE.Roles.AddOns.Common;
+namespace TOHO.Roles.AddOns.Common;
 
 public class Avanger : IAddon
 {

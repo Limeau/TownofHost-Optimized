@@ -1,7 +1,7 @@
 using AmongUs.GameOptions;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Morphling : RoleBase
 {

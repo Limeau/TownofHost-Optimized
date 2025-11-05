@@ -1,13 +1,13 @@
 ﻿using Hazel;
-using TOHE.Modules;
-using TOHE.Roles.Double;
+using TOHO.Modules;
+using TOHO.Roles.Double;
 using UnityEngine;
-using static TOHE.MeetingHudStartPatch;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.MeetingHudStartPatch;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Retributionist : RoleBase
 {
@@ -38,7 +38,7 @@ internal class Retributionist : RoleBase
             .SetValueFormat(OptionFormat.Players);
         CanOnlyRetributeWithTasksDone = BooleanOptionItem.Create(Id + 12, "CanOnlyRetributeWithTasksDone", true, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Retributionist]);
-        OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Retributionist);
+        Options.OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Retributionist);
     }
     public override void Init()
     {

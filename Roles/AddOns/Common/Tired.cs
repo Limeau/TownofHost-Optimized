@@ -1,8 +1,8 @@
 using AmongUs.GameOptions;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.AddOns.Common;
+namespace TOHO.Roles.AddOns.Common;
 
 public class Tired : IAddon
 {

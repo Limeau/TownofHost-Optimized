@@ -1,7 +1,7 @@
-using TOHE.Roles.Double;
-using static TOHE.Options;
+using TOHO.Roles.Double;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 internal class Slayer : RoleBase
 {
     //===========================SETUP================================\\
@@ -18,7 +18,7 @@ internal class Slayer : RoleBase
         MaulRadius = FloatOptionItem.Create(Id + 10, "MaulRadius", new(0.5f, 1.5f, 0.1f), 1.3f, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Slayer])
             .SetValueFormat(OptionFormat.Multiplier);
-        OverrideTasksData.Create(Id + 20, TabGroup.NeutralRoles, CustomRoles.Slayer);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.NeutralRoles, CustomRoles.Slayer);
     }
     public override bool OnTaskComplete(PlayerControl player, int completedTaskCount, int totalTaskCount)
     {

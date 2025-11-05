@@ -1,12 +1,12 @@
 using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Crewmate;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.Crewmate;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Godzilla : RoleBase
 {

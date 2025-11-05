@@ -1,9 +1,9 @@
-using TOHE.Modules;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Coven;
+namespace TOHO.Roles.Coven;
 
 internal class CovenLeader : CovenManager
 {
