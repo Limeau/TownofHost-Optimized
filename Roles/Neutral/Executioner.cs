@@ -1,9 +1,9 @@
 using Hazel;
 using InnerNet;
-using TOHE.Roles.Core;
-using static TOHE.Options;
+using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Executioner : RoleBase
 {

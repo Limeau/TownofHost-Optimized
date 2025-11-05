@@ -1,10 +1,10 @@
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.Options;
+using TOHO.Modules;
+using static TOHO.Options;
 using System;
 using System.Diagnostics.Metrics;
+using TOHO.Roles.Core;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Wight : RoleBase
 {

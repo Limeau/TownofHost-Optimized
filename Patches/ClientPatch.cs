@@ -1,11 +1,11 @@
 using InnerNet;
-using TOHE.Modules;
 using AmongUs.Data;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 using Hazel;
+using TOHO.Modules;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(GameStartManager), nameof(GameStartManager.MakePublic))]
 internal class MakePublicPatch

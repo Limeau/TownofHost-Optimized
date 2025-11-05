@@ -1,8 +1,8 @@
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.AddOns.Crewmate;
 
 public class Workhorse : IAddon
 {
@@ -73,7 +73,7 @@ public class Workhorse : IAddon
             return pc.Is(Custom_Team.Crewmate);
 
         return Utils.HasTasks(pc.Data) //Player has task
-            && !OverrideTasksData.AllData.ContainsKey(pc.GetCustomRole()); //Has the ability to overwrite tasks
+            && !Options.OverrideTasksData.AllData.ContainsKey(pc.GetCustomRole()); //Has the ability to overwrite tasks
     }
     public static bool OnAddTask(PlayerControl pc)
     {

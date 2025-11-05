@@ -1,6 +1,6 @@
-﻿using TOHE.Roles.Core;
+﻿using TOHO.Roles.Core;
 
-namespace TOHE.Roles.Vanilla;
+namespace TOHO.Roles.Vanilla;
 
 internal class NoisemakerTOHO : RoleBase
 {

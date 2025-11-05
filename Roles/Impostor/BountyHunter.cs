@@ -1,12 +1,12 @@
 using AmongUs.GameOptions;
 using Hazel;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class BountyHunter : RoleBase
 {

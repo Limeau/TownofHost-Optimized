@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using static TOHE.Utils;
+using static TOHO.Utils;
 
-namespace TOHE;
+namespace TOHO;
 
 //参考元 : https://github.com/ykundesu/SuperNewRoles/blob/master/SuperNewRoles/Mode/SuperHostRoles/BlockTool.cs
 class DisableDevice

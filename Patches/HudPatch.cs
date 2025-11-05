@@ -1,13 +1,13 @@
 using System;
 using System.Text;
 using TMPro;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.Core;
-using TOHE.Roles.Impostor;
+using TOHO.Roles.Core;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Impostor;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
 class HudManagerUpdatePatch

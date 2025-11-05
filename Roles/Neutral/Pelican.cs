@@ -3,15 +3,15 @@ using Hazel;
 using InnerNet;
 using System.Text;
 using UnityEngine;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Double;
-using TOHE.Roles.Impostor;
-using static TOHE.Utils;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Double;
+using TOHO.Roles.Impostor;
+using static TOHO.Utils;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Pelican : RoleBase
 {

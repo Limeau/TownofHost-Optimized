@@ -1,10 +1,10 @@
 #Number:100032
 #Title:TownOfHostEdited v2.2.8
 #SubTitle:★★★★Emergency Fix★★★★
-#ShortTitle:★TOHE v2.2.8
+#ShortTitle:★TOHO v2.2.8
 #Date:2023-4-13T00:00:00Z
 #-----------------------------
-Thank you for using TOHE!
+Thank you for using TOHO!
 
 
 ## Base

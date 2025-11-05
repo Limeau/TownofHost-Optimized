@@ -1,8 +1,8 @@
 ﻿using AmongUs.GameOptions;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Terrorist : RoleBase
 {
@@ -25,7 +25,7 @@ internal class Terrorist : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Terrorist]);
         TerroristCanGuess = BooleanOptionItem.Create(15403, GeneralOption.CanGuess, true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Terrorist]);
-        OverrideTasksData.Create(15404, TabGroup.NeutralRoles, CustomRoles.Terrorist);
+        Options.OverrideTasksData.Create(15404, TabGroup.NeutralRoles, CustomRoles.Terrorist);
     }
 
     public override void ApplyGameOptions(IGameOptions opt, byte playerId)

@@ -1,11 +1,11 @@
 using AmongUs.GameOptions;
-using TOHE.Roles.Core;
-using TOHE.Modules;
+using TOHO.Modules;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Translator;
-using static TOHE.Options;
+using static TOHO.Translator;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Ventguard : RoleBase
 {
@@ -40,7 +40,7 @@ internal class Ventguard : RoleBase
         VentguardAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 14, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.05f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Ventguard])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 15, TabGroup.CrewmateRoles, CustomRoles.Ventguard);
+        Options.OverrideTasksData.Create(Id + 15, TabGroup.CrewmateRoles, CustomRoles.Ventguard);
     }
 
     public override void Init()

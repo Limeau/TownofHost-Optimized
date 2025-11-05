@@ -1,6 +1,6 @@
 using System;
 
-namespace TOHE;
+namespace TOHO;
 
 public class FloatOptionItem(int id, string name, float defaultValue, TabGroup tab, bool isSingleValue, FloatValueRule rule, bool vanilla) : OptionItem(id, name, rule.GetNearestIndex(defaultValue), tab, isSingleValue, vanillaStr: vanilla)
 {

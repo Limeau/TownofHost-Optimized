@@ -1,9 +1,9 @@
 ﻿using Hazel;
-using TOHE.Modules;
+using TOHO.Modules;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 internal static class FFAManager
 {

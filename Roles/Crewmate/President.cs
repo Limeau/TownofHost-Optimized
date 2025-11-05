@@ -1,10 +1,10 @@
 using Hazel;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class President : RoleBase
 {
@@ -40,7 +40,7 @@ internal class President : RoleBase
         PresidentAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 17, "AbilityUseGainWithEachTaskCompleted", new(0f, 2f, 0.5f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.President])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 18, TabGroup.CrewmateRoles, CustomRoles.President);
+        Options.OverrideTasksData.Create(Id + 18, TabGroup.CrewmateRoles, CustomRoles.President);
     }
     public override void Init()
     {
@@ -65,7 +65,7 @@ internal class President : RoleBase
     {
         ChatUpdatePatch.DoBlockChat = true;
 
-        if (ChatManager.quickChatSpamMode != QuickChatSpamMode.QuickChatSpam_Disabled)
+        if (ChatManager.quickChatSpamMode != Options.QuickChatSpamMode.QuickChatSpam_Disabled)
         {
             ChatManager.SendQuickChatSpam();
             ChatUpdatePatch.DoBlockChat = false;

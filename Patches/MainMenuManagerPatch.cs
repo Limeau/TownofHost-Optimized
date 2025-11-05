@@ -3,10 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using static TOHE.Translator;
+using static TOHO.Translator;
 using Object = UnityEngine.Object;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(MainMenuManager), nameof(MainMenuManager.Start)), HarmonyPriority(Priority.First)]
 public class MainMenuManagerStartPatch
@@ -17,21 +17,21 @@ public class MainMenuManagerStartPatch
     public static GameObject starfield;
     public static GameObject bgmusic;
     public static string BGpath = "./TOHO-DATA/background.mp4";
-    public static SpriteRenderer ToheLogo { get; private set; }
+    public static SpriteRenderer TOHOLogo { get; private set; }
 
     private static void Postfix(MainMenuManager __instance)
     {
         amongUsLogo = GameObject.Find("LOGO-AU");
         if (amongUsLogo != null)
         {
-            amongUsLogo.GetComponent<SpriteRenderer>().sprite = Utils.LoadSprite("TOHE.Resources.Images.tohologo.png");
+            amongUsLogo.GetComponent<SpriteRenderer>().sprite = Utils.LoadSprite("TOHO.Resources.Images.tohologo.png");
         }
         
         var rightpanel = __instance.gameModeButtons.transform.parent;
-        var logoObject = new GameObject("titleLogo_TOHE");
+        var logoObject = new GameObject("titleLogo_TOHO");
         var logoTransform = logoObject.transform;
 
-        ToheLogo = logoObject.AddComponent<SpriteRenderer>();
+        TOHOLogo = logoObject.AddComponent<SpriteRenderer>();
         logoTransform.parent = rightpanel;
         logoTransform.localPosition = new(-0.16f, 0f, 1f);
         logoTransform.localScale *= 1.2f;
@@ -228,7 +228,7 @@ public static class MainMenuManagerPatch
 
     public static PassiveButton CreateButton(string name, Vector3 localPosition, Color32 normalColor, Color32 hoverColor, UnityEngine.Events.UnityAction action, string label, Vector2? scale = null)
     {
-        var button = Object.Instantiate(template, MainMenuManagerStartPatch.ToheLogo.transform);
+        var button = Object.Instantiate(template, MainMenuManagerStartPatch.TOHOLogo.transform);
         button.name = name;
         Object.Destroy(button.GetComponent<AspectPosition>());
         button.transform.localPosition = localPosition;
@@ -299,11 +299,11 @@ public static class MainMenuManagerPatch
     [HarmonyPostfix]
     public static void OpenMenu_Postfix()
     {
-        if (MainMenuManagerStartPatch.ToheLogo != null) MainMenuManagerStartPatch.ToheLogo.gameObject.SetActive(false);
+        if (MainMenuManagerStartPatch.TOHOLogo != null) MainMenuManagerStartPatch.TOHOLogo.gameObject.SetActive(false);
     }
     [HarmonyPatch(nameof(MainMenuManager.ResetScreen)), HarmonyPostfix]
     public static void ResetScreen_Postfix()
     {
-        if (MainMenuManagerStartPatch.ToheLogo != null) MainMenuManagerStartPatch.ToheLogo.gameObject.SetActive(true);
+        if (MainMenuManagerStartPatch.TOHOLogo != null) MainMenuManagerStartPatch.TOHOLogo.gameObject.SetActive(true);
     }
 }

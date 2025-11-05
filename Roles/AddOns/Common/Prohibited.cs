@@ -1,7 +1,7 @@
-﻿using TOHE.Roles.Core;
-using static TOHE.Options;
+﻿using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles.AddOns.Common;
+namespace TOHO.Roles.AddOns.Common;
 
 public class Prohibited : IAddon
 {

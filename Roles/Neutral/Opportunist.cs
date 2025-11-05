@@ -1,7 +1,7 @@
 using AmongUs.GameOptions;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Opportunist : RoleBase
 {
@@ -29,7 +29,7 @@ internal class Opportunist : RoleBase
             .SetParent(OpportunistCanUseVent);
         VentDuration = FloatOptionItem.Create(Id + 13, GeneralOption.EngineerBase_InVentMaxTime, new(0f, 180f, 2.5f), 15f, TabGroup.NeutralRoles, false)
             .SetParent(OpportunistCanUseVent);
-        OverrideTasksData.Create(Id + 20, TabGroup.NeutralRoles, CustomRoles.Opportunist);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.NeutralRoles, CustomRoles.Opportunist);
     }
     public override void ApplyGameOptions(IGameOptions opt, byte id)
     {

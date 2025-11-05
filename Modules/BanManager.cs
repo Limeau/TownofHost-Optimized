@@ -4,9 +4,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class BanManager
 {
@@ -33,7 +33,7 @@ public static class BanManager
             {
                 Logger.Warn("Create a new DenyName.txt file", "BanManager");
                 File.Create(DenyNameListPath).Close();
-                File.WriteAllText(DenyNameListPath, GetResourcesTxt("TOHE.Resources.Config.DenyName.txt"));
+                File.WriteAllText(DenyNameListPath, GetResourcesTxt("TOHO.Resources.Config.DenyName.txt"));
             }
             if (!File.Exists(ModeratorListPath))
             {
@@ -52,7 +52,7 @@ public static class BanManager
             }
 
             // Read EAC List
-            //var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("TOHE.Resources.Config.EACList.txt");
+            //var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("TOHO.Resources.Config.EACList.txt");
             //stream.Position = 0;
             //using StreamReader sr = new(stream, Encoding.UTF8);
             //string line;

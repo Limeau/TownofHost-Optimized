@@ -1,9 +1,9 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
 using UnityEngine;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Jester : RoleBase
 {

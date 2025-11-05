@@ -1,14 +1,14 @@
 using AmongUs.GameOptions;
-using static TOHE.Translator;
+using static TOHO.Translator;
 using UnityEngine;
 using Hazel;
-using TOHE.Modules;
+using TOHO.Modules;
 using AmongUs.Data;
 using System.Text;
 using System;
 using static NetworkedPlayerInfo;
 
-namespace TOHE;
+namespace TOHO;
 
 internal static class CopsAndRobbersManager
 {

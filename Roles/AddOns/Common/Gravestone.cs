@@ -1,6 +1,6 @@
-﻿using static TOHE.Options;
+﻿using static TOHO.Options;
 
-namespace TOHE.Roles.AddOns.Common;
+namespace TOHO.Roles.AddOns.Common;
 
 public class Gravestone : IAddon
 {

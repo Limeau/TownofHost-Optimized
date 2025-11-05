@@ -1,8 +1,8 @@
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Corrupted : RoleBase
 {
@@ -16,7 +16,7 @@ internal class Corrupted : RoleBase
     public override void SetupCustomOption()
     {
         SetupSingleRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Corrupted);
-        OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Corrupted);
+        Options.OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.Corrupted);
     }
     public override bool OnTaskComplete(PlayerControl pc, int completedTaskCount, int totalTaskCount)
     {        

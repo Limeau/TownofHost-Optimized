@@ -1,6 +1,6 @@
-﻿using static TOHE.MeetingHudStartPatch;
+﻿using static TOHO.MeetingHudStartPatch;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class God : RoleBase
 {

@@ -1,8 +1,8 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Roles.Core;
-using static TOHE.Options;
+using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles._Ghosts_.Crewmate;
+namespace TOHO.Roles._Ghosts_.Crewmate;
 
 internal class GuardianAngelTOHO : RoleBase
 {

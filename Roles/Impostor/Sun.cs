@@ -1,8 +1,8 @@
-﻿using TOHE.Modules;
-using static TOHE.Options;
+﻿using TOHO.Modules;
+using static TOHO.Options;
 using static UnityEngine.GraphicsBuffer;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Sun : RoleBase
 {

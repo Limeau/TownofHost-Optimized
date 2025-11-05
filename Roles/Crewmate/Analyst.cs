@@ -1,10 +1,10 @@
 ﻿using System.Text;
-using TOHE.Roles.Core;
-using static TOHE.MeetingHudStartPatch;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Roles.Core;
+using static TOHO.MeetingHudStartPatch;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Analyst : RoleBase
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace TOHE;
+namespace TOHO;
 
 public class IntegerOptionItem(int id, string name, int defaultValue, TabGroup tab, bool isSingleValue, IntegerValueRule rule, bool vanilla) : OptionItem(id, name, rule.GetNearestIndex(defaultValue), tab, isSingleValue, vanillaStr: vanilla)
 {

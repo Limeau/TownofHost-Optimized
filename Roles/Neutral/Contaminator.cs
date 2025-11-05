@@ -1,10 +1,10 @@
-﻿using TOHE.Roles.Double;
-using TOHE.Modules;
-using static TOHE.Utils;
-using static TOHE.Options;
-using static TOHE.Translator;
+﻿using TOHO.Modules;
+using TOHO.Roles.Double;
+using static TOHO.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 internal class Contaminator : RoleBase
 {
     //===========================SETUP================================\\
@@ -41,7 +41,7 @@ internal class Contaminator : RoleBase
         MassacreKillCooldown = FloatOptionItem.Create(Id + 13, "MassacreKillCooldown", new(0f, 20f, 1f), 5f, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Contaminator])
             .SetValueFormat(OptionFormat.Seconds);
-        OverrideTasksData.Create(Id + 20, TabGroup.NeutralRoles, CustomRoles.Contaminator);
+        Options.OverrideTasksData.Create(Id + 20, TabGroup.NeutralRoles, CustomRoles.Contaminator);
     }
 
     public override void Add(byte playerId)

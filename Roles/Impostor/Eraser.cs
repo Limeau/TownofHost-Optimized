@@ -1,10 +1,10 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Crewmate;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Crewmate;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Eraser : RoleBase
 {

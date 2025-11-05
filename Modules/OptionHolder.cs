@@ -1,11 +1,11 @@
 using System;
-using TOHE.Modules;
-using TOHE.Roles.AddOns;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Core;
+using TOHO.Modules;
+using TOHO.Roles.AddOns;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Core;
 using UnityEngine;
 
-namespace TOHE;
+namespace TOHO;
 
 [Obfuscation(Exclude = true)]
 [Flags]

@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class Translator
 {
@@ -23,8 +23,8 @@ public static class Translator
     {
         try
         {
-            // Get the directory containing the JSON files (e.g., TOHE.Resources.Lang)
-            string jsonDirectory = "TOHE.Resources.Lang";
+            // Get the directory containing the JSON files (e.g., TOHO.Resources.Lang)
+            string jsonDirectory = "TOHO.Resources.Lang";
             // Get the assembly containing the resources
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             string[] jsonFileNames = GetJsonFileNames(assembly, jsonDirectory);
@@ -130,7 +130,7 @@ public static class Translator
     //public static void LoadLangs()
     //{
     //    var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-    //    var stream = assembly.GetManifestResourceStream("TOHE.Resources.String.csv");
+    //    var stream = assembly.GetManifestResourceStream("TOHO.Resources.String.csv");
     //    translateMaps = new Dictionary<string, Dictionary<int, string>>();
 
     //    var options = new CsvOptions()

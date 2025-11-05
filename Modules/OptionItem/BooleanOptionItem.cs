@@ -1,6 +1,6 @@
 using System;
 
-namespace TOHE;
+namespace TOHO;
 
 public class BooleanOptionItem(int id, string name, bool defaultValue, TabGroup tab, bool isSingleValue, bool vanilla) : OptionItem(id, name, defaultValue ? 1 : 0, tab, isSingleValue, vanillaStr: vanilla)
 {

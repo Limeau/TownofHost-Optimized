@@ -1,7 +1,7 @@
 ﻿using AmongUs.Data;
 using System;
 
-namespace TOHE.Patches;
+namespace TOHO.Patches;
 
 // Originally code by Gurge44. Reference: https://github.com/Gurge44/EndlessHostRoles/blob/main/Patches/TextBoxPatch.cs
 

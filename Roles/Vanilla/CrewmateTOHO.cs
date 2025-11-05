@@ -1,5 +1,5 @@
 ﻿
-namespace TOHE.Roles.Vanilla;
+namespace TOHO.Roles.Vanilla;
 
 internal class CrewmateTOHO : RoleBase
 {

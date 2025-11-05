@@ -1,12 +1,12 @@
 using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Double;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Double;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Kamikaze : RoleBase
 {

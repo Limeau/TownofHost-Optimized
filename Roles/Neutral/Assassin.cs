@@ -1,8 +1,8 @@
-using TOHE.Modules;
-using static TOHE.Translator;
-using static TOHE.Options;
+using TOHO.Modules;
+using static TOHO.Translator;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Assassin : RoleBase
 {

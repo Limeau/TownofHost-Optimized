@@ -1,7 +1,7 @@
 using AmongUs.GameOptions;
 using System;
 
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 
 public class NormalGameOptionsSender : GameOptionsSender
 {

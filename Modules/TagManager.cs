@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class TagManager
 {
@@ -18,7 +18,7 @@ public static class TagManager
         try
         {
             if (!Directory.Exists(@"TOHO-DATA/Tags")) Directory.CreateDirectory(@"TOHO-DATA/Tags");
-            var defaultTagMsg = GetResourcesTxt($"TOHE.Resources.Config.TagTemplate.txt");
+            var defaultTagMsg = GetResourcesTxt($"TOHO.Resources.Config.TagTemplate.txt");
             if (!File.Exists(@"./TOHO-DATA/Tags/Tag_Template.txt")) // Default tag
             {
                 using FileStream fs = File.Create(@"./TOHO-DATA/Tags/Tag_Template.txt");

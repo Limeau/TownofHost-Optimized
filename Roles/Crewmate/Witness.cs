@@ -1,11 +1,11 @@
 ﻿using AmongUs.GameOptions;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Witness : RoleBase
 {

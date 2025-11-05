@@ -1,11 +1,11 @@
 using AmongUs.GameOptions;
 using Hazel;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.Core;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.Core;
+using TOHO.Roles.Neutral;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Impostor;
 
-namespace TOHE;
+namespace TOHO;
 
 //参考
 //https://github.com/Koke1024/Town-Of-Moss/blob/main/TownOfMoss/Patches/MeltDownBoost.cs

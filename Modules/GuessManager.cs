@@ -2,19 +2,19 @@ using Hazel;
 using System;
 using System.Text.RegularExpressions;
 using TMPro;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Double;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
+using TOHO.Roles.Core;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Double;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 public static class GuessManager
 {

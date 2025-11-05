@@ -1,7 +1,7 @@
-﻿using static TOHE.Options;
-using static TOHE.Utils;
+﻿using static TOHO.Options;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Lookout : RoleBase
 {

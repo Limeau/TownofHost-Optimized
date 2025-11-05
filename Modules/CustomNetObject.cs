@@ -13,7 +13,7 @@ using UnityEngine;
 
 //Sidenote: 8x8 on 100% size is a pretty golden standard and trying to make something smaller than that is very ugly (as the grean bean is very visible) so I wouldn't recommend it
 
-namespace TOHE.Modules
+namespace TOHO.Modules
 {
     internal class CustomNetObject
     {

@@ -1,6 +1,6 @@
-﻿using static TOHE.Options;
+﻿using static TOHO.Options;
 
-namespace TOHE.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.AddOns.Crewmate;
 
 public class Nimble : IAddon
 {

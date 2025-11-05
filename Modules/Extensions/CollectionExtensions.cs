@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TOHE;
+namespace TOHO;
 
 // Credit: Endless Host Roles by Gurge44
 // Reference: https://github.com/Gurge44/EndlessHostRoles/blob/main/Modules/Extensions/CollectionExtensions.cs

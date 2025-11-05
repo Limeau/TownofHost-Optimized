@@ -1,8 +1,8 @@
 ﻿using AmongUs.GameOptions;
 using Hazel;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Crewpostor : RoleBase
 {
@@ -34,7 +34,7 @@ internal class Crewpostor : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Crewpostor]);
         KillAfterTask = IntegerOptionItem.Create(Id + 6, "CrewpostorKillAfterTask", new(1, 50, 1), 1, TabGroup.ImpostorRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Crewpostor]);
-        OverrideTasksData.Create(Id + 7, TabGroup.ImpostorRoles, CustomRoles.Crewpostor);
+        Options.OverrideTasksData.Create(Id + 7, TabGroup.ImpostorRoles, CustomRoles.Crewpostor);
     }
 
     public override void Init()

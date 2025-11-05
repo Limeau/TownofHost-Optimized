@@ -1,8 +1,8 @@
-﻿using static TOHE.Translator;
+﻿using static TOHO.Translator;
 using System;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Volatile : RoleBase
 {

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace TOHE.Patches;
+namespace TOHO.Patches;
 
 // Thanks TOU-R: https://github.com/eDonnes124/Town-Of-Us-R/blob/master/source/Patches/ShowHostMeetingPatch.cs
 

@@ -5,13 +5,13 @@ using InnerNet;
 using System;
 using System.Text.RegularExpressions;
 using AmongUs.InnerNet.GameDataMessages;
-using TOHE.Modules;
-using TOHE.Patches;
-using TOHE.Roles.Core.AssignManager;
-using TOHE.Roles.Crewmate;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Patches;
+using TOHO.Roles.Core.AssignManager;
+using TOHO.Roles.Crewmate;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameJoined))]
 class OnGameJoinedPatch

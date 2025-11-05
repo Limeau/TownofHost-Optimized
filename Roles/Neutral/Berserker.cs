@@ -1,13 +1,13 @@
 using AmongUs.GameOptions;
 using System.Text;
 using UnityEngine;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Impostor;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Impostor;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Berserker : RoleBase
 {

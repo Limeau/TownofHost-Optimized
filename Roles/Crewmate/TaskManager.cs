@@ -1,13 +1,13 @@
 using System.Text;
 using UnityEngine;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.AddOns;
-using static TOHE.Options;
-using static TOHE.Utils;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.AddOns;
+using TOHO.Roles.Core;
+using static TOHO.Options;
+using static TOHO.Utils;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class TaskManager : RoleBase
 {
@@ -46,7 +46,7 @@ internal class TaskManager : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
         CanSeeAllCompletedTasks = BooleanOptionItem.Create(Id + 7, "TaskManager_OptionCanSeeAllCompletedTasks", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
-        OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.TaskManager);
+        Options.OverrideTasksData.Create(Id + 10, TabGroup.CrewmateRoles, CustomRoles.TaskManager);
     }
     public override void Init()
     {

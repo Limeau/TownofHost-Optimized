@@ -1,8 +1,8 @@
 ﻿/* WILLS - v1.6.0
-using static TOHE.Utils;
+using static TOHO.Utils;
 using System;
 
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 internal class WillManager
 {
     public static bool On = true;

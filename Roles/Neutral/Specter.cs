@@ -1,7 +1,7 @@
 ﻿using AmongUs.GameOptions;
-using static TOHE.Options;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Specter : RoleBase
 {
@@ -26,7 +26,7 @@ internal class Specter : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Specter]);
         CanGuess = BooleanOptionItem.Create(14904, GeneralOption.CanGuess, false, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Specter]);
-        OverrideTasksData.Create(14905, TabGroup.NeutralRoles, CustomRoles.Specter);
+        Options.OverrideTasksData.Create(14905, TabGroup.NeutralRoles, CustomRoles.Specter);
     }
 
     public override void ApplyGameOptions(IGameOptions opt, byte playerId)

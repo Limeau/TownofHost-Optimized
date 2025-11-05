@@ -2,19 +2,19 @@ using AmongUs.GameOptions;
 using BepInEx.Unity.IL2CPP.Utils.Collections;
 using Hazel;
 using System.Collections;
-using TOHE.Modules;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Neutral;
+using TOHO.Modules;
+using TOHO.Roles.Coven;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Core;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.CustomWinnerHolder;
-using static TOHE.Translator;
+using static TOHO.CustomWinnerHolder;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(GameManager), nameof(GameManager.CheckEndGameViaTasks))]
 class CheckEndGameViaTasksForNormalPatch

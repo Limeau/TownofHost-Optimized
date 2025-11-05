@@ -1,7 +1,7 @@
-﻿using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
+﻿using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
 
-namespace TOHE.Patches;
+namespace TOHO.Patches;
 
 [HarmonyPatch(typeof(HauntMenuMinigame), nameof(HauntMenuMinigame.SetFilterText))]
 public static class HauntMenuMinigameSetFilterTextPatch

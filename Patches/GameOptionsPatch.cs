@@ -1,4 +1,4 @@
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(RoleOptionSetting), nameof(RoleOptionSetting.UpdateValuesAndText))]
 class ChanceChangePatch

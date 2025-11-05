@@ -1,11 +1,11 @@
 using AmongUs.GameOptions;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Grenadier : RoleBase
 {
@@ -43,7 +43,7 @@ internal class Grenadier : RoleBase
             .SetValueFormat(OptionFormat.Times);
         GrenadierAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 15, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Grenadier])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 17, TabGroup.CrewmateRoles, CustomRoles.Grenadier);
+        Options.OverrideTasksData.Create(Id + 17, TabGroup.CrewmateRoles, CustomRoles.Grenadier);
 
     }
 

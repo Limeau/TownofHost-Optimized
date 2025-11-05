@@ -11,7 +11,7 @@ using System.Text.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace TOHE;
+namespace TOHO;
 
 // code credit https://github.com/Yumenopai/TownOfHost_Y
 [HarmonyPatch]
@@ -141,7 +141,7 @@ public class ModNews
         };
 
         var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-        using Stream resourceStream = assembly.GetManifestResourceStream("TOHE.Resources.Announcements.modNews-" + filename);
+        using Stream resourceStream = assembly.GetManifestResourceStream("TOHO.Resources.Announcements.modNews-" + filename);
         using StreamReader reader = new(resourceStream);
         using var jsonDocument = JsonDocument.Parse(reader.ReadToEnd());
         var newsArray = jsonDocument.RootElement.GetProperty("News");

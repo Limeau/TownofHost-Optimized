@@ -1,18 +1,18 @@
 ﻿using AmongUs.GameOptions;
 using System;
 using System.Text;
-using TOHE.Modules;
-using TOHE.Roles.AddOns;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
-using TOHE.Roles.Vanilla;
+using TOHO.Modules;
+using TOHO.Roles.AddOns;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
+using TOHO.Roles.Vanilla;
 
-namespace TOHE.Roles.Core;
+namespace TOHO.Roles.Core;
 
 public static class CustomRoleManager
 {

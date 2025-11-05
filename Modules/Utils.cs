@@ -12,22 +12,22 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AmongUs.InnerNet.GameDataMessages;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using TOHE.Patches;
-using TOHE.Roles.AddOns.Common;
-using TOHE.Roles.AddOns.Crewmate;
-using TOHE.Roles.AddOns.Impostor;
-using TOHE.Roles.Core;
-using TOHE.Roles.Coven;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using TOHO.Patches;
+using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Core;
+using TOHO.Roles.Coven;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 using Object = Il2CppSystem.Object;
 
-namespace TOHE;
+namespace TOHO;
 
 [Obfuscation(Exclude = true, Feature = "renaming", ApplyToMembers = true)]
 public static class Utils
@@ -1612,7 +1612,7 @@ public static class Utils
             float a = startColor.a + (stepA * i);
 
 
-            string colorHex = ColorToHex(new Color(r, g, b, a));
+            string colorHex = ColorTOHOx(new Color(r, g, b, a));
             gradientText += $"<color=#{colorHex}>{text[i]}</color>";
         }
 
@@ -1628,7 +1628,7 @@ public static class Utils
         return Color.white;
     }
 
-    private static string ColorToHex(Color color)
+    private static string ColorTOHOx(Color color)
     {
         Color32 color32 = (Color32)color;
         return $"{color32.r:X2}{color32.g:X2}{color32.b:X2}{color32.a:X2}";
@@ -1784,7 +1784,7 @@ public static class Utils
         {
             name = Options.GetSuffixMode() switch
             {
-                SuffixModes.TOHE => name += $"\r\n<color={Main.ModColor}>TOHO v{Main.PluginDisplayVersion + Main.PluginDisplaySuffix}</color>",
+                SuffixModes.TOHO => name += $"\r\n<color={Main.ModColor}>TOHO v{Main.PluginDisplayVersion + Main.PluginDisplaySuffix}</color>",
                 SuffixModes.Streaming => name += $"\r\n<size=1.7><color={Main.ModColor}>{GetString("SuffixMode.Streaming")}</color></size>",
                 SuffixModes.Recording => name += $"\r\n<size=1.7><color={Main.ModColor}>{GetString("SuffixMode.Recording")}</color></size>",
                 SuffixModes.RoomHost => name += $"\r\n<size=1.7><color={Main.ModColor}>{GetString("SuffixMode.RoomHost")}</color></size>",
@@ -2604,15 +2604,15 @@ public static class Utils
     }
     public static void DumpLog()
     {
-        string f = $"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}/TOHE-logs/";
+        string f = $"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}/TOHO-logs/";
         string t = DateTime.Now.ToString("yyyy-MM-dd_HH.mm.ss");
-        string filename = $"{f}TOHE-v{Main.PluginVersion}-{t}.log";
+        string filename = $"{f}TOHO-v{Main.PluginVersion}-{t}.log";
         if (!Directory.Exists(f)) Directory.CreateDirectory(f);
         FileInfo file = new(@$"{Environment.CurrentDirectory}/BepInEx/LogOutput.log");
         file.CopyTo(@filename);
 
         if (PlayerControl.LocalPlayer != null)
-            HudManager.Instance?.Chat?.AddChat(PlayerControl.LocalPlayer, string.Format(GetString("Message.DumpfileSaved"), $"TOHE - v{Main.PluginVersion}-{t}.log"));
+            HudManager.Instance?.Chat?.AddChat(PlayerControl.LocalPlayer, string.Format(GetString("Message.DumpfileSaved"), $"TOHO - v{Main.PluginVersion}-{t}.log"));
 
         SendMessage(string.Format(GetString("Message.DumpcmdUsed"), PlayerControl.LocalPlayer.GetNameWithRole()));
 

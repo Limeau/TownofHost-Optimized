@@ -1,11 +1,11 @@
 using AmongUs.Data;
 
-namespace TOHE;
+namespace TOHO;
 
-// ²Î¿¼£ºhttps://github.com/ykundesu/SuperNewRoles/blob/master/SuperNewRoles/Patches/SNROnlySearch.cs
-public static class TOHEOnlySearch
+// ï¿½Î¿ï¿½ï¿½ï¿½https://github.com/ykundesu/SuperNewRoles/blob/master/SuperNewRoles/Patches/SNROnlySearch.cs
+public static class TOHOOnlySearch
 {
-    public const string FilterText = "TOHE";
+    public const string FilterText = "TOHO";
     [HarmonyPatch(typeof(FilterTagManager), nameof(FilterTagManager.RefreshTags))]
     public static class FilterTagManagerPatch
     {

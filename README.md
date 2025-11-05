@@ -31,7 +31,7 @@
 [![Total Downloads](https://img.shields.io/github/downloads/TOHOptimized/TownofHost-Optimized/total)](../../releases)
 
 **Credit to these mods and their developers for the code and help:**
-### :star: [EHR (Formerly TOHE+)](https://github.com/Gurge44/EndlessHostRoles)
+### :star: [EHR (Formerly TOHO+)](https://github.com/Gurge44/EndlessHostRoles)
 >
 > - /spectate command
 > - Provided roles: Pyromaniac, Necromancer, Head Hunter (Huntsman), Alchemist, and others
@@ -44,7 +44,7 @@
 > - Some ideas to improve performance
 > - Many fixes to updates were from EHR.
 >
-### :star: [TOH: Enhanced](https://github.com/EnhancedNetwork/TownofHost-Enhanced) (TOHEN) :
+### :star: [TOH: Enhanced](https://github.com/EnhancedNetwork/TownofHost-Enhanced) (TOHON) :
 >
 > - TOHO was forked from Town of Host: Enhacned
 > - Game Mode: Cops & Robbers (Ryuk but unmerged PR)
@@ -53,7 +53,7 @@
 > 
 > - Town of Host: Enhanced was forked from Town of Host: Re-Edited.
 >
-### :star: [TOH: Edited](https://github.com/KARPED1EM/TownOfHostEdited) (TOHE/TONX) :
+### :star: [TOH: Edited](https://github.com/KARPED1EM/TownOfHostEdited) (TOHO/TONX) :
 > 
 > - Town of Host: Re-Edited was forked from Town of Host: Edited.
 > 
@@ -96,7 +96,7 @@
 > - Provided roles: Shapeshifter, Engineer, Scientist, Marshall, Poisoner, Necroview, Sidekick
 > - Bait and Beartrap as add-ons
 >
-### :star: [TONEX (Formerly TOHEX)](https://github.com/XtremeWave/TownOfNewEpic_Xtreme)
+### :star: [TONEX (Formerly TOHOX)](https://github.com/XtremeWave/TownOfNewEpic_Xtreme)
 >
 > - Provided roles: Swapper, Berserker, Randomizer and Blackmailer
 > - Improve chat spam system (ChatManager.cs)

@@ -1,6 +1,6 @@
 ﻿using AmongUs.Data.Player;
 
-namespace TOHE.Patches
+namespace TOHO.Patches
 {
     [HarmonyPatch(typeof(PlayerBanData), nameof(PlayerBanData.BanMinutesLeft), MethodType.Getter)]
     public static class DisconnectPenaltyPatch

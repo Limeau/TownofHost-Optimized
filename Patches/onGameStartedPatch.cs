@@ -4,15 +4,15 @@ using Hazel;
 using InnerNet;
 using System;
 using System.Text;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using TOHE.Patches;
-using TOHE.Roles.Core;
-using TOHE.Roles.Core.AssignManager;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using TOHO.Patches;
+using TOHO.Roles.Core;
+using TOHO.Roles.Core.AssignManager;
 using UnityEngine;
-using static TOHE.Translator;
+using static TOHO.Translator;
 
-namespace TOHE;
+namespace TOHO;
 
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CoStartGame))]
 internal class ChangeRoleSettings

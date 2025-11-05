@@ -1,10 +1,10 @@
 ﻿using Hazel;
-using TOHE.Modules;
-using TOHE.Modules.ChatManager;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Constable : RoleBase
 {
@@ -31,7 +31,7 @@ internal class Constable : RoleBase
         ConstableAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 12, "AbilityUseGainWithEachTaskCompleted", new(0f, 2f, 0.5f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Constable])
             .SetValueFormat(OptionFormat.Times);
-        OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Constable);
+        Options.OverrideTasksData.Create(Id + 13, TabGroup.CrewmateRoles, CustomRoles.Constable);
     }
 
     public override void Add(byte playerId)

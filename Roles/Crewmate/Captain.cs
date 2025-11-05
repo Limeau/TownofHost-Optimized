@@ -1,8 +1,8 @@
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Captain : RoleBase
 {
@@ -46,7 +46,7 @@ internal class Captain : RoleBase
         CaptainCanTargetNK = BooleanOptionItem.Create(Id + 20, "CaptainCanTargetNK", true, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Captain]);
         CaptainCanTargetNA = BooleanOptionItem.Create(Id + 21, "CaptainCanTargetNA", true, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Captain]);
         CaptainCanTargetCoven = BooleanOptionItem.Create(Id + 22, "CaptainCanTargetCoven", true, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Captain]);
-        OverrideTasksData.Create(Id + 23, TabGroup.CrewmateRoles, CustomRoles.Captain);
+        Options.OverrideTasksData.Create(Id + 23, TabGroup.CrewmateRoles, CustomRoles.Captain);
     }
 
     public override void Init()

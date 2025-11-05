@@ -1,10 +1,10 @@
 using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using static TOHE.Options;
-using static TOHE.Utils;
+using TOHO.Modules;
+using static TOHO.Options;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Spy : RoleBase
 {
@@ -33,7 +33,7 @@ internal class Spy : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Spy])
             .SetValueFormat(OptionFormat.Times);
         SpyInteractionBlocked = BooleanOptionItem.Create(Id + 13, "SpyInteractionBlocked", true, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Spy]).SetHidden(true);
-        OverrideTasksData.Create(Id + 14, TabGroup.CrewmateRoles, CustomRoles.Spy);
+        Options.OverrideTasksData.Create(Id + 14, TabGroup.CrewmateRoles, CustomRoles.Spy);
     }
     public override void Init()
     {

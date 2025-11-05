@@ -1,16 +1,16 @@
 using Hazel;
 using InnerNet;
-using TOHE.Modules;
-using TOHE.Roles.AddOns;
-using TOHE.Roles.Crewmate;
-using TOHE.Roles.Double;
-using TOHE.Roles.Impostor;
-using TOHE.Roles.Neutral;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using TOHO.Roles.AddOns;
+using TOHO.Roles.Crewmate;
+using TOHO.Roles.Double;
+using TOHO.Roles.Impostor;
+using TOHO.Roles.Neutral;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles.Coven;
+namespace TOHO.Roles.Coven;
 
 internal class MoonDancer : CovenManager
 {

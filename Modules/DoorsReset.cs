@@ -1,4 +1,4 @@
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 
 public static class DoorsReset
 {

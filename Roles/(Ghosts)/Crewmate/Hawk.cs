@@ -1,13 +1,13 @@
 ﻿using AmongUs.GameOptions;
 using System;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using TOHE.Roles.Double;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Double;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
 
-namespace TOHE.Roles._Ghosts_.Crewmate;
+namespace TOHO.Roles._Ghosts_.Crewmate;
 
 internal class Hawk : RoleBase
 {

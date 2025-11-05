@@ -1,10 +1,10 @@
 #Number:100036
 #Title:TownOfHostEdited v2.2.12
 #SubTitle:★★★★Something Coooool★★★★
-#ShortTitle:★TOHE v2.2.12
+#ShortTitle:★TOHO v2.2.12
 #Date:2023-4-27T00:00:00Z
 #-----------------------------
-Thank you for using TOHE!
+Thank you for using TOHO!
 
 
 ## Base

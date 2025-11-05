@@ -1,7 +1,7 @@
-﻿using TOHE.Roles.AddOns;
-using static TOHE.Options;
+﻿using TOHO.Roles.AddOns;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Coven;
+namespace TOHO.Roles.Coven;
 
 internal class WitchDoctor : CovenManager
 {

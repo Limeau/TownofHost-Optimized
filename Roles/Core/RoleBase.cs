@@ -2,10 +2,10 @@
 using Hazel;
 using InnerNet;
 using System.Text;
-using TOHE.Roles.Core;
+using TOHO.Roles.Core;
 using UnityEngine;
 
-namespace TOHE;
+namespace TOHO;
 
 public abstract class RoleBase
 {

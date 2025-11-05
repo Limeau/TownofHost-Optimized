@@ -1,7 +1,7 @@
-﻿using TOHE.Roles.Core;
-using static TOHE.Options;
+﻿using TOHO.Roles.Core;
+using static TOHO.Options;
 
-namespace TOHE.Roles.Crewmate;
+namespace TOHO.Roles.Crewmate;
 
 internal class Bodyguard : RoleBase
 {

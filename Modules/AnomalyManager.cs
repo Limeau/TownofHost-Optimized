@@ -1,8 +1,8 @@
-﻿using static TOHE.Options;
-using static TOHE.Utils;
-using static TOHE.Translator;
+﻿using static TOHO.Options;
+using static TOHO.Utils;
+using static TOHO.Translator;
 
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 internal class AnomalyManager
 {
     private static readonly List<string> which1 = [];

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TOHE.Modules;
+namespace TOHO.Modules;
 
 // Credit: EHR by Gurge44: https://github.com/Gurge44/EndlessHostRoles
 public static class KillTimerManager

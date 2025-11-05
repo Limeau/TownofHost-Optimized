@@ -1,6 +1,6 @@
 ﻿//using Hazel;
 
-//namespace TOHE;
+//namespace TOHO;
 
 //public static class WriterHelper // Currently not in use, because all rpc are based on byte. May be in use for a new enum perhaps...
 //{

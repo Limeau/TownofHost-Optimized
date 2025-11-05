@@ -2,13 +2,13 @@
 using Hazel;
 using InnerNet;
 using System;
-using TOHE.Modules;
-using TOHE.Roles.Core;
-using static TOHE.MeetingHudStartPatch;
-using static TOHE.Options;
-using static TOHE.Translator;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using static TOHO.MeetingHudStartPatch;
+using static TOHO.Options;
+using static TOHO.Translator;
 
-namespace TOHE.Roles.Neutral;
+namespace TOHO.Roles.Neutral;
 
 internal class Quizmaster : RoleBase
 {
@@ -242,8 +242,8 @@ internal class Quizmaster : RoleBase
                 new SetAnswersQuestion { Stage = 4, Question = "QuizmasterCooldown", Answer = "15", PossibleAnswers = { "15", "30", "0", "999", AURoleOptions.KillCooldown.ToString() }, QuizmasterQuestionType = QuizmasterQuestionType.QuizmasterCooldownQuestion }, // this is a level 4 because the only way to know this would be to look at the code for Quizmaster
                 new SetAnswersQuestion { Stage = 4, Question = "WhoCoded", Answer = "Multiple People", PossibleAnswers = { "Furo", "Drakos", "Lime", "Marg", "Multiple People", "TommyXL", "Niko", "Pyro", "KARPED1EM", "Ryuk" }, QuizmasterQuestionType = QuizmasterQuestionType.WhoCoded },
 
-                new SetAnswersQuestion { Stage = 5, Question = "TOHEPartners", Answer = "Modded Among Us Lobbies", PossibleAnswers = { "Innersloth", "Modded Among Us Lobbies", "Purple Among Us", "Modded Among Us Lobbies & Purple Among Us", "Steam", "Twitter", "Town Of Us: Reactivated", "Lime Corporation", "Digital Bandidos" }, QuizmasterQuestionType = QuizmasterQuestionType.TOHEPartners },
-                new SetAnswersQuestion { Stage = 5, Question = "TOHEEventCoordinator", Answer = "Sarha", PossibleAnswers = { "Lime", "Sarha", "Lauryn", "Jackler", "Matt", "Tasha", "Pyro", "Fish" }, QuizmasterQuestionType = QuizmasterQuestionType.TOHEEventCoordinator },
+                new SetAnswersQuestion { Stage = 5, Question = "TOHOPartners", Answer = "Modded Among Us Lobbies", PossibleAnswers = { "Innersloth", "Modded Among Us Lobbies", "Purple Among Us", "Modded Among Us Lobbies & Purple Among Us", "Steam", "Twitter", "Town Of Us: Reactivated", "Lime Corporation", "Digital Bandidos" }, QuizmasterQuestionType = QuizmasterQuestionType.TOHOPartners },
+                new SetAnswersQuestion { Stage = 5, Question = "TOHOEventCoordinator", Answer = "Sarha", PossibleAnswers = { "Lime", "Sarha", "Lauryn", "Jackler", "Matt", "Tasha", "Pyro", "Fish" }, QuizmasterQuestionType = QuizmasterQuestionType.TOHOEventCoordinator },
                 new SetAnswersQuestion { Stage = 5, Question = "HowManyCats", Answer = "3", PossibleAnswers = { "0", "1", "2", "3", "4", "5", "6" }, QuizmasterQuestionType = QuizmasterQuestionType.HowManyCats }, // Copycat, Schrodinger's Cat, OIIAI (I want to count Jinx because of its origin in TOS2, but I won't)
                 new SetAnswersQuestion { Stage = 5, Question = "GuessingCommand", Answer = "Bet", PossibleAnswers = { "Nothing, it's just /bt", "Bet", "Bloodthirst", "Betray Them", "Bomb Tag", "Bad Thing" }, QuizmasterQuestionType = QuizmasterQuestionType.GuessingCommand },
                 new SetAnswersQuestion { Stage = 5, Question = "NotFromTOS2", Answer = "Moon Dancer", PossibleAnswers = { "Coven Leader", "Jinx", "Marshall", "Doomsayer", "Baker", "Moon Dancer", "Pirate", "Mayor", "Veteran", "Psychic" }, QuizmasterQuestionType = QuizmasterQuestionType.NotFromTOS2 },
@@ -760,8 +760,8 @@ public enum QuizmasterQuestionType
     QuizmasterCooldownQuestion,
     WhoCoded,
     WhoOwns,
-    TOHEPartners,
-    TOHEEventCoordinator,
+    TOHOPartners,
+    TOHOEventCoordinator,
     HowManyCats,
     GuessingCommand,
     NotFromTOS2,
