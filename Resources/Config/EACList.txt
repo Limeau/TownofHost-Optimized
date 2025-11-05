@@ -111,6 +111,3 @@ rosefiscal#4338,Bagelz (suspected alt of broadbarn or tidytrice)
 onwardhome#3591, MentoMan
 
 ## Added by Discord bot
-
-biotictap#5339,Joni
-biotictap#5339,Joni
