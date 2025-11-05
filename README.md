@@ -31,7 +31,7 @@
 [![Total Downloads](https://img.shields.io/github/downloads/TOHOptimized/TownofHost-Optimized/total)](../../releases)
 
 **Credit to these mods and their developers for the code and help:**
-### :star: [EHR (Formerly TOHO+)](https://github.com/Gurge44/EndlessHostRoles)
+### :star: [EHR (Formerly TOHE+)](https://github.com/Gurge44/EndlessHostRoles)
 >
 > - /spectate command
 > - Provided roles: Pyromaniac, Necromancer, Head Hunter (Huntsman), Alchemist, and others
@@ -44,7 +44,7 @@
 > - Some ideas to improve performance
 > - Many fixes to updates were from EHR.
 >
-### :star: [TOH: Enhanced](https://github.com/EnhancedNetwork/TownofHost-Enhanced) (TOHON) :
+### :star: [TOH: Enhanced](https://github.com/EnhancedNetwork/TownofHost-Enhanced) (TOHEN) :
 >
 > - TOHO was forked from Town of Host: Enhacned
 > - Game Mode: Cops & Robbers (Ryuk but unmerged PR)
@@ -53,7 +53,7 @@
 > 
 > - Town of Host: Enhanced was forked from Town of Host: Re-Edited.
 >
-### :star: [TOH: Edited](https://github.com/KARPED1EM/TownOfHostEdited) (TOHO/TONX) :
+### :star: [TOH: Edited](https://github.com/KARPED1EM/TownOfHostEdited) (TOHE/TONX) :
 > 
 > - Town of Host: Re-Edited was forked from Town of Host: Edited.
 > 
