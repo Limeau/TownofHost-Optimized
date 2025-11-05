@@ -109,3 +109,5 @@ rosefiscal#4338,Bagelz (suspected alt of broadbarn or tidytrice)
 
 ## Racist/Homophobic
 onwardhome#3591, MentoMan
+
+## Added by Discord bot
