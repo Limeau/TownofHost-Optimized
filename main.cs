@@ -894,6 +894,7 @@ public enum CustomRoles
     Godzilla,
     Gunslinger,
     Hater,
+    Heir,
     Huntsman,
     Imitator,
     Infectious,

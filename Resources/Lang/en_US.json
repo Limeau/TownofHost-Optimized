@@ -4765,6 +4765,11 @@
   "TrapmakerInfoLong": "(Impostors):\nAs the Trapmaker, you can Unshift to create your own dead body, then immediately revive yourself. The Trapmaker can do this only once per round. When someone reports this dead body, they will die.",
   "TrapmakerCooldown": "Trapmaker shapeshift cooldown",
   "ReportFakeBody": "Call a meeting when fake bodies are reported",
-  "TrapmakerButtonText": "Place Trap"
+  "TrapmakerButtonText": "Place Trap",
+  
+  "Heir": "Heir",
+  "HeirInfo": "Follow someone to be their successor",
+  "HeirInfoLong": "(Neutrals):\nAs the Heir, you have a target marked with a yellow diamond. When the target dies, you will take their place as their role.",
+  "HeirCanTargetNeutral": "Can target <color=#7f8c8d>Neutral</color>"
 }
 
