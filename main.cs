@@ -1042,6 +1042,7 @@ public enum CustomRoles
     Guesser,
     Hurried,
     Identifier,
+    ILoveEli,
     Infected,
     Influenced,
     Knighted,

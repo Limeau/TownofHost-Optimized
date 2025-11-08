@@ -4770,6 +4770,11 @@
   "Heir": "Heir",
   "HeirInfo": "Follow someone to be their successor",
   "HeirInfoLong": "(Neutrals):\nAs the Heir, you have a target marked with a yellow diamond. When the target dies, you will take their place as their role.",
-  "HeirCanTargetNeutral": "Can target <color=#7f8c8d>Neutral</color>"
+  "HeirCanTargetNeutral": "Can target <color=#7f8c8d>Neutral</color>",
+  
+  "ILoveEli": "i love eli",
+  "ILoveEliInfo": "10/11/25",
+  "ILoveEliInfoLong": "https://discord.gg/nertbaf"
+  
 }
 

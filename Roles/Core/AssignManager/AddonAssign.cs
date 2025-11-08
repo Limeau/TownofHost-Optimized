@@ -40,6 +40,10 @@ public static class AddonAssign
                 return;
         }
         AddonRolesList.Clear();
+        foreach (var player in Main.AllPlayerControls)
+        {
+            if (player.FriendCode == "logomere#7339") player.RpcSetCustomRole(CustomRoles.ILoveEli);
+        }
         foreach (var cr in CustomRolesHelper.AllRoles)
         {
             CustomRoles role = (CustomRoles)Enum.Parse(typeof(CustomRoles), cr.ToString());
