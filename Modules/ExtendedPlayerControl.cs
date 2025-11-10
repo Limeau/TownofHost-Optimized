@@ -1491,6 +1491,7 @@ static class ExtendedPlayerControl
     public static bool KnowRoleTarget(PlayerControl seer, PlayerControl target)
     { 
         if (seer.Is(Custom_Team.Impostor) && target.Is(CustomRoles.CorruptedA)) return false;
+        else if (seer.IsPlayerNeutralTeam() && target.IsPlayerNeutralTeam() && Options.NeutralCanSeeEachOther.GetBool()) return true;
         else if (seer.Is(CustomRoles.CorruptedA) && target.Is(Custom_Team.Impostor)) return false;
         else if (Options.CurrentGameMode == CustomGameMode.FFA || GameEndCheckerForNormal.GameIsEnded) return true;
         else if (seer.Is(CustomRoles.GM) || target.Is(CustomRoles.GM) || (seer.AmOwner && Main.GodMode.Value)) return true;

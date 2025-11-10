@@ -593,6 +593,7 @@ public static class Options
     public static OptionItem NeutralKillingRolesMaxPlayer;
     public static OptionItem NeutralRoleWinTogether;
     public static OptionItem NeutralWinTogether;
+    public static OptionItem NeutralCanSeeEachOther;
     public static OptionItem SpawnOneRandomKillingFraction;
 
     // Neutral Apocalypse
@@ -813,6 +814,9 @@ public static class Options
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
         NeutralWinTogether = BooleanOptionItem.Create(60018, "NeutralWinTogether", false, TabGroup.NeutralRoles, false)
+            .SetParent(NeutralRoleWinTogether)
+            .SetGameMode(CustomGameMode.Standard);
+        NeutralCanSeeEachOther = BooleanOptionItem.Create(60555, "NeutralCanSeeEachOther", false, TabGroup.NeutralRoles, false)
             .SetParent(NeutralRoleWinTogether)
             .SetGameMode(CustomGameMode.Standard);
         SpawnOneRandomKillingFraction = BooleanOptionItem.Create(60010, "SpawnOneRandomKillingFraction", true, TabGroup.NeutralRoles, false)
