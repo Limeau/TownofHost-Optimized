@@ -54,9 +54,9 @@ internal class Atoner : RoleBase
     public override string GetProgressText(byte playerId, bool comms)
     {
         var ProgressText = new StringBuilder();
-        if (CurrentChance <= 20) ProgressText.Append(Utils.ColorString(Color.cyan, $"{CurrentChance}%") + $"");
-        if (CurrentChance < 50 && CurrentChance > 20) ProgressText.Append(Utils.ColorString(Color.yellow, $"{CurrentChance}%") + $"");
-        if (CurrentChance >= 50) ProgressText.Append(Utils.ColorString(Color.red, $"{CurrentChance}%") + $"");
+        if (CurrentChance <= 20) ProgressText.Append(Utils.ColorString(Color.cyan, $"({CurrentChance}%)") + $"");
+        if (CurrentChance < 50 && CurrentChance > 20) ProgressText.Append(Utils.ColorString(Color.yellow, $"({CurrentChance}%)") + $"");
+        if (CurrentChance >= 50) ProgressText.Append(Utils.ColorString(Color.red, $"({CurrentChance}%)") + $"");
         return ProgressText.ToString();
     }
 }
