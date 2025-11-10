@@ -26,9 +26,9 @@ internal class Atoner : RoleBase
         SetupSingleRoleOptions(Id, TabGroup.NeutralRoles, CustomRoles.Atoner, 1, zeroOne: false);
         KillCooldown = FloatOptionItem.Create(Id + 10, GeneralOption.KillCooldown, new(1f, 60f, 1f), 10f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
             .SetValueFormat(OptionFormat.Seconds);
-        StartingChance = IntegerOptionItem.Create(Id + 15, "StartingChance367", new(0, 100, 5), 20, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
+        StartingChance = IntegerOptionItem.Create(Id + 11, "StartingChance367", new(0, 100, 5), 20, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
             .SetValueFormat(OptionFormat.Percent);
-        IncreasedChance = IntegerOptionItem.Create(Id + 15, "IncreasedChance367", new(0, 100, 5), 20, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
+        IncreasedChance = IntegerOptionItem.Create(Id + 12, "IncreasedChance367", new(0, 100, 5), 20, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
             .SetValueFormat(OptionFormat.Percent);
     }
     public override void SetKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
