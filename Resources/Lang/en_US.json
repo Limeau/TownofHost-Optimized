@@ -4776,7 +4776,12 @@
   "ILoveEliInfo": "10/11/25",
   "ILoveEliInfoLong": "https://discord.gg/nertbaf",
   
-  "NeutralCanSeeEachOther": "Neutrals know each other's roles"
+  "NeutralCanSeeEachOther": "Neutrals know each other's roles",
   
+  "Atoner": "Atoner",
+  "AtonerInfo": "Kill quickly but with a risk",
+  "AtonerInfoLong": "(Neutral)\nAs the Atoner, you can kill people with a low kill cooldown. However, after each kill, you have an increased chance to die.",
+  "StartingChance367": "Starting Suicide chance",
+  "IncreasedChance367": "Increased Suicide chance per kill"
 }
 

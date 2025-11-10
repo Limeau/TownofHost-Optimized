@@ -873,6 +873,7 @@ public enum CustomRoles
     Arsonist,
     Artist,
     Assassin,
+    Atoner,
     Baker,
     Bandit,
     Berserker,
@@ -1189,6 +1190,7 @@ public enum CustomWinner
     Skeleton = CustomRoles.Skeleton,
     Wight = CustomRoles.Wight,
     Undead = CustomRoles.Undead,
+    Atoner = CustomRoles.Atoner,
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
     TrickorTreat = CustomRoles.TrickorTreater
