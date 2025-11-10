@@ -23,7 +23,7 @@ internal class Atoner : RoleBase
     
     public override void SetupCustomOption()
     {
-        SetupSingleRoleOptions(Id, TabGroup.NeutralRoles, CustomRoles.Mutant, 1, zeroOne: false);
+        SetupSingleRoleOptions(Id, TabGroup.NeutralRoles, CustomRoles.Atoner, 1, zeroOne: false);
         KillCooldown = FloatOptionItem.Create(Id + 10, GeneralOption.KillCooldown, new(1f, 60f, 1f), 10f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
             .SetValueFormat(OptionFormat.Seconds);
         StartingChance = IntegerOptionItem.Create(Id + 15, "StartingChance367", new(0, 100, 5), 20, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Atoner])
