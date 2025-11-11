@@ -15,7 +15,6 @@ internal class Shocker : RoleBase
     private const int Id = 31000;
     public static byte? playerId;
     public static bool HasEnabled => playerId.HasValue;
-    public override bool IsExperimental => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     public override bool BlockMoveInVent(PlayerControl pc) => true;
