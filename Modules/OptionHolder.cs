@@ -866,7 +866,7 @@ public static class Options
         TextOptionItem.Create(10000000, "RoleType.VanillaRoles", TabGroup.ImpostorRoles) // Vanilla
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));
+            .SetColor(new Color32(250, 218, 105, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.ImpostorVanilla).ForEach(r => r.SetupCustomOption());
 
@@ -877,14 +877,12 @@ public static class Options
             .SetColor(new Color32(141, 70, 49, byte.MaxValue));
 
             CustomRoleManager.GetExperimentalOptions(Custom_Team.Impostor).ForEach(r => r.SetupCustomOption());
-
-
         }
 
         TextOptionItem.Create(10000001, "RoleType.ImpKilling", TabGroup.ImpostorRoles) // KILLING
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));// KILLING
+            .SetColor(new Color32(255, 0, 0, byte.MaxValue));// KILLING
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.ImpostorKilling).ForEach(r => r.SetupCustomOption());
 
@@ -893,7 +891,7 @@ public static class Options
          */
         TextOptionItem.Create(10000002, "RoleType.ImpSupport", TabGroup.ImpostorRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));
+            .SetColor(new Color32(255, 255, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.ImpostorSupport).ForEach(r => r.SetupCustomOption());
 
@@ -902,7 +900,7 @@ public static class Options
          */
         TextOptionItem.Create(10000003, "RoleType.ImpConcealing", TabGroup.ImpostorRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));
+            .SetColor(new Color32(170, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.ImpostorConcealing).ForEach(r => r.SetupCustomOption());
 
@@ -911,7 +909,7 @@ public static class Options
          */
         TextOptionItem.Create(10000004, "RoleType.ImpHindering", TabGroup.ImpostorRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));
+            .SetColor(new Color32(0, 255, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.ImpostorHindering).ForEach(r => r.SetupCustomOption());
 
@@ -920,7 +918,7 @@ public static class Options
          */
         TextOptionItem.Create(10000005, "RoleType.Madmate", TabGroup.ImpostorRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));
+            .SetColor(new Color32(112, 0, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.Madmate).ForEach(r => r.SetupCustomOption());
 
@@ -929,7 +927,7 @@ public static class Options
         */
         TextOptionItem.Create(10000111, "RoleType.ImpGhost", TabGroup.ImpostorRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(255, 25, 25, byte.MaxValue));
+            .SetColor(new Color32(255, 100, 100, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.ImpostorGhosts).ForEach(r => r.SetupCustomOption());
 
@@ -943,7 +941,7 @@ public static class Options
          */
         TextOptionItem.Create(10000006, "RoleType.VanillaRoles", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(140, 255, 255, byte.MaxValue));
+            .SetColor(new Color32(250, 218, 105, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateVanilla).ForEach(r => r.SetupCustomOption());
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateVanillaGhosts).ForEach(r => r.SetupCustomOption());
@@ -955,8 +953,6 @@ public static class Options
             .SetColor(new Color32(141, 70, 49, byte.MaxValue));
 
             CustomRoleManager.GetExperimentalOptions(Custom_Team.Crewmate).ForEach(r => r.SetupCustomOption());
-
-
         }
 
         /*
@@ -964,7 +960,7 @@ public static class Options
          */
         TextOptionItem.Create(10000007, "RoleType.CrewBasic", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(140, 255, 255, byte.MaxValue));
+            .SetColor(new Color32(150, 150, 150, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateBasic).ForEach(r => r.SetupCustomOption());
 
@@ -978,7 +974,7 @@ public static class Options
          */
         TextOptionItem.Create(10000008, "RoleType.CrewHindering", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(140, 255, 255, byte.MaxValue));
+            .SetColor(new Color32(255, 145, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateHindering).ForEach(r => r.SetupCustomOption());
 
@@ -987,7 +983,7 @@ public static class Options
          */
         TextOptionItem.Create(10000009, "RoleType.CrewSupport", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(140, 255, 255, byte.MaxValue));
+            .SetColor(new Color32(0, 255, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateSupport).ForEach(r => r.SetupCustomOption());
 
@@ -996,7 +992,7 @@ public static class Options
          */
         TextOptionItem.Create(10000010, "RoleType.CrewKilling", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(140, 255, 255, byte.MaxValue));
+            .SetColor(new Color32(0, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateKilling).ForEach(r => r.SetupCustomOption());
 
@@ -1005,7 +1001,7 @@ public static class Options
          */
         TextOptionItem.Create(10000011, "RoleType.CrewPower", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(140, 255, 255, byte.MaxValue));
+            .SetColor(new Color32(255, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmatePower).ForEach(r => r.SetupCustomOption());
 
@@ -1039,31 +1035,31 @@ public static class Options
         // Neutral
         TextOptionItem.Create(10000012, "RoleType.NeutralBenign", TabGroup.NeutralRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(127, 140, 141, byte.MaxValue));
+            .SetColor(new Color32(100, 255, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.NeutralBenign).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000013, "RoleType.NeutralEvil", TabGroup.NeutralRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(127, 140, 141, byte.MaxValue));
+            .SetColor(new Color32(255, 0, 115, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.NeutralEvil).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000014, "RoleType.NeutralChaos", TabGroup.NeutralRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(127, 140, 141, byte.MaxValue));
+            .SetColor(new Color32(255, 60, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.NeutralChaos).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000015, "RoleType.NeutralKilling", TabGroup.NeutralRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(127, 140, 141, byte.MaxValue));
+            .SetColor(new Color32(205, 85, 85, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.NeutralKilling).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000116, "RoleType.NeutralApocalypse", TabGroup.NeutralRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(127, 140, 141, byte.MaxValue));
+            .SetColor(new Color32(255, 0, 60, byte.MaxValue));
 
         TransformedNeutralApocalypseCanBeGuessed = BooleanOptionItem.Create(60024, "TNACanBeGuessed", false, TabGroup.NeutralRoles, false)
             .SetGameMode(CustomGameMode.Standard)
@@ -1076,7 +1072,7 @@ public static class Options
 
         TextOptionItem.Create(10000117, "RoleType.NeutralGhost", TabGroup.NeutralRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(100, 100, 100, byte.MaxValue));
+            .SetColor(new Color32(160, 160, 160, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.NeutralGhosts).ForEach(r => r.SetupCustomOption());
         #endregion
@@ -1097,25 +1093,25 @@ public static class Options
 
         TextOptionItem.Create(10000017, "RoleType.CovenPower", TabGroup.CovenRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(172, 66, 242, byte.MaxValue));
+            .SetColor(new Color32(180, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CovenPower).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000018, "RoleType.CovenKilling", TabGroup.CovenRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(172, 66, 242, byte.MaxValue));
+            .SetColor(new Color32(170, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CovenKilling).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000019, "RoleType.CovenTrickery", TabGroup.CovenRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(172, 66, 242, byte.MaxValue));
+            .SetColor(new Color32(160, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CovenTrickery).ForEach(r => r.SetupCustomOption());
 
         TextOptionItem.Create(10000024, "RoleType.CovenUtility", TabGroup.CovenRoles)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(172, 66, 242, byte.MaxValue));
+            .SetColor(new Color32(150, 0, 255, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CovenUtility).ForEach(r => r.SetupCustomOption());
         #endregion
@@ -2129,7 +2125,7 @@ public static class Options
            .HideInFFA()
            .HideInUltimate()
            .HideInCandR()
-           .SetColor(new Color32(168, 50, 62, byte.MaxValue));
+           .SetColor(new Color32(0, 255, 0, byte.MaxValue));
         EnableAnomalies = BooleanOptionItem.Create(60890, "EnableAnomalies", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(168, 50, 62, byte.MaxValue));

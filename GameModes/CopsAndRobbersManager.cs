@@ -101,7 +101,7 @@ internal static class CopsAndRobbersManager
         /*********** Cops ***********/
         TextOptionItem.Create(Id + 2, "Cop", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.CandR)
-            .SetColor(new Color32(0, 123, 255, byte.MaxValue));
+            .SetColor(Utils.GetRoleColor(CustomRoles.Cop));
 
         CandR_NumCops = IntegerOptionItem.Create(Id + 3, "C&R_NumCops", new(1, 5, 1), 2, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.CandR)
@@ -197,7 +197,7 @@ internal static class CopsAndRobbersManager
         /*********** Robbers ***********/
         TextOptionItem.Create(Id + 20, "Robber", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.CandR)
-            .SetColor(new Color32(255, 140, 0, byte.MaxValue));
+            .SetColor(Utils.GetRoleColor(CustomRoles.Robber));
 
         CandR_NotifyRobbersWhenCaptured = BooleanOptionItem.Create(Id + 21, "C&R_NotifyRobbersWhenCaptured", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.CandR)

@@ -80,7 +80,8 @@ public static class GameOptionsMenuPatch
                 {
                     CategoryHeaderMasked categoryHeaderMasked = Object.Instantiate(__instance.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, __instance.settingsContainer);
                     categoryHeaderMasked.SetHeader(StringNames.RolesCategory, 20);
-                    categoryHeaderMasked.Title.text = option.GetName();
+                    categoryHeaderMasked.Title.text = option.GetName(disableColor: true);
+                    categoryHeaderMasked.Background.color = categoryHeaderMasked.Divider.color = option.NameColor;
                     categoryHeaderMasked.transform.localScale = Vector3.one * 0.68f;
                     categoryHeaderMasked.transform.localPosition = new(-0.913f, num, posZ);
                     var chmText = categoryHeaderMasked.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();

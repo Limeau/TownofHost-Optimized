@@ -7,7 +7,7 @@ public class Swift : IAddon
 {
     public CustomRoles Role => CustomRoles.Swift;
     private const int Id = 23300;
-    public AddonTypes Type => AddonTypes.Experimental;
+    public AddonTypes Type => AddonTypes.Impostor;
 
     public void SetupCustomOption()
     {
