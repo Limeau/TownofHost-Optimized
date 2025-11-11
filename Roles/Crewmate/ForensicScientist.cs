@@ -148,15 +148,6 @@ internal class ForensicScientist : RoleBase
         IdentifiedKillers.Clear();
     }
 
-    public override string GetMarkOthers(PlayerControl seer, PlayerControl target, bool isForMeeting = false)
-    {
-        if (isForMeeting && IdentifiedKillers.ContainsValue(target.PlayerId))
-        {
-            return Utils.ColorString(Palette.ImpostorRed, " # ");
-        }
-        return string.Empty;
-    }
-
     public override void OnVote(PlayerControl voter, PlayerControl target)
     {
         var player = _Player;
