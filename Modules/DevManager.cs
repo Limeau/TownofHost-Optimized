@@ -55,7 +55,7 @@ public static class DevManager
             new(code: "motorlace#4741", color: "#DFB722", tag: "❖ Exclusive Tester ❖", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "PEPPERcula"),
 
              // Mirage
-            new(code: "spyside#1041", color: "#a300a3", tag: "Illusionist", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Mirage"),
+            new(code: "spyside#1041", color: "#a300a3", tag: "Zany’s Emergency Button", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Mirage"),
             
             /*TOHO DEVS ABOVE*/
             /*TESTERS BELOW*/
