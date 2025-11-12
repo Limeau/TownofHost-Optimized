@@ -43,8 +43,7 @@ public class MainMenuManagerStartPatch
 
         PlayerParticles = GameObject.Find("PlayerParticles");
         starfield = GameObject.Find("starfield");
-        SoundManager.Instance.StopNamedSound("MainMenuBgMusic");
-        
+        /*
         if (PlayerParticles != null)
         {
             PlayerParticles.SetActive(false);
@@ -53,7 +52,7 @@ public class MainMenuManagerStartPatch
         {
             starfield.SetActive(false);
         }
-        /*
+        */
         SetButtonColor(__instance.playButton);
         SetButtonColor(__instance.inventoryButton);
         SetButtonColor(__instance.shopButton); 
@@ -62,15 +61,12 @@ public class MainMenuManagerStartPatch
         SetButtonColor(__instance.settingsButton);
         SetButtonColor(__instance.creditsButton);
         SetButtonColor(__instance.quitButton);
-        */
     }
 
     private static void SetButtonColor(PassiveButton playButton)
     {
-        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = Color.red;
-        playButton.activeSprites.GetComponent<SpriteRenderer>().color = Color.yellow;
-        playButton.activeTextColor = Color.red;
-        playButton.inactiveTextColor = Color.yellow;
+        playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color32(180, 126, 222, byte.MaxValue);
+        playButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color32(180, 126, 222, byte.MaxValue);
     }
     
 }
@@ -121,7 +117,10 @@ public static class MainMenuManagerPatch
 
         // FPS
         Application.targetFrameRate = Main.UnlockFPS.Value ? 165 : 60;
-
+        GameObject rightPanel = __instance.mainMenuUI.FindChild<Transform>("RightPanel").gameObject;
+        __instance.screenTint.enabled = false;
+        GameObject maskedBlackScreen = rightPanel.FindChild<Transform>("MaskedBlackScreen").gameObject;
+        maskedBlackScreen.GetComponent<SpriteRenderer>().enabled = false;
         var background = GameObject.Find("BackgroundTexture");
 
         if (background != null)
@@ -133,8 +132,7 @@ public static class MainMenuManagerPatch
         var tint = GameObject.Find("MainUI").transform.GetChild(0).gameObject;
         if (tint != null)
         {
-            tint.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-            tint.transform.localScale = new Vector3(7.5f, 7.5f, 1f);
+            tint.GetComponent<SpriteRenderer>().enabled = false;
         }
         
         GameObject leftPanel = __instance.mainMenuUI.FindChild<Transform>("LeftPanel").gameObject;
@@ -164,6 +162,17 @@ public static class MainMenuManagerPatch
 
         if (template == null) return;
 
+        var PlayerParticles = GameObject.Find("PlayerParticles");
+        var starfield = GameObject.Find("starfield");
+        if (PlayerParticles != null)
+        {
+            PlayerParticles.SetActive(false);
+        }
+        if (starfield != null)
+        {
+            starfield.SetActive(false);
+        }
+        
 
         // donation Button
         if (donationButton == null)
