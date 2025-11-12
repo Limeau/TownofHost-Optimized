@@ -61,6 +61,8 @@ public class MainMenuManagerStartPatch
         SetButtonColor(__instance.settingsButton);
         SetButtonColor(__instance.creditsButton);
         SetButtonColor(__instance.quitButton);
+        SetButtonColor(__instance.PlayOnlineButton);
+        SetButtonColor(__instance.playLocalButton);
     }
 
     private static void SetButtonColor(PassiveButton playButton)
