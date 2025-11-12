@@ -894,6 +894,7 @@ public enum CustomRoles
     God,
     Godzilla,
     Gunslinger,
+    Hacker,
     Hater,
     Heir,
     Huntsman,
@@ -1191,6 +1192,7 @@ public enum CustomWinner
     Wight = CustomRoles.Wight,
     Undead = CustomRoles.Undead,
     Atoner = CustomRoles.Atoner,
+    Hacker = CustomRoles.Hacker,
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
     TrickorTreat = CustomRoles.TrickorTreater

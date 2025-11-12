@@ -4782,6 +4782,10 @@
   "AtonerInfo": "Kill quickly but with a risk",
   "AtonerInfoLong": "(Neutral)\nAs the Atoner, you can kill people with a low kill cooldown. However, after each kill, you have an increased chance to die.",
   "StartingChance367": "Starting Suicide chance",
-  "IncreasedChance367": "Increased Suicide chance per kill"
+  "IncreasedChance367": "Increased Suicide chance per kill",
+  
+  "Hacker": "Hacker",
+  "HackerInfo": "Target players to compromise tasks!",
+  "HackerInfoLong": "(Neutral)\nThe Hacker can use their kill button to target a player. The Hacker can use their shapeshift button to murder the targeted player without a body at any time. The death reason will be Targeted."
 }
 
