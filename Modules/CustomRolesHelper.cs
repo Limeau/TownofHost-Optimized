@@ -1069,6 +1069,10 @@ public static class CustomRolesHelper
                 if (!pc.GetCustomRole().IsImpostor())
                     return false;
                 break;
+            case CustomRoles.Peacemaker:
+                if (!pc.GetCustomRole().IsCrewmate())
+                    return false;
+                break;
 
             case CustomRoles.Burst:
                 if (pc.Is(CustomRoles.Avanger)

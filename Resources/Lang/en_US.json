@@ -4786,6 +4786,10 @@
   
   "Hacker": "Hacker",
   "HackerInfo": "Target players to compromise tasks!",
-  "HackerInfoLong": "(Neutral)\nThe Hacker can use their kill button to target a player. The Hacker can use their shapeshift button to murder the targeted player without a body at any time. The death reason will be Targeted."
+  "HackerInfoLong": "(Neutral)\nThe Hacker can use their kill button to target a player. The Hacker can use their shapeshift button to murder the targeted player without a body at any time. The death reason will be Targeted.",
+  
+  "Peacemaker": "Peacemaker",
+  "PeacemakerInfo": "Prevent Impostor votes",
+  "PeacemakerInfoLong": "The Peacemaker can prevent all Impostor votes while they are alive."
 }
 
