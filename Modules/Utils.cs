@@ -1635,6 +1635,7 @@ public static class Utils
     }
     public static void ApplySuffix(PlayerControl player)
     {
+        
         // Only Host
         if (!AmongUsClient.Instance.AmHost || player == null) return;
         // Check invalid color
@@ -1667,6 +1668,11 @@ public static class Utils
         if (Main.HostRealName != "" && player.AmOwner) name = Main.HostRealName;
         if (name == "" || !GameStates.IsLobby) return;
 
+        if (!player.IsHost() && GameStates.IsLobby)
+        {
+            name = GradientText(name, player.CurrentOutfit.ColorId);
+        }
+        
         if (player.IsHost())
         {
             if (GameStates.IsOnlineGame || GameStates.IsLocalGame)
@@ -2806,6 +2812,103 @@ public static class Utils
         MeetingHud.Instance.RpcClose();
     }
 
+    public static string GradientText(string text, int ColorId)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+
+        Color start = Color.white;
+        Color end = Color.white;
+
+        switch (ColorId)
+        {
+            case 0:
+                start = new Color32(215, 30, 34, byte.MaxValue);
+                end = new Color32(122, 8, 56, byte.MaxValue);
+                break;
+            case 1:
+                start = new Color32(29, 60, 233, byte.MaxValue);
+                end = new Color32(9, 21, 142, byte.MaxValue);
+                break;
+            case 2:
+                start = new Color32(27, 145, 62, byte.MaxValue);
+                end = new Color32(10, 77, 46, byte.MaxValue);
+                break;
+            case 3:
+                start = new Color32(255, 9, 212, byte.MaxValue);
+                end = new Color32(172, 43, 174, byte.MaxValue);
+                break;
+            case 4:
+                start = new Color32(255, 141, 28, byte.MaxValue);
+                end = new Color32(180, 62, 21, byte.MaxValue);
+                break;
+            case 5:
+                start = new Color32(195, 136, 24, byte.MaxValue);
+                end = new Color32(255, 255, 103, byte.MaxValue);
+                break;
+            case 6:
+                start = new Color32(74, 86, 94, byte.MaxValue);
+                end = new Color32(30, 31, 38, byte.MaxValue);
+                break;
+            case 7:
+                start = new Color32(233, 247, 255, byte.MaxValue);
+                end = new Color32(132, 149, 192, byte.MaxValue);
+                break;
+            case 8:
+                start = new Color32(120, 62, 210, byte.MaxValue);
+                end = new Color32(59, 23, 124, byte.MaxValue);
+                break;
+            case 9:
+                start = new Color32(128, 88, 45, byte.MaxValue);
+                end = new Color32(94, 38, 21, byte.MaxValue);
+                break;
+            case 10:
+                start = new Color32(68, 255, 247, byte.MaxValue);
+                end = new Color32(36, 169, 191, byte.MaxValue);
+                break;
+            case 11:
+                start = new Color32(91, 254, 75, byte.MaxValue);
+                end = new Color32(21, 167, 66, byte.MaxValue);
+                break;
+            case 12:
+                start = new Color32(108, 43, 61, byte.MaxValue);
+                end = new Color32(65, 15, 26, byte.MaxValue);
+                break;
+            case 13:
+                start = new Color32(255, 214, 236, byte.MaxValue);
+                end = new Color32(222, 146, 179, byte.MaxValue);
+                break;
+            case 14:
+                start = new Color32(255, 255, 190, byte.MaxValue);
+                end = new Color32(210, 188, 37, byte.MaxValue);
+                break;
+            case 15: 
+                start = new Color32(131, 151, 167, byte.MaxValue);
+                end = new Color32(70, 86, 100, byte.MaxValue);
+                break;
+            case 16:
+                start = new Color32(159, 153, 137, byte.MaxValue);
+                end = new Color32(81, 65, 62, byte.MaxValue);
+                break;
+            case 17:
+                start = new Color32(236, 117, 120, byte.MaxValue);
+                end = new Color32(180, 67, 98, byte.MaxValue);
+                break;
+        }
+        
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            float t = (float)i / (text.Length - 1);
+            Color blended = Color.Lerp(start, end, t);
+
+            string hexColor = ColorUtility.ToHtmlStringRGB(blended);
+            sb.Append($"<color=#{hexColor}>{text[i]}</color>");
+        }
+
+        return sb.ToString();
+    }
+    
     public static void SetChatVisibleSpecific(this PlayerControl player)
     {
         if (!GameStates.IsInGame || !AmongUsClient.Instance.AmHost || GameStates.IsMeeting) return;
