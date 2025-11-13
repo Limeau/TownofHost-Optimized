@@ -293,7 +293,6 @@
   "Blue": "#1D3CE9",
   "Survivalist": "#08A045",
   "Meteor": "#dc2c2c",
-  "Nuancer": "#b30000",
   "ForensicScientist": "#00ff7f",
   "Skeleton": "#fcf5dc",
   "Corrupted": "#27dbd8",
@@ -301,5 +300,10 @@
   "Exorcist": "#baf211",
   "Wight": "#dad1ff",
   "Undead": "#dad1ff",
-  "TrickorTreater": "#6e22f2"
+  "TrickorTreater": "#6e22f2",
+  "Heir": "#ffc800",
+  "ILoveEli": "#7a59e0",
+  "Atoner": "#eb3a05",
+  "Hacker": "#ffc400",
+  "Peacemaker": "#24f4ff"
 }

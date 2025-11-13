@@ -47,7 +47,7 @@ internal static class FFAManager
         /*********** Killers ***********/
         TextOptionItem.Create(67_233_03, "Killer", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.FFA)
-            .SetColor(new Color32(0, 255, 165, byte.MaxValue));
+            .SetColor(Utils.GetRoleColor(CustomRoles.Killer));
 
         FFA_KCD = FloatOptionItem.Create(67_223_004, "FFA_KCD", new(1f, 60f, 1f), 10f, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.FFA)

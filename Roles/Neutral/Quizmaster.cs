@@ -16,7 +16,6 @@ internal class Quizmaster : RoleBase
     public override CustomRoles Role => CustomRoles.Quizmaster;
     private const int Id = 27000;
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Quizmaster);
-    public override bool IsExperimental => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => CanKillsAfterMark() ? Custom_RoleType.NeutralKilling : Custom_RoleType.NeutralChaos;
     //==================================================================\\

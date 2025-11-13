@@ -579,6 +579,11 @@ class CheckForEndVotingPatch
         var player = Main.AllPlayerControls.FirstOrDefault(pc => pc.PlayerId == id);
         return player != null && player.Is(role);
     }
+    public static bool CheckTeam(byte id, Custom_Team team)
+    {
+        var player = Main.AllPlayerControls.FirstOrDefault(pc => pc.PlayerId == id);
+        return player != null && player.Is(team);
+    }
     public static PlayerVoteArea GetPlayerVoteArea(byte playerId)
     {
         if (MeetingHud.Instance == null || !MeetingHud.Instance.playerStates.Any()) return null;
@@ -897,6 +902,8 @@ static class ExtendedMeetingHud
                     Evader.CheckExile(ps.VotedFor, ref VoteNum);
                 }
 
+                if (CheckForEndVotingPatch.CheckTeam(ps.TargetPlayerId, Custom_Team.Impostor) &&
+                    CustomRoles.Peacemaker.RoleExist()) VoteNum = 0;
                 //Add 1 vote If key is not defined, overwrite with 1 and define
                 dic[ps.VotedFor] = !dic.TryGetValue(ps.VotedFor, out int num) ? VoteNum : num + VoteNum; //Count the number of times this player has been voted in
             }

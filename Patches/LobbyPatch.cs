@@ -31,6 +31,19 @@ public class LobbyStartPatch
             __instance.StartCoroutine(CoLoadDecorations().WrapToIl2Cpp());
         }, waitTime, "Co Load Dropship Decorations", shoudLog: false);
 
+        var Engine1 = GameObject.Find("RightEngine");
+        if (Engine1 != null)
+        {
+            Engine1.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        else Logger.Info("RightEngine is null", "LobbyPatch");
+        var Engine2 = GameObject.Find("LeftEngine");
+        if (Engine2 != null)
+        {
+            Engine2.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else Logger.Info("LeftEngine is null", "LobbyPatch");
+
         static System.Collections.IEnumerator CoLoadDecorations()
         {
             var LeftBox = GameObject.Find("Leftbox");

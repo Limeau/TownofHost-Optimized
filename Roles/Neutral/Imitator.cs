@@ -11,7 +11,6 @@ internal class Imitator : RoleBase
     public override CustomRoles Role => CustomRoles.Imitator;
     private const int Id = 13000;
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Imitator);
-    public override bool IsExperimental => true;
     public override bool IsDesyncRole => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
