@@ -166,11 +166,11 @@ public static class MainMenuManagerPatch
 
         var PlayerParticles = GameObject.Find("PlayerParticles");
         var starfield = GameObject.Find("starfield");
-        if (PlayerParticles != null)
+        if (PlayerParticles != null && System.IO.File.Exists("./TOHO-DATA/background.mp4"))
         {
             PlayerParticles.SetActive(false);
         }
-        if (starfield != null)
+        if (starfield != null && System.IO.File.Exists("./TOHO-DATA/background.mp4"))
         {
             starfield.SetActive(false);
         }
