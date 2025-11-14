@@ -91,10 +91,12 @@ internal class BountyHunter : RoleBase
     {
         if (GetTarget(killer) == target.PlayerId)
         {
+            killer.RpcMurderPlayer(target);
             Logger.Info($"{killer?.Data?.PlayerName}: kill target", "BountyHunter");
             Main.AllPlayerKillCooldown[killer.PlayerId] = SuccessKillCooldown;
             killer.SyncSettings();
             ResetTarget(killer);
+            return false;
         }
         else
         {
