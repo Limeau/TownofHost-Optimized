@@ -1633,6 +1633,7 @@ public static class Utils
         Color32 color32 = (Color32)color;
         return $"{color32.r:X2}{color32.g:X2}{color32.b:X2}{color32.a:X2}";
     }
+    
     public static void ApplySuffix(PlayerControl player)
     {
         
@@ -1648,15 +1649,6 @@ public static class Utils
             return;
         }
 
-        if (!(player.AmOwner || player.FriendCode.GetDevUser().HasTag()))
-        {
-            if (!IsPlayerModerator(player.FriendCode) && !IsPlayerVIP(player.FriendCode) && !TagManager.CheckFriendCode(player.FriendCode))
-            {
-                SetRealName();
-                return;
-            }
-        }
-
         void SetRealName()
         {
             string realName = Main.AllPlayerNames.TryGetValue(player.PlayerId, out var namePlayer) ? namePlayer : "";
@@ -1667,8 +1659,9 @@ public static class Utils
         string name = Main.AllPlayerNames.TryGetValue(player.PlayerId, out var n) ? n : "";
         if (Main.HostRealName != "" && player.AmOwner) name = Main.HostRealName;
         if (name == "" || !GameStates.IsLobby) return;
-
-        if (!player.IsHost() && GameStates.IsLobby)
+        
+        
+        if (!player.IsHost() && GameStates.IsLobby) 
         {
             name = GradientText(name, player.CurrentOutfit.ColorId);
         }
