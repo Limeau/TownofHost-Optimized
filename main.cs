@@ -742,6 +742,7 @@ public enum CustomRoles
     Parasite,
     Penguin,
     Pitfall,
+    Professor,
     Propagandist,
     Puppeteer,
     QuickShooter,

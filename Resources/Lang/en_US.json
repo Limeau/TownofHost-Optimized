@@ -4790,6 +4790,12 @@
   
   "Peacemaker": "Peacemaker",
   "PeacemakerInfo": "Prevent Impostor votes",
-  "PeacemakerInfoLong": "The Peacemaker can prevent all Impostor votes while they are alive."
+  "PeacemakerInfoLong": "The Peacemaker can prevent all Impostor votes while they are alive.",
+  
+  "Professor": "Professor",
+  "ProfessorInfo": "Add tasks to players!",
+  "ProfessorInfoLong": "(Impostor)\nThe Professor can use their shapeshift button to reset a specific player's tasks. They gain ability uses with each kill.",
+  "AbilityUses370": "Professor ability uses",
+  "NotTaskBase370": "This player does not have tasks, ability failed"
 }
 
