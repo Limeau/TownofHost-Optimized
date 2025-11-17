@@ -3000,6 +3000,39 @@ internal class ChatCommands
                     File.WriteAllText(colorFilePath, $"{subArgs}");
                     break;
                 }
+            case "/modname":
+                if (Options.ApplyModeratorList.GetValue() == 0)
+                {
+                    Utils.SendMessage(GetString("ColorCommandDisabled"), player.PlayerId);
+                    break;
+                }
+                if (!Utils.IsPlayerModerator(player.FriendCode))
+                {
+                    Utils.SendMessage(GetString("ColorCommandNoAccess"), player.PlayerId);
+                    break;
+                }
+                if (!GameStates.IsLobby)
+                {
+                    Utils.SendMessage(GetString("ColorCommandNoLobby"), player.PlayerId);
+                    break;
+                }
+
+                subArgs = args.Length < 2 ? "" : text.Remove(0, 8);
+                if (string.IsNullOrEmpty(subArgs))
+                { 
+                    Logger.Msg($"{subArgs}", "modcolor");
+                    Utils.SendMessage(GetString("ModNameNoText"), player.PlayerId);
+                    break;
+                }
+                string nameFilePath = $"{modTagsFiles}/{player.FriendCode}-name.txt";
+                if (!File.Exists(nameFilePath))
+                {
+                    Logger.Warn($"File Not exist, creating file at {modTagsFiles}/{player.FriendCode}-name.txt", "modname");
+                    File.Create(nameFilePath).Close();
+                }
+
+                File.WriteAllText(nameFilePath, $"{subArgs}");
+                break;
             case "/vipcolor":
             case "/vipcolour":
             case "/VIP玩家颜色":
@@ -3057,6 +3090,39 @@ internal class ChatCommands
                     File.WriteAllText(colorFilePathh, $"{subArgs}");
                     break;
                 }
+            case "/vipname":
+                if (Options.ApplyVipList.GetValue() == 0)
+                {
+                    Utils.SendMessage(GetString("VipColorCommandDisabled"), player.PlayerId);
+                    break;
+                }
+                if (!Utils.IsPlayerVIP(player.FriendCode))
+                {
+                    Utils.SendMessage(GetString("VipColorCommandNoAccess"), player.PlayerId);
+                    break;
+                }
+                if (!GameStates.IsLobby)
+                {
+                    Utils.SendMessage(GetString("VipColorCommandNoLobby"), player.PlayerId);
+                    break;
+                }
+
+                subArgs = args.Length < 2 ? "" : text.Remove(0, 8);
+                if (string.IsNullOrEmpty(subArgs))
+                { 
+                    Logger.Msg($"{subArgs}", "vipcolor");
+                    Utils.SendMessage(GetString("VipNameNoText"), player.PlayerId);
+                    break;
+                }
+                string nameFilePathh = $"{vipTagsFiles}/{player.FriendCode}-name.txt";
+                if (!File.Exists(nameFilePathh))
+                {
+                    Logger.Warn($"File Not exist, creating file at {vipTagsFiles}/{player.FriendCode}-name.txt", "vipname");
+                    File.Create(nameFilePathh).Close();
+                }
+
+                File.WriteAllText(nameFilePathh, $"{subArgs}");
+                break;
             case "/tagcolor":
             case "/tagcolour":
             case "/标签颜色":

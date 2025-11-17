@@ -2252,6 +2252,7 @@
   "VipColorCommandNoAccess": "You do not have access to the vipcolor command.",
   "VipColorCommandNoLobby": "You can only use the command in Lobby when the game hasn't started.",
   "VipColorInvalidHexCode": "Invalid hexcode specified.\nPlease use '/vipcolor [hexcode]' to change the color of VIP★.\nExample :- /vipcolor 33ccff",
+  "VipNameNoText": "No text was sent in the command.\nPlease use /vipname [name] to change your tag name.",
   "VipColorInvalidGradientCode": "Invalid hexcode specified.\nPlease use '/vipcolor [hexcode][hexcode]' to change color of VIP★.\nExample :- /vipcolor 33ccff ff99cc",
   "TagColorInvalidHexCode": "Invalid hexcode specified.\nPlease use '/tagcolor [hexcode]' to change the color of your tag.\nExample :- /tagcolor ff00ff",
   "midCommandDisabled": "The mid command is currently disabled.",
