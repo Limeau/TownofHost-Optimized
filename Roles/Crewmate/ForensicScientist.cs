@@ -21,6 +21,7 @@ internal class ForensicScientist : RoleBase
     private static OptionItem SampleFailChance;
     private static OptionItem VitalsDuration;
     private static OptionItem CanRemoveCurses;
+    private static OptionItem CursesRemoveMax;
     private static OptionItem ShowArrows;
     private static OptionItem VitalsCooldownAfterTasks;
 
@@ -42,6 +43,8 @@ internal class ForensicScientist : RoleBase
             .SetValueFormat(OptionFormat.Seconds);
         CanRemoveCurses = BooleanOptionItem.Create(Id + 4, "ForensicCanRemoveCurses", true, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.ForensicScientist]);
+        CursesRemoveMax = IntegerOptionItem.Create(Id + 7, "CursesRemoveMax", new(1, 999, 1), 3, TabGroup.CrewmateRoles, false).SetParent(CanRemoveCurses)
+            .SetValueFormat(OptionFormat.Times);    
         ShowArrows = BooleanOptionItem.Create(Id + 5, "ForensicShowArrows", true, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.ForensicScientist]);
         VitalsCooldownAfterTasks = FloatOptionItem.Create(Id + 6, "ForensicVitalsCooldown", new(0f, 60f, 5f), 15f, TabGroup.CrewmateRoles, false)
@@ -58,6 +61,7 @@ internal class ForensicScientist : RoleBase
 
     public override void Add(byte playerId)
     {
+        playerId.SetAbilityUseLimit(CursesRemoveMax.GetInt());
         if (ShowArrows.GetBool())
         {
             CustomRoleManager.CheckDeadBodyOthers.Add(CheckDeadBody);
@@ -151,9 +155,9 @@ internal class ForensicScientist : RoleBase
     public override void OnVote(PlayerControl voter, PlayerControl target)
     {
         var player = _Player;
-        if (player == null || !player.IsAlive() || voter.PlayerId != player.PlayerId || target == null) return;
+        if (player == null || !player.IsAlive() || voter.PlayerId != player.PlayerId || target == null || ) return;
 
-        if (CanRemoveCurses.GetBool())
+        if (CanRemoveCurses.GetBool() && player.GetAbilityUseLimit()>0)
         {
             bool removedAnyCurse = false;
 
@@ -181,6 +185,7 @@ internal class ForensicScientist : RoleBase
 
             if (removedAnyCurse)
             {
+                player.RpcRemoveAbilityUse();
                 voter.Notify(string.Format(GetString("ForensicCurseRemoved"), target.GetRealName()));
             }
         }
