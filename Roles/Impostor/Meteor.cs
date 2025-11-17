@@ -302,5 +302,6 @@ internal class Meteor : RoleBase
     public override void SetAbilityButtonText(HudManager hud, byte playerId)
     {
         hud.KillButton.OverrideText(GetString("MeteorKillButtonText"));
+        
     }
 }

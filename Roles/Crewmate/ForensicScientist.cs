@@ -133,6 +133,7 @@ internal class ForensicScientist : RoleBase
                 var killerId = bodyId.GetRealKillerById();
                 if (killerId != null)
                 {
+                    
                     IdentifiedKillers[player.PlayerId] = killerId.PlayerId;
                     AnalysisResults[player.PlayerId] = string.Format(GetString("ForensicAnalysisSuccess"), killerId.GetRealName());
                     

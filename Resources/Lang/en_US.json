@@ -4817,5 +4817,6 @@
   "MeteorNoActiveBomb" : "No active bomb",
   "MeteorBombOnYou" : "Meteor Bomb!\nExplodes in: {0}s",
   "TargetIsImmune" : "Target is immune to bomb"
+  
 }
 
