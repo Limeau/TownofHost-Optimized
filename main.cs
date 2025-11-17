@@ -770,6 +770,7 @@ public enum CustomRoles
     Visionary,
     Warlock,
     Wildling,
+    WildShot,
     Witch,
     Zombie,
 

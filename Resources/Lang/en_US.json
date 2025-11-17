@@ -4648,7 +4648,7 @@
 
   "Godzilla": "Godzilla",
   "GodzillaInfo": "Destroy random rooms",
-  "GodzillaInfoLong": "As the Godzilla, you can destroy random rooms by using your unshift button. The Godzilla can also kill normally depending on host settings. Be the last one alive to win.",
+  "GodzillaInfoLong": "(Neutrals):\nAs the Godzilla, you can destroy random rooms by using your unshift button. The Godzilla can also kill normally depending on host settings. Be the last one alive to win.",
   "GodzillaShapeshiftText": "Destroy",
   "GodzillaRoomWarning": "Godzilla will be destroying room {0} in {1} seconds",
   "DestroyCooldown": "Destroy cooldown",
@@ -4687,7 +4687,7 @@
 
   "Survivalist": "Survivalist",
   "SurvivalistInfo": "Win the showdown to make crewmates win",
-  "SurvivalistInfoLong": "If Imposters win when you are alive , a countdown will begin and the Imposter team will try and hunt you . Survive the showdown and lead crew to victory",
+  "SurvivalistInfoLong": "(Crewmates):\nIf Imposters win when you are alive , a countdown will begin and the Imposter team will try and hunt you . Survive the showdown and lead crew to victory",
   "ShowdownDuration": "Showdown Duration",
   "SurvivalistShowdownStart": "Showdown started! Survive for {0} seconds to win!",
   "SurvivalistShowdownHunt": "Find and kill the Survivalist to win in {0} seconds to win!",
@@ -4696,21 +4696,21 @@
   "SurvivalistWinByTimeout": "Survivalist survived! Crewmates win!",
   "SurvivalistLoseByDeath": "Survivalist was killed! Original winners win!",
 
-  "Meteor": "Meteor",
-  "MeteorInfo": "Use your kill button to kill random players.",
-  "MeteorInfoLong": "As the Meteor when you use your kill button on someone , the kill will be blocked and a random non-imposter will be killed.\nDouble click to kill normally.",
-  "MeteorKillButtonText": "Enflame",
+  "WildShot": "WildShot",
+  "WildShotInfo": "Use your kill button to kill random players.",
+  "WildShotInfoLong": "As the WildShot when you use your kill button on someone , the kill will be blocked and a random non-imposter will be killed.\nDouble click to kill normally.",
+  "WildShotKillButtonText": "Enflame",
   "DeathReason.Enflamed": "Enflamed",
 
   "Nuancer": "Nuancer",
   "NuancerInfo": "Kill in different ways",
-  "NuancerInfoLong": "Your killing method is Random. \nWhen you use your Kill Button on someone one of the following events happen with equal probability.\n Normal kill.\n Delayed Kill like Vampire.\n Curse like witch.\n Explosion like Bomber.\n You can suicide(if enabled).",
+  "NuancerInfoLong": "(Impostor):\nYour killing method is Random. \nWhen you use your Kill Button on someone one of the following events happen with equal probability.\n Normal kill.\n Delayed Kill like Vampire.\n Curse like witch.\n Explosion like Bomber.\n You can suicide(if enabled).",
   "NuancerVampireDelay": "Nuancer Vampire Kill Delay",
   "NuancerSuicideOption": "Nuancer can Suicide ",
 
   "ForensicScientist": "Forensic Scientist",
   "ForensicScientistInfo": "Analyze bodies to find killers and remove curses.",
-  "ForensicScientistInfoLong": "Report a body to collect a sample and analyze it ,if Analyze is successful the killer will be revealed in next meeting .\nYou can also vote a player to remove hexes and curses depending on host settings.",
+  "ForensicScientistInfoLong": "(Crewmate):\nReport a body to collect a sample and analyze it ,if Analyze is successful the killer will be revealed in next meeting .\nYou can also vote a player to remove hexes and curses depending on host settings.",
   "ForensicSampleFailChance": "Sample fail chance",
   "ForensicVitalsDuration": "Vitals duration",
   "ForensicCanRemoveCurses": "Can remove curses",
@@ -4798,6 +4798,20 @@
   "ProfessorInfo": "Add tasks to players!",
   "ProfessorInfoLong": "(Impostor)\nThe Professor can use their shapeshift button to reset a specific player's tasks. They gain ability uses with each kill.",
   "AbilityUses370": "Professor ability uses",
-  "NotTaskBase370": "This player does not have tasks, ability failed"
+  "NotTaskBase370": "This player does not have tasks, ability failed",
+
+  "Meteor": "Meteor",
+  "MeteorInfo": "Summon a meteor strike on target",
+  "MeteorInfoLong": "(Impostor)\nUse your kill button to plant a bomb on your target which will explode after a certain period set by host . \nDouble click to kill normally",
+  "MeteorKillButtonText" : "Meteor Strike",
+  "MeteorBombPlanted" : "Bomb planted on {0}! Explodes in {1}s",
+  "MeteorBombPlantedOnYou" : "A meteor bomb is planted on you!",
+  "MeteorBombCountdown" : "Bomb explodes in {0}s!",
+  "MeteorExplosionKilled" : "Explosion killed {0} additional players",
+  "MeteorExplosionNoAdditionalKills" : "Only the target was killed",
+  "MeteorActiveBomb" : "Active Bomb: {0}\nExplodes in: {1}s",
+  "MeteorNoActiveBomb" : "No active bomb",
+  "MeteorBombOnYou" : "Meteor Bomb!\nExplodes in: {0}s",
+  "TargetIsImmune" : "Target is immune to bomb"
 }
 

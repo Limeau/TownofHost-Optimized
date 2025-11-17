@@ -236,7 +236,7 @@ internal class Quizmaster : RoleBase
 
                 new DeathReasonQuestion { Stage = 4, Question = "PlrDieReason", QuizmasterQuestionType = QuizmasterQuestionType.PlrDeathReasonQuestion},
                 new DeathReasonQuestion { Stage = 4, Question = "PlrDieMethod", QuizmasterQuestionType = QuizmasterQuestionType.PlrDeathMethodQuestion},
-                new SetAnswersQuestion { Stage = 4, Question = "LastAddedRoleForMirage", Answer = "Forensic Scientist", PossibleAnswers = { "Meteor", "Nuancer", "Forensic Scientist", "Godzilla", "Survivalist", "Exorcist", "Trapmaker" }, QuizmasterQuestionType = QuizmasterQuestionType.RoleAddedQuestion },
+                new SetAnswersQuestion { Stage = 4, Question = "LastAddedRoleForMirage", Answer = "WildShot", PossibleAnswers = { "WildShot", "Nuancer", "Forensic Scientist", "Godzilla", "Survivalist", "Meteor", "Trapmaker" }, QuizmasterQuestionType = QuizmasterQuestionType.RoleAddedQuestion },
                 new DeathReasonQuestion { Stage = 4, Question = "PlrDieFaction", QuizmasterQuestionType = QuizmasterQuestionType.PlrDeathKillerFactionQuestion},
                 new SetAnswersQuestion { Stage = 4, Question = "QuizmasterCooldown", Answer = "15", PossibleAnswers = { "15", "30", "0", "999", AURoleOptions.KillCooldown.ToString() }, QuizmasterQuestionType = QuizmasterQuestionType.QuizmasterCooldownQuestion }, // this is a level 4 because the only way to know this would be to look at the code for Quizmaster
                 new SetAnswersQuestion { Stage = 4, Question = "WhoCoded", Answer = "Multiple People", PossibleAnswers = { "Furo", "Drakos", "Lime", "Marg", "Multiple People", "TommyXL", "Niko", "Mirage", "KARPED1EM", "Ryuk" }, QuizmasterQuestionType = QuizmasterQuestionType.WhoCoded },

@@ -62,6 +62,10 @@ public static class DevManager
 
             new(code: "electpout#2133", color: "#FF7DA7", tag: "<color=#FF7DA7>S</color><color=#ff87ad>i</color><color=#FF90b3>l</color><color=#FF9ab9>l</color><color=#FFa3bf>y</color> <color=#FFadc6>G</color><color=#FFb6cc>o</color><color=#FFc0d2>o</color><color=#FFc9d8>f</color><color=#FFd3de>y</color>", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Clubmore"),
             
+            // ArcaneX
+            new(code: "tidybasket#6022", color: "#141314ff", tag: "<color=#000000>Exi</color><color=#cc5050>st</color><color=#e86a6a>i</color><color=#d60a0a>ng</color>", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "ArcaneX"),
+            
+            
             
             new(code: "tourdreamy#7988", color: "#964b00", tag: "2nd Clowniest Clown", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Capy/Checkbox"),
 
