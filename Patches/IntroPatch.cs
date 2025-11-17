@@ -993,14 +993,7 @@ class IntroCutsceneDestroyPatch
 
             Utils.CheckAndSetVentInteractions();
 
-            if (Main.CurrentServerIsVanilla && Options.BypassRateLimitAC.GetBool())
-            {
-                Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync());
-            }
-            else
-            {
-                Utils.DoNotifyRoles();
-            }
+            Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync());
         }
 
         try
