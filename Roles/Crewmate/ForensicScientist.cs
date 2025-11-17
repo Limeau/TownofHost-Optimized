@@ -1,3 +1,10 @@
+using Hazel;
+using System;
+using System.Text.RegularExpressions;
+using TOHO.Modules;
+using TOHO.Modules.ChatManager;
+using static TOHO.CheckForEndVotingPatch;
+using static TOHO.Utils;
 using static TOHO.Options;
 using static TOHO.Translator;
 using UnityEngine;
@@ -155,7 +162,7 @@ internal class ForensicScientist : RoleBase
     public override void OnVote(PlayerControl voter, PlayerControl target)
     {
         var player = _Player;
-        if (player == null || !player.IsAlive() || voter.PlayerId != player.PlayerId || target == null || ) return;
+        if (player == null || !player.IsAlive() || voter.PlayerId != player.PlayerId || target == null ) return;
 
         if (CanRemoveCurses.GetBool() && player.GetAbilityUseLimit()>0)
         {

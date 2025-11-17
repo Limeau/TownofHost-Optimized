@@ -1,14 +1,16 @@
 using AmongUs.GameOptions;
 using Hazel;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static TOHE.Options;
-using static TOHE.Translator;
-using static TOHE.Utils;
-using TOHE.Modules;
-using TOHE.Roles.Core;
+using static TOHO.Options;
+using static TOHO.Translator;
+using static TOHO.Utils;
+using TOHO.Modules;
+using TOHO.Roles.Core;
+using TOHO.Roles.Crewmate;
 
-namespace TOHE.Roles.Impostor;
+namespace TOHO.Roles.Impostor;
 
 internal class Meteor : RoleBase
 {
@@ -58,10 +60,7 @@ internal class Meteor : RoleBase
         pc.AddDoubleTrigger();
     }
 
-    public override void SetKillCooldown(byte id)
-    {
-        AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
-    }
+   public override void SetKillCooldown(byte id) => KillCooldown.GetFloat();
 
     public override bool OnCheckMurderAsKiller(PlayerControl killer, PlayerControl target)
     {
@@ -167,7 +166,7 @@ internal class Meteor : RoleBase
     private static void SendRPC(byte killerId, byte targetId, bool plant)
     {
         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, 
-            (byte)CustomRPC.SyncMeteorBomb, SendOption.Reliable, -1);
+            (byte)CustomRPC.SyncRoleSkill, SendOption.Reliable, -1);
         writer.Write(killerId);
         writer.Write(plant);
         if (plant)
@@ -238,8 +237,9 @@ internal class Meteor : RoleBase
         }
     }
 
-    public override void OnPlayerExiled(PlayerControl exiled, GameData.PlayerInfo voteTarget)
+    public override void OnPlayerExiled(PlayerControl player, NetworkedPlayerInfo exiled)
     {
+
         foreach (var (killerId, (targetId, _)) in BombedPlayers.ToArray())
         {
             if (exiled.PlayerId == killerId || exiled.PlayerId == targetId)
@@ -262,7 +262,7 @@ internal class Meteor : RoleBase
                player.Is(CustomRoles.GM);
     }
 
-    public override string GetLowerText(PlayerControl seer, PlayerControl seen = null, bool isForMeeting = bool isForHud = false)
+    public override string GetLowerText(PlayerControl seer, PlayerControl seen = null, bool isForMeeting = false , bool isForHud = false)
     {
         if (seer == null || !seer.IsAlive() || isForMeeting || !isForHud) return string.Empty;
 
