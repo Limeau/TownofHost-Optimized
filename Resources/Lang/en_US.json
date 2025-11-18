@@ -4822,6 +4822,12 @@
   "ShadowKingInfo": "Use the dead to your advantage",
   "ShadowKingInfoLong": "(Neutral)\nAs the Shadow King, when you are killed for the first time, you come back to life as another player. That player will become dead and lose their role.\nAdditionally, you can make dead players do your deeds for you. By shapeshifting, a random dead player will come back to life, kill the target, and then die again. Kill everyone to win.",
   "AbilityUses372": "Shadow King ability uses",
-  "AbilityUsesPerKill372": "Ability uses gained per kill"
+  "AbilityUsesPerKill372": "Ability uses gained per kill",
+  
+  "ExtraLife": "Extra Life",
+  "ExtraLifeInfo": "You have an extra life!",
+  "ExtraLifeInfoLong": "As the Extra Life, you will not be killed for the first time you are killed.",
+  "ExtraLifeNum": "Number of Extra Lives"
+  
 }
 

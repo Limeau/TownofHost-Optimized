@@ -1036,6 +1036,7 @@ public enum CustomRoles
     Enchanted,
     Evader,
     EvilSpirit,
+    ExtraLife,
     Flash,
     Fool,
     Fragile,

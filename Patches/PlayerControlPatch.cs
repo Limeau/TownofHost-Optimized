@@ -316,6 +316,10 @@ class CheckMurderPatch
                         Diseased.CheckMurder(killer);
                         break;
 
+                    case CustomRoles.ExtraLife:
+                        if (!ExtraLife.CheckMurder(killer, target)) return false;
+                        break;
+                    
                     case CustomRoles.Antidote:
                         Antidote.CheckMurder(killer);
                         break;
