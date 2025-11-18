@@ -28,15 +28,10 @@ internal class Vaporizer : RoleBase
         Main.PlayerStates[target.PlayerId].SetDead();
         target.Data.IsDead = true;
         target.SetRealKiller(killer);
-        target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Vaporizer), GetString("VaporizedTarget")));
+        target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Vaporizer), Translator.GetString("VaporizedTarget")));
         killer.SetKillCooldown();
         return false;
     }
 
     public override bool CanUseKillButton(PlayerControl pc) => true;
-
-    private string GetString(string v)
-    {
-        throw new NotImplementedException();
-    }
 }
