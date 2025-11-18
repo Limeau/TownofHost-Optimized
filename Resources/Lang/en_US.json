@@ -4816,7 +4816,12 @@
   "MeteorActiveBomb" : "Active Bomb: {0}\nExplodes in: {1}s",
   "MeteorNoActiveBomb" : "No active bomb",
   "MeteorBombOnYou" : "Meteor Bomb!\nExplodes in: {0}s",
-  "TargetIsImmune" : "Target is immune to bomb"
+  "TargetIsImmune" : "Target is immune to bomb",
   
+  "ShadowKing": "Shadow King",
+  "ShadowKingInfo": "Use the dead to your advantage",
+  "ShadowKingInfoLong": "(Neutral)\nAs the Shadow King, when you are killed for the first time, you come back to life as another player. That player will become dead and lose their role.\nAdditionally, you can make dead players do your deeds for you. By shapeshifting, a random dead player will come back to life, kill the target, and then die again. Kill everyone to win.",
+  "AbilityUses372": "Shadow King ability uses",
+  "AbilityUsesPerKill372": "Ability uses gained per kill"
 }
 

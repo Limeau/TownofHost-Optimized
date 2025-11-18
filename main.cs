@@ -936,6 +936,7 @@ public enum CustomRoles
     SchrodingersCat,
     Seeker,
     SerialKiller,
+    ShadowKing,
     Shaman,
     Shocker,
     Shroud,
@@ -1196,6 +1197,7 @@ public enum CustomWinner
     Undead = CustomRoles.Undead,
     Atoner = CustomRoles.Atoner,
     Hacker = CustomRoles.Hacker,
+    ShadowKing = CustomRoles.ShadowKing,
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
     TrickorTreat = CustomRoles.TrickorTreater

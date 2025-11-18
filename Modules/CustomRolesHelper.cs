@@ -223,6 +223,7 @@ public static class CustomRolesHelper
             CustomRoles.Rulebook or
             CustomRoles.Volatile or
             CustomRoles.Mutant or
+            CustomRoles.ShadowKing or
             CustomRoles.Hacker or
             CustomRoles.Atoner or
             CustomRoles.Cultist or
@@ -1453,6 +1454,7 @@ public static class CustomRolesHelper
            CustomRoles.Assassin => CountTypes.Assassin,
            CustomRoles.Vaporizer => CountTypes.Vaporizer,
            CustomRoles.Mutant => CountTypes.Mutant,
+           CustomRoles.ShadowKing => CountTypes.ShadowKing,
            CustomRoles.Atoner => CountTypes.Atoner,
            CustomRoles.Hacker => CountTypes.Hacker,
            CustomRoles.SchrodingersCat => CountTypes.None,
@@ -1529,6 +1531,7 @@ public static class CustomRolesHelper
             CustomRoles.Assassin => CustomWinner.Assassin,
             CustomRoles.Vaporizer => CustomWinner.Vaporizer,
             CustomRoles.Mutant => CustomWinner.Mutant,
+            CustomRoles.ShadowKing => CustomWinner.ShadowKing,
             CustomRoles.Atoner => CustomWinner.Atoner,
             CustomRoles.Hacker => CustomWinner.Hacker,
             CustomRoles.Keymaster => CustomWinner.Keymaster,
@@ -1582,6 +1585,7 @@ public static class CustomRolesHelper
             CountTypes.Assassin => CustomRoles.Assassin,
             CountTypes.Vaporizer => CustomRoles.Vaporizer,
             CountTypes.Mutant => CustomRoles.Mutant,
+            CountTypes.ShadowKing => CustomRoles.ShadowKing,
             CountTypes.Atoner => CustomRoles.Atoner,
             CountTypes.Hacker => CustomRoles.Hacker,
             CountTypes.Slayer => CustomRoles.Slayer,
@@ -1692,6 +1696,7 @@ public enum CountTypes
     Rulebook,
     Volatile,
     Mutant,
+    ShadowKing,
     Godzilla,
     Atoner,
     Hacker,
