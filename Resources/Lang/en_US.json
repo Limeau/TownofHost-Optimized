@@ -4827,7 +4827,8 @@
   "ExtraLife": "Extra Life",
   "ExtraLifeInfo": "You have an extra life!",
   "ExtraLifeInfoLong": "As the Extra Life, you will not be killed for the first time you are killed.",
-  "ExtraLifeNum": "Number of Extra Lives"
+  "ExtraLifeNum": "Number of Extra Lives",
   
+  "NewUpdateAvailable": "<size=300%><b>A new TOHO update is available.</b></size>\n<size=200%><b>{0}</b></size>"
 }
 
