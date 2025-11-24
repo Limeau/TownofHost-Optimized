@@ -4817,6 +4817,7 @@
   "MeteorNoActiveBomb" : "No active bomb",
   "MeteorBombOnYou" : "Meteor Bomb!\nExplodes in: {0}s",
   "TargetIsImmune" : "Target is immune to bomb",
+  "NotificationForTarget": "Notify Target about bomb",
   
   "ShadowKing": "Shadow King",
   "ShadowKingInfo": "Use the dead to your advantage",
