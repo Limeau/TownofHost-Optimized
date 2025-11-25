@@ -25,6 +25,7 @@ internal class Meteor : RoleBase
     private static OptionItem ExplosionDelay;
     private static OptionItem ExplosionRadius;
     private static OptionItem ImpostorsDieInExplosion;
+    private static OptionItem NotificationOption;
     private static OptionItem TargetNotificationDelay;
 
     private static readonly Dictionary<byte, (byte targetId, long plantTime)> BombedPlayers = [];
@@ -43,9 +44,11 @@ internal class Meteor : RoleBase
             .SetValueFormat(OptionFormat.Multiplier);
         ImpostorsDieInExplosion = BooleanOptionItem.Create(Id + 13, "MeteorImpostorsDieInExplosion", false, TabGroup.ImpostorRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Meteor]);
-        TargetNotificationDelay = FloatOptionItem.Create(Id + 14, "MeteorTargetNotificationDelay", new(0f, 15f, 1f), 5f, TabGroup.ImpostorRoles, false)
-            .SetParent(CustomRoleSpawnChances[CustomRoles.Meteor])
-            .SetValueFormat(OptionFormat.Seconds);
+        NotificationOption = BooleanOptionItem.Create(Id + 14, "NotificationForTarget", false, TabGroup.ImpostorRoles, false)
+            .SetParent(CustomRoleSpawnChances[CustomRoles.Meteor]);
+        TargetNotificationDelay = FloatOptionItem.Create(Id + 15, "MeteorTargetNotificationDelay", new(0f, ExplosionDelay.GetFloat(), 1f), 5f, TabGroup.ImpostorRoles, false)
+               .SetParent(NotificationOption)
+               .SetValueFormat(OptionFormat.Seconds);
     }
 
     public override void Init()
@@ -60,7 +63,7 @@ internal class Meteor : RoleBase
         pc.AddDoubleTrigger();
     }
 
-   public override void SetKillCooldown(byte id) => KillCooldown.GetFloat();
+    public override void SetKillCooldown(byte id) => KillCooldown.GetFloat();
 
     public override bool OnCheckMurderAsKiller(PlayerControl killer, PlayerControl target)
     {
@@ -69,7 +72,7 @@ internal class Meteor : RoleBase
         {
             return true;
         }
-       
+
         // Single click = plant bomb
         PlantBomb(killer, target);
         return false;
@@ -92,13 +95,16 @@ internal class Meteor : RoleBase
 
         killer.Notify(string.Format(GetString("MeteorBombPlanted"), target.GetRealName(), ExplosionDelay.GetInt()), 3f);
 
-        _ = new LateTask(() =>
+        if (NotificationOption.GetBool())
         {
-            if (BombedPlayers.ContainsKey(killer.PlayerId) && target.IsAlive())
+            _ = new LateTask(() =>
             {
-                target.Notify(GetString("MeteorBombPlantedOnYou"), 3f);
-            }
-        }, TargetNotificationDelay.GetFloat(), "Meteor Target Notification");
+                if (BombedPlayers.ContainsKey(killer.PlayerId) && target.IsAlive())
+                {
+                    target.Notify(GetString("MeteorBombPlantedOnYou"), 3f);
+                }
+            }, TargetNotificationDelay.GetFloat(), "Meteor Target Notification");
+        }
 
         killer.SetKillCooldown();
 
@@ -122,9 +128,9 @@ internal class Meteor : RoleBase
         {
             if (target.PlayerId == bombTarget.PlayerId) continue;
 
-            if (!target.IsAlive() || 
-                IsImmune(target) || 
-                Medic.IsProtected(target.PlayerId) || 
+            if (!target.IsAlive() ||
+                IsImmune(target) ||
+                Medic.IsProtected(target.PlayerId) ||
                 target.inVent ||
                 target.IsTransformedNeutralApocalypse())
                 continue;
@@ -165,7 +171,7 @@ internal class Meteor : RoleBase
 
     private static void SendRPC(byte killerId, byte targetId, bool plant)
     {
-        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, 
+        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
             (byte)CustomRPC.SyncRoleSkill, SendOption.Reliable, -1);
         writer.Write(killerId);
         writer.Write(plant);
@@ -214,14 +220,17 @@ internal class Meteor : RoleBase
             }
             else
             {
-                // Notify target of remaining time in last 5 seconds
-                var remainingTime = plantTime + (long)ExplosionDelay.GetFloat() - nowTime;
-                if (remainingTime <= 5 && !target.IsModded())
+                if (NotificationOption.GetBool())
                 {
-                    var timeSincePlant = nowTime - plantTime;
-                    if (timeSincePlant >= TargetNotificationDelay.GetFloat())
+                    // Notify target of remaining time in last 5 seconds
+                    var remainingTime = plantTime + (long)ExplosionDelay.GetFloat() - nowTime;
+                    if (remainingTime <= 5 && !target.IsModded())
                     {
-                        target.Notify(string.Format(GetString("MeteorBombCountdown"), remainingTime), 1f, false);
+                        var timeSincePlant = nowTime - plantTime;
+                        if (timeSincePlant >= TargetNotificationDelay.GetFloat())
+                        {
+                            target.Notify(string.Format(GetString("MeteorBombCountdown"), remainingTime), 1f, false);
+                        }
                     }
                 }
             }
@@ -262,7 +271,7 @@ internal class Meteor : RoleBase
                player.Is(CustomRoles.GM);
     }
 
-    public override string GetLowerText(PlayerControl seer, PlayerControl seen = null, bool isForMeeting = false , bool isForHud = false)
+    public override string GetLowerText(PlayerControl seer, PlayerControl seen = null, bool isForMeeting = false, bool isForHud = false)
     {
         if (seer == null || !seer.IsAlive() || isForMeeting || !isForHud) return string.Empty;
 
@@ -302,6 +311,6 @@ internal class Meteor : RoleBase
     public override void SetAbilityButtonText(HudManager hud, byte playerId)
     {
         hud.KillButton.OverrideText(GetString("MeteorKillButtonText"));
-        
+
     }
 }
