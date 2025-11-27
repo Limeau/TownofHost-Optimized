@@ -21,7 +21,7 @@ public class Windy : IAddon
         Options.SetupAdtRoleOptions(Id, CustomRoles.Windy, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
         SpeedBoost = FloatOptionItem.Create(Id + 10, "SpeedBoost374", new(1f, 5f, 0.25f), 3f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
              .SetValueFormat(OptionFormat.Multiplier);
-        Radius = IntegerOptionItem.Create(Id + 11, "Radius374", new(1, 5, 1), 3, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
+        Radius = FloatOptionItem.Create(Id + 11, "Radius374", new(1f, 3f, 0.5f), 1.5f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
              .SetValueFormat(OptionFormat.Multiplier);
     }
 
