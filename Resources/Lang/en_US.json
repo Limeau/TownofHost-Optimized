@@ -4830,6 +4830,12 @@
   "ExtraLifeInfoLong": "As the Extra Life, you will not be killed for the first time you are killed.",
   "ExtraLifeNum": "Number of Extra Lives",
   
-  "NewUpdateAvailable": "<size=300%><b>A new TOHO update is available.</b></size>\n<size=200%><b>{0}</b></size>"
+  "NewUpdateAvailable": "<size=300%><b>A new TOHO update is available.</b></size>\n<size=200%><b>{0}</b></size>",
+  
+  "Windy": "Windy",
+  "WindyInfo": "Run like the wind",
+  "WindyInfoLong": "(Add-On)\nWhenever a player is close to the Windy, the Windy will have a speed boost.",
+  "SpeedBoost374": "Windy speed boost",
+  "Radius374": "Radius for Windy to get a speed boost"
 }
 

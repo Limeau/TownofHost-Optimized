@@ -2531,6 +2531,7 @@ public static class Utils
             }
 
             if (Statue.IsEnable) Statue.AfterMeetingTasks();
+            if (Windy.IsEnable) Windy.AfterMeetingTasks();
             if (Burst.IsEnable) Burst.AfterMeetingTasks();
 
             if (CustomRoles.CopyCat.HasEnabled()) CopyCat.UnAfterMeetingTasks(); // All crew hast to be before this

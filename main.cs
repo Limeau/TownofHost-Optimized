@@ -1102,6 +1102,7 @@ public enum CustomRoles
     Unreportable, //disregarded
     VoidBallot,
     Watcher,
+    Windy,
     Workhorse,
     Youtuber
 }
