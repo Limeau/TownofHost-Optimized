@@ -2204,7 +2204,7 @@ internal class ChatCommands
                 {
                     Utils.ShowChildrenSettings(spawnRate, ref Conf);
                     var cleared = Conf.ToString();
-                    string chance = Utils.GetRoleMode(rl) + "\n";
+                    string chance = Utils.GetRoleMode(rl);
                     var Setting = $"<color={rlHex}>{GetString(rl.ToString())} {GetString("Settings")}</color> {chance}:\n";
                     
                     Conf.Clear().Append($"<color=#ffffff>" + $"<size={Csize}>" + Setting + cleared + "</size>" + "</color>");
