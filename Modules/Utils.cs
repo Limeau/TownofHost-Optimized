@@ -280,8 +280,25 @@ public static class Utils
     {
         string ColorName = ColorString(GetRoleColor(role), GetString($"{role}"));
 
-        string chance = GetRoleMode(role);
-        if (role.IsAdditionRole() && !role.IsEnable()) chance = ColorString(Color.red, "(OFF)");
+        string chance = string.Empty;
+        switch (role.GetCustomRoleTeam())
+        {
+            case Custom_Team.Impostor:
+                chance = "<color=#ff1919>(Impostor)</color>";
+                break; 
+            case Custom_Team.Coven:
+                chance = "<color=#ac42f2>(Coven)</color>";
+                break; 
+            case Custom_Team.Crewmate:
+                chance = "<color=#00ffff>(Crewmate)</color>";
+                break; 
+            case Custom_Team.Neutral:
+                chance = "<color=#999999>(Neutral)</color>";
+                break;
+            case Custom_Team.Addon:
+                chance = "<color=#ffff00>(Add-On)</color>";
+                break;
+        }
 
         return $"{ColorName} {chance}";
     }
