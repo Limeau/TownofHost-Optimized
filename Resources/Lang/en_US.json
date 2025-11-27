@@ -4835,7 +4835,14 @@
   "Windy": "Windy",
   "WindyInfo": "Run like the wind",
   "WindyInfoLong": "(Add-On)\nWhenever a player is close to the Windy, the Windy will have a speed boost.",
-  "SpeedBoost374": "Windy speed boost",
-  "Radius374": "Radius for Windy to get a speed boost"
+  "SpeedBoost374": "Windy Speed near others",
+  "Radius374": "Radius for Windy to get a speed boost",
+  
+  "Rogue": "Rogue",
+  "RogueInfo": "Sneak away from your kills",
+  "RogueInfoLong": "(Impostor)\nAs the Rogue, after killing a player, you gain a massive speed boost",
+  "SpeedBoost375": "Rogue Speed after killing",
+  "Duration375": "Duration of Rogue speed boost"
 }
+
 

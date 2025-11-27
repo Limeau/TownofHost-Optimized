@@ -749,6 +749,7 @@ public enum CustomRoles
     Refugee,
     Rich,
     RiftMaker,
+    Rogue,
     Saboteur,
     Scavenger,
     ShapeMaster,
