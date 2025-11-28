@@ -19,7 +19,7 @@ public class Rainbow : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Rainbow, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        RainbowColorChangeCoolDown = IntegerOptionItem.Create(Id + 13, "RainbowColorChangeCoolDown", new(1, 100, 1), 3, TabGroup.Addons, false)
+        RainbowColorChangeCoolDown = FloatOptionItem.Create(Id + 13, "RainbowColorChangeCoolDown", new(0.1f, 10f, 0.1f), 3, TabGroup.Addons, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Rainbow]);
         ChangeInCamouflage = BooleanOptionItem.Create(Id + 14, "RainbowInCamouflage", true, TabGroup.Addons, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Rainbow]);
@@ -46,7 +46,7 @@ public class Rainbow : IAddon
     {
         if (Camouflage.IsCamouflage && !ChangeInCamouflage.GetBool()) return;
 
-        if (LastColorChange + RainbowColorChangeCoolDown.GetInt() <= Utils.GetTimeStamp())
+        if (LastColorChange + RainbowColorChangeCoolDown.GetFloat() <= Utils.GetTimeStamp())
         {
             LastColorChange = Utils.GetTimeStamp();
             ChangeAllColor();
