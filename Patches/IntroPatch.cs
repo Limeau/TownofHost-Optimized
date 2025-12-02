@@ -544,6 +544,7 @@ class BeginCrewmatePatch
                         PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Tracker);
                         break;
                     case CustomRoles.Celebrity:
+                    case CustomRoles.Hippie:
                     case CustomRoles.Sacrifist:
                     case CustomRoles.Poisoner:
                     case CustomRoles.NoisemakerTOHO:

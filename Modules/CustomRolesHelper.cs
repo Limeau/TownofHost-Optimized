@@ -666,7 +666,8 @@ public static class CustomRolesHelper
 
             case CustomRoles.Cyber:
                 if (pc.Is(CustomRoles.Doppelganger)
-                    || pc.Is(CustomRoles.Celebrity)
+                    || pc.Is(CustomRoles.Celebrity) 
+                    || pc.Is(CustomRoles.Hippie)
                     || pc.Is(CustomRoles.SchrodingersCat)
                     || pc.Is(CustomRoles.SuperStar))
                     return false;

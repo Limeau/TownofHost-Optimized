@@ -813,6 +813,7 @@ public enum CustomRoles
     Grenadier,
     Guardian,
     GuessMaster,
+    Hippie,
     Inspector,
     Investigator,
     Jailer,
