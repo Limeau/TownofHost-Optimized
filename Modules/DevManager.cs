@@ -86,10 +86,12 @@ public static class DevManager
 
             // Zuzu
              new(code: "partyready#4849", color: "#a000c8", tag: "Cultist", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Zuzu"),
-
-
-
+            
             /*TESTERS ABOVE*/
+            // Christmas advent calendar below
+            
+            new(code: "manesame#3484", color: "#9D00FF", tag: "Evol", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Evol"),
+            new(code: "manesame#3484", color: "#9D00FF", tag: "Evol", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Evol"),
         ];
     }
 
