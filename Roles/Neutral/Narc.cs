@@ -33,12 +33,7 @@ internal class Narc : RoleBase
         if (target.GetCustomRole().IsImpostor())
         {
             Main.PlayerStates[target.PlayerId].deathReason = PlayerState.DeathReason.Arrested;
-            killer.RpcGuardAndKill(target);
-            target.RpcExileV2();
-            Main.PlayerStates[target.PlayerId].SetDead();
-            target.Data.IsDead = true;
-            target.SetRealKiller(killer);
-            killer.SetKillCooldown();
+            killer.KillWithoutBody(target);
             if (impnum == 0)
             {
                 AmnesiacReset = false;

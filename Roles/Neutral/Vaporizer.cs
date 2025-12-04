@@ -23,13 +23,8 @@ internal class Vaporizer : RoleBase
     public override bool OnCheckMurderAsKiller(PlayerControl killer, PlayerControl target)
     {
         Main.PlayerStates[target.PlayerId].deathReason = PlayerState.DeathReason.Vaporized;
-        killer.RpcGuardAndKill(target);
-        target.RpcExileV2();
-        Main.PlayerStates[target.PlayerId].SetDead();
-        target.Data.IsDead = true;
-        target.SetRealKiller(killer);
+        killer.KillWithoutBody(target);
         target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Vaporizer), Translator.GetString("VaporizedTarget")));
-        killer.SetKillCooldown();
         return false;
     }
 
