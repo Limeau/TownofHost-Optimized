@@ -4846,7 +4846,11 @@
   
   "Hippie": "Hippie",
   "HippieInfo": "Spread joy to the Crewmates",
-  "HippieInfoLong": "Everyone can see the Hippie.\nWhen the Hippie is killed, the killer will earn the Admired role, which turns them into a Crewmate team.\nThe Hippie will not be ejected."
+  "HippieInfoLong": "Everyone can see the Hippie.\nWhen the Hippie is killed, the killer will earn the Admired role, which turns them into a Crewmate team.\nThe Hippie will not be ejected.",
+  
+  "Magnet": "Magnet",
+  "MagnetInfo": "Send one player to another",
+  "MagnetInfoLong": "The Magnet can mark one player, and then mark another to send the second player to the first player's spot. Double click to kill normally."
 }
 
 

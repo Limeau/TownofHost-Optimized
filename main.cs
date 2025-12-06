@@ -731,6 +731,7 @@ public enum CustomRoles
     Lightning,
     Ludopath,
     Lurker,
+    Magnet,
     Mastermind,
     Mercenary,
     Meteor,
