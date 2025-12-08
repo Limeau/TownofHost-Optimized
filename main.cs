@@ -882,6 +882,7 @@ public enum CustomRoles
     Baker,
     Bandit,
     Berserker,
+    Blade,
     BloodKnight,
     Collector,
     Contaminator,
@@ -1203,6 +1204,7 @@ public enum CustomWinner
     Atoner = CustomRoles.Atoner,
     Hacker = CustomRoles.Hacker,
     ShadowKing = CustomRoles.ShadowKing,
+    Blade = CustomRoles.Blade,
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
     TrickorTreat = CustomRoles.TrickorTreater
