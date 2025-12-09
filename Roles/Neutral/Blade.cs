@@ -17,7 +17,6 @@ internal class Blade : RoleBase
     //==================================================================\\
 
     private static Dictionary<PlayerControl, bool> IsBladeActive = [];
-    private static bool Unfreeze;
     private static float tmpSpeed;
     
     private static OptionItem KillCooldown;
@@ -42,15 +41,15 @@ internal class Blade : RoleBase
 
     public override void UnShapeShiftButton(PlayerControl shapeshifter)
     {
-        Unfreeze = false;
         IsBladeActive[shapeshifter] = true; 
         tmpSpeed = Main.AllPlayerSpeed[shapeshifter.PlayerId];
         Main.AllPlayerSpeed[shapeshifter.PlayerId] = 0f;
+        shapeshifter.MarkDirtySettings();
     }
 
     public override void OnFixedUpdate(PlayerControl varr, bool lowLoad, long nowTime, int timerLowLoad)
     {
-        if (!IsBladeActive[_Player] && Unfreeze) return;
+        if (!IsBladeActive[_Player]) return;
         if (GameStates.IsMeeting) return;
         _ = new LateTask(() =>
         {
@@ -72,6 +71,7 @@ internal class Blade : RoleBase
             {
                 IsBladeActive[_Player] = false;
                 Main.AllPlayerSpeed[_Player.PlayerId] = tmpSpeed;
+                _Player.MarkDirtySettings();
             }, UnfreezeTime.GetFloat(), "Blade Unfreeze");
         }, 0.1f, "Blade Kill Bug Fix");
     }
