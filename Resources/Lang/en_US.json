@@ -4856,8 +4856,15 @@
   "BladeInfo": "Silently kill players while frozen",
   "BladeInfoLong": "The Blade can use the unshift button to freeze in place, and the next person to walk near the blade will die without a body. The Blade can kill normally while its ability is not active. Its ability will last for a few seconds after the first player is killed.",
   "UnfreezeTime379": "Time after first kill to Unfreeze the Blade",
-  "BladeRadius379": "Blade kill radius"
+  "BladeRadius379": "Blade kill radius",
+  
+  "Stunner": "Stunner",
+  "StunnerInfo": "Jumpscare and blind the Crewmates",
+  "StunnerInfoLong": "The Stunner can use their shapeshift button to flash bang someone and temporarily blind them.",
+  "BlindDuration380": "Blindness duration",
+  "StunnerButtonText": "Jumpscare"
 }
+
 
 
 
