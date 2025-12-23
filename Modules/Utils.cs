@@ -1680,7 +1680,7 @@ public static class Utils
         
         if (!player.IsHost() && GameStates.IsLobby) 
         {
-            name = GradientText(name, player.CurrentOutfit.ColorId);
+            if (Options.GradientTagsOpt.GetBool()) name = GradientText(name, player.CurrentOutfit.ColorId);
         }
         
         if (player.IsHost())
