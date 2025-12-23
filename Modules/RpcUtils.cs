@@ -60,6 +60,7 @@ public class RpcUtils
     [HarmonyPostfix]
     public static void PackAndSendQueuedMessagesPostfix(InnerNetClient __instance, [HarmonyArgument(1)] SendOption sendOption)
     {
+        if (queue.Count > 0) return;
         PackAndSendSpecificMessage(sendOption);
     }
 
