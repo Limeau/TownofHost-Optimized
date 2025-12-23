@@ -17,7 +17,7 @@ internal class Stunnner : RoleBase
     //==================================================================\\
     public override void SetAbilityButtonText(HudManager hud, byte playerId)
     {
-        hud.AbilityButton.OverrideText(GetString("StunnerButtonText"));
+        hud.KillButton.OverrideText(GetString("StunnerButtonText"));
     }
     
     private static OptionItem ShapeshiftCooldown;

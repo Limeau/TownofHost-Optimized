@@ -846,6 +846,7 @@ public enum CustomRoles
     Psychic,
     Retributionist,
     Reverie,
+    Santa,
     Savior,
     Sentinel,
     Sheriff,

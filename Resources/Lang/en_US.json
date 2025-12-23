@@ -4862,7 +4862,12 @@
   "StunnerInfo": "Jumpscare and blind the Crewmates",
   "StunnerInfoLong": "The Stunner can use their shapeshift button to flash bang someone and temporarily blind them.",
   "BlindDuration380": "Blindness duration",
-  "StunnerButtonText": "Jumpscare"
+  "StunnerButtonText": "Jumpscare",
+  
+  "Santa": "Santa",
+  "SantaInfo": "Give gifts to the Nice and the Naughty",
+  "SantaInfoLong": "As the Santa, you can give gifts to players- if they are nice (crewmate) they get a shield, and if they are naughty (impostor), their next kill gets shielded!",
+  "SantaButtonText": "Gift"
 }
 
 
