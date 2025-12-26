@@ -182,13 +182,7 @@ internal static class UltimateTeam
         if (Lives[target.PlayerId] == 0) return true;
 
         Main.PlayerStates[target.PlayerId].deathReason = PlayerState.DeathReason.Kill;
-        killer.RpcGuardAndKill(target);
-        target.RpcGuardAndKill(killer);
-        target.RpcExileV2();
-        Main.PlayerStates[target.PlayerId].SetDead();
-        target.Data.IsDead = true;
-        target.SetRealKiller(killer);
-        killer.SetKillCooldown();
+        killer.KillWithoutBody(target);
         return false;
     }
 

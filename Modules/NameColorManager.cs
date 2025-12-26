@@ -83,6 +83,9 @@ public static class NameColorManager
         // Cyber
         if (!seer.Is(CustomRoles.Visionary) && target.Is(CustomRoles.Cyber) && Cyber.CyberKnown.GetBool()) color = Main.roleColors[CustomRoles.Cyber];
 
+        // Hippie
+        if (target.Is(CustomRoles.Hippie)) color = Main.roleColors[CustomRoles.Hippie];
+        
         // Necroview
         if (seer.Is(CustomRoles.Necroview) && seer.IsAlive())
         {

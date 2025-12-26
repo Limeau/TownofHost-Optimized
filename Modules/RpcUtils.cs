@@ -58,8 +58,9 @@ public class RpcUtils
 
     [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.PackAndSendQueuedMessages))]
     [HarmonyPostfix]
-    public static void PackAndSendQueuedMessagesPostfix(InnerNetClient __instance, [HarmonyArgument(1)] SendOption sendOption)
+    public static void PackAndSendQueuedMessagesPostfix(InnerNetClient __instance, [HarmonyArgument(0)] Queue<IGameDataMessage> queue, [HarmonyArgument(1)] SendOption sendOption)
     {
+        if (queue.Count > 0) return;
         PackAndSendSpecificMessage(sendOption);
     }
 

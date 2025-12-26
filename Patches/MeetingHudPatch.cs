@@ -895,6 +895,7 @@ static class ExtendedMeetingHud
                         VoteNum = 0;
                     }
                 }
+                
                 //Set Influenced Vote number to zero while counting Votes, and count Influenced Vote upon finishing Influenced check
 
                 if (target != null && target.Is(CustomRoles.Evader))

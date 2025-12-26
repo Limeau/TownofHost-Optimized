@@ -1712,6 +1712,16 @@ static class ExtendedPlayerControl
         Main.PlayerStates[targetId].deathReason = reason;
     }
 
+    public static void KillWithoutBody(this PlayerControl killer, PlayerControl target)
+    {
+        killer.RpcGuardAndKill(target);
+        target.RpcExileV2();
+        Main.PlayerStates[target.PlayerId].SetDead();
+        target.Data.IsDead = true;
+        target.SetRealKiller(killer);
+        killer.SetKillCooldown();
+    }
+
     public static bool Is(this PlayerControl target, CustomRoles role) =>
         role > CustomRoles.NotAssigned ? target.GetCustomSubRoles().Contains(role) : target.GetCustomRole() == role;
     public static bool Is(this PlayerControl target, Custom_Team type) { return target.GetCustomRole().GetCustomRoleTeam() == type; }

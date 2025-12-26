@@ -4842,7 +4842,34 @@
   "RogueInfo": "Sneak away from your kills",
   "RogueInfoLong": "As the Rogue, after killing a player, you gain a massive speed boost",
   "SpeedBoost375": "Rogue Speed after killing",
-  "Duration375": "Duration of Rogue speed boost"
+  "Duration375": "Duration of Rogue speed boost",
+  
+  "Hippie": "Hippie",
+  "HippieInfo": "Spread joy to the Crewmates",
+  "HippieInfoLong": "Everyone can see the Hippie.\nWhen the Hippie is killed, the killer will earn the Admired role, which turns them into a Crewmate team.\nThe Hippie will not be ejected.",
+  
+  "Magnet": "Magnet",
+  "MagnetInfo": "Send one player to another",
+  "MagnetInfoLong": "The Magnet can mark one player, and then mark another to send the second player to the first player's spot. Double click to kill normally.",
+  
+  "Blade": "Blade",
+  "BladeInfo": "Silently kill players while frozen",
+  "BladeInfoLong": "The Blade can use the unshift button to freeze in place, and the next person to walk near the blade will die without a body. The Blade can kill normally while its ability is not active. Its ability will last for a few seconds after the first player is killed.",
+  "UnfreezeTime379": "Time after first kill to Unfreeze the Blade",
+  "BladeRadius379": "Blade kill radius",
+  
+  "Stunner": "Stunner",
+  "StunnerInfo": "Jumpscare and blind the Crewmates",
+  "StunnerInfoLong": "The Stunner can use their shapeshift button to flash bang someone and temporarily blind them.",
+  "BlindDuration380": "Blindness duration",
+  "StunnerButtonText": "Jumpscare",
+  
+  "Santa": "Santa",
+  "SantaInfo": "Give gifts to the Nice and the Naughty",
+  "SantaInfoLong": "As the Santa, you can give gifts to players- if they are nice (crewmate) they get a shield, and if they are naughty (impostor), their next kill gets shielded!",
+  "SantaButtonText": "Gift"
 }
+
+
 
 

@@ -45,9 +45,9 @@ public class Main : BasePlugin
     public static ConfigEntry<string> DebugKeyInput { get; private set; }
 
     public const string PluginGuid = "com.Limeau.townofhostoptimized";
-    public const string PluginVersion = "2025.1128.221.01"; // YEAR.MMDD.VERSION.CANARYDEV
-    public const string PluginDisplayVersion = "2.2.1";
-    public const string PluginDisplaySuffix = " Test 1";
+    public const string PluginVersion = "2025.1211.230.00"; // YEAR.MMDD.VERSION.CANARYDEV
+    public const string PluginDisplayVersion = "2.3.0";
+    public const string PluginDisplaySuffix = "";
     public const string SupportedVersionAU = "2025.9.9"; // Changed becasue Dark theme works at this version.
 
     /******************* Change one of the three variables to true before making a release. *******************/
@@ -731,6 +731,7 @@ public enum CustomRoles
     Lightning,
     Ludopath,
     Lurker,
+    Magnet,
     Mastermind,
     Mercenary,
     Meteor,
@@ -756,6 +757,7 @@ public enum CustomRoles
     Sniper,
     SoulCatcher,
     Stealth,
+    Stunner,
     Sun,
     YinYanger,
     Swooper,
@@ -813,6 +815,7 @@ public enum CustomRoles
     Grenadier,
     Guardian,
     GuessMaster,
+    Hippie,
     Inspector,
     Investigator,
     Jailer,
@@ -843,6 +846,7 @@ public enum CustomRoles
     Psychic,
     Retributionist,
     Reverie,
+    Santa,
     Savior,
     Sentinel,
     Sheriff,
@@ -880,6 +884,7 @@ public enum CustomRoles
     Baker,
     Bandit,
     Berserker,
+    Blade,
     BloodKnight,
     Collector,
     Contaminator,
@@ -1201,6 +1206,7 @@ public enum CustomWinner
     Atoner = CustomRoles.Atoner,
     Hacker = CustomRoles.Hacker,
     ShadowKing = CustomRoles.ShadowKing,
+    Blade = CustomRoles.Blade,
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
     TrickorTreat = CustomRoles.TrickorTreater

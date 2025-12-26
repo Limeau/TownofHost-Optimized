@@ -9,27 +9,7 @@ public static class TagManager
     private static readonly string TAGS_FILE_PATH = "./TOHO-DATA/Tags";
 
     public static void Init()
-    {
-        CreateIfNotExists();
-    }
-
-    public static void CreateIfNotExists()
-    {
-        try
-        {
-            if (!Directory.Exists(@"TOHO-DATA/Tags")) Directory.CreateDirectory(@"TOHO-DATA/Tags");
-            var defaultTagMsg = GetResourcesTxt($"TOHO.Resources.Config.TagTemplate.txt");
-            if (!File.Exists(@"./TOHO-DATA/Tags/Tag_Template.txt")) // Default tag
-            {
-                using FileStream fs = File.Create(@"./TOHO-DATA/Tags/Tag_Template.txt");
-            }
-            File.WriteAllText(@"./TOHO-DATA/Tags/Tag_Template.txt", defaultTagMsg); // Overwriting default template
-        }
-        catch (Exception ex)
-        {
-            Logger.Exception(ex, "TagManager");
-        }
-    }
+    { }
 
     private static string GetResourcesTxt(string path)
     {
