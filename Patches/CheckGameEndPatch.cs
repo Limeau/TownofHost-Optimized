@@ -643,7 +643,7 @@ class GameEndCheckerForNormal
         }
 
         // Update all Notify Roles
-        Utils.DoNotifyRoles(ForceLoop: true, NoCache: true);
+        Utils.DoNotifyRoles(NoCache: true);
 
         // Start End Game
         GameManager.Instance.RpcEndGame(reason, false);
