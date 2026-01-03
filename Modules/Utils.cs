@@ -1996,21 +1996,40 @@ public static class Utils
             // When someone press Report button but NotifyRoles is not for meeting
             if (Main.MeetingIsStarted && !isForMeeting) return;
         }
+        
+        PlayerControl[] apc = Main.AllPlayerControls;
+        PlayerControl[] seerList = SpecifySeer != null ? [SpecifySeer] : apc;
+        
+        var sender = CustomRpcSender.Create("NotifyRoles");
+        var hasValue = false;
+        
+        foreach (PlayerControl seer in seerList)
+        {
+            hasValue |= DoNotifyRoles(SpecifySeer, SpecifyTarget, isForMeeting, NoCache, ForceLoop, CamouflageIsForMeeting, MushroomMixupIsActive);
+            if (sender.stream.Length > 500)
+            {
+                sender.SendMessage();
+                sender = CustomRpcSender.Create("NotifyRoles");
+                hasValue = false;
+            }
+        }
+        
+        sender.SendMessage(!hasValue || sender.stream.Length <= 3);
 
-        await DoNotifyRoles(SpecifySeer, SpecifyTarget, isForMeeting, NoCache, ForceLoop, CamouflageIsForMeeting, MushroomMixupIsActive);
+        
     }
-    public static Task DoNotifyRoles(PlayerControl SpecifySeer = null, PlayerControl SpecifyTarget = null, bool isForMeeting = false, bool NoCache = false, bool ForceLoop = true, bool CamouflageIsForMeeting = false, bool MushroomMixupIsActive = false)
+    public static bool DoNotifyRoles(PlayerControl SpecifySeer = null, PlayerControl SpecifyTarget = null, bool isForMeeting = false, bool NoCache = false, bool ForceLoop = true, bool CamouflageIsForMeeting = false, bool MushroomMixupIsActive = false)
     {
-        if (!AmongUsClient.Instance.AmHost || GameStates.IsHideNSeek || Main.AllPlayerControls == null || SetUpRoleTextPatch.IsInIntro) return Task.CompletedTask;
+        if (!AmongUsClient.Instance.AmHost || GameStates.IsHideNSeek || Main.AllPlayerControls == null || SetUpRoleTextPatch.IsInIntro) return false;
         if (MeetingHud.Instance)
         {
             // When the meeting window is active and game is not ended
-            if (!GameEndCheckerForNormal.GameIsEnded) return Task.CompletedTask;
+            if (!GameEndCheckerForNormal.GameIsEnded) return false;
         }
         else
         {
             // When someone press Report button but NotifyRoles is not for meeting
-            if (Main.MeetingIsStarted && !isForMeeting) return Task.CompletedTask;
+            if (Main.MeetingIsStarted && !isForMeeting) return false;
         }
 
         HudManagerUpdatePatch.NowCallNotifyRolesCount++;
@@ -2381,11 +2400,11 @@ public static class Utils
                         realTarget.RpcSetNamePrivate(TargetName, seer, force: NoCache);
                     }
                 }
-                
+
             }*/
         }
         Logger.Info($" END", "DoNotifyRoles");
-        return Task.CompletedTask;
+        return true;
     }
     public static void MarkEveryoneDirtySettings()
     {
