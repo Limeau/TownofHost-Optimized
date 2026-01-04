@@ -2000,7 +2000,7 @@ public static class Utils
         PlayerControl[] apc = Main.AllPlayerControls;
         PlayerControl[] seerList = SpecifySeer != null ? [SpecifySeer] : apc;
         
-        var sender = CustomRpcSender.Create("NotifyRoles");
+        var sender = CustomRpcSender.Create("NotifyRoles", SendOption.None);
         var hasValue = false;
         
         foreach (PlayerControl seer in seerList)
