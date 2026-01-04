@@ -121,7 +121,6 @@ internal class Glitch : RoleBase
         if (HackCDTimer > 180 || HackCDTimer < 0) HackCDTimer = 0;
         if (KCDTimer > 180 || KCDTimer < 0) KCDTimer = 0;
 
-        bool change = false;
         foreach (var pc in hackedIdList)
         {
             if (pc.Value + HackDuration.GetInt() < nowTime)
