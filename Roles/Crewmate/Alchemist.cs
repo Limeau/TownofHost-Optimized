@@ -204,7 +204,7 @@ internal class Alchemist : RoleBase
                         player.MarkDirtySettings();
                         target.MarkDirtySettings();
                         BloodthirstList.Remove(player.PlayerId);
-                        Utils.NotifyRoles(SpecifySeer: Utils.GetPlayerById(bloodthirstId), SpecifyTarget: player, ForceLoop: true);
+                        // Utils.NotifyRoles(SpecifySeer: Utils.GetPlayerById(bloodthirstId), SpecifyTarget: player, ForceLoop: true);
                     }
                 }
             }

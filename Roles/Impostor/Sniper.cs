@@ -233,7 +233,7 @@ internal class Sniper : RoleBase
             foreach (var otherPc in targets.Keys)
             {
                 snList.Add(otherPc.PlayerId);
-                Utils.NotifyRoles(SpecifySeer: otherPc);
+                // Utils.NotifyRoles(SpecifySeer: otherPc);
             }
             SendRPC(sniperId);
 
@@ -242,7 +242,7 @@ internal class Sniper : RoleBase
                 snList.Clear();
                 foreach (var otherPc in targets.Keys)
                 {
-                    Utils.NotifyRoles(SpecifySeer: otherPc);
+                    // Utils.NotifyRoles(SpecifySeer: otherPc);
                 }
                 SendRPC(sniperId);
              }, 0.5f, "Sniper shot Notify");
@@ -274,7 +274,7 @@ internal class Sniper : RoleBase
         else
         {
             AimTime[sniperId] += Time.fixedDeltaTime;
-            Utils.NotifyRoles(SpecifySeer: sniper);
+            // Utils.NotifyRoles(SpecifySeer: sniper);
         }
     }
     public override void OnReportDeadBody(PlayerControl reporter, NetworkedPlayerInfo target)

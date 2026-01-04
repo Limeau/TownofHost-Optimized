@@ -156,14 +156,7 @@ public static class Camouflage
                     pc.RpcRemovePet();
                 }
             }
-            if (Main.CurrentServerIsVanilla && Options.BypassRateLimitAC.GetBool())
-            {
-                Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
-            }
-            else
-            {
-                Utils.DoNotifyRoles();
-            }
+            Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
         }
     }
     public static void RpcSetSkin(PlayerControl target, bool ForceRevert = false, bool RevertToDefault = false, bool GameEnd = false)

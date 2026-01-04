@@ -125,12 +125,7 @@ internal class AntiAdminer : RoleBase
             isChange |= IsCameraWatch != Camera;
             IsCameraWatch = Camera;
         }
-
-        if (isChange)
-        {
-            if (_Player)
-                NotifyRoles(SpecifySeer: _Player, ForceLoop: false);
-        }
+        
     }
     public override string GetSuffix(PlayerControl seer, PlayerControl seen, bool isForMeeting = false)
     {

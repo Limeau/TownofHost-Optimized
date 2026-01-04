@@ -99,7 +99,7 @@ internal class Investigator : RoleBase
         InvestigatedList[killer.PlayerId].Add(target.PlayerId);
 
         SendRPC(setTarget: true, killer.PlayerId, target.PlayerId);
-        Utils.NotifyRoles(SpecifySeer: killer, ForceLoop: true);
+        // Utils.NotifyRoles(SpecifySeer: killer, ForceLoop: true);
 
         killer.ResetKillCooldown();
         killer.SetKillCooldown();

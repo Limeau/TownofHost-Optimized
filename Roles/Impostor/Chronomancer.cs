@@ -144,7 +144,7 @@ internal class Chronomancer : RoleBase
         if (LastCD != GetCharge())
         {
             LastCD = GetCharge();
-            Utils.NotifyRoles(SpecifySeer: player, ForceLoop: false);
+            // Utils.NotifyRoles(SpecifySeer: player, ForceLoop: false);
         }
 
         if (ChargedTime != FullCharge

@@ -112,7 +112,7 @@ internal class Arsonist : RoleBase
         if (!IsDoused[(killer.PlayerId, target.PlayerId)] && !ArsonistTimer.ContainsKey(killer.PlayerId))
         {
             ArsonistTimer.Add(killer.PlayerId, (target, 0f));
-            NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+            //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
             SendCurrentDousingTargetRPC(killer.PlayerId, target.PlayerId);
             killer.RpcSetVentInteraction();
         }
@@ -123,7 +123,7 @@ internal class Arsonist : RoleBase
         if (!_Player.IsAlive() || target.PlayerId == _Player.PlayerId || inMeeting || Main.MeetingIsStarted) return;
 
         _Player.RpcSetVentInteraction();
-        _ = new LateTask(() => { NotifyRoles(SpecifySeer: _Player, ForceLoop: false); }, 1f, $"Update name for Arsonist {_Player?.PlayerId}", shoudLog: false);
+        //_ = new LateTask(() => { NotifyRoles(SpecifySeer: _Player, ForceLoop: false); }, 1f, $"Update name for Arsonist {_Player?.PlayerId}", shoudLog: false);
     }
     public override void OnFixedUpdate(PlayerControl player, bool lowLoad, long nowTime, int timerLowLoad)
     {
@@ -133,7 +133,7 @@ internal class Arsonist : RoleBase
             if (!player.IsAlive() || Pelican.IsEaten(playerId))
             {
                 ArsonistTimer.Remove(playerId);
-                NotifyRoles(SpecifySeer: player);
+                //NotifyRoles(SpecifySeer: player);
                 ResetCurrentDousingTarget(playerId);
             }
             else
@@ -150,7 +150,7 @@ internal class Arsonist : RoleBase
                     ArsonistTimer.Remove(playerId);
                     IsDoused[(playerId, arTarget.PlayerId)] = true;
                     SendSetDousedPlayerRPC(player, arTarget, true);
-                    NotifyRoles(SpecifySeer: player, SpecifyTarget: arTarget, ForceLoop: true);
+                    //NotifyRoles(SpecifySeer: player, SpecifyTarget: arTarget, ForceLoop: true);
                     ResetCurrentDousingTarget(playerId);
                 }
                 else
@@ -165,7 +165,7 @@ internal class Arsonist : RoleBase
                     else
                     {
                         ArsonistTimer.Remove(playerId);
-                        NotifyRoles(SpecifySeer: player, SpecifyTarget: arTarget, ForceLoop: true);
+                        //NotifyRoles(SpecifySeer: player, SpecifyTarget: arTarget, ForceLoop: true);
                         ResetCurrentDousingTarget(playerId);
 
                         Logger.Info($"Canceled: {player.GetNameWithRole()}", "Arsonist");

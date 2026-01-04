@@ -132,7 +132,7 @@ public class SabotageSystemPatch
                 if ((!pc.Is(Custom_Team.Impostor) || Main.PlayerStates[pc.PlayerId].IsNecromancer) && pc.HasDesyncRole())
                 {
                     // Need for hiding Player names if Player is Desync Impostor
-                    Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: true, MushroomMixupIsActive: true);
+                    // Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: true, MushroomMixupIsActive: true);
                 }
             }
         }
@@ -194,7 +194,7 @@ public class SabotageSystemPatch
                         if ((!pc.Is(Custom_Team.Impostor) || Main.PlayerStates[pc.PlayerId].IsNecromancer) && pc.HasDesyncRole())
                         {
                             // Need for display Player names if Player is Desync Impostor
-                            Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: true);
+                            // Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: true);
                         }
                     }
                 }
@@ -273,12 +273,7 @@ public class SabotageSystemPatch
 
             Utils.MarkEveryoneDirtySettings();
 
-            if (GameStates.IsInTask)
-            {
-                foreach (var pc in Main.AllAlivePlayerControls)
-                    if (pc.Is(CustomRoles.Mare))
-                        Utils.NotifyRoles(SpecifyTarget: pc);
-            }
+            
 
             Logger.Info("Lights sabotage called", "ElectricTask");
         }
@@ -294,13 +289,6 @@ public class SabotageSystemPatch
             LastUpdate = now;
 
             Utils.MarkEveryoneDirtySettings();
-
-            if (GameStates.IsInTask)
-            {
-                foreach (PlayerControl pc in Main.AllAlivePlayerControls)
-                    if (pc.Is(CustomRoles.Mare))
-                        Utils.NotifyRoles(SpecifyTarget: pc);
-            }
 
             Logger.Info("Lights sabotage fixed", "ElectricTask");
         }

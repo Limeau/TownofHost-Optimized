@@ -152,7 +152,6 @@ internal class AbyssBringer : RoleBase
                 {
                     blackHole.PlayersConsumed++;
                     Utils.SendRPC(CustomRPC.SyncRoleSkill, _Player, 2, id, (byte)blackHole.PlayersConsumed);
-                    Notify();
 
                     nearestPlayer.RpcExileV2();
                     nearestPlayer.SetRealKiller(_Player);
@@ -170,7 +169,6 @@ internal class AbyssBringer : RoleBase
             {
                 // No Players to follow, despawn
                 RemoveBlackHole();
-                Notify();
             }
 
             continue;
@@ -180,10 +178,7 @@ internal class AbyssBringer : RoleBase
                 BlackHoles.Remove(id);
                 blackHole.NetObject.Despawn();
                 Utils.SendRPC(CustomRPC.SyncRoleSkill, _Player, 3, id);
-                Notify();
             }
-
-            void Notify() => Utils.NotifyRoles(SpecifySeer: abyssbringer, SpecifyTarget: abyssbringer);
         }
     }
 
@@ -208,10 +203,7 @@ internal class AbyssBringer : RoleBase
                 BlackHoles.Remove(item.Key);
                 blackHole.NetObject.Despawn();
                 Utils.SendRPC(CustomRPC.SyncRoleSkill, _Player, 3, item.Key);
-                Notify();
             }
-
-            void Notify() => Utils.NotifyRoles(SpecifySeer: abyssbringer, SpecifyTarget: abyssbringer);
         }
     }
 

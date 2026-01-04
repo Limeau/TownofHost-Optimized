@@ -46,7 +46,7 @@ public class LastImpostor : IAddon
                 AddMidGame(pc.PlayerId);
                 SetKillCooldown();
                 pc.SyncSettings();
-                Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: false);
+                // Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: false);
                 break;
             }
         }

@@ -94,7 +94,7 @@ internal class Shroud : RoleBase
 
         killer.SetKillCooldown();
 
-        Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+        // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
         return false;
     }
 
@@ -136,7 +136,7 @@ internal class Shroud : RoleBase
                         Utils.MarkEveryoneDirtySettings();
                         ShroudList.Remove(shroud.PlayerId);
                         SendRPC(byte.MaxValue, shroud.PlayerId, 2);
-                        Utils.NotifyRoles(SpecifySeer: shroudId.GetPlayer(), SpecifyTarget: shroud, ForceLoop: true);
+                        // Utils.NotifyRoles(SpecifySeer: shroudId.GetPlayer(), SpecifyTarget: shroud, ForceLoop: true);
                     }
                 }
             }

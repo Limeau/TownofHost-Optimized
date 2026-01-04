@@ -59,8 +59,8 @@ internal class SchrodingersCat : RoleBase
         killer.RpcGuardAndKill(target);
         target.RpcGuardAndKill();
 
-        Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-        Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+        // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+        // Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
 
         killer.SetKillCooldown();
 

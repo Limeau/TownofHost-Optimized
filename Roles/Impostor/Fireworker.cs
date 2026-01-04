@@ -170,7 +170,7 @@ internal class Fireworker : RoleBase
                 break;
         }
         SendRPC(shapeshifterId);
-        Utils.NotifyRoles(ForceLoop: true);
+        // Utils.NotifyRoles(ForceLoop: true);
     }
 
     public override string GetLowerText(PlayerControl seer, PlayerControl seen = null, bool isForMeeting = false, bool isForHud = false)
@@ -185,7 +185,7 @@ internal class Fireworker : RoleBase
             Logger.Info("Ready to blow up", "Fireworker");
             state[seerId] = fireworkState = FireworkerState.ReadyFire;
             SendRPC(seerId);
-            Utils.NotifyRoles(SpecifySeer: seer);
+            // Utils.NotifyRoles(SpecifySeer: seer);
         }
         switch (fireworkState)
         {

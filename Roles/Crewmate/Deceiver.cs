@@ -67,7 +67,7 @@ internal class Deceiver : RoleBase
 
         killer.RPCPlayCustomSound("Bet");
 
-        Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+        // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
 
         Logger.Info($"Counterfeiters {killer.GetRealName()} sell counterfeits to {target.GetRealName()}", "Deceiver");
         return false;

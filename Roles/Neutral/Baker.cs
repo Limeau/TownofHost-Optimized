@@ -240,7 +240,7 @@ internal class Baker : RoleBase
             BreadList[killer.PlayerId].Add(target.PlayerId);
             SendRPC(0, killer, target);
 
-            NotifyRoles(SpecifySeer: killer);
+            //NotifyRoles(SpecifySeer: killer);
             killer.Notify(GetString("BakerBreaded"));
             CanUseAbility = false;
 
@@ -276,8 +276,8 @@ internal class Baker : RoleBase
             if (!DisableShieldAnimations.GetBool()) killer.RpcGuardAndKill(target);
             killer.ResetKillCooldown();
             killer.SetKillCooldown();
-            NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-            NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+            //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+            //NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
             return true;
         }
         if (IsRoleblocked(killer.PlayerId))
@@ -378,7 +378,7 @@ internal class Famine : RoleBase
         {
             FamineList[killer.PlayerId].Add(target.PlayerId);
             SendRPC(killer, target);
-            NotifyRoles(SpecifySeer: killer);
+            //NotifyRoles(SpecifySeer: killer);
             killer.Notify(GetString("FamineStarved"));
             Logger.Info(target.GetRealName() + $" has been starved", "Famine");
         }

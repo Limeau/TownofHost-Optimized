@@ -70,8 +70,8 @@ internal class Mastermind : RoleBase
             if (target.HasKillButton() || CopyCat.playerIdList.Contains(target.PlayerId) || Main.TasklessCrewmate.Contains(target.PlayerId))
             {
                 ManipulateDelays.TryAdd(target.PlayerId, GetTimeStamp());
-                NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
-                NotifyRoles(SpecifySeer: target, SpecifyTarget: killer);
+                //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+                //NotifyRoles(SpecifySeer: target, SpecifyTarget: killer);
             }
         });
     }
@@ -98,7 +98,7 @@ internal class Mastermind : RoleBase
                 TempKCDs.TryAdd(pc.PlayerId, pc.killTimer);
                 pc.SetKillCooldown(time: 1f);
 
-                NotifyRoles(SpecifySeer: mastermind);
+                //NotifyRoles(SpecifySeer: mastermind);
             }
         }
 

@@ -149,8 +149,8 @@ internal class Medic : RoleBase
 
         ChangeToCrewmate();
 
-        NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
-        NotifyRoles(SpecifySeer: target, SpecifyTarget: killer);
+        //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+        //NotifyRoles(SpecifySeer: target, SpecifyTarget: killer);
         return false;
     }
     public override bool CheckMurderOnOthersTarget(PlayerControl killer, PlayerControl target)
@@ -163,8 +163,8 @@ internal class Medic : RoleBase
         killer.RpcGuardAndKill(target);
         killer.SetKillCooldown(ResetCooldown.GetFloat());
 
-        NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-        NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+        //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+        //NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
 
         switch (KnowShieldBrokenOpt.GetValue())
         {
@@ -229,7 +229,7 @@ internal class Medic : RoleBase
         {
             SendRPC();
         }
-        NotifyRoles(ForceLoop: true);
+        //NotifyRoles(ForceLoop: true);
     }
     public override void OnMurderPlayerAsTarget(PlayerControl killer, PlayerControl target, bool inMeeting, bool isSuicide)
     {

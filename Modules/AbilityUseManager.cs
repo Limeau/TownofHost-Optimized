@@ -48,7 +48,7 @@ public static class AbilityUseManager
             AmongUsClient.Instance.FinishRpcImmediately(writer);
         }
 
-        Utils.NotifyRoles(SpecifySeer: player, ForceLoop: false);
+        // Utils.NotifyRoles(SpecifySeer: player, ForceLoop: false);
         if (log) Logger.Info($" {player.GetNameWithRole()} => {Math.Round(limit, 1)}", "SetAbilityUseLimit");
     }
 }

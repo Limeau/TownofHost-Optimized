@@ -61,8 +61,8 @@ class CheckProtectPatch
     public static void Postfix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
     {
         var angel = __instance;
-        Utils.NotifyRoles(SpecifySeer: angel);
-        Utils.NotifyRoles(SpecifySeer: target);
+        // Utils.NotifyRoles(SpecifySeer: angel);
+        // Utils.NotifyRoles(SpecifySeer: target);
     }
 }
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckMurder))]
@@ -135,8 +135,8 @@ class CheckMurderPatch
     {
         if (__state)
         {
-            Utils.NotifyRoles(SpecifySeer: __instance);
-            Utils.NotifyRoles(SpecifySeer: target);
+            // Utils.NotifyRoles(SpecifySeer: __instance);
+            // Utils.NotifyRoles(SpecifySeer: target);
         }
     }
     public static bool CheckForInvalidMurdering(PlayerControl killer, PlayerControl target, bool checkCanUseKillButton = false)
@@ -736,7 +736,7 @@ class ShapeshiftPatch
             //Forced update Player name
             _ = new LateTask(() =>
             {
-                Utils.NotifyRoles(SpecifyTarget: shapeshifter, NoCache: true);
+                // Utils.NotifyRoles(SpecifyTarget: shapeshifter, NoCache: true);
             }, time, shapeshifting ? "ShapeShiftNotify" : "UnShiftNotify");
         }
     }
@@ -1001,7 +1001,7 @@ class ReportDeadBodyPatch
         NameNotifyManager.Reset();
 
         // Update Notify Roles for Meeting
-        Utils.DoNotifyRoles(isForMeeting: true, CamouflageIsForMeeting: true);
+        // Utils.NotifyRoles();
 
         // Sync all settings on meeting start
         _ = new LateTask(Utils.SyncAllSettings, 3f, "Sync all settings after report");
@@ -1504,6 +1504,8 @@ class FixedUpdateInNormalGamePatch
                 RoleText.transform.SetLocalY(0.2f);
                 __instance.cosmetics.colorBlindText.transform.SetLocalY(-0.32f);
             }
+
+            Utils.NotifyRoles(SpecifySeer: __instance);
         }
         return Task.CompletedTask;
     }
@@ -1817,8 +1819,8 @@ class PlayerControlCompleteTaskPatch
         // Add task for Workhorse
         ret &= Workhorse.OnAddTask(player);
 
-        Utils.NotifyRoles(SpecifySeer: player);
-        Utils.NotifyRoles(SpecifyTarget: player);
+        // Utils.NotifyRoles(SpecifySeer: player);
+        // Utils.NotifyRoles(SpecifyTarget: player);
         
         return ret;
     }

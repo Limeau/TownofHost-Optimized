@@ -75,7 +75,7 @@ internal class Altruist : RoleBase
     public override void OnCoEnterVent(PlayerPhysics physics, int ventId)
     {
         IsRevivingMode = !IsRevivingMode;
-        Utils.NotifyRoles(SpecifySeer: physics.myPlayer, ForceLoop: false);
+        // Utils.NotifyRoles(SpecifySeer: physics.myPlayer, ForceLoop: false);
         SendRPC();
     }
     public override bool OnCheckReportDeadBody(PlayerControl reporter, NetworkedPlayerInfo deadBody, PlayerControl killer)

@@ -71,7 +71,7 @@ internal class Pursuer : RoleBase
         pc.SetKillCooldown();
         pc.RPCPlayCustomSound("Bet");
 
-        Utils.NotifyRoles(SpecifySeer: pc);
+        // Utils.NotifyRoles(SpecifySeer: pc);
         Logger.Info($"Counterfeiters {pc.GetRealName()} sell counterfeits to {target.GetRealName()}", "Pursuer");
         return false;
     }

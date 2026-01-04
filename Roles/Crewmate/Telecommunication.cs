@@ -135,7 +135,7 @@ internal class Telecommunication : RoleBase
             foreach (var pc in _playerIdList)
             {
                 var antiAdminer = pc.GetPlayer();
-                NotifyRoles(SpecifySeer: antiAdminer, ForceLoop: false);
+                //NotifyRoles(SpecifySeer: antiAdminer, ForceLoop: false);
             }
         }
     }

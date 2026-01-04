@@ -106,7 +106,7 @@ internal class Spurt : IAddon
             long now = Utils.TimeStamp;
             if (now != LastUpdate[player.PlayerId])
             {
-                Utils.NotifyRoles(SpecifySeer: player, SpecifyTarget: player);
+                // Utils.NotifyRoles(SpecifySeer: player, SpecifyTarget: player);
                 LastUpdate[player.PlayerId] = now;
             }
         }

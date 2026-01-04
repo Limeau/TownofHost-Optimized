@@ -113,7 +113,7 @@ internal class Witch : RoleBase
         {
             SpellMode[playerId] = !SpellMode[playerId];
             SendRPC(false, playerId);
-            Utils.NotifyRoles(SpecifySeer: Utils.GetPlayerById(playerId));
+            // Utils.NotifyRoles(SpecifySeer: Utils.GetPlayerById(playerId));
         }
     }
 
@@ -129,7 +129,7 @@ internal class Witch : RoleBase
             SendRPC(true, killer.PlayerId, target.PlayerId);
             killer.SetKillCooldown();
             killer.RPCPlayCustomSound("Curse");
-            Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+            // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
         }
     }
     private static void RemoveSpelledPlayer()

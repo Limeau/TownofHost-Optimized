@@ -185,9 +185,7 @@ internal class Huntsman : RoleBase
                 var targetId = target.PlayerId;
                 Targets.Add(targetId);
                 SendRPC(isSetTarget: true, targetId: targetId);
-
-                if (isStartedGame)
-                    Utils.NotifyRoles(SpecifySeer: _Player, SpecifyTarget: target);
+                
             }
             catch (Exception ex)
             {

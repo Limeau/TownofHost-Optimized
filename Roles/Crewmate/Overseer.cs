@@ -181,7 +181,7 @@ internal class Overseer : RoleBase
             SendTimerRPC(1, killer.PlayerId, target, 0f);
             target.RpcSetSpecificScanner(killer, true);
 
-            NotifyRoles(SpecifySeer: killer);
+            //NotifyRoles(SpecifySeer: killer);
         }
         return false;
     }
@@ -195,7 +195,7 @@ internal class Overseer : RoleBase
             data.Item1.RpcSetSpecificScanner(player, false);
             OverseerTimer.Remove(playerId);
             SendTimerRPC(2, playerId);
-            NotifyRoles(SpecifySeer: player);
+            //NotifyRoles(SpecifySeer: player);
         }
         else
         {
@@ -219,7 +219,7 @@ internal class Overseer : RoleBase
                 IsRevealed[(playerId, farTarget.PlayerId)] = true;
                 SetRevealtPlayerRPC(player, farTarget, true);
 
-                NotifyRoles(SpecifySeer: player);
+                //NotifyRoles(SpecifySeer: player);
 
                 Logger.Info($"Revealed: {player.GetNameWithRole()}", "Overseer");
             }
@@ -239,7 +239,7 @@ internal class Overseer : RoleBase
                     SendTimerRPC(2, playerId);
                     farTarget.RpcSetSpecificScanner(player, false);
 
-                    NotifyRoles(SpecifySeer: player, SpecifyTarget: farTarget, ForceLoop: true);
+                    //NotifyRoles(SpecifySeer: player, SpecifyTarget: farTarget, ForceLoop: true);
 
                     Logger.Info($"Canceled: {player.GetNameWithRole()}", "Overseer");
                 }

@@ -208,7 +208,7 @@ public static class GhostRoleAssign
     }
     public static void CreateGAMessage(PlayerControl __instance)
     {
-        Utils.NotifyRoles(SpecifyTarget: __instance);
+        // Utils.NotifyRoles(SpecifyTarget: __instance);
         _ = new LateTask(() =>
         {
 

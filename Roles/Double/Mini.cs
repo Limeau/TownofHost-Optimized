@@ -143,7 +143,7 @@ internal class Mini : RoleBase
             {
                 SendRPC();
                 player.Notify(GetString("MiniUp"));
-                NotifyRoles(SpecifyTarget: player);
+                //NotifyRoles(SpecifyTarget: player);
             }
         }
     }

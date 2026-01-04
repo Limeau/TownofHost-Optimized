@@ -100,7 +100,7 @@ internal class Glitch : RoleBase
         {
             if (HackCDTimer <= 0)
             {
-                Utils.NotifyRoles(SpecifySeer: killer);
+                // Utils.NotifyRoles(SpecifySeer: killer);
                 HackCDTimer = HackCooldown.GetInt();
                 hackedIdList.TryAdd(target.PlayerId, Utils.GetTimeStamp());
                 LastHack = Utils.GetTimeStamp();
@@ -131,7 +131,7 @@ internal class Glitch : RoleBase
             }
         }
 
-        if (change) { Utils.NotifyRoles(SpecifySeer: player, ForceLoop: false); }
+        //if (change) { Utils.NotifyRoles(SpecifySeer: player, ForceLoop: false); }
 
         if (!player.IsAlive())
         {

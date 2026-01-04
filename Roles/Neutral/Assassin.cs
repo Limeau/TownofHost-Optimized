@@ -47,7 +47,7 @@ internal class Assassin : RoleBase
         {
             killer.RpcSetCustomRole(CustomRoles.Madmate);
             killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.ImpostorTOHO), GetString("AssassinImpostorNotify")));
-            //Utils.NotifyRoles(SpecifySeer: killer);
+            //// Utils.NotifyRoles(SpecifySeer: killer);
             Utils.MarkEveryoneDirtySettings();
             killer.SetAbilityUseLimit(0);
         }
@@ -55,14 +55,14 @@ internal class Assassin : RoleBase
         {
             killer.RpcSetCustomRole(CustomRoles.Sheriff);
             killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Sheriff), GetString("AssassinSheriffNotify")));
-            //Utils.NotifyRoles(SpecifySeer: killer);
+            //// Utils.NotifyRoles(SpecifySeer: killer);
             Utils.MarkEveryoneDirtySettings();
             killer.SetAbilityUseLimit(0);
         }
         if (target.GetCustomRole().IsNeutral() && !target.Is(CustomRoles.Madmate) && !target.GetCustomRole().IsConverted())
         {
             killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Assassin), GetString("AssassinNeutralNotify")));
-            //Utils.NotifyRoles(SpecifySeer: killer);
+            //// Utils.NotifyRoles(SpecifySeer: killer);
             Utils.MarkEveryoneDirtySettings();
             killer.SetAbilityUseLimit(0);
         }

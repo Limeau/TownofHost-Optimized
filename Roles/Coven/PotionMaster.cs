@@ -130,7 +130,7 @@ internal class PotionMaster : CovenManager
                     RevealList[killer.PlayerId].Add(target.PlayerId);
                     Logger.Info($"{killer.GetNameWithRole()}: Divined divination destination -> {target.GetNameWithRole()} || remaining {RevealLimit[killer.PlayerId]} times", "PotionMaster");
 
-                    NotifyRoles(SpecifySeer: killer);
+                    //NotifyRoles(SpecifySeer: killer);
                     SendRPC(PotionMode, killer, target);
 
                     killer.ResetKillCooldown();
@@ -212,8 +212,8 @@ internal class PotionMaster : CovenManager
         killer.ResetKillCooldown();
         killer.SetKillCooldown();
 
-        NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-        NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+        //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+       // NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
         return true;
     }
     public override void AfterMeetingTasks()

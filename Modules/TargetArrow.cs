@@ -188,7 +188,7 @@ static class TargetArrow
 
         if (update && (!seer.IsModded() || (seer.IsHost() && Options.LowLoadDelayUpdateNames.GetBool())))
         {
-            Utils.NotifyRoles(SpecifySeer: seer, ForceLoop: false);
+            // Utils.NotifyRoles(SpecifySeer: seer, ForceLoop: false);
         }
     }
 

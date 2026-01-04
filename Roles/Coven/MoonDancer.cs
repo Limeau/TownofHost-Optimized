@@ -145,8 +145,8 @@ internal class MoonDancer : CovenManager
         ReportDeadBodyPatch.CanReport[target.PlayerId] = false;
         target.MarkDirtySettings();
 
-        NotifyRoles(SpecifySeer: pc);
-        NotifyRoles(SpecifySeer: target);
+        //NotifyRoles(SpecifySeer: pc);
+        //NotifyRoles(SpecifySeer: target);
 
         Logger.Info($"{pc.GetRealName()} Blasted Off {target.GetRealName()}", "MoonDancer");
     }

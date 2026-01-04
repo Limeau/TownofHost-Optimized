@@ -222,7 +222,7 @@ internal class Executioner : RoleBase
                 break;
         }
 
-        Utils.NotifyRoles(SpecifySeer: executioner);
+        // Utils.NotifyRoles(SpecifySeer: executioner);
     }
 
     public override void OnMurderPlayerAsTarget(PlayerControl killer, PlayerControl target, bool inMeeting, bool isSuicide)

@@ -56,7 +56,7 @@ internal class Vector : RoleBase
     public override void OnEnterVent(PlayerControl pc, Vent vent)
     {
         pc.RpcIncreaseAbilityUseLimitBy(1);
-        NotifyRoles(SpecifySeer: pc, ForceLoop: false);
+        //NotifyRoles(SpecifySeer: pc, ForceLoop: false);
 
         var count = pc.GetAbilityUseLimit();
         Logger.Info($"Vent count {count}", "Vector");

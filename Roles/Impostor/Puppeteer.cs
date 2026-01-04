@@ -93,7 +93,7 @@ internal class Puppeteer : RoleBase
             killer.SetKillCooldown();
             SendRPC(killer.PlayerId, target.PlayerId, 1);
             killer.RPCPlayCustomSound("Line");
-            Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+            // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
         });
     }
 
@@ -137,8 +137,8 @@ internal class Puppeteer : RoleBase
                         Utils.MarkEveryoneDirtySettings();
                         PuppeteerList.Remove(puppet.PlayerId);
                         SendRPC(byte.MaxValue, puppet.PlayerId, 2);
-                        //Utils.NotifyRoles(SpecifySeer: puppet);
-                        Utils.NotifyRoles(SpecifySeer: Utils.GetPlayerById(puppeteerId), SpecifyTarget: puppet, ForceLoop: true);
+                        //// Utils.NotifyRoles(SpecifySeer: puppet);
+                        // Utils.NotifyRoles(SpecifySeer: Utils.GetPlayerById(puppeteerId), SpecifyTarget: puppet, ForceLoop: true);
 
                         if (!puppet.Is(CustomRoles.Pestilence) && PuppeteerDoubleKills.GetBool())
                         {

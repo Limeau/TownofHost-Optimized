@@ -31,7 +31,7 @@ internal class Vigilante : RoleBase
         {
             killer.RpcSetCustomRole(CustomRoles.Madmate, false);
             killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Madmate), GetString("VigilanteNotify")));
-            //Utils.NotifyRoles(SpecifySeer: killer);
+            //// Utils.NotifyRoles(SpecifySeer: killer);
             Utils.MarkEveryoneDirtySettings();
         }
         return true;

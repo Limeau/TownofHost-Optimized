@@ -195,7 +195,7 @@ internal class PlagueDoctor : RoleBase
                 PlayerControl Plaguer = _Player;
                 foreach (PlayerControl x in updates.ToArray())
                 {
-                    Utils.NotifyRoles(SpecifySeer: Plaguer, SpecifyTarget: x);
+                    // Utils.NotifyRoles(SpecifySeer: Plaguer, SpecifyTarget: x);
                 }
             }
         }
@@ -257,7 +257,7 @@ internal class PlagueDoctor : RoleBase
         Logger.Info($"InfectRate [{target.GetNameWithRole()}]: 100%", "PlagueDoctor");
         InfectInfos[target.PlayerId] = 100;
         SendRPC(target.PlayerId, 100);
-        Utils.NotifyRoles(SpecifySeer: plague, SpecifyTarget: target);
+        // Utils.NotifyRoles(SpecifySeer: plague, SpecifyTarget: target);
         CheckWin();
     }
     private void CheckWin()

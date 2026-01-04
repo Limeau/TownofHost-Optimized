@@ -136,7 +136,7 @@ internal class Quizmaster : RoleBase
             MarkedPlayer = target.PlayerId;
             SendRPC(target.PlayerId);
 
-            Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+            // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
 
             allowedKilling = CanKillAfterMark;
 

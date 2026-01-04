@@ -77,7 +77,7 @@ internal class Consigliere : RoleBase
         DivinationTarget[killer.PlayerId].Add(target.PlayerId);
 
         Logger.Info($"{killer.GetNameWithRole()}：{target.GetNameWithRole()}", "Consigliere");
-        Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+        // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
 
         SendRPC(killer.PlayerId, target.PlayerId);
         killer.SetKillCooldown();

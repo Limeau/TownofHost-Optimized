@@ -137,7 +137,7 @@ internal class Mechanic : RoleBase
                 DoorsProgressing = false;
                 break;
         }
-        NotifyRoles(SpecifySeer: player);
+        //NotifyRoles(SpecifySeer: player);
     }
     public override void SwitchSystemUpdate(SwitchSystem __instance, byte amount, PlayerControl player)
     {

@@ -70,7 +70,7 @@ internal class Pyromaniac : RoleBase
             {
                 DousedList.Add(target.PlayerId);
                 killer.SetKillCooldown(DouseCooldown.GetFloat());
-                Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+                // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
             });
         }
     }

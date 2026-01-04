@@ -122,7 +122,7 @@ internal class Imitator : RoleBase
 
             Logger.Info("Imitator remembered: " + target?.Data?.PlayerName + " = " + target.GetCustomRole().ToString(), "Imitator Assign");
 
-            Utils.NotifyRoles(SpecifySeer: killer);
+            // Utils.NotifyRoles(SpecifySeer: killer);
         }
         else if (killerRole == CustomRoles.Imitator)
         {

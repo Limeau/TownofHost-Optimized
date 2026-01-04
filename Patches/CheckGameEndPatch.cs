@@ -639,11 +639,11 @@ class GameEndCheckerForNormal
             if (winnerPC == null) continue;
 
             // Update winner name
-            Utils.DoNotifyRoles(SpecifyTarget: winnerPC, NoCache: true);
+            // Utils.NotifyRoles();
         }
 
         // Update all Notify Roles
-        Utils.DoNotifyRoles(ForceLoop: true, NoCache: true);
+        // Utils.NotifyRoles();
 
         // Start End Game
         GameManager.Instance.RpcEndGame(reason, false);

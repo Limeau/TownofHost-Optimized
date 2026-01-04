@@ -145,7 +145,7 @@ internal class Keymaster : RoleBase
         {
             KeyedList[killer.PlayerId].Add(target.PlayerId);
             SendRPC(killer, target);
-            NotifyRoles(SpecifySeer: killer);
+            //NotifyRoles(SpecifySeer: killer);
             killer.Notify(GetString("KeymasterMarkedPlayer"), 5f);
 
             CheckKeyedAllPlayers();
@@ -229,7 +229,7 @@ internal class Keymaster : RoleBase
                 Keymaster.RpcGuardAndKill(Keymaster);
                 Keymaster.ResetKillCooldown();
                 CanGetColoredKey = true;
-                NotifyRoles(SpecifySeer: Keymaster);
+                //NotifyRoles(SpecifySeer: Keymaster);
                 Keymaster.MarkDirtySettings();
             }
         }

@@ -96,7 +96,7 @@ internal class Spy : RoleBase
             if (SpyInteractionBlocked.GetBool())
             {
                 killer.SetKillCooldown(time: 10f, target, forceAnime: true);
-                NotifyRoles(SpecifySeer: target, ForceLoop: true);
+                //NotifyRoles(SpecifySeer: target, ForceLoop: true);
                 killer.ResetKillCooldown();
                 killer.SyncSettings();
                 return false;
@@ -124,7 +124,7 @@ internal class Spy : RoleBase
                 }
             }
         }
-        if (change) { NotifyRoles(SpecifySeer: player, ForceLoop: true); }
+        //if (change) { NotifyRoles(SpecifySeer: player, ForceLoop: true); }
     }
     public override string PlayerKnowTargetColor(PlayerControl seer, PlayerControl target) => (seer.Is(CustomRoles.Spy) && SpyRedNameList.ContainsKey(target.PlayerId)) ? "#BA4A00" : "";
 }

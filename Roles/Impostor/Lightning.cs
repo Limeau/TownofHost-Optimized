@@ -96,7 +96,7 @@ internal class Lightning : RoleBase
                 if (!killer.inVent)
                     killer.RpcGuardAndKill(killer);
 
-                Utils.NotifyRoles(SpecifyTarget: target);
+                // Utils.NotifyRoles(SpecifyTarget: target);
                 Logger.Info($"{target.GetNameWithRole()} transformed into a quantum ghost", "Lightning");
             }
         }, ConvertTime.GetFloat(), "Lightning Convert Player To Ghost");

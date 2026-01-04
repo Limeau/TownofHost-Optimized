@@ -73,7 +73,7 @@ internal class Eraser : RoleBase
 
         Utils.SendMessage(string.Format(GetString("EraserEraseNotice"), target.GetRealName()), player.PlayerId, Utils.ColorString(Utils.GetRoleColor(CustomRoles.Eraser), GetString("EraserEraseMsgTitle")));
 
-        Utils.NotifyRoles(SpecifySeer: player);
+        // Utils.NotifyRoles(SpecifySeer: player);
         return false;
     }
     public override bool GuessCheck(bool isUI, PlayerControl guesser, PlayerControl target, CustomRoles role, ref bool guesserSuicide)

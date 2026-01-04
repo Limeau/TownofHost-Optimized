@@ -88,7 +88,7 @@ internal class Doppelganger : RoleBase
         Logger.Info("Changed killer skin", "Doppelganger");
 
         RPC.SyncAllPlayerNames();
-        Utils.DoNotifyRoles(SpecifyTarget: killer, NoCache: true);
+        Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
 
         killer.ResetKillCooldown();
         killer.SetKillCooldown();

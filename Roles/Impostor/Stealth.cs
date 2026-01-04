@@ -131,7 +131,7 @@ internal class Stealth : RoleBase
         }
         darkenTimer = darkenDuration;
         RpcDarken(null);
-        Utils.NotifyRoles(SpecifySeer: _Player, SpecifyTarget: _Player);
+        // Utils.NotifyRoles(SpecifySeer: _Player, SpecifyTarget: _Player);
     }
     public override string GetLowerText(PlayerControl seer, PlayerControl seen = null, bool isForMeeting = false, bool isForHud = false)
     {

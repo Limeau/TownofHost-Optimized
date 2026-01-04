@@ -814,7 +814,7 @@ internal static class CopsAndRobbersManager
                 var player = Utils.GetPlayerById(pid);
                 if (player != null)
                 {
-                    Utils.NotifyRoles(SpecifySeer: player);
+                    // Utils.NotifyRoles(SpecifySeer: player);
                 }
             }
 
@@ -1164,7 +1164,7 @@ internal static class CopsAndRobbersManager
                 var player = Utils.GetPlayerById(pid);
                 if (player != null)
                 {
-                    Utils.NotifyRoles(SpecifySeer: player);
+                    // Utils.NotifyRoles(SpecifySeer: player);
                 }
             }
         }
@@ -1213,7 +1213,7 @@ internal static class CopsAndRobbersManager
                         UnShapeshifter.RpcShapeshift(randomPlayer, false);
                         UnShapeshifter.RpcRejectShapeshift();
                         RoleType.Cop.SetCostume(UnShapeshifter.PlayerId);
-                        Utils.NotifyRoles(SpecifyTarget: UnShapeshifter);
+                        // Utils.NotifyRoles(SpecifyTarget: UnShapeshifter);
                         Logger.Info($"Revert to shapeshifting state for: {__instance.GetRealName()}", "UnShapeShifter_FixedUpdate");
                     }
                 }
@@ -1322,7 +1322,7 @@ internal static class CopsAndRobbersManager
                             var player = Utils.GetPlayerById(pid);
                             if (player != null)
                             {
-                                Utils.NotifyRoles(SpecifySeer: player);
+                                // Utils.NotifyRoles(SpecifySeer: player);
                             }
                         }
                     }

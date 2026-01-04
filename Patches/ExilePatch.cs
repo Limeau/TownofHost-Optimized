@@ -184,14 +184,7 @@ class ExileControllerWrapUpPatch
                 Utils.SyncAllSettings();
                 Utils.CheckAndSetVentInteractions();
 
-                if (Main.CurrentServerIsVanilla && Options.BypassRateLimitAC.GetBool())
-                {
-                    Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
-                }
-                else
-                {
-                    Utils.DoNotifyRoles();
-                }
+                Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
 
                 Main.LastMeetingEnded = Utils.TimeStamp;
             }, 1f, "AfterMeetingDeathPlayers Task");

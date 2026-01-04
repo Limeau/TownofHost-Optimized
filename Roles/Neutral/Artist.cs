@@ -93,7 +93,7 @@ namespace TOHO.Roles.Neutral
                     SetSkin(target, PaintedOutfit);
                     PlayerSkinsPainted[killer.PlayerId].Add(target.PlayerId);
                     killer.SetKillCooldown(PaintCooldown.GetFloat());
-                    Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+                    // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
                 });
             }
         }

@@ -122,7 +122,7 @@ internal class BountyHunter : RoleBase
             if (timer >= TargetChangeTime)
             {
                 ResetTarget(player);
-                Utils.NotifyRoles(SpecifySeer: player, ForceLoop: true);
+                // Utils.NotifyRoles(SpecifySeer: player, ForceLoop: true);
             }
             if (timer >= 0)
                 ChangeTimer[player.PlayerId] += Time.fixedDeltaTime;
@@ -131,7 +131,7 @@ internal class BountyHunter : RoleBase
             {
                 ResetTarget(player);
                 Logger.Info($"player {player.GetNameWithRole()}: target was invalid, so target was updated", "BountyHunter");
-                Utils.NotifyRoles(SpecifySeer: player, ForceLoop: true);
+                // Utils.NotifyRoles(SpecifySeer: player, ForceLoop: true);
             }
         }
     }

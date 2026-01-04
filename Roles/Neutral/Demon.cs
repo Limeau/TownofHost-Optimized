@@ -98,14 +98,14 @@ internal class Demon : RoleBase
         {
             PlayerHealth.Remove(target.PlayerId);
             killer.RpcMurderPlayer(target);
-            Utils.NotifyRoles(SpecifySeer: killer);
+            // Utils.NotifyRoles(SpecifySeer: killer);
             return false;
         }
 
         PlayerHealth[target.PlayerId] -= Damage.GetInt();
         SendRPC(target.PlayerId);
         RPC.PlaySoundRPC(killer.PlayerId, Sounds.KillSound);
-        Utils.NotifyRoles(SpecifySeer: killer);
+        // Utils.NotifyRoles(SpecifySeer: killer);
 
         Logger.Info($"Demon {killer.GetRealName()} dealt {target.GetRealName()} damage equal to {Damage.GetInt()}", "Demon");
         return false;
@@ -118,7 +118,7 @@ internal class Demon : RoleBase
         if (DemonHealth.TryGetValue(target.PlayerId, out var Health) && Health - SelfDamage.GetInt() < 1)
         {
             DemonHealth.Remove(target.PlayerId);
-            Utils.NotifyRoles(SpecifySeer: target);
+            // Utils.NotifyRoles(SpecifySeer: target);
             return true;
         }
 
@@ -134,7 +134,7 @@ internal class Demon : RoleBase
         SendRPC(target.PlayerId);
         RPC.PlaySoundRPC(target.PlayerId, Sounds.KillSound);
         killer.RpcGuardAndKill(target);
-        Utils.NotifyRoles(SpecifySeer: target);
+        // Utils.NotifyRoles(SpecifySeer: target);
 
         Logger.Info($"{killer.GetRealName()} try kill {target.GetRealName()} but get damage {SelfDamage.GetInt()}", "Demon");
         return false;

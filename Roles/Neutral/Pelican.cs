@@ -163,8 +163,8 @@ internal class Pelican : RoleBase
         ReportDeadBodyPatch.CanReport[target.PlayerId] = false;
         target.MarkDirtySettings();
 
-        NotifyRoles(SpecifySeer: pc);
-        NotifyRoles(SpecifySeer: target);
+        //NotifyRoles(SpecifySeer: pc);
+        //NotifyRoles(SpecifySeer: target);
 
         Logger.Info($"{pc.GetRealName()} eat player => {target.GetRealName()}", "Pelican");
     }
@@ -256,7 +256,7 @@ internal class Pelican : RoleBase
                 target.SyncSettings();
 
                 RPC.PlaySoundRPC(tar, Sounds.TaskComplete);
-                Utils.NotifyRoles(SpecifySeer: target);
+                // Utils.NotifyRoles(SpecifySeer: target);
 
                 Logger.Info($"{pelican?.Data?.PlayerName} dead, player return back: {target?.Data?.PlayerName} in {teleportPosition}", "Pelican");
             }

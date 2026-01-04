@@ -61,7 +61,7 @@ internal class Kamikaze : RoleBase
                 KamikazedList.Add(target.PlayerId);
                 killer.RpcGuardAndKill(killer);
                 killer.SetKillCooldown(KillCooldown.GetFloat());
-                Utils.NotifyRoles(SpecifySeer: killer);
+                // Utils.NotifyRoles(SpecifySeer: killer);
                 killer.RpcRemoveAbilityUse();
             }
             else

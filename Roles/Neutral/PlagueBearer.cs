@@ -130,8 +130,8 @@ internal class PlagueBearer : RoleBase
         }
         if (needCheck)
         {
-            NotifyRoles(SpecifyTarget: seer);
-            NotifyRoles(SpecifyTarget: target);
+            //NotifyRoles(SpecifyTarget: seer);
+            //NotifyRoles(SpecifyTarget: target);
             CheckPlagueAllPlayers();
         }
     }
@@ -168,7 +168,7 @@ internal class PlagueBearer : RoleBase
                 plagueBearer.RpcGuardAndKill(plagueBearer);
                 plagueBearer.ResetKillCooldown();
 
-                NotifyRoles(SpecifySeer: plagueBearer);
+                //NotifyRoles(SpecifySeer: plagueBearer);
                 plagueBearer.MarkDirtySettings();
             }
         }
@@ -182,7 +182,7 @@ internal class PlagueBearer : RoleBase
         }
         PlaguedList[killer.PlayerId].Add(target.PlayerId);
         SendRPC(killer, target);
-        NotifyRoles(SpecifySeer: killer);
+        //NotifyRoles(SpecifySeer: killer);
 
         CheckPlagueAllPlayers();
 

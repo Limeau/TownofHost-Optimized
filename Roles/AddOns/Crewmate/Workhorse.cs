@@ -90,7 +90,7 @@ public class Workhorse : IAddon
             AddMidGame(pc.PlayerId);
             pc.Data.RpcSetTasks(new Il2CppStructArray<byte>(0)); // Redistribute tasks
             pc.SyncSettings();
-            Utils.NotifyRoles(SpecifySeer: pc);
+            // Utils.NotifyRoles(SpecifySeer: pc);
         }
 
         return false;

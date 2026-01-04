@@ -88,7 +88,7 @@ internal class Godfather : RoleBase
             killer.ResetKillCooldown();
             killer.SetKillCooldown();
             killer.Notify(ColorString(GetRoleColor(CustomRoles.Godfather), GetString("GodfatherRefugeeMsg")));
-            NotifyRoles(killer);
+            //NotifyRoles(killer);
         }
     }
     public override void AfterMeetingTasks() => Didvote = false;

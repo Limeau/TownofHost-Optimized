@@ -123,7 +123,7 @@ internal class Pixie : RoleBase
         PixieTargets[killerId].Add(targetId);
         SendRPC(killerId, targetId);
 
-        NotifyRoles(SpecifySeer: killer, ForceLoop: true);
+        //NotifyRoles(SpecifySeer: killer, ForceLoop: true);
         if (!DisableShieldAnimations.GetBool()) killer.RpcGuardAndKill(killer);
         SetKillCooldown(killer.PlayerId);
         

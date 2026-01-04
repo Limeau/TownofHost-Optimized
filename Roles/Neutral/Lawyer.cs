@@ -266,7 +266,7 @@ internal class Lawyer : RoleBase
         }
         else
         {
-            Utils.NotifyRoles(SpecifySeer: lawyer);
+            // Utils.NotifyRoles(SpecifySeer: lawyer);
         }
     }
 }

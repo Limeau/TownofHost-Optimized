@@ -180,7 +180,7 @@ internal class EvilHacker : RoleBase
         });
         if (AmongUsClient.Instance.AmHost)
         {
-            Utils.NotifyRoles(SpecifySeer: evilHackerPlayer);
+            // Utils.NotifyRoles(SpecifySeer: evilHackerPlayer);
         }
     }
     public override void OnFixedUpdate(PlayerControl player, bool lowLoad, long nowTime, int timerLowLoad)
@@ -201,7 +201,7 @@ internal class EvilHacker : RoleBase
         }
         if (doNotifyRoles)
         {
-            Utils.NotifyRoles(SpecifySeer: evilHackerPlayer);
+            // Utils.NotifyRoles(SpecifySeer: evilHackerPlayer);
             SendRPC(1, SystemTypes.Hallway);
         }
     }

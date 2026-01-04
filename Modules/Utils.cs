@@ -2005,7 +2005,7 @@ public static class Utils
         
         foreach (PlayerControl seer in seerList)
         {
-            hasValue |= DoNotifyRoles(SpecifySeer, SpecifyTarget, isForMeeting, NoCache, ForceLoop, CamouflageIsForMeeting, MushroomMixupIsActive);
+            hasValue |= DoNotifyRoles(ref sender, SpecifySeer, SpecifyTarget, isForMeeting, NoCache, ForceLoop, CamouflageIsForMeeting, MushroomMixupIsActive);
             if (sender.stream.Length > 500)
             {
                 sender.SendMessage();
@@ -2018,7 +2018,7 @@ public static class Utils
 
         
     }
-    public static bool DoNotifyRoles(PlayerControl SpecifySeer = null, PlayerControl SpecifyTarget = null, bool isForMeeting = false, bool NoCache = false, bool ForceLoop = true, bool CamouflageIsForMeeting = false, bool MushroomMixupIsActive = false)
+    public static bool DoNotifyRoles(ref CustomRpcSender sender, PlayerControl SpecifySeer = null, PlayerControl SpecifyTarget = null, bool isForMeeting = false, bool NoCache = false, bool ForceLoop = true, bool CamouflageIsForMeeting = false, bool MushroomMixupIsActive = false)
     {
         if (!AmongUsClient.Instance.AmHost || GameStates.IsHideNSeek || Main.AllPlayerControls == null || SetUpRoleTextPatch.IsInIntro) return false;
         if (MeetingHud.Instance)
@@ -2073,7 +2073,7 @@ public static class Utils
             // Hide Player names in during Mushroom Mixup if seer is alive and Desync Impostor
             if (!CamouflageIsForMeeting && MushroomMixupIsActive && seer.IsAlive() && (!seer.Is(Custom_Team.Impostor) || Main.PlayerStates[seer.PlayerId].IsNecromancer) && seer.HasDesyncRole())
             {
-                seer.RpcSetNamePrivate("<size=0%>", force: NoCache);
+                sender.RpcSetName(seer, "size=0%", seer);
             }
             else
             {
@@ -2200,11 +2200,10 @@ public static class Utils
 
                 if (!isForMeeting) SelfName += "\r\n";
 
-                seer.RpcSetNamePrivate(SelfName, force: NoCache);
+                sender.RpcSetName(seer, SelfName, seer);
             }
 
             // Start run loop for Target only when condition is "true"
-            /*
             if (ForceLoop && (seer.Data.IsDead || !seer.IsAlive()
                 || seerList.Length == 1
                 || targetList.Length == 1
@@ -2230,7 +2229,7 @@ public static class Utils
                     // Hide Player names in during Mushroom Mixup if seer is alive and Desync Impostor
                     if (!CamouflageIsForMeeting && MushroomMixupIsActive && target.IsAlive() && (!seer.Is(Custom_Team.Impostor) || Main.PlayerStates[seer.PlayerId].IsNecromancer) && seer.HasDesyncRole())
                     {
-                        realTarget.RpcSetNamePrivate("<size=0%>", seer, force: NoCache);
+                        sender.RpcSetName(realTarget, "<size=0%>", seer);
                     }
                     else
                     {
@@ -2397,11 +2396,11 @@ public static class Utils
                             TargetName = $"{TargetRoleText}<color=#4fa1ff><u></color>{TargetPlayerName}</u>{TargetDeathReason}<color=#4fa1ff>✚</color>{TargetMark}{TargetSuffix}";
                         }
 
-                        realTarget.RpcSetNamePrivate(TargetName, seer, force: NoCache);
+                        sender.RpcSetName(realTarget, TargetName, seer);
                     }
                 }
 
-            }*/
+            }
         }
         Logger.Info($" END", "DoNotifyRoles");
         return true;
