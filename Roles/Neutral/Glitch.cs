@@ -126,7 +126,6 @@ internal class Glitch : RoleBase
             if (pc.Value + HackDuration.GetInt() < nowTime)
             {
                 hackedIdList.Remove(pc.Key);
-                change = true;
             }
         }
 
