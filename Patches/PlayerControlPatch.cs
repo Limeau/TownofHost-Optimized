@@ -1498,6 +1498,7 @@ class FixedUpdateInNormalGamePatch
                         Main.LowLoadUpdateName[__instance.PlayerId] = false;
                     }
                 }
+                Utils.NotifyRoles(SpecifySeer: __instance);
             }
             else
             {
@@ -1505,7 +1506,7 @@ class FixedUpdateInNormalGamePatch
                 __instance.cosmetics.colorBlindText.transform.SetLocalY(-0.32f);
             }
 
-            Utils.NotifyRoles(SpecifySeer: __instance);
+            
         }
         return Task.CompletedTask;
     }
