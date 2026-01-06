@@ -1915,7 +1915,7 @@ public static class Utils
             foreach (PlayerControl target in aapc)
             {
                 if (isMeeting) yield break;
-                NotifyRoles(SpecifySeer: seer, SpecifyTarget: target);
+                //NotifyRoles(SpecifySeer: seer, SpecifyTarget: target);
                 if (count++ % speed == 0) yield return null;
             }
         }
@@ -2009,7 +2009,7 @@ public static class Utils
             if (sender.stream.Length > 500)
             {
                 sender.SendMessage();
-                sender = CustomRpcSender.Create("NotifyRoles");
+                sender = CustomRpcSender.Create("NotifyRoles", SendOption.None);
                 hasValue = false;
             }
         }
