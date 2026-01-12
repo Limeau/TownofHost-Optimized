@@ -1,10 +1,5 @@
 using Hazel;
-using System;
-using System.Text.RegularExpressions;
 using TOHO.Modules;
-using TOHO.Modules.ChatManager;
-using static TOHO.CheckForEndVotingPatch;
-using static TOHO.Utils;
 using static TOHO.Options;
 using static TOHO.Translator;
 using UnityEngine;
@@ -50,8 +45,8 @@ internal class ForensicScientist : RoleBase
             .SetValueFormat(OptionFormat.Seconds);
         CanRemoveCurses = BooleanOptionItem.Create(Id + 4, "ForensicCanRemoveCurses", true, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.ForensicScientist]);
-        CursesRemoveMax = IntegerOptionItem.Create(Id + 7, "CursesRemoveMax", new(1, 999, 1), 3, TabGroup.CrewmateRoles, false).SetParent(CanRemoveCurses)
-            .SetValueFormat(OptionFormat.Times);    
+        CursesRemoveMax = IntegerOptionItem.Create(Id + 7, "CursesRemoveMax", new(1, 999, 1), 1, TabGroup.CrewmateRoles, false).SetParent(CanRemoveCurses)
+            .SetValueFormat(OptionFormat.Times);
         ShowArrows = BooleanOptionItem.Create(Id + 5, "ForensicShowArrows", true, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.ForensicScientist]);
         VitalsCooldownAfterTasks = FloatOptionItem.Create(Id + 6, "ForensicVitalsCooldown", new(0f, 60f, 5f), 15f, TabGroup.CrewmateRoles, false)
@@ -82,6 +77,17 @@ internal class ForensicScientist : RoleBase
             CustomRoleManager.CheckDeadBodyOthers.Remove(CheckDeadBody);
         }
     }
+
+    public override bool OnTaskComplete(PlayerControl player, int completedTaskCount, int totalTaskCount)
+    {
+        if (!player.IsAlive()) return true;
+        if (player.GetAbilityUseLimit() < 3)
+        {
+            player.SetAbilityUseLimit(player.GetAbilityUseLimit() + 1);
+        }
+        return true;
+    }
+
 
     public override void ApplyGameOptions(IGameOptions opt, byte playerId)
     {
@@ -133,10 +139,10 @@ internal class ForensicScientist : RoleBase
                 var killerId = bodyId.GetRealKillerById();
                 if (killerId != null)
                 {
-                    
+
                     IdentifiedKillers[player.PlayerId] = killerId.PlayerId;
                     AnalysisResults[player.PlayerId] = string.Format(GetString("ForensicAnalysisSuccess"), killerId.GetRealName());
-                    
+
                 }
                 else
                 {
@@ -156,16 +162,16 @@ internal class ForensicScientist : RoleBase
 
     public override void AfterMeetingTasks()
     {
-   
+
         IdentifiedKillers.Clear();
     }
 
     public override void OnVote(PlayerControl voter, PlayerControl target)
     {
         var player = _Player;
-        if (player == null || !player.IsAlive() || voter.PlayerId != player.PlayerId || target == null ) return;
+        if (player == null || !player.IsAlive() || voter.PlayerId != player.PlayerId || target == null) return;
 
-        if (CanRemoveCurses.GetBool() && player.GetAbilityUseLimit()>0)
+        if (CanRemoveCurses.GetBool() && player.GetAbilityUseLimit() > 0)
         {
             bool removedAnyCurse = false;
 
@@ -194,10 +200,12 @@ internal class ForensicScientist : RoleBase
             if (removedAnyCurse)
             {
                 player.RpcRemoveAbilityUse();
-                voter.Notify(string.Format(GetString("ForensicCurseRemoved"), target.GetRealName()));
+                voter.Notify(string.Format(GetString("ForensicCurseRemoved"), target.GetRealName(), player.GetAbilityUseLimit()));
             }
         }
+
     }
+
 
     public override string GetSuffix(PlayerControl seer, PlayerControl seen, bool isForMeeting = false)
     {
@@ -210,8 +218,5 @@ internal class ForensicScientist : RoleBase
     {
         hud.AbilityButton.buttonLabelText.text = GetString("ForensicVitalsText");
     }
-
-
-
 
 }

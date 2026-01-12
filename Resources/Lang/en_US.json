@@ -4714,7 +4714,7 @@
   "ForensicSampleFailChance": "Sample fail chance",
   "ForensicVitalsDuration": "Vitals duration",
   "ForensicCanRemoveCurses": "Can remove curses",
-  "CursesRemoveMax": "Maximum Curse Removals",
+  "CursesRemoveMax": "Initial Curse Removals",
   "ForensicShowArrows": "Show arrows to bodies",
   "ForensicVitalsCooldown": "Vitals cooldown after tasks",
   "ForensicAnalysisTitle": "Forensic Analysis",
