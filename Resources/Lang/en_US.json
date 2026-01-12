@@ -4867,8 +4867,13 @@
   "Santa": "Santa",
   "SantaInfo": "Give gifts to the Nice and the Naughty",
   "SantaInfoLong": "As the Santa, you can give gifts to players- if they are nice (crewmate) they get a shield, and if they are naughty (impostor), their next kill gets shielded!",
-  "SantaButtonText": "Gift"
+  "SantaButtonText": "Gift",
+  
+  "Shapetricker": "Shapetricker",
+  "ShapetrickerInfo": "Trick other players with your egg color",
+  "ShapetrickerInfoLong": "As the Shapetricker, the color of your Shapeshift egg will always be the color of the shapeshift target."
 }
+
 
 
 
