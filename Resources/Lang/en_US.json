@@ -1015,7 +1015,7 @@
   "BewilderInfoLong": "As the Bewilder, you may have a smaller/bigger vision. When the Bewilder has died, the murderer's vision may become the same as the Bewilder's, depending on the settings.",
   "WorkhorseInfoLong": "As the Workhorse, you are the first player to complete all the tasks will become Workhorse, and Workhorse will give the player extra tasks. The Host sets the number of additional tasks.",
   "FoolInfoLong": "Sleuth and Mechanic won't be Fool. Fools can't repair any Sabotage.",
-  "AvengerInfoLong": "Host can set whether the Impostor can become an Avenger. When the Avenger is killed (voted out, and irregular kills will not count), the Avenger will revenge a random player.",
+  "AvangerInfoLong": "Host can set whether the Impostor can become an Avenger. When the Avenger is killed (voted out, and irregular kills will not count), the Avenger will revenge a random player.",
   "YoutuberInfoLong": "As the YouTuber, When you are the first player to die in the game, the YouTuber will win alone. If the YouTuber does not meet the win conditions, the YouTuber will follow the Crewmate to win. Note: Indirect killing methods such as being exiled, being guessed by the Guesser, etc., will not trigger the skills of the YouTuber.\nOnly Crewmates will become YouTuber.",
   "EgoistInfoLong": "As the Egoist, if your team wins, the Egoist wins instead of their team.\nMadmates and Neutrals won't be Egoist.",
   "StealerInfoLong": "As a Stealer, when you kill a player, the Stealer will get an additional vote (the Host sets the vote number, and the decimal is rounded down).\nAlso, extra votes from the Stealer are hidden during the meeting depending on the options.",
