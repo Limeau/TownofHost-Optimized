@@ -42,7 +42,6 @@ internal class Wight : RoleBase
     public override void SetKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
 
     public override bool CanUseKillButton(PlayerControl pc) => true;
-    public override bool CanUseSabotage(PlayerControl pc) => false;
     public override bool CanUseImpostorVentButton(PlayerControl pc) => CanVent.GetBool();
 
     public override bool OnCheckMurderAsKiller(PlayerControl killer, PlayerControl target)
@@ -107,7 +106,6 @@ internal class Undead : RoleBase
     public override void SetKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = Wight.KillCooldownSK.GetFloat();
     public override bool CanUseKillButton(PlayerControl player) => true;
     public override bool CanUseImpostorVentButton(PlayerControl player) => Wight.CanVentSK.GetBool();
-    public override bool CanUseSabotage(PlayerControl player) => false;
     public override string GetProgressText(byte playerId, bool comms) => string.Empty;
 
     public override bool OnCheckMurderAsTarget(PlayerControl killer, PlayerControl target)

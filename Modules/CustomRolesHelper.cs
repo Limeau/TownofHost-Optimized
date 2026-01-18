@@ -700,6 +700,13 @@ public static class CustomRolesHelper
                 if (pc.Is(CustomRoles.Overclocked))
                     return false;
                 break;
+            
+            case CustomRoles.Subversion:
+                if (!pc.CanUseKillButton())
+                    return false;
+                if (pc.CanUseSabotage())
+                    return false;
+                break;
 
             case CustomRoles.Lazy:
                 if (!Lazy.CheckConflicts(pc))

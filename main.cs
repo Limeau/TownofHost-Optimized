@@ -1096,6 +1096,7 @@ public enum CustomRoles
     Soulless,
     Statue,
     Stubborn,
+    Subversion,
     Susceptible,
     Swift,
     Tiebreaker,

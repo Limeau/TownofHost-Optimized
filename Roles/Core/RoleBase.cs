@@ -115,7 +115,7 @@ public abstract class RoleBase
     /// <summary>
     /// A generic method to set if the Role can use Sabotage
     /// </summary>
-    public virtual bool CanUseSabotage(PlayerControl pc) => pc.Is(Custom_Team.Impostor);
+    public virtual bool CanUseSabotage(PlayerControl pc) => pc.Is(Custom_Team.Impostor) || pc.Is(CustomRoles.Subversion);
     /// <summary>
     /// When the Player presses the Sabotage button
     /// </summary>

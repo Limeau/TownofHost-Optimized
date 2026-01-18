@@ -4873,7 +4873,11 @@
   "ShapetrickerInfo": "Trick other players with your egg color",
   "ShapetrickerInfoLong": "As the Shapetricker, the color of your Shapeshift egg will always be the color of the shapeshift target.",
   
-  "Warning.VanillaRegion": "This lobby is on a Vanilla region (NA, EU, AS)\nIt is recommended you switch to a modded region because of Innersloth's ratelimit Anti-Cheat.\nYou will be kicked in 5 seconds"
+  "Warning.VanillaRegion": "This lobby is on a Vanilla region (NA, EU, AS)\nIt is recommended you switch to a modded region because of Innersloth's ratelimit Anti-Cheat.\nYou will be kicked in 5 seconds",
+  
+  "Subversion": "Subversion",
+  "SubversionInfo": "Sabotage as a Non-Impostor",
+  "SubversionInfoLong": "The Subversion can sabotage as a non-Impostor role."
 }
 
 
