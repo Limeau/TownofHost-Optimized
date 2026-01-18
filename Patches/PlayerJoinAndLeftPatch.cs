@@ -582,6 +582,7 @@ class OnPlayerLeftPatch
         StartingProcessing = false;
     }
 }
+
 [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.Spawn))]
 class InnerNetClientSpawnPatch
 {
@@ -594,20 +595,19 @@ class InnerNetClientSpawnPatch
         Logger.Msg($"Spawn player data: ID {ownerId}: {client.PlayerName}", "InnerNetClientSpawn");
 
         if (client == null || client.Character == null // client is null
-            || client.ColorId < 0 || Palette.PlayerColors.Length <= client.ColorId) // invalid client color
+                           || client.ColorId < 0 ||
+                           Palette.PlayerColors.Length <= client.ColorId) // invalid client color
         {
             Logger.Warn("client is null or client have invalid color", "TrySyncAndSendMessage");
         }
         else
         {
-            _ = new LateTask(() =>
-            {
-                OptionItem.SyncAllOptions(client.Id);
-            }, 3f, "Sync All Options For New Player");
+            _ = new LateTask(() => { OptionItem.SyncAllOptions(client.Id); }, 3f, "Sync All Options For New Player");
 
             _ = new LateTask(() =>
             {
-                if (Main.OverrideWelcomeMsg != "") Utils.SendMessage(Main.OverrideWelcomeMsg, client.Character.PlayerId);
+                if (Main.OverrideWelcomeMsg != "")
+                    Utils.SendMessage(Main.OverrideWelcomeMsg, client.Character.PlayerId);
                 else TemplateManager.SendTemplate("welcome", client.Character.PlayerId, true);
             }, 3f, "Welcome Message");
 
@@ -619,7 +619,8 @@ class InnerNetClientSpawnPatch
                     return;
                 }
 
-                var sender = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.RequestRetryVersionCheck, SendOption.Reliable, client.Character.OwnerId);
+                var sender = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId,
+                    (byte)CustomRPC.RequestRetryVersionCheck, SendOption.Reliable, client.Character.OwnerId);
                 AmongUsClient.Instance.FinishRpcImmediately(sender);
             }, 3f, "RPC Request Retry Version Check");
 
@@ -627,12 +628,15 @@ class InnerNetClientSpawnPatch
             {
                 _ = new LateTask(() =>
                 {
-                    if (GameStates.IsLobby && client.Character != null && LobbyBehaviour.Instance != null && GameStates.IsVanillaServer)
+                    if (GameStates.IsLobby && client.Character != null && LobbyBehaviour.Instance != null &&
+                        GameStates.IsVanillaServer)
                     {
                         // Only for Vanilla
                         if (!client.Character.IsModded())
                         {
-                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(LobbyBehaviour.Instance.NetId, (byte)RpcCalls.LobbyTimeExpiring, SendOption.None, client.Id);
+                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(
+                                LobbyBehaviour.Instance.NetId, (byte)RpcCalls.LobbyTimeExpiring, SendOption.None,
+                                client.Id);
                             writer.WritePacked((int)GameStartManagerPatch.timer);
                             writer.Write(false);
                             AmongUsClient.Instance.FinishRpcImmediately(writer);
@@ -640,7 +644,9 @@ class InnerNetClientSpawnPatch
                         // Non-host modded client
                         else if (client.Character.IsNonHostModdedClient())
                         {
-                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SyncLobbyTimer, SendOption.Reliable, client.Id);
+                            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(
+                                PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SyncLobbyTimer, SendOption.Reliable,
+                                client.Id);
                             writer.WritePacked((int)GameStartManagerPatch.timer);
                             AmongUsClient.Instance.FinishRpcImmediately(writer);
                         }
@@ -650,62 +656,72 @@ class InnerNetClientSpawnPatch
 
             if (Options.GradientTagsOpt.GetBool())
             {
-                _ = new LateTask(() =>
-                {
-                    Utils.SendMessage(GetString("Warning.GradientTags"), client.Character.PlayerId);
-                }, 3.3f, "GradientWarning");
+                _ = new LateTask(
+                    () => { Utils.SendMessage(GetString("Warning.GradientTags"), client.Character.PlayerId); }, 3.3f,
+                    "GradientWarning");
             }
-        }
 
-        Main.GuessNumber[client.Character.PlayerId] = [-1, 7];
-
-        if (Main.OverrideWelcomeMsg == "" && Main.PlayerStates.Count != 0 && Main.clientIdList.Contains(client.Id))
-        {
-            if (GameStates.IsNormalGame)
+            if (GameStates.IsVanillaServer && GameStates.IsOnlineGame)
             {
-                if (Options.AutoDisplayKillLog.GetBool() && Main.PlayerStates.Count != 0 && Main.clientIdList.Contains(client.Id))
+                Logger.SendInGame(string.Format(GetString("Warning.VanillaRegion")));
+                _ = new LateTask(() => { AmongUsClient.Instance.KickPlayer(client.Character.GetClientId(), false); },
+                    5f, "VanillaWarning");
+            }
+
+            Main.GuessNumber[client.Character.PlayerId] = [-1, 7];
+
+            if (Main.OverrideWelcomeMsg == "" && Main.PlayerStates.Count != 0 && Main.clientIdList.Contains(client.Id))
+            {
+                if (GameStates.IsNormalGame)
                 {
-                    _ = new LateTask(() =>
+                    if (Options.AutoDisplayKillLog.GetBool() && Main.PlayerStates.Count != 0 &&
+                        Main.clientIdList.Contains(client.Id))
                     {
-                        if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                        _ = new LateTask(() =>
                         {
-                            Main.isChatCommand = true;
-                            Utils.ShowKillLog(client.Character.PlayerId);
-                        }
-                    }, 3f, "DisplayKillLog");
-                }
-                if (Options.AutoDisplayLastRoles.GetBool())
-                {
-                    _ = new LateTask(() =>
+                            if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                            {
+                                Main.isChatCommand = true;
+                                Utils.ShowKillLog(client.Character.PlayerId);
+                            }
+                        }, 3f, "DisplayKillLog");
+                    }
+
+                    if (Options.AutoDisplayLastRoles.GetBool())
                     {
-                        if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                        _ = new LateTask(() =>
                         {
-                            Main.isChatCommand = true;
-                            Utils.SendMessage("\n", client.Character.PlayerId, Main.LastSummaryMessage);
-                        }
-                    }, 3.1f, "DisplayLastRoles");
-                }
-                if (Options.AutoDisplayLastResult.GetBool())
-                {
-                    _ = new LateTask(() =>
+                            if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                            {
+                                Main.isChatCommand = true;
+                                Utils.SendMessage("\n", client.Character.PlayerId, Main.LastSummaryMessage);
+                            }
+                        }, 3.1f, "DisplayLastRoles");
+                    }
+
+                    if (Options.AutoDisplayLastResult.GetBool())
                     {
-                        if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                        _ = new LateTask(() =>
                         {
-                            Main.isChatCommand = true;
-                            Utils.ShowLastResult(client.Character.PlayerId);
-                        }
-                    }, 3.2f, "DisplayLastResult");
-                }
-                if (PlayerControl.LocalPlayer.FriendCode.GetDevUser().IsUp && Options.EnableUpMode.GetBool())
-                {
-                    _ = new LateTask(() =>
+                            if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                            {
+                                Main.isChatCommand = true;
+                                Utils.ShowLastResult(client.Character.PlayerId);
+                            }
+                        }, 3.2f, "DisplayLastResult");
+                    }
+
+                    if (PlayerControl.LocalPlayer.FriendCode.GetDevUser().IsUp && Options.EnableUpMode.GetBool())
                     {
-                        if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                        _ = new LateTask(() =>
                         {
-                            Main.isChatCommand = true;
-                            //     Utils.SendMessage($"{GetString("Message.YTPlanNotice")} {PlayerControl.LocalPlayer.FriendCode.GetDevUser().UpName}", client.Character.PlayerId);
-                        }
-                    }, 3.3f, "DisplayUpWarnning");
+                            if (!AmongUsClient.Instance.IsGameStarted && client.Character != null)
+                            {
+                                Main.isChatCommand = true;
+                                //     Utils.SendMessage($"{GetString("Message.YTPlanNotice")} {PlayerControl.LocalPlayer.FriendCode.GetDevUser().UpName}", client.Character.PlayerId);
+                            }
+                        }, 3.3f, "DisplayUpWarnning");
+                    }
                 }
             }
         }
