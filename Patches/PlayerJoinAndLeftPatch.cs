@@ -18,6 +18,7 @@ class OnGameJoinedPatch
 {
     public static void Postfix(AmongUsClient __instance)
     {
+        
         while (!Options.IsLoaded) System.Threading.Tasks.Task.Delay(1);
         Logger.Info($"{__instance.GameId} Joining room - Room code: {GameCode.IntToGameName(AmongUsClient.Instance.GameId) ?? string.Empty}", "OnGameJoined");
 
@@ -41,6 +42,17 @@ class OnGameJoinedPatch
 
         if (AmongUsClient.Instance.AmHost) // Execute the following only on the Host
         {
+            if (GameStates.IsVanillaServer && !GameStates.IsLocalGame)
+            {
+                new LateTask(() =>
+                {
+                    TOHO.Logger.SendInGame("Vanilla regions are currently disabled for TOHO.\n\nTry using a modded region, or wait for an update that enables Vanilla regions.");
+                }, 1f, "ShowVanillaError");
+                new LateTask(() =>
+                {
+                    AmongUsClient.Instance.KickPlayer(__instance.ClientId, false);
+                }, 5f, "KickVanillaError");
+            }
             EndGameManagerPatch.IsRestarting = false;
             if (!RehostManager.IsAutoRehostDone)
             {

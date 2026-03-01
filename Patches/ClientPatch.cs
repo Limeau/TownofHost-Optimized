@@ -104,6 +104,7 @@ internal class KickPlayerPatch
         if (!AmongUsClient.Instance.AmHost) return true;
         if (AmongUsClient.Instance.ClientId == clientId)
         {
+            if (GameStates.IsVanillaServer && !GameStates.IsLocalGame) return true;
             Logger.SendInGame(string.Format("Game Attempting to {0} Host, Blocked the attempt.", ban ? "Ban" : "Kick"));
             Logger.Info("How the fuck host are kicking it self", "KickPlayerPatch");
             return false;
