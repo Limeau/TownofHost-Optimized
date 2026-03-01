@@ -17,7 +17,7 @@ internal class Crow : RoleBase
     public override void SetupCustomOption()
     {
         Options.SetupRoleOptions(Id, TabGroup.ImpostorRoles, CustomRoles.Crow);
-        KillCooldown = FloatOptionItem.Create(Id + 10, GeneralOption.KillCooldown, new(5f, 180f, 2.5f), 30f, TabGroup.ImpostorRoles, false)
+        KillCooldown = FloatOptionItem.Create(Id + 10, GeneralOption.KillCooldown, new(1f, 60f, 1f), 20f, TabGroup.ImpostorRoles, false)
             .SetParent(Options.CustomRoleSpawnChances[CustomRoles.Crow])
             .SetValueFormat(OptionFormat.Seconds);
         AbilityUses = IntegerOptionItem.Create(Id + 11, "CrowUses", new(1, 5, 1), 3, TabGroup.ImpostorRoles, false)
