@@ -701,6 +701,7 @@ public enum CustomRoles
     Consigliere,
     Councillor,
     Crewpostor,
+    Crow,
     CursedWolf,
     Dazzler,
     Deathpact,

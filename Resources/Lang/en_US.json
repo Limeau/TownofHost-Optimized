@@ -4877,7 +4877,13 @@
   
   "Subversion": "Subversion",
   "SubversionInfo": "Sabotage as a Non-Impostor",
-  "SubversionInfoLong": "The Subversion can sabotage as a non-Impostor role."
+  "SubversionInfoLong": "The Subversion can sabotage as a non-Impostor role.",
+  
+  "Crow": "Crow",
+  "CrowInfo": "Steal the roles of your victims",
+  "CrowInfoLong": "When the Crow kills a player, they will take their role for the rest of the round. The Crow will also be assigned the Madmate addon, and their original role will be returned at the end of the next meeting",
+  "CrowNotify": "{0} had the role {1}.\nYour role has been changed to Mad {1} until the next meeting ends",
+  "CrowUses": "Crow ability uses"
 }
 
 
