@@ -4884,7 +4884,14 @@
   "CrowInfo": "Steal the roles of your victims",
   "CrowInfoLong": "When the Crow kills a player, they will take their role for the rest of the round. The Crow will also be assigned the Madmate addon, and their original role will be returned at the end of the next meeting",
   "CrowNotify": "{0} had the role {1}.\nYour role has been changed to Mad {1} until the next meeting ends",
-  "CrowUses": "Crow ability uses"
+  "CrowUses": "Crow ability uses",
+  
+  "Neutralizer": "Neutralizer",
+  "NeutralizerInfo": "Make a player unable to use their role for a round",
+  "NeutralizerInfoLong": "The Neutralizer can use their kill button to remove a player's role for a single round. They will be unable to do anything related to their role that round. Their role will be returned to them after the round is over",
+  "NeutralizerAbilityUses": "Neutralizer ability uses",
+  "Neutralized": "Neutralized",
+  "NeutralizedInfoLong": "You have been neutralized by the Neutralizer and therefore cannot use your role. Your role will be returned to you after this meeting."
 }
 
 
