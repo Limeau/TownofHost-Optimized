@@ -4539,6 +4539,7 @@
   "EnableAnomalies": "Enable Anomalies /anomalyinfo",
   "AnomalyMeetingPCT": "Chance per meeting to have an Anomaly",
   "MenuTitle.GameModifiers": "★ Game Modifiers ★",
+  "MenuTitle.Roles": "★ Role Settings ★",
   "ClownFestAnomaly": "We are experiencing the Clown Fest anomaly",
   "NewYearAnomaly": "We are experiencing the New Year anomaly",
   "HolidayAnomaly": "We are experiencing the Holiday anomaly",

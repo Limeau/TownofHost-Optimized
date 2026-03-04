@@ -766,11 +766,15 @@ public static class Options
         //    .SetColor(Utils.GetRoleColor(CustomRoles.GM))
         //    .SetHidden(true)
         //    .SetHeader(true);
-
-        ImpsCanSeeEachOthersRoles = BooleanOptionItem.Create(60001, "ImpsCanSeeEachOthersRoles", true, TabGroup.ImpostorRoles, false)
+        
+        TextOptionItem.Create(10000056, "MenuTitle.Roles", TabGroup.ModSettings)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetColor(Color.cyan);
+        
+        ImpsCanSeeEachOthersRoles = BooleanOptionItem.Create(60001, "ImpsCanSeeEachOthersRoles", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
-        ImpsCanSeeEachOthersAddOns = BooleanOptionItem.Create(60002, "ImpsCanSeeEachOthersAddOns", true, TabGroup.ImpostorRoles, false)
+        ImpsCanSeeEachOthersAddOns = BooleanOptionItem.Create(60002, "ImpsCanSeeEachOthersAddOns", true, TabGroup.ModSettings, false)
             .SetParent(ImpsCanSeeEachOthersRoles);
 
         Madmate.SetupMenuOptions();
@@ -778,84 +782,84 @@ public static class Options
         //MadmateCanFixSabotage = BooleanOptionItem.Create(50010, "MadmateCanFixSabotage", false, TabGroup.ImpostorRoles, false)
         //.SetGameMode(CustomGameMode.Standard);
 
-        DefaultShapeshiftCooldown = FloatOptionItem.Create(60011, "DefaultShapeshiftCooldown", new(5f, 180f, 5f), 15f, TabGroup.ImpostorRoles, false)
+        DefaultShapeshiftCooldown = FloatOptionItem.Create(60011, "DefaultShapeshiftCooldown", new(5f, 180f, 5f), 15f, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
             .SetValueFormat(OptionFormat.Seconds);
-        DeadImpCantSabotage = BooleanOptionItem.Create(60012, "DeadImpCantSabotage", false, TabGroup.ImpostorRoles, false)
+        DeadImpCantSabotage = BooleanOptionItem.Create(60012, "DeadImpCantSabotage", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
 
-        NonNeutralKillingRolesMinPlayer = IntegerOptionItem.Create(60013, "NonNeutralKillingRolesMinPlayer", new(0, 15, 1), 0, TabGroup.NeutralRoles, false)
+        NonNeutralKillingRolesMinPlayer = IntegerOptionItem.Create(60013, "NonNeutralKillingRolesMinPlayer", new(0, 15, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
             .SetValueFormat(OptionFormat.Players);
-        NonNeutralKillingRolesMaxPlayer = IntegerOptionItem.Create(60014, "NonNeutralKillingRolesMaxPlayer", new(0, 15, 1), 0, TabGroup.NeutralRoles, false)
+        NonNeutralKillingRolesMaxPlayer = IntegerOptionItem.Create(60014, "NonNeutralKillingRolesMaxPlayer", new(0, 15, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetValueFormat(OptionFormat.Players);
 
-        NeutralKillingRolesMinPlayer = IntegerOptionItem.Create(60015, "NeutralKillingRolesMinPlayer", new(0, 15, 1), 0, TabGroup.NeutralRoles, false)
+        NeutralKillingRolesMinPlayer = IntegerOptionItem.Create(60015, "NeutralKillingRolesMinPlayer", new(0, 15, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
             .SetValueFormat(OptionFormat.Players);
-        NeutralKillingRolesMaxPlayer = IntegerOptionItem.Create(60016, "NeutralKillingRolesMaxPlayer", new(0, 15, 1), 0, TabGroup.NeutralRoles, false)
+        NeutralKillingRolesMaxPlayer = IntegerOptionItem.Create(60016, "NeutralKillingRolesMaxPlayer", new(0, 15, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetValueFormat(OptionFormat.Players);
 
-        NeutralApocalypseRolesMinPlayer = IntegerOptionItem.Create(60022, "NeutralApocalypseRolesMinPlayer", new(0, 4, 1), 0, TabGroup.NeutralRoles, false)
+        NeutralApocalypseRolesMinPlayer = IntegerOptionItem.Create(60022, "NeutralApocalypseRolesMinPlayer", new(0, 4, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
             .SetValueFormat(OptionFormat.Players);
-        NeutralApocalypseRolesMaxPlayer = IntegerOptionItem.Create(60023, "NeutralApocalypseRolesMaxPlayer", new(0, 4, 1), 0, TabGroup.NeutralRoles, false)
+        NeutralApocalypseRolesMaxPlayer = IntegerOptionItem.Create(60023, "NeutralApocalypseRolesMaxPlayer", new(0, 4, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetValueFormat(OptionFormat.Players);
 
 
-        NeutralRoleWinTogether = BooleanOptionItem.Create(60017, "NeutralRoleWinTogether", false, TabGroup.NeutralRoles, false)
+        NeutralRoleWinTogether = BooleanOptionItem.Create(60017, "NeutralRoleWinTogether", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
-        NeutralWinTogether = BooleanOptionItem.Create(60018, "NeutralWinTogether", false, TabGroup.NeutralRoles, false)
+        NeutralWinTogether = BooleanOptionItem.Create(60018, "NeutralWinTogether", false, TabGroup.ModSettings, false)
             .SetParent(NeutralRoleWinTogether)
             .SetGameMode(CustomGameMode.Standard);
-        NeutralCanSeeEachOther = BooleanOptionItem.Create(60555, "NeutralCanSeeEachOther", false, TabGroup.NeutralRoles, false)
+        NeutralCanSeeEachOther = BooleanOptionItem.Create(60555, "NeutralCanSeeEachOther", false, TabGroup.ModSettings, false)
             .SetParent(NeutralRoleWinTogether)
             .SetGameMode(CustomGameMode.Standard);
-        SpawnOneRandomKillingFraction = BooleanOptionItem.Create(60010, "SpawnOneRandomKillingFraction", true, TabGroup.NeutralRoles, false)
+        SpawnOneRandomKillingFraction = BooleanOptionItem.Create(60010, "SpawnOneRandomKillingFraction", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
 
-        CovenRolesMinPlayer = IntegerOptionItem.Create(60026, "CovenRolesMinPlayer", new(0, 15, 1), 0, TabGroup.CovenRoles, false)
+        CovenRolesMinPlayer = IntegerOptionItem.Create(60026, "CovenRolesMinPlayer", new(0, 15, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
             .SetValueFormat(OptionFormat.Players);
-        CovenRolesMaxPlayer = IntegerOptionItem.Create(60027, "CovenRolesMaxPlayer", new(0, 15, 1), 0, TabGroup.CovenRoles, false)
+        CovenRolesMaxPlayer = IntegerOptionItem.Create(60027, "CovenRolesMaxPlayer", new(0, 15, 1), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetValueFormat(OptionFormat.Players);
-        CovenHasImpVis = BooleanOptionItem.Create(60028, "CovenHasImpVis", true, TabGroup.CovenRoles, false)
+        CovenHasImpVis = BooleanOptionItem.Create(60028, "CovenHasImpVis", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
-        CovenImpVisMode = StringOptionItem.Create(60029, "CovenImpVisMode", EnumHelper.GetAllNames<CovenManager.VisOptionList>(), 0, TabGroup.CovenRoles, false)
+        CovenImpVisMode = StringOptionItem.Create(60029, "CovenImpVisMode", EnumHelper.GetAllNames<CovenManager.VisOptionList>(), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(CovenHasImpVis);
         CovenManager.RunSetUpImpVisOptions(160032);
-        CovenCanVent = BooleanOptionItem.Create(60030, "CovenCanVent", true, TabGroup.CovenRoles, false)
+        CovenCanVent = BooleanOptionItem.Create(60030, "CovenCanVent", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
-        CovenVentMode = StringOptionItem.Create(60032, "CovenVentMode", EnumHelper.GetAllNames<CovenManager.VentOptionList>(), 0, TabGroup.CovenRoles, false)
+        CovenVentMode = StringOptionItem.Create(60032, "CovenVentMode", EnumHelper.GetAllNames<CovenManager.VentOptionList>(), 0, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(CovenCanVent);
         CovenManager.RunSetUpVentOptions(260032);
-        CovenCanSeeEachOthersAddOns = BooleanOptionItem.Create(60033, "CovenCanSeeEachOthersAddOns", true, TabGroup.CovenRoles, false)
+        CovenCanSeeEachOthersAddOns = BooleanOptionItem.Create(60033, "CovenCanSeeEachOthersAddOns", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
 
-        NameDisplayAddons = BooleanOptionItem.Create(60019, "NameDisplayAddons", true, TabGroup.Addons, false)
+        NameDisplayAddons = BooleanOptionItem.Create(60019, "NameDisplayAddons", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
-        AddBracketsToAddons = BooleanOptionItem.Create(60021, "BracketAddons", true, TabGroup.Addons, false)
+        AddBracketsToAddons = BooleanOptionItem.Create(60021, "BracketAddons", true, TabGroup.ModSettings, false)
             .SetParent(NameDisplayAddons);
-        ShowShortNamesForAddOns = StringOptionItem.Create(60035, "ShowShortNamesForAddOns", EnumHelper.GetAllNames<ShortAddOnNamesMode>(), 0, TabGroup.Addons, false)
+        ShowShortNamesForAddOns = StringOptionItem.Create(60035, "ShowShortNamesForAddOns", EnumHelper.GetAllNames<ShortAddOnNamesMode>(), 0, TabGroup.ModSettings, false)
             .SetParent(NameDisplayAddons);
-        NoLimitAddonsNumMax = IntegerOptionItem.Create(60020, "NoLimitAddonsNumMax", new(0, 15, 1), 1, TabGroup.Addons, false)
+        NoLimitAddonsNumMax = IntegerOptionItem.Create(60020, "NoLimitAddonsNumMax", new(0, 15, 1), 1, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
-        RemoveIncompatibleAddOnsMidGame = BooleanOptionItem.Create(60034, "RemoveIncompatibleAddOnsMidGame", true, TabGroup.Addons, false)
+        RemoveIncompatibleAddOnsMidGame = BooleanOptionItem.Create(60034, "RemoveIncompatibleAddOnsMidGame", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
         #endregion
 
@@ -1376,7 +1380,7 @@ public static class Options
             .SetColor(Color.red)
             .SetGameMode(CustomGameMode.HidenSeekTOHO)
             .SetValueFormat(OptionFormat.Players);
-
+        
         // Confirm Ejections Mode
         TextOptionItem.Create(10000057, "MenuTitle.Ejections", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.Standard)
