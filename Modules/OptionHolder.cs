@@ -1365,6 +1365,7 @@ public static class Options
         TrickorTreat.SetupCustomOption();
 
         // Hide & Seek
+        
         TextOptionItem.Create(10000055, "MenuTitle.Hide&Seek", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.HidenSeekTOHO)
             .SetColor(Color.red);
@@ -1376,10 +1377,8 @@ public static class Options
             .SetGameMode(CustomGameMode.HidenSeekTOHO)
             .SetValueFormat(OptionFormat.Players);
 
-
-
         // Confirm Ejections Mode
-        TextOptionItem.Create(10000024, "MenuTitle.Ejections", TabGroup.ModSettings)
+        TextOptionItem.Create(10000057, "MenuTitle.Ejections", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(255, 238, 232, byte.MaxValue));
         CEMode = StringOptionItem.Create(60440, "ConfirmEjectionsMode", ConfirmEjectionsMode, 2, TabGroup.ModSettings, false)
