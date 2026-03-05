@@ -951,6 +951,7 @@ public enum CustomRoles
     Shocker,
     Shroud,
     Sidekick,
+    Slaad,
     Slayer,
     Skeleton,
     Solsticer,

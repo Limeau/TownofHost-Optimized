@@ -4892,10 +4892,14 @@
   "NeutralizerAbilityUses": "Neutralizer ability uses",
   "Neutralized": "Neutralized",
   "NeutralizedInfo": "You have been neutralized by the Neutralizer and therefore cannot use your role. Your role will be returned to you after this meeting.",
-  "NeutralizedInfoLong": "You have been neutralized by the Neutralizer and therefore cannot use your role. Your role will be returned to you after this meeting."
+  "NeutralizedInfoLong": "You have been neutralized by the Neutralizer and therefore cannot use your role. Your role will be returned to you after this meeting.",
+  
+  "Slaad": "Slaad",
+  "SlaadInfo": "Suck the life out of your targets",
+  "SlaadInfoLong": "The Slaad can use their kill button to suck the life out of a player. First, after a set amount of time, the target's vision and speed is reduced by a certian amount. Then after one meeting, the target turns gray. After another meeting, the target dies, and the Slaad's kill cooldown is reduced by a certain amount. Double click to kill normally, but your kill cooldown does not reduce. The killed players from your ability will have the Drained death reason.",
+  "SlaadStage1DelayTime": "Stage 1 effects delay time",
+  "SlaadSpeed": "Target Speed",
+  "SlaadVision": "Target Vision",
+  "SlaadKillCooldownReduction": "Slaad kill cooldown reduction after a player goes through all stages",
+  "SlaadMinimumKillCooldown": "Minimum Slaad kill cooldown"
 }
-
-
-
-
-

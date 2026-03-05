@@ -125,6 +125,7 @@ public static class CustomRoleManager
         }
 
         if (Grenadier.HasEnabled) Grenadier.ApplyGameOptionsForOthers(opt, player);
+        if (CustomRoles.Slaad.RoleExist()) Slaad.ApplyGameOptionsForOthers(opt, player);
         if (CustomRoles.Dazzler.RoleExist()) Dazzler.SetDazzled(player, opt);
         if (CustomRoles.Deathpact.RoleExist()) Deathpact.SetDeathpactVision(player, opt);
         if (Spiritcaller.HasEnabled) Spiritcaller.ReduceVision(opt, player);
