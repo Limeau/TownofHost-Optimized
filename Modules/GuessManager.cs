@@ -18,6 +18,18 @@ namespace TOHO;
 
 public static class GuessManager
 {
+    public static Dictionary<PlayerControl, int> GuessAmount = [];
+
+    public static void Init()
+    {
+        if (!Options.EnableGuessesCap.GetBool()) return;
+        GuessAmount.Clear();
+        foreach (var player in Main.AllPlayerControls)
+        {
+            GuessAmount.Add(player, Options.AmountGuessesCap.GetInt());
+        }
+    }
+    
     public static string GetFormatString()
     {
         string text = GetString("PlayerIdList");
@@ -189,6 +201,15 @@ public static class GuessManager
             Logger.Msg($" {target.PlayerId}", "Guesser - target.PlayerId");
             Logger.Msg($" {role}", "Guesser - role");
 
+            
+            if (GuessAmount[pc] <= 0 && pc.GetCustomRole() !=  CustomRoles.Doomsayer && pc.GetCustomRole() !=  CustomRoles.Guesser && pc.GetCustomRole() !=  CustomRoles.NiceGuesser && pc.GetCustomRole() !=  CustomRoles.EvilGuesser)
+            {
+                pc.ShowInfoMessage(isUI, GetString("NoGuessesRemaining"), Utils.ColorString(Utils.GetRoleColor(pc.GetCustomRole()), GetString("NoGuessesRemainingTitle")));
+                return true;
+            }
+
+            GuessAmount[pc]--;
+            
             if (target != null)
             {
 

@@ -571,6 +571,8 @@ public static class Options
     public static OptionItem ApocCanGuessApoc;
     public static OptionItem CovenCanGuessCoven;
     public static OptionItem HideGuesserCommands;
+    public static OptionItem EnableGuessesCap;
+    public static OptionItem AmountGuessesCap;
     public static OptionItem ShowOnlyEnabledRolesInGuesserUI;
     public static OptionItem CanOnlyGuessEnabled;
     public static OptionItem UseQuickChatSpamCheat;
@@ -1448,6 +1450,12 @@ public static class Options
         HideGuesserCommands = BooleanOptionItem.Create(60688, "GuesserTryHideMsg", true, TabGroup.ModSettings, false)
             .SetParent(GuesserMode)
             .SetColor(Color.green);
+        EnableGuessesCap = BooleanOptionItem.Create(60740, "EnableGuessesCap", false, TabGroup.ModSettings, false)
+            .SetParent(GuesserMode)
+            .SetColor(Color.red);
+        AmountGuessesCap = IntegerOptionItem.Create(60741, "AmountGuessesCap", (1, 10, 1), 3, TabGroup.ModSettings, false)
+            .SetParent(EnableGuessesCap)
+            .SetColor(Color.red);
 
         ShowOnlyEnabledRolesInGuesserUI = BooleanOptionItem.Create(60689, "ShowOnlyEnabledRolesInGuesserUI", true, TabGroup.ModSettings, false)
             .SetHeader(true)

@@ -4901,5 +4901,10 @@
   "SlaadSpeed": "Target Speed",
   "SlaadVision": "Target Vision",
   "SlaadKillCooldownReduction": "Slaad kill cooldown reduction after a player goes through all stages",
-  "SlaadMinimumKillCooldown": "Minimum Slaad kill cooldown"
+  "SlaadMinimumKillCooldown": "Minimum Slaad kill cooldown",
+
+  "EnableGuessesCap": "Enable Guessing Maximum",
+  "AmountGuessesCap": "Maximum amount of guesses per player",
+  "NoGuessesRemaining": "You don't have any guesses remaining.",
+  "NoGuessesRemainingTitle": "GUESSING INFORMATION"
 }

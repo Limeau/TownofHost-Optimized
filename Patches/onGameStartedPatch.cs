@@ -227,7 +227,7 @@ internal class ChangeRoleSettings
             }
 
             AnomalyManager.Init();
-            
+            GuessManager.Init();
             TargetArrow.Init();
             LocateArrow.Init();
             DoubleTrigger.Init();
