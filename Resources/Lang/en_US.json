@@ -4906,5 +4906,9 @@
   "EnableGuessesCap": "Enable Guessing Maximum",
   "AmountGuessesCap": "Maximum amount of guesses per player",
   "NoGuessesRemaining": "You don't have any guesses remaining.",
-  "NoGuessesRemainingTitle": "GUESSING INFORMATION"
+  "NoGuessesRemainingTitle": "GUESSING INFORMATION",
+  
+  "Feeblemind": "Feeblemind",
+  "FeeblemindInfo": "Forget the tasks you have done",
+  "FeeblemindInfoLong": "The Feeblemind's tasks will reset after every meeting."
 }

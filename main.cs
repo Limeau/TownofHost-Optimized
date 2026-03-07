@@ -1048,6 +1048,7 @@ public enum CustomRoles
     Evader,
     EvilSpirit,
     ExtraLife,
+    Feeblemind,
     Flash,
     Fool,
     Fragile,
