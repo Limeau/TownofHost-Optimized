@@ -167,8 +167,11 @@ internal class StartGameHostPatch
     }
     public static void Postfix(AmongUsClient __instance)
     {
+        Logger.Info("StartGameHostPatch: Postfix called", "StartGameHostPatch");
         if (ShipStatus.Instance != null)
             isStartingAsHost = false;
+
+        GameStates.InGame = true;
     }
 }
 
@@ -205,5 +208,17 @@ internal class AuthTimeoutPatch
                 matchmakerToken = string.Empty,
             };
         }
+    }
+}
+
+[HarmonyPatch(typeof(NetworkedPlayerInfo), nameof(NetworkedPlayerInfo.UpdateName))]
+public class NetworkedPlayerInfoPatch
+{
+    // Prevent mark dirty here
+    public static bool Prefix(NetworkedPlayerInfo __instance, string playerName, ClientData client)
+    {
+        __instance.PlayerName = playerName;
+        client.UpdatePlayerName(playerName);
+        return false;
     }
 }
