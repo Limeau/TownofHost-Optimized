@@ -4685,7 +4685,7 @@
   "TrickorTreatInfo": "Collect candies by doing tasks",
   "TrickChance": "Chance a task will be a Trick",
   "TrickFreezeTime": "Freeze time for Tricks",
-  
+
   "FourCorners": "Four Corners",
   "ModeFourCorners": "Gamemode: Four Corners",
   "ModeDescribe.FourCorners": "In the Four Corners game mode, you must select a random room from the list provided on your progress text. If you are not in a provided room by the time the timer is over, you die. You can also die if the room you have chosen is randomly selected (1 in 4 chance) to be destroyed! The last player standing wins!",
@@ -4695,6 +4695,16 @@
   "FourCornersTimeRemain": "\nPick a room within {0} seconds.\nThe rooms available include {1}, {2}, {3}, and {4}\n",
   "InvalidRoomFC": "\nThe room you were in was not on the list provided\n",
   "ChosenRoomFC": "\nThe room you were in was randomly selected, therefore you have died.\n",
+  
+  "BeanTrials": "Bean Trials",
+  "ModeBeanTrials": "Gamemode: Bean Trials",
+  "ModeDescribe.BeanTrials": "Every round, 2 players will be alive with the goal of killing the other. They will be placed on opposite sides of the map and not know where the other is, essentially being a 1v1. The ghosts can use their protect button before the race starts to pick who they think will win. The winner and all of the ghosts who pick the winner will get a point. Most points at the end wins!\n",
+  "BeanTrialsInfo": "Choose a room but don't get eliminated",
+  "BeanTrialsInfoLong": "Every round, 2 players will be alive with the goal of killing the other. They will be placed on opposite sides of the map and not know where the other is, essentially being a 1v1. The ghosts can use their protect button before the race starts to pick who they think will win. The winner and all of the ghosts who pick the winner will get a point. Most points at the end wins!\n",
+  "BeanTrialsTimeRemain": "{0} vs {1}\nYou have {2} points. There is {3} seconds left in this round\n",
+  "TimeBeforeStartBR": "Time before each match starts",
+  "TimeBeforeDrawBR": "Time before match becomes a draw",
+  "PointsToWinBR": "Points to win",
 
   "Survivalist": "Survivalist",
   "SurvivalistInfo": "Win the showdown to make crewmates win",

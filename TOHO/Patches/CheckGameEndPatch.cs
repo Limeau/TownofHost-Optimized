@@ -32,7 +32,7 @@ class CheckTaskCompletionPatch
 {
     public static bool Prefix(ref bool __result)
     {
-        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.TrickorTreat || Options.CurrentGameMode == CustomGameMode.FFA)
+        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.BeanTrials || Options.CurrentGameMode == CustomGameMode.TrickorTreat || Options.CurrentGameMode == CustomGameMode.FFA)
         {
             __result = false;
             return false;
@@ -67,6 +67,7 @@ class GameEndCheckerForNormal
             case CustomGameMode.UltimateTeam:
             case CustomGameMode.TrickorTreat:
             case CustomGameMode.FourCorners:
+            case CustomGameMode.BeanTrials:
 
                 if (WinnerIds.Count > 0 || WinnerTeam != CustomWinner.Default)
                 {
@@ -664,6 +665,7 @@ class GameEndCheckerForNormal
     public static void SetPredicateToUltimateTeam() => predicate = new UltimateTeamGameEndPredicate();
     public static void SetPredicateToTrickorTreat() => predicate = new TrickorTreatGameEndPredicate();
     public static void SetPredicateToFourCorners() => predicate = new FourCornersGameEndPredicate();
+    public static void SetPredicateToBeanTrials() => predicate = new BeanTrialsGameEndPredicate();
 
     // ===== Check Game End =====
     // For Normal Games
@@ -947,8 +949,56 @@ class FourCornersGameEndPredicate : GameEndPredicate
 
         return false;
     }
-    
 }
+
+class BeanTrialsGameEndPredicate : GameEndPredicate
+{
+    public override bool CheckForEndGame(out GameOverReason reason)
+    {
+        reason = GameOverReason.CrewmateDisconnect;
+        if (CheckGameEndByLivingPlayers(out reason)) return true;
+        return false;
+    }
+
+    public static bool CheckGameEndByLivingPlayers(out GameOverReason reason)
+    {
+        if (Main.AllPlayerControls.Length == 1)
+        {
+            reason = GameOverReason.ImpostorsByKill;
+            ResetAndSetWinner(CustomWinner.BeanTrials);
+            foreach (var player in Main.AllAlivePlayerControls)
+            {
+                WinnerIds.Add(player.PlayerId);
+            }
+
+            Logger.Info("Game end becausen only one player left", "BeanTrials");
+            return true;
+        }
+
+        var end = false;
+        foreach (var player in Main.AllPlayerControls)
+        {
+            if (BeanTrials.Scores[player.PlayerId] >= BeanTrials.PointsToWin.GetInt())
+            {
+                end = true;
+                WinnerIds.Add(player.PlayerId);
+            }
+
+            if (end)
+            {
+                reason = GameOverReason.ImpostorsByKill;
+                ResetAndSetWinner(CustomWinner.BeanTrials);
+                Logger.Info("Game has ended. Winners have been counted", "BeanTrials");
+            }
+        }
+
+        // Everyone died
+        reason = GameOverReason.ImpostorsByKill;
+
+        return false;
+    }
+}
+
 class TrickorTreatGameEndPredicate : GameEndPredicate
 {
     public override bool CheckForEndGame(out GameOverReason reason)

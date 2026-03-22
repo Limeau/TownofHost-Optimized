@@ -83,6 +83,7 @@ class CoBeginPatch
         UltimateTeam.SetData();
         TrickorTreat.SetData();
         FourCorners.SetData();
+        BeanTrials.SetData();
     }
 }
 [HarmonyPatch(typeof(IntroCutscene_ShowRole), "MoveNext")]
@@ -493,6 +494,13 @@ class BeginCrewmatePatch
                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Noisemaker);
                 __instance.ImpostorText.gameObject.SetActive(true);
                 __instance.ImpostorText.text = GetString("FourCornersInfo");
+                break;
+            case CustomGameMode.BeanTrials:
+                __instance.TeamTitle.text = GetString("BeanTrials");
+                __instance.TeamTitle.color = __instance.BackgroundBar.material.color = Utils.GetRoleColor(role);
+                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Noisemaker);
+                __instance.ImpostorText.gameObject.SetActive(true);
+                __instance.ImpostorText.text = GetString("BeanTrialsInfo");
                 break;
 
             default:
@@ -959,7 +967,7 @@ class IntroCutsceneDestroyPatch
                 {
                     pc.RpcResetAbilityCooldown();
 
-                    if (Options.FixFirstKillCooldown.GetBool() && Options.CurrentGameMode != CustomGameMode.FFA && Options.CurrentGameMode != CustomGameMode.UltimateTeam && Options.CurrentGameMode != CustomGameMode.TrickorTreat && Options.CurrentGameMode != CustomGameMode.FourCorners)
+                    if (Options.FixFirstKillCooldown.GetBool() && Options.CurrentGameMode != CustomGameMode.FFA && Options.CurrentGameMode != CustomGameMode.UltimateTeam && Options.CurrentGameMode != CustomGameMode.TrickorTreat && Options.CurrentGameMode != CustomGameMode.FourCorners && Options.CurrentGameMode != CustomGameMode.BeanTrials)
                     {
                         _ = new LateTask(() =>
                         {
@@ -1012,6 +1020,7 @@ class IntroCutsceneDestroyPatch
                 CustomGameMode.UltimateTeam => UltimateTeam.ShowChatInGame.GetBool(),
                 CustomGameMode.TrickorTreat => TrickorTreat.ShowChatInGame.GetBool(),
                 CustomGameMode.FourCorners => FourCorners.ShowChatInGame.GetBool(),
+                CustomGameMode.BeanTrials => BeanTrials.ShowChatInGame.GetBool(),
                 _ => false
             };
             bool shouldAntiBlackOut = Options.CurrentGameMode switch
@@ -1021,6 +1030,7 @@ class IntroCutsceneDestroyPatch
                 CustomGameMode.UltimateTeam => UltimateTeam.ShowChatInGame.GetBool(),
                 CustomGameMode.TrickorTreat => TrickorTreat.ShowChatInGame.GetBool(),                
                 CustomGameMode.FourCorners => FourCorners.ShowChatInGame.GetBool(),
+                CustomGameMode.BeanTrials => BeanTrials.ShowChatInGame.GetBool(),
                 _ => false
             };
             try

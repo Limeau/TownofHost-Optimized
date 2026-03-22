@@ -1033,6 +1033,10 @@ public enum CustomRoles
     // Four Corners
     FourCorners,
     
+    // Bean Trials
+    Tribute,
+    Spectator,
+    
     //GM
     GM,
 
@@ -1240,7 +1244,8 @@ public enum CustomWinner
     TrickorTreat = CustomRoles.TrickorTreater,
     FourCorners = CustomRoles.FourCorners,
     Slaad = CustomRoles.Slaad,
-    Shade = CustomRoles.Shade
+    Shade = CustomRoles.Shade,
+    BeanTrials = CustomRoles.Spectator
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

@@ -33,15 +33,7 @@ public static class AddonAssign
 
     public static void StartSelect()
     {
-        switch (Options.CurrentGameMode)
-        {
-            case CustomGameMode.FFA:
-            case CustomGameMode.CandR:
-            case CustomGameMode.UltimateTeam:
-            case CustomGameMode.TrickorTreat:
-            case CustomGameMode.FourCorners:
-                return;
-        }
+        if (Options.CurrentGameMode != CustomGameMode.Standard) return;
         AddonRolesList.Clear();
         foreach (var player in Main.AllPlayerControls)
         {

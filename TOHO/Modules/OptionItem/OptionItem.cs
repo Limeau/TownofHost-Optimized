@@ -138,6 +138,7 @@ public abstract class OptionItem
     public OptionItem HideInUltimate(CustomGameMode value = CustomGameMode.UltimateTeam) => Do(i => i.HideOptionInUltimate = value);
     public OptionItem HideInTOT(CustomGameMode value = CustomGameMode.TrickorTreat) => Do(i => i.HideOptionInUltimate = value);
     public OptionItem HideInFC(CustomGameMode value = CustomGameMode.FourCorners) => Do(i => i.HideOptionInUltimate = value);
+    public OptionItem HideInBT(CustomGameMode value = CustomGameMode.BeanTrials) => Do(i => i.HideOptionInUltimate = value);
     public OptionItem HideInCandR(CustomGameMode value = CustomGameMode.CandR) => Do(i => i.HideOptionInCandR = value); //C&R
     public OptionItem HideInHnS(CustomGameMode value = CustomGameMode.HidenSeekTOHO) => Do(i => i.HideOptionInHnS = value);
 
