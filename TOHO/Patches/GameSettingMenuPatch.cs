@@ -38,7 +38,6 @@ public class GameSettingMenuPatch
             CustomGameMode.UltimateTeam => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.TrickorTreat => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.FourCorners => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
-            CustomGameMode.BeanTrials => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.CandR => Enum.GetValues<TabGroup>().Skip(3).ToArray(),
             _ => []
         };

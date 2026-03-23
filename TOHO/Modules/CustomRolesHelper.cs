@@ -32,8 +32,6 @@ public static class CustomRolesHelper
 
         if (Options.CurrentGameMode is CustomGameMode.TrickorTreat && role is CustomRoles.TrickorTreater) return CustomRoles.Crewmate;
         if (Options.CurrentGameMode is CustomGameMode.FourCorners && role is CustomRoles.FourCorners) return CustomRoles.Crewmate;
-        if (Options.CurrentGameMode is CustomGameMode.BeanTrials && role is CustomRoles.Spectator) return CustomRoles.GuardianAngel;
-        if (Options.CurrentGameMode is CustomGameMode.BeanTrials && role is CustomRoles.Tribute) return CustomRoles.Impostor;
         
         // Vanilla Roles
         if (role.IsVanilla()) return role;
@@ -73,10 +71,6 @@ public static class CustomRolesHelper
                 break;
             case CustomGameMode.FourCorners:
                 if (role is CustomRoles.FourCorners) return RoleTypes.Crewmate;
-                break;
-            case CustomGameMode.BeanTrials:
-                if (role is CustomRoles.Spectator) return RoleTypes.GuardianAngel;
-                if (role is CustomRoles.Tribute) return RoleTypes.Impostor;
                 break;
         }
 

@@ -21,7 +21,6 @@ public enum CustomGameMode
     UltimateTeam = 0x04,
     TrickorTreat = 0x05,
     FourCorners = 0x06,
-    BeanTrials = 0x07,
     HidenSeekTOHO = 0x08, // HidenSeekTOHO must be after other Gamemodes
     All = int.MaxValue
 }
@@ -61,8 +60,7 @@ public static class Options
             3 => CustomGameMode.UltimateTeam,
             4 => CustomGameMode.TrickorTreat,
             5 => CustomGameMode.FourCorners,
-            6 => CustomGameMode.BeanTrials,
-            7 => CustomGameMode.HidenSeekTOHO, // HidenSeekTOHO must be after other Gamemodes
+            6 => CustomGameMode.HidenSeekTOHO, // HidenSeekTOHO must be after other Gamemodes
             _ => CustomGameMode.Standard
         };
     public static int GetGameModeInt(CustomGameMode mode)
@@ -82,7 +80,6 @@ public static class Options
         "UltimateTeam",
         "TrickorTreat",
         "FourCorners",
-        "BeanTrials",
 
         "Hide&SeekTOHO", // HidenSeekTOHO must be after other Gamemodes
     ];
@@ -1381,8 +1378,6 @@ public static class Options
         TrickorTreat.SetupCustomOption();
         
         FourCorners.SetupCustomOption();
-        
-        BeanTrials.SetupCustomOption();
 
         // Hide & Seek
         

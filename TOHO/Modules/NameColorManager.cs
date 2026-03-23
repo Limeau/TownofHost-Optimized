@@ -113,7 +113,6 @@ public static class NameColorManager
             || (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
             || (Options.CurrentGameMode == CustomGameMode.TrickorTreat)
             || (Options.CurrentGameMode == CustomGameMode.FourCorners)
-            || (Options.CurrentGameMode == CustomGameMode.BeanTrials)
             || seer.Is(CustomRoles.GM) || target.Is(CustomRoles.GM)
             || target.GetRoleClass().OthersKnowTargetRoleColor(seer, target)
             || Mimic.CanSeeDeadRoles(seer, target)

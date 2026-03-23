@@ -243,7 +243,6 @@ internal class ChangeRoleSettings
             UltimateTeam.Init();
             TrickorTreat.Init();
             FourCorners.Init();
-            BeanTrials.Init();
 
             FallFromLadder.Reset();
             CustomWinnerHolder.Reset();
@@ -465,12 +464,6 @@ internal class StartGameHostPatch
                         pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
                     }
                     goto EndOfSelectRolePatch;
-                case CustomGameMode.BeanTrials:
-                    foreach (var pair in RoleAssign.RoleResult)
-                    {
-                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
-                    }
-                    goto EndOfSelectRolePatch;
                 case CustomGameMode.CandR:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
@@ -571,9 +564,6 @@ internal class StartGameHostPatch
                     break;
                 case CustomGameMode.FourCorners:
                     GameEndCheckerForNormal.SetPredicateToFourCorners();
-                    break;
-                case CustomGameMode.BeanTrials:
-                    GameEndCheckerForNormal.SetPredicateToBeanTrials();
                     break;
             }
 

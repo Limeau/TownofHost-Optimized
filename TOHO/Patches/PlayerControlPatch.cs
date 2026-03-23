@@ -43,9 +43,6 @@ class CheckProtectPatch
         if (!angel.GetRoleClass().OnCheckProtect(angel, target))
             return false;
 
-        if (Options.CurrentGameMode == CustomGameMode.BeanTrials)
-            if (!BeanTrials.OnCheckProtect(angel, target)) return false;
-
         if (angel.Is(CustomRoles.EvilSpirit))
         {
             if (target.GetRoleClass() is Spiritcaller sp)
@@ -214,11 +211,6 @@ class CheckMurderPatch
         if (Options.CurrentGameMode == CustomGameMode.FFA)
         {
             FFAManager.OnPlayerAttack(killer, target);
-            return false;
-        }
-        if (Options.CurrentGameMode == CustomGameMode.BeanTrials)
-        {
-            BeanTrials.OnCheckMurder(killer, target);
             return false;
         }
         //C&R
@@ -768,7 +760,7 @@ class ReportDeadBodyPatch
             return false;
         }
         if (Options.DisableMeeting.GetBool()) return false;
-             if (Options.CurrentGameMode is not CustomGameMode.Standard) return false;
+             if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.TrickorTreat or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
 
         if (!CanReport[__instance.PlayerId])
         {
@@ -1621,7 +1613,16 @@ class CoEnterVentPatch
         {
             return true;
         }
-        else if (Options.CurrentGameMode != CustomGameMode.Standard && Options.CurrentGameMode != CustomGameMode.CandR)
+        if (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
+        {
+            return false;
+        }
+        if (Options.CurrentGameMode == CustomGameMode.TrickorTreat)
+        {
+            return false;
+        }
+        
+        if (Options.CurrentGameMode == CustomGameMode.FourCorners)
         {
             return false;
         }
