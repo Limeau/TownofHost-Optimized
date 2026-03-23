@@ -322,5 +322,6 @@
   "Shade": "#202030",
   "Shaded": "#202030",
   "ShadeX": "#202030",
-  "Distracted": "#09dbed"
+  "Distracted": "#09dbed",
+  "Lag": "#ff1919"
 }

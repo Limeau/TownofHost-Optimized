@@ -4951,5 +4951,9 @@
   "DistractedInfo": "Slow down whem players are near you",
   "DistractedInfoLong": "When the Distracted is near someone, their speed will be reduced.",
   "SpeedReduction391": "Speed Reduction for Distracted",
-  "Radius391": "Radius to be Distracted"
+  "Radius391": "Radius to be Distracted",
+  
+  "Lag": "Lag",
+  "LagInfo": "You're lagging",
+  "LagInfoLong": "The Lag's kills are delayed by 1 second."
 }

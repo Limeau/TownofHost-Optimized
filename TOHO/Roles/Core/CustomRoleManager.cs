@@ -261,6 +261,10 @@ public static class CustomRoleManager
                         if (!Clumsy.OnCheckMurder(killer))
                             canceled = true;
                         break;
+                    case CustomRoles.Lag:
+                        if (!Lag.OnCheckMurder(killer, target))
+                            canceled = true;
+                        break;
 
                     case CustomRoles.Swift:
                         if (!Swift.OnCheckMurder(killer, target))

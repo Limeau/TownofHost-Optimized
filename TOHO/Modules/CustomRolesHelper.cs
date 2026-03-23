@@ -444,6 +444,7 @@ public static class CustomRolesHelper
             CustomRoles.Tricky or
             CustomRoles.Mare or
             CustomRoles.Clumsy or
+            CustomRoles.Lag or
             CustomRoles.Mimic or
             CustomRoles.Stealer or
             CustomRoles.Circumvent or
@@ -1095,6 +1096,10 @@ public static class CustomRolesHelper
                 break;
 
             case CustomRoles.Quota:
+                if (!pc.GetCustomRole().IsImpostor())
+                    return false;
+                break;
+            case CustomRoles.Lag:
                 if (!pc.GetCustomRole().IsImpostor())
                     return false;
                 break;

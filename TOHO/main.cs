@@ -1083,6 +1083,7 @@ public enum CustomRoles
     Infected,
     Influenced,
     Knighted,
+    Lag,
     LastImpostor,
     Lazy,
     Lovers,
