@@ -79,7 +79,7 @@ internal class ShadeX : RoleBase
             .Set(target.GetRealName(), target.CurrentOutfit.ColorId, target.CurrentOutfit.HatId, target.CurrentOutfit.SkinId, target.CurrentOutfit.VisorId, target.CurrentOutfit.PetId, target.CurrentOutfit.NamePlateId);
         Skin2 = new NetworkedPlayerInfo.PlayerOutfit()
             .Set(angel.GetRealName(), angel.CurrentOutfit.ColorId, angel.CurrentOutfit.HatId, angel.CurrentOutfit.SkinId, angel.CurrentOutfit.VisorId, angel.CurrentOutfit.PetId, angel.CurrentOutfit.NamePlateId);
-        if (target.HasAddon(CustomRoles.Shaded))
+        if (target.HasModifier(CustomRoles.Shaded))
         {
             angel.KillWithoutBody(target);
             angel.RpcSetCustomRole(target.GetCustomRole());
@@ -146,7 +146,7 @@ internal class ShadeX : RoleBase
 
     public override bool CheckMurderOnOthersTarget(PlayerControl killer, PlayerControl target)
     {
-        if (killer.HasAddon(CustomRoles.Shaded)) _Player.RpcIncreaseAbilityUseLimitBy(Shade.ShadeAbilityUsesGainedWithEachShadedKill.GetFloat());
+        if (killer.HasModifier(CustomRoles.Shaded)) _Player.RpcIncreaseAbilityUseLimitBy(Shade.ShadeAbilityUsesGainedWithEachShadedKill.GetFloat());
         return base.CheckMurderOnOthersTarget(killer, target);
     }
 }

@@ -52,4 +52,4 @@ Thank you for using TOHO!
 ## New Role
 - Neutral：Follower
 - Crewmate：Observer
-- Add-On：Reach
+- Modifier：Reach

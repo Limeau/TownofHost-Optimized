@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TOHO.Roles.AddOns;
+using TOHO.Roles.Modifiers;
 using static TOHO.Options;
 using static TOHO.Translator;
 
@@ -15,8 +15,8 @@ internal class Merchant : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
     //==================================================================\\
 
-    private static List<CustomRoles> addons = [];
-    private static readonly Dictionary<byte, int> addonsSold = [];
+    private static List<CustomRoles> Modifiers = [];
+    private static readonly Dictionary<byte, int> ModifiersSold = [];
     private static readonly Dictionary<byte, HashSet<byte>> bribedKiller = [];
 
     private static OptionItem OptionMaxSell;
@@ -32,11 +32,11 @@ internal class Merchant : RoleBase
     private static OptionItem OptionCanSellNeutral;
     private static OptionItem OptionSellOnlyHarmfulToEvil;
     private static OptionItem OptionSellOnlyHelpfulToCrew;
-    private static OptionItem OptionSellOnlyEnabledAddons;
+    private static OptionItem OptionSellOnlyEnabledModifiers;
 
     private static int GetCurrentAmountOfMoney(byte playerId)
     {
-        return (addonsSold[playerId] * OptionMoneyPerSell.GetInt()) - (bribedKiller[playerId].Count * OptionMoneyRequiredToBribe.GetInt());
+        return (ModifiersSold[playerId] * OptionMoneyPerSell.GetInt()) - (bribedKiller[playerId].Count * OptionMoneyRequiredToBribe.GetInt());
     }
 
     public override void SetupCustomOption()
@@ -55,44 +55,44 @@ internal class Merchant : RoleBase
         OptionCanSellNeutral = BooleanOptionItem.Create(Id + 11, "MerchantSellMixed", true, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Merchant]);
         OptionSellOnlyHarmfulToEvil = BooleanOptionItem.Create(Id + 13, "MerchantSellHarmfulToEvil", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Merchant]);
         OptionSellOnlyHelpfulToCrew = BooleanOptionItem.Create(Id + 14, "MerchantSellHelpfulToCrew", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Merchant]);
-        OptionSellOnlyEnabledAddons = BooleanOptionItem.Create(Id + 15, "MerchantSellOnlyEnabledAddons", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Merchant]);
+        OptionSellOnlyEnabledModifiers = BooleanOptionItem.Create(Id + 15, "MerchantSellOnlyEnabledModifiers", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Merchant]);
 
         Options.OverrideTasksData.Create(Id + 17, TabGroup.CrewmateRoles, CustomRoles.Merchant);
     }
     public override void Init()
     {
-        addons.Clear();
-        addonsSold.Clear();
+        Modifiers.Clear();
+        ModifiersSold.Clear();
         bribedKiller.Clear();
 
         if (OptionCanSellHelpful.GetBool())
         {
-            addons.AddRange(GroupedAddons[AddonTypes.Helpful]);
+            Modifiers.AddRange(GroupedModifiers[ModifierTypes.Helpful]);
         }
 
         if (OptionCanSellHarmful.GetBool())
         {
-            addons.AddRange(GroupedAddons[AddonTypes.Harmful]);
+            Modifiers.AddRange(GroupedModifiers[ModifierTypes.Harmful]);
         }
 
         if (OptionCanSellNeutral.GetBool())
         {
-            addons.AddRange(GroupedAddons[AddonTypes.Mixed]);
+            Modifiers.AddRange(GroupedModifiers[ModifierTypes.Mixed]);
         }
-        if (OptionSellOnlyEnabledAddons.GetBool())
+        if (OptionSellOnlyEnabledModifiers.GetBool())
         {
-            addons = addons.Where(role => role.GetMode() != 0).ToList();
+            Modifiers = Modifiers.Where(role => role.GetMode() != 0).ToList();
         }
     }
 
     public override void Add(byte playerId)
     {
-        addonsSold[playerId] = 0;
+        ModifiersSold[playerId] = 0;
         bribedKiller.TryAdd(playerId, []);
     }
     public override void Remove(byte playerId)
     {
-        addonsSold.Remove(playerId);
+        ModifiersSold.Remove(playerId);
         bribedKiller.Remove(playerId);
     }
     public override bool OnCheckMurderAsTarget(PlayerControl killer, PlayerControl target)
@@ -103,20 +103,20 @@ internal class Merchant : RoleBase
     {
         if (!player.IsAlive()) return true;
 
-        if (addonsSold[player.PlayerId] >= OptionMaxSell.GetInt())
+        if (ModifiersSold[player.PlayerId] >= OptionMaxSell.GetInt())
         {
             return true;
         }
 
-        if (addons.Count == 0)
+        if (Modifiers.Count == 0)
         {
-            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantAddonSellFail")));
-            Logger.Info("No addons to sell.", "Merchant");
+            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantModifierSellFail")));
+            Logger.Info("No Modifiers to sell.", "Merchant");
             return true;
         }
 
         var rd = IRandom.Instance;
-        CustomRoles addon = addons.RandomElement();
+        CustomRoles Modifier = Modifiers.RandomElement();
 
         List<PlayerControl> AllAlivePlayer =
             Main.AllAlivePlayerControls.Where(x =>
@@ -124,11 +124,11 @@ internal class Merchant : RoleBase
                 &&
                 (!x.Is(CustomRoles.Stubborn))
                 &&
-                !addon.IsConverted()
+                !Modifier.IsConverted()
                 &&
-                CustomRolesHelper.CheckAddonConfilct(addon, x, checkLimitAddons: false)
+                CustomRolesHelper.CheckModifierConfilct(Modifier, x, checkLimitModifiers: false)
                 &&
-                (!Cleanser.CantGetAddon() || (Cleanser.CantGetAddon() && !x.Is(CustomRoles.Cleansed)))
+                (!Cleanser.CantGetModifier() || (Cleanser.CantGetModifier() && !x.Is(CustomRoles.Cleansed)))
                 &&
                 (
                     (OptionCanTargetCrew.GetBool() && x.GetCustomRole().IsCrewmate())
@@ -143,15 +143,15 @@ internal class Merchant : RoleBase
 
         if (AllAlivePlayer.Count > 0)
         {
-            bool helpfulAddon = GroupedAddons[AddonTypes.Helpful].Contains(addon);
-            bool harmfulAddon = GroupedAddons[AddonTypes.Harmful].Contains(addon);
+            bool helpfulModifier = GroupedModifiers[ModifierTypes.Helpful].Contains(Modifier);
+            bool harmfulModifier = GroupedModifiers[ModifierTypes.Harmful].Contains(Modifier);
 
-            if (helpfulAddon && OptionSellOnlyHarmfulToEvil.GetBool())
+            if (helpfulModifier && OptionSellOnlyHarmfulToEvil.GetBool())
             {
                 AllAlivePlayer = AllAlivePlayer.Where(a => a.GetCustomRole().IsCrewmate()).ToList();
             }
 
-            if (harmfulAddon && OptionSellOnlyHelpfulToCrew.GetBool())
+            if (harmfulModifier && OptionSellOnlyHelpfulToCrew.GetBool())
             {
                 AllAlivePlayer = AllAlivePlayer.Where(a =>
                     a.GetCustomRole().IsImpostor()
@@ -171,13 +171,13 @@ internal class Merchant : RoleBase
 
             PlayerControl target = AllAlivePlayer.RandomElement();
 
-            target.RpcSetCustomRole(addon);
-            target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantAddonSell")));
-            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantAddonDelivered")));
+            target.RpcSetCustomRole(Modifier);
+            target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantModifierSell")));
+            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantModifierDelivered")));
 
-            target.AddInSwitchAddons(target, addon);
+            target.AddInSwitchModifiers(target, Modifier);
 
-            addonsSold[player.PlayerId] += 1;
+            ModifiersSold[player.PlayerId] += 1;
         }
         else
         {
@@ -187,7 +187,7 @@ internal class Merchant : RoleBase
 
         static void SellFail(PlayerControl player)
         {
-            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantAddonSellFail")));
+            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Merchant), GetString("MerchantModifierSellFail")));
             Logger.Info("All Alive Player Count = 0", "Merchant");
         }
 

@@ -1,11 +1,11 @@
-﻿//Thanks EHR for https://github.com/Gurge44/EndlessHostRoles/blob/main/Roles/AddOns/IAddon.cs and everything related ;)
+﻿//Thanks EHR for https://github.com/Gurge44/EndlessHostRoles/blob/main/Roles/Modifiers/IModifier.cs and everything related ;)
 
 using System.Reflection;
 
-namespace TOHO.Roles.AddOns
+namespace TOHO.Roles.Modifiers
 {
     [Obfuscation(Exclude = true)]
-    public enum AddonTypes
+    public enum ModifierTypes
     {
         Impostor,
         Helpful,
@@ -15,10 +15,10 @@ namespace TOHO.Roles.AddOns
         Mixed,
         Experimental
     }
-    public interface IAddon
+    public interface IModifier
     {
         public CustomRoles Role { get; }
-        public AddonTypes Type { get; }
+        public ModifierTypes Type { get; }
         public void SetupCustomOption();
 
         public void Init();

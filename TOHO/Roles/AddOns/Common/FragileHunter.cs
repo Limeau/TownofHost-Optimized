@@ -1,11 +1,11 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
-internal class FragileHunter : IAddon
+namespace TOHO.Roles.Modifiers.Common;
+internal class FragileHunter : IModifier
 {
     public CustomRoles Role => CustomRoles.FragileHunter;
     private const int Id = 33500;
-    public AddonTypes Type => AddonTypes.Misc;
+    public ModifierTypes Type => ModifierTypes.Misc;
 
     public void SetupCustomOption()
     {

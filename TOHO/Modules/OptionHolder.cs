@@ -4,8 +4,8 @@ using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using TOHO.Modules;
-using TOHO.Roles.AddOns;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using UnityEngine;
 
@@ -94,7 +94,7 @@ public static class Options
     public static Dictionary<CustomRoles, StringOptionItem> CustomRoleSpawnChances;
     public static Dictionary<CustomRoles, IntegerOptionItem> CustomAdtRoleSpawnRate;
 
-    public static readonly Dictionary<CustomRoles, (OptionItem Imp, OptionItem Neutral, OptionItem Crew, OptionItem Coven)> AddonCanBeSettings = [];
+    public static readonly Dictionary<CustomRoles, (OptionItem Imp, OptionItem Neutral, OptionItem Crew, OptionItem Coven)> ModifierCanBeSettings = [];
     [Obfuscation(Exclude = true)]
     public enum SpawnChance
     {
@@ -161,12 +161,12 @@ public static class Options
         QuickChatSpam_EzHacked,
     };
     [Obfuscation(Exclude = true)]
-    public enum ShortAddOnNamesMode
+    public enum ShortModifierNamesMode
     {
-        ShortAddOnNamesMode_Disable,
-        ShortAddOnNamesMode_Always,
-        ShortAddOnNamesMode_OnlyInMeeting,
-        ShortAddOnNamesMode_OnlyInGame
+        ShortModifierNamesMode_Disable,
+        ShortModifierNamesMode_Always,
+        ShortModifierNamesMode_OnlyInMeeting,
+        ShortModifierNamesMode_OnlyInGame
     }
 
     public static OptionItem BastionAbilityUseGainWithEachTaskCompleted;
@@ -194,7 +194,7 @@ public static class Options
     //public static OptionItem EnableGM;
     public static float DefaultKillCooldown = Main.NormalOptions?.KillCooldown ?? 20;
     public static OptionItem GhostsDoTasks;
-    public static Dictionary<AddonTypes, List<CustomRoles>> GroupedAddons = [];
+    public static Dictionary<ModifierTypes, List<CustomRoles>> GroupedModifiers = [];
 
 
     // ------------ System Settings Tab ------------
@@ -572,7 +572,7 @@ public static class Options
     public static OptionItem NeutralApocalypseCanGuess;
     public static OptionItem PassiveNeutralsCanGuess;
     public static OptionItem CovenCanGuess;
-    public static OptionItem CanGuessAddons;
+    public static OptionItem CanGuessModifiers;
     public static OptionItem ImpCanGuessImp;
     public static OptionItem CrewCanGuessCrew;
     public static OptionItem ApocCanGuessApoc;
@@ -589,7 +589,7 @@ public static class Options
 
     // Imp
     public static OptionItem ImpsCanSeeEachOthersRoles;
-    public static OptionItem ImpsCanSeeEachOthersAddOns;
+    public static OptionItem ImpsCanSeeEachOthersModifiers;
 
     //public static OptionItem MadmateCanFixSabotage;
     public static OptionItem DefaultShapeshiftCooldown;
@@ -609,26 +609,26 @@ public static class Options
     public static OptionItem NeutralApocalypseRolesMinPlayer;
     public static OptionItem NeutralApocalypseRolesMaxPlayer;
     public static OptionItem TransformedNeutralApocalypseCanBeGuessed;
-    public static OptionItem ApocCanSeeEachOthersAddOns;
+    public static OptionItem ApocCanSeeEachOthersModifiers;
 
 
     // Coven
     public static OptionItem CovenRolesMinPlayer;
     public static OptionItem CovenRolesMaxPlayer;
-    public static OptionItem CovenCanSeeEachOthersAddOns;
+    public static OptionItem CovenCanSeeEachOthersModifiers;
     public static OptionItem CovenHasImpVis;
     public static OptionItem CovenImpVisMode;
     public static OptionItem CovenCanVent;
     public static OptionItem CovenVentMode;
 
-    // Add-on
-    public static OptionItem NameDisplayAddons;
-    public static OptionItem AddBracketsToAddons;
-    public static OptionItem ShowShortNamesForAddOns;
-    public static OptionItem NoLimitAddonsNumMax;
-    public static OptionItem RemoveIncompatibleAddOnsMidGame;
+    // Modifier
+    public static OptionItem NameDisplayModifiers;
+    public static OptionItem AddBracketsToModifiers;
+    public static OptionItem ShowShortNamesForModifiers;
+    public static OptionItem NoLimitModifiersNumMax;
+    public static OptionItem RemoveIncompatibleModifiersMidGame;
 
-    // Add-Ons settings 
+    // Modifiers settings 
     public static OptionItem LoverSpawnChances;
     public static OptionItem LoverKnowRoles;
     public static OptionItem LoverSuicide;
@@ -655,7 +655,7 @@ public static class Options
     [
         "TieMode.Default", "TieMode.All", "TieMode.Random"
     ];
-    /* public static readonly string[] addonGuessModeCrew =
+    /* public static readonly string[] ModifierGuessModeCrew =
      {
          "GuesserMode.All", "GuesserMode.Harmful", "GuesserMode.Random"
      }; */
@@ -686,13 +686,13 @@ public static class Options
     ];
     public static SuffixModes GetSuffixMode() => (SuffixModes)SuffixMode.GetValue();
 
-    private static void GroupAddons()
+    private static void GroupModifiers()
     {
-        GroupedAddons = Assembly
+        GroupedModifiers = Assembly
             .GetExecutingAssembly()
             .GetTypes()
-            .Where(x => x.GetInterfaces().ToList().Contains(typeof(IAddon)))
-            .Select(x => (IAddon)Activator.CreateInstance(x))
+            .Where(x => x.GetInterfaces().ToList().Contains(typeof(IModifier)))
+            .Select(x => (IModifier)Activator.CreateInstance(x))
             .Where(x => x != null)
             .GroupBy(x => x.Type)
             .ToDictionary(x => x.Key, x => x.Select(y => y.Role).ToList());
@@ -742,15 +742,15 @@ public static class Options
     private static System.Collections.IEnumerator CoLoadOptions()
     {
         //#######################################
-        // 31000 last id for roles/add-ons (Next use 31100)
-        // Limit id for roles/add-ons --- "59999"
+        // 31000 last id for roles/Modifiers (Next use 31100)
+        // Limit id for roles/Modifiers --- "59999"
         //#######################################
 
 
         // Start Load Settings
         if (IsLoaded) yield break;
         OptionSaver.Initialize();
-        GroupAddons();
+        GroupModifiers();
 
         yield return null;
 
@@ -764,7 +764,7 @@ public static class Options
             .SetHeader(true);
 
 
-        #region Roles/Add-ons Settings
+        #region Roles/Modifiers Settings
         CustomRoleCounts = [];
         CustomGhostRoleCounts = [];
         CustomRoleSpawnChances = [];
@@ -783,7 +783,7 @@ public static class Options
         ImpsCanSeeEachOthersRoles = BooleanOptionItem.Create(60001, "ImpsCanSeeEachOthersRoles", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
-        ImpsCanSeeEachOthersAddOns = BooleanOptionItem.Create(60002, "ImpsCanSeeEachOthersAddOns", true, TabGroup.ModSettings, false)
+        ImpsCanSeeEachOthersModifiers = BooleanOptionItem.Create(60002, "ImpsCanSeeEachOthersModifiers", true, TabGroup.ModSettings, false)
             .SetParent(ImpsCanSeeEachOthersRoles);
 
         Madmate.SetupMenuOptions();
@@ -856,19 +856,19 @@ public static class Options
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(CovenCanVent);
         CovenManager.RunSetUpVentOptions(260032);
-        CovenCanSeeEachOthersAddOns = BooleanOptionItem.Create(60033, "CovenCanSeeEachOthersAddOns", true, TabGroup.ModSettings, false)
+        CovenCanSeeEachOthersModifiers = BooleanOptionItem.Create(60033, "CovenCanSeeEachOthersModifiers", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
 
-        NameDisplayAddons = BooleanOptionItem.Create(60019, "NameDisplayAddons", true, TabGroup.ModSettings, false)
+        NameDisplayModifiers = BooleanOptionItem.Create(60019, "NameDisplayModifiers", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
-        AddBracketsToAddons = BooleanOptionItem.Create(60021, "BracketAddons", true, TabGroup.ModSettings, false)
-            .SetParent(NameDisplayAddons);
-        ShowShortNamesForAddOns = StringOptionItem.Create(60035, "ShowShortNamesForAddOns", EnumHelper.GetAllNames<ShortAddOnNamesMode>(), 0, TabGroup.ModSettings, false)
-            .SetParent(NameDisplayAddons);
-        NoLimitAddonsNumMax = IntegerOptionItem.Create(60020, "NoLimitAddonsNumMax", new(0, 15, 1), 1, TabGroup.ModSettings, false)
+        AddBracketsToModifiers = BooleanOptionItem.Create(60021, "BracketModifiers", true, TabGroup.ModSettings, false)
+            .SetParent(NameDisplayModifiers);
+        ShowShortNamesForModifiers = StringOptionItem.Create(60035, "ShowShortNamesForModifiers", EnumHelper.GetAllNames<ShortModifierNamesMode>(), 0, TabGroup.ModSettings, false)
+            .SetParent(NameDisplayModifiers);
+        NoLimitModifiersNumMax = IntegerOptionItem.Create(60020, "NoLimitModifiersNumMax", new(0, 15, 1), 1, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
-        RemoveIncompatibleAddOnsMidGame = BooleanOptionItem.Create(60034, "RemoveIncompatibleAddOnsMidGame", true, TabGroup.ModSettings, false)
+        RemoveIncompatibleModifiersMidGame = BooleanOptionItem.Create(60034, "RemoveIncompatibleModifiersMidGame", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard);
         #endregion
 
@@ -1078,7 +1078,7 @@ public static class Options
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true);
 
-        ApocCanSeeEachOthersAddOns = BooleanOptionItem.Create(60025, "ApocCanSeeEachOthersAddOns", true, TabGroup.NeutralRoles, false)
+        ApocCanSeeEachOthersModifiers = BooleanOptionItem.Create(60025, "ApocCanSeeEachOthersModifiers", true, TabGroup.NeutralRoles, false)
             .SetGameMode(CustomGameMode.Standard);
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.NeutralApocalypse).ForEach(r => r.SetupCustomOption());
@@ -1131,51 +1131,51 @@ public static class Options
 
         yield return null;
 
-        #region Add-Ons Settings
+        #region Modifiers Settings
 
         int titleId = 100100;
 
-        var IAddonType = typeof(IAddon);
-        Dictionary<AddonTypes, IAddon[]> addonTypes = Assembly
+        var IModifierType = typeof(IModifier);
+        Dictionary<ModifierTypes, IModifier[]> ModifierTypes = Assembly
             .GetExecutingAssembly()
             .GetTypes()
-            .Where(t => IAddonType.IsAssignableFrom(t) && !t.IsInterface)
+            .Where(t => IModifierType.IsAssignableFrom(t) && !t.IsInterface)
             .OrderBy(t => Translator.GetString(t.Name))
-            .Select(type => (IAddon)Activator.CreateInstance(type))
+            .Select(type => (IModifier)Activator.CreateInstance(type))
             .Where(x => x != null)
             .GroupBy(x => x.Type)
             .ToDictionary(x => x.Key, x => x.ToArray());
 
-        foreach (var addonType in addonTypes)
+        foreach (var ModifierType in ModifierTypes)
         {
-            TextOptionItem.Create(titleId, $"RoleType.{addonType.Key}", TabGroup.Addons)
+            TextOptionItem.Create(titleId, $"RoleType.{ModifierType.Key}", TabGroup.Modifiers)
                 .SetGameMode(CustomGameMode.Standard)
-                .SetColor(GetAddonTypeColor(addonType.Key))
+                .SetColor(GetModifierTypeColor(ModifierType.Key))
                 .SetHeader(true);
             titleId += 10;
 
-            if (addonType.Key == AddonTypes.Impostor)
+            if (ModifierType.Key == Roles.Modifiers.ModifierTypes.Impostor)
                 Madmate.SetupCustomMenuOptions();
 
-            if (addonType.Key == AddonTypes.Misc)
+            if (ModifierType.Key == Roles.Modifiers.ModifierTypes.Misc)
                 SetupLoversRoleOptionsToggle(23600); // KYS 
 
-            foreach (var addon in addonType.Value)
+            foreach (var Modifier in ModifierType.Value)
             {
-                addon.SetupCustomOption();
+                Modifier.SetupCustomOption();
             }
 
             yield return null;
         }
-        static Color32 GetAddonTypeColor(AddonTypes type) => type switch
+        static Color32 GetModifierTypeColor(ModifierTypes type) => type switch
         {
-            AddonTypes.Impostor => new Color32(255, 25, 25, byte.MaxValue),
-            AddonTypes.Helpful => new Color32(255, 154, 206, byte.MaxValue),
-            AddonTypes.Harmful => new Color32(255, 154, 206, byte.MaxValue),
-            AddonTypes.Misc => new Color32(127, 140, 141, byte.MaxValue),
-            AddonTypes.Mixed => new Color32(255, 154, 206, byte.MaxValue),
-            AddonTypes.Guesser => new Color32(214, 177, 73, byte.MaxValue),
-            AddonTypes.Experimental => new Color32(141, 140, 141, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Impostor => new Color32(255, 25, 25, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Helpful => new Color32(255, 154, 206, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Harmful => new Color32(255, 154, 206, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Misc => new Color32(127, 140, 141, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Mixed => new Color32(255, 154, 206, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Guesser => new Color32(214, 177, 73, byte.MaxValue),
+            Roles.Modifiers.ModifierTypes.Experimental => new Color32(141, 140, 141, byte.MaxValue),
             _ => Palette.CrewmateBlue
         };
 
@@ -1185,7 +1185,7 @@ public static class Options
 
         yield return null;
 
-        #region Experimental Roles/Add-ons Settings
+        #region Experimental Roles/Modifiers Settings
 
 
 
@@ -1454,7 +1454,7 @@ public static class Options
             .SetParent(GuesserMode);
         CovenCanGuessCoven = BooleanOptionItem.Create(60692, "CovenCanGuessCoven", false, TabGroup.ModSettings, false)
             .SetParent(CovenCanGuess);
-        CanGuessAddons = BooleanOptionItem.Create(60685, "CanGuessAddons", true, TabGroup.ModSettings, false)
+        CanGuessModifiers = BooleanOptionItem.Create(60685, "CanGuessModifiers", true, TabGroup.ModSettings, false)
             .SetParent(GuesserMode);
         HideGuesserCommands = BooleanOptionItem.Create(60688, "GuesserTryHideMsg", true, TabGroup.ModSettings, false)
             .SetParent(GuesserMode)
@@ -2213,45 +2213,45 @@ public static class Options
     private static void SetupLoversRoleOptionsToggle(int id, CustomGameMode customGameMode = CustomGameMode.Standard)
     {
         var role = CustomRoles.Lovers;
-        var spawnOption = StringOptionItem.Create(id, role.ToString(), EnumHelper.GetAllNames<RatesZeroOne>(), 0, TabGroup.Addons, false).SetColor(Utils.GetRoleColor(role))
+        var spawnOption = StringOptionItem.Create(id, role.ToString(), EnumHelper.GetAllNames<RatesZeroOne>(), 0, TabGroup.Modifiers, false).SetColor(Utils.GetRoleColor(role))
             .SetHeader(true)
             .SetGameMode(customGameMode) as StringOptionItem;
 
-        LoverSpawnChances = IntegerOptionItem.Create(id + 2, "LoverSpawnChances", new(0, 100, 5), 50, TabGroup.Addons, false)
+        LoverSpawnChances = IntegerOptionItem.Create(id + 2, "LoverSpawnChances", new(0, 100, 5), 50, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetValueFormat(OptionFormat.Percent)
             .SetGameMode(customGameMode);
 
-        LoverKnowRoles = BooleanOptionItem.Create(id + 4, "LoverKnowRoles", true, TabGroup.Addons, false)
+        LoverKnowRoles = BooleanOptionItem.Create(id + 4, "LoverKnowRoles", true, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
-        LoverSuicide = BooleanOptionItem.Create(id + 3, "LoverSuicide", true, TabGroup.Addons, false)
+        LoverSuicide = BooleanOptionItem.Create(id + 3, "LoverSuicide", true, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
-        ImpCanBeInLove = BooleanOptionItem.Create(id + 5, "ImpCanBeInLove", true, TabGroup.Addons, false)
+        ImpCanBeInLove = BooleanOptionItem.Create(id + 5, "ImpCanBeInLove", true, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
-        CrewCanBeInLove = BooleanOptionItem.Create(id + 6, "CrewCanBeInLove", true, TabGroup.Addons, false)
+        CrewCanBeInLove = BooleanOptionItem.Create(id + 6, "CrewCanBeInLove", true, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
-        NeutralCanBeInLove = BooleanOptionItem.Create(id + 7, "NeutralCanBeInLove", true, TabGroup.Addons, false)
+        NeutralCanBeInLove = BooleanOptionItem.Create(id + 7, "NeutralCanBeInLove", true, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
-        CovenCanBeInLove = BooleanOptionItem.Create(id + 8, "CovenCanBeInLove", true, TabGroup.Addons, false)
+        CovenCanBeInLove = BooleanOptionItem.Create(id + 8, "CovenCanBeInLove", true, TabGroup.Modifiers, false)
         .SetParent(spawnOption)
             .SetGameMode(customGameMode);
 
-        WidowChance = IntegerOptionItem.Create(id + 9, "LoverWidowChance", new(0, 100, 5), 20, TabGroup.Addons, false)
+        WidowChance = IntegerOptionItem.Create(id + 9, "LoverWidowChance", new(0, 100, 5), 20, TabGroup.Modifiers, false)
             .SetParent(spawnOption)
             .SetValueFormat((OptionFormat.Percent))
             .SetGameMode(customGameMode);
 
-        var countOption = IntegerOptionItem.Create(id + 1, "NumberOfLovers", new(2, 2, 1), 2, TabGroup.Addons, false)
+        var countOption = IntegerOptionItem.Create(id + 1, "NumberOfLovers", new(2, 2, 1), 2, TabGroup.Modifiers, false)
             .SetParent(spawnOption)
             .SetHidden(true)
             .SetGameMode(customGameMode);
@@ -2260,7 +2260,7 @@ public static class Options
         CustomRoleCounts.Add(role, countOption);
     }
 
-    public static void SetupAdtRoleOptions(int id, CustomRoles role, CustomGameMode customGameMode = CustomGameMode.Standard, bool canSetNum = false, TabGroup tab = TabGroup.Addons, bool canSetChance = true, bool teamSpawnOptions = false)
+    public static void SetupAdtRoleOptions(int id, CustomRoles role, CustomGameMode customGameMode = CustomGameMode.Standard, bool canSetNum = false, TabGroup tab = TabGroup.Modifiers, bool canSetChance = true, bool teamSpawnOptions = false)
     {
         var spawnOption = StringOptionItem.Create(id, role.ToString(), EnumHelper.GetAllNames<RatesZeroOne>(), 0, tab, false).SetColor(Utils.GetRoleColor(role))
             .SetHeader(true)
@@ -2300,7 +2300,7 @@ public static class Options
                 .SetGameMode(customGameMode)
                 .AddReplacement(("{role}", role.ToColoredString()));
 
-            AddonCanBeSettings.Add(role, (impOption, neutralOption, crewOption, covenOption));
+            ModifierCanBeSettings.Add(role, (impOption, neutralOption, crewOption, covenOption));
         }
 
 

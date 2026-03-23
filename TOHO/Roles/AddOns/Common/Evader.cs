@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Evader : IAddon
+public class Evader : IModifier
 {
     public CustomRoles Role => CustomRoles.Evader;
     private const int Id = 29600;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem SkillLimitTimes;
     private static OptionItem ChanceNotExiled;
@@ -20,10 +20,10 @@ public class Evader : IAddon
     public void SetupCustomOption()
     {
         Options.SetupAdtRoleOptions(Id, CustomRoles.Evader, canSetNum: true, teamSpawnOptions: true);
-        SkillLimitTimes = IntegerOptionItem.Create(Id + 10, "SkillLimitTimes", new(0, 10, 1), 2, TabGroup.Addons, false)
+        SkillLimitTimes = IntegerOptionItem.Create(Id + 10, "SkillLimitTimes", new(0, 10, 1), 2, TabGroup.Modifiers, false)
             .SetParent(Options.CustomRoleSpawnChances[CustomRoles.Evader])
             .SetValueFormat(OptionFormat.Times);
-        ChanceNotExiled = IntegerOptionItem.Create(Id + 11, "Evader_ChanceNotExiled", new(0, 100, 5), 25, TabGroup.Addons, false)
+        ChanceNotExiled = IntegerOptionItem.Create(Id + 11, "Evader_ChanceNotExiled", new(0, 100, 5), 25, TabGroup.Modifiers, false)
             .SetParent(Options.CustomRoleSpawnChances[CustomRoles.Evader])
             .SetValueFormat(OptionFormat.Percent);
     }

@@ -21,10 +21,10 @@ internal class CopyCat : RoleBase
 
     private static OptionItem KillCooldown;
     private static OptionItem CopyCrewVar;
-    private static OptionItem CopyTeamChangingAddon;
+    private static OptionItem CopyTeamChangingModifier;
 
     private static float CurrentKillCooldown = new();
-    private static readonly Dictionary<byte, List<CustomRoles>> OldAddons = [];
+    private static readonly Dictionary<byte, List<CustomRoles>> OldModifiers = [];
 
     public override void SetupCustomOption()
     {
@@ -32,14 +32,14 @@ internal class CopyCat : RoleBase
         KillCooldown = FloatOptionItem.Create(Id + 10, "CopyCatCopyCooldown", new(0f, 180f, 1f), 15f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.CopyCat])
             .SetValueFormat(OptionFormat.Seconds);
         CopyCrewVar = BooleanOptionItem.Create(Id + 13, "CopyCrewVar", true, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.CopyCat]);
-        CopyTeamChangingAddon = BooleanOptionItem.Create(Id + 14, "CopyTeamChangingAddon", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.CopyCat]);
+        CopyTeamChangingModifier = BooleanOptionItem.Create(Id + 14, "CopyTeamChangingModifier", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.CopyCat]);
     }
 
     public override void Init()
     {
         playerIdList.Clear();
         CurrentKillCooldown = new();
-        OldAddons.Clear();
+        OldModifiers.Clear();
     }
 
     public override void Add(byte playerId)
@@ -47,14 +47,14 @@ internal class CopyCat : RoleBase
         if (!playerIdList.Contains(playerId))
             playerIdList.Add(playerId);
         CurrentKillCooldown = KillCooldown.GetFloat();
-        OldAddons[playerId] = [];
+        OldModifiers[playerId] = [];
     }
     public override void Remove(byte playerId) //Only to be used when Copycat's Role is going to be changed permanently
     {
         // Copycat Role wont be removed for now
         // playerIdList.Remove(playerId);
     }
-    public static bool CanCopyTeamChangingAddon() => CopyTeamChangingAddon.GetBool();
+    public static bool CanCopyTeamChangingModifier() => CopyTeamChangingModifier.GetBool();
     public static bool NoHaveTask(byte playerId, bool ForRecompute) => playerIdList.Contains(playerId) && (playerId.GetPlayer().GetCustomRole().IsDesyncRole() || ForRecompute);
     public override bool CanUseKillButton(PlayerControl pc) => true;
     public override bool CanUseImpostorVentButton(PlayerControl pc) => playerIdList.Contains(pc.PlayerId);
@@ -83,16 +83,16 @@ internal class CopyCat : RoleBase
                 {
                     pc.GetRoleClass()?.OnRemove(pc.PlayerId);
                     pc.RpcChangeRoleBasis(CustomRoles.CopyCat);
-                    pc.RpcSetCustomRole(CustomRoles.CopyCat, checkAddons: false);
-                    foreach (var addon in OldAddons[pc.PlayerId])
+                    pc.RpcSetCustomRole(CustomRoles.CopyCat, checkModifiers: false);
+                    foreach (var Modifier in OldModifiers[pc.PlayerId])
                     {
-                        pc.RpcSetCustomRole(addon, checkAddons: false);
+                        pc.RpcSetCustomRole(Modifier, checkModifiers: false);
                     }
                 }
             }
             pc.ResetKillCooldown();
             pc.SetKillCooldown();
-            OldAddons[pc.PlayerId].Clear();
+            OldModifiers[pc.PlayerId].Clear();
         }
     }
 
@@ -161,26 +161,26 @@ internal class CopyCat : RoleBase
             if (role != CustomRoles.CopyCat)
             {
                 killer.RpcChangeRoleBasis(role);
-                killer.RpcSetCustomRole(role, checkAddons: false);
+                killer.RpcSetCustomRole(role, checkModifiers: false);
                 killer.GetRoleClass()?.OnAdd(killer.PlayerId);
                 killer.SyncSettings();
-                Dictionary<byte, List<CustomRoles>> CurrentAddons = new();
-                CurrentAddons[killer.PlayerId] = [];
-                foreach (var addon in killer.GetCustomSubRoles())
+                Dictionary<byte, List<CustomRoles>> CurrentModifiers = new();
+                CurrentModifiers[killer.PlayerId] = [];
+                foreach (var Modifier in killer.GetCustomSubRoles())
                 {
-                    CurrentAddons[killer.PlayerId].Add(addon);
+                    CurrentModifiers[killer.PlayerId].Add(Modifier);
                 }
-                foreach (var addon in CurrentAddons[killer.PlayerId])
+                foreach (var Modifier in CurrentModifiers[killer.PlayerId])
                 {
-                    if (!CustomRolesHelper.CheckAddonConfilct(addon, killer))
+                    if (!CustomRolesHelper.CheckModifierConfilct(Modifier, killer))
                     {
-                        OldAddons[killer.PlayerId].Add(addon);
-                        Main.PlayerStates[killer.PlayerId].RemoveSubRole(addon);
-                        Logger.Info($"{killer.GetNameWithRole()} had incompatible addon {addon.ToString()}, removing addon", "CopyCat");
+                        OldModifiers[killer.PlayerId].Add(Modifier);
+                        Main.PlayerStates[killer.PlayerId].RemoveSubRole(Modifier);
+                        Logger.Info($"{killer.GetNameWithRole()} had incompatible Modifier {Modifier.ToString()}, removing Modifier", "CopyCat");
                     }
                 }
             }
-            if (CopyTeamChangingAddon.GetBool())
+            if (CopyTeamChangingModifier.GetBool())
             {
                 if (target.Is(CustomRoles.Madmate) || target.Is(CustomRoles.Rascal)) killer.RpcSetCustomRole(CustomRoles.Madmate, false);
                 if (target.Is(CustomRoles.Charmed)) killer.RpcSetCustomRole(CustomRoles.Charmed, false);

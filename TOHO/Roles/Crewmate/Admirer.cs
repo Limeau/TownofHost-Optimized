@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Hazel;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Impostor;
-using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Modifiers.Impostor;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Core;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Double;

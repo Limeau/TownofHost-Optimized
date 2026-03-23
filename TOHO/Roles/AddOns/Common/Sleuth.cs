@@ -1,13 +1,13 @@
 
 using System.Collections.Generic;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Sleuth : IAddon
+public class Sleuth : IModifier
 {
     public CustomRoles Role => CustomRoles.Sleuth;
     private const int Id = 20100;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem SleuthCanKnowKillerRole;
 
@@ -16,7 +16,7 @@ public class Sleuth : IAddon
     public void SetupCustomOption()
     {
         Options.SetupAdtRoleOptions(Id, CustomRoles.Sleuth, canSetNum: true, teamSpawnOptions: true);
-        SleuthCanKnowKillerRole = BooleanOptionItem.Create(Id + 13, "SleuthCanKnowKillerRole", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Sleuth]);
+        SleuthCanKnowKillerRole = BooleanOptionItem.Create(Id + 13, "SleuthCanKnowKillerRole", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Sleuth]);
     }
 
     public void Init()

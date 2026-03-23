@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Impostor;
 using TOHO.Roles.Neutral;
@@ -102,7 +102,7 @@ public static class CustomRolesHelper
     }
     public static bool HasGhostRole(this PlayerControl player) => player.GetCustomRole().IsGhostRole() || player.IsAnySubRole(x => x.IsGhostRole());
 
-    // Add-ons
+    // Modifiers
     public static bool IsAdditionRole(this CustomRoles role) => role > CustomRoles.NotAssigned;
 
     public static bool IsAmneMaverick(this CustomRoles role) // ROLE ASSIGNING, NOT NEUTRAL TYPE
@@ -409,7 +409,7 @@ public static class CustomRolesHelper
             || (role is CustomRoles.Undead)
             || (role is CustomRoles.Captain && Captain.CrewCanFindCaptain());
     }
-    public static bool IsBetrayalAddon(this CustomRoles role)
+    public static bool IsBetrayalModifier(this CustomRoles role)
     {
         return role is CustomRoles.Madmate
             or CustomRoles.Egoist
@@ -424,20 +424,20 @@ public static class CustomRolesHelper
             or CustomRoles.Enchanted;
     }
 
-    public static bool IsBetrayalAddonV2(this CustomRoles role)
-        => (role.IsBetrayalAddon() && role is not CustomRoles.Rascal)
+    public static bool IsBetrayalModifierV2(this CustomRoles role)
+        => (role.IsBetrayalModifier() && role is not CustomRoles.Rascal)
             || role is CustomRoles.Admired
             || role is CustomRoles.CorruptedA;
 
-    public static bool IsAddonAssignedMidGame(this CustomRoles role)
-        => role.IsBetrayalAddonV2()
+    public static bool IsModifierAssignedMidGame(this CustomRoles role)
+        => role.IsBetrayalModifierV2()
         || role is CustomRoles.Knighted
                 or CustomRoles.Cleansed
                 or CustomRoles.Workhorse
                 or CustomRoles.LastImpostor
                 or CustomRoles.Lovers;
 
-    public static bool IsImpOnlyAddon(this CustomRoles role)
+    public static bool IsImpOnlyModifier(this CustomRoles role)
     {
         return role is CustomRoles.Mare or
             CustomRoles.LastImpostor or
@@ -501,16 +501,16 @@ public static class CustomRolesHelper
 
         return player.MainRole.IsCoven();
     }
-    public static bool CheckAddonConfilct(CustomRoles role, PlayerControl pc, bool checkLimitAddons = true, bool checkSelfAddOn = true)
+    public static bool CheckModifierConfilct(CustomRoles role, PlayerControl pc, bool checkLimitModifiers = true, bool checkSelfModifier = true)
     {
-        // Only Add-ons
+        // Only Modifiers
         if (!role.IsAdditionRole() || pc == null) return false;
 
-        if (Options.AddonCanBeSettings.TryGetValue(role, out var o) && ((!o.Imp.GetBool() && pc.GetCustomRole().IsImpostor()) || (!o.Neutral.GetBool() && pc.GetCustomRole().IsNeutral()) || (!o.Crew.GetBool() && pc.GetCustomRole().IsCrewmate()) || (!o.Coven.GetBool() && pc.GetCustomRole().IsCoven())))
+        if (Options.ModifierCanBeSettings.TryGetValue(role, out var o) && ((!o.Imp.GetBool() && pc.GetCustomRole().IsImpostor()) || (!o.Neutral.GetBool() && pc.GetCustomRole().IsNeutral()) || (!o.Crew.GetBool() && pc.GetCustomRole().IsCrewmate()) || (!o.Coven.GetBool() && pc.GetCustomRole().IsCoven())))
             return false;
 
-        // if player already has this Add-on
-        else if (checkSelfAddOn && pc.Is(role)) return false;
+        // if player already has this Modifier
+        else if (checkSelfModifier && pc.Is(role)) return false;
 
         // Checking Lovers and Romantics
         else if ((pc.Is(CustomRoles.RuthlessRomantic) || pc.Is(CustomRoles.Romantic) || pc.Is(CustomRoles.VengefulRomantic)) && role is CustomRoles.Lovers) return false;
@@ -518,14 +518,14 @@ public static class CustomRolesHelper
         // Checking for conflicts with Roles
         else if (pc.Is(CustomRoles.GM) || role is CustomRoles.Lovers || pc.Is(CustomRoles.LazyGuy)) return false;
 
-        if (checkLimitAddons)
-            if (pc.HasSubRole() && pc.GetCustomSubRoles().Count >= Options.NoLimitAddonsNumMax.GetInt()) return false;
+        if (checkLimitModifiers)
+            if (pc.HasSubRole() && pc.GetCustomSubRoles().Count >= Options.NoLimitModifiersNumMax.GetInt()) return false;
 
 
-        // Checking for conflicts with Roles and other Add-ons
+        // Checking for conflicts with Roles and other Modifiers
         switch (role)
         {
-            case var Addon when (pc.IsAnySubRole(x => x.IsSpeedRole()) || pc.GetCustomRole().IsSpeedRole()) && Addon.IsSpeedRole():
+            case var Modifier when (pc.IsAnySubRole(x => x.IsSpeedRole()) || pc.GetCustomRole().IsSpeedRole()) && Modifier.IsSpeedRole():
                 return false;
 
             case CustomRoles.Autopsy:
@@ -1148,7 +1148,7 @@ public static class CustomRolesHelper
                     || pc.Is(CustomRoles.Solsticer)
                     || pc.Is(CustomRoles.NiceMini)
                     || pc.Is(CustomRoles.EvilMini)
-                    || (pc.Is(CustomRoles.CopyCat) && CopyCat.CanCopyTeamChangingAddon()))
+                    || (pc.Is(CustomRoles.CopyCat) && CopyCat.CanCopyTeamChangingModifier()))
                     return false;
                 if (!pc.GetCustomRole().IsImpostor() && !pc.GetCustomRole().IsCrewmate() && !pc.GetCustomRole().IsCoven())
                     return false;
@@ -1382,7 +1382,7 @@ public static class CustomRolesHelper
         if (role.IsImpostor()) team = Custom_Team.Impostor;
         if (role.IsNeutral()) team = Custom_Team.Neutral;
         if (role.IsCoven()) team = Custom_Team.Coven;
-        if (role.IsAdditionRole()) team = Custom_Team.Addon;
+        if (role.IsAdditionRole()) team = Custom_Team.Modifier;
         return team;
     }
     public static Custom_RoleType GetCustomRoleType(this CustomRoles role)
@@ -1641,7 +1641,7 @@ public static class CustomRolesHelper
             _ => throw new NotImplementedException()
         };
     public static bool HasSubRole(this PlayerControl pc) => Main.PlayerStates[pc.PlayerId].SubRoles.Any();
-    public static bool HasAddon(this PlayerControl pc, CustomRoles addon) => Main.PlayerStates[pc.PlayerId].SubRoles.Contains(addon);
+    public static bool HasModifier(this PlayerControl pc, CustomRoles Modifier) => Main.PlayerStates[pc.PlayerId].SubRoles.Contains(Modifier);
 }
 [Obfuscation(Exclude = true)]
 public enum Custom_Team
@@ -1650,7 +1650,7 @@ public enum Custom_Team
     Impostor,
     Neutral,
     Coven,
-    Addon,
+    Modifier,
 }
 [Obfuscation(Exclude = true)]
 public enum Custom_RoleType

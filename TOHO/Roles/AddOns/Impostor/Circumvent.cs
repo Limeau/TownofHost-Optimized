@@ -1,15 +1,15 @@
 ﻿
-namespace TOHO.Roles.AddOns.Impostor;
+namespace TOHO.Roles.Modifiers.Impostor;
 
-public class Circumvent : IAddon
+public class Circumvent : IModifier
 {
     public CustomRoles Role => CustomRoles.Circumvent;
     private const int Id = 22600;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
 
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Circumvent, canSetNum: true, tab: TabGroup.Addons);
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Circumvent, canSetNum: true, tab: TabGroup.Modifiers);
     }
     public void Init()
     { }

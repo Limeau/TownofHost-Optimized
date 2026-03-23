@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Gambler : IAddon
+public class Gambler : IModifier
 {
     public CustomRoles Role => CustomRoles.Gambler;
     private const int Id = 33100;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public static Dictionary<byte, int> Gambles = [];
     private static readonly Dictionary<byte, bool> Gamble = [];
@@ -17,7 +17,7 @@ public class Gambler : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Gambler, canSetNum: true, teamSpawnOptions: true);
-        GambleUses = IntegerOptionItem.Create(Id + 10, "GambleUses", new(1, 4, 1), 1, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Gambler])
+        GambleUses = IntegerOptionItem.Create(Id + 10, "GambleUses", new(1, 4, 1), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Gambler])
            .SetValueFormat(OptionFormat.Times);
     }
     public void Init()

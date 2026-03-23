@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using TOHO.Modules;
 using TOHO.Patches;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Crewmate;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Crewmate;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Core.AssignManager;
 using TOHO.Roles.Coven;
@@ -1198,7 +1198,7 @@ class FixedUpdateInNormalGamePatch
             {
                 CustomRoleManager.OnFixedUpdate(player, lowLoad, Utils.GetTimeStamp(), timerLowLoad);
 
-                player.OnFixedAddonUpdate(lowLoad);
+                player.OnFixedModifierUpdate(lowLoad);
 
                 if (!lowLoad && Main.AllPlayerSpeed.TryGetValue(player.PlayerId, out var speed))
                 {
@@ -1791,7 +1791,7 @@ class PlayerControlCompleteTaskPatch
 
             var playerSubRoles = player.GetCustomSubRoles();
 
-            // Add-Ons
+            // Modifiers
             if (playerSubRoles.Any())
             {
                 foreach (var subRole in playerSubRoles)

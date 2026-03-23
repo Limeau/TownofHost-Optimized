@@ -3,7 +3,7 @@ using System.Linq;
 using Hazel;
 using InnerNet;
 using TOHO.Modules;
-using TOHO.Roles.AddOns;
+using TOHO.Roles.Modifiers;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Double;
 using TOHO.Roles.Impostor;
@@ -26,9 +26,9 @@ internal class MoonDancer : CovenManager
 
     private static OptionItem BatonPassCooldown;
     private static OptionItem BlastOffChance;
-    private static OptionItem BatonPassEnabledAddons;
+    private static OptionItem BatonPassEnabledModifiers;
 
-    private static List<CustomRoles> addons = [];
+    private static List<CustomRoles> Modifiers = [];
     private static readonly Dictionary<byte, HashSet<byte>> BatonPassList = [];
     private static readonly Dictionary<byte, HashSet<byte>> BlastedOffList = [];
     private static readonly Dictionary<byte, float> originalSpeed = [];
@@ -40,20 +40,20 @@ internal class MoonDancer : CovenManager
             .SetValueFormat(OptionFormat.Seconds);
         BlastOffChance = IntegerOptionItem.Create(Id + 11, "MoonDancerBlastOffChance", new(0, 100, 1), 50, TabGroup.CovenRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.MoonDancer])
             .SetValueFormat(OptionFormat.Percent);
-        BatonPassEnabledAddons = BooleanOptionItem.Create(Id + 12, "MoonDancerPassEnabledAddons", false, TabGroup.CovenRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.MoonDancer]);
+        BatonPassEnabledModifiers = BooleanOptionItem.Create(Id + 12, "MoonDancerPassEnabledModifiers", false, TabGroup.CovenRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.MoonDancer]);
     }
     public override void Init()
     {
         BatonPassList.Clear();
-        addons.Clear();
+        Modifiers.Clear();
         BlastedOffList.Clear();
         originalSpeed.Clear();
 
-        addons.AddRange(GroupedAddons[AddonTypes.Helpful]);
-        addons.AddRange(GroupedAddons[AddonTypes.Harmful]);
-        if (BatonPassEnabledAddons.GetBool())
+        Modifiers.AddRange(GroupedModifiers[ModifierTypes.Helpful]);
+        Modifiers.AddRange(GroupedModifiers[ModifierTypes.Harmful]);
+        if (BatonPassEnabledModifiers.GetBool())
         {
-            addons = addons.Where(role => role.GetMode() != 0).ToList();
+            Modifiers = Modifiers.Where(role => role.GetMode() != 0).ToList();
         }
     }
     public override void Add(byte playerId)
@@ -197,12 +197,12 @@ internal class MoonDancer : CovenManager
         if (target.GetCustomRole().IsCovenTeam())
         {
             BatonPassList[killer.PlayerId].Add(target.PlayerId);
-            killer.Notify(GetString("MoonDancerGiveHelpfulAddon"));
+            killer.Notify(GetString("MoonDancerGiveHelpfulModifier"));
         }
         else
         {
             BatonPassList[killer.PlayerId].Add(target.PlayerId);
-            killer.Notify(GetString("MoonDancerGiveHarmfulAddon"));
+            killer.Notify(GetString("MoonDancerGiveHarmfulModifier"));
         }
         killer.ResetKillCooldown();
         killer.SetKillCooldown();
@@ -219,10 +219,10 @@ internal class MoonDancer : CovenManager
             var player = GetPlayerById(md);
             if (player == null) continue;
         
-            DistributeAddOns(player);
+            DistributeModifiers(player);
         }
     }
-    private static void DistributeAddOns(PlayerControl md)
+    private static void DistributeModifiers(PlayerControl md)
     {
         var rd = IRandom.Instance;
         foreach (var pc in BatonPassList[md.PlayerId])
@@ -235,32 +235,32 @@ internal class MoonDancer : CovenManager
                 continue;
             }
             
-            var addon = addons.RandomElement();
-            var helpful = GroupedAddons[AddonTypes.Helpful].Where(x => addons.Contains(x)).ToList();
-            var harmful = GroupedAddons[AddonTypes.Harmful].Where(x => addons.Contains(x)).ToList();
+            var Modifier = Modifiers.RandomElement();
+            var helpful = GroupedModifiers[ModifierTypes.Helpful].Where(x => Modifiers.Contains(x)).ToList();
+            var harmful = GroupedModifiers[ModifierTypes.Harmful].Where(x => Modifiers.Contains(x)).ToList();
             if (player.GetCustomRole().IsCovenTeam() || (player.Is(CustomRoles.Lovers) && md.Is(CustomRoles.Lovers)))
             {
                 if (helpful.Count <= 0)
                 {
-                    SendMessage(string.Format(GetString("MoonDancerNoAddons"), player.GetRealName()), md.PlayerId);
-                    Logger.Info("No addons to pass.", "MoonDancer");
+                    SendMessage(string.Format(GetString("MoonDancerNoModifiers"), player.GetRealName()), md.PlayerId);
+                    Logger.Info("No Modifiers to pass.", "MoonDancer");
                     continue;
                 }
-                addon = helpful.RandomElement();
+                Modifier = helpful.RandomElement();
             }
             else
             {
                 if (harmful.Count <= 0)
                 {
-                    SendMessage(string.Format(GetString("MoonDancerNoAddons"), player.GetRealName()), md.PlayerId);
-                    Logger.Info("No addons to pass.", "MoonDancer");
+                    SendMessage(string.Format(GetString("MoonDancerNoModifiers"), player.GetRealName()), md.PlayerId);
+                    Logger.Info("No Modifiers to pass.", "MoonDancer");
                     continue;
                 }
-                addon = harmful.RandomElement();
+                Modifier = harmful.RandomElement();
             }
-            player.RpcSetCustomRole(addon);
-            player.AddInSwitchAddons(player, addon);
-            Logger.Info("Addon Passed.", "MoonDancer");
+            player.RpcSetCustomRole(Modifier);
+            player.AddInSwitchModifiers(player, Modifier);
+            Logger.Info("Modifier Passed.", "MoonDancer");
         }
         BatonPassList[md.PlayerId].Clear();
     }

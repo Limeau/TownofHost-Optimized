@@ -1,7 +1,7 @@
 using Hazel;
 using TOHO.Roles.Core;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Impostor;

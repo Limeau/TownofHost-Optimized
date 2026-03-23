@@ -143,7 +143,7 @@ internal class Infectious : RoleBase
 
     public static bool TargetKnowOtherTargets => TargetKnowOtherTarget.GetBool();
 
-    public static bool KnowRole(PlayerControl player, PlayerControl target) // Addons know each-other
+    public static bool KnowRole(PlayerControl player, PlayerControl target) // Modifiers know each-other
     {
         if (player.Is(CustomRoles.Infected) && target.Is(CustomRoles.Infectious)) return true;
         if (KnowTargetRole.GetBool() && player.Is(CustomRoles.Infectious) && target.Is(CustomRoles.Infected)) return true;

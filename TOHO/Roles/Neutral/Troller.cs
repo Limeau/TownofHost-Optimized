@@ -38,8 +38,8 @@ internal class Troller : RoleBase
         SetDoorsRandomly,
         CooldownsResetToDefault,
         CooldownsResetToZero,
-        LoseAddon,
-        /* GetBadAddon, */
+        LoseModifier,
+        /* GetBadModifier, */
         TelepostEveryoneToVents,
         PullEveryone,
         TwistEveryone,
@@ -227,27 +227,27 @@ internal class Troller : RoleBase
                 }
                 troller.Notify(GetString("Troller_YouChangedCooldown"));
                 break;
-            case Events.LoseAddon:
+            case Events.LoseModifier:
                 var randomPC = Main.AllAlivePlayerControls.RandomElement();
-                var addons = Main.PlayerStates[randomPC.PlayerId].SubRoles.ToList();
-                foreach (var role in addons)
+                var Modifiers = Main.PlayerStates[randomPC.PlayerId].SubRoles.ToList();
+                foreach (var role in Modifiers)
                 {
                     if (role is CustomRoles.LastImpostor ||
                         role is CustomRoles.Lovers || // Causes issues involving Lovers Suicide
-                        role.IsBetrayalAddon())
+                        role.IsBetrayalModifier())
                     {
-                        addons.Remove(role);
+                        Modifiers.Remove(role);
                     }
                 }
-                if (!addons.Any())
+                if (!Modifiers.Any())
                 {
-                    troller.Notify(GetString("Troller_NoAddons"));
+                    troller.Notify(GetString("Troller_NoModifiers"));
                     break;
                 }
-                var addon = addons.RandomElement();
-                Main.PlayerStates[randomPC.PlayerId].RemoveSubRole(addon);
-                troller.Notify(GetString("Troller_RemoveRandomAddon"));
-                randomPC.Notify(GetString("Troller_RemoveYourAddon"));
+                var Modifier = Modifiers.RandomElement();
+                Main.PlayerStates[randomPC.PlayerId].RemoveSubRole(Modifier);
+                troller.Notify(GetString("Troller_RemoveRandomModifier"));
+                randomPC.Notify(GetString("Troller_RemoveYourModifier"));
                 randomPC.MarkDirtySettings();
                 break;
             case Events.TelepostEveryoneToVents:
@@ -284,7 +284,7 @@ internal class Troller : RoleBase
                 var pcCallMeeting = Main.AllAlivePlayerControls.RandomElement();
                 pcCallMeeting.NoCheckStartMeeting(null);
                 break;
-                //case Events.GetBadAddon:
+                //case Events.GetBadModifier:
                 //    break;
         }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using HarmonyLib;
 using TOHO.Patches;
 using TOHO.Roles.Core;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Neutral;
 using UnityEngine;
 using static TOHO.Translator;
@@ -96,7 +96,7 @@ class UpdateSystemPatch
         if (Options.DisableSabotage.GetBool() && systemType == SystemTypes.Sabotage) return false;
 
 
-        // ###### Roles/Add-ons During Sabotages ######
+        // ###### Roles/Modifiers During Sabotages ######
 
         if (Fool.IsEnable && Fool.BlockFixSabotage(player, systemType))
         {

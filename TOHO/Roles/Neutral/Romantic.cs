@@ -36,7 +36,7 @@ internal class Romantic : RoleBase
     public static OptionItem RuthlessKCD;
     public static OptionItem RuthlessCanVent;
 
-    private static readonly Dictionary<CustomRoles, CustomRoles> ConvertingRolesAndAddons = new()
+    private static readonly Dictionary<CustomRoles, CustomRoles> ConvertingRolesAndModifiers = new()
     {
         [CustomRoles.Cultist] = CustomRoles.Charmed,
         [CustomRoles.Jackal] = CustomRoles.Sidekick,
@@ -248,9 +248,9 @@ internal class Romantic : RoleBase
     private void OthersAfterPlayerDeathTask(PlayerControl killer, PlayerControl player, bool inMeeting)
     {
         var pc = _Player;
-        if (player.IsAnySubRole(x => x.IsBetrayalAddonV2() && x is not CustomRoles.Soulless and not CustomRoles.Egoist))
+        if (player.IsAnySubRole(x => x.IsBetrayalModifierV2() && x is not CustomRoles.Soulless and not CustomRoles.Egoist))
         {
-            player.GetCustomSubRoles().DoIf(x => x.IsBetrayalAddonV2() && x is not CustomRoles.Soulless and not CustomRoles.Egoist && !pc.Is(x), x => pc.RpcSetCustomRole(x));
+            player.GetCustomSubRoles().DoIf(x => x.IsBetrayalModifierV2() && x is not CustomRoles.Soulless and not CustomRoles.Egoist && !pc.Is(x), x => pc.RpcSetCustomRole(x));
         }
         ChangeRole(player);
     }
@@ -284,7 +284,7 @@ internal class Romantic : RoleBase
             pc.ResetKillCooldown();
             pc.SetKillCooldown();
         }
-        else if (ConvertingRolesAndAddons.TryGetValue(player.GetCustomRole(), out var convertedRole))
+        else if (ConvertingRolesAndModifiers.TryGetValue(player.GetCustomRole(), out var convertedRole))
         {
             Logger.Info($"Converted Romantic Partner Died => Romantic becomes their ally {pc.GetNameWithRole()}", "Romantic");
             pc.GetRoleClass().OnRemove(pc.PlayerId);

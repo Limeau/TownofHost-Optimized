@@ -39,7 +39,7 @@ internal class ChatCommands
     private static string PollMSG = "";
 
     public const string Csize = "85%"; // CustomRole Settings Font-Size
-    public const string Asize = "75%"; // All Appended Addons Font-Size
+    public const string Asize = "75%"; // All Appended Modifiers Font-Size
 
     public static List<string> ChatHistory = [];
 
@@ -631,7 +631,7 @@ internal class ChatCommands
                         var Conf = new StringBuilder();
                         var Sub = new StringBuilder();
                         var rlHex = Utils.GetRoleColorCode(role);
-                        var SubTitle = $"<color={rlHex}>" + GetString("YourAddon") + "</color>\n";
+                        var SubTitle = $"<color={rlHex}>" + GetString("YourModifier") + "</color>\n";
 
                         if (Options.CustomRoleSpawnChances.TryGetValue(role, out var opt))
                             Utils.ShowChildrenSettings(Options.CustomRoleSpawnChances[role], ref Conf);
@@ -2298,7 +2298,7 @@ internal class ChatCommands
                     var Conf = new StringBuilder();
                     var Sub = new StringBuilder();
                     var rlHex = Utils.GetRoleColorCode(role);
-                    var SubTitle = $"<color={rlHex}>" + GetString("YourAddon") + "</color>\n";
+                    var SubTitle = $"<color={rlHex}>" + GetString("YourModifier") + "</color>\n";
 
                     if (Options.CustomRoleSpawnChances.TryGetValue(role, out var opt))
                         Utils.ShowChildrenSettings(opt, ref Conf);

@@ -2,14 +2,14 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Diseased : IAddon
+public class Diseased : IModifier
 {
     public CustomRoles Role => CustomRoles.Diseased;
     private const int Id = 21800;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     private static OptionItem DiseasedCDOpt;
     private static OptionItem DiseasedCDReset;
@@ -20,9 +20,9 @@ public class Diseased : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Diseased, canSetNum: true, teamSpawnOptions: true);
-        DiseasedCDOpt = FloatOptionItem.Create(Id + 13, "DiseasedCDOpt", new(0f, 180f, 1f), 25f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Diseased])
+        DiseasedCDOpt = FloatOptionItem.Create(Id + 13, "DiseasedCDOpt", new(0f, 180f, 1f), 25f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Diseased])
             .SetValueFormat(OptionFormat.Seconds);
-        DiseasedCDReset = BooleanOptionItem.Create(Id + 14, "DiseasedCDReset", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Diseased]);
+        DiseasedCDReset = BooleanOptionItem.Create(Id + 14, "DiseasedCDReset", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Diseased]);
     }
 
     public void Init()

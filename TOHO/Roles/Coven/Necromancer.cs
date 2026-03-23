@@ -32,7 +32,7 @@ internal class Necromancer : CovenManager
     private static float tempKillTimer = 0;
 
     private static readonly Dictionary<byte, List<CustomRoles>> UsedRoles = [];
-    private static readonly Dictionary<byte, List<CustomRoles>> OldAddons = [];
+    private static readonly Dictionary<byte, List<CustomRoles>> OldModifiers = [];
     private static float AbilityTimer;
     private static bool canUseAbility;
 
@@ -55,7 +55,7 @@ internal class Necromancer : CovenManager
         Killer = null;
         tempKillTimer = 0;
         UsedRoles.Clear();
-        OldAddons.Clear();
+        OldModifiers.Clear();
         canUseAbility = false;
         AbilityTimer = 0;
     }
@@ -63,7 +63,7 @@ internal class Necromancer : CovenManager
     {
         Timer = RevengeTime.GetInt();
         UsedRoles[playerId] = [];
-        OldAddons[playerId] = [];
+        OldModifiers[playerId] = [];
     }
     public override void SetKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
     public override bool CanUseKillButton(PlayerControl pc) => HasNecronomicon(pc) || IsRevenge;
@@ -137,16 +137,16 @@ internal class Necromancer : CovenManager
         }
         var role = deadRoles.RandomElement();
         nm.RpcChangeRoleBasis(role);
-        nm.RpcSetCustomRole(role, checkAddons: false);
+        nm.RpcSetCustomRole(role, checkModifiers: false);
         nm.GetRoleClass()?.OnAdd(nm.PlayerId);
         nm.SyncSettings();
-        foreach (var addon in nm.GetCustomSubRoles().ToArray())
+        foreach (var Modifier in nm.GetCustomSubRoles().ToArray())
         {
-            if (!CustomRolesHelper.CheckAddonConfilct(addon, nm))
+            if (!CustomRolesHelper.CheckModifierConfilct(Modifier, nm))
             {
-                OldAddons[nm.PlayerId].Add(addon);
-                Main.PlayerStates[nm.PlayerId].RemoveSubRole(addon);
-                Logger.Info($"{nm.GetNameWithRole()} had incompatible addon {addon}, removing addon", "Necromancer");
+                OldModifiers[nm.PlayerId].Add(Modifier);
+                Main.PlayerStates[nm.PlayerId].RemoveSubRole(Modifier);
+                Logger.Info($"{nm.GetNameWithRole()} had incompatible Modifier {Modifier}, removing Modifier", "Necromancer");
             }
         }
         Main.PlayerStates[nm.PlayerId].InitTask(nm);
@@ -167,12 +167,12 @@ internal class Necromancer : CovenManager
         }
         if (nm.IsAlive())
             nm.RpcChangeRoleBasis(CustomRoles.Necromancer);
-        nm.RpcSetCustomRole(CustomRoles.Necromancer, checkAddons: false);
-        foreach (var addon in OldAddons[nm.PlayerId])
+        nm.RpcSetCustomRole(CustomRoles.Necromancer, checkModifiers: false);
+        foreach (var Modifier in OldModifiers[nm.PlayerId])
         {
-            nm.RpcSetCustomRole(addon, checkAddons: false);
+            nm.RpcSetCustomRole(Modifier, checkModifiers: false);
         }
-        OldAddons[nm.PlayerId].Clear();
+        OldModifiers[nm.PlayerId].Clear();
         nm.ResetKillCooldown();
         nm.SyncSettings();
         nm.RpcGuardAndKill(nm);

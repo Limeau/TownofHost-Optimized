@@ -1,17 +1,17 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Impostor;
-public class Quota : IAddon
+namespace TOHO.Roles.Modifiers.Impostor;
+public class Quota : IModifier
 {
     public CustomRoles Role => CustomRoles.Quota;
     private const int Id = 35100;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
 
     private static OptionItem AmountKillsNeededToWin;
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Quota, canSetNum: true, tab: TabGroup.Addons);
-        AmountKillsNeededToWin = IntegerOptionItem.Create(Id + 10, "AmountKillsNeededToWin351", (1, 5, 1), 3, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Quota, canSetNum: true, tab: TabGroup.Modifiers);
+        AmountKillsNeededToWin = IntegerOptionItem.Create(Id + 10, "AmountKillsNeededToWin351", (1, 5, 1), 3, TabGroup.Modifiers, false)
             .SetValueFormat(OptionFormat.Times)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Quota]);
     }

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Tiebreaker : IAddon
+public class Tiebreaker : IModifier
 {
     public CustomRoles Role => CustomRoles.Tiebreaker;
     private const int Id = 20200;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static readonly HashSet<byte> VoteFor = [];
 

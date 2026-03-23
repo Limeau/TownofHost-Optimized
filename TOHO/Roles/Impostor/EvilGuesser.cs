@@ -53,7 +53,7 @@ internal class EvilGuesser : RoleBase
             return true;
         }
 
-        // Evil Guesser can't Guess Add-ons
+        // Evil Guesser can't Guess Modifiers
         if (role.IsAdditionRole() && !EGCanGuessAdt.GetBool())
         {
             guesser.ShowInfoMessage(isUI, Translator.GetString("GuessAdtRole"));

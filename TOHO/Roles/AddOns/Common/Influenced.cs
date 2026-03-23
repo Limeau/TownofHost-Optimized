@@ -2,13 +2,13 @@
 using System.Linq;
 using HarmonyLib;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Influenced : IAddon
+public class Influenced : IModifier
 {
     public CustomRoles Role => CustomRoles.Influenced;
     private const int Id = 21200;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public void SetupCustomOption()
     {

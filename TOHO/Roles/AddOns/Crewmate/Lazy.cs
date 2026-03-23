@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Lazy : IAddon
+public class Lazy : IModifier
 {
     public CustomRoles Role => CustomRoles.Lazy;
     private const int Id = 19300;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem TasklessCrewCanBeLazy;
     private static OptionItem TaskBasedCrewCanBeLazy;
@@ -14,9 +14,9 @@ public class Lazy : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Lazy, canSetNum: true);
-        TasklessCrewCanBeLazy = BooleanOptionItem.Create(Id + 10, "TasklessCrewCanBeLazy", false, TabGroup.Addons, false)
+        TasklessCrewCanBeLazy = BooleanOptionItem.Create(Id + 10, "TasklessCrewCanBeLazy", false, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Lazy]);
-        TaskBasedCrewCanBeLazy = BooleanOptionItem.Create(Id + 11, "TaskBasedCrewCanBeLazy", false, TabGroup.Addons, false)
+        TaskBasedCrewCanBeLazy = BooleanOptionItem.Create(Id + 11, "TaskBasedCrewCanBeLazy", false, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Lazy]);
     }
     public void Init()

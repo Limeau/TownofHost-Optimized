@@ -8,15 +8,15 @@ using TOHO.Roles.Impostor;
 using static TOHO.Options;
 using static TOHO.Translator;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Oiiai : IAddon
+public class Oiiai : IModifier
 {
     public CustomRoles Role => CustomRoles.Oiiai;
     private const int Id = 25700;
     private readonly static List<byte> playerIdList = [];
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
 
     private static OptionItem CanPassOn;
@@ -38,9 +38,9 @@ public class Oiiai : IAddon
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Oiiai, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        CanPassOn = BooleanOptionItem.Create(Id + 14, "OiiaiCanPassOn", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oiiai]);
-        ChangeNeutralRole = StringOptionItem.Create(Id + 15, "NeutralChangeRolesForOiiai", EnumHelper.GetAllNames<ChangeRolesSelectList>(), 1, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oiiai]);
+        SetupAdtRoleOptions(Id, CustomRoles.Oiiai, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        CanPassOn = BooleanOptionItem.Create(Id + 14, "OiiaiCanPassOn", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oiiai]);
+        ChangeNeutralRole = StringOptionItem.Create(Id + 15, "NeutralChangeRolesForOiiai", EnumHelper.GetAllNames<ChangeRolesSelectList>(), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oiiai]);
     }
     public void Init()
     {
@@ -81,7 +81,7 @@ public class Oiiai : IAddon
         {
             PassOnKiller(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Oiiai);
-            Logger.Info(killer.GetNameWithRole() + " gets Oiiai addon by " + target.GetNameWithRole(), "Oiiai");
+            Logger.Info(killer.GetNameWithRole() + " gets Oiiai Modifier by " + target.GetNameWithRole(), "Oiiai");
         }
 
         if (!Eraser.ErasedRoleStorage.ContainsKey(killer.PlayerId))
@@ -109,7 +109,7 @@ public class Oiiai : IAddon
             Main.DesyncPlayerList.Remove(killer.PlayerId);
             killer.GetRoleClass().OnAdd(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Enchanted, false);
-            killer.AddInSwitchAddons(killer, CustomRoles.Enchanted);
+            killer.AddInSwitchModifiers(killer, CustomRoles.Enchanted);
             Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Coven without Necronomicon.", "Oiiai");
         }
         else if (CovenManager.HasNecronomicon(killer))
@@ -125,7 +125,7 @@ public class Oiiai : IAddon
             killer.GetRoleClass().OnAdd(killer.PlayerId);
             Main.DesyncPlayerList.Remove(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Madmate);
-            killer.AddInSwitchAddons(killer, CustomRoles.Madmate);
+            killer.AddInSwitchModifiers(killer, CustomRoles.Madmate);
             Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Madmates assign.", "Oiiai");
         }
         else if (killer.Is(CustomRoles.Sidekick))
@@ -136,7 +136,7 @@ public class Oiiai : IAddon
             Main.DesyncPlayerList.Remove(killer.PlayerId);
             killer.GetRoleClass().OnAdd(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Recruit);
-            killer.AddInSwitchAddons(killer, CustomRoles.Recruit);
+            killer.AddInSwitchModifiers(killer, CustomRoles.Recruit);
             Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Sidekicks assign.", "Oiiai");
         }
         else if (!killerRole.IsNeutral())

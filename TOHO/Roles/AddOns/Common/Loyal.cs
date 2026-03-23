@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Loyal : IAddon
+public class Loyal : IModifier
 {
     public CustomRoles Role => CustomRoles.Loyal;
     private const int Id = 19400;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem ImpCanBeLoyal;
     public static OptionItem CrewCanBeLoyal;
@@ -14,11 +14,11 @@ public class Loyal : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Loyal, canSetNum: true);
-        ImpCanBeLoyal = BooleanOptionItem.Create(Id + 10, "ImpCanBeLoyal", true, TabGroup.Addons, false)
+        ImpCanBeLoyal = BooleanOptionItem.Create(Id + 10, "ImpCanBeLoyal", true, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Loyal]);
-        CrewCanBeLoyal = BooleanOptionItem.Create(Id + 11, "CrewCanBeLoyal", true, TabGroup.Addons, false)
+        CrewCanBeLoyal = BooleanOptionItem.Create(Id + 11, "CrewCanBeLoyal", true, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Loyal]);
-        CovenCanBeLoyal = BooleanOptionItem.Create(Id + 12, "CovenCanBeLoyal", true, TabGroup.Addons, false)
+        CovenCanBeLoyal = BooleanOptionItem.Create(Id + 12, "CovenCanBeLoyal", true, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Loyal]);
     }
     public void Init()

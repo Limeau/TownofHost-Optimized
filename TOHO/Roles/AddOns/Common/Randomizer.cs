@@ -4,14 +4,14 @@ using TOHO.Modules;
 using static TOHO.Options;
 using static TOHO.Translator;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-internal class Randomizer : IAddon
+internal class Randomizer : IModifier
 {
     //===========================SETUP================================\\
     private const int Id = 7500;
     public CustomRoles Role => CustomRoles.Randomizer;
-    public AddonTypes Type => AddonTypes.Misc;
+    public ModifierTypes Type => ModifierTypes.Misc;
     //==================================================================\\
 
     public static OptionItem BecomeBaitDelayNotify;
@@ -22,12 +22,12 @@ internal class Randomizer : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Randomizer, canSetNum: true, teamSpawnOptions: true);
-        BecomeBaitDelayNotify = BooleanOptionItem.Create(Id + 10, "BecomeBaitDelayNotify", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer]);
-        BecomeBaitDelayMin = FloatOptionItem.Create(Id + 11, "BaitDelayMin", new(0f, 5f, 1f), 0f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer])
+        BecomeBaitDelayNotify = BooleanOptionItem.Create(Id + 10, "BecomeBaitDelayNotify", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer]);
+        BecomeBaitDelayMin = FloatOptionItem.Create(Id + 11, "BaitDelayMin", new(0f, 5f, 1f), 0f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer])
             .SetValueFormat(OptionFormat.Seconds);
-        BecomeBaitDelayMax = FloatOptionItem.Create(Id + 12, "BaitDelayMax", new(0f, 10f, 1f), 0f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer])
+        BecomeBaitDelayMax = FloatOptionItem.Create(Id + 12, "BaitDelayMax", new(0f, 10f, 1f), 0f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer])
             .SetValueFormat(OptionFormat.Seconds);
-        BecomeTrapperBlockMoveTime = FloatOptionItem.Create(Id + 13, "BecomeTrapperBlockMoveTime", new(1f, 180f, 1f), 5f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer])
+        BecomeTrapperBlockMoveTime = FloatOptionItem.Create(Id + 13, "BecomeTrapperBlockMoveTime", new(1f, 180f, 1f), 5f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Randomizer])
             .SetValueFormat(OptionFormat.Seconds);
     }
     public static bool OnCheckMurder(PlayerControl killer, PlayerControl target, bool inMeeting, bool isSuicide)

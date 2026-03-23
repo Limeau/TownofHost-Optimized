@@ -153,7 +153,7 @@ internal class ChiefOfPolice : RoleBase
                 if (killer.IsAnySubRole(x => x.IsConverted() && x is not CustomRoles.Egoist))
                 {
                     var role = killer.GetCustomSubRoles().FirstOrDefault(x => (x.IsConverted() || x is CustomRoles.Admired) && x is not CustomRoles.Egoist);
-                    Logger.Info($"Giving addon {role} to {target.GetNameWithRole()}", "ChiefOfPolice");
+                    Logger.Info($"Giving Modifier {role} to {target.GetNameWithRole()}", "ChiefOfPolice");
                     target.RpcSetCustomRole(role);
                     target.RpcSetCustomRole(role);
                 }

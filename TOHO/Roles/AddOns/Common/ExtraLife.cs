@@ -1,13 +1,13 @@
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class ExtraLife : IAddon
+public class ExtraLife : IModifier
 {
     public CustomRoles Role => CustomRoles.ExtraLife;
     private const int Id = 37300;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem ExtraLifeNum;
 
@@ -16,7 +16,7 @@ public class ExtraLife : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.ExtraLife, canSetNum: true, teamSpawnOptions: true);
-        ExtraLifeNum = IntegerOptionItem.Create(Id + 10, "ExtraLifeNum", new(1, 3, 1), 1, TabGroup.Addons, false)
+        ExtraLifeNum = IntegerOptionItem.Create(Id + 10, "ExtraLifeNum", new(1, 3, 1), 1, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.ExtraLife]);
     }
 

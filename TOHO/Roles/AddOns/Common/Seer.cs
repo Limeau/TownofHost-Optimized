@@ -1,11 +1,11 @@
 ﻿
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Seer : IAddon
+public class Seer : IModifier
 {
     public CustomRoles Role => CustomRoles.Seer;
     private const int Id = 20000;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {

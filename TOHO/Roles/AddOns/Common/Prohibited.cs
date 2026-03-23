@@ -3,13 +3,13 @@ using System.Linq;
 using TOHO.Roles.Core;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Prohibited : IAddon
+public class Prohibited : IModifier
 {
     public CustomRoles Role => CustomRoles.Prohibited;
     private const int Id = 29900;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     private static OptionItem CountBlockedVentsInSkeld;
     private static OptionItem CountBlockedVentsInMira;
@@ -24,13 +24,13 @@ public class Prohibited : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Prohibited, canSetNum: true, teamSpawnOptions: true);
-        OverrideBlockedVentsAfterMeeting = BooleanOptionItem.Create(Id + 16, "Prohibited_OverrideBlockedVentsAfterMeeting", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
-        CountBlockedVentsInSkeld = IntegerOptionItem.Create(Id + 10, "Prohibited_CountBlockedVentsInSkeld", new(0, 14, 1), 4, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
-        CountBlockedVentsInMira = IntegerOptionItem.Create(Id + 11, "Prohibited_CountBlockedVentsInMira", new(0, 11, 1), 4, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
-        CountBlockedVentsInPolus = IntegerOptionItem.Create(Id + 12, "Prohibited_CountBlockedVentsInPolus", new(0, 12, 1), 4, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
-        CountBlockedVentsInDleks = IntegerOptionItem.Create(Id + 13, "Prohibited_CountBlockedVentsInDleks", new(0, 14, 1), 2, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
-        CountBlockedVentsInAirship = IntegerOptionItem.Create(Id + 14, "Prohibited_CountBlockedVentsInAirship", new(0, 12, 1), 4, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
-        CountBlockedVentsInFungle = IntegerOptionItem.Create(Id + 15, "Prohibited_CountBlockedVentsInFungle", new(0, 10, 1), 4, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        OverrideBlockedVentsAfterMeeting = BooleanOptionItem.Create(Id + 16, "Prohibited_OverrideBlockedVentsAfterMeeting", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        CountBlockedVentsInSkeld = IntegerOptionItem.Create(Id + 10, "Prohibited_CountBlockedVentsInSkeld", new(0, 14, 1), 4, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        CountBlockedVentsInMira = IntegerOptionItem.Create(Id + 11, "Prohibited_CountBlockedVentsInMira", new(0, 11, 1), 4, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        CountBlockedVentsInPolus = IntegerOptionItem.Create(Id + 12, "Prohibited_CountBlockedVentsInPolus", new(0, 12, 1), 4, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        CountBlockedVentsInDleks = IntegerOptionItem.Create(Id + 13, "Prohibited_CountBlockedVentsInDleks", new(0, 14, 1), 2, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        CountBlockedVentsInAirship = IntegerOptionItem.Create(Id + 14, "Prohibited_CountBlockedVentsInAirship", new(0, 12, 1), 4, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
+        CountBlockedVentsInFungle = IntegerOptionItem.Create(Id + 15, "Prohibited_CountBlockedVentsInFungle", new(0, 10, 1), 4, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Prohibited]);
     }
 
     public void Init()

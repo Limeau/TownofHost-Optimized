@@ -1,16 +1,16 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Nimble : IAddon
+public class Nimble : IModifier
 {
     public CustomRoles Role => CustomRoles.Nimble;
     private const int Id = 19700;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Nimble, canSetNum: true, tab: TabGroup.Addons);
+        SetupAdtRoleOptions(Id, CustomRoles.Nimble, canSetNum: true, tab: TabGroup.Modifiers);
     }
     public void Init()
     { }

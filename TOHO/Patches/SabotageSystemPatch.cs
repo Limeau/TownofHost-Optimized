@@ -2,7 +2,7 @@ using AmongUs.GameOptions;
 using HarmonyLib;
 using Hazel;
 using TOHO.Roles.Core;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Impostor;
 
 namespace TOHO;

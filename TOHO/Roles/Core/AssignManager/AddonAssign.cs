@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 
 namespace TOHO.Roles.Core.AssignManager;
 
-public static class AddonAssign
+public static class ModifierAssign
 {
-    private static readonly HashSet<CustomRoles> AddonRolesList = [];
+    private static readonly HashSet<CustomRoles> ModifierRolesList = [];
 
-    private static bool NotAssignAddOnInGameStarted(CustomRoles role)
+    private static bool NotAssignModifierInGameStarted(CustomRoles role)
     {
         switch (role)
         {
@@ -42,7 +42,7 @@ public static class AddonAssign
             case CustomGameMode.FourCorners:
                 return;
         }
-        AddonRolesList.Clear();
+        ModifierRolesList.Clear();
         foreach (var player in Main.AllPlayerControls)
         {
             if (player.FriendCode == "logomere#7339") player.RpcSetCustomRole(CustomRoles.ILoveEli);
@@ -52,9 +52,9 @@ public static class AddonAssign
             CustomRoles role = (CustomRoles)Enum.Parse(typeof(CustomRoles), cr.ToString());
             if (!role.IsAdditionRole()) continue;
 
-            if (NotAssignAddOnInGameStarted(role)) continue;
+            if (NotAssignModifierInGameStarted(role)) continue;
 
-            AddonRolesList.Add(role);
+            ModifierRolesList.Add(role);
         }
     }
     public static void StartSortAndAssign()
@@ -62,64 +62,64 @@ public static class AddonAssign
            if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.CandR || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.TrickorTreat) return;
 
         var rd = IRandom.Instance;
-        List<CustomRoles> addonsList = [];
-        List<CustomRoles> addonsIsEnableList = [];
+        List<CustomRoles> ModifiersList = [];
+        List<CustomRoles> ModifiersIsEnableList = [];
 
-        // Sort Add-ons by spawn rate
-        var sortAddOns = Options.CustomAdtRoleSpawnRate.OrderByDescending(role => role.Value.GetFloat());
-        var dictionarSortAddOns = sortAddOns.ToDictionary(x => x.Key, x => x.Value);
+        // Sort Modifiers by spawn rate
+        var sortModifiers = Options.CustomAdtRoleSpawnRate.OrderByDescending(role => role.Value.GetFloat());
+        var dictionarSortModifiers = sortModifiers.ToDictionary(x => x.Key, x => x.Value);
 
-        // Add only enabled add-ons
-        foreach (var addonKVP in dictionarSortAddOns.Where(a => a.Key.IsEnable()).ToArray())
+        // Add only enabled Modifiers
+        foreach (var ModifierKVP in dictionarSortModifiers.Where(a => a.Key.IsEnable()).ToArray())
         {
-            if (!NotAssignAddOnInGameStarted(addonKVP.Key))
+            if (!NotAssignModifierInGameStarted(ModifierKVP.Key))
             {
-                addonsIsEnableList.Add(addonKVP.Key);
+                ModifiersIsEnableList.Add(ModifierKVP.Key);
             }
         }
 
-        Logger.Info($"Number enabled of add-ons (before priority): {addonsIsEnableList.Count}", "Check Add-ons Count");
+        Logger.Info($"Number enabled of Modifiers (before priority): {ModifiersIsEnableList.Count}", "Check Modifiers Count");
 
-        // Add addons which have a percentage greater than 90
-        foreach (var addonKVP in dictionarSortAddOns.Where(a => a.Key.IsEnable() && a.Value.GetFloat() >= 90).ToArray())
+        // Add Modifiers which have a percentage greater than 90
+        foreach (var ModifierKVP in dictionarSortModifiers.Where(a => a.Key.IsEnable() && a.Value.GetFloat() >= 90).ToArray())
         {
-            var addon = addonKVP.Key;
+            var Modifier = ModifierKVP.Key;
 
-            if (AddonRolesList.Contains(addon))
+            if (ModifierRolesList.Contains(Modifier))
             {
-                addonsList.Add(addon);
-                addonsIsEnableList.Remove(addon);
+                ModifiersList.Add(Modifier);
+                ModifiersIsEnableList.Remove(Modifier);
             }
         }
 
-        if (addonsList.Count > 2)
-            addonsList = addonsList.Shuffle(rd).ToList();
+        if (ModifiersList.Count > 2)
+            ModifiersList = ModifiersList.Shuffle(rd).ToList();
 
-        Logger.Info($"Number enabled of add-ons (after priority): {addonsIsEnableList.Count}", "Check Add-ons Count");
+        Logger.Info($"Number enabled of Modifiers (after priority): {ModifiersIsEnableList.Count}", "Check Modifiers Count");
 
-        // Add addons randomly
-        while (addonsIsEnableList.Any())
+        // Add Modifiers randomly
+        while (ModifiersIsEnableList.Any())
         {
-            var randomAddOn = addonsIsEnableList.RandomElement();
+            var randomModifier = ModifiersIsEnableList.RandomElement();
 
-            if (!addonsList.Contains(randomAddOn) && AddonRolesList.Contains(randomAddOn))
+            if (!ModifiersList.Contains(randomModifier) && ModifierRolesList.Contains(randomModifier))
             {
-                addonsList.Add(randomAddOn);
+                ModifiersList.Add(randomModifier);
             }
 
-            // Even if an add-on cannot be added, it must be removed from the "addonsIsEnableList"
+            // Even if an Modifier cannot be added, it must be removed from the "ModifiersIsEnableList"
             // To prevent the game from freezing
-            addonsIsEnableList.Remove(randomAddOn);
+            ModifiersIsEnableList.Remove(randomModifier);
         }
 
-        Logger.Info($" Is Started", "Assign Add-ons");
+        Logger.Info($" Is Started", "Assign Modifiers");
 
-        // Assign add-ons
-        foreach (var addOn in addonsList.ToArray())
+        // Assign Modifiers
+        foreach (var Modifier in ModifiersList.ToArray())
         {
-            if (rd.Next(1, 101) <= (Options.CustomAdtRoleSpawnRate.TryGetValue(addOn, out var sc) ? sc.GetFloat() : 0))
+            if (rd.Next(1, 101) <= (Options.CustomAdtRoleSpawnRate.TryGetValue(Modifier, out var sc) ? sc.GetFloat() : 0))
             {
-                AssignSubRoles(addOn);
+                AssignSubRoles(Modifier);
             }
         }
     }
@@ -127,7 +127,7 @@ public static class AddonAssign
     {
         try
         {
-            var checkAllPlayers = Main.AllAlivePlayerControls.Where(x => CustomRolesHelper.CheckAddonConfilct(role, x));
+            var checkAllPlayers = Main.AllAlivePlayerControls.Where(x => CustomRolesHelper.CheckModifierConfilct(role, x));
             var allPlayers = checkAllPlayers.ToList();
             if (!allPlayers.Any()) return;
             var count = Math.Clamp(RawCount, 0, allPlayers.Count);
@@ -142,14 +142,14 @@ public static class AddonAssign
                 var player = allPlayers.RandomElement();
                 allPlayers.Remove(player);
 
-                // Set Add-on
+                // Set Modifier
                 Main.PlayerStates[player.PlayerId].SetSubRole(role);
-                Logger.Info($"Registered Add-on: {player?.Data?.PlayerName} = {player.GetCustomRole()} + {role}", $"Assign {role}");
+                Logger.Info($"Registered Modifier: {player?.Data?.PlayerName} = {player.GetCustomRole()} + {role}", $"Assign {role}");
             }
         }
         catch (Exception error)
         {
-            Logger.Warn($"Add-On {role} get error after check addon confilct for: {error}", "AssignSubRoles");
+            Logger.Warn($"Modifier {role} get error after check Modifier confilct for: {error}", "AssignSubRoles");
         }
     }
 
@@ -172,7 +172,7 @@ public static class AddonAssign
         foreach (var pc in Main.AllPlayerControls)
         {
             if (pc.Is(CustomRoles.GM)
-                || (pc.HasSubRole() && pc.GetCustomSubRoles().Count >= Options.NoLimitAddonsNumMax.GetInt())
+                || (pc.HasSubRole() && pc.GetCustomSubRoles().Count >= Options.NoLimitModifiersNumMax.GetInt())
                 || pc.Is(CustomRoles.Dictator)
                 || pc.Is(CustomRoles.God)
                 || pc.Is(CustomRoles.Hater)

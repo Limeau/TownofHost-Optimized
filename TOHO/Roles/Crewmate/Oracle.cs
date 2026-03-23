@@ -37,7 +37,7 @@ internal class Oracle : RoleBase
         OracleAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 14, "AbilityUseGainWithEachTaskCompleted", new(0f, 5f, 0.1f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Oracle])
             .SetValueFormat(OptionFormat.Times);
-        ChangeRecruitTeam = BooleanOptionItem.Create(Id + 15, "OracleCheckAddons", false, TabGroup.CrewmateRoles, false)
+        ChangeRecruitTeam = BooleanOptionItem.Create(Id + 15, "OracleCheckModifiers", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Oracle]);
         Options.OverrideTasksData.Create(Id + 16, TabGroup.CrewmateRoles, CustomRoles.Oracle);
     }

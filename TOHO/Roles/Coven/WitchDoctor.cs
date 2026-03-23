@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TOHO.Roles.AddOns;
+using TOHO.Roles.Modifiers;
 using static TOHO.Options;
 
 namespace TOHO.Roles.Coven;
@@ -15,7 +15,7 @@ internal class WitchDoctor : CovenManager
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CovenPower;
     //==================================================================\\
 
-    private static List<CustomRoles> addons = [];
+    private static List<CustomRoles> Modifiers = [];
     public static int Uses;
     public static OptionItem AmountOfRecruits;
 
@@ -37,7 +37,7 @@ internal class WitchDoctor : CovenManager
         // Double Trigger
         var pc = Utils.GetPlayerById(playerId);
         pc.AddDoubleTrigger();
-        addons.AddRange(GroupedAddons[AddonTypes.Harmful]);
+        Modifiers.AddRange(GroupedModifiers[ModifierTypes.Harmful]);
     }
 
     public override bool OnCheckMurderAsKiller(PlayerControl killer, PlayerControl target)
@@ -55,7 +55,7 @@ internal class WitchDoctor : CovenManager
         var AllSubRoles = Main.PlayerStates[target.PlayerId].SubRoles.ToList();
         foreach (var role in AllSubRoles)
         {
-            if (addons.Contains(role))
+            if (Modifiers.Contains(role))
             {
                 AllSubRoles.Remove(role);
             }

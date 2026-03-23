@@ -2,23 +2,23 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Impostor;
+namespace TOHO.Roles.Modifiers.Impostor;
 
-public class Stealer : IAddon
+public class Stealer : IModifier
 {
     public CustomRoles Role => CustomRoles.Stealer;
     private const int Id = 23200;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
 
     private static OptionItem TicketsPerKill;
     private static OptionItem HideAdditionalVotes;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Stealer, canSetNum: true, tab: TabGroup.Addons);
-        TicketsPerKill = FloatOptionItem.Create(Id + 3, "TicketsPerKill", new(0.1f, 10f, 0.1f), 0.5f, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Stealer, canSetNum: true, tab: TabGroup.Modifiers);
+        TicketsPerKill = FloatOptionItem.Create(Id + 3, "TicketsPerKill", new(0.1f, 10f, 0.1f), 0.5f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Stealer]);
-        HideAdditionalVotes = BooleanOptionItem.Create(Id + 4, "HideAdditionalVotes", false, TabGroup.Addons, false)
+        HideAdditionalVotes = BooleanOptionItem.Create(Id + 4, "HideAdditionalVotes", false, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Stealer]);
     }
     public void Init()

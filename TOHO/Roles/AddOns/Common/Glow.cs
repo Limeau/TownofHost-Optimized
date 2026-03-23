@@ -3,14 +3,14 @@ using System.Linq;
 using AmongUs.GameOptions;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Glow : IAddon
+public class Glow : IModifier
 {
     public CustomRoles Role => CustomRoles.Glow;
     private const int Id = 22000;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Misc;
+    public ModifierTypes Type => ModifierTypes.Misc;
 
     private static OptionItem GlowRadius;
     private static OptionItem GlowVisionOthers;
@@ -21,14 +21,14 @@ public class Glow : IAddon
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Glow, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        GlowRadius = FloatOptionItem.Create(Id + 13, "GlowRadius", new(0.1f, 5f, 0.05f), 0.5f, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Glow, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        GlowRadius = FloatOptionItem.Create(Id + 13, "GlowRadius", new(0.1f, 5f, 0.05f), 0.5f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Glow])
             .SetValueFormat(OptionFormat.Multiplier);
-        GlowVisionOthers = FloatOptionItem.Create(Id + 14, "GlowVisionOthers", new(0.1f, 5f, 0.05f), 0.15f, TabGroup.Addons, false)
+        GlowVisionOthers = FloatOptionItem.Create(Id + 14, "GlowVisionOthers", new(0.1f, 5f, 0.05f), 0.15f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Glow])
             .SetValueFormat(OptionFormat.Multiplier);
-        GlowVisionSelf = FloatOptionItem.Create(Id + 15, "GlowVisionSelf", new(0.1f, 5f, 0.05f), 0.15f, TabGroup.Addons, false)
+        GlowVisionSelf = FloatOptionItem.Create(Id + 15, "GlowVisionSelf", new(0.1f, 5f, 0.05f), 0.15f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Glow])
             .SetValueFormat(OptionFormat.Multiplier);
     }

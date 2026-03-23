@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class VoidBallot : IAddon
+public class VoidBallot : IModifier
 {
     public CustomRoles Role => CustomRoles.VoidBallot;
     private const int Id = 21100;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public void SetupCustomOption()
     {

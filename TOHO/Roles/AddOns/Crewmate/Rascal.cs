@@ -1,19 +1,19 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Rascal : IAddon
+public class Rascal : IModifier
 {
     public CustomRoles Role => CustomRoles.Rascal;
     private const int Id = 20800;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     private static OptionItem RascalAppearAsMadmate;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Rascal, canSetNum: true, tab: TabGroup.Addons);
-        RascalAppearAsMadmate = BooleanOptionItem.Create(Id + 10, "RascalAppearAsMadmate", true, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Rascal, canSetNum: true, tab: TabGroup.Modifiers);
+        RascalAppearAsMadmate = BooleanOptionItem.Create(Id + 10, "RascalAppearAsMadmate", true, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Rascal]);
     }
     public void Init()

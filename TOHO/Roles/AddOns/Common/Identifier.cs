@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Identifier : IAddon
+public class Identifier : IModifier
 {
     public CustomRoles Role => CustomRoles.Identifier;
     private const int Id = 31700;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem ImpCanBeIdentifier;
     public static OptionItem CrewCanBeIdentifier;
@@ -18,10 +18,10 @@ public class Identifier : IAddon
     public void SetupCustomOption()
     {
         Options.SetupAdtRoleOptions(Id, CustomRoles.Identifier, canSetNum: true);
-        ImpCanBeIdentifier = BooleanOptionItem.Create(Id + 10, "ImpCanBeIdentifier", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
-        CrewCanBeIdentifier = BooleanOptionItem.Create(Id + 11, "CrewCanBeIdentifier", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
-        NeutralCanBeIdentifier = BooleanOptionItem.Create(Id + 12, "NeutralCanBeIdentifier", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
-        CovenCanBeIdentifier = BooleanOptionItem.Create(Id + 13, "CovenCanBeIdentifier", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
+        ImpCanBeIdentifier = BooleanOptionItem.Create(Id + 10, "ImpCanBeIdentifier", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
+        CrewCanBeIdentifier = BooleanOptionItem.Create(Id + 11, "CrewCanBeIdentifier", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
+        NeutralCanBeIdentifier = BooleanOptionItem.Create(Id + 12, "NeutralCanBeIdentifier", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
+        CovenCanBeIdentifier = BooleanOptionItem.Create(Id + 13, "CovenCanBeIdentifier", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Identifier]);
     }
 
     public void Init()

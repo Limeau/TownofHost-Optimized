@@ -47,7 +47,7 @@ internal class NiceGuesser : RoleBase
             return true;
         }
 
-        // Nice Guesser can't Guess Add-ons
+        // Nice Guesser can't Guess Modifiers
         if (role.IsAdditionRole() && !GGCanGuessAdt.GetBool())
         {
             guesser.ShowInfoMessage(isUI, Translator.GetString("GuessAdtRole"));

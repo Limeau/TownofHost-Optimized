@@ -1,11 +1,11 @@
 ﻿/* WILLS - v1.6.0
 using static TOHO.Options;
-namespace TOHO.Roles.AddOns.Common;
-internal class Author : IAddon
+namespace TOHO.Roles.Modifiers.Common;
+internal class Author : IModifier
 {
     public CustomRoles Role => CustomRoles.Author;
     private const int Id = 33900;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {

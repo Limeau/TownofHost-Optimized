@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Paranoia : IAddon
+public class Paranoia : IModifier
 {
     public CustomRoles Role => CustomRoles.Paranoia;
     private const int Id = 22400;
@@ -13,16 +13,16 @@ public class Paranoia : IAddon
     public static OptionItem CanBeCov;
     public static OptionItem DualVotes;
     private static OptionItem HideAdditionalVotes;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Paranoia, canSetNum: true);
-        CanBeImp = BooleanOptionItem.Create(Id + 10, "ImpCanBeParanoia", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
-        CanBeCrew = BooleanOptionItem.Create(Id + 11, "CrewCanBeParanoia", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
-        CanBeCov = BooleanOptionItem.Create(Id + 14, "CovenCanBeParanoia", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
-        DualVotes = BooleanOptionItem.Create(Id + 12, "DualVotes", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
-        HideAdditionalVotes = BooleanOptionItem.Create(Id + 13, "HideAdditionalVotes", false, TabGroup.Addons, false).SetParent(DualVotes);
+        CanBeImp = BooleanOptionItem.Create(Id + 10, "ImpCanBeParanoia", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
+        CanBeCrew = BooleanOptionItem.Create(Id + 11, "CrewCanBeParanoia", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
+        CanBeCov = BooleanOptionItem.Create(Id + 14, "CovenCanBeParanoia", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
+        DualVotes = BooleanOptionItem.Create(Id + 12, "DualVotes", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Paranoia]);
+        HideAdditionalVotes = BooleanOptionItem.Create(Id + 13, "HideAdditionalVotes", false, TabGroup.Modifiers, false).SetParent(DualVotes);
     }
     public void Init()
     { }

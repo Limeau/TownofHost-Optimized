@@ -3,9 +3,9 @@ using System.Linq;
 using UnityEngine;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-internal class Spurt : IAddon
+internal class Spurt : IModifier
 {
     public CustomRoles Role => CustomRoles.Spurt;
     private static OptionItem MinSpeed;
@@ -17,22 +17,22 @@ internal class Spurt : IAddon
     public static readonly Dictionary<byte, float> StartingSpeed = [];
     private static readonly Dictionary<byte, int> LastNum = [];
     private static readonly Dictionary<byte, long> LastUpdate = [];
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {
         const int id = 28800;
         SetupAdtRoleOptions(id, CustomRoles.Spurt, canSetNum: true, teamSpawnOptions: true);
-        MinSpeed = FloatOptionItem.Create(id + 7, "SpurtMinSpeed", new(0f, 3f, 0.25f), 0.75f, TabGroup.Addons, false)
+        MinSpeed = FloatOptionItem.Create(id + 7, "SpurtMinSpeed", new(0f, 3f, 0.25f), 0.75f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Spurt])
             .SetValueFormat(OptionFormat.Multiplier);
-        MaxSpeed = FloatOptionItem.Create(id + 8, "SpurtMaxSpeed", new(1.5f, 3f, 0.25f), 3f, TabGroup.Addons, false)
+        MaxSpeed = FloatOptionItem.Create(id + 8, "SpurtMaxSpeed", new(1.5f, 3f, 0.25f), 3f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Spurt])
             .SetValueFormat(OptionFormat.Multiplier);
-        Modulator = FloatOptionItem.Create(id + 9, "SpurtModule", new(0.25f, 3f, 0.25f), 1.25f, TabGroup.Addons, false)
+        Modulator = FloatOptionItem.Create(id + 9, "SpurtModule", new(0.25f, 3f, 0.25f), 1.25f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Spurt])
             .SetValueFormat(OptionFormat.Multiplier);
-        DisplaysCharge = BooleanOptionItem.Create(id + 10, "EnableSpurtCharge", false, TabGroup.Addons, false)
+        DisplaysCharge = BooleanOptionItem.Create(id + 10, "EnableSpurtCharge", false, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Spurt]);
     }
     public void Init()

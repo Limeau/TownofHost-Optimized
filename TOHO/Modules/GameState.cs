@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Impostor;
 using TOHO.Roles.Neutral;
@@ -42,7 +42,7 @@ public class PlayerState(byte playerId)
     public bool IsNecromancer { get; set; } = false;
     public (DateTime, byte) RealKiller = (DateTime.MinValue, byte.MaxValue);
     public List<(DateTime, CustomRoles)> MainRoleLogs = [];
-    public List<(DateTime, List<(CustomRoles, bool)>)> AddonLogs = []; // bool true = add addons. bool false = removed addons
+    public List<(DateTime, List<(CustomRoles, bool)>)> ModifierLogs = []; // bool true = add Modifiers. bool false = removed Modifiers
     public PlainShipRoom LastRoom = null;
     public bool HasSpawned { get; set; } = false;
     public Dictionary<byte, string> TargetColorData = [];
@@ -82,7 +82,7 @@ public class PlayerState(byte playerId)
             IsNecromancer = true;
         }
 
-        // check for Role Add-on
+        // check for Role Modifier
         if (pc.Is(CustomRoles.Madmate))
         {
             countTypes = Madmate.MadmateCountMode.GetInt() switch
@@ -199,18 +199,18 @@ public class PlayerState(byte playerId)
         if (!SubRoles.Contains(role))
             SubRoles.Add(role);
 
-        if (CustomRoleManager.AddonClasses.TryGetValue(role, out var IAddOn))
+        if (CustomRoleManager.ModifierClasses.TryGetValue(role, out var IModifier))
         {
             var target = PlayerId.GetPlayer();
             if (target != null)
             {
-                IAddOn?.Add(target.PlayerId, !Main.IntroDestroyed);
+                IModifier?.Add(target.PlayerId, !Main.IntroDestroyed);
             }
         }
 
         if (role.IsConverted())
         {
-            SubRoles.RemoveAll(AddON => AddON != role && AddON.IsConverted());
+            SubRoles.RemoveAll(Modifier => Modifier != role && Modifier.IsConverted());
             SubRoles.Remove(CustomRoles.Rascal);
             SubRoles.Remove(CustomRoles.Loyal);
             SubRoles.Remove(CustomRoles.Admired);
@@ -292,7 +292,7 @@ public class PlayerState(byte playerId)
             case CustomRoles.Admired:
             case CustomRoles.CorruptedA:
                 countTypes = CountTypes.Crew;
-                SubRoles.RemoveAll(AddON => AddON != role && AddON.IsConverted());
+                SubRoles.RemoveAll(Modifier => Modifier != role && Modifier.IsConverted());
                 SubRoles.Remove(CustomRoles.Rascal);
                 SubRoles.Remove(CustomRoles.Loyal);
                 break;
@@ -306,17 +306,17 @@ public class PlayerState(byte playerId)
                 break;
         }
     }
-    public void RemoveSubRole(CustomRoles addOn)
+    public void RemoveSubRole(CustomRoles Modifier)
     {
-        if (SubRoles.Contains(addOn))
-            SubRoles.Remove(addOn);
+        if (SubRoles.Contains(Modifier))
+            SubRoles.Remove(Modifier);
 
-        if (CustomRoleManager.AddonClasses.TryGetValue(addOn, out var IAddon))
+        if (CustomRoleManager.ModifierClasses.TryGetValue(Modifier, out var IModifier))
         {
             var target = PlayerId.GetPlayer();
             if (target != null)
             {
-                IAddon?.Remove(target.PlayerId);
+                IModifier?.Remove(target.PlayerId);
             }
         }
 
@@ -324,7 +324,7 @@ public class PlayerState(byte playerId)
 
         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.RemoveSubRole, SendOption.Reliable);
         writer.Write(PlayerId);
-        writer.WritePacked((int)addOn);
+        writer.WritePacked((int)Modifier);
         AmongUsClient.Instance.FinishRpcImmediately(writer);
     }
 

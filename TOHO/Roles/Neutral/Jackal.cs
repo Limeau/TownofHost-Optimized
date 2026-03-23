@@ -190,7 +190,7 @@ internal class Jackal : RoleBase
         if (target.Is(CustomRoles.Loyal)
             || SidekickAssignMode.GetInt() == 2 && (target.Is(CustomRoles.Cleansed) || target.Is(CustomRoles.Stubborn)))
         {
-            // Loyal or only Recruit can not get Add-on
+            // Loyal or only Recruit can not get Modifier
             killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("Jackal_RecruitFailed")));
             return true;
         }

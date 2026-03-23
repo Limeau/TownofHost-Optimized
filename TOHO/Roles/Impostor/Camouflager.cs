@@ -3,7 +3,7 @@ using System.Linq;
 using AmongUs.GameOptions;
 using Hazel;
 using InnerNet;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using UnityEngine;
 using static TOHO.Translator;
 

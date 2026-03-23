@@ -1,17 +1,17 @@
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Rookie : IAddon
+public class Rookie : IModifier
 {
     public CustomRoles Role => CustomRoles.Rookie;
     private const int Id = 38800;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
     public static OptionItem RookieChance;
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Rookie, canSetNum: true, teamSpawnOptions: true);
-        RookieChance = IntegerOptionItem.Create(Id + 10, "RookieChance", (5, 100, 5), 50, TabGroup.Addons, false)
+        RookieChance = IntegerOptionItem.Create(Id + 10, "RookieChance", (5, 100, 5), 50, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Rookie])
             .SetValueFormat(OptionFormat.Percent);
     }

@@ -1,16 +1,16 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Necroview : IAddon
+public class Necroview : IModifier
 {
     public CustomRoles Role => CustomRoles.Necroview;
     private const int Id = 19600;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Necroview, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
+        SetupAdtRoleOptions(Id, CustomRoles.Necroview, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
     }
     public void Init()
     { }

@@ -3,13 +3,13 @@ using System.Linq;
 using AmongUs.GameOptions;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Bewilder : IAddon
+public class Bewilder : IModifier
 {
     public CustomRoles Role => CustomRoles.Bewilder;
     private const int Id = 18900;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem BewilderVision;
     private static OptionItem KillerGetBewilderVision;
@@ -20,9 +20,9 @@ public class Bewilder : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Bewilder, canSetNum: true, teamSpawnOptions: true);
-        BewilderVision = FloatOptionItem.Create(Id + 10, "BewilderVision", new(0f, 5f, 0.05f), 0.6f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bewilder])
+        BewilderVision = FloatOptionItem.Create(Id + 10, "BewilderVision", new(0f, 5f, 0.05f), 0.6f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bewilder])
             .SetValueFormat(OptionFormat.Multiplier);
-        KillerGetBewilderVision = BooleanOptionItem.Create(Id + 14, "KillerGetBewilderVision", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bewilder]);
+        KillerGetBewilderVision = BooleanOptionItem.Create(Id + 14, "KillerGetBewilderVision", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bewilder]);
     }
     public void Init()
     {

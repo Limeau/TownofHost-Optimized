@@ -17,9 +17,9 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using TOHO.Modules;
 using TOHO.Modules.ChatManager;
 using TOHO.Patches;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Crewmate;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Crewmate;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Crewmate;
@@ -296,8 +296,8 @@ public static class Utils
             case Custom_Team.Neutral:
                 chance = "<color=#999999>(Neutral)</color>";
                 break;
-            case Custom_Team.Addon:
-                chance = "<color=#ffff00>(Add-On)</color>";
+            case Custom_Team.Modifier:
+                chance = "<color=#ffff00>(Modifier)</color>";
                 break;
         }
 
@@ -313,9 +313,9 @@ public static class Utils
 
         return InfoLong.Replace(RealRole, $"{ColorName}");
     }
-    public static string GetDisplayRoleAndSubName(byte seerId, byte targetId, bool isMeeting, bool notShowAddOns = false)
+    public static string GetDisplayRoleAndSubName(byte seerId, byte targetId, bool isMeeting, bool notShowModifiers = false)
     {
-        var TextData = GetRoleAndSubText(seerId, targetId, isMeeting, notShowAddOns);
+        var TextData = GetRoleAndSubText(seerId, targetId, isMeeting, notShowModifiers);
         return ColorString(TextData.Item2, TextData.Item1);
     }
     public static string GetRoleName(CustomRoles role, bool forUser = true)
@@ -464,7 +464,7 @@ public static class Utils
         if (!Main.roleColors.TryGetValue(role, out var hexColor)) hexColor = "#ffffff";
         return hexColor;
     }
-    public static (string, Color) GetRoleAndSubText(byte seerId, byte targetId, bool isMeeting, bool notShowAddOns = false)
+    public static (string, Color) GetRoleAndSubText(byte seerId, byte targetId, bool isMeeting, bool notShowModifiers = false)
     {
         string RoleText = "Invalid Role";
         Color RoleColor = new Color32(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue);
@@ -472,7 +472,7 @@ public static class Utils
         var targetMainRole = Main.PlayerStates[targetId].MainRole;
         var targetSubRoles = Main.PlayerStates[targetId].SubRoles;
 
-        // If a Player is possessed by the Dollmaster swap each other's Role and Add-ons for display for every other client other than Dollmaster and Target
+        // If a Player is possessed by the Dollmaster swap each other's Role and Modifiers for display for every other client other than Dollmaster and Target
         if (DollMaster.IsControllingPlayer)
         {
             if (!(DollMaster.DollMasterTarget == null || DollMaster.controllingTarget == null))
@@ -500,21 +500,21 @@ public static class Utils
                 if (LastImpostor.currentId == targetId)
                     RoleText = GetRoleString("Last-") + RoleText;
 
-                if (Options.NameDisplayAddons.GetBool() && !notShowAddOns)
+                if (Options.NameDisplayModifiers.GetBool() && !notShowModifiers)
                 {
                     var seerPlatform = seer.GetClient()?.PlatformData.Platform;
-                    var addBracketsToAddons = Options.AddBracketsToAddons.GetBool();
+                    var addBracketsToModifiers = Options.AddBracketsToModifiers.GetBool();
 
-                    static string GetAddOnName(string str, bool meeting, bool addBracketsToAddons)
+                    static string GetModifierName(string str, bool meeting, bool addBracketsToModifiers)
                     {
-                        switch ((Options.ShortAddOnNamesMode)Options.ShowShortNamesForAddOns.GetValue())
+                        switch ((Options.ShortModifierNamesMode)Options.ShowShortNamesForModifiers.GetValue())
                         {
-                            case Options.ShortAddOnNamesMode.ShortAddOnNamesMode_Always:
-                            case Options.ShortAddOnNamesMode.ShortAddOnNamesMode_OnlyInMeeting when meeting:
-                            case Options.ShortAddOnNamesMode.ShortAddOnNamesMode_OnlyInGame when !meeting:
-                                return addBracketsToAddons ? $"({GetString(str)[0]}) " : $"{GetString(str)[0]} ";
+                            case Options.ShortModifierNamesMode.ShortModifierNamesMode_Always:
+                            case Options.ShortModifierNamesMode.ShortModifierNamesMode_OnlyInMeeting when meeting:
+                            case Options.ShortModifierNamesMode.ShortModifierNamesMode_OnlyInGame when !meeting:
+                                return addBracketsToModifiers ? $"({GetString(str)[0]}) " : $"{GetString(str)[0]} ";
                             default:
-                                return addBracketsToAddons ? $"({GetString(str)}) " : $"{GetString(str)} ";
+                                return addBracketsToModifiers ? $"({GetString(str)}) " : $"{GetString(str)} ";
                         }
                     }
 
@@ -522,21 +522,21 @@ public static class Utils
                     if (seerPlatform is Platforms.Playstation or Platforms.Xbox or Platforms.Switch)
                     {
                         // By default, censorship is enabled on Consoles
-                        // Need to set add-ons colors without endings "</color>"
+                        // Need to set Modifiers colors without endings "</color>"
 
 
                         // Colored Role
                         RoleText = ColorStringWithoutEnding(GetRoleColor(targetMainRole), RoleText);
 
-                        // Colored Add-ons
+                        // Colored Modifiers
                         foreach (var subRole in targetSubRoles.Where(subRole => subRole.ShouldBeDisplayed() && seer.ShowSubRoleTarget(target, subRole)).ToArray())
-                            RoleText = ColorStringWithoutEnding(GetRoleColor(subRole), GetAddOnName(subRole.ToString(), isMeeting, addBracketsToAddons)) + RoleText;
+                            RoleText = ColorStringWithoutEnding(GetRoleColor(subRole), GetModifierName(subRole.ToString(), isMeeting, addBracketsToModifiers)) + RoleText;
                     }
                     // Default
                     else
                     {
                         foreach (var subRole in targetSubRoles.Where(subRole => subRole.ShouldBeDisplayed() && seer.ShowSubRoleTarget(target, subRole)).ToArray())
-                            RoleText = ColorString(GetRoleColor(subRole), GetAddOnName(subRole.ToString(), isMeeting, addBracketsToAddons)) + RoleText;
+                            RoleText = ColorString(GetRoleColor(subRole), GetModifierName(subRole.ToString(), isMeeting, addBracketsToModifiers)) + RoleText;
                     }
                 }
 
@@ -916,7 +916,7 @@ public static class Utils
         List<string> neutralsb = [];
         List<string> covenb = [];
         List<string> crewsb = [];
-        List<string> addonsb = [];
+        List<string> Modifiersb = [];
 
         foreach (var role in CustomRolesHelper.AllRoles)
         {
@@ -930,7 +930,7 @@ public static class Utils
 
                 }
                 var roleDisplay = $"{GetRoleName(role)}: {mode} x{role.GetCount()}";
-                if (role.IsAdditionRole()) addonsb.Add(roleDisplay);
+                if (role.IsAdditionRole()) Modifiersb.Add(roleDisplay);
                 else if (role.IsCrewmate()) crewsb.Add(roleDisplay);
                 else if (role.IsImpostor() || role.IsMadmate()) impsb.Add(roleDisplay);
                 else if (role.IsNeutral()) neutralsb.Add(roleDisplay);
@@ -942,13 +942,13 @@ public static class Utils
         crewsb.Sort();
         neutralsb.Sort();
         covenb.Sort();
-        addonsb.Sort();
+        Modifiersb.Sort();
 
         SendMessage(string.Join("\n", impsb), PlayerId, ColorString(GetRoleColor(CustomRoles.Impostor), GetString("ImpostorRoles")), ShouldSplit: true);
         SendMessage(string.Join("\n", crewsb), PlayerId, ColorString(GetRoleColor(CustomRoles.Crewmate), GetString("CrewmateRoles")), ShouldSplit: true);
         SendMessage(string.Join("\n", neutralsb), PlayerId, ColorString(new Color32(127, 140, 141, byte.MaxValue), GetString("NeutralRoles")), ShouldSplit: true);
         SendMessage(string.Join("\n", covenb), PlayerId, ColorString(GetRoleColor(CustomRoles.Coven), GetString("CovenRoles")), ShouldSplit: true);
-        SendMessage(string.Join("\n", addonsb), PlayerId, ColorString(new Color32(255, 154, 206, byte.MaxValue), GetString("AddonRoles")), ShouldSplit: true);
+        SendMessage(string.Join("\n", Modifiersb), PlayerId, ColorString(new Color32(255, 154, 206, byte.MaxValue), GetString("ModifierRoles")), ShouldSplit: true);
     }
     public static void ShowChildrenSettings(OptionItem option, ref StringBuilder sb, int deep = 0, bool command = false)
     {
@@ -1983,7 +1983,7 @@ public static class Utils
             RoleInfo = $"<size=50%>\n</size><size={GetInfoSize(player.GetRoleInfo())}%>{Font}{ColorString(player.GetRoleColor(), player.GetRoleInfo())}</font></size>";
         }
 
-        // Format Add-ons
+        // Format Modifiers
         bool isFirstSub = true;
         foreach (var subRole in player.GetCustomSubRoles().ToArray())
         {

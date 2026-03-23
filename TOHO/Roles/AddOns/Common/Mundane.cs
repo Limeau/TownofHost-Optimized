@@ -1,21 +1,21 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Mundane : IAddon
+public class Mundane : IModifier
 {
     public CustomRoles Role => CustomRoles.Mundane;
     private const int Id = 26700;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public static OptionItem CanBeOnCrew;
     public static OptionItem CanBeOnNeutral;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Mundane, canSetNum: true, tab: TabGroup.Addons);
-        CanBeOnCrew = BooleanOptionItem.Create(Id + 11, "CrewCanBeMundane", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Mundane]);
-        CanBeOnNeutral = BooleanOptionItem.Create(Id + 12, "NeutralCanBeMundane", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Mundane]);
+        SetupAdtRoleOptions(Id, CustomRoles.Mundane, canSetNum: true, tab: TabGroup.Modifiers);
+        CanBeOnCrew = BooleanOptionItem.Create(Id + 11, "CrewCanBeMundane", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Mundane]);
+        CanBeOnNeutral = BooleanOptionItem.Create(Id + 12, "NeutralCanBeMundane", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Mundane]);
     }
     public void Init()
     { }

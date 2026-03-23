@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HarmonyLib;
-using TOHO.Roles.AddOns;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Crewmate;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Crewmate;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Impostor;
@@ -19,7 +19,7 @@ namespace TOHO.Roles.Core;
 public static class CustomRoleManager
 {
     public static readonly Dictionary<CustomRoles, RoleBase> RoleClass = [];
-    public static readonly Dictionary<CustomRoles, IAddon> AddonClasses = [];
+    public static readonly Dictionary<CustomRoles, IModifier> ModifierClasses = [];
     public static RoleBase GetStaticRoleClass(this CustomRoles role)
     {
         var roleClass = RoleClass.FirstOrDefault(x => x.Key == role).Value;
@@ -173,7 +173,7 @@ public static class CustomRoleManager
                 }
             }
 
-        // Add-ons
+        // Modifiers
         if (Glow.IsEnable) Glow.ApplyGameOptions(opt, player); //keep this at last
         if (Bewilder.IsEnable) Bewilder.ApplyGameOptions(opt, player);
         if (Ghoul.IsEnable) Ghoul.ApplyGameOptions(player);
@@ -344,7 +344,7 @@ public static class CustomRoleManager
         // Target was murder by Killer
         targetRoleClass.OnMurderPlayerAsTarget(killer, target, inMeeting, isSuicide);
 
-        // Check Target Add-ons
+        // Check Target Modifiers
         if (targetSubRoles.Any())
             foreach (var subRole in targetSubRoles.ToArray())
             {
@@ -388,7 +388,7 @@ public static class CustomRoleManager
         // Killer murder Target
         killerRoleClass.OnMurderPlayerAsKiller(killer, target, inMeeting, isSuicide);
 
-        // Check Killer Add-ons
+        // Check Killer Modifiers
         if (killerSubRoles.Any())
             foreach (var subRole in killerSubRoles.ToArray())
             {
@@ -537,15 +537,15 @@ public static class CustomRoleManager
         OtherCollectionsSet = true;
     }
 
-    // ADDONS //
+    // ModifierS //
 
-    public static void OnFixedAddonUpdate(this PlayerControl pc, bool lowload) => pc.GetCustomSubRoles().Do(x =>
+    public static void OnFixedModifierUpdate(this PlayerControl pc, bool lowload) => pc.GetCustomSubRoles().Do(x =>
     {
-        if (AddonClasses.TryGetValue(x, out var IAddon) && IAddon != null)
-            IAddon.OnFixedUpdate(pc);
+        if (ModifierClasses.TryGetValue(x, out var IModifier) && IModifier != null)
+            IModifier.OnFixedUpdate(pc);
         else return;
 
         if (!lowload)
-            IAddon.OnFixedUpdateLowLoad(pc);
+            IModifier.OnFixedUpdateLowLoad(pc);
     });
 }

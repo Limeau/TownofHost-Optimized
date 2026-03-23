@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Distracted : IAddon
+public class Distracted : IModifier
 {
     public CustomRoles Role => CustomRoles.Distracted;
     private const int Id = 39100;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
     public static bool IsEnable = false;
 
     private static OptionItem SpeedBoost;
@@ -20,10 +20,10 @@ public class Distracted : IAddon
 
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Distracted, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        SpeedBoost = FloatOptionItem.Create(Id + 10, "SpeedReduction391", new(0f, 2f, 0.25f), 1f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Distracted])
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Distracted, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        SpeedBoost = FloatOptionItem.Create(Id + 10, "SpeedReduction391", new(0f, 2f, 0.25f), 1f, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Distracted])
              .SetValueFormat(OptionFormat.Multiplier);
-        Radius = FloatOptionItem.Create(Id + 11, "Radius391", new(1f, 3f, 0.5f), 1.5f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Distracted])
+        Radius = FloatOptionItem.Create(Id + 11, "Radius391", new(1f, 3f, 0.5f), 1.5f, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Distracted])
              .SetValueFormat(OptionFormat.Multiplier);
     }
 

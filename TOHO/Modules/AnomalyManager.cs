@@ -123,25 +123,25 @@ internal class AnomalyManager
     public static void NewYear()
     {
         List<PlayerControl> assigning = [];
-        List<CustomRoles> AddOnStorage = [];
+        List<CustomRoles> ModifierStorage = [];
         foreach (var player in Main.AllAlivePlayerControls)
         {
             assigning.Add(player);
-            var addons = Main.PlayerStates[player.PlayerId].SubRoles.ToList();
-            foreach (var role in addons)
+            var Modifiers = Main.PlayerStates[player.PlayerId].SubRoles.ToList();
+            foreach (var role in Modifiers)
             {
-                if (role.IsImpOnlyAddon() ||
+                if (role.IsImpOnlyModifier() ||
                     role is CustomRoles.Lovers ||
-                    role.IsBetrayalAddon()) return;
-                addons.Remove(role);
-                AddOnStorage.Add(role);
+                    role.IsBetrayalModifier()) return;
+                Modifiers.Remove(role);
+                ModifierStorage.Add(role);
 
-                var RandomAddOn = AddOnStorage.RandomElement();
+                var RandomModifier = ModifierStorage.RandomElement();
                 if (assigning.Contains(player))
                 {
                     assigning.Remove(player);
-                    AddOnStorage.Remove(RandomAddOn);
-                    addons.Add(RandomAddOn);
+                    ModifierStorage.Remove(RandomModifier);
+                    Modifiers.Add(RandomModifier);
                 }
             }
             player.Notify(ColorString(GetRoleColor(CustomRoles.Jester), GetString("NewYearAnomaly")));
@@ -175,7 +175,7 @@ internal class AnomalyManager
     public static void Shuffle()
     {
         List<PlayerControl> assigning = [];
-        List<CustomRoles> AddOnStorage = [];
+        List<CustomRoles> ModifierStorage = [];
         foreach (var player in Main.AllAlivePlayerControls)
         {
             assigning.Add(player);
@@ -184,15 +184,15 @@ internal class AnomalyManager
                 role.IsCoven() ||
                 role.IsNK() ||
                 role.IsNA()) return;
-            AddOnStorage.Add(role);
+            ModifierStorage.Add(role);
 
-            var RandomAddOn = AddOnStorage.RandomElement();
+            var RandomModifier = ModifierStorage.RandomElement();
             if (assigning.Contains(player))
             {
-                player.RpcChangeRoleBasis(RandomAddOn);
-                player.RpcSetCustomRole(RandomAddOn);
+                player.RpcChangeRoleBasis(RandomModifier);
+                player.RpcSetCustomRole(RandomModifier);
                 assigning.Remove(player);
-                AddOnStorage.Remove(RandomAddOn);
+                ModifierStorage.Remove(RandomModifier);
             }
             player.Notify(ColorString(GetRoleColor(CustomRoles.Jester), GetString("ShuffleAnomaly")));
         }

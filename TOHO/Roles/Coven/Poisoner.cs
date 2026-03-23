@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using UnityEngine;
 using static TOHO.Translator;
 using static TOHO.Utils;

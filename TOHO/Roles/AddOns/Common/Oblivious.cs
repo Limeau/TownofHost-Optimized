@@ -1,19 +1,19 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Oblivious : IAddon
+public class Oblivious : IModifier
 {
     public CustomRoles Role => CustomRoles.Oblivious;
     private const int Id = 20700;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public static OptionItem ObliviousBaitImmune;
 
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Oblivious, canSetNum: true, teamSpawnOptions: true);
-        ObliviousBaitImmune = BooleanOptionItem.Create(Id + 13, "ObliviousBaitImmune", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oblivious]);
+        ObliviousBaitImmune = BooleanOptionItem.Create(Id + 13, "ObliviousBaitImmune", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oblivious]);
     }
     public void Init()
     { }

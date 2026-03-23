@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Impostor;
+namespace TOHO.Roles.Modifiers.Impostor;
 
-public class Mare : IAddon
+public class Mare : IModifier
 {
     public CustomRoles Role => CustomRoles.Mare;
     private const int Id = 23000;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
     public static readonly HashSet<byte> playerIdList = [];
 
     public static OptionItem KillCooldownInLightsOut;
@@ -19,10 +19,10 @@ public class Mare : IAddon
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Mare, canSetNum: true, tab: TabGroup.Addons);
-        SpeedInLightsOut = FloatOptionItem.Create(Id + 10, "MareAddSpeedInLightsOut", new(0.1f, 0.5f, 0.1f), 0.3f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Mare])
+        SetupAdtRoleOptions(Id, CustomRoles.Mare, canSetNum: true, tab: TabGroup.Modifiers);
+        SpeedInLightsOut = FloatOptionItem.Create(Id + 10, "MareAddSpeedInLightsOut", new(0.1f, 0.5f, 0.1f), 0.3f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Mare])
             .SetValueFormat(OptionFormat.Multiplier);
-        KillCooldownInLightsOut = FloatOptionItem.Create(Id + 11, "MareKillCooldownInLightsOut", new(0f, 180f, 2.5f), 7.5f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Mare])
+        KillCooldownInLightsOut = FloatOptionItem.Create(Id + 11, "MareKillCooldownInLightsOut", new(0f, 180f, 2.5f), 7.5f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Mare])
             .SetValueFormat(OptionFormat.Seconds);
     }
     public void Init()

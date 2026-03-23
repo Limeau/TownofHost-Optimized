@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Autopsy : IAddon
+public class Autopsy : IModifier
 {
     public CustomRoles Role => CustomRoles.Autopsy;
     private const int Id = 18600;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Autopsy, canSetNum: true, teamSpawnOptions: true);

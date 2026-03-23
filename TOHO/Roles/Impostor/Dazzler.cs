@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using static TOHO.Options;
 using static TOHO.Translator;
 using static TOHO.Utils;

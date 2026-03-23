@@ -1,13 +1,13 @@
 ﻿using System.Reflection;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Unlucky : IAddon
+public class Unlucky : IModifier
 {
     public CustomRoles Role => CustomRoles.Unlucky;
     private const int Id = 21000;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     private static OptionItem UnluckyTaskSuicideChance;
     private static OptionItem UnluckyKillSuicideChance;
@@ -28,15 +28,15 @@ public class Unlucky : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Unlucky, canSetNum: true, teamSpawnOptions: true);
-        UnluckyKillSuicideChance = IntegerOptionItem.Create(Id + 10, "UnluckyKillSuicideChance", new(0, 100, 1), 2, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
+        UnluckyKillSuicideChance = IntegerOptionItem.Create(Id + 10, "UnluckyKillSuicideChance", new(0, 100, 1), 2, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
             .SetValueFormat(OptionFormat.Percent);
-        UnluckyTaskSuicideChance = IntegerOptionItem.Create(Id + 11, "UnluckyTaskSuicideChance", new(0, 100, 1), 5, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
+        UnluckyTaskSuicideChance = IntegerOptionItem.Create(Id + 11, "UnluckyTaskSuicideChance", new(0, 100, 1), 5, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
             .SetValueFormat(OptionFormat.Percent);
-        UnluckyVentSuicideChance = IntegerOptionItem.Create(Id + 12, "UnluckyVentSuicideChance", new(0, 100, 1), 3, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
+        UnluckyVentSuicideChance = IntegerOptionItem.Create(Id + 12, "UnluckyVentSuicideChance", new(0, 100, 1), 3, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
             .SetValueFormat(OptionFormat.Percent);
-        UnluckyReportSuicideChance = IntegerOptionItem.Create(Id + 13, "UnluckyReportSuicideChance", new(0, 100, 1), 1, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
+        UnluckyReportSuicideChance = IntegerOptionItem.Create(Id + 13, "UnluckyReportSuicideChance", new(0, 100, 1), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
             .SetValueFormat(OptionFormat.Percent);
-        UnluckyOpenDoorSuicideChance = IntegerOptionItem.Create(Id + 14, "UnluckyOpenDoorSuicideChance", new(0, 100, 1), 4, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
+        UnluckyOpenDoorSuicideChance = IntegerOptionItem.Create(Id + 14, "UnluckyOpenDoorSuicideChance", new(0, 100, 1), 4, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Unlucky])
             .SetValueFormat(OptionFormat.Percent);
     }
     public void Init()

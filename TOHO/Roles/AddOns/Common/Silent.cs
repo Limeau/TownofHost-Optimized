@@ -1,14 +1,14 @@
 ﻿
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Silent : IAddon
+public class Silent : IModifier
 {
     public CustomRoles Role => CustomRoles.Silent;
     private const int Id = 26600;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Silent, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Silent, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
     }
     public void Init()
     { }

@@ -6,9 +6,9 @@ using System.Text;
 using HarmonyLib;
 using TMPro;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Crewmate;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Crewmate;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Crewmate;
@@ -853,7 +853,7 @@ static class ExtendedMeetingHud
                     && ps.TargetPlayerId != ps.VotedFor && ps != null)
                     VoteNum += ps.TargetPlayerId.GetRoleClassById().AddRealVotesNum(ps); // returns + 0 or given role value (+/-)
 
-                if (CheckForEndVotingPatch.CheckRole(ps.TargetPlayerId, CustomRoles.Knighted) // not doing addons lol, so this stays
+                if (CheckForEndVotingPatch.CheckRole(ps.TargetPlayerId, CustomRoles.Knighted) // not doing Modifiers lol, so this stays
                     && ps.TargetPlayerId != ps.VotedFor
                     ) VoteNum += 1;
 
@@ -939,7 +939,7 @@ class MeetingHudStartPatch
                 var Conf = new StringBuilder();
                 var Sub = new StringBuilder();
                 var rlHex = GetRoleColorCode(role);
-                var SubTitle = $"<color={rlHex}>" + GetString("YourAddon") + "</color>\n";
+                var SubTitle = $"<color={rlHex}>" + GetString("YourModifier") + "</color>\n";
                 if (Options.CustomRoleSpawnChances.TryGetValue(role, out var opt))
                     ShowChildrenSettings(Options.CustomRoleSpawnChances[role], ref Conf);
                 var cleared = Conf.ToString();

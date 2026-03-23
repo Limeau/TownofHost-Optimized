@@ -2,19 +2,19 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Fool : IAddon
+public class Fool : IModifier
 {
     public CustomRoles Role => CustomRoles.Fool;
     private const int Id = 25600;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     private static readonly HashSet<byte> playerList = [];
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Fool, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
+        SetupAdtRoleOptions(Id, CustomRoles.Fool, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
     }
 
     public void Init()

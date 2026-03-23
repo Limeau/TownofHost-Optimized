@@ -14,7 +14,7 @@ internal class Neutralizer : RoleBase
     //==================================================================\\
     public static PlayerControl NeutralizedPlayer;
     public static CustomRoles NeutralizedRole;
-    public static List<CustomRoles> NeutralizedAddOns = [];
+    public static List<CustomRoles> NeutralizedModifiers = [];
     
     public static OptionItem AbilityUses;
     
@@ -42,10 +42,10 @@ internal class Neutralizer : RoleBase
         killer.RpcRemoveAbilityUse();
         NeutralizedPlayer = target;
         NeutralizedRole = target.GetCustomRole();
-        foreach (var addon in target.GetCustomSubRoles())
+        foreach (var Modifier in target.GetCustomSubRoles())
         {
-            NeutralizedAddOns.Add(addon);
-            Main.PlayerStates[target.PlayerId].RemoveSubRole(addon);
+            NeutralizedModifiers.Add(Modifier);
+            Main.PlayerStates[target.PlayerId].RemoveSubRole(Modifier);
         }
         target.RpcSetCustomRole(CustomRoles.Neutralized);
         target.RpcChangeRoleBasis(CustomRoles.Neutralized);
@@ -59,10 +59,10 @@ internal class Neutralizer : RoleBase
     {
         NeutralizedPlayer.RpcSetCustomRole(NeutralizedRole);
         NeutralizedPlayer.RpcChangeRoleBasis(NeutralizedRole);
-        foreach (var addon in NeutralizedAddOns) NeutralizedPlayer.RpcSetCustomRole(addon);
+        foreach (var Modifier in NeutralizedModifiers) NeutralizedPlayer.RpcSetCustomRole(Modifier);
         NeutralizedPlayer = null;
         NeutralizedRole = CustomRoles.NotAssigned;
-        NeutralizedAddOns.Clear();
+        NeutralizedModifiers.Clear();
     }
 }
 

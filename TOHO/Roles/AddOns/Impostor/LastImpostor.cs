@@ -1,19 +1,19 @@
 
-namespace TOHO.Roles.AddOns.Impostor;
+namespace TOHO.Roles.Modifiers.Impostor;
 
-public class LastImpostor : IAddon
+public class LastImpostor : IModifier
 {
     public CustomRoles Role => CustomRoles.LastImpostor;
     private const int Id = 22800;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
     public static byte currentId = byte.MaxValue;
 
     private static OptionItem CooldownReduction;
 
     public void SetupCustomOption()
     {
-        Options.SetupSingleRoleOptions(Id, TabGroup.Addons, CustomRoles.LastImpostor, 1);
-        CooldownReduction = FloatOptionItem.Create(Id + 15, "OverclockedReduction", new(5f, 95f, 5f), 50f, TabGroup.Addons, false)
+        Options.SetupSingleRoleOptions(Id, TabGroup.Modifiers, CustomRoles.LastImpostor, 1);
+        CooldownReduction = FloatOptionItem.Create(Id + 15, "OverclockedReduction", new(5f, 95f, 5f), 50f, TabGroup.Modifiers, false)
             .SetParent(Options.CustomRoleSpawnChances[CustomRoles.LastImpostor])
             .SetValueFormat(OptionFormat.Percent);
     }

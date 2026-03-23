@@ -40,7 +40,7 @@ internal class Doctor : RoleBase
     public override bool OnRoleGuess(bool isUI, PlayerControl target, PlayerControl pc, CustomRoles role, ref bool guesserSuicide)
     {
         if (role != CustomRoles.Doctor) return false;
-        if (VisibleToEveryoneOpt.GetBool() && !target.GetCustomSubRoles().Any(sub => sub.IsBetrayalAddon()))
+        if (VisibleToEveryoneOpt.GetBool() && !target.GetCustomSubRoles().Any(sub => sub.IsBetrayalModifier()))
         {
             pc.ShowInfoMessage(isUI, GetString("GuessDoctor"));
             return true;

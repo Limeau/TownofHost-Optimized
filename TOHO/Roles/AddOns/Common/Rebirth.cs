@@ -5,13 +5,13 @@ using static TOHO.Options;
 using static TOHO.Translator;
 using static TOHO.Utils;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Rebirth : IAddon
+public class Rebirth : IModifier
 {
     public CustomRoles Role => CustomRoles.Rebirth;
     private const int Id = 29500;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
     public static OptionItem RebirthUses;
     public static OptionItem OnlyVoted;
 
@@ -20,9 +20,9 @@ public class Rebirth : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Rebirth, canSetNum: true, teamSpawnOptions: true);
-        RebirthUses = IntegerOptionItem.Create(Id + 11, "RebirthUses", new(1, 14, 1), 1, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Rebirth])
+        RebirthUses = IntegerOptionItem.Create(Id + 11, "RebirthUses", new(1, 14, 1), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Rebirth])
            .SetValueFormat(OptionFormat.Times);
-        OnlyVoted = BooleanOptionItem.Create(Id + 12, "RebirthCountVotes", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Rebirth]);
+        OnlyVoted = BooleanOptionItem.Create(Id + 12, "RebirthCountVotes", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Rebirth]);
     }
     public void Init()
     {

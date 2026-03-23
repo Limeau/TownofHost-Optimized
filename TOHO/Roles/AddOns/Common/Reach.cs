@@ -1,14 +1,14 @@
 ﻿using AmongUs.GameOptions;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Reach : IAddon
+public class Reach : IModifier
 {
     public CustomRoles Role => CustomRoles.Reach;
     private const int Id = 23700;
-    public AddonTypes Type => AddonTypes.Helpful;
-    public static CustomRoles IsReach => CustomRoles.Reach; // Used to find "references" of this addon.
+    public ModifierTypes Type => ModifierTypes.Helpful;
+    public static CustomRoles IsReach => CustomRoles.Reach; // Used to find "references" of this Modifier.
 
     public void SetupCustomOption()
     {

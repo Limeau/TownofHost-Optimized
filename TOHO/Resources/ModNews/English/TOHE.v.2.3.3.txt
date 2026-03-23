@@ -58,5 +58,5 @@ No any bugs plz!
 ## Role Changing
 - Observer skills will not take effect until the first meeting
 - Lovers can now follow the Succubus to victory
-- Crew Bait => Addon Bait
-- Crew Beartrap => Addon Beartrap
+- Crew Bait => Modifier Bait
+- Crew Beartrap => Modifier Beartrap

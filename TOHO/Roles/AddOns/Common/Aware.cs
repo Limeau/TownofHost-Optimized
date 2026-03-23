@@ -3,14 +3,14 @@ using System.Linq;
 using static TOHO.Options;
 using static TOHO.Translator;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Aware : IAddon
+public class Aware : IModifier
 {
     public CustomRoles Role => CustomRoles.Aware;
     private const int Id = 21600;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public static OptionItem ImpCanBeAware;
     public static OptionItem CrewCanBeAware;
@@ -22,7 +22,7 @@ public class Aware : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(21600, CustomRoles.Aware, canSetNum: true, teamSpawnOptions: true);
-        AwareknowRole = BooleanOptionItem.Create(Id + 13, "AwareKnowRole", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Aware]);
+        AwareknowRole = BooleanOptionItem.Create(Id + 13, "AwareKnowRole", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Aware]);
     }
 
     public void Init()

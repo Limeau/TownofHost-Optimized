@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Gravestone : IAddon
+public class Gravestone : IModifier
 {
     public CustomRoles Role => CustomRoles.Gravestone;
     private const int Id = 22100;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public void SetupCustomOption()
     {

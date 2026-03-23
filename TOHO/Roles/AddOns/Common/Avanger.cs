@@ -5,13 +5,13 @@ using TOHO.Roles.Neutral;
 using static TOHO.Options;
 
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Avanger : IAddon
+public class Avanger : IModifier
 {
     public CustomRoles Role => CustomRoles.Avanger;
     private const int Id = 21500;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public void SetupCustomOption()
     {

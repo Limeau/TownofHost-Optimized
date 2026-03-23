@@ -1,20 +1,20 @@
 ﻿using AmongUs.GameOptions;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Flash : IAddon
+public class Flash : IModifier
 {
     public CustomRoles Role => CustomRoles.Flash;
     private const int Id = 26100;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem OptionSpeed;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Flash, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        OptionSpeed = FloatOptionItem.Create(Id + 10, "FlashSpeed", new(0.25f, 5f, 0.25f), 2.5f, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Flash, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        OptionSpeed = FloatOptionItem.Create(Id + 10, "FlashSpeed", new(0.25f, 5f, 0.25f), 2.5f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Flash])
             .SetValueFormat(OptionFormat.Multiplier);
     }

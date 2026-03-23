@@ -10,7 +10,7 @@ using HarmonyLib;
 using TOHO.Roles.Core;
 using TOHO.Modules;
 using TOHO.Patches;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Impostor;
 using TOHO.Roles.Neutral;

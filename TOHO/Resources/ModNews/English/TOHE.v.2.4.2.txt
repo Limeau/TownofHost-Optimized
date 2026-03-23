@@ -48,12 +48,12 @@ Among Us v2023.3.28 is recommended so the roles work correctly.
 - Pickpocket
 - Ritualist
 - Traitor
-### Add-ons
-- Double Shot (add-on by TommyXL)
+### Modifiers
+- Double Shot (Modifier by TommyXL)
 - Rascal
 	
 ## Role Changes
-- Mimic now has a setting to see the roles of dead players, due to how useless this add-on was
+- Mimic now has a setting to see the roles of dead players, due to how useless this Modifier was
 - A revealed Workaholic can no longer be guessed
 - Doctor has a new setting like Workaholic to be revealed to all (currently exposes evil Doctors, use at your own risk)
 - Mayor has a setting for a TOS mechanic to reveal themselves

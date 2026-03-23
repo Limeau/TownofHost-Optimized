@@ -224,18 +224,18 @@ internal class DoubleAgent : RoleBase
                 if (ChangeRoleToOnLast.GetValue() == 1) // Random
                     Role = CRoleChangeRoles[IRandom.Instance.Next(2, CRoleChangeRoles.Length)];
 
-                // If Role is not on Impostor team remove all Impostor Add-ons if any
+                // If Role is not on Impostor team remove all Impostor Modifiers if any
                 if (!Role.IsImpostorTeam())
                 {
-                    foreach (CustomRoles allAddons in player.GetCustomSubRoles())
+                    foreach (CustomRoles allModifiers in player.GetCustomSubRoles())
                     {
-                        if (allAddons.IsImpOnlyAddon())
+                        if (allModifiers.IsImpOnlyModifier())
                         {
-                            Main.PlayerStates[player.PlayerId].RemoveSubRole(allAddons);
+                            Main.PlayerStates[player.PlayerId].RemoveSubRole(allModifiers);
                         }
                     }
                 }
-                // If Role is ImpostorTOHO aka Admired Impostor opt give Admired Addon if player dose not already have it
+                // If Role is ImpostorTOHO aka Admired Impostor opt give Admired Modifier if player dose not already have it
                 if (Role == CustomRoles.ImpostorTOHO && !player.GetCustomSubRoles().Contains(CustomRoles.Admired))
                     player.GetCustomSubRoles()?.Add(CustomRoles.Admired);
 

@@ -2,14 +2,14 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Antidote : IAddon
+public class Antidote : IModifier
 {
     public CustomRoles Role => CustomRoles.Antidote;
     private const int Id = 21400;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
 
     private static OptionItem AntidoteCDOpt;
@@ -21,9 +21,9 @@ public class Antidote : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Antidote, canSetNum: true, teamSpawnOptions: true);
-        AntidoteCDOpt = FloatOptionItem.Create(Id + 13, "AntidoteCDOpt", new(0f, 180f, 1f), 5f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Antidote])
+        AntidoteCDOpt = FloatOptionItem.Create(Id + 13, "AntidoteCDOpt", new(0f, 180f, 1f), 5f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Antidote])
             .SetValueFormat(OptionFormat.Seconds);
-        AntidoteCDReset = BooleanOptionItem.Create(Id + 14, "AntidoteCDReset", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Antidote]);
+        AntidoteCDReset = BooleanOptionItem.Create(Id + 14, "AntidoteCDReset", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Antidote]);
     }
 
     public void Init()

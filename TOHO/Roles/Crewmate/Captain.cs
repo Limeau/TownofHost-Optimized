@@ -97,7 +97,7 @@ internal class Captain : RoleBase
 
         return true;
     }
-    private static CustomRoles? SelectRandomAddon(byte targetId)
+    private static CustomRoles? SelectRandomModifier(byte targetId)
     {
         if (!AmongUsClient.Instance.AmHost) return null;
         var AllSubRoles = Main.PlayerStates[targetId].SubRoles.ToList();
@@ -107,20 +107,20 @@ internal class Captain : RoleBase
             if (role == CustomRoles.Cleansed ||
                 role == CustomRoles.LastImpostor ||
                 role == CustomRoles.Lovers || // Causes issues involving Lovers Suicide
-                role.IsBetrayalAddon())
+                role.IsBetrayalModifier())
             {
-                Logger.Info($"Removed {role} from list of addons", "Captain");
+                Logger.Info($"Removed {role} from list of Modifiers", "Captain");
                 AllSubRoles.Remove(role);
             }
         }
 
         if (AllSubRoles.Count == 0)
         {
-            Logger.Info("No removable addons found on the target.", "Captain");
+            Logger.Info("No removable Modifiers found on the target.", "Captain");
             return null;
         }
-        var addon = AllSubRoles.RandomElement();
-        return addon;
+        var Modifier = AllSubRoles.RandomElement();
+        return Modifier;
     }
     public override void OnPlayerExiled(PlayerControl captain, NetworkedPlayerInfo exiled)
     {
@@ -133,10 +133,10 @@ internal class Captain : RoleBase
         {
             var captainTarget = CaptainVoteTargets[playerId][i];
             if (captainTarget == byte.MaxValue || !GetPlayerById(captainTarget).IsAlive()) continue;
-            var SelectedAddOn = SelectRandomAddon(captainTarget);
-            if (SelectedAddOn == null) continue;
-            Main.PlayerStates[captainTarget].RemoveSubRole((CustomRoles)SelectedAddOn);
-            Logger.Info($"Successfully removed {SelectedAddOn} addon from {GetPlayerById(captainTarget).GetNameWithRole()}", "Captain");
+            var SelectedModifier = SelectRandomModifier(captainTarget);
+            if (SelectedModifier == null) continue;
+            Main.PlayerStates[captainTarget].RemoveSubRole((CustomRoles)SelectedModifier);
+            Logger.Info($"Successfully removed {SelectedModifier} Modifier from {GetPlayerById(captainTarget).GetNameWithRole()}", "Captain");
         }
         CaptainVoteTargets.Clear();
     }

@@ -1,20 +1,20 @@
 ﻿using TOHO.Modules;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Youtuber : IAddon
+public class Youtuber : IModifier
 {
     public CustomRoles Role => CustomRoles.Youtuber;
     private const int Id = 25500;
-    public AddonTypes Type => AddonTypes.Misc;
+    public ModifierTypes Type => ModifierTypes.Misc;
 
     public static OptionItem KillerWinsWithYouTuber;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Youtuber, canSetNum: true, tab: TabGroup.Addons);
-        KillerWinsWithYouTuber = BooleanOptionItem.Create(Id + 10, "Youtuber_KillerWinsWithYouTuber", false, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Youtuber, canSetNum: true, tab: TabGroup.Modifiers);
+        KillerWinsWithYouTuber = BooleanOptionItem.Create(Id + 10, "Youtuber_KillerWinsWithYouTuber", false, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Youtuber]);
     }
     public void Init()

@@ -1,13 +1,13 @@
 ﻿using TOHO.Roles.Crewmate;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Bloodthirst : IAddon
+public class Bloodthirst : IModifier
 {
     public CustomRoles Role => CustomRoles.Bloodthirst;
     private const int Id = 21700;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public void SetupCustomOption()
     {

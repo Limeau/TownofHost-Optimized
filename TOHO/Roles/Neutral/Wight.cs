@@ -61,8 +61,8 @@ internal class Wight : RoleBase
                 player.RpcRevive();
                 player.RpcChangeRoleBasis(CustomRoles.Undead);
                 player.RpcSetCustomRole(CustomRoles.Undead, true);
-                var allAddons = player.GetCustomSubRoles();
-                foreach (var role in allAddons)
+                var allModifiers = player.GetCustomSubRoles();
+                foreach (var role in allModifiers)
                 {
                     Main.PlayerStates[id].RemoveSubRole(role);
                 }

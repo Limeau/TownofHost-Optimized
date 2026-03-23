@@ -169,15 +169,15 @@ internal class Quizmaster : RoleBase
         return question;
     }
 
-    private static CustomRoles GetRandomRole(List<CustomRoles> roles, bool AllowAddons)
+    private static CustomRoles GetRandomRole(List<CustomRoles> roles, bool AllowModifiers)
     {
         var rnd = IRandom.Instance;
         CustomRoles chosenRole = roles[rnd.Next(0, roles.Count)];
-        if (chosenRole.IsAdditionRole() && !AllowAddons)
+        if (chosenRole.IsAdditionRole() && !AllowModifiers)
         {
             for (int s = 0; s < -1; s++)
             {
-                if (chosenRole.IsAdditionRole() && !AllowAddons)
+                if (chosenRole.IsAdditionRole() && !AllowModifiers)
                 {
                     chosenRole = roles[rnd.Next(0, roles.Count)];
                 }
@@ -216,7 +216,7 @@ internal class Quizmaster : RoleBase
         if (MarkedPlayer != byte.MaxValue)
         {
             CustomRoles randomRole = GetRandomRole([.. CustomRolesHelper.AllRoles], false);
-            CustomRoles randomRoleWithAddon = GetRandomRole([.. CustomRolesHelper.AllRoles], false);
+            CustomRoles randomRoleWithModifier = GetRandomRole([.. CustomRolesHelper.AllRoles], false);
             List<QuizQuestionBase> Questions =
             [
                 new SabotageQuestion { Stage = 1, Question = "LastSabotage",/* JSON ENTRIES */ QuizmasterQuestionType = QuizmasterQuestionType.LatestSabotageQuestion },
@@ -227,7 +227,7 @@ internal class Quizmaster : RoleBase
 
                 new CountQuestion { Stage = 2, Question = "MeetingPassed", QuizmasterQuestionType = QuizmasterQuestionType.MeetingCountQuestion },
                 new SetAnswersQuestion { Stage = 2, Question = "HowManyFactions", Answer = "Four", PossibleAnswers = { "One", "Two", "Three", "Four", "Five" }, QuizmasterQuestionType = QuizmasterQuestionType.FactionQuestion },
-                new SetAnswersQuestion { Stage = 2, Question = GetString("QuizmasterQuestions.FactionOfRole").Replace("{QMRole}", randomRoleWithAddon.ToString()), HasQuestionTranslation = false, Answer = CustomRolesHelper.GetCustomRoleTeam(randomRoleWithAddon).ToString(), PossibleAnswers = { "Crewmate", "Impostor", "Neutral", "Coven", "Addon" }, QuizmasterQuestionType = QuizmasterQuestionType.RoleFactionQuestion },
+                new SetAnswersQuestion { Stage = 2, Question = GetString("QuizmasterQuestions.FactionOfRole").Replace("{QMRole}", randomRoleWithModifier.ToString()), HasQuestionTranslation = false, Answer = CustomRolesHelper.GetCustomRoleTeam(randomRoleWithModifier).ToString(), PossibleAnswers = { "Crewmate", "Impostor", "Neutral", "Coven", "Modifier" }, QuizmasterQuestionType = QuizmasterQuestionType.RoleFactionQuestion },
                 new SetAnswersQuestion { Stage = 2, Question = GetString("QuizmasterQuestions.BasisOfRole").Replace("{QMRole}", randomRole.ToString()), HasQuestionTranslation = false, Answer = CustomRolesHelper.GetRoleTypes(randomRole).ToString(), PossibleAnswers = { "Crewmate", "Impostor", "Shapeshifter", "Scientist", "Engineer", "GuardianAngel" }, QuizmasterQuestionType = QuizmasterQuestionType.RoleBasisQuestion },
 
                 new SetAnswersQuestion { Stage = 3, Question = "FactionRemovedName", Answer = "None", PossibleAnswers = { "Sabotuer", "Sorcerers", "Coven", "Killer", "None" }, QuizmasterQuestionType = QuizmasterQuestionType.RemovedFactionQuestion },

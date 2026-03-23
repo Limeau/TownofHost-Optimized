@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using TOHO.Modules;
-using TOHO.Roles.AddOns;
+using TOHO.Roles.Modifiers;
 using TOHO.Roles.Core;
 using static TOHO.Options;
 using static TOHO.Utils;
@@ -22,13 +22,13 @@ internal class TaskManager : RoleBase
     //==================================================================\\
 
     private static OptionItem CanCompleteTaskAfterDeath;
-    private static OptionItem LimitGetsAddOns;
-    private static OptionItem CanGetHelpfulAddons;
-    private static OptionItem CanGetHarmfulAddons;
-    private static OptionItem CanGetMixedAddons;
+    private static OptionItem LimitGetsModifiers;
+    private static OptionItem CanGetHelpfulModifiers;
+    private static OptionItem CanGetHarmfulModifiers;
+    private static OptionItem CanGetMixedModifiers;
     private static OptionItem CanSeeAllCompletedTasks;
 
-    private static List<CustomRoles> Addons = [];
+    private static List<CustomRoles> Modifiers = [];
     private static readonly Dictionary<int, byte> Target = [];
     private static readonly Dictionary<TaskTypes, string> VisualTasksCompleted = [];
 
@@ -37,14 +37,14 @@ internal class TaskManager : RoleBase
         SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.TaskManager);
         CanCompleteTaskAfterDeath = BooleanOptionItem.Create(Id + 2, "TaskManager_OptionCanCompleteTaskAfterDeath", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
-        LimitGetsAddOns = IntegerOptionItem.Create(Id + 3, "TaskManager_LimitGetsAddOns", new(1, 10, 1), 3, TabGroup.CrewmateRoles, false)
+        LimitGetsModifiers = IntegerOptionItem.Create(Id + 3, "TaskManager_LimitGetsModifiers", new(1, 10, 1), 3, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager])
             .SetValueFormat(OptionFormat.Times);
-        CanGetHelpfulAddons = BooleanOptionItem.Create(Id + 4, "TaskManager_OptionCanGetHelpfulAddons", true, TabGroup.CrewmateRoles, false)
+        CanGetHelpfulModifiers = BooleanOptionItem.Create(Id + 4, "TaskManager_OptionCanGetHelpfulModifiers", true, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
-        CanGetHarmfulAddons = BooleanOptionItem.Create(Id + 5, "TaskManager_OptionCanGetHarmfulAddons", false, TabGroup.CrewmateRoles, false)
+        CanGetHarmfulModifiers = BooleanOptionItem.Create(Id + 5, "TaskManager_OptionCanGetHarmfulModifiers", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
-        CanGetMixedAddons = BooleanOptionItem.Create(Id + 6, "TaskManager_OptionCanGetMixedAddons", false, TabGroup.CrewmateRoles, false)
+        CanGetMixedModifiers = BooleanOptionItem.Create(Id + 6, "TaskManager_OptionCanGetMixedModifiers", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
         CanSeeAllCompletedTasks = BooleanOptionItem.Create(Id + 7, "TaskManager_OptionCanSeeAllCompletedTasks", false, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.TaskManager]);
@@ -52,28 +52,28 @@ internal class TaskManager : RoleBase
     }
     public override void Init()
     {
-        Addons.Clear();
+        Modifiers.Clear();
         Target.Clear();
         VisualTasksCompleted.Clear();
 
-        if (CanGetHelpfulAddons.GetBool())
+        if (CanGetHelpfulModifiers.GetBool())
         {
-            Addons.AddRange(GroupedAddons[AddonTypes.Helpful]);
+            Modifiers.AddRange(GroupedModifiers[ModifierTypes.Helpful]);
         }
-        if (CanGetHarmfulAddons.GetBool())
+        if (CanGetHarmfulModifiers.GetBool())
         {
-            Addons.AddRange(GroupedAddons[AddonTypes.Harmful]);
+            Modifiers.AddRange(GroupedModifiers[ModifierTypes.Harmful]);
         }
-        if (CanGetMixedAddons.GetBool())
+        if (CanGetMixedModifiers.GetBool())
         {
-            Addons.AddRange(GroupedAddons[AddonTypes.Mixed]);
+            Modifiers.AddRange(GroupedModifiers[ModifierTypes.Mixed]);
         }
 
-        Addons = Addons.Where(role => role.GetMode() != 0).Shuffle().ToList();
+        Modifiers = Modifiers.Where(role => role.GetMode() != 0).Shuffle().ToList();
     }
     public override void Add(byte playerId)
     {
-        playerId.SetAbilityUseLimit(LimitGetsAddOns.GetInt());
+        playerId.SetAbilityUseLimit(LimitGetsModifiers.GetInt());
     }
     public override bool OnTaskComplete(PlayerControl taskManager, int completedTaskCount, int totalTaskCount)
     {
@@ -110,28 +110,28 @@ internal class TaskManager : RoleBase
         if (realPlayer.PlayerId == _Player.PlayerId || !realPlayer.GetPlayerTaskState().IsTaskFinished || abilityLimit < 1) return;
 
         var taskManager = _Player;
-        Addons.RemoveAll(taskManager.Is);
+        Modifiers.RemoveAll(taskManager.Is);
 
-        foreach (var addOn in Addons)
+        foreach (var Modifier in Modifiers)
         {
-            if (!CustomRolesHelper.CheckAddonConfilct(addOn, taskManager, checkLimitAddons: false, checkSelfAddOn: false))
+            if (!CustomRolesHelper.CheckModifierConfilct(Modifier, taskManager, checkLimitModifiers: false, checkSelfModifier: false))
             {
-                Addons.Remove(addOn);
+                Modifiers.Remove(Modifier);
             }
         }
 
-        if (Addons.Count == 0)
+        if (Modifiers.Count == 0)
         {
-            taskManager.Notify(GetString("TaskManager_FailGetAddon"), time: 10);
+            taskManager.Notify(GetString("TaskManager_FailGetModifier"), time: 10);
         }
         else
         {
             abilityLimit--;
             taskManager.RpcRemoveAbilityUse();
-            var randomAddOn = Addons.RandomElement();
+            var randomModifier = Modifiers.RandomElement();
 
-            taskManager.RpcSetCustomRole(randomAddOn, checkAAconflict: false);
-            taskManager.Notify(string.Format(GetString("TaskManager_YouGetAddon"), abilityLimit), time: 10);
+            taskManager.RpcSetCustomRole(randomModifier, checkAAconflict: false);
+            taskManager.Notify(string.Format(GetString("TaskManager_YouGetModifier"), abilityLimit), time: 10);
         }
     }
     public static bool GetTaskManager(byte targetId, out byte taskManager)

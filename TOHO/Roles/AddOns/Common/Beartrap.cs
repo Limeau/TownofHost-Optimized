@@ -1,19 +1,19 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Trapper : IAddon
+public class Trapper : IModifier
 {
     public CustomRoles Role => CustomRoles.Trapper;
     private const int Id = 18800;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem TrapperBlockMoveTime;
 
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Trapper, canSetNum: true, teamSpawnOptions: true);
-        TrapperBlockMoveTime = FloatOptionItem.Create(Id + 13, "TrapperBlockMoveTime", new(1f, 180f, 1f), 5f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Trapper])
+        TrapperBlockMoveTime = FloatOptionItem.Create(Id + 13, "TrapperBlockMoveTime", new(1f, 180f, 1f), 5f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Trapper])
             .SetValueFormat(OptionFormat.Seconds);
     }
     public void Init()

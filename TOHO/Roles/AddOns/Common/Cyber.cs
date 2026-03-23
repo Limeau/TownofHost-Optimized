@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Cyber : IAddon
+public class Cyber : IModifier
 {
     public CustomRoles Role => CustomRoles.Cyber;
     private const int Id = 19100;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static readonly HashSet<byte> CyberDead = [];
 
@@ -20,11 +20,11 @@ public class Cyber : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Cyber, canSetNum: true, teamSpawnOptions: true);
-        ImpKnowCyberDead = BooleanOptionItem.Create(Id + 13, "ImpKnowCyberDead", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
-        CrewKnowCyberDead = BooleanOptionItem.Create(Id + 14, "CrewKnowCyberDead", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
-        NeutralKnowCyberDead = BooleanOptionItem.Create(Id + 15, "NeutralKnowCyberDead", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
-        CovenKnowCyberDead = BooleanOptionItem.Create(Id + 17, "CovenKnowCyberDead", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
-        CyberKnown = BooleanOptionItem.Create(Id + 16, "CyberKnown", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
+        ImpKnowCyberDead = BooleanOptionItem.Create(Id + 13, "ImpKnowCyberDead", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
+        CrewKnowCyberDead = BooleanOptionItem.Create(Id + 14, "CrewKnowCyberDead", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
+        NeutralKnowCyberDead = BooleanOptionItem.Create(Id + 15, "NeutralKnowCyberDead", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
+        CovenKnowCyberDead = BooleanOptionItem.Create(Id + 17, "CovenKnowCyberDead", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
+        CyberKnown = BooleanOptionItem.Create(Id + 16, "CyberKnown", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cyber]);
     }
 
     public void Init()

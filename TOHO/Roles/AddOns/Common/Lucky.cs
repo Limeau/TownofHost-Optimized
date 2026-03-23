@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Lucky : IAddon
+public class Lucky : IModifier
 {
     public CustomRoles Role => CustomRoles.Lucky;
     private const int Id = 19500;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem LuckyProbability;
 
@@ -16,7 +16,7 @@ public class Lucky : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Lucky, canSetNum: true, teamSpawnOptions: true);
-        LuckyProbability = IntegerOptionItem.Create(Id + 10, "LuckyProbability", new(0, 100, 5), 50, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Lucky])
+        LuckyProbability = IntegerOptionItem.Create(Id + 10, "LuckyProbability", new(0, 100, 5), 50, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Lucky])
             .SetValueFormat(OptionFormat.Percent);
     }
 

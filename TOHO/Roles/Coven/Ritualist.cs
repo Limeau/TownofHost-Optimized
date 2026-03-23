@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Modules.ChatManager;
-using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Double;
 using TOHO.Roles.Neutral;
@@ -125,7 +125,7 @@ internal class Ritualist : CovenManager
             var target = GetPlayerById(targetId);
             if (role.IsAdditionRole())
             {
-                pc.ShowInfoMessage(isUI, GetString("RitualistGuessAddon"));
+                pc.ShowInfoMessage(isUI, GetString("RitualistGuessModifier"));
                 return true;
             }
             if (!target.Is(role))

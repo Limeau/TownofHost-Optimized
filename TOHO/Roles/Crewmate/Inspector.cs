@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TOHO.Modules;
 using TOHO.Modules.ChatManager;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Core;
 using TOHO.Roles.Coven;
 using UnityEngine;

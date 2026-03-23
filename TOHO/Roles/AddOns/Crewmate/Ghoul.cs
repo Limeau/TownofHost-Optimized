@@ -2,20 +2,20 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Ghoul : IAddon
+public class Ghoul : IModifier
 {
     public CustomRoles Role => CustomRoles.Ghoul;
     private const int Id = 21900;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public static bool IsEnable;
     public static readonly HashSet<byte> KillGhoul = [];
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Ghoul, canSetNum: true, tab: TabGroup.Addons);
+        SetupAdtRoleOptions(Id, CustomRoles.Ghoul, canSetNum: true, tab: TabGroup.Modifiers);
     }
 
     public void Init()

@@ -223,10 +223,10 @@ internal class ChangeRoleSettings
                 RoleAssign.OnInit();
             }
 
-            // Initialize all Add-ons
-            foreach (var addOn in CustomRoleManager.AddonClasses.Values)
+            // Initialize all Modifiers
+            foreach (var Modifier in CustomRoleManager.ModifierClasses.Values)
             {
-                addOn?.Init();
+                Modifier?.Init();
             }
 
             AnomalyManager.Init();
@@ -374,10 +374,10 @@ internal class StartGameHostPatch
             // Block "RpcSetRole" for set desync roles for some players
             RpcSetRoleReplacer.Initialize();
 
-            // Select custom roles / add-ons
+            // Select custom roles / Modifiers
             EAC.OriginalRoles = [];
             RoleAssign.StartSelect();
-            AddonAssign.StartSelect();
+            ModifierAssign.StartSelect();
 
             // Set count vanilla roles
             RoleAssign.CalculateVanillaRoleCount();
@@ -443,32 +443,32 @@ internal class StartGameHostPatch
                 case CustomGameMode.FFA:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
-                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch;
                 case CustomGameMode.UltimateTeam:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
-                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch; 
                 case CustomGameMode.TrickorTreat:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
-                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch;
                 case CustomGameMode.FourCorners:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
-                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch;
                 case CustomGameMode.CandR:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
                         if (pair.Value is CustomRoles.Robber) AssignCustomRole(pair.Value, Utils.GetPlayerById(pair.Key));
-                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkAddons: false);
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch;
             }
@@ -482,12 +482,12 @@ internal class StartGameHostPatch
 
             try
             {
-                AddonAssign.InitAndStartAssignLovers();
-                AddonAssign.StartSortAndAssign();
+                ModifierAssign.InitAndStartAssignLovers();
+                ModifierAssign.StartSortAndAssign();
             }
             catch (Exception error)
             {
-                Logger.Warn($"Error after addons assign - error: {error}", "AddonAssign");
+                Logger.Warn($"Error after Modifiers assign - error: {error}", "ModifierAssign");
             }
 
             var setCustomRoleSender = CustomRpcSender.Create("SetCustomRole Release Sender", SendOption.Reliable);
@@ -498,11 +498,11 @@ internal class StartGameHostPatch
                 // Set roles
                 setCustomRoleSender.RpcSetCustomRole(pair.Key, pair.Value.MainRole);
 
-                // Set add-ons
+                // Set Modifiers
                 foreach (var subRole in pair.Value.SubRoles.ToArray())
                     setCustomRoleSender.RpcSetCustomRole(pair.Key, subRole);
 
-                pair.Value.AddonLogs.Add((DateTime.MinValue, pair.Value.SubRoles.Select(role => (role, true)).ToList())); // Minimum value as a magic value for game start
+                pair.Value.ModifierLogs.Add((DateTime.MinValue, pair.Value.SubRoles.Select(role => (role, true)).ToList())); // Minimum value as a magic value for game start
             }
 
             setCustomRoleSender.SendMessage();

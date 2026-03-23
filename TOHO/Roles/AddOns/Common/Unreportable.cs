@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Unreportable : IAddon
+public class Unreportable : IModifier
 {
     public CustomRoles Role => CustomRoles.Unreportable;
     private const int Id = 20500;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public void SetupCustomOption()
     {

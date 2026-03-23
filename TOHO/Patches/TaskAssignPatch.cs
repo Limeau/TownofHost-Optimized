@@ -6,8 +6,8 @@ using HarmonyLib;
 using Hazel;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Crewmate;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Crewmate;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Neutral;
 
 namespace TOHO;

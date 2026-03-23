@@ -1,5 +1,5 @@
 ﻿using AmongUs.GameOptions;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Double;
 using UnityEngine;

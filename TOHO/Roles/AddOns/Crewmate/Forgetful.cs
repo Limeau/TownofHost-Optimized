@@ -1,12 +1,12 @@
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Forgetful : IAddon
+public class Forgetful : IModifier
 {
     public CustomRoles Role => CustomRoles.Forgetful;
     private const int Id = 38700;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public void SetupCustomOption()
     {

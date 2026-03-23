@@ -1,15 +1,15 @@
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Subversion : IAddon
+public class Subversion : IModifier
 {
     public CustomRoles Role => CustomRoles.Subversion;
     private const int Id = 38300;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
     public static bool IsEnable = false;
 
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Subversion, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Subversion, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
     }
 
     public void Init()

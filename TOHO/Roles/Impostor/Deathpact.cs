@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using AmongUs.GameOptions;
 using System.Linq;
 using System.Text;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Neutral;
 using UnityEngine;
 using static TOHO.Options;

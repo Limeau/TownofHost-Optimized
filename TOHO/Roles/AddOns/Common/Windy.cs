@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Windy : IAddon
+public class Windy : IModifier
 {
     public CustomRoles Role => CustomRoles.Windy;
     private const int Id = 37400;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
     public static bool IsEnable = false;
 
     private static OptionItem SpeedBoost;
@@ -20,10 +20,10 @@ public class Windy : IAddon
 
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Windy, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        SpeedBoost = FloatOptionItem.Create(Id + 10, "SpeedBoost374", new(1f, 5f, 0.25f), 3f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Windy, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        SpeedBoost = FloatOptionItem.Create(Id + 10, "SpeedBoost374", new(1f, 5f, 0.25f), 3f, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
              .SetValueFormat(OptionFormat.Multiplier);
-        Radius = FloatOptionItem.Create(Id + 11, "Radius374", new(1f, 3f, 0.5f), 1.5f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
+        Radius = FloatOptionItem.Create(Id + 11, "Radius374", new(1f, 3f, 0.5f), 1.5f, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Windy])
              .SetValueFormat(OptionFormat.Multiplier);
     }
 

@@ -2,19 +2,19 @@
 using HarmonyLib;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Impostor;
-public class Tricky : IAddon
+namespace TOHO.Roles.Modifiers.Impostor;
+public class Tricky : IModifier
 {
     public CustomRoles Role => CustomRoles.Tricky;
     private const int Id = 19900;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
     private static OptionItem EnabledDeathReasons;
     //private static Dictionary<byte, PlayerState.DeathReason> randomReason = [];
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Tricky, canSetNum: true, tab: TabGroup.Addons);
-        EnabledDeathReasons = BooleanOptionItem.Create(Id + 11, "OnlyEnabledDeathReasons", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Tricky]);
+        SetupAdtRoleOptions(Id, CustomRoles.Tricky, canSetNum: true, tab: TabGroup.Modifiers);
+        EnabledDeathReasons = BooleanOptionItem.Create(Id + 11, "OnlyEnabledDeathReasons", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Tricky]);
     }
     public void Init()
     {

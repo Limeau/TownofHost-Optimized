@@ -1,12 +1,12 @@
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Peacemaker : IAddon
+public class Peacemaker : IModifier
 {
     public CustomRoles Role => CustomRoles.Peacemaker;
     private const int Id = 36900;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {

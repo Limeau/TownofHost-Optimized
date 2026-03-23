@@ -8,7 +8,7 @@ using TMPro;
 using TOHO.Roles.Core;
 using TOHO.Modules;
 using TOHO.Modules.ChatManager;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Double;
@@ -284,7 +284,7 @@ public static class GuessManager
                 }
                 if (role is CustomRoles.LastImpostor or CustomRoles.Mare or CustomRoles.Cyber or CustomRoles.Flash or CustomRoles.Glow or CustomRoles.Sloth or CustomRoles.Statue or CustomRoles.Spurt)
                 {
-                    pc.ShowInfoMessage(isUI, GetString("GuessObviousAddon"));
+                    pc.ShowInfoMessage(isUI, GetString("GuessObviousModifier"));
                     return true;
                 }
                 if (target.Is(CustomRoles.Onbound))
@@ -305,40 +305,40 @@ public static class GuessManager
                     return true;
                 }
 
-                // Guesser (Add-on) can't Guess Add-ons
+                // Guesser (Modifier) can't Guess Modifiers
                 if (role.IsAdditionRole() && pc.Is(CustomRoles.Guesser) && !Guesser.GCanGuessAdt.GetBool())
                 {
                     pc.ShowInfoMessage(isUI, GetString("GuessAdtRole"));
                     return true;
                 }
 
-                // Guesser Mode can/can't Guess Add-ons
+                // Guesser Mode can/can't Guess Modifiers
                 if (Options.GuesserMode.GetBool())
                 {
-                    if (role.IsAdditionRole() && !Options.CanGuessAddons.GetBool())
+                    if (role.IsAdditionRole() && !Options.CanGuessModifiers.GetBool())
                     {
-                        // Impostors can't Guess Add-ons
+                        // Impostors can't Guess Modifiers
                         if (Options.ImpostorsCanGuess.GetBool() && (pc.Is(Custom_Team.Impostor) || pc.GetCustomRole().IsMadmate()) && !(pc.Is(CustomRoles.EvilGuesser) || pc.Is(CustomRoles.Guesser)))
                         {
                             pc.ShowInfoMessage(isUI, GetString("GuessAdtRole"));
                             return true;
                         }
 
-                        // Crewmates can't Guess Add-ons
+                        // Crewmates can't Guess Modifiers
                         if (Options.CrewmatesCanGuess.GetBool() && pc.Is(Custom_Team.Crewmate) && !(pc.Is(CustomRoles.NiceGuesser) || pc.Is(CustomRoles.Guesser)))
                         {
                             pc.ShowInfoMessage(isUI, GetString("GuessAdtRole"));
                             return true;
                         }
 
-                        // Coven can't Guess Add-ons
+                        // Coven can't Guess Modifiers
                         if (Options.CovenCanGuess.GetBool() && pc.Is(Custom_Team.Coven) && !pc.Is(CustomRoles.Guesser))
                         {
                             pc.ShowInfoMessage(isUI, GetString("GuessAdtRole"));
                             return true;
                         }
 
-                        // Neutrals can't Guess Add-ons
+                        // Neutrals can't Guess Modifiers
                         if ((Options.NeutralKillersCanGuess.GetBool() || Options.PassiveNeutralsCanGuess.GetBool()) && pc.Is(Custom_Team.Neutral) && !(pc.Is(CustomRoles.Doomsayer) || pc.Is(CustomRoles.Guesser)))
                         {
                             pc.ShowInfoMessage(isUI, GetString("GuessAdtRole"));
@@ -815,7 +815,7 @@ public static class GuessManager
                 Impostor   = 1
                 Neutral    = 2
                 Coven      = 3
-                Add-ons    = 4
+                Modifiers    = 4
             */
 
             int tabCount = 0;
@@ -848,7 +848,7 @@ public static class GuessManager
                     if (!Options.CrewCanGuessCrew.GetBool() && PlayerControl.LocalPlayer.Is(Custom_Team.Crewmate) && TabId == 0) continue;
                     if (!Options.ImpCanGuessImp.GetBool() && PlayerControl.LocalPlayer.Is(Custom_Team.Impostor) && TabId == 1) continue;
                     if (!Options.CovenCanGuessCoven.GetBool() && PlayerControl.LocalPlayer.Is(Custom_Team.Coven) && TabId == 3) continue;
-                    if (!Options.CanGuessAddons.GetBool() && TabId == 4) continue;
+                    if (!Options.CanGuessModifiers.GetBool() && TabId == 4) continue;
                 }
 
                 Transform TeambuttonParent = new GameObject().transform;
@@ -867,7 +867,7 @@ public static class GuessManager
                     Custom_Team.Impostor => new Color32(255, 25, 25, byte.MaxValue),
                     Custom_Team.Neutral => new Color32(127, 140, 141, byte.MaxValue),
                     Custom_Team.Coven => new Color32(172, 66, 242, byte.MaxValue),
-                    Custom_Team.Addon => new Color32(255, 154, 206, byte.MaxValue),
+                    Custom_Team.Modifier => new Color32(255, 154, 206, byte.MaxValue),
                     _ => throw new NotImplementedException(),
                 };
                 Teamlabel.text = GetString("Type" + ((Custom_Team)TabId).ToString());
@@ -1172,7 +1172,7 @@ public static class GuessManager
         }
     }
 
-    // Modded non-host client guess Role/Add-on
+    // Modded non-host client guess Role/Modifier
     private static void SendRPC(int playerId, CustomRoles role)
     {
         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (int)CustomRPC.Guess, SendOption.Reliable, -1);

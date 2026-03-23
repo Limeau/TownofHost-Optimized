@@ -1,19 +1,19 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Overclocked : IAddon
+public class Overclocked : IModifier
 {
     public CustomRoles Role => CustomRoles.Overclocked;
     private const int Id = 19800;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem OverclockedReduction;
 
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Overclocked, canSetNum: true);
-        OverclockedReduction = FloatOptionItem.Create(Id + 10, "OverclockedReduction", new(0f, 90f, 5f), 40f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Overclocked])
+        OverclockedReduction = FloatOptionItem.Create(Id + 10, "OverclockedReduction", new(0f, 90f, 5f), 40f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Overclocked])
             .SetValueFormat(OptionFormat.Percent);
     }
     public void Init()

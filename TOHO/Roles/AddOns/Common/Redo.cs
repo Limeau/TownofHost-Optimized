@@ -2,13 +2,13 @@
 using TOHO.Roles.Core;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Redo : IAddon
+public class Redo : IModifier
 {
     public CustomRoles Role => CustomRoles.Redo;
     private const int Id = 35200;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
     public static CustomRoles switchTo = CustomRoles.NotAssigned;
     public static bool isSwitching = false;
     public static PlayerControl switchPlayer = null;

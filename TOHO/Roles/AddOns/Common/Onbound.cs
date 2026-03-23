@@ -1,16 +1,16 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Onbound : IAddon
+public class Onbound : IModifier
 {
     public CustomRoles Role => CustomRoles.Onbound;
     private const int Id = 25800;
-    public AddonTypes Type => AddonTypes.Guesser;
+    public ModifierTypes Type => ModifierTypes.Guesser;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Onbound, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
+        SetupAdtRoleOptions(Id, CustomRoles.Onbound, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
     }
     public void Init()
     { }

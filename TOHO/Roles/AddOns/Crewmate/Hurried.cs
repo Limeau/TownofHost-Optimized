@@ -1,11 +1,11 @@
 ﻿
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Hurried : IAddon
+public class Hurried : IModifier
 {
     public CustomRoles Role => CustomRoles.Hurried;
     private const int Id = 21300;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     public static OptionItem CanBeOnMadMate;
     public static OptionItem CanBeOnTaskBasedCrew;
@@ -14,9 +14,9 @@ public class Hurried : IAddon
     public void SetupCustomOption()
     {
         Options.SetupAdtRoleOptions(Id, CustomRoles.Hurried, canSetNum: true);
-        CanBeOnMadMate = BooleanOptionItem.Create(Id + 11, "MadmateCanBeHurried", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Hurried]);
-        CanBeOnTaskBasedCrew = BooleanOptionItem.Create(Id + 12, "TaskBasedCrewCanBeHurried", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Hurried]);
-        CanBeConverted = BooleanOptionItem.Create(Id + 13, "HurriedCanBeConverted", true, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Hurried]);
+        CanBeOnMadMate = BooleanOptionItem.Create(Id + 11, "MadmateCanBeHurried", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Hurried]);
+        CanBeOnTaskBasedCrew = BooleanOptionItem.Create(Id + 12, "TaskBasedCrewCanBeHurried", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Hurried]);
+        CanBeConverted = BooleanOptionItem.Create(Id + 13, "HurriedCanBeConverted", true, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Hurried]);
     }
     public void Init()
     { }

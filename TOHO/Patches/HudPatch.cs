@@ -4,7 +4,7 @@ using System.Text;
 using HarmonyLib;
 using TMPro;
 using TOHO.Roles.Core;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Impostor;
 using UnityEngine;
 using static TOHO.Translator;
@@ -386,7 +386,7 @@ class TaskPanelBehaviourPatch
                             sb.Append($"\r\n{GetString("PressF2ShowAddRoleDes")}");
                         sb.Append($"\r\n{GetString("PressF3ShowRoleSettings")}");
                         if (ps.SubRoles.Count >= 1)
-                            sb.Append($"\r\n{GetString("PressF4ShowAddOnsSettings")}");
+                            sb.Append($"\r\n{GetString("PressF4ShowModifiersSettings")}");
                         sb.Append("</size>");
                     }
                     sbFinal.Clear();

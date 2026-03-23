@@ -9,8 +9,8 @@ using System.Text;
 using TOHO.Modules;
 using TOHO.Patches;
 using TOHO.Roles._Ghosts_.Crewmate;
-using TOHO.Roles.AddOns.Common;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Common;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Crewmate;
@@ -23,24 +23,24 @@ namespace TOHO;
 
 static class ExtendedPlayerControl
 {
-    // checkAddons disable checks in MainRole Set, checkAAconflict disable checks in SubRole Set
-    public static void RpcSetCustomRole(this PlayerControl player, CustomRoles role, bool checkAddons = true, bool checkAAconflict = true)
+    // checkModifiers disable checks in MainRole Set, checkAAconflict disable checks in SubRole Set
+    public static void RpcSetCustomRole(this PlayerControl player, CustomRoles role, bool checkModifiers = true, bool checkAAconflict = true)
     {
-        List<CustomRoles> oldaddons = new(player.GetCustomSubRoles());
+        List<CustomRoles> oldModifiers = new(player.GetCustomSubRoles());
 
         if (role < CustomRoles.NotAssigned)
         {
             Main.PlayerStates[player.PlayerId].SetMainRole(role);
             // Remember to manually add OnAdd if you are setting role mid game
-            if (checkAddons && Options.RemoveIncompatibleAddOnsMidGame.GetBool()) player.RemoveIncompatibleAddOns();
+            if (checkModifiers && Options.RemoveIncompatibleModifiersMidGame.GetBool()) player.RemoveIncompatibleModifiers();
         }
         else if (role >= CustomRoles.NotAssigned)   //500:NoSubRole 501~:SubRole 
         {
-            if (Cleanser.CantGetAddon() && player.Is(CustomRoles.Cleansed)) return;
+            if (Cleanser.CantGetModifier() && player.Is(CustomRoles.Cleansed)) return;
 
             Main.PlayerStates[player.PlayerId].SetSubRole(role, pc: player);
 
-            if (checkAAconflict && Options.RemoveIncompatibleAddOnsMidGame.GetBool()) player.RemoveIncompatibleAddOns();
+            if (checkAAconflict && Options.RemoveIncompatibleModifiersMidGame.GetBool()) player.RemoveIncompatibleModifiers();
         }
         if (AmongUsClient.Instance.AmHost)
         {
@@ -52,10 +52,10 @@ static class ExtendedPlayerControl
 
         if (GameStates.IsInGame)
         {
-            var addons = player.GetCustomSubRoles();
+            var Modifiers = player.GetCustomSubRoles();
 
-            var addedRoles = addons.Except(oldaddons).ToList();
-            var removedRoles = oldaddons.Except(addons).ToList();
+            var addedRoles = Modifiers.Except(oldModifiers).ToList();
+            var removedRoles = oldModifiers.Except(Modifiers).ToList();
 
             List<(CustomRoles, bool)> changes = [];
 
@@ -64,7 +64,7 @@ static class ExtendedPlayerControl
 
             if (changes.Count > 0 && Main.PlayerStates.TryGetValue(player.PlayerId, out var state))
             {
-                state.AddonLogs.Add((DateTime.Now, changes));
+                state.ModifierLogs.Add((DateTime.Now, changes));
             }
         }
     }
@@ -79,19 +79,19 @@ static class ExtendedPlayerControl
             AmongUsClient.Instance.FinishRpcImmediately(writer);
         }
     }
-    public static void RemoveIncompatibleAddOns(this PlayerControl player)
+    public static void RemoveIncompatibleModifiers(this PlayerControl player)
     {
         List<CustomRoles> roles = new(player.GetCustomSubRoles());
 
-        roles = roles.Where(x => !x.IsAddonAssignedMidGame()).ToList();
+        roles = roles.Where(x => !x.IsModifierAssignedMidGame()).ToList();
         roles.Shuffle();
 
-        foreach (var addon in roles)
+        foreach (var Modifier in roles)
         {
-            if (!CustomRolesHelper.CheckAddonConfilct(addon, player, checkLimitAddons: false, checkSelfAddOn: false))
+            if (!CustomRolesHelper.CheckModifierConfilct(Modifier, player, checkLimitModifiers: false, checkSelfModifier: false))
             {                
-                Main.PlayerStates[player.PlayerId].RemoveSubRole(addon);
-                Logger.Info($"{player.GetNameWithRole()} had incompatible addon {addon.ToString()}, removing addon", $"{player.GetCustomRole().ToString()}");
+                Main.PlayerStates[player.PlayerId].RemoveSubRole(Modifier);
+                Logger.Info($"{player.GetNameWithRole()} had incompatible Modifier {Modifier.ToString()}, removing Modifier", $"{player.GetCustomRole().ToString()}");
             }
         }
     }
@@ -1046,11 +1046,11 @@ static class ExtendedPlayerControl
     public static int GetClientId(this NetworkedPlayerInfo playerData) => playerData == null ? -1 : playerData.ClientId;
 
     /// <summary>
-    /// Only Roles (no Add-ons)
+    /// Only Roles (no Modifiers)
     /// </summary>
     public static CustomRoles GetCustomRole(this NetworkedPlayerInfo player) => player == null || player.Object == null ? CustomRoles.Crewmate : player.Object.GetCustomRole();
     /// <summary>
-    /// Only Roles (no Add-ons)
+    /// Only Roles (no Modifiers)
     /// </summary>
     public static CustomRoles GetCustomRole(this PlayerControl player)
     {
@@ -1114,9 +1114,9 @@ static class ExtendedPlayerControl
     {
         return Main.PlayerStates[player.PlayerId].TaskState;
     }
-    public static string GetDisplayRoleAndSubName(this PlayerControl seer, PlayerControl target, bool notShowAddOns = false)
+    public static string GetDisplayRoleAndSubName(this PlayerControl seer, PlayerControl target, bool notShowModifiers = false)
     {
-        return Utils.GetDisplayRoleAndSubName(seer.PlayerId, target.PlayerId, notShowAddOns);
+        return Utils.GetDisplayRoleAndSubName(seer.PlayerId, target.PlayerId, notShowModifiers);
     }
     public static string GetSubRoleName(this PlayerControl player, bool forUser = false)
     {
@@ -1393,16 +1393,16 @@ static class ExtendedPlayerControl
             CustomRoles.Contagious;
     }
 
-    public static void AddInSwitchAddons(this PlayerControl Killed, PlayerControl target, CustomRoles Addon = CustomRoles.NotAssigned, CustomRoles? IsAddon = CustomRoles.NotAssigned)
+    public static void AddInSwitchModifiers(this PlayerControl Killed, PlayerControl target, CustomRoles Modifier = CustomRoles.NotAssigned, CustomRoles? IsModifier = CustomRoles.NotAssigned)
     {
-        if (Addon == CustomRoles.NotAssigned)
+        if (Modifier == CustomRoles.NotAssigned)
         {
-            Addon = IsAddon ?? CustomRoles.NotAssigned;
+            Modifier = IsModifier ?? CustomRoles.NotAssigned;
         }
-        if (CustomRoleManager.AddonClasses.TryGetValue(Addon, out var IAddon))
+        if (CustomRoleManager.ModifierClasses.TryGetValue(Modifier, out var IModifier))
         {
-            IAddon?.Remove(Killed.PlayerId);
-            IAddon?.Add(target.PlayerId, false);
+            IModifier?.Remove(Killed.PlayerId);
+            IModifier?.Add(target.PlayerId, false);
         }
     }
     public static bool RpcCheckAndMurder(this PlayerControl killer, PlayerControl target, bool check = false)
@@ -1545,9 +1545,9 @@ static class ExtendedPlayerControl
 
         if (seer.PlayerId == target.PlayerId) return true;
         else if (seer.Is(CustomRoles.GM) || target.Is(CustomRoles.GM) || seer.Is(CustomRoles.God) || (seer.AmOwner && Main.GodMode.Value)) return true;
-        else if (Options.ImpsCanSeeEachOthersAddOns.GetBool() && seer.Is(Custom_Team.Impostor) && target.Is(Custom_Team.Impostor) && !subRole.IsBetrayalAddon()) return true;
-        else if (Options.CovenCanSeeEachOthersAddOns.GetBool() && seer.Is(Custom_Team.Coven) && target.Is(Custom_Team.Coven) && !subRole.IsBetrayalAddon()) return true;
-        else if (Options.ApocCanSeeEachOthersAddOns.GetBool() && seer.IsNeutralApocalypse() && target.IsNeutralApocalypse() && !subRole.IsBetrayalAddon()) return true;
+        else if (Options.ImpsCanSeeEachOthersModifiers.GetBool() && seer.Is(Custom_Team.Impostor) && target.Is(Custom_Team.Impostor) && !subRole.IsBetrayalModifier()) return true;
+        else if (Options.CovenCanSeeEachOthersModifiers.GetBool() && seer.Is(Custom_Team.Coven) && target.Is(Custom_Team.Coven) && !subRole.IsBetrayalModifier()) return true;
+        else if (Options.ApocCanSeeEachOthersModifiers.GetBool() && seer.IsNeutralApocalypse() && target.IsNeutralApocalypse() && !subRole.IsBetrayalModifier()) return true;
 
         else if ((subRole is CustomRoles.Madmate
                 or CustomRoles.Sidekick

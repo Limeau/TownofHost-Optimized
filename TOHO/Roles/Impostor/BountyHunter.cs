@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
 using Hazel;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Coven;
 using TOHO.Roles.Neutral;
 using UnityEngine;

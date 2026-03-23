@@ -1,12 +1,12 @@
 ﻿using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Stubborn : IAddon
+public class Stubborn : IModifier
 {
     public CustomRoles Role => CustomRoles.Stubborn;
     private const int Id = 22500;
-    public AddonTypes Type => AddonTypes.Mixed;
+    public ModifierTypes Type => ModifierTypes.Mixed;
 
     public void SetupCustomOption()
     {

@@ -19,7 +19,7 @@ internal class Cleanser : RoleBase
     //==================================================================\\
 
     private static OptionItem CleanserUsesOpt;
-    private static OptionItem CleansedCanGetAddon;
+    private static OptionItem CleansedCanGetModifier;
 
     private readonly HashSet<byte> CleansedPlayers = [];
     private readonly Dictionary<byte, byte> CleanserTarget = [];
@@ -30,7 +30,7 @@ internal class Cleanser : RoleBase
         SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Cleanser);
         CleanserUsesOpt = IntegerOptionItem.Create(Id + 10, "MaxCleanserUses", new(1, 14, 1), 3, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cleanser])
             .SetValueFormat(OptionFormat.Times);
-        CleansedCanGetAddon = BooleanOptionItem.Create(Id + 11, "CleansedCanGetAddon", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cleanser]);
+        CleansedCanGetModifier = BooleanOptionItem.Create(Id + 11, "CleansedCanGetModifier", false, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Cleanser]);
         CleanserAbilityUseGainWithEachTaskCompleted = FloatOptionItem.Create(Id + 12, "AbilityUseGainWithEachTaskCompleted", new(0f, 2f, 0.5f), 1f, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Cleanser])
             .SetValueFormat(OptionFormat.Times);
@@ -43,7 +43,7 @@ internal class Cleanser : RoleBase
         playerId.SetAbilityUseLimit(CleanserUsesOpt.GetInt());
         DidVote = false;
     }
-    public static bool CantGetAddon() => !CleansedCanGetAddon.GetBool();
+    public static bool CantGetModifier() => !CleansedCanGetModifier.GetBool();
     public override bool CheckVote(PlayerControl voter, PlayerControl target)
     {
         if (DidVote) return true;
@@ -99,7 +99,7 @@ internal class Cleanser : RoleBase
             var targetpc = Utils.GetPlayerById(targetid);
             if (targetpc == null) continue;
 
-            targetpc.Notify(GetString("LostAddonByCleanser"));
+            targetpc.Notify(GetString("LostModifierByCleanser"));
         }
     }
     public override void AfterMeetingTasks()
@@ -111,10 +111,10 @@ internal class Cleanser : RoleBase
             if (targetid == byte.MaxValue) continue;
             var targetpc = Utils.GetPlayerById(targetid);
             if (targetpc == null) continue;
-            //var allAddons = targetpc.GetCustomSubRoles();
+            //var allModifiers = targetpc.GetCustomSubRoles();
             targetpc.RpcSetCustomRole(CustomRoles.Cleansed);
             Logger.Info($"Removed all the add ons of {targetpc.GetNameWithRole()}", "Cleanser");
-            //foreach (var role in allAddons)
+            //foreach (var role in allModifiers)
             //{
             //    Main.PlayerStates[targetid].RemoveSubRole(role);
             //}

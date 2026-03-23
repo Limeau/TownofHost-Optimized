@@ -2,7 +2,7 @@
 using AmongUs.GameOptions;
 using Hazel;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Common;
+using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Core;
 using UnityEngine;
 using static TOHO.Options;

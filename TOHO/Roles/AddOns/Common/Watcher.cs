@@ -1,13 +1,13 @@
 ﻿using AmongUs.GameOptions;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Watcher : IAddon
+public class Watcher : IModifier
 {
     public CustomRoles Role => CustomRoles.Watcher;
     private const int Id = 20400;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public void SetupCustomOption()
     {

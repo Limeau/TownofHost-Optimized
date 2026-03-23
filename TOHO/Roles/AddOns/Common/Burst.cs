@@ -3,14 +3,14 @@ using System.Linq;
 using static TOHO.Options;
 using static TOHO.Translator;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Burst : IAddon
+public class Burst : IModifier
 {
     public CustomRoles Role => CustomRoles.Burst;
     private const int Id = 19000;
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static OptionItem BurstKillDelay;
 
@@ -20,7 +20,7 @@ public class Burst : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Burst, canSetNum: true, teamSpawnOptions: true);
-        BurstKillDelay = FloatOptionItem.Create(Id + 13, "BurstKillDelay", new(1f, 180f, 1f), 5f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Burst])
+        BurstKillDelay = FloatOptionItem.Create(Id + 13, "BurstKillDelay", new(1f, 180f, 1f), 5f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Burst])
             .SetValueFormat(OptionFormat.Seconds);
     }
 

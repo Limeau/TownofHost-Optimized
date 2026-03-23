@@ -3,7 +3,7 @@ using Hazel;
 using InnerNet;
 using System;
 using System.Collections.Generic;
-using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Core;
 using TOHO.Roles.Double;
 using static TOHO.Options;
@@ -156,7 +156,7 @@ internal class DarkFairy : RoleBase
             }
         }
     }
-    public static bool KnowRole(PlayerControl player, PlayerControl target) // Addons know each-other
+    public static bool KnowRole(PlayerControl player, PlayerControl target) // Modifiers know each-other
     {
         if (player.Is(CustomRoles.Darkened) && target.Is(CustomRoles.DarkFairy)) return true;
         if (player.Is(CustomRoles.DarkFairy) && target.Is(CustomRoles.Darkened)) return true;

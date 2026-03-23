@@ -5,13 +5,13 @@ using TOHO.Modules;
 using static TOHO.Options;
 using static TOHO.Translator;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Bait : IAddon
+public class Bait : IModifier
 {
     public CustomRoles Role => CustomRoles.Bait;
     private const int Id = 18700;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem BaitDelayMin;
     public static OptionItem BaitDelayMax;
@@ -24,13 +24,13 @@ public class Bait : IAddon
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Bait, canSetNum: true, teamSpawnOptions: true);
-        BaitDelayMin = FloatOptionItem.Create(Id + 13, "BaitDelayMin", new(0f, 5f, 1f), 0f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait])
+        BaitDelayMin = FloatOptionItem.Create(Id + 13, "BaitDelayMin", new(0f, 5f, 1f), 0f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait])
             .SetValueFormat(OptionFormat.Seconds);
-        BaitDelayMax = FloatOptionItem.Create(Id + 14, "BaitDelayMax", new(0f, 10f, 1f), 0f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait])
+        BaitDelayMax = FloatOptionItem.Create(Id + 14, "BaitDelayMax", new(0f, 10f, 1f), 0f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait])
             .SetValueFormat(OptionFormat.Seconds);
-        BaitDelayNotify = BooleanOptionItem.Create(Id + 15, "BaitDelayNotify", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait]);
-        BaitNotification = BooleanOptionItem.Create(Id + 16, "BaitNotification", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait]);
-        BaitCanBeReportedUnderAllConditions = BooleanOptionItem.Create(Id + 17, "BaitCanBeReportedUnderAllConditions", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait]);
+        BaitDelayNotify = BooleanOptionItem.Create(Id + 15, "BaitDelayNotify", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait]);
+        BaitNotification = BooleanOptionItem.Create(Id + 16, "BaitNotification", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait]);
+        BaitCanBeReportedUnderAllConditions = BooleanOptionItem.Create(Id + 17, "BaitCanBeReportedUnderAllConditions", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Bait]);
     }
 
     public void Init()

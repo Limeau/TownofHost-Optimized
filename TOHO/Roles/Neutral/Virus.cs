@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using AmongUs.GameOptions;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Core;
 using static TOHO.Options;
 using static TOHO.Translator;

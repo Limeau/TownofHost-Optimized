@@ -65,7 +65,7 @@ internal class Hater : RoleBase
         if (killer == null || target == null) return false;
         if (killer.PlayerId == target.PlayerId) return true;  // Return true to allow suicides
 
-        if (target.GetCustomSubRoles().Any(addOn => addOn.IsConverted() || addOn is CustomRoles.Madmate or CustomRoles.Admired or CustomRoles.Lovers)
+        if (target.GetCustomSubRoles().Any(Modifier => Modifier.IsConverted() || Modifier is CustomRoles.Madmate or CustomRoles.Admired or CustomRoles.Lovers)
             || IsConvertedMainRole(target.GetCustomRole()))
         {
             if (!ChooseConverted.GetBool())

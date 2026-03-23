@@ -4,13 +4,13 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Crewmate;
+namespace TOHO.Roles.Modifiers.Crewmate;
 
-public class Workhorse : IAddon
+public class Workhorse : IModifier
 {
     public CustomRoles Role => CustomRoles.Workhorse;
     private const int Id = 23730;
-    public AddonTypes Type => AddonTypes.Misc;
+    public ModifierTypes Type => ModifierTypes.Misc;
     private static readonly HashSet<byte> playerIdList = [];
     public static bool IsEnable = false;
 
@@ -27,13 +27,13 @@ public class Workhorse : IAddon
 
     public void SetupCustomOption()
     {
-        SetupRoleOptions(Id, TabGroup.Addons, CustomRoles.Workhorse, zeroOne: true);
-        OptionAssignOnlyToCrewmate = BooleanOptionItem.Create(Id + 10, "AssignOnlyToCrewmate", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse]);
-        OptionNumLongTasks = IntegerOptionItem.Create(Id + 11, "WorkhorseNumLongTasks", new(0, 5, 1), 1, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse])
+        SetupRoleOptions(Id, TabGroup.Modifiers, CustomRoles.Workhorse, zeroOne: true);
+        OptionAssignOnlyToCrewmate = BooleanOptionItem.Create(Id + 10, "AssignOnlyToCrewmate", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse]);
+        OptionNumLongTasks = IntegerOptionItem.Create(Id + 11, "WorkhorseNumLongTasks", new(0, 5, 1), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse])
             .SetValueFormat(OptionFormat.Pieces);
-        OptionNumShortTasks = IntegerOptionItem.Create(Id + 12, "WorkhorseNumShortTasks", new(0, 5, 1), 1, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse])
+        OptionNumShortTasks = IntegerOptionItem.Create(Id + 12, "WorkhorseNumShortTasks", new(0, 5, 1), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse])
             .SetValueFormat(OptionFormat.Pieces);
-        OptionSnitchCanBeWorkhorse = BooleanOptionItem.Create(Id + 14, "SnitchCanBeWorkhorse", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse]);
+        OptionSnitchCanBeWorkhorse = BooleanOptionItem.Create(Id + 14, "SnitchCanBeWorkhorse", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Workhorse]);
     }
     public void Init()
     {

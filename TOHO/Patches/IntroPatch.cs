@@ -11,7 +11,7 @@ using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes;
 using TOHO.Modules;
 using TOHO.Patches;
-using TOHO.Roles.AddOns.Impostor;
+using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Core.AssignManager;
 using TOHO.Roles.Neutral;
@@ -229,7 +229,7 @@ class SetUpRoleTextPatch
 
         yield return null;
 
-        sb.Append("------------Roles / Add-ons------------\n");
+        sb.Append("------------Roles / Modifiers------------\n");
         if (PlayerControl.LocalPlayer.FriendCode.GetDevUser().DeBug || GameStates.IsLocalGame)
         {
             foreach (var pc in allPlayerControlsArray)
@@ -241,7 +241,7 @@ class SetUpRoleTextPatch
         else
         {
             StringBuilder logStringBuilder = new();
-            logStringBuilder.AppendLine("------------Roles / Add-ons------------");
+            logStringBuilder.AppendLine("------------Roles / Modifiers------------");
 
             foreach (var pc in allPlayerControlsArray)
             {

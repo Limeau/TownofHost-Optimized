@@ -15,7 +15,7 @@ using System.Text.Json;
 using HarmonyLib;
 using TOHO.Modules;
 using TOHO.Patches.Crowded;
-using TOHO.Roles.AddOns;
+using TOHO.Roles.Modifiers;
 using TOHO.Roles.Core;
 using TOHO.Roles.Double;
 using TOHO.Roles.Neutral;
@@ -438,21 +438,21 @@ public class Main : BasePlugin
             Utils.ThrowException(err);
         }
     }
-    public static void LoadAddonClasses()
+    public static void LoadModifierClasses()
     {
-        TOHO.Logger.Info("Loading All AddonClasses...", "LoadAddonClasses");
+        TOHO.Logger.Info("Loading All ModifierClasses...", "LoadModifierClasses");
         try
         {
-            var IAddonType = typeof(IAddon);
-            CustomRoleManager.AddonClasses.AddRange(Assembly
+            var IModifierType = typeof(IModifier);
+            CustomRoleManager.ModifierClasses.AddRange(Assembly
             .GetExecutingAssembly()
             .GetTypes()
-            .Where(t => IAddonType.IsAssignableFrom(t) && !t.IsInterface)
-            .Select(x => (IAddon)Activator.CreateInstance(x))
+            .Where(t => IModifierType.IsAssignableFrom(t) && !t.IsInterface)
+            .Select(x => (IModifier)Activator.CreateInstance(x))
             .Where(x => x != null)
             .ToDictionary(x => x.Role, x => x));
 
-            TOHO.Logger.Info("AddonClasses Loaded Successfully", "LoadAddonClasses");
+            TOHO.Logger.Info("ModifierClasses Loaded Successfully", "LoadModifierClasses");
         }
         catch (Exception err)
         {
@@ -617,7 +617,7 @@ public class Main : BasePlugin
         ExceptionMessage = "";
 
         LoadRoleClasses();
-        LoadAddonClasses();
+        LoadModifierClasses();
         LoadRoleColors(); //loads all the role colors from default and then tries to load custom colors if any.
 
         CustomWinnerHolder.Reset();
@@ -1039,7 +1039,7 @@ public enum CustomRoles
     // Sub-role after 500
     NotAssigned = 500,
 
-    // Add-ons
+    // Modifiers
     Admired,
     Antidote,
     // Author,

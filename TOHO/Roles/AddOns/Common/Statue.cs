@@ -2,13 +2,13 @@
 using System.Linq;
 using AmongUs.GameOptions;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Statue : IAddon
+public class Statue : IModifier
 {
     public CustomRoles Role => CustomRoles.Statue;
     private const int Id = 13800;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
     public static bool IsEnable = false;
 
     private static OptionItem SlowDown;
@@ -20,10 +20,10 @@ public class Statue : IAddon
 
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Statue, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        SlowDown = FloatOptionItem.Create(Id + 10, "StatueSlow", new(0f, 1.25f, 0.25f), 0f, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Statue])
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Statue, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        SlowDown = FloatOptionItem.Create(Id + 10, "StatueSlow", new(0f, 1.25f, 0.25f), 0f, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Statue])
              .SetValueFormat(OptionFormat.Multiplier);
-        PeopleAmount = IntegerOptionItem.Create(Id + 11, "StatuePeopleToSlow", new(1, 5, 1), 3, TabGroup.Addons, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Statue])
+        PeopleAmount = IntegerOptionItem.Create(Id + 11, "StatuePeopleToSlow", new(1, 5, 1), 3, TabGroup.Modifiers, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Statue])
              .SetValueFormat(OptionFormat.Times);
     }
 

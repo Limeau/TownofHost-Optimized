@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Impostor;
+namespace TOHO.Roles.Modifiers.Impostor;
 
-public class Clumsy : IAddon
+public class Clumsy : IModifier
 {
     public CustomRoles Role => CustomRoles.Clumsy;
     private const int Id = 22700;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
 
     private static OptionItem ChanceToMiss;
 
@@ -15,8 +15,8 @@ public class Clumsy : IAddon
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Clumsy, canSetNum: true, tab: TabGroup.Addons);
-        ChanceToMiss = IntegerOptionItem.Create(22703, "ChanceToMiss", new(0, 100, 5), 50, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Clumsy, canSetNum: true, tab: TabGroup.Modifiers);
+        ChanceToMiss = IntegerOptionItem.Create(22703, "ChanceToMiss", new(0, 100, 5), 50, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Clumsy])
             .SetValueFormat(OptionFormat.Percent);
     }

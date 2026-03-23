@@ -16,8 +16,8 @@ internal class ControllerManagerUpdatePatch
     private static readonly (int, int)[] resolutions = [(480, 270), (640, 360), (800, 450), (1280, 720), (1600, 900), (1920, 1080)];
     private static int resolutionIndex = 0;
 
-    private static int addonInfoIndex = -1;
-    private static int addonSettingsIndex = -1;
+    private static int ModifierInfoIndex = -1;
+    private static int ModifierSettingsIndex = -1;
 
     public static void Postfix(/*ControllerManager __instance*/)
     {
@@ -52,7 +52,7 @@ internal class ControllerManagerUpdatePatch
                     throw;
                 }
             }
-            // Show Add-ons info
+            // Show Modifiers info
             if (Input.GetKeyDown(KeyCode.F2) && GameStates.IsInGame && Options.CurrentGameMode == CustomGameMode.Standard)
             {
                 try
@@ -66,9 +66,9 @@ internal class ControllerManagerUpdatePatch
                         addDes.Add(GetString($"{subRole}") + Utils.GetRoleMode(subRole) + GetString($"{subRole}InfoLong"));
                     }
 
-                    addonInfoIndex++;
-                    if (addonInfoIndex >= addDes.Count) addonInfoIndex = 0;
-                    HudManager.Instance.ShowPopUp(addDes[addonInfoIndex] + "<size=0%>TOHO</size>");
+                    ModifierInfoIndex++;
+                    if (ModifierInfoIndex >= addDes.Count) ModifierInfoIndex = 0;
+                    HudManager.Instance.ShowPopUp(addDes[ModifierInfoIndex] + "<size=0%>TOHO</size>");
                 }
                 catch (Exception ex)
                 {
@@ -110,9 +110,9 @@ internal class ControllerManagerUpdatePatch
                         addSett.Add(sb.ToString());
                     }
 
-                    addonSettingsIndex++;
-                    if (addonSettingsIndex >= addSett.Count) addonSettingsIndex = 0;
-                    HudManager.Instance.ShowPopUp(addSett[addonSettingsIndex] + "<size=0%>TOHO</size>");
+                    ModifierSettingsIndex++;
+                    if (ModifierSettingsIndex >= addSett.Count) ModifierSettingsIndex = 0;
+                    HudManager.Instance.ShowPopUp(addSett[ModifierSettingsIndex] + "<size=0%>TOHO</size>");
                 }
                 catch (Exception ex)
                 {

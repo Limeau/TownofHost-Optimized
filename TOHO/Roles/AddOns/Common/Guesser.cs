@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Guesser : IAddon
+public class Guesser : IModifier
 {
     public CustomRoles Role => CustomRoles.Guesser;
     private const int Id = 22200;
-    public AddonTypes Type => AddonTypes.Guesser;
+    public ModifierTypes Type => ModifierTypes.Guesser;
 
     public static OptionItem ImpCanBeGuesser;
     public static OptionItem CrewCanBeGuesser;
@@ -19,14 +19,14 @@ public class Guesser : IAddon
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Guesser, canSetNum: true, tab: TabGroup.Addons);
-        ImpCanBeGuesser = BooleanOptionItem.Create(Id + 10, "ImpCanBeGuesser", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
-        CrewCanBeGuesser = BooleanOptionItem.Create(Id + 11, "CrewCanBeGuesser", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
-        NeutralCanBeGuesser = BooleanOptionItem.Create(Id + 12, "NeutralCanBeGuesser", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
-        CovenCanBeGuesser = BooleanOptionItem.Create(Id + 16, "CovenCanBeGuesser", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
-        GCanGuessAdt = BooleanOptionItem.Create(Id + 13, "GCanGuessAdt", false, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
-        GCanGuessTaskDoneSnitch = BooleanOptionItem.Create(Id + 14, "GCanGuessTaskDoneSnitch", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
-        GTryHideMsg = BooleanOptionItem.Create(Id + 15, "GuesserTryHideMsg", true, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser])
+        SetupAdtRoleOptions(Id, CustomRoles.Guesser, canSetNum: true, tab: TabGroup.Modifiers);
+        ImpCanBeGuesser = BooleanOptionItem.Create(Id + 10, "ImpCanBeGuesser", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
+        CrewCanBeGuesser = BooleanOptionItem.Create(Id + 11, "CrewCanBeGuesser", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
+        NeutralCanBeGuesser = BooleanOptionItem.Create(Id + 12, "NeutralCanBeGuesser", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
+        CovenCanBeGuesser = BooleanOptionItem.Create(Id + 16, "CovenCanBeGuesser", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
+        GCanGuessAdt = BooleanOptionItem.Create(Id + 13, "GCanGuessAdt", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
+        GCanGuessTaskDoneSnitch = BooleanOptionItem.Create(Id + 14, "GCanGuessTaskDoneSnitch", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser]);
+        GTryHideMsg = BooleanOptionItem.Create(Id + 15, "GuesserTryHideMsg", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Guesser])
             .SetColor(Color.green);
     }
     public void Init()

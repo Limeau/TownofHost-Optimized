@@ -2,19 +2,19 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Radar : IAddon
+public class Radar : IModifier
 {
     public CustomRoles Role => CustomRoles.Radar;
     private const int Id = 28200;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     private static readonly Dictionary<byte, byte> ClosestPlayer = [];
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Radar, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
+        SetupAdtRoleOptions(Id, CustomRoles.Radar, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
     }
     public void Init()
     {

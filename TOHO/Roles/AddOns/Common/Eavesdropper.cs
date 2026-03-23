@@ -2,22 +2,22 @@
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Eavesdropper : IAddon
+public class Eavesdropper : IModifier
 {
     public CustomRoles Role => CustomRoles.Eavesdropper;
     public const int Id = 30100;
     private static readonly HashSet<byte> playerList = [];
     public static bool IsEnable = false;
-    public AddonTypes Type => AddonTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Helpful;
 
     public static OptionItem EavesdropPercentChance;
 
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Eavesdropper, canSetNum: true, teamSpawnOptions: true);
-        EavesdropPercentChance = FloatOptionItem.Create(Id + 10, "EavesdropPercentChance", new(5f, 100f, 5f), 50f, TabGroup.Addons, false).SetParent(CustomRoleSpawnChances[CustomRoles.Eavesdropper])
+        EavesdropPercentChance = FloatOptionItem.Create(Id + 10, "EavesdropPercentChance", new(5f, 100f, 5f), 50f, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Eavesdropper])
             .SetValueFormat(OptionFormat.Percent);
     }
 

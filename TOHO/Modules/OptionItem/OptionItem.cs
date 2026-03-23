@@ -315,7 +315,7 @@ public enum TabGroup
     CrewmateRoles,
     NeutralRoles,
     CovenRoles,
-    Addons
+    Modifiers
 }
 [Obfuscation(Exclude = true)]
 public enum OptionFormat

@@ -1,20 +1,20 @@
 ﻿using AmongUs.GameOptions;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
-public class Sloth : IAddon
+public class Sloth : IModifier
 {
     public CustomRoles Role => CustomRoles.Sloth;
     private const int Id = 29700;
-    public AddonTypes Type => AddonTypes.Harmful;
+    public ModifierTypes Type => ModifierTypes.Harmful;
 
     private static OptionItem OptionSpeed;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Sloth, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        OptionSpeed = FloatOptionItem.Create(Id + 10, "SlothSpeed", new(0.25f, 1f, 0.25f), 0.5f, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Sloth, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        OptionSpeed = FloatOptionItem.Create(Id + 10, "SlothSpeed", new(0.25f, 1f, 0.25f), 0.5f, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Sloth])
             .SetValueFormat(OptionFormat.Multiplier);
     }

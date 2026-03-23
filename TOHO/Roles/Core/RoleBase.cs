@@ -300,7 +300,7 @@ public abstract class RoleBase
     { }
 
     /// <summary>
-    /// When Guesser need check guess (check limit or cannot guess а Role/Add-on)
+    /// When Guesser need check guess (check limit or cannot guess а Role/Modifier)
     /// </summary>
     public virtual bool GuessCheck(bool isUI, PlayerControl guesser, PlayerControl target, CustomRoles role, ref bool guesserSuicide) => target == null;
     /// <summary>

@@ -1,6 +1,6 @@
 using System.Reflection;
 using TOHO.Modules;
-using TOHO.Roles.AddOns.Crewmate;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Core;
 using TOHO.Roles.Double;
 using UnityEngine;

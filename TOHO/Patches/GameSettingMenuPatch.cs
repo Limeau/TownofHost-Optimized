@@ -60,7 +60,7 @@ public class GameSettingMenuPatch
                 TabGroup.CrewmateRoles => "#8cffff",
                 TabGroup.NeutralRoles => "#7f8c8d",
                 TabGroup.CovenRoles => "#ac42f2",
-                TabGroup.Addons => "#ffff00",
+                TabGroup.Modifiers => "#ffff00",
                 _ => "#ffffff",
             };
             label.fontStyle = FontStyles.UpperCase;
@@ -377,8 +377,8 @@ public class GameSettingMenuPatch
                     case TabGroup.CrewmateRoles:
                     case TabGroup.NeutralRoles:
                     case TabGroup.CovenRoles:
-                    case TabGroup.Addons:
-                        __instance.MenuDescriptionText.text = GetString("TabMenuDescription_Roles&AddOns");
+                    case TabGroup.Modifiers:
+                        __instance.MenuDescriptionText.text = GetString("TabMenuDescription_Roles&Modifiers");
                         break;
                 }
             }

@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using System.Linq;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Common;
+namespace TOHO.Roles.Modifiers.Common;
 
 // https://github.com/Yumenopai/TownOfHost_Y/blob/main/Roles/Crewmate/Y/Rainbow.cs
-public class Rainbow : IAddon
+public class Rainbow : IModifier
 {
     public CustomRoles Role => CustomRoles.Rainbow;
     private const int Id = 27700;
-    public AddonTypes Type => AddonTypes.Misc;
+    public ModifierTypes Type => ModifierTypes.Misc;
 
     private static OptionItem RainbowColorChangeCoolDown;
     private static OptionItem ChangeInCamouflage;
@@ -20,10 +20,10 @@ public class Rainbow : IAddon
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Rainbow, canSetNum: true, tab: TabGroup.Addons, teamSpawnOptions: true);
-        RainbowColorChangeCoolDown = FloatOptionItem.Create(Id + 13, "RainbowColorChangeCoolDown", new(0.1f, 10f, 0.1f), 3, TabGroup.Addons, false)
+        SetupAdtRoleOptions(Id, CustomRoles.Rainbow, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        RainbowColorChangeCoolDown = FloatOptionItem.Create(Id + 13, "RainbowColorChangeCoolDown", new(0.1f, 10f, 0.1f), 3, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Rainbow]);
-        ChangeInCamouflage = BooleanOptionItem.Create(Id + 14, "RainbowInCamouflage", true, TabGroup.Addons, false)
+        ChangeInCamouflage = BooleanOptionItem.Create(Id + 14, "RainbowInCamouflage", true, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Rainbow]);
     }
     public void Init()

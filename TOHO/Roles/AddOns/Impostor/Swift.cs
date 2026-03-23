@@ -1,17 +1,17 @@
-﻿using TOHO.Roles.AddOns.Common;
+﻿using TOHO.Roles.Modifiers.Common;
 using static TOHO.Options;
 
-namespace TOHO.Roles.AddOns.Impostor;
+namespace TOHO.Roles.Modifiers.Impostor;
 
-public class Swift : IAddon
+public class Swift : IModifier
 {
     public CustomRoles Role => CustomRoles.Swift;
     private const int Id = 23300;
-    public AddonTypes Type => AddonTypes.Impostor;
+    public ModifierTypes Type => ModifierTypes.Impostor;
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Swift, canSetNum: true, tab: TabGroup.Addons);
+        SetupAdtRoleOptions(Id, CustomRoles.Swift, canSetNum: true, tab: TabGroup.Modifiers);
     }
     public void Init()
     { }
