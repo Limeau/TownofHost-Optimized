@@ -169,13 +169,6 @@ class RpcSetTasksPatch
             NumShortTasks = 0;
             NumLongTasks = 0;
         }
-
-        if (Options.CurrentGameMode == CustomGameMode.TrickorTreat)
-        {
-            hasCommonTasks = false;
-            NumShortTasks = 6;
-            NumLongTasks = 0;
-        }
         
         if (Options.CurrentGameMode == CustomGameMode.FourCorners)
         {

@@ -32,7 +32,7 @@ class CheckTaskCompletionPatch
 {
     public static bool Prefix(ref bool __result)
     {
-        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.TrickorTreat || Options.CurrentGameMode == CustomGameMode.FFA)
+        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.FFA)
         {
             __result = false;
             return false;
@@ -65,7 +65,6 @@ class GameEndCheckerForNormal
             case CustomGameMode.FFA:
             case CustomGameMode.CandR:
             case CustomGameMode.UltimateTeam:
-            case CustomGameMode.TrickorTreat:
             case CustomGameMode.FourCorners:
 
                 if (WinnerIds.Count > 0 || WinnerTeam != CustomWinner.Default)
@@ -662,7 +661,6 @@ class GameEndCheckerForNormal
     public static void SetPredicateToFFA() => predicate = new FFAGameEndPredicate();
     public static void SetPredicateToCandR() => predicate = new CandRGameEndPredicate(); //C&R
     public static void SetPredicateToUltimateTeam() => predicate = new UltimateTeamGameEndPredicate();
-    public static void SetPredicateToTrickorTreat() => predicate = new TrickorTreatGameEndPredicate();
     public static void SetPredicateToFourCorners() => predicate = new FourCornersGameEndPredicate();
 
     // ===== Check Game End =====
@@ -949,48 +947,7 @@ class FourCornersGameEndPredicate : GameEndPredicate
     }
     
 }
-class TrickorTreatGameEndPredicate : GameEndPredicate
-{
-    public override bool CheckForEndGame(out GameOverReason reason)
-    {
-        reason = GameOverReason.CrewmateDisconnect;
-        if (CheckGameEndByLivingPlayers(out reason)) return true;
-        return false;
-    }
 
-    public static bool CheckGameEndByLivingPlayers(out GameOverReason reason)
-    {
-
-        if (!Main.AllAlivePlayerControls.Any())
-        { 
-            reason = GameOverReason.ImpostorsByKill; 
-            ResetAndSetWinner(CustomWinner.None); 
-            Logger.Info("Game end because all players dead", "TrickorTreat"); 
-            return true;
-        }
-        // Everyone died
-        reason = GameOverReason.ImpostorsByKill;
-
-        if (TrickorTreat.RoundTime <= 0)
-        {
-            reason = GameOverReason.HideAndSeek_CrewmatesByTimer;
-            ResetAndSetWinner(CustomWinner.TrickorTreat);
-            var mostCandy = TrickorTreat.Candies.OrderByDescending(kv => kv.Value).First().Key;
-            
-            if (Utils.GetPlayerById(mostCandy).Is(CustomRoles.TrickorTreater)) 
-            { 
-                WinnerIds.Add(mostCandy);
-            }
-            
-
-            Logger.Warn("Game end because round time finished", "TrickorTreat");
-            return true;
-        }
-
-        return false;
-    }
-    
-}
 
 // For Ultimate Team games
 class UltimateTeamGameEndPredicate : GameEndPredicate

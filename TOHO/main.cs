@@ -1028,7 +1028,6 @@ public enum CustomRoles
     Blue,
 
     // Trick or Treat
-    TrickorTreater,
     
     // Four Corners
     FourCorners,
@@ -1238,7 +1237,6 @@ public enum CustomWinner
     Blade = CustomRoles.Blade,
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
-    TrickorTreat = CustomRoles.TrickorTreater,
     FourCorners = CustomRoles.FourCorners,
     Slaad = CustomRoles.Slaad,
     Shade = CustomRoles.Shade

@@ -2101,9 +2101,6 @@ internal class ChatCommands
             case CustomGameMode.UltimateTeam:
                 Utils.SendMessage(GetString("ModeDescribe.UltimateTeam"), playerId);
                 return;
-            case CustomGameMode.TrickorTreat:
-                Utils.SendMessage(GetString("ModeDescribe.TrickorTreat"), playerId);
-                return;
             case CustomGameMode.FourCorners:
                 Utils.SendMessage(GetString("ModeDescribe.FourCorners"), playerId);
                 return;

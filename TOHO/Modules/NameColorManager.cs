@@ -111,7 +111,6 @@ public static class NameColorManager
             || (Main.GodMode.Value && seer.IsHost())
             || (Options.CurrentGameMode == CustomGameMode.FFA) 
             || (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
-            || (Options.CurrentGameMode == CustomGameMode.TrickorTreat)
             || (Options.CurrentGameMode == CustomGameMode.FourCorners)
             || seer.Is(CustomRoles.GM) || target.Is(CustomRoles.GM)
             || target.GetRoleClass().OthersKnowTargetRoleColor(seer, target)

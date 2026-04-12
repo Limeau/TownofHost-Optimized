@@ -107,11 +107,6 @@ public class PlayerGameOptionsSender(PlayerControl player) : GameOptionsSender
                 opt.SetFloat(FloatOptionNames.CrewLightMod, 1.25f);
                 opt.SetFloat(FloatOptionNames.ImpostorLightMod, 1.25f);
                 break;
-            case CustomGameMode.TrickorTreat:
-                opt.SetVision(true);
-                opt.SetFloat(FloatOptionNames.CrewLightMod, 1.25f);
-                opt.SetFloat(FloatOptionNames.ImpostorLightMod, 1.25f);
-                break;
             case CustomGameMode.FourCorners:
                 opt.SetVision(true);
                 opt.SetFloat(FloatOptionNames.CrewLightMod, 1.25f);
