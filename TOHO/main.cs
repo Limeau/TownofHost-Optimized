@@ -665,6 +665,7 @@ public enum CustomRoles
 {
     // Crewmate(Vanilla)
     Crewmate = 0,
+    Detective,
     Engineer,
     GuardianAngel,
     Noisemaker,
@@ -675,9 +676,11 @@ public enum CustomRoles
     Impostor,
     Phantom,
     Shapeshifter,
+    Viper,
 
     // Crewmate Vanilla Remakes
     CrewmateTOHO,
+    DetectiveTOHO,
     EngineerTOHO,
     GuardianAngelTOHO,
     NoisemakerTOHO,
@@ -688,6 +691,7 @@ public enum CustomRoles
     ImpostorTOHO,
     PhantomTOHO,
     ShapeshifterTOHO,
+    ViperTOHO,
 
     // Impostor Ghost
     Bloodmoon,

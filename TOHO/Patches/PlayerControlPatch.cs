@@ -2128,6 +2128,8 @@ class PlayerControlLocalSetRolePatch
                 RoleTypes.Noisemaker => CustomRoles.NoisemakerTOHO,
                 RoleTypes.Phantom => CustomRoles.PhantomTOHO,
                 RoleTypes.Tracker => CustomRoles.TrackerTOHO,
+                RoleTypes.Viper => CustomRoles.ViperTOHO,
+                RoleTypes.Detective => CustomRoles.DetectiveTOHO,
                 _ => CustomRoles.NotAssigned,
             };
             if (modRole != CustomRoles.NotAssigned)

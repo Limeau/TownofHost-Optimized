@@ -4946,5 +4946,12 @@
   
   "Lag": "Lag",
   "LagInfo": "You're lagging",
-  "LagInfoLong": "The Lag's kills are delayed by 1 second."
+  "LagInfoLong": "The Lag's kills are delayed by 1 second.",
+  
+  "DetectiveSuspectLimit": "Detective Suspect Limit",
+  "ViperDissolveTime": "Viper Dissolve Time",
+  "Viper": "Viper",
+  "ViperTOHO": "Viper",
+  "Detective": "Detective",
+  "DetectiveTOHO": "Detective"
 }

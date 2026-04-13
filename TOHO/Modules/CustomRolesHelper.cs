@@ -47,6 +47,8 @@ public static class CustomRolesHelper
             CustomRoles.EngineerTOHO => CustomRoles.Engineer,
             CustomRoles.NoisemakerTOHO => CustomRoles.Noisemaker,
             CustomRoles.TrackerTOHO => CustomRoles.Tracker,
+            CustomRoles.ViperTOHO => CustomRoles.Viper,
+            CustomRoles.DetectiveTOHO => CustomRoles.Detective,
             _ => role.IsImpostor() ? CustomRoles.Impostor : CustomRoles.Crewmate,
         };
     }
@@ -1312,6 +1314,8 @@ public static class CustomRolesHelper
             CustomRoles.Noisemaker => RoleTypes.Noisemaker,
             CustomRoles.Phantom => RoleTypes.Phantom,
             CustomRoles.Tracker => RoleTypes.Tracker,
+            CustomRoles.Detective => RoleTypes.Detective,
+            CustomRoles.Viper => RoleTypes.Viper,
             _ => role.IsImpostor() ? RoleTypes.Impostor : RoleTypes.Crewmate,
         };
     public static RoleTypes GetRoleTypesDirect(this CustomRoles role)
@@ -1327,6 +1331,8 @@ public static class CustomRolesHelper
             CustomRoles.Noisemaker => RoleTypes.Noisemaker,
             CustomRoles.Phantom => RoleTypes.Phantom,
             CustomRoles.Tracker => RoleTypes.Tracker,
+            CustomRoles.Detective => RoleTypes.Detective,
+            CustomRoles.Viper => RoleTypes.Viper,
             _ => role.IsImpostor() ? RoleTypes.Impostor : RoleTypes.Crewmate,
         };
     }
@@ -1370,7 +1376,9 @@ public static class CustomRolesHelper
             CustomRoles.Shapeshifter or
             CustomRoles.Noisemaker or
             CustomRoles.Phantom or
-            CustomRoles.Tracker;
+            CustomRoles.Tracker or 
+            CustomRoles.Viper or 
+            CustomRoles.Detective;
     }
     public static Custom_Team GetCustomRoleTeam(this CustomRoles role)
     {
@@ -1402,6 +1410,8 @@ public static class CustomRolesHelper
                 CustomRoles.Noisemaker => roleOpt.GetNumPerGame(RoleTypes.Noisemaker),
                 CustomRoles.Phantom => roleOpt.GetNumPerGame(RoleTypes.Phantom),
                 CustomRoles.Tracker => roleOpt.GetNumPerGame(RoleTypes.Tracker),
+                CustomRoles.Viper => roleOpt.GetNumPerGame(RoleTypes.Viper),
+                CustomRoles.Detective => roleOpt.GetNumPerGame(RoleTypes.Detective),
                 _ => 0
             };
         }
@@ -1426,6 +1436,8 @@ public static class CustomRolesHelper
                 CustomRoles.Noisemaker => roleOpt.GetChancePerGame(RoleTypes.Noisemaker),
                 CustomRoles.Phantom => roleOpt.GetChancePerGame(RoleTypes.Phantom),
                 CustomRoles.Tracker => roleOpt.GetChancePerGame(RoleTypes.Tracker),
+                CustomRoles.Viper => roleOpt.GetChancePerGame(RoleTypes.Viper),
+                CustomRoles.Detective => roleOpt.GetChancePerGame(RoleTypes.Detective),
                 _ => 0
             } / 100f;
         }
