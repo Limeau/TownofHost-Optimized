@@ -76,7 +76,7 @@ public class GameStartManagerPatch
             cancelButton.name = "CancelButton";
             var cancelLabel = cancelButton.buttonText;
             cancelLabel.DestroyTranslator();
-            cancelLabel.text = GetString("Cancel");
+            cancelLabel.text = "";
             var cancelButtonInactiveRenderer = cancelButton.inactiveSprites.GetComponent<SpriteRenderer>();
             cancelButtonInactiveRenderer.color = new(0.8f, 0f, 0f, 1f);
             var cancelButtonActiveRenderer = cancelButton.activeSprites.GetComponent<SpriteRenderer>();
@@ -86,15 +86,27 @@ public class GameStartManagerPatch
             {
                 cancelButtonInactiveShine.gameObject.SetActive(false);
             }
+
+            cancelButton.transform.localScale = __instance.StartButton.transform.localScale;
             cancelButton.activeTextColor = cancelButton.inactiveTextColor = Color.white;
             GameStartTextlocalPosition = __instance.GameStartText.transform.localPosition;
             cancelButton.OnClick = new();
             cancelButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
             {
                 __instance.ResetStartState();
+                cancelButton.gameObject.SetActive(false);
+                __instance.StartButton.gameObject.SetActive(true);
             }));
-            cancelButton.gameObject.SetActive(false);
 
+            __instance.StartButton.OnClick.AddListener(
+                (UnityEngine.Events.UnityAction)(() =>
+                {                    
+                    __instance.StartButton.gameObject.SetActive(false);
+                    cancelButton.gameObject.SetActive(true);
+                }));
+
+            cancelButton.gameObject.SetActive(false);
+            
             if (!AmongUsClient.Instance.AmHost) return;
 
             if (GameStates.IsNormalGame)
