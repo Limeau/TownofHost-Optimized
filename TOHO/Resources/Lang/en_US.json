@@ -4953,5 +4953,11 @@
   "Viper": "Viper",
   "ViperTOHO": "Viper",
   "Detective": "Detective",
-  "DetectiveTOHO": "Detective"
+  "DetectiveTOHO": "Detective",
+  
+  "Blessed": "Blessed",
+  "BlessedInfo": "Get a shield at the start of a round",
+  "BlessedInfoLong": "The Blessed gets a shield at the start of every round except the first that lasts for a certain amount of time. The shield will not work if not enough players are alive",
+  "BlessedShieldDuration": "Blessed shield duration",
+  "MinPlayersShield": "Minimum players alive to activate Blessed shield"
 }

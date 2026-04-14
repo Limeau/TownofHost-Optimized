@@ -1051,6 +1051,7 @@ public enum CustomRoles
     Aware,
     Bait,
     Bewilder,
+    Blessed,
     Bloodthirst,
     Burst,
     Charmed,

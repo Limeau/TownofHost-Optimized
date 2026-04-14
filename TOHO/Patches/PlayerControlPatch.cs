@@ -339,6 +339,11 @@ class CheckMurderPatch
                         if (!Lucky.OnCheckMurder(killer, target))
                             return false;
                         break;
+                    
+                    case CustomRoles.Blessed:
+                        if (!Blessed.OnMurderAsTarget(killer, target))
+                            return false;
+                        break;
 
                     case CustomRoles.Gambler:
                         if (!Gambler.OnCheckMurder(killer, target))
