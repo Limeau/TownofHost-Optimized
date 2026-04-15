@@ -1014,6 +1014,7 @@ public enum CustomRoles
     PotionMaster,
     Ritualist,
     Sacrifist,
+    Umbra,
     VoodooMaster,
     WitchDoctor,
 

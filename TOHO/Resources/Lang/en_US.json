@@ -4959,5 +4959,9 @@
   "BlessedInfo": "Get a shield at the start of a round",
   "BlessedInfoLong": "The Blessed gets a shield at the start of every round except the first that lasts for a certain amount of time. The shield will not work if not enough players are alive",
   "BlessedShieldDuration": "Blessed shield duration",
-  "MinPlayersShield": "Minimum players alive to activate Blessed shield"
+  "MinPlayersShield": "Minimum players alive to activate Blessed shield",
+  
+  "Umbra": "Umbra",
+  "UmbraInfo": "Protect the coven at the expense of others",
+  "UmbraInfoLong": "The Umbra can select a player to sacrifice with their kill button. When any Coven member is attacked, the Coven member and selected player will swap places, and the selected player will be attacked instead.\n\n<b>With the Necronomicon, the Umbra can kill the player directly and add a shield to the Coven team, with one total use.</b>"
 }
