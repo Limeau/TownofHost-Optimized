@@ -894,6 +894,7 @@ public enum CustomRoles
     //Neutral Ghost
 
     //Neutral
+    Abzorbaloff,
     Agitater,
     Amnesiac,
     Apocalypse,

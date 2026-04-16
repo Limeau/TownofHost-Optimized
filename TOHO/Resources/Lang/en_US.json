@@ -4963,5 +4963,9 @@
   
   "Umbra": "Umbra",
   "UmbraInfo": "Protect the coven at the expense of others",
-  "UmbraInfoLong": "The Umbra can select a player to sacrifice with their kill button. When any Coven member is attacked, the Coven member and selected player will swap places, and the selected player will be attacked instead.\n\n<b>With the Necronomicon, the Umbra can kill the player directly and add a shield to the Coven team, with one total use.</b>"
+  "UmbraInfoLong": "The Umbra can select a player to sacrifice with their kill button. When any Coven member is attacked, the Coven member and selected player will swap places, and the selected player will be attacked instead.\n\n<b>With the Necronomicon, the Umbra can kill the player directly and add a shield to the Coven team, with one total use.</b>",
+  
+  "Abzorbaloff": "Abzorbaloff",
+  "AbzorbaloffInfo": "Absorb souls and make them kill players",
+  "AbzorbaloffInfoLong": "The Abzorbaloff can kill players. When they kill a player directly, that player is added to a list of dead players that do deeds for them. When they kill again, each player in said list will kill a player within range of the kill.\n"
 }
