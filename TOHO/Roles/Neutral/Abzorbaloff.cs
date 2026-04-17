@@ -46,7 +46,6 @@ internal class Abzorbaloff : RoleBase
             if (player == target || player == killer) continue;
 
             candidates.Add(player);
-            Logger.Info("Adding candidates", "Abzl");
         }
 
         var souls = AbzPlayers.ToList(); // copy snapshot
@@ -57,15 +56,12 @@ internal class Abzorbaloff : RoleBase
 
             foreach (var player in candidates)
             {
-                Logger.Info("calling foreach", "Abzl");
-
                 if (Utils.GetDistance(killer.transform.position, player.transform.position) <= AbzorbaloffRange.GetFloat())
                 {
                     if (soultarget == null ||
                         Utils.GetDistance(killer.transform.position, player.transform.position) <
                         Utils.GetDistance(killer.transform.position, soultarget.transform.position))
                     {
-                        Logger.Info("Adding soul target", "Abzl");
                         soultarget = player;
                     }
                 }
@@ -73,7 +69,6 @@ internal class Abzorbaloff : RoleBase
 
             if (soultarget != null)
             {
-                Logger.Info("Calling Kill", "Abzl");
                 soul.RpcMurderPlayer(soultarget);
             }
 
@@ -82,7 +77,6 @@ internal class Abzorbaloff : RoleBase
         
         if (!AbzPlayers.Contains(target) && AbzPlayers.Count < AbzorbaloffMaxPlayers.GetInt())
         {                
-            Logger.Info("Adding to abz list", "Abzl");
             AbzPlayers.Add(target);
         }
         
