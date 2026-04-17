@@ -10,7 +10,7 @@ namespace TOHO.Roles.Neutral;
 internal class Abzorbaloff : RoleBase
 {
     //===========================SETUP================================\\
-    private const int Id = 39000;
+    private const int Id = 39700;
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Abzorbaloff);
     public override CustomRoles Role => CustomRoles.Abzorbaloff;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
