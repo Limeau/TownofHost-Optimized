@@ -9,7 +9,7 @@ public class Subversion : IModifier
 
     public void SetupCustomOption()
     {
-        Options.SetupAdtRoleOptions(Id, CustomRoles.Subversion, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        Options.SetupAdtRoleOptions(Id, CustomRoles.Subversion, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: false);
     }
 
     public void Init()
