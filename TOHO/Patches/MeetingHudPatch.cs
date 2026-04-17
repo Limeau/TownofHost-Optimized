@@ -987,6 +987,9 @@ class MeetingHudStartPatch
         //Bait Notify
         Bait.SendNotify();
 
+        // Residue Notify
+        Residue.OnMeeting();
+        
         // Apocalypse Notify
         var transformRoles = new CustomRoles[] { CustomRoles.Pestilence, CustomRoles.War, CustomRoles.Famine, CustomRoles.Death };
         foreach (var role in transformRoles)

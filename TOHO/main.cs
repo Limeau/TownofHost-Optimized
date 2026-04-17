@@ -1099,6 +1099,7 @@ public enum CustomRoles
     Mare,
     Randomizer,
     Rebirth,
+    Residue,
     Revealed,
     Rookie,
     Mimic,
