@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AmongUs.GameOptions;
 using TOHO.Modules;
 using TOHO.Roles.Core;
+using UnityEngine.SocialPlatforms;
 using static TOHO.Options;
 namespace TOHO.Roles.Neutral;
 
@@ -22,9 +24,9 @@ internal class Abzorbaloff : RoleBase
     public override void SetupCustomOption()
     {
         SetupRoleOptions(Id, TabGroup.NeutralRoles, CustomRoles.Abzorbaloff);
-        AbzorbaloffMaxPlayers = IntegerOptionItem.Create(Id + 10, "AbzMaxPlayers", (1, 5, 1), 3, TabGroup.NeutralRoles, false)
+        AbzorbaloffMaxPlayers = IntegerOptionItem.Create(Id + 10, "AbzMaxPlayers", new(1, 5, 1), 3, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Abzorbaloff]);
-        AbzorbaloffRange = FloatOptionItem.Create(Id + 10, "AbzRange", (0.1f, 5f, 0.1f), 3f, TabGroup.NeutralRoles, false)
+        AbzorbaloffRange = FloatOptionItem.Create(Id + 11, "AbzRange", new(0.1f, 5f, 0.1f), 3f, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Abzorbaloff])
             .SetValueFormat(OptionFormat.Multiplier);
     }
@@ -40,36 +42,50 @@ internal class Abzorbaloff : RoleBase
 
         foreach (var player in Main.AllAlivePlayerControls)
         {
-            if (player == killer) continue;
-            if (player == target) continue;
+            if (player == null) continue;
+            if (player == target || player == killer) continue;
+
             candidates.Add(player);
+            Logger.Info("Adding candidates", "Abzl");
         }
+
+        var souls = AbzPlayers.ToList(); // copy snapshot
 
         foreach (var soul in AbzPlayers)
         {
-            PlayerControl currentTarget = null;
+            PlayerControl soultarget = null;
+
             foreach (var player in candidates)
             {
-                if (Utils.GetDistance(killer.transform.position, player.transform.position) <=
-                    AbzorbaloffRange.GetFloat())
+                Logger.Info("calling foreach", "Abzl");
+
+                if (Utils.GetDistance(killer.transform.position, player.transform.position) <= AbzorbaloffRange.GetFloat())
                 {
-                    if (currentTarget == null)
+                    if (soultarget == null ||
+                        Utils.GetDistance(killer.transform.position, player.transform.position) <
+                        Utils.GetDistance(killer.transform.position, soultarget.transform.position))
                     {
-                        currentTarget = player;
-                    }
-                    else if (Utils.GetDistance(killer.transform.position, player.transform.position) <=
-                             Utils.GetDistance(killer.transform.position, currentTarget.transform.position))
-                    {
-                        currentTarget = player;
+                        Logger.Info("Adding soul target", "Abzl");
+                        soultarget = player;
                     }
                 }
             }
 
-            candidates.Remove(currentTarget);
-            soul.RpcMurderPlayer(currentTarget);
-        }
+            if (soultarget != null)
+            {
+                Logger.Info("Calling Kill", "Abzl");
+                soul.RpcMurderPlayer(soultarget);
+            }
 
-        if (AbzPlayers.Count < AbzorbaloffMaxPlayers.GetInt()) AbzPlayers.Add(target);
+            souls.Remove(soul);
+        }
+        
+        if (!AbzPlayers.Contains(target) && AbzPlayers.Count < AbzorbaloffMaxPlayers.GetInt())
+        {                
+            Logger.Info("Adding to abz list", "Abzl");
+            AbzPlayers.Add(target);
+        }
+        
         return true;
     }
 }

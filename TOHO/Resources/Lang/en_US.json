@@ -4967,5 +4967,7 @@
   
   "Abzorbaloff": "Abzorbaloff",
   "AbzorbaloffInfo": "Absorb souls and make them kill players",
-  "AbzorbaloffInfoLong": "The Abzorbaloff can kill players. When they kill a player directly, that player is added to a list of dead players that do deeds for them. When they kill again, each player in said list will kill a player within range of the kill.\n"
+  "AbzorbaloffInfoLong": "The Abzorbaloff can kill players. When they kill a player directly, that player is added to a list of dead players that do deeds for them. When they kill again, each player in said list will kill a player within range of the kill.\n",
+  "AbzMaxPlayers": "Max players that can be absorbed",
+  "AbzRange": "Abzorbaloff kill spread range"
 }
