@@ -916,6 +916,7 @@ public enum CustomRoles
     Demon,
     Doomsayer,
     Doppelganger,
+    Entity,
     Executioner,
     Famine,
     Follower,
@@ -1247,7 +1248,9 @@ public enum CustomWinner
     Blue = CustomRoles.Blue,
     FourCorners = CustomRoles.FourCorners,
     Slaad = CustomRoles.Slaad,
-    Shade = CustomRoles.Shade
+    Shade = CustomRoles.Shade,
+    Abzorbaloff = CustomRoles.Abzorbaloff,
+    Entity = CustomRoles.Entity
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

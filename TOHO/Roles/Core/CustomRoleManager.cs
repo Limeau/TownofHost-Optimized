@@ -276,6 +276,13 @@ public static class CustomRoleManager
         Logger.Info("Start", "OnCheckMurderAsKiller");
 
         // Check murder as Killer
+        if (Entity.Haunted.Contains(killer))
+        {            
+            killer.RpcGuardAndKill();
+            killer.ResetKillCooldown();
+            return false;
+        }
+        
         if (killerRoleClass.OnCheckMurderAsKiller(killer, target) == false)
         {
             __state = true;

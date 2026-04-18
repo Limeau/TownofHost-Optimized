@@ -229,6 +229,7 @@ public static class CustomRolesHelper
             CustomRoles.Volatile or
             CustomRoles.Mutant or
             CustomRoles.Blade or
+            CustomRoles.Abzorbaloff or
             CustomRoles.ShadowKing or
             CustomRoles.Hacker or
             CustomRoles.Atoner or
@@ -1495,7 +1496,8 @@ public static class CustomRolesHelper
            CustomRoles.Assassin => CountTypes.Assassin,
            CustomRoles.Vaporizer => CountTypes.Vaporizer,
            CustomRoles.Mutant => CountTypes.Mutant,
-           CustomRoles.Blade => CountTypes.Blade,
+           CustomRoles.Blade => CountTypes.Blade,           
+           CustomRoles.Abzorbaloff => CountTypes.Abzorbaloff,
            CustomRoles.ShadowKing => CountTypes.ShadowKing,
            CustomRoles.Atoner => CountTypes.Atoner,
            CustomRoles.Hacker => CountTypes.Hacker,
@@ -1577,6 +1579,7 @@ public static class CustomRolesHelper
             CustomRoles.Vaporizer => CustomWinner.Vaporizer,
             CustomRoles.Mutant => CustomWinner.Mutant,
             CustomRoles.Blade => CustomWinner.Blade,
+            CustomRoles.Abzorbaloff => CustomWinner.Abzorbaloff,
             CustomRoles.ShadowKing => CustomWinner.ShadowKing,
             CustomRoles.Atoner => CustomWinner.Atoner,
             CustomRoles.Hacker => CustomWinner.Hacker,
@@ -1635,6 +1638,7 @@ public static class CustomRolesHelper
             CountTypes.Vaporizer => CustomRoles.Vaporizer,
             CountTypes.Mutant => CustomRoles.Mutant,
             CountTypes.Blade => CustomRoles.Blade,
+            CountTypes.Abzorbaloff => CustomRoles.Abzorbaloff,
             CountTypes.ShadowKing => CustomRoles.ShadowKing,
             CountTypes.Atoner => CustomRoles.Atoner,
             CountTypes.Hacker => CustomRoles.Hacker,
@@ -1755,5 +1759,6 @@ public enum CountTypes
     Hacker,
     Wight,
     Slaad,
-    Shade
+    Shade,
+    Abzorbaloff
 }

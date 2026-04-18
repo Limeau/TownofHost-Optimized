@@ -4973,5 +4973,12 @@
   
   "Residue": "Residue",
   "ResidueInfo": "Players will know what room you were in",
-  "ResidueInfoLong": "When a meeting is called, the last room you were in is revealed to everyone."
+  "ResidueInfoLong": "When a meeting is called, the last room you were in is revealed to everyone.",
+  
+  "Entity": "Entity",
+  "EntityInfo": "Win by haunting enough players",
+  "EntityInfoLong": "When the Entity clicks their kill button, it \"jams\" the target's ability, meaning they won't be able to use their kill button ability. The Entity successfully \"haunted\" that player. They need to haunt a specific number of players to win. Haunts will be removed after a long period of time.",
+  "EntityHauntsToWin": "Haunts for Entity to win",
+  "HauntDuration": "Entity haunt duration"
 }
+
