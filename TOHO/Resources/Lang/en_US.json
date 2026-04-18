@@ -4979,6 +4979,57 @@
   "EntityInfo": "Win by haunting enough players",
   "EntityInfoLong": "When the Entity clicks their kill button, it \"jams\" the target's ability, meaning they won't be able to use their kill button ability. The Entity successfully \"haunted\" that player. They need to haunt a specific number of players to win. Haunts will be removed after a long period of time.",
   "EntityHauntsToWin": "Haunts for Entity to win",
-  "HauntDuration": "Entity haunt duration"
+  "HauntDuration": "Entity haunt duration",
+  
+  "DeveloperInfo": "Assign custom roles to other players",
+  "DeveloperInfoLong": "The Developer can sell custom-made roles to other players using its kill button. The Developer will win if any of its customers are winners at the end of the game.",
+
+  "Deviator": "Deviator",
+  "DeviatorInfo": "Protect yourself from attacks",
+  "DeviatorInfoLong": "The Deviator can use their unshift button to temporarily be protected from attacks. They will kill anyone who tries to attack them.",
+  "DeviatorShieldDuration": "Deviator shield duration",
+  "DeviatorShieldCooldown": "Deviator shield cooldown",
+  
+  "Reckless": "Reckless",
+  "RecklessInfo": "Each time you kill is a gamble",
+  "RecklessInfoLong": "The Reckless has a chance to kill the nearest additional player with every kill, but also has a chance to alert the original target of a failed kill.",
+  "RecklessChanceToKill": "Reckless chance to kill an extra player",
+  "RecklessChanceToAlert": "Reckless chance to alert a failed kill",
+  "RecklessAlert": "The Reckless tried to kill you but failed",
+
+  "Gravedigger": "Gravedigger",
+  "GravediggerInfo": "Conceal and hide your kills",
+  "GravediggerInfoLong": "The Gravedigger can use their kill button to send a player to a random part of the map, then kill them.",
+
+  "Villager": "Villager",
+  "VillagerInfo": "Receive gossip info about players",
+  "VillagerInfoLong": "The Villager receives one message per meeting about where a random player was most recently.",
+
+  "Plumber": "Plumber",
+  "PlumberInfo": "Block the ventilation system",
+  "PlumberInfoLong": "When the Plumber is in a vent, no other players can use the vents.",
+  "PlumberVentCooldown": "Plumber vent cooldown",
+
+  "Firefighter": "Firefighter",
+  "FirefighterInfo": "Put out fires",
+  "FirefighterInfoLong": "The Firefighter can do a task to put out a fire- automatically fixes any active sabotage.",
+
+  "Jury": "Jury",
+  "JuryInfo": "Put players on trial",
+  "JuryInfoLong": "The Jury can put one person on trial. The party can decide to skip to save them or vote them to eject them. They cannot vote for other players. This ability can be used only once, and can be used again once tasks are completed.",
+
+  "Extremist": "Extremist",
+  "ExtremistInfo": "Win with the extreme, not with the Neutrals",
+  "ExtremistInfoLong": "Wins with the crewmates OR impostors. Does not win with Neutrals.",
+
+  "Communist": "Communist",
+  "CommunistInfo": "Give the lobby a Communist revolution",
+  "CommunistInfoLong": "The Communist can turn other players into Communists. When a Communist is killed, the most recent player to be recruited is returned to their own role. Everyone knows when at least one Communist is alive. Turn everyone into Communists to win!",
+  "CommunistRecruitCooldown": "Communist recruit cooldown",
+  
+  "Prototype": "Prototype",
+  "PrototypeInfo": "Your kills are unstable!",
+  "PrototypeInfoLong": "The Prototype can kill with a lower cooldown, but has a small chance to fail and kill itself as well.",
+  "PrototypeKillCooldown": "Prototype kill cooldown"
 }
 

@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using AmongUs.GameOptions;
-using TOHO.Modules;
 using TOHO.Roles.Core;
-using UnityEngine.SocialPlatforms;
 using static TOHO.Options;
 namespace TOHO.Roles.Neutral;
 

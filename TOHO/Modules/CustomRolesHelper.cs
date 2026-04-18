@@ -109,6 +109,8 @@ public static class CustomRolesHelper
             CustomRoles.Jester or
             CustomRoles.Terrorist or
             CustomRoles.Opportunist or
+            CustomRoles.Developer or
+            CustomRoles.Extremist or
             CustomRoles.PunchingBag or
             CustomRoles.Huntsman or
             CustomRoles.Executioner or
@@ -230,10 +232,12 @@ public static class CustomRolesHelper
             CustomRoles.Mutant or
             CustomRoles.Blade or
             CustomRoles.Abzorbaloff or
+            CustomRoles.Prototype or
             CustomRoles.ShadowKing or
             CustomRoles.Hacker or
             CustomRoles.Atoner or
             CustomRoles.Cultist or
+            CustomRoles.Communist or
             CustomRoles.Wight or
             CustomRoles.Slaad or
             CustomRoles.Widow or
@@ -346,6 +350,7 @@ public static class CustomRolesHelper
         => role is
             CustomRoles.Jackal or
             CustomRoles.Cultist or
+            CustomRoles.Communist or
             CustomRoles.Necromancer or
             CustomRoles.Virus or
             CustomRoles.Spiritcaller or
@@ -1464,6 +1469,7 @@ public static class CustomRolesHelper
            CustomRoles.Demon => CountTypes.Demon,
            CustomRoles.BloodKnight => CountTypes.BloodKnight,
            CustomRoles.Cultist => CountTypes.Cultist,
+           CustomRoles.Communist => CountTypes.Communist,
            CustomRoles.Stalker => Stalker.SnatchesWins ? CountTypes.Crew : CountTypes.Stalker,
            CustomRoles.Arsonist => Arsonist.CanIgniteAnytime() ? CountTypes.Arsonist : CountTypes.Crew,
            CustomRoles.Shroud => CountTypes.Shroud,
@@ -1498,6 +1504,7 @@ public static class CustomRolesHelper
            CustomRoles.Mutant => CountTypes.Mutant,
            CustomRoles.Blade => CountTypes.Blade,           
            CustomRoles.Abzorbaloff => CountTypes.Abzorbaloff,
+           CustomRoles.Prototype => CountTypes.Prototype,
            CustomRoles.ShadowKing => CountTypes.ShadowKing,
            CustomRoles.Atoner => CountTypes.Atoner,
            CustomRoles.Hacker => CountTypes.Hacker,
@@ -1544,6 +1551,7 @@ public static class CustomRolesHelper
             CustomRoles.Collector => CustomWinner.Collector,
             CustomRoles.BloodKnight => CustomWinner.BloodKnight,
             CustomRoles.Cultist => CustomWinner.Cultist,
+            CustomRoles.Communist => CustomWinner.Communist,
             CustomRoles.Wraith => CustomWinner.Wraith,
             CustomRoles.Bandit => CustomWinner.Bandit,
             CustomRoles.Pirate => CustomWinner.Pirate,
@@ -1580,6 +1588,7 @@ public static class CustomRolesHelper
             CustomRoles.Mutant => CustomWinner.Mutant,
             CustomRoles.Blade => CustomWinner.Blade,
             CustomRoles.Abzorbaloff => CustomWinner.Abzorbaloff,
+            CustomRoles.Prototype => CustomWinner.Prototype,
             CustomRoles.ShadowKing => CustomWinner.ShadowKing,
             CustomRoles.Atoner => CustomWinner.Atoner,
             CustomRoles.Hacker => CustomWinner.Hacker,
@@ -1611,6 +1620,7 @@ public static class CustomRolesHelper
             CountTypes.Demon => CustomRoles.Demon,
             CountTypes.BloodKnight => CustomRoles.BloodKnight,
             CountTypes.Cultist => CustomRoles.Cultist,
+            CountTypes.Communist => CustomRoles.Communist,
             CountTypes.Shroud => CustomRoles.Shroud,
             CountTypes.Werewolf => CustomRoles.Werewolf,
             CountTypes.Wraith => CustomRoles.Wraith,
@@ -1639,6 +1649,7 @@ public static class CustomRolesHelper
             CountTypes.Mutant => CustomRoles.Mutant,
             CountTypes.Blade => CustomRoles.Blade,
             CountTypes.Abzorbaloff => CustomRoles.Abzorbaloff,
+            CountTypes.Prototype => CustomRoles.Prototype,
             CountTypes.ShadowKing => CustomRoles.ShadowKing,
             CountTypes.Atoner => CustomRoles.Atoner,
             CountTypes.Hacker => CustomRoles.Hacker,
@@ -1720,6 +1731,7 @@ public enum CountTypes
     Poisoner,
     Charmed,
     Cultist,
+    Communist,
     Wraith,
     SerialKiller,
     Juggernaut,
@@ -1760,5 +1772,6 @@ public enum CountTypes
     Wight,
     Slaad,
     Shade,
-    Abzorbaloff
+    Abzorbaloff,
+    Prototype
 }

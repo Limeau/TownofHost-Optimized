@@ -2333,13 +2333,15 @@ public static class Options
         public OptionItem numLongTasks;
         public OptionItem numShortTasks;
 
-        public OverrideTasksData(int idStart, TabGroup tab, CustomRoles role)
+        public OverrideTasksData(int idStart, TabGroup tab, CustomRoles role, OptionItem parent = null)
         {
+            if (parent == null) parent = CustomRoleSpawnChances[role];
+            
             IdStart = idStart;
             Role = role;
             Dictionary<string, string> replacementDic = new() { { "%role%", Utils.ColorString(Utils.GetRoleColor(role), Utils.GetRoleName(role)) } };
             doOverride = BooleanOptionItem.Create(idStart++, "doOverride", false, tab, false)
-                .SetParent(CustomRoleSpawnChances[role])
+                .SetParent(parent)
                 .SetValueFormat(OptionFormat.None);
             doOverride.ReplacementDictionary = replacementDic;
             assignCommonTasks = BooleanOptionItem.Create(idStart++, "assignCommonTasks", true, tab, false)
@@ -2358,9 +2360,9 @@ public static class Options
             if (!AllData.ContainsKey(role)) AllData.Add(role, this);
             else Logger.Warn("重複したCustomRolesを対象とするOverrideTasksDataが作成されました", "OverrideTasksData");
         }
-        public static OverrideTasksData Create(int idStart, TabGroup tab, CustomRoles role)
+        public static OverrideTasksData Create(int idStart, TabGroup tab, CustomRoles role, OptionItem parent = null)
         {
-            return new OverrideTasksData(idStart, tab, role);
+            return new OverrideTasksData(idStart, tab, role, parent);
         }
     }
 }

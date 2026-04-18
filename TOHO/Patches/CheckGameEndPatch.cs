@@ -425,6 +425,25 @@ class GameEndCheckerForNormal
                                 WinnerIds.Add(pc.PlayerId);
                                 AdditionalWinnerTeams.Add(AdditionalWinners.Opportunist);
                                 break;
+                            case CustomRoles.Extremist:
+                                if (WinnerTeam == CustomWinner.Crewmate || WinnerTeam == CustomWinner.Impostor)
+                                {
+                                    WinnerIds.Add(pc.PlayerId);
+                                    AdditionalWinnerTeams.Add(AdditionalWinners.Extremist);
+                                }
+                                break;
+                            case CustomRoles.Developer:
+                                bool win = false;
+                                foreach (var player in Developer.Customers)
+                                {
+                                    if (WinnerIds.Contains(player.PlayerId)) win = true;
+                                }
+                                if (win)
+                                {
+                                    WinnerIds.Add(pc.PlayerId);
+                                    AdditionalWinnerTeams.Add(AdditionalWinners.Developer);
+                                }
+                                break;
                             case CustomRoles.Pixie when !CheckForConvertedWinner(pc.PlayerId):
                                 Pixie.PixieWinCondition(pc);
                                 break;

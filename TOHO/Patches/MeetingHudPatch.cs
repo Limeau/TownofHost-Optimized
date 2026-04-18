@@ -788,6 +788,14 @@ class CastVotePatch
                 return false;
             }
 
+            if (Jury.TrialPlayer != null)
+            {
+                if (target != Jury.TrialPlayer && target.PlayerId != 253)
+                {
+                    return false;
+                }
+            }
+            
             switch (voter.GetCustomRole())
             {
                 case CustomRoles.Dictator:

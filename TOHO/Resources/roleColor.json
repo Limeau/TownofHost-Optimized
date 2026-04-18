@@ -328,5 +328,13 @@
   "Blessed": "#d4ecff",
   "Abzorbaloff": "#7d7351",
   "Residue": "#ad8d74",
-  "Entity": "#a179b5"
+  "Entity": "#a179b5",
+  "Developer": "#4b9653",
+  "Villager": "#adbaba",
+  "Plumber": "#1c4eba",
+  "Firefighter": "#e63612",
+  "Jury": "#e3b210",
+  "Extremist": "#10e321",
+  "Communist": "#b30522",
+  "Prototype": "#57636e"
 }
