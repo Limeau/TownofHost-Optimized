@@ -3097,12 +3097,12 @@ internal class ChatCommands
             case "/vipname":
                 if (Options.ApplyVipList.GetValue() == 0)
                 {
-                    Utils.SendMessage(GetString("VipColorCommandDisabled"), player.PlayerId);
+                    Utils.SendMessage(GetString("VipNameCommandDisabled"), player.PlayerId);
                     break;
                 }
                 if (!Utils.IsPlayerVip(player.FriendCode))
                 {
-                    Utils.SendMessage(GetString("VipColorCommandNoAccess"), player.PlayerId);
+                    Utils.SendMessage(GetString("VipNameCommandNoAccess"), player.PlayerId);
                     break;
                 }
                 if (!GameStates.IsLobby)
