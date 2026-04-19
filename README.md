@@ -121,5 +121,5 @@
 >
 > - We included CrowdedMod in our Mod
 ---
-This project is licensed under the GNU General Public License version 3.0. For more details, please refer to the [LICENSE](https://github.com/Limeau/TownofHost-Optimized/blob/main/LICENSE) file.
+This project is licensed under the GNU General Public License version 3.0. For more details, please refer to the [LICENSE](https://github.com/Limeau/TownofHost-Optimized/blob/main/TOHO/LICENSE) file.
 ---
