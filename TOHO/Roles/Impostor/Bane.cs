@@ -67,11 +67,6 @@ internal class Bane : RoleBase
 
         TrapMaxPlayerCount = TrapMaxPlayerCountOpt.GetFloat();
         TrapDuration = TrapDurationOpt.GetFloat();
-
-        if (AmongUsClient.Instance.AmHost)
-        {
-            CustomRoleManager.OnFixedUpdateLowLoadOthers.Add(OnFixedUpdateOthers);
-        }
     }
 
     public override void ApplyGameOptions(IGameOptions opt, byte playerId)
@@ -91,57 +86,49 @@ internal class Bane : RoleBase
 
         Vector2 position = shapeshifter.transform.position;
         var playerTraps = Traps.Where(a => a.BanePlayerId == shapeshifter.PlayerId).ToArray();
-        if (playerTraps.Length >= MaxTrapCount.GetInt())
+        if (playerTraps.Length < MaxTrapCount.GetInt())
         {
-            var trap = playerTraps.First();
-            trap.Location = position;
-            trap.PlayersTrapped = [];
-            trap.Timer = 0;
-        }
-        else
-        {
-            Traps.Add(new BaneTrap
+            var newtrap = new BaneTrap
             {
                 BanePlayerId = shapeshifter.PlayerId,
                 Location = position,
                 PlayersTrapped = [],
-                Timer = 0
-            });
+                IsActive = true
+            };
+            Traps.Add(newtrap);
+            new LateTask(() =>
+            {
+                newtrap.IsActive = false;
+            }, TrapDuration, "Bane Trap Removal");
         }
 
         shapeshifter.Notify(GetString("RejectShapeshift.AbilityWasUsed"), time: 2f);
     }
 
-    private void OnFixedUpdateOthers(PlayerControl player)
+    public override void OnFixedUpdate(PlayerControl pc, bool lowLoad, long nowTime, int timerLowLoad)
     {
-        if (Pelican.IsEaten(player.PlayerId) || !player.IsAlive()) return;
-
-        if (player.GetCustomRole().IsImpostor())
+        foreach (var player in Main.AllAlivePlayerControls)
         {
-            var traps = Traps.Where(a => a.BanePlayerId == player.PlayerId && a.IsActive).ToArray();
-            foreach (var trap in traps)
+            
+            if (Pelican.IsEaten(player.PlayerId) || !player.IsAlive() || player.Is(CustomRoles.Bane)) return;
+
+            Vector2 position = player.transform.position;
+
+            foreach (var trap in Traps.Where(a => a.IsActive).ToArray())
             {
-                trap.Timer += Time.fixedDeltaTime;
+                if (trap.PlayersTrapped.Contains(player.PlayerId))
+                {
+                    continue;
+                }
+
+                var dis = Vector2.Distance(trap.Location, position);
+                if (dis > TrapRadius.GetFloat()) continue;
+
+                player.RpcMurderPlayer(player);
+                player.SetDeathReason(PlayerState.DeathReason.Toxined);
+
+                player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Bane), GetString("BaneTrap")));
             }
-            return;
-        }
-
-        Vector2 position = player.transform.position;
-
-        foreach (var trap in Traps.Where(a => a.IsActive).ToArray())
-        {
-            if (trap.PlayersTrapped.Contains(player.PlayerId))
-            {
-                continue;
-            }
-
-            var dis = Vector2.Distance(trap.Location, position);
-            if (dis > TrapRadius.GetFloat()) continue;
-
-            player.RpcMurderPlayer(player);
-            player.SetDeathReason(PlayerState.DeathReason.Toxined);
-
-            player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Bane), GetString("BaneTrap")));
         }
     }
 }
@@ -150,13 +137,6 @@ public class BaneTrap
 {
     public int BanePlayerId;
     public Vector2 Location;
-    public float Timer;
     public List<int> PlayersTrapped;
-    public bool IsActive
-    {
-        get
-        {
-            return Timer <= Bane.TrapDuration && PlayersTrapped.Count < Bane.TrapMaxPlayerCount;
-        }
-    }
+    public bool IsActive = false;
 }
