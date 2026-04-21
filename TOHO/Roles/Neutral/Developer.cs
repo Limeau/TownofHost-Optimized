@@ -77,11 +77,11 @@ internal class Developer : RoleBase
         Reckless =  BooleanOptionItem.Create(Id + 11, "Reckless", true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Developer])
             .SetColor(Utils.GetRoleColor(CustomRoles.Reckless));
-        RecklessChanceToKill = IntegerOptionItem.Create(Id + 22, "RecklessChanceToKill", (1, 100, 5), 25, TabGroup.NeutralRoles, false)
+        RecklessChanceToKill = IntegerOptionItem.Create(Id + 22, "RecklessChanceToKill", (0, 100, 5), 25, TabGroup.NeutralRoles, false)
             .SetParent(Reckless)
             .SetColor(Utils.GetRoleColor(CustomRoles.Reckless))
             .SetValueFormat(OptionFormat.Percent);
-        RecklessChanceToAlert = IntegerOptionItem.Create(Id + 23, "RecklessChanceToAlert", (1, 100, 5), 25, TabGroup.NeutralRoles, false)
+        RecklessChanceToAlert = IntegerOptionItem.Create(Id + 23, "RecklessChanceToAlert", (0, 100, 5), 25, TabGroup.NeutralRoles, false)
             .SetParent(Reckless)
             .SetColor(Utils.GetRoleColor(CustomRoles.Reckless))
             .SetValueFormat(OptionFormat.Percent);
@@ -131,7 +131,7 @@ internal class Developer : RoleBase
             .SetParent(Prototype)
             .SetColor(Utils.GetRoleColor(CustomRoles.Prototype))
             .SetValueFormat(OptionFormat.Seconds);
-        PrototypeSuicideChance = IntegerOptionItem.Create(Id + 29, "PrototypeSuicideChance", (1, 100, 5), 20, TabGroup.NeutralRoles, false)
+        PrototypeSuicideChance = IntegerOptionItem.Create(Id + 29, "PrototypeSuicideChance", (0, 100, 5), 20, TabGroup.NeutralRoles, false)
             .SetParent(Prototype)
             .SetColor(Utils.GetRoleColor(CustomRoles.Prototype))
             .SetValueFormat(OptionFormat.Percent);
