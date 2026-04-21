@@ -110,7 +110,7 @@ internal class Developer : RoleBase
         Jury =  BooleanOptionItem.Create(Id + 16, "Jury", true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Developer])
             .SetColor(Utils.GetRoleColor(CustomRoles.Jury));
-        OverrideTasksData.Create(Id + 26, TabGroup.NeutralRoles, CustomRoles.Jury, Jury);
+        OverrideTasksData.Create(Id + 35, TabGroup.NeutralRoles, CustomRoles.Jury, Jury);
         
         Extremist =  BooleanOptionItem.Create(Id + 17, "Extremist", true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Developer])
@@ -119,7 +119,7 @@ internal class Developer : RoleBase
         Communist =  BooleanOptionItem.Create(Id + 18, "Communist", true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Developer])
             .SetColor(Utils.GetRoleColor(CustomRoles.Communist));
-        CommunistRecruitCooldown = FloatOptionItem.Create(Id + 27, "CommunistRecruitCooldown", (10f, 40f, 1f), 20f, TabGroup.NeutralRoles, false)
+        CommunistRecruitCooldown = FloatOptionItem.Create(Id + 45, "CommunistRecruitCooldown", (10f, 40f, 1f), 20f, TabGroup.NeutralRoles, false)
             .SetParent(Communist)
             .SetColor(Utils.GetRoleColor(CustomRoles.Communist))
             .SetValueFormat(OptionFormat.Seconds);
@@ -127,11 +127,11 @@ internal class Developer : RoleBase
         Prototype =  BooleanOptionItem.Create(Id + 19, "Prototype", true, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Developer])
             .SetColor(Utils.GetRoleColor(CustomRoles.Prototype));
-        PrototypeKillCooldown = FloatOptionItem.Create(Id + 28, "PrototypeKillCooldown", (10f, 40f, 1f), 20f, TabGroup.NeutralRoles, false)
+        PrototypeKillCooldown = FloatOptionItem.Create(Id + 46, "PrototypeKillCooldown", (10f, 40f, 1f), 20f, TabGroup.NeutralRoles, false)
             .SetParent(Prototype)
             .SetColor(Utils.GetRoleColor(CustomRoles.Prototype))
             .SetValueFormat(OptionFormat.Seconds);
-        PrototypeSuicideChance = IntegerOptionItem.Create(Id + 29, "PrototypeSuicideChance", (0, 100, 5), 20, TabGroup.NeutralRoles, false)
+        PrototypeSuicideChance = IntegerOptionItem.Create(Id + 47, "PrototypeSuicideChance", (0, 100, 5), 20, TabGroup.NeutralRoles, false)
             .SetParent(Prototype)
             .SetColor(Utils.GetRoleColor(CustomRoles.Prototype))
             .SetValueFormat(OptionFormat.Percent);
