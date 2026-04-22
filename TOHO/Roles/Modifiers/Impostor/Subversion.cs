@@ -4,7 +4,7 @@ public class Subversion : IModifier
 {
     public CustomRoles Role => CustomRoles.Subversion;
     private const int Id = 38300;
-    public ModifierTypes Type => ModifierTypes.Helpful;
+    public ModifierTypes Type => ModifierTypes.Impostor;
     public static bool IsEnable = false;
 
     public void SetupCustomOption()
