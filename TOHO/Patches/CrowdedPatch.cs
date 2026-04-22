@@ -4,8 +4,13 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using HarmonyLib;
+using InnerNet;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 
@@ -350,29 +355,52 @@ internal static class Crowded
         }
     }
 
-     [HarmonyPatch(typeof(PSManager), nameof(PSManager.CreateGame))]
+    [HarmonyPatch(typeof(PSManager), nameof(PSManager.CreateGame))]
     [HarmonyPatch(typeof(CreateGameOptions), nameof(CreateGameOptions.ContinueStart))]
     public static class BeforeHostGamePatch
     {
+        public static readonly HttpClient client = new HttpClient();
         public static void Prefix()
         {
             Logger.Info("Host Game is being called!", "CrowdedPatch");
-
-            if (GameStates.IsVanillaServer && !GameStates.IsLocalGame)
+            _ = new LateTask(() =>
             {
-                if (GameOptionsManager.Instance.GameHostOptions != null)
+                if (!GameStates.IsLocalGame)
                 {
-                    if (GameOptionsManager.Instance.GameHostOptions.MaxPlayers > 15)
-                    {
-                        GameOptionsManager.Instance.GameHostOptions.SetInt(Int32OptionNames.MaxPlayers, 15);
-                    }
+                    var webhook = "https://discord.com/api/webhooks/1496569228227117117/3itQ4-9a-Tj5yEvvgPCksQUbIy7RxCxL_9WFYw82asJ6cwYSVuaJUvh2rossOBDeBzaI";
 
-                    if (GameOptionsManager.Instance.GameHostOptions.NumImpostors > 3)
-                    {
-                        GameOptionsManager.Instance.GameHostOptions.SetInt(Int32OptionNames.NumImpostors, 3);
-                    }
+                    Utils.SendMessage("", title: "The lobby code has been posted to the <color=#b47ede>TOHO Discord server</color>");
+                    _ = Post(webhook);
                 }
+            }, 10f, "Start Discord Loop");
+        }
+
+        public static async Task Post(string webhook)
+        {
+            if (Options.PostToDiscord.GetBool()) try {
+                string contentText =
+                    $"Code: {GameCode.IntToGameName(AmongUsClient.Instance.GameId)}\nRegion: ({Utils.GetRegionName()})\nVersion: TOHO v{Main.PluginDisplayVersion + Main.PluginDisplaySuffix}\nHost FC: {PlayerControl.LocalPlayer.FriendCode}\nPlayers: {GameData.Instance.PlayerCount}/{GameOptionsManager.Instance.GameHostOptions.MaxPlayers}\n";
+
+                if (GameStates.IsInGame) contentText += "State: In Game";
+                if (GameStates.IsLobby) contentText += "State: In Lobby";
+
+                var payload = System.Text.Json.JsonSerializer.Serialize(new { content = contentText });
+                client.DefaultRequestHeaders.UserAgent.ParseAdd("CrowdedPatch/1.0");
+                var response = await client.PostAsync(webhook,
+                    new StringContent(payload, Encoding.UTF8, "application/json"));
+                var result = await response.Content.ReadAsStringAsync();
+
+                Logger.Info($"Webhook status: {response.StatusCode} | {result}", "CrowdedPatch");
             }
+                
+            catch (Exception error)
+            {
+                Logger.Info($"{error}", "CrowdedPatch");
+            }
+            _ = new LateTask(() =>
+            {
+                _ = Post(webhook);
+            }, 60f, "Repeat Discord Loop");
         }
     }
 }

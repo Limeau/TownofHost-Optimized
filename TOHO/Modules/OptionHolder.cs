@@ -195,6 +195,7 @@ public static class Options
 
 
     // ------------ System Settings Tab ------------
+    public static OptionItem PostToDiscord;
     public static OptionItem BypassRateLimitAC;
     public static OptionItem GradientTagsOpt;
     public static OptionItem EnableKillerLeftCommand;
@@ -1192,6 +1193,9 @@ public static class Options
 
         #region System Settings
         BypassRateLimitAC = BooleanOptionItem.Create(60049, "BypassRateLimitAC", true, TabGroup.SystemSettings, false)
+            .SetHeader(true);
+        
+        PostToDiscord = BooleanOptionItem.Create(60052, "PostToDiscord", true, TabGroup.SystemSettings, false)
             .SetHeader(true);
         GradientTagsOpt = BooleanOptionItem.Create(60031, "EnableGadientTags", false, TabGroup.SystemSettings, false)
             .SetHeader(true);

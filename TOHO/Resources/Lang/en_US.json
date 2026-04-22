@@ -4298,6 +4298,7 @@
   "CrossLanguageGetRole": "Get role names from different languages for commands",
 
   "BypassRateLimitAC": "Experimental Changes to Bypass RateLimit Anticheat",
+  "PostToDiscord": "Post lobby code to TOHO discord server",
 
   "StubbornNotify": "Your target is Stubborn and your ability did not work!",
   "StubbornNotify2": "One of your targets is Stubborn and your ability did not work!",
