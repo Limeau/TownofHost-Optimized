@@ -5033,6 +5033,11 @@
   "Prototype": "Prototype",
   "PrototypeInfo": "Your kills are unstable!",
   "PrototypeInfoLong": "The Prototype can kill with a lower cooldown, but has a small chance to fail and kill itself as well.",
-  "PrototypeKillCooldown": "Prototype kill cooldown"
+  "PrototypeKillCooldown": "Prototype kill cooldown",
+
+  "ViperInfo": "Dissolve the bodies of your kills",
+  "ViperInfoLong": "When you kill, the body of your target will slowly dissolve into nothing.",
+  "DetectiveInfo": "Keep tabs on players and your supicions",
+  "DetectiveInfoLong": "As the Detective, you can write down notes about each crime scene and interrogate suspects."
 }
 
