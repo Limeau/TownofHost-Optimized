@@ -4985,7 +4985,7 @@
   "HauntDuration": "Entity haunt duration",
   
   "DeveloperInfo": "Assign custom roles to other players",
-  "DeveloperInfoLong": "The Developer can sell custom-made roles to other players using its kill button. The Developer will win if any of its customers are winners at the end of the game.",
+  "DeveloperInfoLong": "The Developer can sell new roles to other players using its kill button. The Developer will win if any of its customers are winners at the end of the game.",
 
   "Deviator": "Deviator",
   "DeviatorInfo": "Protect yourself from attacks",
