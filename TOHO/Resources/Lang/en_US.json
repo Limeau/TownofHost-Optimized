@@ -5038,6 +5038,11 @@
   "ViperInfo": "Dissolve the bodies of your kills",
   "ViperInfoLong": "When you kill, the body of your target will slowly dissolve into nothing.",
   "DetectiveInfo": "Keep tabs on players and your supicions",
-  "DetectiveInfoLong": "As the Detective, you can write down notes about each crime scene and interrogate suspects."
+  "DetectiveInfoLong": "As the Detective, you can write down notes about each crime scene and interrogate suspects.",
+  
+  "Harbourer": "Harbourer",
+  "HarbourerInfo": "Store roles to use the abilities yourself",
+  "HarbourerInfoLong": "When the Harbourer is attacked, they will store the role that attacked them in an inventory. They can swap between each role's ability by using the Unshift button. When they use their kill button, the ability of the role they have equipped will be used. The Harbourer cannot guess. Equip the Harbourer role to kill normally.",
+  "MaxRolesStored411": "Max roles Harbourer can store"
 }
 

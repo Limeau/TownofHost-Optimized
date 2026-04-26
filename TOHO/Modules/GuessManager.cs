@@ -172,6 +172,12 @@ public static class GuessManager
             return true;
         }
 
+        if (pc.Is(CustomRoles.Harbourer) && Harbourer.CanGuess.GetBool())
+        {
+            pc.ShowInfoMessage(isUI, GetString("GuessNotAllowed"));
+            return true;
+        }
+
         if (operate == 1)
         {
             Utils.SendMessage(GetFormatString(), pc.PlayerId);

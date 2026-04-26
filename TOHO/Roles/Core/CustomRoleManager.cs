@@ -209,6 +209,8 @@ public static class CustomRoleManager
         {
             PlagueBearer.CheckAndInfect(killer, target);
         }
+        
+        if (target.Is(CustomRoles.Harbourer)) Harbourer.CheckTargetKill(killer, target);
 
         Logger.Info("Start", "ForcedCheckMurderAsKiller");
 
