@@ -89,14 +89,13 @@ internal class Puppeteer : RoleBase
             || target.Is(CustomRoles.NiceMini) && Mini.Age < 18)
             return false;
 
-        return killer.CheckDoubleTrigger(target, () =>
-        {
-            PuppeteerList[target.PlayerId] = killer.PlayerId;
-            killer.SetKillCooldown();
-            SendRPC(killer.PlayerId, target.PlayerId, 1);
-            killer.RPCPlayCustomSound("Line");
-            // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
-        });
+        if (killer.CheckDoubleTrigger(target, () => {})) return true;
+        
+        PuppeteerList[target.PlayerId] = killer.PlayerId;
+        killer.RpcGuardAndKill();
+        SendRPC(killer.PlayerId, target.PlayerId, 1);
+        killer.RPCPlayCustomSound("Line");
+        return false;
     }
 
     private void OnFixedUpdateOthers(PlayerControl puppet, bool lowLoad, long nowTime)
