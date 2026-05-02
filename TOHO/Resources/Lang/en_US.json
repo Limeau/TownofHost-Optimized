@@ -5034,6 +5034,7 @@
   "PrototypeInfo": "Your kills are unstable!",
   "PrototypeInfoLong": "The Prototype can kill with a lower cooldown, but has a small chance to fail and kill itself as well.",
   "PrototypeKillCooldown": "Prototype kill cooldown",
+  "PrototypeSuicideChance": "Prototype suicide chance",
 
   "ViperInfo": "Dissolve the bodies of your kills",
   "ViperInfoLong": "When you kill, the body of your target will slowly dissolve into nothing.",
