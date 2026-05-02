@@ -58,7 +58,8 @@ public static class Options
             2 => CustomGameMode.CandR,
             3 => CustomGameMode.UltimateTeam,
             4 => CustomGameMode.FourCorners,
-            6 => CustomGameMode.HidenSeekTOHO, // HidenSeekTOHO must be after other Gamemodes
+            
+            9 => CustomGameMode.HidenSeekTOHO,
             _ => CustomGameMode.Standard
         };
     public static int GetGameModeInt(CustomGameMode mode)
@@ -66,7 +67,9 @@ public static class Options
         {
             CustomGameMode.FFA => 1,
             CustomGameMode.CandR => 2,
-            CustomGameMode.HidenSeekTOHO => 3, // HidenSeekTOHO must be after other Gamemodes
+            CustomGameMode.UltimateTeam => 3,
+            CustomGameMode.FourCorners => 4,
+            CustomGameMode.HidenSeekTOHO => 5, // HidenSeekTOHO must be after other Gamemodes
             _ => 0
         };
 
