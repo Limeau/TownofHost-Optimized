@@ -713,9 +713,6 @@ public static class Utils
                     if (role is CustomRoles.Killer)
                         ProgressText.Append(FFAManager.GetDisplayScore(playerId));
                     break;
-                case CustomGameMode.CandR:
-                    ProgressText.Append(CopsAndRobbersManager.GetProgressText(playerId));
-                    break;
                 case CustomGameMode.UltimateTeam:
                     ProgressText.Append(UltimateTeam.GetProgressText(playerId));
                     break;

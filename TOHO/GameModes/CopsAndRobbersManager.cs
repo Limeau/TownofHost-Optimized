@@ -1130,26 +1130,6 @@ internal static class CopsAndRobbersManager
             : disableColor ? summary.RemoveHtmlTags() : summary;
     }
 
-    public static string GetProgressText(byte playerId)
-    {
-        string progressText = string.Empty;
-        if (playerId == byte.MaxValue) return progressText;
-        Color32 textColor = Color.white;
-        if (cops.Contains(playerId))
-        {
-            progressText = $" ({numCaptures}/{numRobbers})";
-            textColor = Utils.GetRoleColor(CustomRoles.Cop);
-        }
-        else if (robbers.Contains(playerId))
-        {
-            var taskState = Main.PlayerStates?[playerId].TaskState;
-            string Completed = $"{taskState.CompletedTasksCount}";
-            progressText = $" ({Completed}/{taskState.AllTasksCount})";
-            textColor = taskState.IsTaskFinished ? Color.green : Utils.GetRoleColor(CustomRoles.Robber);
-        }
-        return Utils.ColorString(textColor, progressText);
-    }
-
     public static void OnPlayerDisconnect(byte playerId)
     {
         if (robbers.Contains(playerId))
