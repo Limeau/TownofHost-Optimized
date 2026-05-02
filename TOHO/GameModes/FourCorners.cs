@@ -110,18 +110,18 @@ internal static class FourCorners
             RoundTime--;
             if (RoundTime <= 0)
             {
-                var roomToDestroy = ActiveRooms[IRandom.Instance.Next(0, ActiveRooms.Count)];
+                var roomToDestroy = ActiveRooms.RandomElement();
                 foreach (var player in Main.AllAlivePlayerControls)
                 {
-                    if (!ActiveRooms.Contains(player.GetPlainShipRoom().RoomId))
+                    if (player.GetPlainShipRoom() == null || !ActiveRooms.Contains(player.GetPlainShipRoom().RoomId))
                     {
-                        Reasons[player] = "invalid";
-                        player.RpcMurderPlayer(player);
+                        if (player != null) Reasons[player] = "invalid";
+                        player.KillWithoutBody(player);
                     }
-                    if (player.GetPlainShipRoom().RoomId == roomToDestroy)
+                    else if (player.GetPlainShipRoom().RoomId == roomToDestroy)
                     {
-                        Reasons[player] = "chosen";
-                        player.RpcMurderPlayer(player);
+                        if (player != null) Reasons[player] = "chosen";
+                        player.KillWithoutBody(player);
                     }
                     player.KillFlash();
                 }
@@ -130,10 +130,20 @@ internal static class FourCorners
                 var validRooms = SystemTypeHelpers.AllTypes
                     .Where(x => x != SystemTypes.HeliSabotage && ShipStatus.Instance.AllRooms.Select(room => room.RoomId).ToList().Contains(x))
                     .ToList();
-                ActiveRooms.Add(validRooms[IRandom.Instance.Next(0, validRooms.Count)]);
-                ActiveRooms.Add(validRooms[IRandom.Instance.Next(0, validRooms.Count)]);
-                ActiveRooms.Add(validRooms[IRandom.Instance.Next(0, validRooms.Count)]);
-                ActiveRooms.Add(validRooms[IRandom.Instance.Next(0, validRooms.Count)]);
+                
+                var r1 = validRooms.RandomElement();
+                validRooms.Remove(r1);
+                var r2 = validRooms.RandomElement();
+                validRooms.Remove(r2);
+                var r3 = validRooms.RandomElement();
+                validRooms.Remove(r3);
+                var r4 = validRooms.RandomElement();
+                validRooms.Remove(r4);
+                
+                ActiveRooms.Add(r1);
+                ActiveRooms.Add(r2);
+                ActiveRooms.Add(r3);
+                ActiveRooms.Add(r4);
                 
                 RoundTime = TimeBetweenRounds.GetInt();
             }
