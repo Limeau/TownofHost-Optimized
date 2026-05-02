@@ -318,6 +318,10 @@ class CheckMurderPatch
                     case CustomRoles.Diseased:
                         Diseased.CheckMurder(killer);
                         break;
+                    
+                    case CustomRoles.Explosive:
+                        Explosive.CheckMurder(killer);
+                        break;
 
                     case CustomRoles.ExtraLife:
                         if (!ExtraLife.CheckMurder(killer, target)) return false;
@@ -1240,6 +1244,9 @@ class FixedUpdateInNormalGamePatch
 
                         if (Rainbow.IsEnabled && Main.IntroDestroyed)
                             Rainbow.OnFixedUpdate();
+
+                        if (Explosive.IsEnable)
+                            Explosive.OnFixedUpdate();
                         
                         if (Options.EnableAnomalies.GetBool())
                             AnomalyManager.OnFixedUpdate();
