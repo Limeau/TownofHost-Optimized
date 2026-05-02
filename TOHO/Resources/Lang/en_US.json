@@ -5047,6 +5047,10 @@
   
   "Shovel": "Shovel",
   "ShovelInfo": "Vent from any distance",
-  "ShovelInfoLong": "The Shovel can use their Unshift button to enter the closest vent to them at any point, no matter how far they are from a vent."
+  "ShovelInfoLong": "The Shovel can use their Unshift button to enter the closest vent to them at any point, no matter how far they are from a vent.",
+  
+  "Threat": "Threat",
+  "ThreatInfo": "Kill someone without them knowing you killed them",
+  "ThreatInfoLong": "When the Threat kills someone, the target doesn't die, instead they don't even get alerted by the kill. When a dead body is reported or if there's a emergency meeting, the player will suddenly die."
 }
 

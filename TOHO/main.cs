@@ -784,6 +784,7 @@ public enum CustomRoles
     Sun,
     YinYanger,
     Swooper,
+    Threat,
     TimeThief,
     Trapmaker,
     Trapster,
