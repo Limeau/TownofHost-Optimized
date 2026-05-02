@@ -776,6 +776,7 @@ public enum CustomRoles
     Scavenger,
     ShapeMaster,
     Shapetricker,
+    Shovel,
     Sniper,
     SoulCatcher,
     Stealth,
