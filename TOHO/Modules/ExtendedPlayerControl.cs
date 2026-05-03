@@ -742,6 +742,11 @@ static class ExtendedPlayerControl
         var pos = player.GetCustomPosition();
         return ShipStatus.Instance.AllVents.Where(x => x != null).MinBy(x => Vector2.Distance(pos, x.transform.position));
     }
+    public static Vent GetFurthestVent(this PlayerControl player)
+    {
+        var pos = player.GetCustomPosition();
+        return ShipStatus.Instance.AllVents.Where(x => x != null).MaxBy(x => Vector2.Distance(pos, x.transform.position));
+    }
 
     public static List<Vent> GetVentsFromClosest(this PlayerControl player)
     {
@@ -1233,7 +1238,7 @@ static class ExtendedPlayerControl
         }
         if (!pc.IsAlive() || Pelican.IsEaten(pc.PlayerId) || DollMaster.IsDoll(pc.PlayerId)) return false;
         if (pc.GetClient().GetHashedPuid() == Main.FirstDiedPrevious && !Options.ShieldedCanUseKillButton.GetBool() && MeetingStates.FirstMeeting) return false;
-        if (pc.Is(CustomRoles.Killer) || pc.Is(CustomRoles.Red) || pc.Is(CustomRoles.Blue) || Mastermind.PlayerIsManipulated(pc)) return true;
+        if (pc.Is(CustomRoles.Killer) || pc.Is(CustomRoles.Red) || pc.Is(CustomRoles.Blue) || pc.Is(CustomRoles.KingOfTheHill) || Mastermind.PlayerIsManipulated(pc)) return true;
 
         var playerRoleClass = pc.GetRoleClass();
         if (playerRoleClass != null && playerRoleClass.CanUseKillButton(pc)) return true;

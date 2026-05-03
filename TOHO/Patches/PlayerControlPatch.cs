@@ -223,6 +223,10 @@ class CheckMurderPatch
         {
             return UltimateTeam.OnTag(killer, target);
         }
+        if (Options.CurrentGameMode == CustomGameMode.KOTH)
+        {
+            return KOTH.OnMurder(killer, target);
+        }
 
         //If Player hacked by Glitch
         if (Glitch.HasEnabled && !Glitch.OnCheckMurderOthers(killer, target))
@@ -769,7 +773,7 @@ class ReportDeadBodyPatch
             return false;
         }
         if (Options.DisableMeeting.GetBool()) return false;
-             if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
+             if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.FourCorners or CustomGameMode.KOTH or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
 
         if (!CanReport[__instance.PlayerId])
         {
@@ -1631,6 +1635,10 @@ class CoEnterVentPatch
         }
         
         if (Options.CurrentGameMode == CustomGameMode.FourCorners)
+        {
+            return false;
+        }
+        if (Options.CurrentGameMode == CustomGameMode.KOTH)
         {
             return false;
         }

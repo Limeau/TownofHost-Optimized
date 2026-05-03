@@ -112,6 +112,7 @@ public static class NameColorManager
             || (Options.CurrentGameMode == CustomGameMode.FFA) 
             || (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
             || (Options.CurrentGameMode == CustomGameMode.FourCorners)
+            || (Options.CurrentGameMode == CustomGameMode.KOTH)
             || seer.Is(CustomRoles.GM) || target.Is(CustomRoles.GM)
             || target.GetRoleClass().OthersKnowTargetRoleColor(seer, target)
             || Mimic.CanSeeDeadRoles(seer, target)

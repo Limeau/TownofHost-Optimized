@@ -5064,7 +5064,17 @@
   "TraineeInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete.",
   "TraineeB": "Trainee",
   "TraineeBInfo": "Complete tasks, then kill",
-  "TraineeBInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete."
+  "TraineeBInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete.",
+
+  "KOTH": "King Of The Hill",
+  "KingOfTheHill": "King Of The Hill",
+  "ModeKOTH": "Gamemode: King Of The Hill",
+  "ModeDescribe.KOTH": "In the King of the Hill game mode, one player can gain a point each second if they are standing alone in a randomly chosen room. The room will change throughout the game. Using your kill button, you can send players to the furthest vent from them. To win, be the first player to get the points required to win, or have the most points at the end of the game's timer.",
+  "KothInfo": "Get the most points and be King of the Hill",
+  "KingOfTheHillInfo": "Get the most points and be King of the Hill",
+  "KingOfTheHillInfoLong": "In the King of the Hill game mode, one player can gain a point each second if they are standing alone in a randomly chosen room. The room will change throughout the game. Using your kill button, you can send players to the furthest vent from them. To win, be the first player to get the points required to win, or have the most points at the end of the game's timer.",
+  "PointsToWin": "Points to win",
+  "TimeBeforeSwitch": "Time before rooms switch"
 }
 
 

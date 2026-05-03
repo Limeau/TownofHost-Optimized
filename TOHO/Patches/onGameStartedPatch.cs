@@ -242,6 +242,7 @@ internal class ChangeRoleSettings
             //Ultimate Team
             UltimateTeam.Init();
             FourCorners.Init();
+            KOTH.Init();
 
             FallFromLadder.Reset();
             CustomWinnerHolder.Reset();
@@ -459,6 +460,12 @@ internal class StartGameHostPatch
                         pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch;
+                case CustomGameMode.KOTH:
+                    foreach (var pair in RoleAssign.RoleResult)
+                    {
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
+                    }
+                    goto EndOfSelectRolePatch;
                 case CustomGameMode.CandR:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
@@ -556,6 +563,9 @@ internal class StartGameHostPatch
                     break;
                 case CustomGameMode.FourCorners:
                     GameEndCheckerForNormal.SetPredicateToFourCorners();
+                    break;
+                case CustomGameMode.KOTH:
+                    GameEndCheckerForNormal.SetPredicateToKoth();
                     break;
             }
 

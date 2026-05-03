@@ -31,6 +31,7 @@ public static class CustomRolesHelper
         if (Options.CurrentGameMode is CustomGameMode.UltimateTeam && role is CustomRoles.Blue) return CustomRoles.Impostor;
 
         if (Options.CurrentGameMode is CustomGameMode.FourCorners && role is CustomRoles.FourCorners) return CustomRoles.Crewmate;
+        if (Options.CurrentGameMode is CustomGameMode.KOTH && role is CustomRoles.KingOfTheHill) return CustomRoles.Impostor;
         
         // Vanilla Roles
         if (role.IsVanilla()) return role;
@@ -69,6 +70,9 @@ public static class CustomRolesHelper
                 break;
             case CustomGameMode.FourCorners:
                 if (role is CustomRoles.FourCorners) return RoleTypes.Crewmate;
+                break;
+            case CustomGameMode.KOTH:
+                if (role is CustomRoles.KingOfTheHill) return RoleTypes.Impostor;
                 break;
         }
 

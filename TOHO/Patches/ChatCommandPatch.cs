@@ -2104,6 +2104,9 @@ internal class ChatCommands
             case CustomGameMode.FourCorners:
                 Utils.SendMessage(GetString("ModeDescribe.FourCorners"), playerId);
                 return;
+            case CustomGameMode.KOTH:
+                Utils.SendMessage(GetString("ModeDescribe.KOTH"), playerId);
+                return;
             case CustomGameMode.CandR:
                 var copName = GetString(CustomRoles.Cop.ToString()).ToLower().Trim().TrimStart('*').Replace(" ", string.Empty);
                 var robberName = GetString(CustomRoles.Robber.ToString()).ToLower().Trim().TrimStart('*').Replace(" ", string.Empty);

@@ -1050,7 +1050,8 @@ public enum CustomRoles
     Red,
     Blue,
 
-    // Trick or Treat
+    // KOTH
+    KingOfTheHill,
     
     // Four Corners
     FourCorners,
@@ -1265,6 +1266,7 @@ public enum CustomWinner
     Red = CustomRoles.Red,
     Blue = CustomRoles.Blue,
     FourCorners = CustomRoles.FourCorners,
+    KOTH = CustomRoles.KingOfTheHill,
     Slaad = CustomRoles.Slaad,
     Shade = CustomRoles.Shade,
     Abzorbaloff = CustomRoles.Abzorbaloff,
