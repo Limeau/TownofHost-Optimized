@@ -37,7 +37,6 @@ public class GameSettingMenuPatch
             CustomGameMode.FFA => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.UltimateTeam => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.FourCorners => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
-            CustomGameMode.KOTH => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.CandR => Enum.GetValues<TabGroup>().Skip(3).ToArray(),
             _ => []
         };

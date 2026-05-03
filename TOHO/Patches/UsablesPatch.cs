@@ -19,7 +19,7 @@ class EmergencyMinigamePatch
 {
     public static void Postfix(EmergencyMinigame __instance)
     {
-        if (Options.DisableMeeting.GetBool() || Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.UltimateTeam)
+        if (Options.DisableMeeting.GetBool() || Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.UltimateTeam)
             __instance.Close();
         return;
     }

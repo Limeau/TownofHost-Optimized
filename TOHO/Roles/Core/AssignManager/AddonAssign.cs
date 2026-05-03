@@ -39,7 +39,6 @@ public static class ModifierAssign
             case CustomGameMode.CandR:
             case CustomGameMode.UltimateTeam:
             case CustomGameMode.FourCorners:
-            case CustomGameMode.KOTH:
                 return;
         }
         ModifierRolesList.Clear();
