@@ -384,6 +384,8 @@ internal static class Crowded
                 if (GameStates.IsInGame) contentText += "State: In Game";
                 if (GameStates.IsLobby) contentText += "State: In Lobby";
 
+                contentText += $"\nHost: {Main.AllPlayerNames[PlayerControl.LocalPlayer.PlayerId].RemoveHtmlTags()}";
+                
                 var payload = System.Text.Json.JsonSerializer.Serialize(new { content = contentText });
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("CrowdedPatch/1.0");
                 var response = await client.PostAsync(webhook,
