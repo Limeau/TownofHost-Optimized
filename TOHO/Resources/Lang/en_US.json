@@ -5057,6 +5057,14 @@
   "Explosive": "Explosive",
   "ExplosiveInfo": "Bomb a player at your death",
   "ExplosiveInfoLong": "When the Explosive dies, the killer will receive a bomb, that they can pass to others. After a certain amount of time the player with the bomb dies",
-  "BombTimer414": "Bomb Timer"
+  "BombTimer414": "Bomb Timer",
+
+  "Trainee": "Trainee",
+  "TraineeInfo": "Complete tasks, then kill",
+  "TraineeInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete.",
+  "TraineeB": "Trainee",
+  "TraineeBInfo": "Complete tasks, then kill",
+  "TraineeBInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete."
 }
+
 
