@@ -1,8 +1,10 @@
 ﻿using Hazel;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using UnityEngine.Audio;
 
 namespace TOHO.Modules;
 
@@ -32,6 +34,67 @@ public static class CustomSoundsManager
 
 
     private static readonly string SOUNDS_PATH = @$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/";
+    private static readonly string MUSIC_PATH = @$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/music/";
+    
+    private static bool _musicPlaying;
+    
+    public static bool _repeatMode = false;
+    public static void ToggleRepeat() => _repeatMode = !_repeatMode;
+    public static int i;
+    public static string songname;
+    public static void SkipSong()
+    {
+        var skipped = songname;
+        i = 0;
+        StopAllSounds();
+        MusicPlay();
+        if (songname == skipped)
+        {
+            SkipSong();
+        }
+    }
+
+    public static void PlaySong(string[] files)
+    {
+        var path = files[i];
+        StartPlay(path);
+        songname = Path.GetFileNameWithoutExtension(path);
+        Logger.SendInGameMusic($"{songname}");
+        if (!_repeatMode) i++;
+        if (i == files.Length) i = 0;
+        Logger.Msg("Finished song", "CustomSounds");
+    }
+    
+    public static void MusicPlay()
+    {
+        if (OperatingSystem.IsAndroid()) return;
+        if (!Constants.ShouldPlaySfx() || !Main.EnableCustomSoundEffect.Value) return;
+
+        if (_musicPlaying)
+            return;
+
+        _musicPlaying = true;
+
+        try
+        {
+            var files = Directory.GetFiles(MUSIC_PATH, "*.wav");
+            if (files.Length == 0)
+            {
+                Logger.Warn("No .wav files found in music folder", "CustomSounds");
+                return;
+            }
+
+            Array.Sort(files);
+            files.Shuffle();
+            
+            PlaySong(files);
+        }
+        finally
+        {
+            _musicPlaying = false;
+        }
+    }
+    
     public static void Play(string sound)
     {
         if (OperatingSystem.IsAndroid()) return; // Android doesn't have winmm.dll
@@ -62,5 +125,10 @@ public static class CustomSoundsManager
     [DllImport("winmm.dll", CharSet = CharSet.Unicode)]
     private static extern bool PlaySound(string Filename, int Mod, int Flags);
     private static void StartPlay(string path) => PlaySound(@$"{path}", 0, 1); //第3个形参，把1换为9，连续播放
+    public static void StopAllSounds()
+    {
+        PlaySound(null, 0, 0x40);
+    }
 #endif
 }
+

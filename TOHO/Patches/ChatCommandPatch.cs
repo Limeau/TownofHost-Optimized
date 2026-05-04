@@ -90,6 +90,23 @@ internal class ChatCommands
         }
         switch (args[0])
         {
+            case "/skip":
+                CustomSoundsManager.SkipSong();
+                Utils.SendMessage("Song skipped");
+                break;
+            case "/repeat":
+                CustomSoundsManager.ToggleRepeat();
+                Utils.SendMessage($"Repeat set to {CustomSoundsManager._repeatMode}");
+                break;
+            case "/stopsong":
+                Utils.SendMessage($"Stopped the song from playing");
+                CustomSoundsManager.StopAllSounds();
+                break;
+            case "/playsong":
+                Utils.SendMessage($"Started playing songs");
+                CustomSoundsManager.StopAllSounds();
+                CustomSoundsManager.MusicPlay();
+                break;
             case "/dump":
             case "/导出日志":
             case "/日志":

@@ -22,6 +22,8 @@ internal class ChangeRoleSettings
 {
     public static void Postfix(AmongUsClient __instance)
     {
+        CustomSoundsManager.StopAllSounds();
+        
         if (AmongUsClient.Instance.AmHost)
             SetUpRoleTextPatch.IsInIntro = true;
 

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
 using TOHO.Modules;
+using UnityEngine;
 using LogLevel = BepInEx.Logging.LogLevel;
 
 namespace TOHO;
@@ -49,6 +50,20 @@ class Logger
     {
         if (!IsEnable) return;
         if (DestroyableSingleton<HudManager>._instance) DestroyableSingleton<HudManager>.Instance.Notifier.AddDisconnectMessage(text);
+    }
+    public static void SendInGameMusic(string text)
+    {
+        if (!IsEnable) return;
+        if (DestroyableSingleton<HudManager>._instance)
+        {
+            var oldcolor = DestroyableSingleton<HudManager>.Instance.Notifier.disconnectColor;
+            var oldsprite = DestroyableSingleton<HudManager>.Instance.Notifier.playerDisconnectSprite;
+            DestroyableSingleton<HudManager>.Instance.Notifier.disconnectColor = new Color(74, 174, 226);
+            DestroyableSingleton<HudManager>.Instance.Notifier.playerDisconnectSprite = Utils.LoadSprite("TOHO.Resources.Images.MusicIcon.png", (DestroyableSingleton<HudManager>.Instance.Notifier.playerDisconnectSprite.pixelsPerUnit * 5));
+            DestroyableSingleton<HudManager>.Instance.Notifier.AddDisconnectMessage($"<color=#4aaee2>Current song: <b>{text}</b></color>");
+            DestroyableSingleton<HudManager>.Instance.Notifier.disconnectColor = oldcolor;
+            DestroyableSingleton<HudManager>.Instance.Notifier.playerDisconnectSprite = oldsprite;
+        }
     }
     private static void SendToFile(string text, LogLevel level = LogLevel.Info, string tag = "", bool escapeCRLF = true, int lineNumber = 0, string fileName = "", bool multiLine = false)
     {
