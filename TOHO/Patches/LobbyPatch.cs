@@ -5,6 +5,7 @@ using Il2CppSystem.IO;
 using TMPro;
 using TOHO.Modules;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TOHO.Patches;
 
@@ -29,6 +30,7 @@ public class LobbyStartPatch
             SoundManager.Instance.StopNamedSound("MapTheme");
             CustomSoundsManager.MusicPlay();
         }
+        
         float waitTime = 0f;
         if (FirstDecorationsLoad)
             waitTime = 0.25f;
@@ -95,7 +97,9 @@ public class LobbyBehaviourPatch
 {
     [HarmonyPatch(nameof(LobbyBehaviour.Update)), HarmonyPostfix]
     public static void Update_Postfix(LobbyBehaviour __instance)
-    { } 
+    {
+        if (Main.DisableLobbyMusic.Value || Directory.GetFiles(@$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/music/", "*.wav").Count != 0) SoundManager.Instance.StopNamedSound("MapTheme");
+    } 
 }
 [HarmonyPatch(typeof(HostInfoPanel), nameof(HostInfoPanel.SetUp))]
 public static class HostInfoPanelUpdatePatch
