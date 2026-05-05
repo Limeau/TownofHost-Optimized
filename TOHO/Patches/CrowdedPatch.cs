@@ -379,7 +379,7 @@ internal static class Crowded
         {
             if (Options.PostToDiscord.GetBool()) try {
                 string contentText =
-                    $"Code: {GameCode.IntToGameName(AmongUsClient.Instance.GameId)}\nRegion: ({Utils.GetRegionName()})\nVersion: TOHO v{Main.PluginDisplayVersion + Main.PluginDisplaySuffix}\nHost FC: {PlayerControl.LocalPlayer.FriendCode}\nPlayers: {GameData.Instance.PlayerCount}/{GameOptionsManager.Instance.GameHostOptions.MaxPlayers}\n";
+                    $"Code: {GameCode.IntToGameName(AmongUsClient.Instance.GameId)}\nRegion: ({Utils.GetRegionName().RemoveHtmlTags()})\nVersion: TOHO v{Main.PluginDisplayVersion + Main.PluginDisplaySuffix}\nHost FC: {PlayerControl.LocalPlayer.FriendCode}\nPlayers: {GameData.Instance.PlayerCount}/{GameOptionsManager.Instance.GameHostOptions.MaxPlayers}\n";
 
                 if (GameStates.IsInGame) contentText += "State: In Game";
                 if (GameStates.IsLobby) contentText += "State: In Lobby";
