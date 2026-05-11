@@ -94,10 +94,6 @@ internal class ChatCommands
                 CustomSoundsManager.SkipSong();
                 Utils.SendMessage("Song skipped");
                 break;
-            case "/repeat":
-                CustomSoundsManager.ToggleRepeat();
-                Utils.SendMessage($"Repeat set to {CustomSoundsManager._repeatMode}");
-                break;
             case "/stopsong":
                 Utils.SendMessage($"Stopped the song from playing");
                 CustomSoundsManager.StopAllSounds();

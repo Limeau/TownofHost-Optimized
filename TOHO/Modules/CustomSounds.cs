@@ -39,117 +39,27 @@ public static class CustomSoundsManager
     
     private static bool _musicPlaying;
     
-    public static bool _repeatMode = false;
-    public static void ToggleRepeat() => _repeatMode = !_repeatMode;
-    public static int i;
     public static string songname;
     
-    private static CancellationTokenSource _musicCts;
     public static void SkipSong()
     {
-        _musicCts?.Cancel(); // kill current loop
-
         StopAllSounds();
-
-        i++;
-        _musicPlaying = false;
 
         MusicPlay(); // start fresh loop
     }
 
-    public static int GetWavDurationMs(string path)
-    {
-        using var fs = new FileStream(path, FileMode.Open, FileAccess.Read); 
-        using var br = new BinaryReader(fs);
-
-    // RIFF header
-        string riff = new string(br.ReadChars(4));
-        if (riff != "RIFF") throw new InvalidDataException("Not a RIFF file");
-
-        br.ReadInt32(); // file size
-
-        string wave = new string(br.ReadChars(4));
-        if (wave != "WAVE") throw new InvalidDataException("Not a WAVE file");
-
-        int sampleRate = 0;
-        short bitsPerSample = 0;
-        short channels = 0;
-        int dataSize = 0;
-
-    // Walk chunks
-        while (fs.Position < fs.Length)
-        {
-            string chunkId = new string(br.ReadChars(4));
-            int chunkSize = br.ReadInt32();
-
-            switch (chunkId)
-            {
-                case "fmt ":
-                    short audioFormat = br.ReadInt16();
-                    channels = br.ReadInt16();
-                    sampleRate = br.ReadInt32();
-                    br.ReadInt32(); // byte rate
-                    br.ReadInt16(); // block align
-                    bitsPerSample = br.ReadInt16();
-
-                // Skip any extra fmt bytes
-                    if (chunkSize > 16)
-                        br.ReadBytes(chunkSize - 16);
-                    break;
-
-                case "data":
-                    dataSize = chunkSize;
-                // We don’t need to read the actual audio data
-                    fs.Position += chunkSize;
-                    break;
-
-                default:
-                    // Skip unknown chunks (LIST, fact, etc.)
-                    fs.Position += chunkSize;
-                    break;
-            }
-            if ((chunkSize & 1) == 1) fs.Position++;
-        }
-
-        if (sampleRate == 0 || bitsPerSample == 0 || channels == 0 || dataSize == 0)
-            throw new InvalidDataException("Invalid WAV file");
-
-        int bytesPerSample = (bitsPerSample / 8) * channels;
-        double durationSeconds = (double)dataSize / (sampleRate * bytesPerSample);
-
-        return (int)(durationSeconds * 1000);
-    }
-    
-    public static async Task PlaySong(string[] files, CancellationToken token)
+   
+    public static async Task PlaySong(string[] files)
     {
         try
         {
-            while (!token.IsCancellationRequested)
-            {
-                if (files.Length == 0) return;
+            if (files.Length == 0) return;
 
-                if (i >= files.Length) i = 0;
+            var path = files.RandomElement();
 
-                var path = files[i];
-
-                StartPlay(path);
-                songname = Path.GetFileNameWithoutExtension(path);
-                Logger.SendInGameMusic($"{songname}");
-
-                int length = GetWavDurationMs(path);
-
-                if (!_repeatMode)
-                {
-                    i++;
-                    if (i >= files.Length) i = 0;
-                }
-
-                await Task.Delay(length, token);
-
-                StopAllSounds();
-                
-                await Task.Delay(50, token);
-            }
+            StartPlay(path);
+            songname = Path.GetFileNameWithoutExtension(path);
+            Logger.SendInGameMusic($"{songname}");
         }
         catch (TaskCanceledException) { }
         catch (Exception ex)
@@ -168,7 +78,6 @@ public static class CustomSoundsManager
             return;
 
         _musicPlaying = true;
-        _musicCts = new CancellationTokenSource();
 
         var files = Directory.GetFiles(MUSIC_PATH, "*.wav");
         if (files.Length == 0)
@@ -180,9 +89,7 @@ public static class CustomSoundsManager
 
         Array.Sort(files);
 
-        if (i >= files.Length || i < 0)
-            i = 0;
-        await PlaySong(files, _musicCts.Token);
+        await PlaySong(files);
     }
     
     public static void Play(string sound)
@@ -211,6 +118,8 @@ public static class CustomSoundsManager
     }
 #if ANDROID
     private static void StartPlay(string _) {  }
+    public static void StopAllSounds() {  }
+    public static void PlaySound(string _, int __, int ___) {  }
 #else
     [DllImport("winmm.dll", CharSet = CharSet.Unicode)]
     private static extern bool PlaySound(string Filename, int Mod, int Flags);
