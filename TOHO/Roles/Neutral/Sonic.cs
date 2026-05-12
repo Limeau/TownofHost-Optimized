@@ -42,10 +42,12 @@ internal class Sonic : RoleBase
         InShapeshift = true;
         var tmpSpeed = Main.AllPlayerSpeed[shapeshifter.PlayerId];
         Main.AllPlayerSpeed[shapeshifter.PlayerId] = SonicKillCooldown.GetFloat();
+        shapeshifter.MarkDirtySettings();
         new LateTask(() =>
         {
             InShapeshift = false;
-            Main.AllPlayerSpeed[shapeshifter.PlayerId] = tmpSpeed;
+            Main.AllPlayerSpeed[shapeshifter.PlayerId] = tmpSpeed; 
+            shapeshifter.MarkDirtySettings();
         }, SonicDashDuration.GetFloat(), "Sonic");
     }
 
