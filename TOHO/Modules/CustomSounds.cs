@@ -36,9 +36,7 @@ public static class CustomSoundsManager
 
     private static readonly string SOUNDS_PATH = @$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/";
     private static readonly string MUSIC_PATH = @$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/music/";
-    
-    private static bool _musicPlaying;
-    
+        
     public static string songname;
     
     public static void SkipSong()
@@ -65,7 +63,6 @@ public static class CustomSoundsManager
         catch (Exception ex)
         {
             Logger.Error($"Music loop crashed: {ex}", "CustomSounds");
-            _musicPlaying = false;
         }
     }
     
@@ -74,16 +71,12 @@ public static class CustomSoundsManager
         if (OperatingSystem.IsAndroid()) return;
         if (!Constants.ShouldPlaySfx() || !Main.EnableCustomSoundEffect.Value) return;
 
-        if (_musicPlaying)
-            return;
 
-        _musicPlaying = true;
 
         var files = Directory.GetFiles(MUSIC_PATH, "*.wav");
         if (files.Length == 0)
         {
             Logger.Warn("No .wav files found in music folder", "CustomSounds");
-            _musicPlaying = false;
             return;
         }
 
@@ -126,7 +119,6 @@ public static class CustomSoundsManager
     private static void StartPlay(string path) => PlaySound(@$"{path}", 0, 1); //第3个形参，把1换为9，连续播放
     public static void StopAllSounds()
     {
-        _musicPlaying = false;
         PlaySound(null, 0, 0x40);
     }
 #endif
