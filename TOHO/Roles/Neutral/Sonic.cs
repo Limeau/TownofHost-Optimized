@@ -1,4 +1,5 @@
-﻿using TOHO.Roles.Core;
+﻿using AmongUs.GameOptions;
+using TOHO.Roles.Core;
 using static TOHO.Options;
 namespace TOHO.Roles.Neutral;
 
@@ -56,6 +57,12 @@ internal class Sonic : RoleBase
             return false;
         }
         else return true;
+    }
+    public override void ApplyGameOptions(IGameOptions opt, byte playerId)
+    {
+        AURoleOptions.ShapeshifterCooldown = SonicSSCooldown.GetFloat();
+        AURoleOptions.ShapeshifterDuration = 1f;
+        base.ApplyGameOptions(opt, playerId);
     }
 
     public override bool CanUseKillButton(PlayerControl pc) => true;
