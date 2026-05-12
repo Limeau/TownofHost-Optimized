@@ -233,6 +233,7 @@ public static class CustomRolesHelper
             CustomRoles.Mutant or
             CustomRoles.Blade or
             CustomRoles.Abzorbaloff or
+            CustomRoles.Sonic or
             CustomRoles.Prototype or
             CustomRoles.ShadowKing or
             CustomRoles.Hacker or
@@ -1504,8 +1505,9 @@ public static class CustomRolesHelper
            CustomRoles.Vaporizer => CountTypes.Vaporizer,
            CustomRoles.TraineeB => CountTypes.Trainee,
            CustomRoles.Mutant => CountTypes.Mutant,
-           CustomRoles.Blade => CountTypes.Blade,           
+           CustomRoles.Blade => CountTypes.Blade,
            CustomRoles.Abzorbaloff => CountTypes.Abzorbaloff,
+           CustomRoles.Sonic => CountTypes.Sonic,
            CustomRoles.Prototype => CountTypes.Prototype,
            CustomRoles.ShadowKing => CountTypes.ShadowKing,
            CustomRoles.Atoner => CountTypes.Atoner,
@@ -1591,6 +1593,7 @@ public static class CustomRolesHelper
             CustomRoles.Mutant => CustomWinner.Mutant,
             CustomRoles.Blade => CustomWinner.Blade,
             CustomRoles.Abzorbaloff => CustomWinner.Abzorbaloff,
+            CustomRoles.Sonic => CustomWinner.Sonic,
             CustomRoles.Prototype => CustomWinner.Prototype,
             CustomRoles.ShadowKing => CustomWinner.ShadowKing,
             CustomRoles.Atoner => CustomWinner.Atoner,
@@ -1653,6 +1656,7 @@ public static class CustomRolesHelper
             CountTypes.Mutant => CustomRoles.Mutant,
             CountTypes.Blade => CustomRoles.Blade,
             CountTypes.Abzorbaloff => CustomRoles.Abzorbaloff,
+            CountTypes.Sonic => CustomRoles.Sonic,
             CountTypes.Prototype => CustomRoles.Prototype,
             CountTypes.ShadowKing => CustomRoles.ShadowKing,
             CountTypes.Atoner => CustomRoles.Atoner,
@@ -1778,5 +1782,6 @@ public enum CountTypes
     Slaad,
     Shade,
     Abzorbaloff,
+    Sonic,
     Prototype
 }

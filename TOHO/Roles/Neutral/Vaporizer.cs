@@ -27,5 +27,10 @@ internal class Vaporizer : RoleBase
         return false;
     }
 
+    public override void SetKillCooldown(byte id)
+    {
+        Main.AllPlayerKillCooldown[id] = VaporizerKillCooldown.GetFloat();
+    }
+
     public override bool CanUseKillButton(PlayerControl pc) => true;
 }

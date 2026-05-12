@@ -5064,7 +5064,11 @@
   "TraineeInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete.",
   "TraineeB": "Trainee",
   "TraineeBInfo": "Complete tasks, then kill",
-  "TraineeBInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete."
+  "TraineeBInfoLong": "As the Trainee, you have tasks. When you complete all of your tasks, you can kill players. Kill everyone to win.\n\nYou can only win after tasks are complete.",
+
+  "Sonic": "Sonic",
+  "SonicInfo": "You are faster on demand",
+  "SonicInfoLong": "As the Sonic, you can Unshift to be faster for a short amount of time. You will also be immune to any attack."
 }
 
 

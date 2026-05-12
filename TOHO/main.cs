@@ -990,6 +990,7 @@ public enum CustomRoles
     Slayer,
     Skeleton,
     Solsticer,
+    Sonic,
     Sorcerer,
     SoulCollector,
     Specter,
@@ -1270,7 +1271,8 @@ public enum CustomWinner
     Abzorbaloff = CustomRoles.Abzorbaloff,
     Entity = CustomRoles.Entity,
     Communist = CustomRoles.Communist,
-    Prototype = CustomRoles.Prototype
+    Prototype = CustomRoles.Prototype,
+    Sonic = CustomRoles.Sonic,
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners
