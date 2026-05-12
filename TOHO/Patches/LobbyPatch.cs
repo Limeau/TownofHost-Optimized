@@ -25,7 +25,9 @@ public class LobbyStartPatch
     }
     public static void Postfix(LobbyBehaviour __instance)
     {
-        if (Main.DisableLobbyMusic.Value || Directory.GetFiles(@$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/music/", "*.wav").Count != 0)
+        if (!Directory.Exists(@$"/BepInEx/resources/music/")) Directory.CreateDirectory(@$"/BepInEx/resources/music/");
+
+        if (Main.DisableLobbyMusic.Value && Directory.GetFiles(@$"/BepInEx/resources/music/", "*.wav").Count != 0)
         {
             SoundManager.Instance.StopNamedSound("MapTheme");
             CustomSoundsManager.MusicPlay();
