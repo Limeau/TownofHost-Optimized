@@ -26,8 +26,8 @@ internal class Sonic : RoleBase
             .SetValueFormat(OptionFormat.Seconds);
         SonicDashDuration = FloatOptionItem.Create(Id + 3, GeneralOption.AbilityDuration, new(1f, 60f, 1f), 20f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Sonic])
             .SetValueFormat(OptionFormat.Seconds);
-        SonicSpeedIncrease = FloatOptionItem.Create(Id + 4, "SpeedIncrease416", new(1f, 60f, 1f), 10f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Sonic])
-            .SetValueFormat(OptionFormat.Seconds);
+        SonicSpeedIncrease = FloatOptionItem.Create(Id + 4, "SpeedIncrease416", new(2f, 5f, 0.25f), 3f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Sonic])
+            .SetValueFormat(OptionFormat.Multiplier);
         SonicSSCooldown = FloatOptionItem.Create(Id + 5, GeneralOption.AbilityCooldown, new(1f, 60f, 1f), 10f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Sonic])
             .SetValueFormat(OptionFormat.Seconds);
     }
