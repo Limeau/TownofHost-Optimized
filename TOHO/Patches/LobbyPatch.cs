@@ -23,17 +23,21 @@ public class LobbyStartPatch
         LobbyPaintSprite = Utils.LoadSprite("TOHO.Resources.Images.LobbyPaint.png", 290f);
         DropshipDecorationsSprite = Utils.LoadSprite("TOHO.Resources.Images.TOHO_decor.png", 60f);
     }
+
     public static void Postfix(LobbyBehaviour __instance)
     {
-        if (!Directory.Exists(@$"/BepInEx/resources/music/")) Directory.CreateDirectory(@$"/BepInEx/resources/music/");
+        if (!Directory.Exists(@$"\TOHO-DATA\music\")) Directory.CreateDirectory(@$"\TOHO-DATA\music\");
 
-        if (Main.DisableLobbyMusic.Value && Directory.GetFiles(@$"/BepInEx/resources/music/", "*.wav").Count != 0)
+        if (Main.DisableLobbyMusic.Value && Directory.Exists(@$"\TOHO-DATA\music\"))
         {
-            SoundManager.Instance.StopNamedSound("MapTheme");
-            CustomSoundsManager.MusicPlay();
+            if (Directory.GetFiles(@$"\TOHO-DATA\music\", "*.wav").Count != 0)
+            { 
+                SoundManager.Instance.StopNamedSound("MapTheme");
+                CustomSoundsManager.MusicPlay();
+            }
         }
-        
-        float waitTime = 0f;
+
+    float waitTime = 0f;
         if (FirstDecorationsLoad)
             waitTime = 0.25f;
         else
@@ -100,7 +104,8 @@ public class LobbyBehaviourPatch
     [HarmonyPatch(nameof(LobbyBehaviour.Update)), HarmonyPostfix]
     public static void Update_Postfix(LobbyBehaviour __instance)
     {
-        if (Main.DisableLobbyMusic.Value || Directory.GetFiles(@$"{Environment.CurrentDirectory.Replace(@"\", "/")}/BepInEx/resources/music/", "*.wav").Count != 0) SoundManager.Instance.StopNamedSound("MapTheme");
+        if (!Directory.Exists(@$"TOHO-DATA\music\")) Directory.CreateDirectory(@$"TOHO-DATA\music\");
+        if (Main.DisableLobbyMusic.Value || Directory.GetFiles(@$"TOHO-DATA\music\", "*.wav").Count != 0) SoundManager.Instance.StopNamedSound("MapTheme");
     } 
 }
 [HarmonyPatch(typeof(HostInfoPanel), nameof(HostInfoPanel.SetUp))]
