@@ -5080,7 +5080,14 @@
   "CanBeScientist417": "Lab Rat can be Scientist",
   "CanBeTracker417": "Lab Rat can be Tracker",
   "CanBeNoisemaker417": "Lab Rat can be Noisemaker",
-  "CanBeDetective417": "Lab Rat can be Detective"
+  "CanBeDetective417": "Lab Rat can be Detective",
+
+  "Ragnarok": "Ragnarok",
+  "RagnarokInfo": "Blind players & target Valhalla",
+  "RagnarokInfoLong": "The Ragnarok can use the Unshift button to blind everyone for a certain amount of time. When the blindness is over, one random player will receive the Valhalla modifier.\nWhen the Ragnarok kills the Valhalla, their cooldown will not be reset.",
+  "Valhalla": "Valhalla",
+  "ValhallaInfo": "Target of Ragnarok",
+  "ValhallaInfoLong": "When the Ragnarok kills you, they will not have their cooldown reset."
 }
 
 

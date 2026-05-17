@@ -767,6 +767,7 @@ public enum CustomRoles
     Propagandist,
     Puppeteer,
     QuickShooter,
+    Ragnarok,
     Reckless,
     Refugee,
     Rich,
@@ -1162,6 +1163,7 @@ public enum CustomRoles
     Underclocked,
     Unlucky,
     Unreportable, //disregarded
+    Valhalla,
     VoidBallot,
     Watcher,
     Windy,
