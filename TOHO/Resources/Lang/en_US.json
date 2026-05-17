@@ -5087,7 +5087,13 @@
   "RagnarokInfoLong": "The Ragnarok can use the Unshift button to blind everyone for a certain amount of time. When the blindness is over, one random player will receive the Valhalla modifier.\nWhen the Ragnarok kills the Valhalla, their cooldown will not be reset.",
   "Valhalla": "Valhalla",
   "ValhallaInfo": "Target of Ragnarok",
-  "ValhallaInfoLong": "When the Ragnarok kills you, they will not have their cooldown reset."
+  "ValhallaInfoLong": "When the Ragnarok kills you, they will not have their cooldown reset.",
+  
+  "Overthinker": "Overthinker",
+  "OverthinkerInfo": "You know too much",
+  "OverthinkerInfoLong": "On each meeting, the Overthinker knows where each player was 10 seconds ago.",
+  "OverthinkerMaxUses": "Overthinker ability uses",
+  "OverthinkerMeetingTitle": "OVERTHINKER INFORMATION"
 }
 
 

@@ -868,6 +868,7 @@ public enum CustomRoles
     Observer,
     Oracle,
     Overseer,
+    Overthinker,
     Pacifist,
     Phantasm,
     Plumber,
