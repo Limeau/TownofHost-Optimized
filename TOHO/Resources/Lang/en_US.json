@@ -5071,7 +5071,16 @@
   "SonicInfoLong": "As the Sonic, you can Unshift to be faster for a short amount of time. You will also be immune to any attack.",
   "SpeedIncrease416": "Sonic speed increase",
   
-  "PresetButton": "Game Mode"
+  "PresetButton": "Game Mode",
+  
+  "LabRat": "Lab Rat",
+  "LabRatInfo": "Your basis changes!",
+  "LabRatInfoLong": "Every meeting, your role basis changes. Your basis could be:\n\nEngineer basis\nScientist basis\nTracker basis\nNoisemaker basis\nDetective basis",
+  "CanBeEngineer417": "Lab Rat can be Engineer",
+  "CanBeScientist417": "Lab Rat can be Scientist",
+  "CanBeTracker417": "Lab Rat can be Tracker",
+  "CanBeNoisemaker417": "Lab Rat can be Noisemaker",
+  "CanBeDetective417": "Lab Rat can be Detective"
 }
 
 
