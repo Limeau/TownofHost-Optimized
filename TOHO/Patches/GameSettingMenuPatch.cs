@@ -40,6 +40,24 @@ public class GameSettingMenuPatch
             CustomGameMode.CandR => Enum.GetValues<TabGroup>().Skip(3).ToArray(),
             _ => []
         };
+        
+        var presetButton = __instance.GamePresetsButton;
+        var pos = presetButton.transform.localPosition;
+        pos = __instance.GamePresetsButton.transform.parent.parent.FindChild("GameSettingsLabel").transform.localPosition;
+        pos.x = 2.4f;
+        pos.y = -2.5f;
+        pos.z = -5f;
+        presetButton.transform.localPosition = pos;
+        
+        var plabel = presetButton.GetComponentInChildren<TextMeshPro>();
+        plabel.DestroyTranslator();
+        plabel.fontStyle = FontStyles.UpperCase;
+        plabel.text = "<color=#ffffff>" + GetString("PresetButton") + "</color>";
+        presetButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+        presetButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+        presetButton.selectedSprites.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+        presetButton.transform.localScale = ButtonSize;
+        presetButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => __instance.ChangeTab(1, false)));
 
         // https://gyazo.com/a8f6ec93e44eca8e6febb7d2e91c3750 So much empy space, I think this definetevly calls for HnS roles 😼
 
@@ -85,7 +103,8 @@ public class GameSettingMenuPatch
         ModSettingsTabs = [];
         foreach (var tab in EnumHelper.GetAllValues<TabGroup>())
         {
-            var setTab = Object.Instantiate(TemplateGameOptionsMenu, __instance.GameSettingsTab.transform.parent);
+            GameOptionsMenu setTab;
+            setTab = Object.Instantiate(TemplateGameOptionsMenu, __instance.GameSettingsTab.transform.parent);
             setTab.name = "tab_" + tab;
             setTab.gameObject.SetActive(false);
 
@@ -107,8 +126,6 @@ public class GameSettingMenuPatch
     }
     private static void SetDefaultButton(GameSettingMenu __instance)
     {
-        __instance.GamePresetsButton.gameObject.SetActive(false);
-
         var gameSettingButton = __instance.GameSettingsButton;
         gameSettingButton.transform.localPosition = new(-3f, -0.5f, 0f);
 
@@ -175,7 +192,7 @@ public class GameSettingMenuPatch
         (PLabel.fontSizeMax, PLabel.fontSizeMin) = (size, size);
 
         var TempMinus = GameObject.Find("MinusButton").gameObject;
-        var GMinus = Object.Instantiate(__instance.GamePresetsButton.gameObject, preset.transform);
+        var GMinus = Object.Instantiate(__instance.RoleSettingsButton.gameObject, preset.transform);
         GMinus.gameObject.SetActive(true);
         GMinus.transform.localScale = new Vector3(0.08f, 0.4f, 1f);
 
@@ -350,6 +367,189 @@ public class GameSettingMenuPatch
             }
         }
 
+        if (tabNum == 1)
+        {
+            if (__instance.PresetsTab.transform.Find("CustomStandardButton") != null)
+                return true;
+            
+            var original = __instance.PresetsTab.StandardPresetButton.gameObject;
+
+            //Standard
+            var standard = Object.Instantiate(original, original.transform.parent);
+            standard.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            standard.name = "CustomStandardButton";
+            standard.SetActive(true);
+            var standardButton = standard.GetComponent<PassiveButton>();
+            var standardText = standard.FindChild<Transform>("ModeText");
+            var standardTMP = standardText.GetComponent<TextMeshPro>();
+            standardTMP.text = "Standard";
+            if (standardButton != null)
+            {
+                standardButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(0);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundsr = standard.AddComponent<SpriteRenderer>();
+            backgroundsr.sprite = Utils.LoadSprite("TOHO.Resources.Images.Standard.png", 150f);
+            backgroundsr.size = new Vector2(4.48f, 5.23f);
+            standard.transform.localPosition = new Vector3(-2.4f, 1f, 0f);
+            
+            //FFA
+            var ffa = Object.Instantiate(original, original.transform.parent);
+            ffa.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            ffa.SetActive(true);
+            var ffaButton = ffa.GetComponent<PassiveButton>();
+            var ffaText = ffa.FindChild<Transform>("ModeText");
+            var ffaTMP = ffaText.GetComponent<TextMeshPro>();
+            ffaTMP.text = "Free For All";
+            if (ffaButton != null)
+            {
+                ffaButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(1);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundffa = ffa.AddComponent<SpriteRenderer>();
+            backgroundffa.sprite = Utils.LoadSprite("TOHO.Resources.Images.FreeForAll.png", 150f);
+            backgroundffa.size = new Vector2(4.48f, 5.23f);
+            ffa.transform.localPosition = new Vector3(-0.8f, 1f, 0f);
+
+            //CandR
+            var candr = Object.Instantiate(original, original.transform.parent);
+            candr.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            candr.SetActive(true);
+            var candrButton = candr.GetComponent<PassiveButton>();
+            var candrText = candr.FindChild<Transform>("ModeText");
+            var candrTMP = candrText.GetComponent<TextMeshPro>();
+            candrTMP.text = "Cops and Robbers";
+            if (candrButton != null)
+            {
+                candrButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(2);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundcandr = candr.AddComponent<SpriteRenderer>();
+            backgroundcandr.sprite = Utils.LoadSprite("TOHO.Resources.Images.CopsAndRobbers.png", 150f);
+            backgroundcandr.size = new Vector2(4.48f, 5.23f);
+            candr.transform.localPosition = new Vector3(0.8f, 1f, 0f);
+
+            //Ultimate Team
+            var ultt = Object.Instantiate(original, original.transform.parent);
+            ultt.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            ultt.SetActive(true);
+            var ulttButton = ultt.GetComponent<PassiveButton>();
+            var ulttText = ultt.FindChild<Transform>("ModeText");
+            var ulttTMP = ulttText.GetComponent<TextMeshPro>();
+            ulttTMP.text = "Ultimate Team";
+            if (ulttButton != null)
+            {
+                ulttButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(3);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundultt = ultt.AddComponent<SpriteRenderer>();
+            backgroundultt.sprite = Utils.LoadSprite("TOHO.Resources.Images.UltimateTeam.png", 150f);
+            backgroundultt.size = new Vector2(4.48f, 5.23f);
+            ultt.transform.localPosition = new Vector3(2.4f, 1f, 0f);
+
+            //Four Corners
+            var frc = Object.Instantiate(original, original.transform.parent);
+            frc.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            frc.SetActive(true);
+            var frcButton = frc.GetComponent<PassiveButton>();
+            var frcText = frc.FindChild<Transform>("ModeText");
+            var frcTMP = frcText.GetComponent<TextMeshPro>();
+            frcTMP.text = "Four Corners";
+            if (frcButton != null)
+            {
+                frcButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(4);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundfrc = frc.AddComponent<SpriteRenderer>();
+            backgroundfrc.sprite = Utils.LoadSprite("TOHO.Resources.Images.FourCorners2.png", 150f);
+            backgroundfrc.size = new Vector2(4.48f, 5.23f);
+            frc.transform.localPosition = new Vector3(-2.4f, -1f, 0f);
+            
+            //Coming Soon 1
+            var cs1 = Object.Instantiate(original, original.transform.parent);
+            cs1.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            cs1.SetActive(true);
+            var cs1Button = cs1.GetComponent<PassiveButton>();
+            var cs1Text = cs1.FindChild<Transform>("ModeText");
+            var cs1TMP = cs1Text.GetComponent<TextMeshPro>();
+            cs1TMP.text = "Coming Soon";
+            if (cs1Button != null)
+            {
+                cs1Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(0);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundcs1 = cs1.AddComponent<SpriteRenderer>();
+            backgroundcs1.sprite = Utils.LoadSprite("TOHO.Resources.Images.ComingSoon.png", 150f);
+            backgroundcs1.size = new Vector2(4.48f, 5.23f);
+            cs1.transform.localPosition = new Vector3(-0.8f, -1f, 0f);
+            
+            //Coming Soon 2
+            var cs2 = Object.Instantiate(original, original.transform.parent);
+            cs2.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            cs2.SetActive(true);
+            var cs2Button = cs2.GetComponent<PassiveButton>();
+            var cs2Text = cs2.FindChild<Transform>("ModeText");
+            var cs2TMP = cs2Text.GetComponent<TextMeshPro>();
+            cs2TMP.text = "Coming Soon";
+            if (cs2Button != null)
+            {
+                cs2Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(0);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundcs2 = cs2.AddComponent<SpriteRenderer>();
+            backgroundcs2.sprite = Utils.LoadSprite("TOHO.Resources.Images.ComingSoon.png", 150f);
+            backgroundcs2.size = new Vector2(4.48f, 5.23f);
+            cs2.transform.localPosition = new Vector3(0.8f, -1f, 0f);
+            
+            //Coming Soon 3
+            var cs3 = Object.Instantiate(original, original.transform.parent);
+            cs3.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
+            cs3.SetActive(true);
+            var cs3Button = cs3.GetComponent<PassiveButton>();
+            var cs3Text = cs3.FindChild<Transform>("ModeText");
+            var cs3TMP = cs3Text.GetComponent<TextMeshPro>();
+            cs3TMP.text = "Coming Soon";
+            if (cs3Button != null)
+            {
+                cs3Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    Options.GameMode.SetValue(0);
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }));
+            }
+            var backgroundcs3 = cs3.AddComponent<SpriteRenderer>();
+            backgroundcs3.sprite = Utils.LoadSprite("TOHO.Resources.Images.ComingSoon.png", 150f);
+            backgroundcs3.size = new Vector2(4.48f, 5.23f);
+            cs3.transform.localPosition = new Vector3(2.4f, -1f, 0f);
+
+            //Disabling Others
+            __instance.PresetsTab.StandardPresetButton.gameObject.SetActive(false);
+            __instance.PresetsTab.SecondPresetButton.gameObject.SetActive(false);
+            __instance.PresetsTab.PresetDescriptionText.gameObject.SetActive(false);
+            return true;
+        }
+        
         if (tabNum < 3) return true;
 
         var tabGroupId = (TabGroup)(tabNum - 3);
