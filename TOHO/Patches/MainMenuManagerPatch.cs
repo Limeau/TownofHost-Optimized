@@ -91,9 +91,7 @@ public static class MainMenuManagerPatch
     private static PassiveButton discordButton;
     private static PassiveButton websiteButton;
     //private static PassiveButton patreonButton;
-
-    public static string BGpath => Path.Combine(Main.TohoData, "background.mp4");
-
+    
     [HarmonyPatch(nameof(MainMenuManager.Start)), HarmonyPostfix, HarmonyPriority(Priority.Normal)]
     public static void Start_Postfix(MainMenuManager __instance)
     {
@@ -124,47 +122,65 @@ public static class MainMenuManagerPatch
 
         leftPanel.gameObject.FindChild<SpriteRenderer>("Divider").enabled = false;
 
-        if (File.Exists(BGpath))
-        {
-            try
-            {
-                GameObject splashArt = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                splashArt.name = "SplashArt";
-                splashArt.transform.position = new Vector3(2f, 0f, 600f);
-                RenderTexture rt = new(512, 512, 0);
-                float videoWidth = rt.width;
-                float videoHeight = rt.height;
-                float aspect = videoWidth / videoHeight;
-                float desiredHeight = 3f * 1.818f;
-                float desiredWidth = 3f * aspect * 3.232f;
-                splashArt.transform.localScale = new Vector3(desiredWidth, desiredHeight, 1f);
-                VideoPlayer vp = splashArt.AddComponent<VideoPlayer>();
-                vp.url = Path.GetFullPath(BGpath);
-                vp.targetTexture = rt;
-                vp.isLooping = true;
-                vp.Play();
-                Renderer renderer = splashArt.GetComponent<Renderer>();
-                Material mat = new(Shader.Find("Unlit/Texture"));
-                mat.mainTexture = rt;
-                renderer.material = mat;
-            }
-            catch (Exception e)
-            {
-                Logger.Exception(e, "MainMenuVideo");
-            }
-        }
-
         if (template == null) return;
 
-        var PlayerParticles = GameObject.Find("PlayerParticles");
+        var playerParticles = GameObject.Find("PlayerParticles");
         var starfield = GameObject.Find("starfield");
-        if (PlayerParticles != null && File.Exists(BGpath))
+        playerParticles.SetActive(false);
+        starfield.SetActive(false);
+        
+        GameObject splashArt = new("SplashArt");
+        splashArt.SetActive(true);
+        splashArt.transform.position = new Vector3(2f, 0f, 600f);
+        RenderTexture rt = new(512, 512, 0);
+        SpriteRenderer menuBackground = splashArt.AddComponent<SpriteRenderer>();
+        if (DateTime.Now.Month == 1)
         {
-            PlayerParticles.SetActive(false);
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.January.jpg", 200f);
         }
-        if (starfield != null && File.Exists(BGpath))
+        if (DateTime.Now.Month == 2)
         {
-            starfield.SetActive(false);
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.February.jpg", 200f);
+        }
+        if (DateTime.Now.Month == 3)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.March.jpg", 70f);
+        }
+        if (DateTime.Now.Month == 4)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.April.jpg", 200f);
+        }
+        if (DateTime.Now.Month == 5)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.May.jpg", 1300f);
+        }
+        if (DateTime.Now.Month == 6)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.June.jpg", 70f);
+        }
+        if (DateTime.Now.Month == 7)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.July.jpg", 300f);
+        }
+        if (DateTime.Now.Month == 8)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.August.jpg", 70f);
+        }
+        if (DateTime.Now.Month == 9)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.September.jpg", 70f);
+        }
+        if (DateTime.Now.Month == 10)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.October.jpg", 200f);
+        }
+        if (DateTime.Now.Month == 11)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.November.jpg", 200f);
+        }
+        if (DateTime.Now.Month == 12)
+        {
+            menuBackground.sprite = Utils.LoadSprite("TOHO.Resources.Background.December.jpg", 70f);
         }
 
         // donation Button
