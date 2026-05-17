@@ -1134,6 +1134,7 @@ public enum CustomRoles
     Overclocked,
     Paranoia,
     Peacemaker,
+    Productive,
     Prohibited,
     Quota,
     Radar,

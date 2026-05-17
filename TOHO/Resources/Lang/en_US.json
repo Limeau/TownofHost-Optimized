@@ -5093,7 +5093,10 @@
   "OverthinkerInfo": "You know too much",
   "OverthinkerInfoLong": "On each meeting, the Overthinker knows where each player was 10 seconds ago.",
   "OverthinkerMaxUses": "Overthinker ability uses",
-  "OverthinkerMeetingTitle": "OVERTHINKER INFORMATION"
+  "OverthinkerMeetingTitle": "OVERTHINKER INFORMATION",
+  "Productive": "Productive",
+  "ProductiveInfo": "Get notified when a task is done",
+  "ProductiveInfoLong": "The Productive will receive a flash bang any time anyone does a task."
 }
 
 
