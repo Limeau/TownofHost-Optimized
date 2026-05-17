@@ -50,7 +50,7 @@ internal class Overthinker : RoleBase
             {
                 OverthinkerBackTrack[player2.PlayerId] = player2.GetPlainShipRoom();
             }
-        }, 10f, "Overthinker Positions");
+        }, 10f, "Overthinker Positions", shoudLog: false);
     }
 
     public override void OnMeetingHudStart(PlayerControl pc)
