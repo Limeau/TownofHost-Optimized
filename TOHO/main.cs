@@ -874,6 +874,7 @@ public enum CustomRoles
     Plumber,
     President,
     Protector,
+    Protester,
     Psychic,
     Retributionist,
     Reverie,

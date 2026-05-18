@@ -5096,7 +5096,13 @@
   "OverthinkerMeetingTitle": "OVERTHINKER INFORMATION",
   "Productive": "Productive",
   "ProductiveInfo": "Get notified when a task is done",
-  "ProductiveInfoLong": "The Productive will receive a flash bang any time anyone does a task."
+  "ProductiveInfoLong": "The Productive will receive a flash bang any time anyone does a task.",
+  
+  "Protester": "Protester",
+  "ProtesterInfo": "Kill Impostors by organizing groups!",
+  "ProtesterInfoLong": "If the Protester has a large number of people nearby, all of the players will kill any Impostors in the group. This will cause several bodies to spawn.",
+  "ProtestRadius": "Protest radius",
+  "MinPlayersProtest": "Minimum players to activate Protester ability"
 }
 
 
