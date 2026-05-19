@@ -873,6 +873,7 @@ public enum CustomRoles
     Phantasm,
     Plumber,
     President,
+    Prosecutor,
     Protector,
     Protester,
     Psychic,

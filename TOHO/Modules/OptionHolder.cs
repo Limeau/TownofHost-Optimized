@@ -177,6 +177,7 @@ public static class Options
     public static OptionItem FortuneTellerAbilityUseGainWithEachTaskCompleted;
     public static OptionItem SentinelAbilityUseGainWithEachTaskCompleted;
     public static OptionItem GrenadierAbilityUseGainWithEachTaskCompleted;
+    public static OptionItem ProsecutorAbilityUseGainWithEachTaskCompleted;
     public static OptionItem InspectorAbilityUseGainWithEachTaskCompleted;
     public static OptionItem LighterAbilityUseGainWithEachTaskCompleted;
     public static OptionItem MechanicAbilityUseGainWithEachTaskCompleted;

@@ -690,6 +690,18 @@ class CastVotePatch
             return false;
         } //Vote a disconnect Player
 
+        if (Prosecutor.IsInTrial && suspectPlayerId != Prosecutor.TrialPlayer.PlayerId)
+        {
+            if (suspectPlayerId == 253) return true;
+            Utils.SendMessage($"You may only vote for {Prosecutor.TrialPlayer.GetRealName().RemoveHtmlTags()}.", voter.PlayerId);
+            __instance.RpcClearVoteDelay(voter.GetClientId());
+            return false;
+        }
+        else if (Prosecutor.IsInTrial)
+        {
+            return true;
+        }
+        
         // Return Vote to Player if uses checkvote and wants to Vote normal without using his abilities
         if (suspectPlayerId == 253 && voter.GetRoleClass()?.IsMethodOverridden("CheckVote") == true)
         {

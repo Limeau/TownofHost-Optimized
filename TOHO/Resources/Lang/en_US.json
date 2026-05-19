@@ -5102,7 +5102,12 @@
   "ProtesterInfo": "Kill Impostors by organizing groups!",
   "ProtesterInfoLong": "If the Protester has a large number of people nearby, all of the players will kill any Impostors in the group. This will cause several bodies to spawn.",
   "ProtestRadius": "Protest radius",
-  "MinPlayersProtest": "Minimum players to activate Protester ability"
+  "MinPlayersProtest": "Minimum players to activate Protester ability",
+  
+  "Prosecutor": "Prosecutor",
+  "ProsecutorInfo": "Put players on the spot!",
+  "ProsecutorInfoLong": "The Prosecutor can vote a player, and everyone's votes are immediately returned.\nEach player can either vote Skip or the player that was voted. They cannot vote for anyone else.\nVote Skip to vote normally.",
+  "ProsecutorAbilityUses": "Prosecutor ability uses"
 }
 
 
