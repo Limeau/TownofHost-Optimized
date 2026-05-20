@@ -488,7 +488,7 @@ public class GameSettingMenuPatch
             var cs1Button = cs1.GetComponent<PassiveButton>();
             var cs1Text = cs1.FindChild<Transform>("ModeText");
             var cs1TMP = cs1Text.GetComponent<TextMeshPro>();
-            cs1TMP.text = "Coming Soon";
+            cs1TMP.text = "King of the Hill";
             if (cs1Button != null)
             {
                 cs1Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
@@ -498,7 +498,7 @@ public class GameSettingMenuPatch
                 }));
             }
             var backgroundcs1 = cs1.AddComponent<SpriteRenderer>();
-            backgroundcs1.sprite = Utils.LoadSprite("TOHO.Resources.Images.ComingSoon.png", 150f);
+            backgroundcs1.sprite = Utils.LoadSprite("TOHO.Resources.Images.KingOfTheHill.png", 150f);
             backgroundcs1.size = new Vector2(4.48f, 5.23f);
             cs1.transform.localPosition = new Vector3(-0.8f, -1f, 0f);
             

@@ -1712,7 +1712,7 @@ public static class Utils
                                                       : $"<color={GetString("HostColor")}>{GetString("HostText")}</color><color={GetString("IconColor")}>{GetString("Icon")}</color><color={GetString("NameColor")}>{name}</color>";
             }
             if (Options.CurrentGameMode == CustomGameMode.KOTH)
-                name = $"<color=#814395><size=1.7>{GetString("ModeKOTH")}</size></color>\r\n" + name;
+                name = $"<color=#bfa222><size=1.7>{GetString("ModeKOTH")}</size></color>\r\n" + name;
             if (Options.CurrentGameMode == CustomGameMode.FFA)
                 name = $"<color=#00ffff><size=1.7>{GetString("ModeFFA")}</size></color>\r\n" + name;
             else if (Options.CurrentGameMode == CustomGameMode.CandR)
