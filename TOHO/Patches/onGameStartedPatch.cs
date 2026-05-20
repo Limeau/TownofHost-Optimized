@@ -449,6 +449,12 @@ internal class StartGameHostPatch
                         pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch;
+                case CustomGameMode.KOTH:
+                    foreach (var pair in RoleAssign.RoleResult)
+                    {
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
+                    }
+                    goto EndOfSelectRolePatch;
                 case CustomGameMode.UltimateTeam:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
@@ -549,6 +555,9 @@ internal class StartGameHostPatch
                     break;
                 case CustomGameMode.FFA:
                     GameEndCheckerForNormal.SetPredicateToFFA();
+                    break;
+                case CustomGameMode.KOTH:
+                    GameEndCheckerForNormal.SetPredicateToKoth();
                     break;
                 case CustomGameMode.CandR:
                     GameEndCheckerForNormal.SetPredicateToCandR();

@@ -21,6 +21,7 @@ public static class CustomRolesHelper
     public static CustomRoles GetVNRole(this CustomRoles role) // RoleBase: Impostor, Shapeshifter, Crewmate, Engineer, Scientist
     {
         if (Options.CurrentGameMode is CustomGameMode.FFA && role is CustomRoles.Killer) return CustomRoles.Impostor;
+        if (Options.CurrentGameMode is CustomGameMode.KOTH && role is CustomRoles.KingOfTheHill) return CustomRoles.Impostor;
         
         //C&R
         if (Options.CurrentGameMode is CustomGameMode.CandR && role is CustomRoles.Robber) return CustomRoles.Engineer;
@@ -59,6 +60,9 @@ public static class CustomRolesHelper
         {
             case CustomGameMode.FFA: //FFA
                 if (role is CustomRoles.Killer) return RoleTypes.Impostor;
+                break;
+            case CustomGameMode.KOTH: //FFA
+                if (role is CustomRoles.KingOfTheHill) return RoleTypes.Impostor;
                 break;
             case CustomGameMode.CandR: //C&R
                 if (role is CustomRoles.Cop) return RoleTypes.Shapeshifter;

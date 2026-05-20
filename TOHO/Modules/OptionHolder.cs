@@ -19,6 +19,7 @@ public enum CustomGameMode
     FFA = 0x02,
     CandR = 0x03,
     UltimateTeam = 0x04,
+    KOTH = 0x05,
     FourCorners = 0x06,
     HidenSeekTOHO = 0x08, // HidenSeekTOHO must be after other Gamemodes
     All = int.MaxValue
@@ -58,7 +59,7 @@ public static class Options
             2 => CustomGameMode.CandR,
             3 => CustomGameMode.UltimateTeam,
             4 => CustomGameMode.FourCorners,
-            
+            5 => CustomGameMode.KOTH,
             9 => CustomGameMode.HidenSeekTOHO,
             _ => CustomGameMode.Standard
         };
@@ -69,6 +70,7 @@ public static class Options
             CustomGameMode.CandR => 2,
             CustomGameMode.UltimateTeam => 3,
             CustomGameMode.FourCorners => 4,
+            CustomGameMode.KOTH => 5,
             CustomGameMode.HidenSeekTOHO => 5, // HidenSeekTOHO must be after other Gamemodes
             _ => 0
         };
@@ -80,6 +82,7 @@ public static class Options
         "C&R",
         "UltimateTeam",
         "FourCorners",
+        "KOTH",
 
         "Hide&SeekTOHO", // HidenSeekTOHO must be after other Gamemodes
     ];
@@ -1374,6 +1377,7 @@ public static class Options
         #region Game Settings
         //FFA
         FFAManager.SetupCustomOption();
+        KOTH.SetupCustomOption();
 
         //C&R
         CopsAndRobbersManager.SetupCustomOption();

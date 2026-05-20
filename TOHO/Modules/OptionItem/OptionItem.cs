@@ -33,6 +33,8 @@ public abstract class OptionItem
     public CustomGameMode HideOptionInFFA { get; protected set; }
     public CustomGameMode HideOptionInCandR { get; protected set; }
     public CustomGameMode HideOptionInUltimate { get; protected set; }
+    public CustomGameMode HideOptionInFC { get; protected set; }
+    public CustomGameMode HideOptionInKOTH { get; protected set; }
     public CustomGameMode HideOptionInHnS { get; protected set; }
     public bool IsHeader { get; protected set; }
     public bool IsHidden { get; protected set; }
@@ -136,7 +138,8 @@ public abstract class OptionItem
     public OptionItem SetText(bool value) => Do(i => i.IsText = value);
     public OptionItem HideInFFA(CustomGameMode value = CustomGameMode.FFA) => Do(i => i.HideOptionInFFA = value);
     public OptionItem HideInUltimate(CustomGameMode value = CustomGameMode.UltimateTeam) => Do(i => i.HideOptionInUltimate = value);
-    public OptionItem HideInFC(CustomGameMode value = CustomGameMode.FourCorners) => Do(i => i.HideOptionInUltimate = value);
+    public OptionItem HideInFC(CustomGameMode value = CustomGameMode.FourCorners) => Do(i => i.HideOptionInFC = value);
+    public OptionItem HideInKOTH(CustomGameMode value = CustomGameMode.KOTH) => Do(i => i.HideOptionInKOTH = value);
     public OptionItem HideInCandR(CustomGameMode value = CustomGameMode.CandR) => Do(i => i.HideOptionInCandR = value); //C&R
     public OptionItem HideInHnS(CustomGameMode value = CustomGameMode.HidenSeekTOHO) => Do(i => i.HideOptionInHnS = value);
 

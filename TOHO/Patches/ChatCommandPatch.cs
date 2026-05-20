@@ -2111,6 +2111,9 @@ internal class ChatCommands
             case CustomGameMode.FFA:
                 Utils.SendMessage(GetString("ModeDescribe.FFA"), playerId);
                 return;
+            case CustomGameMode.KOTH:
+                Utils.SendMessage(GetString("ModeDescribe.KOTH"), playerId);
+                return;
             case CustomGameMode.UltimateTeam:
                 Utils.SendMessage(GetString("ModeDescribe.UltimateTeam"), playerId);
                 return;

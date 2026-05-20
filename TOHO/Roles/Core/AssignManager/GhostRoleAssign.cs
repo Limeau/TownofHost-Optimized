@@ -29,6 +29,7 @@ public static class GhostRoleAssign
             || Options.CurrentGameMode == CustomGameMode.CandR
             || Options.CurrentGameMode == CustomGameMode.UltimateTeam
             || Options.CurrentGameMode == CustomGameMode.FourCorners
+            || Options.CurrentGameMode == CustomGameMode.KOTH
             || player == null
             || player.Data == null
             || player.Data.Disconnected

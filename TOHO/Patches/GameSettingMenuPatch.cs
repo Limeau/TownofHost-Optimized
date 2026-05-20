@@ -35,6 +35,7 @@ public class GameSettingMenuPatch
         {
             CustomGameMode.HidenSeekTOHO => Enum.GetValues<TabGroup>().Skip(3).ToArray(),
             CustomGameMode.FFA => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
+            CustomGameMode.KOTH => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.UltimateTeam => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.FourCorners => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.CandR => Enum.GetValues<TabGroup>().Skip(3).ToArray(),
@@ -480,7 +481,7 @@ public class GameSettingMenuPatch
             backgroundfrc.size = new Vector2(4.48f, 5.23f);
             frc.transform.localPosition = new Vector3(-2.4f, -1f, 0f);
             
-            //Coming Soon 1
+            //King Of The Hill
             var cs1 = Object.Instantiate(original, original.transform.parent);
             cs1.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
             cs1.SetActive(true);
@@ -492,7 +493,7 @@ public class GameSettingMenuPatch
             {
                 cs1Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
                 {
-                    Options.GameMode.SetValue(0);
+                    Options.GameMode.SetValue(5);
                     GameOptionsMenuPatch.ReOpenSettings();
                 }));
             }

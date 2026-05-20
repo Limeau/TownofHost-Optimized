@@ -107,7 +107,7 @@ class OnGameJoinedPatch
                     Logger.Info(" Is Hide & Seek", "Game Mode");
 
                     // If custom Gamemode is Standard/FFA/C&R in H&S game, set HideNSeekTOHO
-                    if (Options.CurrentGameMode is CustomGameMode.Standard or CustomGameMode.FFA or CustomGameMode.CandR or CustomGameMode.FourCorners or CustomGameMode.UltimateTeam)
+                    if (Options.CurrentGameMode is CustomGameMode.Standard or CustomGameMode.FFA or CustomGameMode.KOTH or CustomGameMode.CandR or CustomGameMode.FourCorners or CustomGameMode.UltimateTeam)
                     {
                         // Select HideNSeekTOHO
                         Options.GameMode.SetValue(2);

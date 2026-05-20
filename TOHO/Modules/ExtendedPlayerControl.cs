@@ -1233,7 +1233,7 @@ static class ExtendedPlayerControl
         }
         if (!pc.IsAlive() || Pelican.IsEaten(pc.PlayerId) || DollMaster.IsDoll(pc.PlayerId)) return false;
         if (pc.GetClient().GetHashedPuid() == Main.FirstDiedPrevious && !Options.ShieldedCanUseKillButton.GetBool() && MeetingStates.FirstMeeting) return false;
-        if (pc.Is(CustomRoles.Killer) || pc.Is(CustomRoles.Red) || pc.Is(CustomRoles.Blue) || Mastermind.PlayerIsManipulated(pc)) return true;
+        if (pc.Is(CustomRoles.Killer) || pc.Is(CustomRoles.Red) || pc.Is(CustomRoles.Blue) || pc.Is(CustomRoles.KingOfTheHill) || Mastermind.PlayerIsManipulated(pc)) return true;
 
         var playerRoleClass = pc.GetRoleClass();
         if (playerRoleClass != null && playerRoleClass.CanUseKillButton(pc)) return true;
@@ -1309,6 +1309,10 @@ static class ExtendedPlayerControl
             case CustomGameMode.CandR:
                 if (player.Is(CustomRoles.Cop))
                     CopsAndRobbersManager.CaptureCooldown(player);
+                break;
+            case CustomGameMode.KOTH:
+                if (player.Is(CustomRoles.KingOfTheHill))
+                    KOTH.SetKillCooldown(player);
                 break;
             case CustomGameMode.UltimateTeam:
                 if (player.Is(CustomRoles.Red) || player.Is(CustomRoles.Blue))

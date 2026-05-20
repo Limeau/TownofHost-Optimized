@@ -1055,8 +1055,8 @@ public enum CustomRoles
     Red,
     Blue,
 
-    // Trick or Treat
-    
+    // KOTH
+    KingOfTheHill,
     // Four Corners
     FourCorners,
     
@@ -1280,6 +1280,7 @@ public enum CustomWinner
     Communist = CustomRoles.Communist,
     Prototype = CustomRoles.Prototype,
     Sonic = CustomRoles.Sonic,
+    KOTH = CustomRoles.KingOfTheHill
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

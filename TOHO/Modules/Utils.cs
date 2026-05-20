@@ -626,7 +626,7 @@ public static class Utils
         if (States.Disconnected) return false;
 
         if (Options.CurrentGameMode == CustomGameMode.FourCorners) return true;
-        if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.UltimateTeam) return false;
+        if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam) return false;
         if (playerData.IsDead && Options.GhostIgnoreTasks.GetBool()) hasTasks = false;
 
         if (GameStates.IsHideNSeek) return hasTasks;
@@ -715,6 +715,9 @@ public static class Utils
                     break;
                 case CustomGameMode.UltimateTeam:
                     ProgressText.Append(UltimateTeam.GetProgressText(playerId));
+                    break;
+                case CustomGameMode.KOTH:
+                    ProgressText.Append(KOTH.GetProgressText(playerId));
                     break;
                 case CustomGameMode.FourCorners:
                     ProgressText.Append(string.Empty);
@@ -1708,6 +1711,8 @@ public static class Utils
                 name = Options.HideHostText.GetBool() ? $"<color={GetString("NameColor")}>{name}</color>"
                                                       : $"<color={GetString("HostColor")}>{GetString("HostText")}</color><color={GetString("IconColor")}>{GetString("Icon")}</color><color={GetString("NameColor")}>{name}</color>";
             }
+            if (Options.CurrentGameMode == CustomGameMode.KOTH)
+                name = $"<color=#814395><size=1.7>{GetString("ModeKOTH")}</size></color>\r\n" + name;
             if (Options.CurrentGameMode == CustomGameMode.FFA)
                 name = $"<color=#00ffff><size=1.7>{GetString("ModeFFA")}</size></color>\r\n" + name;
             else if (Options.CurrentGameMode == CustomGameMode.CandR)

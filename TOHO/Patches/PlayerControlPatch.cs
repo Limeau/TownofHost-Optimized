@@ -213,6 +213,11 @@ class CheckMurderPatch
             FFAManager.OnPlayerAttack(killer, target);
             return false;
         }
+        if (Options.CurrentGameMode == CustomGameMode.KOTH)
+        {
+            KOTH.OnMurder(killer, target);
+            return false;
+        }
         //C&R
         if (Options.CurrentGameMode == CustomGameMode.CandR)
         {
@@ -769,7 +774,7 @@ class ReportDeadBodyPatch
             return false;
         }
         if (Options.DisableMeeting.GetBool()) return false;
-             if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
+        if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.KOTH or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
 
         if (!CanReport[__instance.PlayerId])
         {
@@ -1631,6 +1636,11 @@ class CoEnterVentPatch
         }
         
         if (Options.CurrentGameMode == CustomGameMode.FourCorners)
+        {
+            return false;
+        }
+        
+        if (Options.CurrentGameMode == CustomGameMode.KOTH)
         {
             return false;
         }

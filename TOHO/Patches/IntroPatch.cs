@@ -79,6 +79,7 @@ class CoBeginPatch
         RPC.RpcVersionCheck();
 
         FFAManager.SetData();
+        KOTH.SetData();
         CopsAndRobbersManager.SetData();
         UltimateTeam.SetData();
         FourCorners.SetData();
@@ -455,6 +456,13 @@ class BeginCrewmatePatch
                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                 __instance.ImpostorText.gameObject.SetActive(true);
                 __instance.ImpostorText.text = GetString("KillerInfo");
+                break;
+            case CustomGameMode.KOTH:
+                __instance.TeamTitle.text = GetString("KOTH"); ;
+                __instance.TeamTitle.color = __instance.BackgroundBar.material.color = new Color32(129, 67, 149, byte.MaxValue);
+                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
+                __instance.ImpostorText.gameObject.SetActive(true);
+                __instance.ImpostorText.text = GetString("KingOfTheHillInfo");
                 break;
             case CustomGameMode.CandR: //C&R
                 __instance.TeamTitle.text = $"<size=75%>{GetString("C&R")}</size>";
@@ -957,7 +965,7 @@ class IntroCutsceneDestroyPatch
                 {
                     pc.RpcResetAbilityCooldown();
 
-                    if (Options.FixFirstKillCooldown.GetBool() && Options.CurrentGameMode != CustomGameMode.FFA && Options.CurrentGameMode != CustomGameMode.UltimateTeam && Options.CurrentGameMode != CustomGameMode.FourCorners)
+                    if (Options.FixFirstKillCooldown.GetBool() && Options.CurrentGameMode != CustomGameMode.KOTH && Options.CurrentGameMode != CustomGameMode.FFA && Options.CurrentGameMode != CustomGameMode.UltimateTeam && Options.CurrentGameMode != CustomGameMode.FourCorners)
                     {
                         _ = new LateTask(() =>
                         {
@@ -1006,6 +1014,7 @@ class IntroCutsceneDestroyPatch
             bool chatVisible = Options.CurrentGameMode switch
             {
                 CustomGameMode.FFA => FFAManager.ShowChatInGame.GetBool(),
+                CustomGameMode.KOTH => KOTH.ShowChatInGame.GetBool(),
                 CustomGameMode.CandR => CopsAndRobbersManager.ShowChatInGame.GetBool(),
                 CustomGameMode.UltimateTeam => UltimateTeam.ShowChatInGame.GetBool(),
                 CustomGameMode.FourCorners => FourCorners.ShowChatInGame.GetBool(),
@@ -1014,6 +1023,7 @@ class IntroCutsceneDestroyPatch
             bool shouldAntiBlackOut = Options.CurrentGameMode switch
             {
                 CustomGameMode.FFA => FFAManager.ShowChatInGame.GetBool(),
+                CustomGameMode.KOTH => KOTH.ShowChatInGame.GetBool(),
                 CustomGameMode.CandR => CopsAndRobbersManager.ShowChatInGame.GetBool(),
                 CustomGameMode.UltimateTeam => UltimateTeam.ShowChatInGame.GetBool(),
                 CustomGameMode.FourCorners => FourCorners.ShowChatInGame.GetBool(),
