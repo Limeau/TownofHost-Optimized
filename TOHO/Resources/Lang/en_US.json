@@ -5117,7 +5117,12 @@
   "KingOfTheHillInfo": "Get the most points and be King of the Hill",
   "KingOfTheHillInfoLong": "In the King of the Hill game mode, one player can gain a point each second if they are standing alone in a randomly chosen room. The room will change throughout the game. Using your kill button, you can send players to the furthest vent from them. To win, be the first player to get the points required to win, or have the most points at the end of the game's timer.",
   "PointsToWin": "Points to win",
-  "TimeBeforeSwitch": "Time before rooms switch"
+  "TimeBeforeSwitch": "Time before rooms switch",
+  
+  "Lunger": "Lunger",
+  "LungerInfo": "Lunge to kill players!",
+  "LungerInfoLong": "As the Lunger, you cannot kill normally. Instead, you can use your unshift button to lunge into the direction you're walking. Everyone in the way dies. You have a normal kill cd. But if you dash while standing, you will dash into heaven (you just suicide).",
+  "LungerDistance": "Lunge Distance"
 }
 
 

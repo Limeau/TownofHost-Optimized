@@ -755,6 +755,7 @@ public enum CustomRoles
     KillingMachine,
     Lightning,
     Ludopath,
+    Lunger,
     Lurker,
     Magnet,
     Mastermind,
