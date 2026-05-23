@@ -367,7 +367,7 @@ internal static class Crowded
             {
                 if (!GameStates.IsLocalGame)
                 {
-                    var webhook = "https://discord.com/api/webhooks/1496569228227117117/3itQ4-9a-Tj5yEvvgPCksQUbIy7RxCxL_9WFYw82asJ6cwYSVuaJUvh2rossOBDeBzaI";
+                    var webhook = "https://discord.com/api/webhooks/1507787313382428855/M4VqHf5yOhUceSvph19ubfmgsCCSPrP74zoHOqYR9lGnKry0z7-3Ao3rwbMh6SWJH41Y";
 
                     Utils.SendMessage("", title: "The lobby code has been posted to the <color=#b47ede>TOHO Discord server</color>");
                     _ = Post(webhook);

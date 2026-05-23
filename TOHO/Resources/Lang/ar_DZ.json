@@ -3027,7 +3027,7 @@
   "CamouflageMode.OnlyRandomColor": "Only Random Color",
   "CamouflageMode.Karpe": "<color=#ffc0cb>KARPED1EM</color>",
   "CamouflageMode.Lauryn": "<color=#f0b6d5>Lauryn</color>",
-  "CamouflageMode.Lime": "<color=#ffb347>Lime</color>",
+  "CamouflageMode.Lime": "<color=#00ff00>Lime</color>",
   "CamouflageMode.Pyro": "<color=#ec7578>Pyro</color>",
   "CamouflageMode.ryuk": "<color=#9e2424>ryuk</color>",
   "CamouflageMode.Gurge44": "<color=#e9f7ff>Gurge44</color>",
@@ -4788,6 +4788,10 @@
   "ILoveEli": "i love eli",
   "ILoveEliInfo": "10/11/25",
   "ILoveEliInfoLong": "https://discord.gg/nertbaf",
+
+  "ExampleRole": "Example Role",
+  "ExampleRoleInfo": "How did you log in with my friend code?",
+  "ExampleRoleInfoLong": "Example custom Booster role given to Boosters of the TOHO server.\nJoin us if you havent already: https://discord.gg/vwEwwxc4Tq",
   
   "NeutralCanSeeEachOther": "Neutrals know each other's roles",
   

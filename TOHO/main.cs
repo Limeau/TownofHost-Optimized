@@ -1115,7 +1115,6 @@ public enum CustomRoles
     Guesser,
     Hurried,
     Identifier,
-    ILoveEli,
     Infected,
     Influenced,
     Knighted,
@@ -1179,7 +1178,11 @@ public enum CustomRoles
     Watcher,
     Windy,
     Workhorse,
-    Youtuber
+    Youtuber,
+    
+    // Custom Booster Roles
+    ILoveEli,
+    ExampleRole
 }
 //WinData
 [Obfuscation(Exclude = true)]

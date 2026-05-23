@@ -45,7 +45,9 @@ public static class ModifierAssign
         ModifierRolesList.Clear();
         foreach (var player in Main.AllPlayerControls)
         {
+            // Custom Booster Roles
             if (player.FriendCode == "logomere#7339") player.RpcSetCustomRole(CustomRoles.ILoveEli);
+            if (player.FriendCode == "tighttune#4221") player.RpcSetCustomRole(CustomRoles.ExampleRole);
         }
         foreach (var cr in CustomRolesHelper.AllRoles)
         {

@@ -1485,6 +1485,15 @@ internal class ChatCommands
                         Utils.SendMessage(string.Format(GetString("CoinFlipResult"), coinSide), PlayerControl.LocalPlayer.PlayerId);
                         break;
                     }
+                case "/verify":
+                    if (args[1] != "")
+                    {
+                         VerifyManager.Post(PlayerControl.LocalPlayer, args[1]);
+                         Utils.SendMessage("If you did not receive a ping, your Discord ID could not be found.\nMake sure you copied your Discord ID correctly. It should be a long number", PlayerControl.LocalPlayer.PlayerId);
+                    }
+                    else Utils.SendMessage("Make sure to add your Discord ID to the /verify statement, for example '/verify 1187637542812655616'", PlayerControl.LocalPlayer.PlayerId);
+                    break;
+                
                 case "/gno":
                 case "/猜数字":
                     if (!Options.CanPlayMiniGames.GetBool())

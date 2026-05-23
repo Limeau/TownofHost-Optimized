@@ -348,5 +348,6 @@
   "Protester": "#0c2e7d",
   "Prosecutor": "#cfeb34",
   "KingOfTheHill": "#bfa222",
-  "SecretAgent": "#29465e"
+  "SecretAgent": "#29465e",
+  "ExampleRole": "#00ff00"
 }

@@ -668,6 +668,11 @@ public static class StringOptionPatch
                 {
                     name += "    <color=#ff0000>★ NEW</color>";
                 }
+
+                if (role.GetStaticRoleClass().LikedRole != "")
+                {
+                    name += Utils.ColorString(Utils.GetRoleColor(role), $"\n<size=65%><i><b>{role.GetStaticRoleClass().LikedRole}</b> likes this role!</i></size>");
+                }
             }
             __instance.TitleText.text = name;
             return false;
