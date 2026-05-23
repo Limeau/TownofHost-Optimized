@@ -987,6 +987,7 @@ public enum CustomRoles
     Rulebook,
     RuthlessRomantic,
     SchrodingersCat,
+    SecretAgent,
     Seeker,
     SerialKiller,
     Shade,
@@ -1286,7 +1287,8 @@ public enum CustomWinner
     Communist = CustomRoles.Communist,
     Prototype = CustomRoles.Prototype,
     Sonic = CustomRoles.Sonic,
-    KOTH = CustomRoles.KingOfTheHill
+    KOTH = CustomRoles.KingOfTheHill,
+    SecretAgent = CustomRoles.SecretAgent
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

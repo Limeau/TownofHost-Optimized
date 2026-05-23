@@ -5122,7 +5122,13 @@
   "Lunger": "Lunger",
   "LungerInfo": "Lunge to kill players!",
   "LungerInfoLong": "As the Lunger, you cannot kill normally. Instead, you can use your unshift button to lunge into the direction you're walking. Everyone in the way dies. You have a normal kill cd. But if you dash while standing, you will dash into heaven (you just suicide).",
-  "LungerDistance": "Lunge Distance"
+  "LungerDistance": "Lunge Distance",
+  
+  "SecretAgent": "Secret Agent",
+  "SecretAgentInfo": "Complete tasks in secret",
+  "SecretAgentInfoLong": "As the Secret Agent, you must complete your tasks without anyone near you, or else you die. Complete all of your tasks to win.",
+  "SecretAgentDistance": "Minimum Distance from other players to safely task"
 }
+
 
 
