@@ -7,6 +7,7 @@ internal class Communist : RoleBase
     public override CustomRoles Role => CustomRoles.Communist;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralChaos;
+    public override bool TOHORole => true;
 
     public static OptionItem CommunistRecruitCooldown;
     

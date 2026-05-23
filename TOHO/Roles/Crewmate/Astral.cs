@@ -14,6 +14,8 @@ internal class Astral : RoleBase
     private const int Id = 33200;
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
+    public override bool TOHORole => true;
+    
     //==================================================================\\
     public bool Revived = false;
     Vector2 teleportPosition;

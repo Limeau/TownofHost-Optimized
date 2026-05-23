@@ -9,6 +9,7 @@ internal class Magnet : RoleBase
     private const int Id = 37800;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
     private static PlayerControl Mark;
     private static OptionItem KillCooldown;

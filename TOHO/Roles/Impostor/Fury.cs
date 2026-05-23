@@ -17,6 +17,7 @@ internal class Fury : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorKilling;
     public override CustomRoles Role => CustomRoles.Fury;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem KillCooldown;

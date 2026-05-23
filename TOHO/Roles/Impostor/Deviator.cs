@@ -10,6 +10,7 @@ internal class Deviator : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
 
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem DeviatorShieldDuration;

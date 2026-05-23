@@ -10,6 +10,7 @@ internal class Valkyrie : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
     public override CustomRoles Role => CustomRoles.Valkyrie;
+    public override bool TOHORole => true;
 
     public static OptionItem GhostKillCooldown;
 

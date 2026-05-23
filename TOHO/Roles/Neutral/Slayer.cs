@@ -9,6 +9,7 @@ internal class Slayer : RoleBase
     private const int Id = 33400;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
     private static OptionItem MaulRadius;
     public override bool HasTasks(NetworkedPlayerInfo player, CustomRoles role, bool ForRecompute) => true;

@@ -10,6 +10,7 @@ internal class Sorcerer : RoleBase
     private const int Id = 34000;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor; 
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private bool usedSecondChance = false; // Checking if respawn has been used

@@ -11,6 +11,7 @@ internal class Neutralizer : RoleBase
     public override CustomRoles Role => CustomRoles.Neutralizer;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
     public static PlayerControl NeutralizedPlayer;
     public static CustomRoles NeutralizedRole;

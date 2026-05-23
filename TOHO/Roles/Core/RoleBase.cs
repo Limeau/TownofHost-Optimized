@@ -25,6 +25,8 @@ public abstract class RoleBase
     public virtual bool IsExperimental => false;
     public virtual bool IsDesyncRole => false;
     public virtual bool IsSideKick => false;
+    public virtual bool NewRole => false;
+    public virtual bool TOHORole => false;
 
     public void OnInit() // CustomRoleManager.RoleClass executes this
     {

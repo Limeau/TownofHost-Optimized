@@ -13,6 +13,7 @@ internal class Narc : RoleBase
     public override CustomRoles Role => CustomRoles.Narc;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralEvil;
+    public override bool TOHORole => true;
     //==================================================================\\
     
     private bool AmnesiacReset = true;

@@ -6,6 +6,7 @@ internal class Villager : RoleBase
     public override CustomRoles Role => CustomRoles.Villager;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateBasic;
+    public override bool TOHORole => true;
 
     public override void SetupCustomOption()
     {

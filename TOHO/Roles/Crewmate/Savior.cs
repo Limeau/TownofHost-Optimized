@@ -13,6 +13,7 @@ internal class Savior : RoleBase
     public override CustomRoles Role => CustomRoles.Savior;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem ResetCooldown;

@@ -12,6 +12,7 @@ internal class Heir : RoleBase
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Heir);
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
+    public override bool TOHORole => true;
     //==================================================================\\
     private static OptionItem CanTargetImpostor;
     private static OptionItem CanTargetNeutral;

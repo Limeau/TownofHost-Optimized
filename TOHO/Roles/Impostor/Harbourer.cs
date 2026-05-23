@@ -11,6 +11,7 @@ internal class Harbourer : RoleBase
     public override CustomRoles Role => CustomRoles.Harbourer;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem HarbourerKillCooldown;

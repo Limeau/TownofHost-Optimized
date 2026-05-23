@@ -10,6 +10,7 @@ internal class Crow : RoleBase
     private const int Id = 38400;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
     private static OptionItem KillCooldown;
     private static OptionItem AbilityUses;

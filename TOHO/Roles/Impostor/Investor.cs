@@ -9,6 +9,7 @@ internal class Investor : RoleBase
     private const int Id = 33300;
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.Madmate;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem KillCooldown;

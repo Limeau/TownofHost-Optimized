@@ -7,6 +7,7 @@ internal class Jury : RoleBase
     public override CustomRoles Role => CustomRoles.Jury;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override bool TOHORole => true;
 
     public static PlayerControl TrialPlayer = null;
     public static int uses = 1;

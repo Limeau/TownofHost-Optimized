@@ -12,6 +12,7 @@ internal class Ragnarok : RoleBase
     private const int Id = 41800;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorHindering;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem KillCooldown;

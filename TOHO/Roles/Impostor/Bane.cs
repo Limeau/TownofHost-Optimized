@@ -18,6 +18,7 @@ internal class Bane : RoleBase
     public override CustomRoles Role => CustomRoles.Bane;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorHindering;
+    public override bool TOHORole => true;
     //==================================================================\\
     public override void SetAbilityButtonText(HudManager hud, byte playerId)
     {

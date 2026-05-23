@@ -9,6 +9,7 @@ internal class Gravedigger : RoleBase
     private const int Id = 40300;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorConcealing;
+    public override bool TOHORole => true;
 
     public override void SetupCustomOption()
     {

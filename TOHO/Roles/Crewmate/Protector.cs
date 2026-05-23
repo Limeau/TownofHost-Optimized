@@ -16,6 +16,7 @@ internal class Protector : RoleBase
     public override CustomRoles Role => CustomRoles.Protector;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem MaxShields;

@@ -15,6 +15,7 @@ internal class Nuancer : RoleBase
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Nuancer);
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem KillCooldown;

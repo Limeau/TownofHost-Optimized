@@ -11,6 +11,7 @@ internal class Skeleton : RoleBase
     private const int Id = 36000;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralChaos;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem NumberOfReportsToWin;

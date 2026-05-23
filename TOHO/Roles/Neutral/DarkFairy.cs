@@ -18,6 +18,7 @@ internal class DarkFairy : RoleBase
     public override CustomRoles Role => CustomRoles.DarkFairy;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralChaos;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem TaskMarkPerRoundOpt;

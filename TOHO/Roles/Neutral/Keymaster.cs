@@ -18,6 +18,7 @@ internal class Keymaster : RoleBase
     public override CustomRoles Role => CustomRoles.Keymaster;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralChaos;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static readonly Dictionary<byte, HashSet<byte>> KeyedList = [];

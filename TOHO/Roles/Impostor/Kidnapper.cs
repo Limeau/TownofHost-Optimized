@@ -11,6 +11,7 @@ internal class Kidnapper : RoleBase
     private const int Id = 34900;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem KidnapCooldown;

@@ -10,6 +10,7 @@ internal class Hacker : RoleBase
     public override bool IsDesyncRole => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static PlayerControl Targeted = null;

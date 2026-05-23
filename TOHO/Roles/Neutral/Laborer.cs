@@ -15,6 +15,7 @@ internal class Laborer : RoleBase
     public override CustomRoles Role => CustomRoles.Laborer;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem SkillLimitOpt;

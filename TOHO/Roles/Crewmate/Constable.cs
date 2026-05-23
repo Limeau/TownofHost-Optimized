@@ -12,6 +12,7 @@ internal class Constable : RoleBase
     private const int Id = 35400;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem ConstableAbilityUses;

@@ -14,6 +14,7 @@ internal class Detonator : RoleBase
     private const int Id = 34300;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
     public override void SetAbilityButtonText(HudManager hud, byte id)
     {

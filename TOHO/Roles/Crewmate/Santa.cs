@@ -13,6 +13,7 @@ internal class Santa : RoleBase
     public override bool IsDesyncRole => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem SantaKillCooldown;

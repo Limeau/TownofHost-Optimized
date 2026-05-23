@@ -15,6 +15,7 @@ internal class Exorcist : RoleBase
     public override CustomRoles Role => CustomRoles.Exorcist;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem VaporizeRadius;

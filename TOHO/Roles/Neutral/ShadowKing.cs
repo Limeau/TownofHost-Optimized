@@ -14,6 +14,7 @@ internal class ShadowKing : RoleBase
     public override CustomRoles Role => CustomRoles.ShadowKing;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem KillCooldown;

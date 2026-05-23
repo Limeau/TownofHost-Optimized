@@ -12,6 +12,7 @@ internal class Agent : RoleBase
     public override CustomRoles Role => CustomRoles.Agent;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem AgentKillCooldown;

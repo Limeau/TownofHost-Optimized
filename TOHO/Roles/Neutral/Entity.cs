@@ -10,6 +10,7 @@ internal class Entity : RoleBase
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Entity);
     public override CustomRoles Role => CustomRoles.Entity;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
+    public override bool TOHORole => true;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralEvil;
     //==================================================================\\
 

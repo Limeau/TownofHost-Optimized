@@ -12,6 +12,7 @@ internal class Volatile : RoleBase
     public override bool IsDesyncRole => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem DefaultKillCooldown;

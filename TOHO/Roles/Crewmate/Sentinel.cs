@@ -10,6 +10,7 @@ internal class Sentinel : RoleBase
     private const int Id = 33700;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem AbilityUses;

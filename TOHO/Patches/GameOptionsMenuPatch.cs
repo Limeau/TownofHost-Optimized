@@ -3,6 +3,7 @@ using System;
 using HarmonyLib;
 using TMPro;
 using TOHO.Patches;
+using TOHO.Roles.Core;
 using UnityEngine;
 using static TOHO.Translator;
 using Object = UnityEngine.Object;
@@ -659,6 +660,14 @@ public static class StringOptionPatch
                 };
 
                 SetupHelpIcon(role, __instance);
+                if (role.GetStaticRoleClass().TOHORole)
+                {
+                    name += "    <color=#b47ede>★ TOHO</color>";
+                }
+                if (role.GetStaticRoleClass().NewRole)
+                {
+                    name += "    <color=#ff0000>★ NEW</color>";
+                }
             }
             __instance.TitleText.text = name;
             return false;
@@ -704,7 +713,6 @@ public static class StringOptionPatch
         GameOptionsButton.interactableHoveredColor = clr2;
         icon.localPosition += new Vector3(-0.8f, 0f, 0f);
         icon.SetAsLastSibling();
-
     }
 
     [HarmonyPatch(nameof(StringOption.UpdateValue)), HarmonyPrefix]

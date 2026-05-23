@@ -13,6 +13,7 @@ internal class Cursebearer : RoleBase
     public override CustomRoles Role => CustomRoles.Cursebearer;
     public override CustomRoles ThisRoleBase => CustomRoles.GuardianAngel;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateGhosts;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem CBRevealCooldown;

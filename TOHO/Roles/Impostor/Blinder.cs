@@ -11,6 +11,7 @@ internal class Blinder : RoleBase
     private const int Id = 35000;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorHindering;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem KillCooldown;

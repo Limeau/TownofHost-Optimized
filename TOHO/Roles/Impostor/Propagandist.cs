@@ -10,6 +10,7 @@ internal class Propagandist : RoleBase
     private const int Id = 36100;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem KillCooldown;

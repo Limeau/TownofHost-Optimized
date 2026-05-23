@@ -10,6 +10,7 @@ internal class Vaporizer : RoleBase
     public override CustomRoles Role => CustomRoles.Vaporizer;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem VaporizerKillCooldown;

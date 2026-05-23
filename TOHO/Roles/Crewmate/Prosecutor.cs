@@ -15,6 +15,9 @@ internal class Prosecutor : RoleBase
     private const int Id = 42200;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override bool TOHORole => true;
+    public override bool NewRole => true;
+
     //==================================================================\\
     public static OptionItem AbilityUses;
     public static bool IsInTrial;

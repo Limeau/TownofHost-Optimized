@@ -15,6 +15,7 @@ internal class Abzorbaloff : RoleBase
     public override CustomRoles Role => CustomRoles.Abzorbaloff;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem AbzorbaloffMaxPlayers;

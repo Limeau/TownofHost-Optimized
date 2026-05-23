@@ -10,6 +10,7 @@ internal class Plumber : RoleBase
     public override CustomRoles Role => CustomRoles.Plumber;
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateHindering;
+    public override bool TOHORole => true;
 
     public static OptionItem PlumberVentCooldown;
 

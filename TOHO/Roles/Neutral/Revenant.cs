@@ -10,6 +10,7 @@ internal class Revenant : RoleBase
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Revenant);
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public override void SetupCustomOption()

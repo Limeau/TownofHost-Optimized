@@ -21,6 +21,7 @@ internal class Gunslinger : RoleBase
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Gunslinger);
     public override bool IsDesyncRole => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
+    public override bool TOHORole => true;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralChaos;
     //==================================================================\\
 

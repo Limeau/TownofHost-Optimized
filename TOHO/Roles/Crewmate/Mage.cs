@@ -12,6 +12,7 @@ internal class Mage : RoleBase
     private const int Id = 38900;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
     public static OptionItem KillCooldown;
 

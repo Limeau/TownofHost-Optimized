@@ -21,6 +21,7 @@ namespace TOHO.Roles.Neutral
         public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
         public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Repellant);
         public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
+        public override bool TOHORole => true;
 
         private static OptionItem RepellantSkillCooldown;
         private static OptionItem RepellantSkillDuration;

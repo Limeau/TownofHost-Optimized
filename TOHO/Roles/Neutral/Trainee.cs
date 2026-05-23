@@ -13,6 +13,7 @@ internal class Trainee : RoleBase
     private const int Id = 41500;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
     
     public static OptionItem MassacreKillCooldown;

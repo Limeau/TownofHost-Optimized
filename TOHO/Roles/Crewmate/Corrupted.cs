@@ -11,6 +11,7 @@ internal class Corrupted : RoleBase
     private const int Id = 36200;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public override void SetupCustomOption()

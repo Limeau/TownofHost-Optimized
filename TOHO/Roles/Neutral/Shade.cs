@@ -12,6 +12,7 @@ internal class Shade : RoleBase
     public override CustomRoles Role => CustomRoles.Shade;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static OptionItem ShadeAbilityUses;

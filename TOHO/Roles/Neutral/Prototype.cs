@@ -7,6 +7,7 @@ internal class Prototype : RoleBase
     public override CustomRoles Role => CustomRoles.Prototype;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     
     public static OptionItem PrototypeKillCooldown;
     public static OptionItem PrototypeSuicideChance;

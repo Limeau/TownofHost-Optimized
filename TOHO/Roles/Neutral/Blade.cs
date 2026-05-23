@@ -11,6 +11,7 @@ internal class Blade : RoleBase
     private const int Id = 37900;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static Dictionary<PlayerControl, bool> IsBladeActive = [];

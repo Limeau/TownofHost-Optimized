@@ -15,6 +15,7 @@ internal class Assassin : RoleBase
     public override CustomRoles Role => CustomRoles.Assassin;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem AssassinKillCooldown;

@@ -13,6 +13,7 @@ internal class Developer : RoleBase
     public override CustomRoles Role => CustomRoles.Developer;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
+    public override bool TOHORole => true;
     //==================================================================\\
 
     public static List<PlayerControl> Customers = [];
