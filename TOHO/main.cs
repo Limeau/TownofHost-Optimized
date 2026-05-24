@@ -819,6 +819,7 @@ public enum CustomRoles
     Admirer,
     Alchemist,
     Altruist,
+    Archivist,
     Astral,
     Bastion,
     Benefactor,

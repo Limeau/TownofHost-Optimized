@@ -66,7 +66,7 @@ public abstract class RoleBase
         Main.UnShapeShifter.Remove(playerId);
     }
 
-    public virtual void OnOthersShapeshift()
+    public virtual void OnOthersShapeshift(PlayerControl shapeshifter)
     { }
 
     /// <summary>

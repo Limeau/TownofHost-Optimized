@@ -5127,7 +5127,11 @@
   "SecretAgent": "Secret Agent",
   "SecretAgentInfo": "Complete tasks in secret",
   "SecretAgentInfoLong": "As the Secret Agent, you must complete your tasks without anyone near you, or else you die. Complete all of your tasks to win.",
-  "SecretAgentDistance": "Minimum Distance from other players to safely task"
+  "SecretAgentDistance": "Minimum Distance from other players to safely task",
+  
+  "Archivist": "Archivist",
+  "ArchivistInfo": "Get information of everything that happens in a room",
+  "ArchivistInfoLong": "The Archivist can use the Unshift button once per round, and at the next meeting will receive information on what happens in that room. This includes kills, vents entered, tasks completed, and shapeshifts\n\nNote: Archivist cannot use their kill button."
 }
 
 

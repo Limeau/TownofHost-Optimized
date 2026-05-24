@@ -735,7 +735,7 @@ class ShapeshiftPatch
         {
             if (state.RoleClass == null) continue;
 
-            state.RoleClass.OnOthersShapeshift();
+            state.RoleClass.OnOthersShapeshift(shapeshifter);
         }
 
         Main.CheckShapeshift[shapeshifter.PlayerId] = shapeshifting;

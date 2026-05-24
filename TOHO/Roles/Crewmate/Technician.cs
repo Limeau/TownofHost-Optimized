@@ -76,7 +76,7 @@ internal class Technician : RoleBase
         return false;
     }
 
-    public override void OnOthersShapeshift()
+    public override void OnOthersShapeshift(PlayerControl shapeshifter)
     {
         if (NotifyWhenAnyoneShapeshifts.GetBool())
         {
