@@ -13,6 +13,7 @@ internal class Heir : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
     public override bool TOHORole => true;
+    public override string IdeaRole => "bxogamesyt";
     //==================================================================\\
     private static OptionItem CanTargetImpostor;
     private static OptionItem CanTargetNeutral;

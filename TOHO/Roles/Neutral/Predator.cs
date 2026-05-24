@@ -14,6 +14,7 @@ internal class Predator : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralEvil;
     public override bool TOHORole => true;
+    public override string IdeaRole => "bxogamesyt";
     //==================================================================\\
 
     public static OptionItem KillCooldown;

@@ -13,6 +13,7 @@ internal class Volatile : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     public override bool TOHORole => true;
+    public override string IdeaRole => "the_little_pelican";
     //==================================================================\\
 
     private static OptionItem DefaultKillCooldown;

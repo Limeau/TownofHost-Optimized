@@ -16,6 +16,8 @@ internal class Nuancer : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorKilling;
     public override bool TOHORole => true;
+    public override string CodedRole => "mirage_29";
+    public override string IdeaRole => "ragavrulez65";
     //==================================================================\\
 
     private static OptionItem KillCooldown;

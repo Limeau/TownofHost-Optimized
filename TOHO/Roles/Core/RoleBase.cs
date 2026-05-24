@@ -27,6 +27,8 @@ public abstract class RoleBase
     public virtual bool IsSideKick => false;
     public virtual bool NewRole => false;
     public virtual string LikedRole => "";
+    public virtual string IdeaRole => "";
+    public virtual string CodedRole => "";
     public virtual bool TOHORole => false;
 
     public void OnInit() // CustomRoleManager.RoleClass executes this

@@ -11,6 +11,7 @@ internal class Hacker : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     public override bool TOHORole => true;
+    public override string IdeaRole => "rip_gamer0392";
     //==================================================================\\
 
     private static PlayerControl Targeted = null;

@@ -13,6 +13,7 @@ internal class Ragnarok : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorHindering;
     public override bool TOHORole => true;
+    public override string IdeaRole => "zephyrennthegreat";
     //==================================================================\\
 
     private static OptionItem KillCooldown;

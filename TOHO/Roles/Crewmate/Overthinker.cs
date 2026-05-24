@@ -20,6 +20,7 @@ internal class Overthinker : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
     public override bool BlockMoveInVent(PlayerControl pc) => true;
     public override bool TOHORole => true;
+    public override string IdeaRole => "zephyrennthegreat";
     //==================================================================\\
 
     private static OptionItem OverthinkerMaxUses;

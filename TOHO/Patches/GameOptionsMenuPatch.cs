@@ -671,7 +671,27 @@ public static class StringOptionPatch
 
                 if (role.GetStaticRoleClass().LikedRole != "")
                 {
-                    name += Utils.ColorString(Utils.GetRoleColor(role), $"\n<size=65%><i><b>{role.GetStaticRoleClass().LikedRole}</b> likes this role!</i></size>");
+                    name += Utils.ColorString(Utils.GetRoleColor(role), $"\n<size=55%><i><b>{role.GetStaticRoleClass().LikedRole}</b> likes this role!</i></size>");
+                    if (role.GetStaticRoleClass().CodedRole != "")
+                    {
+                        name += Utils.ColorString(Utils.GetRoleColor(role), $"<size=55%> | <i><b>{role.GetStaticRoleClass().CodedRole}</b> coded this role</i></size>");
+                        if (role.GetStaticRoleClass().IdeaRole != "")
+                        {
+                            name += Utils.ColorString(Utils.GetRoleColor(role), $"<size=55%> | <i><b>{role.GetStaticRoleClass().IdeaRole}</b> came up with this role</i></size>");
+                        }
+                    }
+                }
+                else if (role.GetStaticRoleClass().CodedRole != "")
+                {
+                    name += Utils.ColorString(Utils.GetRoleColor(role), $"\n<size=55%><i><b>{role.GetStaticRoleClass().CodedRole}</b> coded this role</i></size>");
+                    if (role.GetStaticRoleClass().IdeaRole != "")
+                    {
+                        name += Utils.ColorString(Utils.GetRoleColor(role), $"<size=55%> | <i><b>{role.GetStaticRoleClass().IdeaRole}</b> came up with this role</i></size>");
+                    }
+                }
+                else if (role.GetStaticRoleClass().IdeaRole != "")
+                {
+                    name += Utils.ColorString(Utils.GetRoleColor(role), $"\n<size=55%><i><b>{role.GetStaticRoleClass().IdeaRole}</b> came up with this role</i></size>");
                 }
             }
             __instance.TitleText.text = name;

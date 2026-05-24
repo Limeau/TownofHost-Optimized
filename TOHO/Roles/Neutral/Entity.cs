@@ -12,6 +12,7 @@ internal class Entity : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override bool TOHORole => true;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralEvil;
+    public override string IdeaRole => "bearyyy_cocoa";
     //==================================================================\\
 
     public static OptionItem EntityHauntsToWin;

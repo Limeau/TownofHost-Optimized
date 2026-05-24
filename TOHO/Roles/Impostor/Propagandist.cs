@@ -11,6 +11,7 @@ internal class Propagandist : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
     public override bool TOHORole => true;
+    public override string IdeaRole => "ragavrulez65";
     //==================================================================\\
 
     public static OptionItem KillCooldown;

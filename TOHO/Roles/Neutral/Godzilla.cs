@@ -17,7 +17,7 @@ internal class Godzilla : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralChaos;
     public override bool TOHORole => true;
-  
+    public override string CodedRole => "mirage_29";
     //==================================================================\\
 
     public static OptionItem GodzillaCanKill;

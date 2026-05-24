@@ -19,6 +19,9 @@ internal class ForensicScientist : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Scientist;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
     public override bool TOHORole => true;
+
+    public override string CodedRole => "mirage_29";
+    public override string IdeaRole => "the_little_pelican";
     //==================================================================\\
 
     private static OptionItem SampleFailChance;

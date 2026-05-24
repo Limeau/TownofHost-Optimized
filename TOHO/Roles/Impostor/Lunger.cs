@@ -14,7 +14,7 @@ internal class Lunger : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorKilling;
     public override bool TOHORole => true;
-
+    public override string IdeaRole => "den6211epic";
     public override bool NewRole => true;
     //==================================================================\\
 

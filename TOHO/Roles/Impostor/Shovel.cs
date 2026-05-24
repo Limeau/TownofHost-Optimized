@@ -15,6 +15,7 @@ internal class Shovel : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorConcealing;
     public override bool TOHORole => true;
+    public override string IdeaRole => "doma_animelover";
     //==================================================================\\
 
     private static OptionItem KillCooldown;

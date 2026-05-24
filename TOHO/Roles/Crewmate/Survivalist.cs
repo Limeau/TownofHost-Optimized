@@ -12,6 +12,9 @@ internal class Survivalist : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
     public override bool TOHORole => true;
+    
+    public override string CodedRole => "mirage_29";
+    public override string IdeaRole => "the_little_pelican";
     //==================================================================\\
 
     private static OptionItem ShowdownDuration;
