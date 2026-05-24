@@ -65,9 +65,8 @@ internal class Archivist : RoleBase
         if (ActiveRoom != SystemTypes.HeliSabotage && ActiveRoom == killer.GetPlainShipRoom().RoomId)
         {
             Kills++;
-            return true;
         }
-        return true;
+        return false;
     }
 
     public override bool OnCoEnterVentOthers(PlayerPhysics physics, int ventId)
