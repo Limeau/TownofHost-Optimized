@@ -350,5 +350,6 @@
   "KingOfTheHill": "#bfa222",
   "SecretAgent": "#29465e",
   "ExampleRole": "#00ff00",
-  "Archivist": "#c2af88"
+  "Archivist": "#c2af88",
+  "Toxic": "#36570e"
 }

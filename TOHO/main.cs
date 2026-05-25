@@ -1168,6 +1168,7 @@ public enum CustomRoles
     Tiebreaker,
     Stealer, //stealer
     Torch,
+    Toxic,
     Trapper,
     Tricky,
     Tired,

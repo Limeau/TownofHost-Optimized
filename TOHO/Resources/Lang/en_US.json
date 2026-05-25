@@ -5131,7 +5131,13 @@
   
   "Archivist": "Archivist",
   "ArchivistInfo": "Get information of everything that happens in a room",
-  "ArchivistInfoLong": "The Archivist can use the Unshift button once per round, and at the next meeting will receive information on what happens in that room. This includes kills, vents entered, tasks completed, and shapeshifts\n\nNote: Archivist cannot use their kill button."
+  "ArchivistInfoLong": "The Archivist can use the Unshift button once per round, and at the next meeting will receive information on what happens in that room. This includes kills, vents entered, tasks completed, and shapeshifts\n\nNote: Archivist cannot use their kill button.",
+
+  "Toxic": "Toxic",
+  "ToxicInfo": "No one wants to be near you",
+  "ToxicInfoLong": "When a player is near the Toxic for a certain amount of time, they will be transported to the closest vent.",
+  "ToxicRadius": "Radius for player to be teleported",
+  "ToxicTime": "Radius for player to be teleported"
 }
 
 
