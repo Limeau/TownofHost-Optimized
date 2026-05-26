@@ -5138,6 +5138,11 @@
   "ToxicInfoLong": "When a player is near the Toxic for a certain amount of time, they will be transported to the closest vent.",
   "ToxicRadius": "Radius for player to be teleported",
   "ToxicTime": "Time for player to be teleported",
+
+  "Webweaver": "Webweaver",
+  "WebweaverInfo": "Trap people in vents",
+  "WebweaverInfoLong": "When the Webweaver vents, they set a trap. Anytime anyone vents in the vent the Webweaver trapped, they will get locked in that vent for X amount of time.",
+  "WebweaverTrapTime": "Time target is trapped in vent"
 }
 
 

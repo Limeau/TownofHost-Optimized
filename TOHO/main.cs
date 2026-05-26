@@ -910,6 +910,7 @@ public enum CustomRoles
     Veteran,
     Vigilante,
     Villager,
+    Webweaver,
     Witness,
 
     //Neutral Ghost
