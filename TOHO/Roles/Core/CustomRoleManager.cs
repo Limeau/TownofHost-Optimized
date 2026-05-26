@@ -483,7 +483,15 @@ public static class CustomRoleManager
     /// </summary>
     public static bool OthersCoEnterVent(PlayerPhysics physics, int ventId)
     {
-        return AllEnabledRoles.Any(RoleClass => RoleClass.OnCoEnterVentOthers(physics, ventId));
+        foreach (var roleClass in AllEnabledRoles.ToArray())
+        {
+            if (roleClass.OnCoEnterVentOthers(physics, ventId) == false)
+            {
+                Logger.Info($"Role class cancels vent: {roleClass}", "OnCheckMurderAsTargetOnOthers");
+                return false;
+            }
+        }
+        return true;
     }
 
     private static HashSet<Func<PlayerControl, PlayerControl, bool, string>> MarkOthers = [];
