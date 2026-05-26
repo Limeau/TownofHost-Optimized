@@ -5137,7 +5137,7 @@
   "ToxicInfo": "No one wants to be near you",
   "ToxicInfoLong": "When a player is near the Toxic for a certain amount of time, they will be transported to the closest vent.",
   "ToxicRadius": "Radius for player to be teleported",
-  "ToxicTime": "Radius for player to be teleported"
+  "ToxicTime": "Time for player to be teleported",
 }
 
 
