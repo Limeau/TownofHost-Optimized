@@ -528,7 +528,7 @@ public class Main : BasePlugin
     
     public static ModdedSupportBAUEvent BAUEvents = new();
     
-    public static string[] BAUFlags = ["gameoption.disable.allgameoptions", "client.disable.discordrp", "lobby.disable.cancelstartinggame", "gameplay.disable.betterrolealgorithm"];
+    public static string[] BAUFlags = ["gameoption.disable.allgameoptions", "lobby.disable.customloadingbar", "gameplay.disable.customcolorblindtext", "client.disable.discordrp", "lobby.disable.cancelstartinggame", "gameplay.disable.betterrolealgorithm"];
     
     public override void Load()
     {
