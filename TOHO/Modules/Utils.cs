@@ -2274,6 +2274,9 @@ public static class Utils
                         if (target.Is(CustomRoles.Cyber) && Cyber.CyberKnown.GetBool())
                             TargetMark.Append(ColorString(GetRoleColor(CustomRoles.Cyber), "★"));
 
+                        if (target.Is(CustomRoles.Bounty))
+                            TargetMark.Append(ColorString(GetRoleColor(CustomRoles.Bounty), "$"));
+
                         if (seer.Is(CustomRoles.Lovers) && target.Is(CustomRoles.Lovers))
                         {
                             TargetMark.Append($"<color={GetRoleColorCode(CustomRoles.Lovers)}>♥</color>");

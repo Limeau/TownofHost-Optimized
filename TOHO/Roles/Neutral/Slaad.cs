@@ -76,7 +76,7 @@ internal class Slaad : RoleBase
 
     public static void ApplyGameOptionsForOthers(IGameOptions opt, PlayerControl player)
     {
-        if (BlindedPlayers.Any())
+        if (BlindedPlayers.Contains(player))
         {
             opt.SetVision(false);
             opt.SetFloat(FloatOptionNames.CrewLightMod, Vision.GetFloat());

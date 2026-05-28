@@ -134,7 +134,7 @@ public static class CustomRoleManager
         if (CustomRoles.Pitfall.RoleExist()) Pitfall.SetPitfallTrapVision(opt, player);
         if (CustomRoles.Medusa.RoleExist()) Medusa.SetStoned(player, opt);
         if (CustomRoles.Sacrifist.RoleExist()) Sacrifist.SetVision(player, opt);
-
+        if (Bounty.IsEnable) Bounty.ApplyGameOption(player, opt);
 
         var playerSubRoles = player.GetCustomSubRoles();
 

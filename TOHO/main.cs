@@ -1086,6 +1086,7 @@ public enum CustomRoles
     Bewilder,
     Blessed,
     Bloodthirst,
+    Bounty,
     Burst,
     Charmed,
     Circumvent,

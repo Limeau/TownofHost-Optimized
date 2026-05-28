@@ -353,6 +353,11 @@ class CheckMurderPatch
                         if (!Blessed.OnMurderAsTarget(killer, target))
                             return false;
                         break;
+                    
+                    case CustomRoles.Bounty:
+                        if (!Bounty.OnMurderAsTarget(killer, target))
+                            return false;
+                        break;
 
                     case CustomRoles.Gambler:
                         if (!Gambler.OnCheckMurder(killer, target))

@@ -5142,7 +5142,15 @@
   "Webweaver": "Webweaver",
   "WebweaverInfo": "Trap people in vents",
   "WebweaverInfoLong": "When the Webweaver vents, they set a trap. Anytime anyone vents in the vent the Webweaver trapped, they will get locked in that vent for X amount of time.",
-  "WebweaverTrapTime": "Time target is trapped in vent"
+  "WebweaverTrapTime": "Time target is trapped in vent",
+  
+  "Bounty": "Bounty",
+  "BountyInfo": "You will be targeted",
+  "BountyInfoLong": "The Bounty will receive a green $ symbol next to their name for everyone to see. When the Bounty is killed, it is likely the killer will receive a positive effect, but there is also a chance the killer receives a negative effect.",
+  "BountyChance": "Chance the Bounty's killer will receive a positive effect",
+  "BountyVision": "Killer Vision Increase/Decrease",
+  "BountySpeed": "Killer Speed Increase/Decrease",
+  "BountyCooldown": "Killer Kill Cooldown Increase/Decrease"
 }
 
 
