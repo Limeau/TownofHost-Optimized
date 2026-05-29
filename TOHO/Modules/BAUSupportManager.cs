@@ -18,7 +18,7 @@ internal class ModdedSupportExampleClass
     /// Check BAUModdedSupportFlags for available flag constants.
     /// </summary>
     [Category("bau:flags")]
-    public static string[] BAUFlags = ["gameoption.disable.allgameoptions", "lobby.disable.customloadingbar", "gameplay.disable.customcolorblindtext", "client.disable.discordrp", "lobby.disable.cancelstartinggame", "gameplay.disable.betterrolealgorithm"];
+    public static string[] BAUFlags = ["gameoption.disable.allgameoptions", "lobby.disable.customloadingbar", "gameplay.disable.customcolorblindtext", "client.disable.discordrp", "lobby.disable.cancelstartinggame", "gameplay.disable.betterrolealgorithm", "gameplay.disable.nameoverride", "gameplay.disable.chatnameoverride", "gameplay.disable.playerinfo", "gameplay.disable.playermeetinginfo"];
 
     /// <summary>
     /// Called when BetterAmongUs is loading. Return false to prevent BAU from loading.
