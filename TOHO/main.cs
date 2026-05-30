@@ -936,6 +936,7 @@ public enum CustomRoles
     Developer,
     Doomsayer,
     Doppelganger,
+    Duck,
     Entity,
     Executioner,
     Extremist,
@@ -1324,6 +1325,7 @@ public enum AdditionalWinners
     Keymaster = CustomRoles.Keymaster,
     Developer = CustomRoles.Developer,
     Extremist = CustomRoles.Extremist,
+    Duck = CustomRoles.Duck,
     //   NiceMini = CustomRoles.NiceMini,
     //   Baker = CustomRoles.Baker,
 }

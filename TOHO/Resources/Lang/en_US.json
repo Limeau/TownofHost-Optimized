@@ -5150,7 +5150,12 @@
   "BountyChance": "Chance the Bounty's killer will receive a positive effect",
   "BountyVision": "Killer Vision Increase/Decrease",
   "BountySpeed": "Killer Speed Increase/Decrease",
-  "BountyCooldown": "Killer Kill Cooldown Increase/Decrease"
+  "BountyCooldown": "Killer Kill Cooldown Increase/Decrease",
+
+  "Duck": "Duck",
+  "DuckInfo": "Distract the Crewmates",
+  "DuckInfoLong": "The Duck can do a task to blind a random player for a certain amount of time and reset their kill cooldown. The Duck wins with anyone besides the Crewmates.",
+  "DuckTime": "Time for Duck target to be blinded"
 }
 
 

@@ -133,6 +133,7 @@ public static class CustomRolesHelper
             CustomRoles.Innocent or
             CustomRoles.Vulture or
             CustomRoles.Taskinator or
+            CustomRoles.Duck or
             CustomRoles.Pursuer or
             CustomRoles.Revolutionist or
             CustomRoles.Provocateur or
@@ -889,6 +890,7 @@ public static class CustomRolesHelper
                     || pc.Is(CustomRoles.Vector)
                     || pc.Is(CustomRoles.Solsticer)
                     || pc.Is(CustomRoles.Taskinator)
+                    || pc.Is(CustomRoles.Duck)
                     || pc.Is(CustomRoles.NiceMini)
                     || pc.Is(CustomRoles.PunchingBag)
                     || pc.IsTransformedNeutralApocalypse())
