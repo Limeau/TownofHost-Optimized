@@ -28,7 +28,7 @@ internal class Webweaver : RoleBase
 
     public override void SetupCustomOption()
     {
-        SetupSingleRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Webweaver);
+        SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Webweaver);
         WebweaverTrapTime = FloatOptionItem.Create(Id + 10, "WebweaverTrapTime", new(10f, 40f, 1f), 20f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Webweaver])
             .SetValueFormat(OptionFormat.Seconds);
         VentCooldown = FloatOptionItem.Create(Id + 11, GeneralOption.EngineerBase_VentCooldown, new(10f, 40f, 1f), 20f, TabGroup.CrewmateRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.Webweaver])
