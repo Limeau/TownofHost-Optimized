@@ -12,6 +12,8 @@ internal class Sonic : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     public override bool TOHORole => true;
+
+    public override string IdeaRole => "bearyyy_cocoa";
     //==================================================================\\
 
     public static OptionItem SonicKillCooldown;
