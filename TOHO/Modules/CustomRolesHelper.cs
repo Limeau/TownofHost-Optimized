@@ -248,6 +248,7 @@ public static class CustomRolesHelper
             CustomRoles.Wight or
             CustomRoles.Slaad or
             CustomRoles.Widow or
+            CustomRoles.Swan or
             CustomRoles.Godzilla;
     }
     public static bool IsTasklessCrewmate(this CustomRoles role)
@@ -1515,6 +1516,7 @@ public static class CustomRolesHelper
            CustomRoles.Abzorbaloff => CountTypes.Abzorbaloff,
            CustomRoles.Sonic => CountTypes.Sonic,
            CustomRoles.Prototype => CountTypes.Prototype,
+           CustomRoles.Swan => CountTypes.Swan,
            CustomRoles.ShadowKing => CountTypes.ShadowKing,
            CustomRoles.Atoner => CountTypes.Atoner,
            CustomRoles.Hacker => CountTypes.Hacker,
@@ -1601,6 +1603,7 @@ public static class CustomRolesHelper
             CustomRoles.Abzorbaloff => CustomWinner.Abzorbaloff,
             CustomRoles.Sonic => CustomWinner.Sonic,
             CustomRoles.Prototype => CustomWinner.Prototype,
+            CustomRoles.Swan => CustomWinner.Swan,
             CustomRoles.ShadowKing => CustomWinner.ShadowKing,
             CustomRoles.Atoner => CustomWinner.Atoner,
             CustomRoles.Hacker => CustomWinner.Hacker,
@@ -1664,6 +1667,7 @@ public static class CustomRolesHelper
             CountTypes.Abzorbaloff => CustomRoles.Abzorbaloff,
             CountTypes.Sonic => CustomRoles.Sonic,
             CountTypes.Prototype => CustomRoles.Prototype,
+            CountTypes.Swan => CustomRoles.Swan,
             CountTypes.ShadowKing => CustomRoles.ShadowKing,
             CountTypes.Atoner => CustomRoles.Atoner,
             CountTypes.Hacker => CustomRoles.Hacker,
@@ -1789,5 +1793,6 @@ public enum CountTypes
     Shade,
     Abzorbaloff,
     Sonic,
-    Prototype
+    Prototype,
+    Swan
 }

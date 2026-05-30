@@ -5155,7 +5155,11 @@
   "Duck": "Duck",
   "DuckInfo": "Distract the Crewmates",
   "DuckInfoLong": "The Duck can do a task to blind a random player for a certain amount of time and reset their kill cooldown. The Duck wins with anyone besides the Crewmates.",
-  "DuckTime": "Time for Duck target to be blinded"
+  "DuckTime": "Time for Duck target to be blinded",
+  
+  "Swan": "Swan",
+  "SwanInfo": "Kill players and then eat the bodies",
+  "SwanInfoLong": "As the Swan, you can kill a player, then report the body to make it unreportable for everyone else. Kill everyone to win."
 }
 
 

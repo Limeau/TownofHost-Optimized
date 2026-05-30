@@ -1007,6 +1007,7 @@ public enum CustomRoles
     Spiritcaller,
     Stalker,
     Sunnyboy,
+    Swan,
     Taskinator,
     Terrorist,
     Trainee,
@@ -1292,7 +1293,8 @@ public enum CustomWinner
     Prototype = CustomRoles.Prototype,
     Sonic = CustomRoles.Sonic,
     KOTH = CustomRoles.KingOfTheHill,
-    SecretAgent = CustomRoles.SecretAgent
+    SecretAgent = CustomRoles.SecretAgent,
+    Swan = CustomRoles.Swan
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners
