@@ -210,15 +210,21 @@ public static class GuessManager
             Logger.Msg($" {target.PlayerId}", "Guesser - target.PlayerId");
             Logger.Msg($" {role}", "Guesser - role");
 
-            
-            if (GuessAmount[pc] <= 0 && pc.GetCustomRole() !=  CustomRoles.Doomsayer && pc.GetCustomRole() !=  CustomRoles.Guesser && pc.GetCustomRole() !=  CustomRoles.NiceGuesser && pc.GetCustomRole() !=  CustomRoles.EvilGuesser)
+            if (Options.EnableGuessesCap.GetBool())
             {
-                pc.ShowInfoMessage(isUI, GetString("NoGuessesRemaining"), Utils.ColorString(Utils.GetRoleColor(pc.GetCustomRole()), GetString("NoGuessesRemainingTitle")));
-                return true;
+                if (GuessAmount[pc] <= 0 && pc.GetCustomRole() != CustomRoles.Doomsayer &&
+                    pc.GetCustomRole() != CustomRoles.Guesser && pc.GetCustomRole() != CustomRoles.NiceGuesser &&
+                    pc.GetCustomRole() != CustomRoles.EvilGuesser)
+                {
+                    pc.ShowInfoMessage(isUI, GetString("NoGuessesRemaining"),
+                        Utils.ColorString(Utils.GetRoleColor(pc.GetCustomRole()),
+                            GetString("NoGuessesRemainingTitle")));
+                    return true;
+                }
+
+                GuessAmount[pc]--;
             }
 
-            GuessAmount[pc]--;
-            
             if (target != null)
             {
 
