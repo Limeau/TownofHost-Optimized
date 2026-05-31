@@ -85,6 +85,9 @@ public static class CustomWinnerHolder
                 case CustomRoles.Shaded:
                     ResetAndSetWinner(CustomWinner.Shade);
                     return true;
+                case CustomRoles.Undead:
+                    ResetAndSetWinner(CustomWinner.Wight);
+                    return true;
             }
         }
         return false;

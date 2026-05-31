@@ -370,11 +370,13 @@ public static class CustomRolesHelper
     {
         return role.GetStaticRoleClass().ThisRoleType is Custom_RoleType.Madmate;
     }
+
     /// <summary>
     /// Role Changes the Crewmates Team, Including changing to Impostor
     /// </summary>
 
-    public static bool IsConverted(this CustomRoles role) => (role is CustomRoles.Egoist && Egoist.EgoistCountAsConverted.GetBool())
+    public static bool IsConverted(this CustomRoles role) =>
+        (role is CustomRoles.Egoist && Egoist.EgoistCountAsConverted.GetBool())
         || role is
             CustomRoles.Charmed or
             CustomRoles.Recruit or
@@ -433,7 +435,8 @@ public static class CustomRolesHelper
             or CustomRoles.Soulless
             or CustomRoles.Darkened
             or CustomRoles.Shaded
-            or CustomRoles.Enchanted;
+            or CustomRoles.Enchanted or
+            CustomRoles.Undead;
     }
 
     public static bool IsBetrayalModifierV2(this CustomRoles role)

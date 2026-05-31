@@ -195,6 +195,12 @@ class GameEndCheckerForNormal
                             CustomWinnerHolder.WinnerIds.Add(pc.PlayerId);
                         }
                         break;
+                    case CustomWinner.Wight:
+                        if ((pc.Is(CustomRoles.Undead) || pc.Is(CustomRoles.Wight)) && !CustomWinnerHolder.WinnerIds.Contains(pc.PlayerId))
+                        {
+                            CustomWinnerHolder.WinnerIds.Add(pc.PlayerId);
+                        }
+                        break;
                     case CustomWinner.Shade:
                         if ((pc.Is(CustomRoles.Shaded) || pc.Is(CustomRoles.Shade)) && !CustomWinnerHolder.WinnerIds.Contains(pc.PlayerId))
                         {
