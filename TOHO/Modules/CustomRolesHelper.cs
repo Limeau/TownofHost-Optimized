@@ -976,6 +976,11 @@ public static class CustomRolesHelper
                 if (!pc.GetCustomRole().IsImpostor())
                     return false;
                 break;
+            
+            case CustomRoles.LabRat:
+                if (!pc.GetCustomRole().IsTaskBasedCrewmate())
+                    return false;
+                break;
 
             case CustomRoles.Forgetful:
                 if (pc.GetCustomRole().IsNeutral() || pc.GetCustomRole().IsImpostor() || pc.GetCustomRole().IsCoven() ||
