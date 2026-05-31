@@ -853,12 +853,17 @@ class CandRGameEndPredicate : GameEndPredicate
         if (CopsAndRobbersManager.RoundTime <= 0)
         {
             reason = GameOverReason.HideAndSeek_CrewmatesByTimer;
-            ResetAndSetWinner(CustomWinner.Cops);
+            if (CopsAndRobbersManager.CandR_WhoWinsWhenTimer.GetString() == "Cops") ResetAndSetWinner(CustomWinner.Cops);
+            if (CopsAndRobbersManager.CandR_WhoWinsWhenTimer.GetString() == "Robbers") ResetAndSetWinner(CustomWinner.Robbers);
             foreach (var pc in Main.AllAlivePlayerControls)
             {
                 if (pc.Is(CustomRoles.Cop))
                 {
-                    WinnerIds.Add(pc.PlayerId);
+                    if (CopsAndRobbersManager.CandR_WhoWinsWhenTimer.GetString() == "Cops") WinnerIds.Add(pc.PlayerId);
+                }
+                if (pc.Is(CustomRoles.Robber))
+                {
+                    if (CopsAndRobbersManager.CandR_WhoWinsWhenTimer.GetString() == "Robbers") WinnerIds.Add(pc.PlayerId);
                 }
             }
             Logger.Warn("Game end because round time finished", "C&R");

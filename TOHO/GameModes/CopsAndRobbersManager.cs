@@ -90,7 +90,10 @@ internal static class CopsAndRobbersManager
     private static OptionItem CandR_RadarChance;
     private static OptionItem CandR_ReleaseCooldownForCaptured;
     private static OptionItem CandR_ReleaseCooldownForRobber;
+    public static OptionItem CandR_WhoWinsWhenTimer;
 
+    public static string[] winners = ["Robbers", "Cops"];
+    
     public static void SetupCustomOption()
     {
         GameTime = IntegerOptionItem.Create(Id, "GameTime", new(30, 600, 10), 300, TabGroup.ModSettings, false)
@@ -100,7 +103,11 @@ internal static class CopsAndRobbersManager
 
         ShowChatInGame = CandR_NotifyRobbersWhenCaptured = BooleanOptionItem.Create(Id + 1, "ShowChatInGame", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.CandR);
-
+        
+        CandR_WhoWinsWhenTimer = StringOptionItem.Create(Id + 35, "CandR_WhoWinsWhenTimer", winners, 0, TabGroup.ModSettings, false)
+            .SetGameMode(CustomGameMode.CandR)
+            .SetColor(new Color32(255, 140, 0, byte.MaxValue));
+        
         /*********** Cops ***********/
         TextOptionItem.Create(Id + 2, "Cop", TabGroup.ModSettings)
             .SetGameMode(CustomGameMode.CandR)

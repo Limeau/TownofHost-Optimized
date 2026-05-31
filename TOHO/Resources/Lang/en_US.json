@@ -5161,7 +5161,10 @@
   "SwanInfo": "Kill players and then eat the bodies",
   "SwanInfoLong": "As the Swan, you can kill a player, then report the body to make it unreportable for everyone else. Kill everyone to win.",
   
-  "C&R_AlreadyCaptured": "This player has already been captured."
+  "C&R_AlreadyCaptured": "This player has already been captured.",
+  "CandR_WhoWinsWhenTimer": "Which team wins when the game timer ends",
+  "Cops": "Cops",
+  "Robbers": "Robbers"
 }
 
 
