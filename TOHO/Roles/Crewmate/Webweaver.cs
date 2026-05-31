@@ -58,6 +58,14 @@ internal class Webweaver : RoleBase
 
     public override void OnEnterVent(PlayerControl pc, Vent vent)
     {
+        var prev = pc.GetCustomRole();
+        if (BombedVents.Contains(vent.Id))
+        {
+            pc.RpcChangeRoleBasis(CustomRoles.CrewmateTOHO);
+            _ = new LateTask(() => { pc.RpcChangeRoleBasis(prev); }, WebweaverTrapTime.GetFloat(),
+                "Webweaver Remove Trap");
+            return;
+        }            
         _ = new LateTask(() =>
         {
             BombedVents.Add(vent.Id);
