@@ -112,7 +112,7 @@ internal static class KOTH
 
     public static bool OnMurder(PlayerControl killer, PlayerControl target)
     {
-        target.RpcTeleport(target.GetClosestVent().transform.position);
+        target.RpcTeleport(target.GetVentsFromClosest().Last().transform.position);
         killer.RpcGuardAndKill();
         Points[killer] += 1;
         return false;
