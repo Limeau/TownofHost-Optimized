@@ -3,7 +3,7 @@
 
 <br>
 
-<img align="left" alt="Cover" src="Resources/Background/CurrentArtWinner/toho_140.png" width="50%" height="300" /> 
+<img align="left" alt="Cover" src="https://cdn.discordapp.com/avatars/1238690591710248971/849f47ec8e236c3fd7b5785206e45a1a.webp?size=1024" width="50%" height="300" /> 
 
 <p align="right">
   
