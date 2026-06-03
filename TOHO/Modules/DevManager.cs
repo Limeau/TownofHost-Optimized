@@ -96,6 +96,7 @@ public static class DevManager
             // Christmas advent calendar below
             
             new(code: "manesame#3484", color: "#9D00FF", tag: "Evol", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Evol"),
+            new (code: "drawnmayor#2966", color: "#2Bff00", tag: "TOHO Manager", isUp: true, isDev: false, deBug: true, colorCmd: true, upName: "Tete"),
         ];
     }
 
