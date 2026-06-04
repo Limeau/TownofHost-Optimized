@@ -4319,6 +4319,8 @@
   "PolicPassConverted": "Can pass <color=#ffab1b>Converted</color> Modifier to <color=#ffb347>Sheriff</color>",
 
   "ValkyrieRevengeTime": "Revenge Duration",
+  "ValkyrieGhostCooldown": "Ghost Kill Cooldown",
+  "UseLegacyValkyrie": "Use Legacy Valkyrie",
   "ValkyrieHide": "Hide from the Valkyrie!",
   "ValkyrieRevenge": "You have {0}s to kill <color=#e4d339>{1}</color>",
   "ValkyrieSuccess": "Congratulations! You live to see another day.",
