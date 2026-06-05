@@ -430,7 +430,8 @@
   "Shocker": "Shocker",
   "Revenant": "Revenant",
   "Valkyrie": "Valkyrie",
-  "ValkyrieB": "Valkyrie",
+  "Paranormal": "Paranormal",
+  "ParanormalB": "Paranormal",
   "Protector": "Protector",
   "Fury": "Fury",
   "Diviner": "Diviner",
@@ -1091,8 +1092,8 @@
   "EavesdropperInfoLong": "As the Eavesdropper, you have a chance to read other Role/Modifier information-based messages like Mortician or Sleuth.",
   "ApocalypseInfoLong": "(Apocalypse):\nApocalypse members are on a separate team that works together and wins together. If there are multiple Apocalypse roles in the game, they can see each other's roles.\nDepending on the Host's settings, Apocalypse roles can guess or be guessed.",
   "RevenantInfoLong": "As the Revenant, your goal is to be killed. If you are killed, you will take your killer's role and kill your killer instead. You cannot win before being killed.\nNote that Revenant only works when being directly killed.",
-  "ValkyrieInfoLong": "As the Valkyrie, you spawn as a normal Crewmate. When someone kills you, you spawn with a Protect button that can kill any player and revive you into a normal Crewmate directly.",
-  "ValkyrieBInfoLong": "(Crewnates):\nAs the Valkyrie, you spawn as a normal Crewmate. When someone kills you, you spawn with a Protect button that can kill any player and revive you into a normal Crewmate directly.",
+  "ParanormalInfoLong": "As the Paranormal, you spawn as a normal Crewmate. When someone kills you, you spawn with a Protect button that can kill any player and revive you into a normal Crewmate directly.",
+  "ParanormalBInfoLong": "As the Paranormal, you spawn as a normal Crewmate. When someone kills you, you spawn with a Protect button that can kill any player and revive you into a normal Crewmate directly.",
   "ProtectorInfoLong": "As the Protector, whenever you finish a task, you get a temporary shield. The shield lasts until you are attacked, or when a meeting ends.\n\n Note: Shield only protects from direct kill attacks.",
   "FuryInfoLong": "As the Fury, use your Shapeshift button to enter Rage Mode.\nRage Mode changes the Fury their speed and Kill Cooldown for a set duration of time.\n\nAdditionally there is a setting to reveal when the Fury enters Rage Mode to everyone.\nWithout the use of Rage Mode, the Fury acts like a regular Impostor.",
   "DivinerInfoLong": "As the Diviner, when someone tries to kill you, you will block the kill, and you will teleport to a random Vent. You will have a limited time to kill your killer. If you succeed in doing so, you live. If the time runs out before you kill your killer, you die permanently. If you try to kill someone else other than your killer, you will die.",
@@ -4572,7 +4573,7 @@
   "PredatorInfo": "Eliminate your prey",
   "PredatorInfoLong": "As the Predator, you are assigned 3 prey. To hunt for your prey, use your kill button on any player. If their name remains white they are not one of the prey. If their name turns orange they are one of the prey. If you use your kill button on a player with an Orange name, they will die. Eliminate all the prey to win.",
   "HuntCooldown342": "Hunt cooldown",
-  "ValkyrieBInfo": "Come back to life with your protect button",
+  "ParanormalBInfo": "Come back to life with your protect button",
   "WinnerRoleText.Predator": "Predator Wins!",
 
   "Detonator": "Detonator",
@@ -5166,7 +5167,9 @@
   "C&R_AlreadyCaptured": "This player has already been captured.",
   "CandR_WhoWinsWhenTimer": "Which team wins when the game timer ends",
   "Cops": "Cops",
-  "Robbers": "Robbers"
+  "Robbers": "Robbers",
+  
+  "ValkyrieInfoLong": "When the Valkyrie is killed, they will be teleported to a random vent and have a set amount of time to kill their killer. If they do not kill their killer within the timer, they die. The killer will be alerted when the Valkyrie is killed."
 }
 
 
