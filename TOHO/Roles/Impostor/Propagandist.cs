@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Rewired;
 using static TOHO.Options;
 
 namespace TOHO.Roles.Impostor;
@@ -24,25 +25,40 @@ internal class Propagandist : RoleBase
             .SetParent(CustomRoleSpawnChances[CustomRoles.Propagandist])
             .SetValueFormat(OptionFormat.Seconds);
     }
+    
+    
+    public override void Add(byte playerId)
+    {
+        playerId.GetPlayer()?.AddDoubleTrigger();
+    }
+    
     public override void SetKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
 
     public override bool OnCheckMurderAsKiller(PlayerControl killer, PlayerControl target)
     {
+        // Use double trigger system
+        if (killer.CheckDoubleTrigger(target, () => { }))
+        {
+            return true;
+        }
         Players.Add(target.PlayerId);
-        return true;
+        killer.RpcGuardAndKill();
+        return false;
     }
 
     public override int AddRealVotesNum(PlayerVoteArea PVA) => Players.Count;
-
-    public override void AddVisualVotes(PlayerVoteArea votedPlayer, ref List<MeetingHud.VoterState> statesList)
+    
+    public override string GetMarkOthers(PlayerControl seer, PlayerControl target, bool isForMeeting = false)
     {
-        foreach (var playerId in Players)
+        if ((!seer.IsAlive() || seer.Is(CustomRoles.Propagandist)) && Players.Contains(target.PlayerId))
         {
-            statesList.Add(new MeetingHud.VoterState()
-            {
-                VoterId = votedPlayer.TargetPlayerId,
-                VotedForId = votedPlayer.VotedFor
-            });
+            return Utils.ColorString(Utils.GetRoleColor(CustomRoles.Propagandist), "♦");
         }
+        return string.Empty;
+    }
+
+    public override void AfterMeetingTasks()
+    {
+        Players.Clear();
     }
 }

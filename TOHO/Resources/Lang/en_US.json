@@ -4740,7 +4740,7 @@
 
   "Propagandist": "Propagandist",
   "PropagandistInfo": "Steal the votes of players!",
-  "PropagandistInfoLong": "As the Propagandist, you can kill normally. On the next meeting, you will gain an extra vote for each player you killed.",
+  "PropagandistInfoLong": "As the Propagandist, you can kill normally using your kill button with a double click. By single clicking a player, you will steal their vote for the round and they will not know.",
 
   "Corrupted": "Corrupted",
   "CorruptedA-": "Corrupted ",

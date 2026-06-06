@@ -873,6 +873,8 @@ static class ExtendedMeetingHud
                     && ps.TargetPlayerId != ps.VotedFor && ps != null)
                     VoteNum += ps.TargetPlayerId.GetRoleClassById().AddRealVotesNum(ps); // returns + 0 or given role value (+/-)
 
+                if (Propagandist.Players.Contains(pc.PlayerId)) VoteNum = 0;
+                
                 if (CheckForEndVotingPatch.CheckRole(ps.TargetPlayerId, CustomRoles.Knighted) // not doing Modifiers lol, so this stays
                     && ps.TargetPlayerId != ps.VotedFor
                     ) VoteNum += 1;
