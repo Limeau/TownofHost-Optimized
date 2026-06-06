@@ -5169,7 +5169,18 @@
   "Cops": "Cops",
   "Robbers": "Robbers",
   
-  "ValkyrieInfoLong": "When the Valkyrie is killed, they will be teleported to a random vent and have a set amount of time to kill their killer. If they do not kill their killer within the timer, they die. The killer will be alerted when the Valkyrie is killed."
+  "ValkyrieInfoLong": "When the Valkyrie is killed, they will be teleported to a random vent and have a set amount of time to kill their killer. If they do not kill their killer within the timer, they die. The killer will be alerted when the Valkyrie is killed.",
+ 
+  "LoadingBarTip.0": "You can find premade setting presets in our Discord server!",
+  "LoadingBarTip.1": "You can import custom music in TOHO with a .wav file in TOHO-DATA/music!",
+  "LoadingBarTip.2": "You can verify your friend code in our Discord with the /verify command!",
+  "LoadingBarTip.3": "VIP tags can be edited with the /vipcolor and /vipname commands!",
+  "LoadingBarTip.4": "Moderator tags can be edited with the /modcolor and /modname commands!",
+  "LoadingBarTip.5": "You can change the game mode in the new Game Modes tab!",
+  "LoadingBarTip.6": "You can post the lobby to our Discord server by enabling a setting in System Settings!",
+  "LoadingBarTip.7": "Press the Start button a second time to cancel starting the game.",
+  "LoadingBarTip.8": "Coming soon, TOHO will have Achievements!",
+  "LoadingBarTip.9": "You can edit any string in the mod you want in your custom Language folder!"
 }
 
 

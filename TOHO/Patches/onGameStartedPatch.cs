@@ -13,7 +13,10 @@ using TOHO.Patches;
 using TOHO.Roles.Core;
 using TOHO.Roles.Core.AssignManager;
 using UnityEngine;
+using UnityEngine.UI;
 using static TOHO.Translator;
+using Color = System.Drawing.Color;
+using Random = System.Random;
 
 namespace TOHO;
 
@@ -314,6 +317,18 @@ internal class StartGameHostPatch
         {
             LobbyBehaviour.Instance.Despawn();
         }
+
+        LoadingBarManager loadingBarManager = LoadingBarManager.Instance;
+        loadingBarManager.ToggleLoadingBar(true);
+        loadingBarManager.loadingBar.loadingText.fontSize *= 0.5f;
+        loadingBarManager.loadingBar.loadingText.text = Utils.ColorString(UnityEngine.Color.green, "<b>TIP:</b>") + Utils.ColorString(new Color32((byte)180, (byte)126, (byte)222, (byte)255), GetString($"LoadingBarTip.{IRandom.Instance.Next(10)}"));
+        var loadingBarLogo = GameObject.Find("Loading Bar Manager/Loading Bar/Canvas/Logo")?.GetComponent<Image>();
+        if (loadingBarLogo)
+        {
+            loadingBarLogo.sprite = Utils.LoadSprite("TOHO.Resources.Images.tohologo.png", 200f);
+            loadingBarLogo.SetNativeSize();
+        }
+        
         if (!ShipStatus.Instance)
         {
             int num = Mathf.Clamp(GameOptionsManager.Instance.CurrentGameOptions.MapId, 0, Constants.MapNames.Length - 1);
@@ -364,6 +379,9 @@ internal class StartGameHostPatch
         thiz.SendClientReady();
         yield return new WaitForSeconds(2f);
         yield return AssignRoles();
+        loadingBarManager.loadingBar.loadingText.fontSize *= 2;
+        loadingBarManager.ToggleLoadingBar(false);
+
         //ShipStatus.Instance.Begin(); // Tasks sets in IntroPatch
         yield break;
     }
