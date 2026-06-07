@@ -15,7 +15,6 @@ internal class Archivist : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     public override string IdeaRole => "the_little_pelican";
     //==================================================================\\
     public static SystemTypes ActiveRoom = SystemTypes.HeliSabotage;

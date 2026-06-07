@@ -14,7 +14,6 @@ internal class Swan : RoleBase
     public override CustomRoles Role => CustomRoles.Swan;
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
-    public override bool NewRole => true;
     public override bool TOHORole => true;
 
     public override string IdeaRole => "the_little_pelican";

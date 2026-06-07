@@ -10,7 +10,6 @@ internal class Paranormal : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
     public override CustomRoles Role => CustomRoles.Paranormal;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     public static OptionItem GhostKillCooldown;
 
     public override bool OnCheckMurderAsTarget(PlayerControl killer, PlayerControl target)

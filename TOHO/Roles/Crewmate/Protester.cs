@@ -14,7 +14,6 @@ internal class Protester : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     //==================================================================\\
     public static OptionItem ProtestRadius;
     public static OptionItem MinPlayers;

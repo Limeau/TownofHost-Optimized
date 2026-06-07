@@ -14,7 +14,6 @@ internal class Duck : RoleBase
     public override CustomRoles Role => CustomRoles.Duck;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralEvil;
-    public override bool NewRole => true;
     public override bool TOHORole => true;
 
     public override string IdeaRole => "the_little_pelican";

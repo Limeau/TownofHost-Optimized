@@ -14,7 +14,6 @@ internal class SecretAgent : RoleBase
     public override CustomRoles Role => CustomRoles.SecretAgent;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralEvil;
-    public override bool NewRole => true;
     public override bool TOHORole => true;
     //==================================================================\\
 

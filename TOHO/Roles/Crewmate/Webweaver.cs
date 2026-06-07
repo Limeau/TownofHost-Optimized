@@ -16,7 +16,6 @@ internal class Webweaver : RoleBase
     public override bool BlockMoveInVent(PlayerControl pc) => true;
 
     public override bool TOHORole => true;
-    public override bool NewRole => true;
 
     public override string IdeaRole => "bearyyyy_cocoa";
     //==================================================================\\
