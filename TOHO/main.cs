@@ -1114,6 +1114,7 @@ public enum CustomRoles
     Ghoul,
     Glow,
     Gravestone,
+    Gross,
     Guesser,
     Hurried,
     Identifier,

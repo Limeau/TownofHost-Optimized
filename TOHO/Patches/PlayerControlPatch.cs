@@ -324,6 +324,10 @@ class CheckMurderPatch
                         Diseased.CheckMurder(killer);
                         break;
                     
+                    case CustomRoles.Gross:
+                        Gross.CheckMurder(killer, target);
+                        break;
+                    
                     case CustomRoles.Explosive:
                         Explosive.CheckMurder(killer);
                         break;
@@ -865,6 +869,8 @@ class ReportDeadBodyPatch
                 {
                     if (targetObject.Is(CustomRoles.Unreportable)) return false;
 
+                    if (targetObject.Is(CustomRoles.Gross) && Gross.HasBeenMurdered[targetObject]) return false;
+                    
                     // Oblivious try report body
                     if (__instance.Is(CustomRoles.Oblivious) || Blinder.BlindedPlayers.Contains(__instance))
                     {

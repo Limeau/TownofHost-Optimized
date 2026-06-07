@@ -5180,8 +5180,13 @@
   "LoadingBarTip.6": "You can post the lobby to our Discord server by enabling a setting in System Settings!",
   "LoadingBarTip.7": "Press the Start button a second time to cancel starting the game.",
   "LoadingBarTip.8": "Coming soon, TOHO will have Achievements!",
-  "LoadingBarTip.9": "You can edit any string in the mod you want in your custom Language folder!"
+  "LoadingBarTip.9": "You can edit any string in the mod you want in your custom Language folder!",
+  
+  "Gross": "Gross",
+  "GrossInfo": "EWWWWWWWWW!!!! GET AWAY FROM ME",
+  "GrossInfoLong": "As the Gross, your body will reappear after every meeting in the same place, and not be reportable after the first meeting. This happens because you are so gross no one will want to clean you up.\n"
 }
+
 
 
 

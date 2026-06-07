@@ -2600,6 +2600,7 @@ public static class Utils
             if (Burst.IsEnable) Burst.AfterMeetingTasks();
             if (Forgetful.IsEnable) Forgetful.AfterMeetingTasks();
             if (LabRat.IsEnable) LabRat.AfterMeetingTasks();
+            if (Gross.IsEnable) Gross.AfterMeeting();
 
             if (CustomRoles.CopyCat.HasEnabled()) CopyCat.UnAfterMeetingTasks(); // All crew hast to be before this
             if (CustomRoles.Crow.HasEnabled()) Crow.UnAfterMeetingTasks();
