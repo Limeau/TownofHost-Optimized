@@ -782,6 +782,7 @@ public enum CustomRoles
     Shovel,
     Sniper,
     SoulCatcher,
+    Staller,
     Stealth,
     Stunner,
     Sun,
