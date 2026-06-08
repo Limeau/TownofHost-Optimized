@@ -35,7 +35,7 @@ internal class Staller : RoleBase
 
     public override bool OnCheckReportDeadBody(PlayerControl reporter, NetworkedPlayerInfo deadBody, PlayerControl killer)
     {
-        if (deadBody._object.GetRealKiller().Is(CustomRoles.Staller))
+        if (deadBody._object.GetRealKiller().Is(CustomRoles.Staller) || deadBody._object.Is(CustomRoles.Concealed)) // Concealed code also goes here to make it ez
         {
             _ = new LateTask(() =>
             {

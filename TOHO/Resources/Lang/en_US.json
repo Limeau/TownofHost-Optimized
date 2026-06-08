@@ -5185,11 +5185,15 @@
   "Gross": "Gross",
   "GrossInfo": "EWWWWWWWWW!!!! GET AWAY FROM ME",
   "GrossInfoLong": "As the Gross, your body will reappear after every meeting in the same place, and not be reportable after the first meeting. This happens because you are so gross no one will want to clean you up.\n",
-  
+
   "Staller": "Staller",
   "StallerInfo": "Your kills take too long to report",
   "StallerInfoLong": "When the victims of the Staller are reported, the report is delayed by a certain amount of time.",
-  "StallerReportDelay": "Report delay time for Staller victims"
+  "StallerReportDelay": "Report delay time for Staller victims",
+  "Concealed": "Concealed",
+  "ConcealedInfo": "You take too long to report",
+  "ConcealedInfoLong": "When the Concealed is reported, the report is delayed by a certain amount of time.",
+  "ConcealedReportDelay": "Report delay time for Concealed"
 }
 
 

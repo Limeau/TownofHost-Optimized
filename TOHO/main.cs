@@ -1092,6 +1092,7 @@ public enum CustomRoles
     Circumvent,
     Cleansed,
     Clumsy,
+    Concealed,
     Contagious,
     CorruptedA,
     Cyber,
