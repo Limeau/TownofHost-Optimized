@@ -237,6 +237,7 @@ public static class CustomRolesHelper
             CustomRoles.Volatile or
             CustomRoles.Mutant or
             CustomRoles.Blade or
+            CustomRoles.Beholder or
             CustomRoles.Abzorbaloff or
             CustomRoles.Sonic or
             CustomRoles.Prototype or
@@ -1521,6 +1522,7 @@ public static class CustomRolesHelper
            CustomRoles.TraineeB => CountTypes.Trainee,
            CustomRoles.Mutant => CountTypes.Mutant,
            CustomRoles.Blade => CountTypes.Blade,
+           CustomRoles.Beholder => CountTypes.Beholder,
            CustomRoles.Abzorbaloff => CountTypes.Abzorbaloff,
            CustomRoles.Sonic => CountTypes.Sonic,
            CustomRoles.Prototype => CountTypes.Prototype,
@@ -1608,6 +1610,7 @@ public static class CustomRolesHelper
             CustomRoles.TraineeB => CustomWinner.Trainee,
             CustomRoles.Mutant => CustomWinner.Mutant,
             CustomRoles.Blade => CustomWinner.Blade,
+            CustomRoles.Beholder => CustomWinner.Beholder,
             CustomRoles.Abzorbaloff => CustomWinner.Abzorbaloff,
             CustomRoles.Sonic => CustomWinner.Sonic,
             CustomRoles.Prototype => CustomWinner.Prototype,
@@ -1672,6 +1675,7 @@ public static class CustomRolesHelper
             CountTypes.Trainee => CustomRoles.TraineeB,
             CountTypes.Mutant => CustomRoles.Mutant,
             CountTypes.Blade => CustomRoles.Blade,
+            CountTypes.Beholder => CustomRoles.Beholder,
             CountTypes.Abzorbaloff => CustomRoles.Abzorbaloff,
             CountTypes.Sonic => CustomRoles.Sonic,
             CountTypes.Prototype => CustomRoles.Prototype,
@@ -1792,6 +1796,7 @@ public enum CountTypes
     Volatile,
     Mutant,
     Blade,
+    Beholder,
     ShadowKing,
     Godzilla,
     Atoner,

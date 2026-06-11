@@ -5193,7 +5193,15 @@
   "Concealed": "Concealed",
   "ConcealedInfo": "You take too long to report",
   "ConcealedInfoLong": "When the Concealed is reported, the report is delayed by a certain amount of time.",
-  "ConcealedReportDelay": "Report delay time for Concealed"
+  "ConcealedReportDelay": "Report delay time for Concealed",
+  
+  "Beholder": "Beholder",
+  "BeholderInfo": "Use your Rays to target players",
+  "BeholderInfoLong": "The Beholder can use their shapeshift button to target a player. Any of the following 4 things might happen. When they use their ability, they lose the ability to kill for the rest of the round.\n1- The player could freeze in place and not be able to move until a meeting starts.\n2- The player could instantly die without a body.\n3- The player could be blinded for the round.\n4- The player could lose their skin.",
+  "EnableBlindRay": "Enable Blind Ray",
+  "EnableFreezeRay": "Enable Freeze Ray",
+  "EnableDeathRay": "Enable Death Ray",
+  "EnableConsumeRay": "Enable Consume Ray"
 }
 
 
