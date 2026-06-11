@@ -116,6 +116,11 @@ public class PlayerGameOptionsSender(PlayerControl player) : GameOptionsSender
                 opt.SetFloat(FloatOptionNames.CrewLightMod, 1.25f);
                 opt.SetFloat(FloatOptionNames.ImpostorLightMod, 1.25f);
                 break;
+            case CustomGameMode.SimonSays:
+                opt.SetVision(true);
+                opt.SetFloat(FloatOptionNames.CrewLightMod, 1.25f);
+                opt.SetFloat(FloatOptionNames.ImpostorLightMod, 1.25f);
+                break;
         }
 
         if (player.Is(Custom_Team.Impostor))

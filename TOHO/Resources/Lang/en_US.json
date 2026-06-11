@@ -4693,6 +4693,17 @@
   "InvalidRoomFC": "\nThe room you were in was not on the list provided\n",
   "ChosenRoomFC": "\nThe room you were in was randomly selected, therefore you have died.\n",
 
+  "SimonSays": "Simon Says",
+  "ModeSimonSays": "Gamemode: Simon Says",
+  "ModeDescribe.SimonSays": "In the Simon Says game mode, Simon gives instructions on what to do during the game. Each round, Simon is randomly chosen among the players. If all players complete the objective before Simon's timer is up, Simon will die. The last player to not complete an objective will die. Make sure to only complete objectives when Simon says to! Last 2 remaining players win.",
+  "SimonSaysAFKTimer": "AFK Timer",
+  "SimonSaysSimonWinTimer": "Simon win timer",
+  "Simon": "Simon",
+  "Player": "Player",
+  "SimonInfo": "You are the Simon!",
+  "SimonInfoLong": "The Simon picks an objective for players to follow with /sim or /nosim.",
+  "PlayerInfoLong": "Player of the Simon Says game mode. Do /r for more info.",
+  
   "Survivalist": "Survivalist",
   "SurvivalistInfo": "Win the showdown to make crewmates win",
   "SurvivalistInfoLong": "If Imposters win when you are alive , a countdown will begin and the Imposter team will try and hunt you . Survive the showdown and lead crew to victory",

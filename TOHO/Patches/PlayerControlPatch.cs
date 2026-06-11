@@ -228,6 +228,10 @@ class CheckMurderPatch
         {
             return UltimateTeam.OnTag(killer, target);
         }
+        if (Options.CurrentGameMode == CustomGameMode.SimonSays)
+        {
+            return SimonSays.OnMurderPlayer(killer);
+        }
 
         //If Player hacked by Glitch
         if (Glitch.HasEnabled && !Glitch.OnCheckMurderOthers(killer, target))
@@ -644,6 +648,11 @@ public static class CheckShapeshiftPatch
             }
             return false;
         }
+        if (Options.CurrentGameMode == CustomGameMode.SimonSays && SimonSays.OnCheckShapeshift(shapeshifter) == false)
+        {
+            shapeshifter.RejectShapeshiftAndReset(resetCooldown);
+            return false;
+        }
 
         shapeshifter.RpcShapeshift(target, shouldAnimate);
         return false;
@@ -783,7 +792,7 @@ class ReportDeadBodyPatch
             return false;
         }
         if (Options.DisableMeeting.GetBool()) return false;
-        if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.KOTH or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
+        if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.KOTH or CustomGameMode.FourCorners or CustomGameMode.SimonSays or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
 
         if (!CanReport[__instance.PlayerId])
         {
@@ -1648,6 +1657,12 @@ class CoEnterVentPatch
         
         if (Options.CurrentGameMode == CustomGameMode.FourCorners)
         {
+            return false;
+        }
+        
+        if (Options.CurrentGameMode == CustomGameMode.SimonSays)
+        {
+            SimonSays.OnEnterVent(__instance.myPlayer);
             return false;
         }
         

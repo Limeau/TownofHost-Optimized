@@ -393,6 +393,11 @@ class TaskPanelBehaviourPatch
                     sbFinal.Append(sb);
                     break;
                 case CustomGameMode.FFA:
+                case CustomGameMode.CandR:
+                case CustomGameMode.UltimateTeam:
+                case CustomGameMode.FourCorners:
+                case CustomGameMode.KOTH:
+                case CustomGameMode.SimonSays:
                     Dictionary<byte, string> SummaryText2 = [];
                     foreach (var id in Main.PlayerStates.Keys)
                     {
@@ -409,86 +414,6 @@ class TaskPanelBehaviourPatch
 
                     sbFinal.Clear();
                     sbFinal.Append($"<size=70%>{sb}</size>");
-                    break;
-                case CustomGameMode.CandR: //C&R
-                    var lines1 = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
-                    StringBuilder sb1 = new();
-                    foreach (var eachLine in lines1)
-                    {
-                        var line = eachLine.Trim();
-                        if ((line.StartsWith("<color=#ff1919ff>") || line.StartsWith("<color=#ff0000ff>")) && sb1.Length < 1 && !line.Contains('(')) continue;
-                        sb1.Append(line + "\r\n");
-                    }
-
-                    if (sb1.Length > 1)
-                    {
-                        var text = sb1.ToString().TrimEnd('\n').TrimEnd('\r');
-                        if (!Utils.HasTasks(player.Data, false) && sb1.ToString().Any(s => s == '\n'))
-                            text = $"{Utils.ColorString(Utils.GetRoleColor(player.GetCustomRole()).ShadeColor(0.2f), GetString("FakeTask"))}\r\n{text}";
-                        sb.Append($"\r\n\r\n<size=85%>{text}</size>");
-                    }
-                    sbFinal.Clear();
-                    sbFinal.Append(sb);
-                    break;
-                case CustomGameMode.UltimateTeam:
-                    var lines2 = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
-                    StringBuilder sb3 = new();
-                    foreach (var eachLine in lines2)
-                    {
-                        var line = eachLine.Trim();
-                        if ((line.StartsWith("<color=#ff1919ff>") || line.StartsWith("<color=#ff0000ff>")) && sb3.Length < 1 && !line.Contains('(')) continue;
-                        sb3.Append(line + "\r\n");
-                    }
-
-                    if (sb3.Length > 1)
-                    {
-                        var text = sb3.ToString().TrimEnd('\n').TrimEnd('\r');
-                        if (!Utils.HasTasks(player.Data, false) && sb3.ToString().Any(s => s == '\n'))
-                            text = $"{Utils.ColorString(Utils.GetRoleColor(player.GetCustomRole()).ShadeColor(0.2f), GetString("FakeTask"))}\r\n{text}";
-                        sb.Append($"\r\n\r\n<size=85%>{text}</size>");
-                    }
-                    sbFinal.Clear();
-                    sbFinal.Append(sb);
-                    break;
-                case CustomGameMode.FourCorners:
-                    var lines4 = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
-                    StringBuilder sb5 = new();
-                    foreach (var eachLine in lines4)
-                    {
-                        var line = eachLine.Trim();
-                        if ((line.StartsWith("<color=#ff1919ff>") || line.StartsWith("<color=#ff0000ff>")) && sb5.Length < 1 && !line.Contains('(')) continue;
-                        sb5.Append(line + "\r\n");
-                    }
-
-                    if (sb5.Length > 1)
-                    {
-                        var text = sb5.ToString().TrimEnd('\n').TrimEnd('\r');
-                        if (!Utils.HasTasks(player.Data, false) && sb5.ToString().Any(s => s == '\n'))
-                            text = $"{Utils.ColorString(Utils.GetRoleColor(player.GetCustomRole()).ShadeColor(0.2f), GetString("FakeTask"))}\r\n{text}";
-                        sb.Append($"\r\n\r\n<size=85%>{text}</size>");
-                    }
-                    sbFinal.Clear();
-                    sbFinal.Append(sb);
-                    break;
-                case CustomGameMode.KOTH:
-                    var lines5 = taskText.Split("\r\n</color>\n")[0].Split("\r\n\n")[0].Split("\r\n");
-                    StringBuilder sb6 = new();
-                    foreach (var eachLine in lines5)
-                    {
-                        var line = eachLine.Trim();
-                        if ((line.StartsWith("<color=#ff1919ff>") || line.StartsWith("<color=#ff0000ff>")) && sb6.Length < 1 && !line.Contains('(')) continue;
-                        sb6.Append(line + "\r\n");
-                    }
-
-                    if (sb6.Length > 1)
-                    {
-                        var text = sb6.ToString().TrimEnd('\n').TrimEnd('\r');
-                        if (!Utils.HasTasks(player.Data, false) && sb6.ToString().Any(s => s == '\n'))
-                            text = $"{Utils.ColorString(Utils.GetRoleColor(player.GetCustomRole()).ShadeColor(0.2f), GetString("FakeTask"))}\r\n{text}";
-                        sb.Append($"\r\n\r\n<size=85%>{text}</size>");
-                    }
-                    sbFinal.Clear();
-                    sbFinal.Append(sb);
                     break;
 
             }

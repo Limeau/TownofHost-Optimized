@@ -33,6 +33,9 @@ public static class CustomRolesHelper
 
         if (Options.CurrentGameMode is CustomGameMode.FourCorners && role is CustomRoles.FourCorners) return CustomRoles.Crewmate;
         
+        if (Options.CurrentGameMode is CustomGameMode.SimonSays && role is CustomRoles.Player) return CustomRoles.Shapeshifter;
+        if (Options.CurrentGameMode is CustomGameMode.SimonSays && role is CustomRoles.Simon) return CustomRoles.GuardianAngel;
+        
         // Vanilla Roles
         if (role.IsVanilla()) return role;
 
@@ -73,6 +76,10 @@ public static class CustomRolesHelper
                 break;
             case CustomGameMode.FourCorners:
                 if (role is CustomRoles.FourCorners) return RoleTypes.Crewmate;
+                break;
+            case CustomGameMode.SimonSays:
+                if (role is CustomRoles.Player) return RoleTypes.Shapeshifter;
+                if (role is CustomRoles.Simon) return RoleTypes.GuardianAngel;
                 break;
         }
 

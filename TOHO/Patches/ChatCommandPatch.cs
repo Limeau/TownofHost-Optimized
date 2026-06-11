@@ -493,6 +493,14 @@ internal class ChatCommands
                         break;
                     }
 
+                case "/sim":
+                    if (PlayerControl.LocalPlayer.Is(CustomRoles.Simon)) SimonSays.ReceiveSim(args[1]);
+                    break;
+                
+                case "/nosim":
+                    if (PlayerControl.LocalPlayer.Is(CustomRoles.Simon)) SimonSays.ReceiveNosim(args[1]);
+                    break;
+                    
                 case "/kc":
                 case "/kcount":
                 case "/количество":
@@ -2128,6 +2136,9 @@ internal class ChatCommands
                 return;
             case CustomGameMode.FourCorners:
                 Utils.SendMessage(GetString("ModeDescribe.FourCorners"), playerId);
+                return;
+            case CustomGameMode.SimonSays:
+                Utils.SendMessage(GetString("ModeDescribe.SimonSays"), playerId);
                 return;
             case CustomGameMode.CandR:
                 var copName = GetString(CustomRoles.Cop.ToString()).ToLower().Trim().TrimStart('*').Replace(" ", string.Empty);

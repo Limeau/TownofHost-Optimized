@@ -32,7 +32,7 @@ class CheckTaskCompletionPatch
 {
     public static bool Prefix(ref bool __result)
     {
-        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.FFA)
+        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.SimonSays || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.FFA)
         {
             __result = false;
             return false;
@@ -67,6 +67,7 @@ class GameEndCheckerForNormal
             case CustomGameMode.UltimateTeam:
             case CustomGameMode.FourCorners:
             case CustomGameMode.KOTH:
+            case CustomGameMode.SimonSays:
 
                 if (WinnerIds.Count > 0 || WinnerTeam != CustomWinner.Default)
                 {
@@ -693,6 +694,7 @@ class GameEndCheckerForNormal
     public static void SetPredicateToCandR() => predicate = new CandRGameEndPredicate(); //C&R
     public static void SetPredicateToUltimateTeam() => predicate = new UltimateTeamGameEndPredicate();
     public static void SetPredicateToFourCorners() => predicate = new FourCornersGameEndPredicate();
+    public static void SetPredicateToSimonSays() => predicate = new SimonSaysGameEndPredicate();
 
     // ===== Check Game End =====
     // For Normal Games
@@ -974,6 +976,47 @@ class FourCornersGameEndPredicate : GameEndPredicate
             reason = GameOverReason.ImpostorsByKill; 
             ResetAndSetWinner(CustomWinner.None); 
             Logger.Info("Game end because all players dead", "FourCorners"); 
+            return true;
+        }
+        // Everyone died
+        reason = GameOverReason.ImpostorsByKill; 
+
+        return false;
+    }
+    
+}
+class SimonSaysGameEndPredicate : GameEndPredicate
+{
+    public override bool CheckForEndGame(out GameOverReason reason)
+    {
+        reason = GameOverReason.CrewmateDisconnect;
+        if (CheckGameEndByLivingPlayers(out reason)) return true;
+        return false;
+    }
+
+    public static bool CheckGameEndByLivingPlayers(out GameOverReason reason)
+    {
+        if (Main.AllAlivePlayerControls.Length <= 1)
+        { 
+            reason = GameOverReason.ImpostorsByKill; 
+            ResetAndSetWinner(CustomWinner.SimonSays);
+            foreach (var player in Main.AllAlivePlayerControls)
+            {
+                WinnerIds.Add(player.PlayerId);
+            }
+
+            foreach (var player in Main.AllPlayerControls.Where(x => x.Is(CustomRoles.Simon)))
+            {
+                WinnerIds.Add(player.PlayerId);
+            }
+            Logger.Info("Game end becausen only two player not dead", "SimonSays"); 
+            return true;
+        }
+        if (!Main.AllAlivePlayerControls.Any())
+        { 
+            reason = GameOverReason.ImpostorsByKill; 
+            ResetAndSetWinner(CustomWinner.None); 
+            Logger.Info("Game end because all players dead", "SimonSays"); 
             return true;
         }
         // Everyone died

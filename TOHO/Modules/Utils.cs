@@ -626,6 +626,7 @@ public static class Utils
         if (States.Disconnected) return false;
 
         if (Options.CurrentGameMode == CustomGameMode.FourCorners) return true;
+        if (Options.CurrentGameMode == CustomGameMode.SimonSays) return true;
         if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam) return false;
         if (playerData.IsDead && Options.GhostIgnoreTasks.GetBool()) hasTasks = false;
 
@@ -721,6 +722,9 @@ public static class Utils
                     break;
                 case CustomGameMode.FourCorners:
                     ProgressText.Append(string.Empty);
+                    break;
+                case CustomGameMode.SimonSays:
+                    ProgressText.Append(SimonSays.GetProgressText(playerId));
                     break;
                 default:
                     ProgressText.Append(playerId.GetRoleClassById()?.GetProgressText(playerId, comms));
@@ -1721,6 +1725,8 @@ public static class Utils
                 name = $"<color=#16c910><size=1.7>{GetString("ModeUltimateTeam")}</size></color>\r\n" + name;
             else if (Options.CurrentGameMode == CustomGameMode.FourCorners)
                 name = $"<color=#eb4034><size=1.7>{GetString("ModeFourCorners")}</size></color>\r\n" + name;
+            else if (Options.CurrentGameMode == CustomGameMode.SimonSays)
+                name = $"<color=#d90000><size=1.7>{GetString("ModeSimonSays")}</size></color>\r\n" + name;
         }
 
         var modtag = "";

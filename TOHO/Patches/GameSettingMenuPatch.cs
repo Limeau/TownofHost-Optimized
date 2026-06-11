@@ -38,6 +38,7 @@ public class GameSettingMenuPatch
             CustomGameMode.KOTH => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.UltimateTeam => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.FourCorners => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
+            CustomGameMode.SimonSays => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.CandR => Enum.GetValues<TabGroup>().Skip(3).ToArray(),
             _ => []
         };
@@ -514,7 +515,7 @@ public class GameSettingMenuPatch
             {
                 cs2Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
                 {
-                    Options.GameMode.SetValue(0);
+                    Options.GameMode.SetValue(6);
                     GameOptionsMenuPatch.ReOpenSettings();
                 }));
             }

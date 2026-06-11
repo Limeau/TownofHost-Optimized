@@ -176,6 +176,13 @@ class RpcSetTasksPatch
             NumShortTasks = 1;
             NumLongTasks = 0;
         }
+        
+        if (Options.CurrentGameMode == CustomGameMode.SimonSays)
+        {
+            hasCommonTasks = false;
+            NumShortTasks = 1;
+            NumLongTasks = 0;
+        }
 
         if (pc.Is(CustomRoles.Workhorse))
         {

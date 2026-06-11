@@ -1314,6 +1314,10 @@ static class ExtendedPlayerControl
                 if (player.Is(CustomRoles.KingOfTheHill))
                     KOTH.SetKillCooldown(player);
                 break;
+            case CustomGameMode.SimonSays:
+                if (player.Is(CustomRoles.Player))
+                    SimonSays.SetKillCooldown(player);
+                break;
             case CustomGameMode.UltimateTeam:
                 if (player.Is(CustomRoles.Red) || player.Is(CustomRoles.Blue))
                 {

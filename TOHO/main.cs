@@ -1069,6 +1069,9 @@ public enum CustomRoles
     KingOfTheHill,
     // Four Corners
     FourCorners,
+    // Simon Says
+    Simon,
+    Player,
     
     //GM
     GM,
@@ -1299,6 +1302,7 @@ public enum CustomWinner
     Prototype = CustomRoles.Prototype,
     Sonic = CustomRoles.Sonic,
     KOTH = CustomRoles.KingOfTheHill,
+    SimonSays = CustomRoles.Simon,
     SecretAgent = CustomRoles.SecretAgent,
     Swan = CustomRoles.Swan
 }
