@@ -114,6 +114,7 @@ internal class Beholder : RoleBase
             case 1:
                 Frozen.Add(target, Main.AllPlayerSpeed[target.PlayerId]);
                 Main.AllPlayerSpeed[target.PlayerId] = 0f;
+                target.MarkDirtySettings();
                 break;
             case 2:
                 shapeshifter.KillWithoutBody(target);
@@ -136,6 +137,7 @@ internal class Beholder : RoleBase
         foreach (var tar in Frozen)
         {
             Main.AllPlayerSpeed[tar.Key.PlayerId] = tar.Value;
+            tar.Key.MarkDirtySettings();
         }
         HasUsed = false;
     }
