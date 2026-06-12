@@ -5201,7 +5201,13 @@
   "EnableBlindRay": "Enable Blind Ray",
   "EnableFreezeRay": "Enable Freeze Ray",
   "EnableDeathRay": "Enable Death Ray",
-  "EnableConsumeRay": "Enable Consume Ray"
+  "EnableConsumeRay": "Enable Consume Ray",
+  
+  "Director": "Director",
+  "DirectorInfo": "Turn players into Stars",
+  "DirectorInfoLong": "The Director can use their kill button to Star a player. From then until the next meeting, they will be assigned the Super Star role. They will revert to their old role once the meeting is over.",
+  "DirectorStarCooldown": "Director Star Cooldown",
+  "DirectorAbilityUses": "Director Ability Uses"
 }
 
 

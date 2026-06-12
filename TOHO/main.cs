@@ -835,6 +835,7 @@ public enum CustomRoles
     Deputy,
     Analyst,
     Dictator,
+    Director,
     Doctor,
     Druid,
     Enigma,
