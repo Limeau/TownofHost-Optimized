@@ -228,6 +228,7 @@ public static class CustomRolesHelper
             CustomRoles.DarkFairy or
             CustomRoles.Assassin or
             CustomRoles.Vaporizer or
+            CustomRoles.Falcon or
             CustomRoles.TraineeB or
             CustomRoles.Artist or
             CustomRoles.Slayer or
@@ -1519,6 +1520,7 @@ public static class CustomRolesHelper
            CustomRoles.DarkFairy => CountTypes.DarkFairy,
            CustomRoles.Assassin => CountTypes.Assassin,
            CustomRoles.Vaporizer => CountTypes.Vaporizer,
+           CustomRoles.Falcon => CountTypes.Falcon,
            CustomRoles.TraineeB => CountTypes.Trainee,
            CustomRoles.Mutant => CountTypes.Mutant,
            CustomRoles.Blade => CountTypes.Blade,
@@ -1607,6 +1609,7 @@ public static class CustomRolesHelper
             CustomRoles.DarkFairy => CustomWinner.DarkFairy,
             CustomRoles.Assassin => CustomWinner.Assassin,
             CustomRoles.Vaporizer => CustomWinner.Vaporizer,
+            CustomRoles.Falcon => CustomWinner.Falcon,
             CustomRoles.TraineeB => CustomWinner.Trainee,
             CustomRoles.Mutant => CustomWinner.Mutant,
             CustomRoles.Blade => CustomWinner.Blade,
@@ -1672,6 +1675,7 @@ public static class CustomRolesHelper
             CountTypes.DarkFairy => CustomRoles.DarkFairy,
             CountTypes.Assassin => CustomRoles.Assassin,
             CountTypes.Vaporizer => CustomRoles.Vaporizer,
+            CountTypes.Falcon => CustomRoles.Falcon,
             CountTypes.Trainee => CustomRoles.TraineeB,
             CountTypes.Mutant => CustomRoles.Mutant,
             CountTypes.Blade => CustomRoles.Blade,
@@ -1787,6 +1791,7 @@ public enum CountTypes
     Darkened,
     Assassin,
     Vaporizer,
+    Falcon,
     Trainee,
     Artist,
     Slayer,

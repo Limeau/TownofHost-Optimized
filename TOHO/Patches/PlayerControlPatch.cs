@@ -1861,7 +1861,8 @@ class PlayerControlCompleteTaskPatch
 
         // Utils.NotifyRoles(SpecifySeer: player);
         // Utils.NotifyRoles(SpecifyTarget: player);
-        
+
+        if (Falcon.Scars.Contains(player)) return false;
         return ret;
     }
     public static void Postfix()

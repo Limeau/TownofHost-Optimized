@@ -2531,6 +2531,7 @@ public static class Utils
             PlayerState.DeathReason.BlastedOff => CustomRoles.MoonDancer.IsEnable(),
             PlayerState.DeathReason.Vaporized => CustomRoles.Vaporizer.IsEnable(),
             PlayerState.DeathReason.Toxined => CustomRoles.Bane.IsEnable(),
+            PlayerState.DeathReason.Scarred => CustomRoles.Falcon.IsEnable(),
             PlayerState.DeathReason.Arrested => CustomRoles.Narc.IsEnable(),
             PlayerState.DeathReason.Overthrown => CustomRoles.Dictator.IsEnable(),
             PlayerState.DeathReason.Destroyed => CustomRoles.Godzilla.IsEnable(),

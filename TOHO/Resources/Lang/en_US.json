@@ -5207,7 +5207,15 @@
   "DirectorInfo": "Turn players into Stars",
   "DirectorInfoLong": "The Director can use their kill button to Star a player. From then until the next meeting, they will be assigned the Super Star role. They will revert to their old role once the meeting is over.",
   "DirectorStarCooldown": "Director Star Cooldown",
-  "DirectorAbilityUses": "Director Ability Uses"
+  "DirectorAbilityUses": "Director Ability Uses",
+  
+  "Falcon": "Falcon",
+  "FalconInfo": "Scar players while in Attack Mode",
+  "FalconInfoLong": "The Falcon can use their Unshift button to enter Attack Mode. While in Attack Mode, the Falcon has a faster speed, and can use their kill button to Scar a player, which makes the player unable to report bodies, use their kill button, or do tasks. This player is also slowed, and they will be killed at the beginning of the next meeting. Use your kill button outside of Attack Mode to kill normally.",
+  "DeathReason.Scarred": "Scarred",
+  "FalconAttackModeDuration": "Attack Mode duration",
+  "FalconAttackModeCooldown": "Attack Mode cooldown",
+  "FalconSpeedIncrease": "Speed Increase"
 }
 
 

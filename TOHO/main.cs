@@ -944,6 +944,7 @@ public enum CustomRoles
     Entity,
     Executioner,
     Extremist,
+    Falcon,
     Famine,
     Follower,
     Glitch,
@@ -1301,7 +1302,8 @@ public enum CustomWinner
     Sonic = CustomRoles.Sonic,
     KOTH = CustomRoles.KingOfTheHill,
     SecretAgent = CustomRoles.SecretAgent,
-    Swan = CustomRoles.Swan
+    Swan = CustomRoles.Swan,
+    Falcon = CustomRoles.Falcon,
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners
