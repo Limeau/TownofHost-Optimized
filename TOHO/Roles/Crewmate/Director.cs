@@ -13,8 +13,6 @@ internal class Director : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
     
     public override bool TOHORole => true;
-    
-    public override bool NewRole => true;
     public override string IdeaRole => "the_little_pelican";
     //==================================================================\\
 
