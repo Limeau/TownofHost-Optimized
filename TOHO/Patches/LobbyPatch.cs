@@ -20,7 +20,7 @@ public class LobbyStartPatch
     private static bool FirstDecorationsLoad = true;
     public static void Prefix()
     {
-        LobbyPaintSprite = Utils.LoadSprite("TOHO.Resources.Images.LobbyPaint.png", 290f);
+        LobbyPaintSprite = Utils.LoadSprite("TOHO.Resources.Images.Limeau.png", 290f);
         DropshipDecorationsSprite = Utils.LoadSprite("TOHO.Resources.Images.TOHO_decor.png", 60f);
     }
 
