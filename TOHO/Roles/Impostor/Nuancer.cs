@@ -71,8 +71,8 @@ internal class Nuancer : RoleBase
     { 
           int n;
         if (NuancerCanSuicide.GetBool())
-            n = 5;
-        else n = 4;
+            n = 7;
+        else n = 6;
       
        
         var randomDeath = IRandom.Instance.Next(0, n);
@@ -97,6 +97,14 @@ internal class Nuancer : RoleBase
 
             case 4: // Suicide - killer dies instead
                 SuicideKill(killer);
+                break;
+            
+            case 5: // WildShot
+                RandomKill(killer);
+                break;
+            
+            case 6: // Vaporizer
+                VaporizerKill(killer, target);
                 break;
 
 
@@ -143,6 +151,16 @@ internal class Nuancer : RoleBase
         killer.SetRealKiller(killer);
         Main.PlayerStates[killer.PlayerId].SetDead();
         killer.Notify("Your attack backfired!");
+    }
+    private static void RandomKill(PlayerControl killer)
+    {
+        var target = Main.AllAlivePlayerControls.RandomElement();
+        killer.RpcGuardAndKill();
+        target.RpcMurderPlayer(target);
+    }
+    private static void VaporizerKill(PlayerControl killer, PlayerControl target)
+    {
+        killer.KillWithoutBody(target);
     }
 
     private static void ExplosiveKill(PlayerControl killer, PlayerControl target)
