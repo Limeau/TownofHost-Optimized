@@ -71,8 +71,8 @@ internal class Nuancer : RoleBase
     { 
           int n;
         if (NuancerCanSuicide.GetBool())
-            n = 7;
-        else n = 6;
+            n = 8;
+        else n = 7;
       
        
         var randomDeath = IRandom.Instance.Next(0, n);
@@ -105,6 +105,12 @@ internal class Nuancer : RoleBase
             
             case 6: // Vaporizer
                 VaporizerKill(killer, target);
+                break;
+            
+            
+            case 7: // Butcher
+                killer.RpcMurderPlayer(target);
+                ButcherKill(killer, target);
                 break;
 
 
@@ -161,6 +167,16 @@ internal class Nuancer : RoleBase
     private static void VaporizerKill(PlayerControl killer, PlayerControl target)
     {
         killer.KillWithoutBody(target);
+    }
+    private static void ButcherKill(PlayerControl killer, PlayerControl target)
+    {
+        if (GameStates.IsMeeting) return;
+        target.RpcMurderPlayer(target);
+        target.SetRealKiller(killer);
+        _ = new LateTask(() =>
+        {
+            ButcherKill(killer, target);
+        }, 0.1f, "Nuancer Butcher Repeat");
     }
 
     private static void ExplosiveKill(PlayerControl killer, PlayerControl target)
