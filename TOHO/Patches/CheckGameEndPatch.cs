@@ -489,6 +489,13 @@ class GameEndCheckerForNormal
                                     AdditionalWinnerTeams.Add(AdditionalWinners.Provocateur);
                                 }
                                 break;
+                            case CustomRoles.DodoBird:
+                                if (DodoBird.Killer != null && WinnerIds.Contains(DodoBird.Killer.PlayerId))
+                                {
+                                    WinnerIds.Add(pc.PlayerId);
+                                    AdditionalWinnerTeams.Add(AdditionalWinners.DodoBird);
+                                }
+                                break;
                             case CustomRoles.Hater when Hater.isWon:
                                 AdditionalWinnerTeams.Add(AdditionalWinners.Hater);
 

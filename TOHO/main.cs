@@ -938,6 +938,7 @@ public enum CustomRoles
     Death,
     Demon,
     Developer,
+    DodoBird,
     Doomsayer,
     Doppelganger,
     Duck,
@@ -1338,6 +1339,7 @@ public enum AdditionalWinners
     Developer = CustomRoles.Developer,
     Extremist = CustomRoles.Extremist,
     Duck = CustomRoles.Duck,
+    DodoBird = CustomRoles.DodoBird,
     //   NiceMini = CustomRoles.NiceMini,
     //   Baker = CustomRoles.Baker,
 }

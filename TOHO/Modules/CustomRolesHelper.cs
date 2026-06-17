@@ -137,6 +137,7 @@ public static class CustomRolesHelper
             CustomRoles.Pursuer or
             CustomRoles.Revolutionist or
             CustomRoles.Provocateur or
+            CustomRoles.DodoBird or
             CustomRoles.Demon or
             CustomRoles.Hater or
             CustomRoles.Workaholic or

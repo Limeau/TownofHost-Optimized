@@ -5221,7 +5221,11 @@
   "RadiatorInfo": "People near you overheat",
   "RadiatorInfoLong": "For each second a player is near the Radiator, they will gain a point. While a player is not near the Radiator, they will lose a point. If the player has enough points, they will die.",
   "AmountNeeded438": "Points Needed to Die",
-  "Radius438": "Radiation Radius"
+  "Radius438": "Radiation Radius",
+
+  "DodoBird": "Dodo Bird",
+  "DodoBirdInfo": "Have your killer win",
+  "DodoBirdInfoLong": "When the Dodo Bird is killed, they will win if their killer wins."
 }
 
 
