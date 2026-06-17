@@ -1135,6 +1135,7 @@ public enum CustomRoles
     Lucky,
     Madmate,
     Mare,
+    Radiator,
     Randomizer,
     Rebirth,
     Residue,
