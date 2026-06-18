@@ -63,8 +63,8 @@ internal static class SimonSays
             player.RpcChangeRoleBasis(CustomRoles.Player);
         }
         
-        Simon.RpcSetCustomRole(CustomRoles.Player);
-        Simon.RpcChangeRoleBasis(CustomRoles.Player);
+        if (Simon) Simon.RpcSetCustomRole(CustomRoles.Player);
+        if (Simon) Simon.RpcChangeRoleBasis(CustomRoles.Player);
         Simon = Main.AllAlivePlayerControls.RandomElement();
         Simon.RpcSetCustomRole(CustomRoles.Simon);
         Simon.RpcChangeRoleBasis(CustomRoles.Simon);
@@ -189,12 +189,13 @@ internal static class SimonSays
         SimonTime = SimonWinTimer.GetInt() + 13;
         new LateTask(() =>
         {
-            foreach (var player in Main.AllAlivePlayerControls)
+            foreach (var player in Main.AllPlayerControls)
             {
                 Completed.Add(player);
                 player.Notify("Game starting soon...");
             }
-        }, 8f, "Simon Says Initialize");new LateTask(() =>
+        }, 8f, "Simon Says Initialize");
+        new LateTask(() =>
         {
             Loop();
         }, 13f, "Simon Says Start");
