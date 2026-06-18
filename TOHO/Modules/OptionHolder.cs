@@ -990,7 +990,7 @@ public static class Options
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(100, 200, 100, byte.MaxValue));
 
-        CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateHindering).ForEach(r => r.SetupCustomOption());
+        CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateInvestigative).ForEach(r => r.SetupCustomOption());
 
         /*
          * SUPPORT ROLES
