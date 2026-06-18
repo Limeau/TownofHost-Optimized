@@ -15,6 +15,8 @@ internal class Technician : RoleBase
     public override CustomRoles Role => CustomRoles.Technician;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
+
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem SeeAllIDs;
