@@ -867,6 +867,8 @@ class ReportDeadBodyPatch
 
                 if (targetObject != null)
                 {
+                    if (__instance.Is(CustomRoles.Snooze) && !Snooze.ReportDeadBody(__instance)) return false;
+                    
                     if (targetObject.Is(CustomRoles.Unreportable)) return false;
 
                     if (targetObject.Is(CustomRoles.Gross) && Gross.HasBeenMurdered[targetObject]) return false;

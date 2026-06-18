@@ -1169,6 +1169,7 @@ public enum CustomRoles
     Silent,
     Sleuth,
     Sloth,
+    Snooze,
     Soulless,
     Statue,
     Stubborn,

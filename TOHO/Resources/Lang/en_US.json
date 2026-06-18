@@ -5229,7 +5229,13 @@
 
   "Raven": "Raven",
   "RavenInfo": "Travel to crime scenes to retrieve information",
-  "RavenInfoLong": "When someone is killed, their exact location of where they were killed is marked. The Raven must travel to this location to receive more information about the kill. The information can include the victim's name, the victim's role, if the killer is dead or not, or the killer's role."
+  "RavenInfoLong": "When someone is killed, their exact location of where they were killed is marked. The Raven must travel to this location to receive more information about the kill. The information can include the victim's name, the victim's role, if the killer is dead or not, or the killer's role.",
+  
+  "Snooze": "Snooze",
+  "SnoozeInfo": "Zzzz.....",
+  "SnoozeInfoLong": "If you have the Snooze Add-On, there's a chance you can't report bodies. When you click report, you'll have a chance of not reporting the body. If you have failed at reporting, then you must wait to report again. There will be a cooldown on your report button, in which you will need to wait til the end of it to retry.",
+  "SnoozeChance": "Chance to fail at reporting",
+  "SnoozeCooldown": "Snooze Cooldown"
 }
 
 
