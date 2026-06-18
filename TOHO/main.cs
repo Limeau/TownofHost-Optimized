@@ -884,6 +884,7 @@ public enum CustomRoles
     Protector,
     Protester,
     Psychic,
+    Raven,
     Retributionist,
     Reverie,
     Santa,

@@ -5225,7 +5225,11 @@
 
   "DodoBird": "Dodo Bird",
   "DodoBirdInfo": "Have your killer win",
-  "DodoBirdInfoLong": "When the Dodo Bird is killed, they will win if their killer wins."
+  "DodoBirdInfoLong": "When the Dodo Bird is killed, they will win if their killer wins.",
+
+  "Raven": "Raven",
+  "RavenInfo": "Travel to crime scenes to retrieve information",
+  "RavenInfoLong": "When someone is killed, their exact location of where they were killed is marked. The Raven must travel to this location to receive more information about the kill. The information can include the victim's name, the victim's role, if the killer is dead or not, or the killer's role."
 }
 
 
