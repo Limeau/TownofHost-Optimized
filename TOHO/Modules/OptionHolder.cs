@@ -970,15 +970,6 @@ public static class Options
         }
 
         /*
-         * BASIC ROLES
-         */
-        TextOptionItem.Create(10000007, "RoleType.CrewBasic", TabGroup.CrewmateRoles)
-            .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(150, 150, 150, byte.MaxValue));
-
-        CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateBasic).ForEach(r => r.SetupCustomOption());
-
-        /*
          * MINI 
          */
         CustomRoles.Mini.GetStaticRoleClass().SetupCustomOption();
@@ -986,7 +977,7 @@ public static class Options
         /*
          * HINDERING ROLES
          */
-        TextOptionItem.Create(10000008, "RoleType.CrewHindering", TabGroup.CrewmateRoles)
+        TextOptionItem.Create(10000007, "RoleType.CrewHindering", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(255, 145, 0, byte.MaxValue));
 

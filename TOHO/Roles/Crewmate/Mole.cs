@@ -12,7 +12,7 @@ internal class Mole : RoleBase
     public override CustomRoles Role => CustomRoles.Mole;
     private const int Id = 26000;
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
-    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateBasic;
+    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
     public override bool BlockMoveInVent(PlayerControl pc) => true;
     //==================================================================\\
 
