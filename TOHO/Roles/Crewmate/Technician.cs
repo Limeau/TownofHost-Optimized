@@ -14,7 +14,7 @@ internal class Technician : RoleBase
     public static bool HasEnabled => playerIdList.Any();
     public override CustomRoles Role => CustomRoles.Technician;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
-    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
     //==================================================================\\
 
     private static OptionItem SeeAllIDs;

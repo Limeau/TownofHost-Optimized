@@ -17,7 +17,7 @@ internal class ForensicScientist : RoleBase
     public override CustomRoles Role => CustomRoles.ForensicScientist;
     private const int Id = 35800;
     public override CustomRoles ThisRoleBase => CustomRoles.Scientist;
-    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
+    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
     public override bool TOHORole => true;
 
     public override string CodedRole => "mirage_29";

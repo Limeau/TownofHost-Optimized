@@ -991,6 +991,15 @@ public static class Options
             .SetColor(new Color32(255, 145, 0, byte.MaxValue));
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateHindering).ForEach(r => r.SetupCustomOption());
+        
+        /*
+         * INVESTIGATIVE ROLES
+         */
+        TextOptionItem.Create(10000008, "RoleType.CrewInvestigative", TabGroup.CrewmateRoles)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetColor(new Color32(100, 200, 100, byte.MaxValue));
+
+        CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmateHindering).ForEach(r => r.SetupCustomOption());
 
         /*
          * SUPPORT ROLES

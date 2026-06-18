@@ -11,7 +11,7 @@ internal class Raven : RoleBase
     private const int Id = 44000;
     public override bool IsDesyncRole => true;
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
-    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
+    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
     public override bool TOHORole => true;
     public override bool NewRole => true;
     //==================================================================\\

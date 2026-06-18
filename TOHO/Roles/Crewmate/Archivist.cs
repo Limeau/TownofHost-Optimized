@@ -13,7 +13,7 @@ internal class Archivist : RoleBase
     public override CustomRoles Role => CustomRoles.Archivist;
     private const int Id = 42500;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
-    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmatePower;
+    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
     public override bool TOHORole => true;
     public override string IdeaRole => "the_little_pelican";
     //==================================================================\\

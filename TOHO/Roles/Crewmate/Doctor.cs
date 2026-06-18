@@ -11,7 +11,7 @@ internal class Doctor : RoleBase
     public override CustomRoles Role => CustomRoles.Doctor;
     private const int Id = 6700;
     public override CustomRoles ThisRoleBase => CustomRoles.Scientist;
-    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateBasic;
+    public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
     //==================================================================\\
 
     private static OptionItem TaskCompletedBatteryChargeOpt;
