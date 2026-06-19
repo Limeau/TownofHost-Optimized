@@ -13,7 +13,6 @@ internal class Raven : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     //==================================================================\\
 
     public static List<RavenWatchKill> KilledPlaces = [];

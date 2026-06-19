@@ -10,7 +10,6 @@ internal class Falcon : RoleBase
     public override CustomRoles Role => CustomRoles.Falcon;
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     public override string IdeaRole => "the_little_pelican";
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     //==================================================================\\
