@@ -6,6 +6,8 @@ using HarmonyLib;
 
 namespace TOHO.Patches
 {
+#if ANDROID
+#else
     // Originally from Town of Us Rewritten, by Det
     [HarmonyPatch(typeof(ActivityManager), nameof(ActivityManager.UpdateActivity))]
     public class DiscordRPC
@@ -72,4 +74,5 @@ namespace TOHO.Patches
             }
         }
     }
+#endif
 }
