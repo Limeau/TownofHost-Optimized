@@ -1865,6 +1865,11 @@ class PlayerControlCompleteTaskPatch
         // Utils.NotifyRoles(SpecifyTarget: player);
 
         if (Falcon.Scars.Contains(player)) return false;
+        if (Hoarder.IsTaskHarmful)
+        {
+            Hoarder.OnTask();
+            return false;
+        }
         return ret;
     }
     public static void Postfix()

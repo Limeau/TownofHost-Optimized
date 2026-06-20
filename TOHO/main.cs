@@ -743,6 +743,7 @@ public enum CustomRoles
     Greedy,
     Hangman,
     Harbourer,
+    Hoarder,
     Inhibitor,
     Instigator,
     Investor,

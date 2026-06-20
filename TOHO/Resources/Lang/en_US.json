@@ -5235,7 +5235,11 @@
   "SnoozeInfo": "Zzzz.....",
   "SnoozeInfoLong": "If you have the Snooze Add-On, there's a chance you can't report bodies. When you click report, you'll have a chance of not reporting the body. If you have failed at reporting, then you must wait to report again. There will be a cooldown on your report button, in which you will need to wait til the end of it to retry.",
   "SnoozeChance": "Chance to fail at reporting",
-  "SnoozeCooldown": "Snooze Cooldown"
+  "SnoozeCooldown": "Snooze Cooldown",
+  
+  "Hoarder": "Hoarder",
+  "HoarderInfo": "Collect seconds from Crewmate's tasks",
+  "HoarderInfoLong": "As the Hoarder, use your Unshift button to temporarily restrict tasks from being done. Each task done will reduce your kill cooldown by 1sec."
 }
 
 
