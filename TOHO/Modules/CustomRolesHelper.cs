@@ -150,6 +150,7 @@ public static class CustomRolesHelper
             CustomRoles.CursedSoul or
             CustomRoles.Specter or
             CustomRoles.Stalker or
+            CustomRoles.Gastlighter or
             CustomRoles.Doomsayer or
             CustomRoles.SoulCollector or
             CustomRoles.Death or
@@ -1493,6 +1494,7 @@ public static class CustomRolesHelper
            CustomRoles.Cultist => CountTypes.Cultist,
            CustomRoles.Communist => CountTypes.Communist,
            CustomRoles.Stalker => Stalker.SnatchesWins ? CountTypes.Crew : CountTypes.Stalker,
+           CustomRoles.Gastlighter => CountTypes.Crew,
            CustomRoles.Arsonist => Arsonist.CanIgniteAnytime() ? CountTypes.Arsonist : CountTypes.Crew,
            CustomRoles.Shroud => CountTypes.Shroud,
            CustomRoles.Werewolf => CountTypes.Werewolf,
@@ -1573,6 +1575,7 @@ public static class CustomRolesHelper
             CustomRoles.Egoist => CustomWinner.Egoist,
             CustomRoles.Demon => CustomWinner.Demon,
             CustomRoles.Stalker => CustomWinner.Stalker,
+            CustomRoles.Gastlighter => CustomWinner.Gastlighter,
             CustomRoles.Workaholic => CustomWinner.Workaholic,
             CustomRoles.Solsticer => CustomWinner.Solsticer,
             CustomRoles.Collector => CustomWinner.Collector,

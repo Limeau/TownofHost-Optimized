@@ -5243,7 +5243,11 @@
 
   "Dreadsteed": "Dreadsteed",
   "DreadsteedInfo": "Keep reviving but at a cost",
-  "DreadsteedInfoLong": "As the Dreadsteed, after you die, you are revived after the next round with a negative effect. These effects depend on how many times you've been revived. The Dreadsteed wins with the winning team if it's alive at the end of the game.\n\n1st Revive: Lower speed.\n2nd Revive: Fragile is assigned.\n3rd Revive: Blinded.\n4th Revive: Die if anyone gets near you.\nYou die permanently after the 4th revive.\n\nAdditionally, when you finish your tasks, your negative effects will be reset to as if you were never revived."
+  "DreadsteedInfoLong": "As the Dreadsteed, after you die, you are revived after the next round with a negative effect. These effects depend on how many times you've been revived. The Dreadsteed wins with the winning team if it's alive at the end of the game.\n\n1st Revive: Lower speed.\n2nd Revive: Fragile is assigned.\n3rd Revive: Blinded.\n4th Revive: Die if anyone gets near you.\nYou die permanently after the 4th revive.\n\nAdditionally, when you finish your tasks, your negative effects will be reset to as if you were never revived.",
+
+  "Gastlighter": "Gastlighter",
+  "GastlighterInfo": "Steal the win by gastlighting a player",
+  "GastlighterInfoLong": "The Gastlighter can select one player for the game, and if that player wins, the Gastlighter wins on its own."
 }
 
 

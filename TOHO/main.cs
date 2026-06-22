@@ -951,6 +951,7 @@ public enum CustomRoles
     Falcon,
     Famine,
     Follower,
+    Gastlighter,
     Glitch,
     God,
     Godzilla,
@@ -1310,6 +1311,7 @@ public enum CustomWinner
     SecretAgent = CustomRoles.SecretAgent,
     Swan = CustomRoles.Swan,
     Falcon = CustomRoles.Falcon,
+    Gastlighter = CustomRoles.Gastlighter,
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

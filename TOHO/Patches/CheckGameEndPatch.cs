@@ -216,6 +216,14 @@ class GameEndCheckerForNormal
                 {
                     switch (pc.GetCustomRole())
                     {
+                        case CustomRoles.Gastlighter when Gastlighter.SelectedPlayer != null && Gastlighter.SelectedPlayer.IsAlive() && WinnerIds.Contains(Gastlighter.SelectedPlayer.PlayerId):
+                            if (!CheckForConvertedWinner(pc.PlayerId))
+                            {
+                                reason = GameOverReason.ImpostorsByKill;
+                                ResetAndSetWinner(CustomWinner.Gastlighter);
+                                WinnerIds.Add(pc.PlayerId);
+                            }
+                            break;
                         case CustomRoles.Stalker when pc.IsAlive() && ((WinnerTeam == CustomWinner.Impostor && !reason.Equals(GameOverReason.ImpostorsBySabotage)) || WinnerTeam == CustomWinner.Stalker
                             || (WinnerTeam == CustomWinner.Crewmate && !reason.Equals(GameOverReason.CrewmatesByTask) && Stalker.IsWinKill[pc.PlayerId] && Stalker.SnatchesWins)):
                             if (!CheckForConvertedWinner(pc.PlayerId))
