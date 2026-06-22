@@ -432,6 +432,10 @@ class GameEndCheckerForNormal
                                 WinnerIds.Add(pc.PlayerId);
                                 AdditionalWinnerTeams.Add(AdditionalWinners.Opportunist);
                                 break;
+                            case CustomRoles.Dreadsteed when pc.IsAlive():
+                                WinnerIds.Add(pc.PlayerId);
+                                AdditionalWinnerTeams.Add(AdditionalWinners.Opportunist);
+                                break;
                             case CustomRoles.Extremist:
                                 if (WinnerTeam == CustomWinner.Crewmate || WinnerTeam == CustomWinner.Impostor)
                                 {

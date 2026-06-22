@@ -113,6 +113,7 @@ public static class CustomRolesHelper
             CustomRoles.Jester or
             CustomRoles.Terrorist or
             CustomRoles.Opportunist or
+            CustomRoles.Dreadsteed or
             CustomRoles.Developer or
             CustomRoles.Extremist or
             CustomRoles.PunchingBag or
@@ -800,6 +801,7 @@ public static class CustomRolesHelper
                     || pc.Is(CustomRoles.Shaman)
                     || pc.Is(CustomRoles.Monarch)
                     || pc.Is(CustomRoles.NiceMini)
+                    || pc.Is(CustomRoles.Dreadsteed)
                     || pc.Is(CustomRoles.Opportunist) && Opportunist.OppoImmuneToAttacksWhenTasksDone.GetBool())
                     return false;
                 break;

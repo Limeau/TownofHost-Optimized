@@ -5239,7 +5239,11 @@
   
   "Hoarder": "Hoarder",
   "HoarderInfo": "Collect seconds from Crewmate's tasks",
-  "HoarderInfoLong": "As the Hoarder, use your Unshift button to temporarily restrict tasks from being done. Each task done will reduce your kill cooldown by 1sec."
+  "HoarderInfoLong": "As the Hoarder, use your Unshift button to temporarily restrict tasks from being done. Each task done will reduce your kill cooldown by 1sec.",
+
+  "Dreadsteed": "Dreadsteed",
+  "DreadsteedInfo": "Keep reviving but at a cost",
+  "DreadsteedInfoLong": "As the Dreadsteed, after you die, you are revived after the next round with a negative effect. These effects depend on how many times you've been revived. The Dreadsteed wins with the winning team if it's alive at the end of the game.\n\n1st Revive: Lower speed.\n2nd Revive: Fragile is assigned.\n3rd Revive: Blinded.\n4th Revive: Die if anyone gets near you.\nYou die permanently after the 4th revive.\n\nAdditionally, when you finish your tasks, your negative effects will be reset to as if you were never revived."
 }
 
 
