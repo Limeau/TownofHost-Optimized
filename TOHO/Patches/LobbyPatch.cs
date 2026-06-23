@@ -23,9 +23,11 @@ public class LobbyStartPatch
         LobbyPaintSprite = Utils.LoadSprite("TOHO.Resources.Images.Limeau.png", 290f);
         DropshipDecorationsSprite = Utils.LoadSprite("TOHO.Resources.Images.TOHO_decor.png", 60f);
     }
-
+#if ANDROID
+#else
     public static void Postfix(LobbyBehaviour __instance)
     {
+        
         if (!Directory.Exists(@$"\TOHO-DATA\music\")) Directory.CreateDirectory(@$"\TOHO-DATA\music\");
 
         if (Main.DisableLobbyMusic.Value && Directory.Exists(@$"\TOHO-DATA\music\"))
@@ -95,6 +97,7 @@ public class LobbyStartPatch
             FirstDecorationsLoad = false;
         }
     }
+#endif
 }
 
 // https://github.com/SuperNewRoles/SuperNewRoles/blob/master/SuperNewRoles/Patches/LobbyBehaviourPatch.cs
