@@ -1192,6 +1192,7 @@ public enum CustomRoles
     Valhalla,
     VoidBallot,
     Watcher,
+    Web,
     Windy,
     Workhorse,
     Youtuber,

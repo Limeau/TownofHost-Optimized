@@ -870,6 +870,13 @@ class ReportDeadBodyPatch
                     if (__instance.Is(CustomRoles.Snooze) && !Snooze.ReportDeadBody(__instance)) return false;
                     
                     if (targetObject.Is(CustomRoles.Unreportable)) return false;
+                    if (targetObject.Is(CustomRoles.Web))
+                    {
+                        Web.WebTrapIds.Add(__instance.PlayerId, Main.AllPlayerSpeed[__instance.PlayerId]);
+                        Main.AllPlayerSpeed[__instance.PlayerId] = 0;
+                        __instance.MarkDirtySettings();
+                        return false;
+                    }
 
                     if (targetObject.Is(CustomRoles.Gross) && Gross.HasBeenMurdered[targetObject]) return false;
                     

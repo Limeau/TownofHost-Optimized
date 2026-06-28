@@ -5247,7 +5247,11 @@
 
   "Gastlighter": "Gastlighter",
   "GastlighterInfo": "Steal the win by gastlighting a player",
-  "GastlighterInfoLong": "The Gastlighter can select one player for the game, and if that player wins, the Gastlighter wins on its own."
+  "GastlighterInfoLong": "The Gastlighter can select one player for the game, and if that player wins, the Gastlighter wins on its own.",
+  
+  "Web": "Web",
+  "WebInfo": "Freeze players who report you",
+  "WebInfoLong": "When the Web's body is reported, the body will fail to report, and the reporter will be frozen."
 }
 
 
