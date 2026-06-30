@@ -36,8 +36,10 @@ public class Main : BasePlugin
     // == Program Config ==
     public const string OriginalForkId = "OriginalTOH";
 
-    public static string BasePath => OperatingSystem.IsAndroid()
-        ? Application.persistentDataPath
+    public static string StarData => Environment.GetEnvironmentVariable("STAR_DATA_PATH");    
+
+    public static readonly string BasePath =
+        OperatingSystem.IsAndroid() ? StarData
         : Paths.GameRootPath;
 
     public static string TohoData => Path.Combine(BasePath, "TOHO-DATA");
