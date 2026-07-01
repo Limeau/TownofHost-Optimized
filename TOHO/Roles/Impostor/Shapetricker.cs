@@ -13,6 +13,8 @@ internal class Shapetricker : RoleBase
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Shapetricker);
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorConcealing;
+
+    public override bool TOHORole => true;
     //==================================================================\\
 
     private static OptionItem ShapeshiftCooldown;
