@@ -30,6 +30,7 @@ namespace TOHO;
 [BepInIncompatibility("jp.ykundesu.supernewroles")]
 [BepInIncompatibility("com.ten.thebetterroles")]
 [BepInIncompatibility("xyz.crowdedmods.crowdedmod")]
+[BepInIncompatibility("com.gurge44.endlesshostroles")]
 [BepInProcess("Among Us.exe")]
 public class Main : BasePlugin
 {
