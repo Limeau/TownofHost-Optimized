@@ -5251,7 +5251,11 @@
   
   "Web": "Web",
   "WebInfo": "Freeze players who report you",
-  "WebInfoLong": "When the Web's body is reported, the body will fail to report, and the reporter will be frozen."
+  "WebInfoLong": "When the Web's body is reported, the body will fail to report, and the reporter will be frozen.",
+  
+  "Supervisor": "Supervisor",
+  "SupervisorInfo": "See the state of everyone's tasks!",
+  "SupervisorInfoLong": "When the Supervisor's tasks are completed, they can view everyone else's task status, including how many they have and how many remain. If a player does not have tasks, the Supervisor will know."
 }
 
 
