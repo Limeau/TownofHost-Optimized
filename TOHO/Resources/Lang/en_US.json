@@ -5277,7 +5277,7 @@
   "VisitorMaxTargetsReached447": "You've reached your visit limit for this round.",
   "VisitorNoRoomsRecorded447": "No movement has been recorded.",
   "VisitorUnknownPlayer447": "Unknown",
-  "VisitorNoReportYet447": "You don't have a report to show yet."
+  "VisitorNoReportYet447": "You don't have a report to show yet.",
   "VisitorInvalidTarget447": "This target does not exist.\nMake sure you are choosing the correct player ID, you can use <b>/id</b> for player ID's."
   
 }
