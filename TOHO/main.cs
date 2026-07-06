@@ -915,6 +915,7 @@ public enum CustomRoles
     Veteran,
     Vigilante,
     Villager,
+	Visitor,
     Webweaver,
     Witness,
 

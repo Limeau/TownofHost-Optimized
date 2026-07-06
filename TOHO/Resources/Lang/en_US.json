@@ -4955,7 +4955,9 @@
   "LagInfoLong": "The Lag's kills are delayed by 1 second.",
   
   "DetectiveSuspectLimit": "Detective Suspect Limit",
+  "DetectiveSuspectLimit394": "Detective Suspect Limit",
   "ViperDissolveTime": "Viper Dissolve Time",
+  "DissolveTime393": "Viper Dissolve Time",
   "Viper": "Viper",
   "ViperTOHO": "Viper",
   "Detective": "Detective",
@@ -5039,10 +5041,10 @@
   "PrototypeKillCooldown": "Prototype kill cooldown",
   "PrototypeSuicideChance": "Prototype suicide chance",
 
-  "ViperInfo": "Dissolve the bodies of your kills",
-  "ViperInfoLong": "When you kill, the body of your target will slowly dissolve into nothing.",
-  "DetectiveInfo": "Keep tabs on players and your supicions",
-  "DetectiveInfoLong": "As the Detective, you can write down notes about each crime scene and interrogate suspects.",
+  "ViperTOHOInfo": "Dissolve the bodies of your kills",
+  "ViperTOHOInfoLong": "When you kill, the body of your target will slowly dissolve into nothing.",
+  "DetectiveTOHOInfo": "Keep tabs on players and your supicions",
+  "DetectiveTOHOInfoLong": "As the Detective, you can write down notes about each crime scene and interrogate suspects.",
   
   "Harbourer": "Harbourer",
   "HarbourerInfo": "Store roles to use the abilities yourself",
@@ -5255,9 +5257,27 @@
   
   "Supervisor": "Supervisor",
   "SupervisorInfo": "See the state of everyone's tasks!",
-  "SupervisorInfoLong": "When the Supervisor's tasks are completed, they can view everyone else's task status, including how many they have and how many remain. If a player does not have tasks, the Supervisor will know."
+  "SupervisorInfoLong": "When the Supervisor's tasks are completed, they can view everyone else's task status, including how many they have and how many remain. If a player does not have tasks, the Supervisor will know.",
+
+  "Visitor": "Visitor",
+  "VisitorInfo": "Visit players each meeting to track their movements, tasks, and kills.",
+  "VisitorInfoLong": "Each meeting, choose players to visit next round - either by casting your lynch vote on them, or with the /visit {player id} command, depending on the host's settings.\n\nAt the start of the following meeting, you'll automatically receive a report on everyone you visited:\n- The rooms they passed through, in order\n- How many tasks they completed\n- How many kills they got\n\nUse /visits at any time to see your most recent report again.\n\nIf one of your targets is killed while you're visiting them, you may also learn the killer's role and any modifiers they have, depending on host settings. Depending on those same settings, the killer might be warned that you saw them, or you and the killer may each get an arrow pointing to one another.",
+  "VisitorVisitAmount447": "Amount of visits",
+  "VisitorVisitType447": "Visiting type",
+  "VisitorCanKnowKillerIdentity447": "Visitor can know the identity of the killer",
+  "VisitorWarnKillerAboutVisitor447": "Warn killer about <color=#c8a46b>Visitor</color>",
+  "VisitorGiveArrowToBoth447": "Give an arrow to both the killer and <color=#c8a46b>Visitor</color> about their location",
+  "VisitorVisitByVote447": "Vote",
+  "VisitorVisitbyCommand447": "Command",
+  "VisitorReport447": "{0}\nPlaces visited: {1}\nTasks completed: {2}\nKills: {3}",
+  "VisitorKillerReveal447": "{0} was killed while you were visiting! Killer: {1} ({2}) {3}",
+  "VisitorWarnKiller447": "You were being watched by {0} during your last kill!",
+  "VisitorTargetSet447": "You are now visiting {0}.",
+  "VisitorAlreadyTargeted447": "You are already visiting that player.",
+  "VisitorMaxTargetsReached447": "You've reached your visit limit for this round.",
+  "VisitorNoRoomsRecorded447": "No movement has been recorded.",
+  "VisitorUnknownPlayer447": "Unknown",
+  "VisitorNoReportYet447": "You don't have a report to show yet."
+  "VisitorInvalidTarget447": "This target does not exist.\nMake sure you are choosing the correct player ID, you can use <b>/id</b> for player ID's."
+  
 }
-
-
-
-
