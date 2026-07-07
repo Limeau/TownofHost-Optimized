@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
 using TOHO.Modules;
 using UnityEngine;
 using static TOHO.Options;
@@ -16,6 +15,7 @@ internal class Visitor : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateInvestigative;
 	public override bool TOHORole => true;
+	public override bool NewRole => true;
 	
 	public override string CodedRole => ".angel24.";
     public override string IdeaRole => "the_little_pelican";
@@ -25,17 +25,56 @@ internal class Visitor : RoleBase
     private static OptionItem VisitType;
     private static OptionItem CanKnowKillerIdentity;
     private static OptionItem WarnKillerAboutVisitor;
-    private static OptionItem GiveArrowToBoth;
+    private static OptionItem Reveal;
 
     private static readonly Color RoleColor = Utils.GetRoleColor(CustomRoles.Visitor);
 
-    private static string RoleTitle => Utils.ColorString(RoleColor, GetString("Visitor"));
+    private static string RoleTitle => Utils.ColorString(RoleColor, GetString("VisitorVisitLogs447"));
 
     private static readonly Dictionary<string, string> RoomColors = new()
 	{
+		// Shared across multiple maps
 		{ "Admin", "FFA500" },
 		{ "Cafeteria", "00AAFF" },
-		{ "Electrical", "AA00FF" },
+		{ "Communications", "AA00FF" },
+		{ "Electrical", "FFFF00" },
+		{ "MedBay", "FF69B4" },
+		{ "Reactor", "FF0000" },
+		{ "Security", "808080" },
+		{ "Storage", "8B4513" },
+		{ "O2", "00FFFF" },
+		{ "Weapons", "FF4500" },
+		{ "Decontamination", "7FFFD4" },
+		{ "Laboratory", "9ACD32" },
+
+		// The Skeld only
+		{ "Navigation", "1E90FF" },
+		{ "Shields", "00CED1" },
+		{ "UpperEngine", "DC143C" },
+		{ "LowerEngine", "B22222" },
+
+		// MIRA HQ only
+		{ "Balcony", "FFD700" },
+		{ "Launchpad", "FF8C00" },
+		{ "Records", "6A5ACD" },
+		{ "Office", "20B2AA" },
+		{ "Greenhouse", "228B22" },
+
+		// Polus only
+		{ "Boiler Room", "8B0000" },
+		{ "Specimen Room", "556B2F" },
+		{ "Outside", "708090" },
+
+		// The Airship only
+		{ "Main Hall", "4682B4" },
+		{ "Meeting Room", "9932CC" },
+		{ "Cockpit", "483D8B" },
+		{ "Viewing Deck", "40E0D0" },
+		{ "Kitchen", "CD853F" },
+		{ "Cargo Bay", "A0522D" },
+		{ "Armory", "696969" },
+		{ "Vault", "DAA520" },
+		{ "Brig", "800000" },
 	};
 
     private static Color32 HexToColor(string hex)
@@ -63,7 +102,7 @@ internal class Visitor : RoleBase
         WarnKillerAboutVisitor = BooleanOptionItem.Create(Id + 13, "VisitorWarnKillerAboutVisitor447", false, TabGroup.CrewmateRoles, false)
             .SetParent(CanKnowKillerIdentity);
 
-        GiveArrowToBoth = BooleanOptionItem.Create(Id + 14, "VisitorGiveArrowToBoth447", false, TabGroup.CrewmateRoles, false)
+        Reveal = BooleanOptionItem.Create(Id + 14, "VisitorReveal447", false, TabGroup.CrewmateRoles, false)
             .SetParent(CanKnowKillerIdentity);
     }
 
@@ -75,7 +114,8 @@ internal class Visitor : RoleBase
     private static readonly Dictionary<byte, int> TotalKillCount = [];
     private static readonly Dictionary<byte, (byte KillerId, CustomRoles KillerRole, string KillerModifier)> VisitKillInfo = [];
     private static readonly Dictionary<byte, List<string>> LastReport = [];
-    private static readonly Dictionary<byte, byte> ArrowPairs = [];
+    private static readonly HashSet<byte> RevealedAsVisitor = [];
+	private static readonly HashSet<byte> RevealedAsKiller = [];
 
     public override void Init()
     {
@@ -87,33 +127,66 @@ internal class Visitor : RoleBase
         TotalKillCount.Clear();
         VisitKillInfo.Clear();
         LastReport.Clear();
-        ArrowPairs.Clear();
+        RevealedAsVisitor.Clear();
+		RevealedAsKiller.Clear();
     }
 
     public override void Add(byte playerId)
-    {
-        CurrentTargets[playerId] = [];
-    }
+	{
+		CurrentTargets[playerId] = [];
+		playerId.SetAbilityUseLimit(VisitAmount.GetInt());
+	}
 
     public override void Remove(byte playerId)
     {
         CurrentTargets.Remove(playerId);
     }
 
-    public override string GetSuffix(PlayerControl seer, PlayerControl target = null, bool isForMeeting = false)
+    // GetSuffix renders text on the role-owner's OWN nameplate only (dispatched via the seer's
+    // own role class), so this handles the Visitor's own tag.
+	public override string GetSuffix(PlayerControl seer, PlayerControl target = null, bool isForMeeting = false)
+	{
+		if (isForMeeting) return string.Empty;
+		if (target != null && seer.PlayerId != target.PlayerId) return string.Empty;
+		if (!RevealedAsVisitor.Contains(seer.PlayerId)) return string.Empty;
+
+		return Utils.ColorString(RoleColor, GetString("VisitorVisitorTag447"));
+	}
+
+    // GetSuffixOthers is broadcast to every player's own nameplate regardless of their own role -
+    // this is what lets the KILLER's tag show even though the killer usually isn't a Visitor.
+    public override string GetSuffixOthers(PlayerControl seer, PlayerControl target, bool isForMeeting = false)
     {
         if (isForMeeting) return string.Empty;
         if (target != null && seer.PlayerId != target.PlayerId) return string.Empty;
-        if (!ArrowPairs.TryGetValue(seer.PlayerId, out var targetId)) return string.Empty;
+        if (!RevealedAsKiller.Contains(seer.PlayerId)) return string.Empty;
 
-        var arrow = TargetArrow.GetArrows(seer, targetId);
-        return arrow.Length == 0 ? string.Empty : Utils.ColorString(RoleColor, arrow);
+        return Utils.ColorString(RoleColor, GetString("VisitorKillerTag447"));
+    }
+
+    // Shows remaining visit uses next to the task counter, straight from the built-in ability
+    // system (GetAbilityUseLimit), which RegisterVisit below keeps in sync via RpcRemoveAbilityUse.
+    public override string GetProgressText(byte playerId, bool comms)
+    {
+        var taskState = Main.PlayerStates?[playerId].TaskState;
+        var normalColor = taskState.IsTaskFinished ? Color.green : Color.yellow;
+        var textColor = comms ? Color.gray : normalColor;
+        string completed = comms ? "?" : $"{taskState.CompletedTasksCount}";
+
+        var progressText = new System.Text.StringBuilder();
+        progressText.Append(Utils.ColorString(textColor, $"({completed}/{taskState.AllTasksCount})"));
+
+        int remaining = (int)playerId.GetAbilityUseLimit();
+        var remainingColor = remaining < 1 ? Color.red : Color.white;
+        progressText.Append(Utils.ColorString(remainingColor, $" <color=#ffffff>-</color> {remaining}"));
+
+        return progressText.ToString();
     }
 
     public override void OnFixedUpdate(PlayerControl player, bool lowLoad, long nowTime, int timerLowLoad)
     {
         if (!player.Is(CustomRoles.Visitor)) return;
-        if (GameStates.IsMeeting) return;
+        if (GameStates.IsMeeting) return; // only track movement outside meetings
         if (!CurrentTargets.TryGetValue(player.PlayerId, out var targets) || targets.Count == 0) return;
 
         foreach (var targetId in targets)
@@ -135,25 +208,80 @@ internal class Visitor : RoleBase
         }
     }
 
-    public static void OnGlobalMurder(PlayerControl killer, PlayerControl target)
+    // Broadcast to every active role whenever anyone is murdered, regardless of who's involved -
+    // no separate Harmony patch needed.
+    public override bool CheckMurderOnOthersTarget(PlayerControl killer, PlayerControl target)
     {
-        if (target == null) return;
-
-        if (killer != null)
-        {
-            TotalKillCount.TryAdd(killer.PlayerId, 0);
-            TotalKillCount[killer.PlayerId]++;
-        }
-
-        foreach (var kvp in CurrentTargets)
-        {
-            if (killer != null && kvp.Value.Contains(target.PlayerId))
-            {
-                VisitKillInfo[target.PlayerId] = (killer.PlayerId, killer.GetCustomRole(), GetKillerModifierInfo(killer.PlayerId));
-                break;
-            }
-        }
+        OnGlobalMurder(killer, target);
+        return false;
     }
+
+    public static void OnGlobalMurder(PlayerControl killer, PlayerControl target)
+	{
+		if (target == null) return;
+
+		if (killer != null)
+		{
+			TotalKillCount.TryAdd(killer.PlayerId, 0);
+			TotalKillCount[killer.PlayerId]++;
+		}
+
+		foreach (var kvp in CurrentTargets)
+		{
+			byte visitorId = kvp.Key;
+
+			if (killer == null || !kvp.Value.Contains(target.PlayerId))
+				continue;
+
+			VisitKillInfo[target.PlayerId] =
+			(
+				killer.PlayerId,
+				killer.GetCustomRole(),
+				GetKillerModifierInfo(killer.PlayerId)
+			);
+
+			if (CanKnowKillerIdentity.GetBool())
+			{
+				if (Reveal.GetBool())
+				{
+					RevealedAsVisitor.Add(visitorId);
+					RevealedAsKiller.Add(killer.PlayerId);
+				}
+
+				var visitor = Utils.GetPlayerById(visitorId);
+
+				if (visitor != null)
+				{
+					string killerName = killer.GetRealName();
+					string killerRole = Utils.GetRoleString(killer.GetCustomRole());
+
+					Utils.SendMessage(
+						string.Format(
+							GetString("VisitorKillerReveal447"),
+							target.GetRealName(),
+							killerName,
+							killerRole,
+							GetKillerModifierInfo(killer.PlayerId)),
+						visitor.PlayerId,
+						title: RoleTitle
+					);
+				}
+
+				if (WarnKillerAboutVisitor.GetBool() && visitor != null)
+				{
+					Utils.SendMessage(
+						string.Format(
+							GetString("VisitorWarnKiller447"),
+							visitor.GetRealName()),
+						killer.PlayerId,
+						title: RoleTitle
+					);
+				}
+
+				Utils.NotifyRoles();
+			}
+		}
+	}
 
     private static string GetKillerModifierInfo(byte killerId)
     {
@@ -163,26 +291,37 @@ internal class Visitor : RoleBase
         return string.Join(", ", subRoles.ToArray().Select(sr => GetString(sr.ToString())));
     }
 
-    public override void OnVote(PlayerControl votePlayer, PlayerControl voteTarget)
-    {
-        if (!votePlayer.Is(CustomRoles.Visitor)) return;
-        if (VisitType.GetValue() != 0) return;
-        if (voteTarget == null) return;
+	public override bool CheckVote(PlayerControl player, PlayerControl target)
+	{
+		if (!player.Is(CustomRoles.Visitor)) return true;
+		if (VisitType.GetValue() != 0) return true;
+		if (target == null) return true;
 
-        RegisterVisit(votePlayer, voteTarget);
-    }
+		if (!CurrentTargets.TryGetValue(player.PlayerId, out var list)) list = CurrentTargets[player.PlayerId] = [];
 
+		if (player.GetAbilityUseLimit() > 0 && !list.Contains(target.PlayerId))
+		{
+			RegisterVisit(player, target);
+			Utils.SendMessage(string.Format(GetString("VisitorTargetSet447"), target.GetRealName()), player.PlayerId, title: RoleTitle);
+			Utils.SendMessage(GetString("VoteHasReturned"), player.PlayerId, title: RoleTitle);
+			return false;
+		}
+
+		return true;
+	}
+
+    // Assumes the caller has already validated ability-use-limit and duplicate-target checks.
     private static void RegisterVisit(PlayerControl visitor, PlayerControl target)
     {
-        int maxVisits = VisitAmount.GetInt();
         if (!CurrentTargets.ContainsKey(visitor.PlayerId)) CurrentTargets[visitor.PlayerId] = [];
 
         var list = CurrentTargets[visitor.PlayerId];
-        if (list.Contains(target.PlayerId) || list.Count >= maxVisits) return;
+        if (list.Contains(target.PlayerId)) return;
 
         list.Add(target.PlayerId);
         TasksAtVisitStart[target.PlayerId] = target.GetPlayerTaskState().CompletedTasksCount;
         KillsAtVisitStart[target.PlayerId] = TotalKillCount.TryGetValue(target.PlayerId, out var kc) ? kc : 0;
+        visitor.RpcRemoveAbilityUse();
     }
 
     public bool VisitMsgCheck(PlayerControl player, string text)
@@ -228,7 +367,7 @@ internal class Visitor : RoleBase
             Utils.SendMessage(GetString("VisitorAlreadyTargeted447"), player.PlayerId, title: RoleTitle);
             return true;
         }
-        if (list.Count >= VisitAmount.GetInt())
+        if (player.GetAbilityUseLimit() < 1)
         {
             Utils.SendMessage(GetString("VisitorMaxTargetsReached447"), player.PlayerId, title: RoleTitle);
             return true;
@@ -242,7 +381,8 @@ internal class Visitor : RoleBase
     public override void OnMeetingHudStart(PlayerControl pc)
     {
         if (!pc.Is(CustomRoles.Visitor)) return;
-        if (!CurrentTargets.TryGetValue(pc.PlayerId, out var targets) || targets.Count == 0) return;
+        if (!CurrentTargets.TryGetValue(pc.PlayerId, out var targets) || targets.Count == 0)
+			return;
 
         var reportLines = new List<string>();
 
@@ -280,31 +420,22 @@ internal class Visitor : RoleBase
                     Utils.SendMessage(string.Format(GetString("VisitorWarnKiller447"), pc.GetRealName()), killInfo.KillerId, title: RoleTitle);
                 }
 
-                if (GiveArrowToBoth.GetBool())
-                {
-                    TargetArrow.Add(pc.PlayerId, killInfo.KillerId);
-                    TargetArrow.Add(killInfo.KillerId, pc.PlayerId);
-
-                    ArrowPairs[pc.PlayerId] = killInfo.KillerId;
-                    ArrowPairs[killInfo.KillerId] = pc.PlayerId;
-                }
+                if (Reveal.GetBool())
+				{
+					RevealedAsVisitor.Add(pc.PlayerId);
+					RevealedAsKiller.Add(killInfo.KillerId);
+				}
             }
         }
 
         LastReport[pc.PlayerId] = reportLines;
 
-        CurrentTargets[pc.PlayerId] = [];
-        VisitedRooms.Clear();
-        LastRoom.Clear();
-        VisitKillInfo.Clear();
-    }
-}
+		// Clear tracking for the next meeting ONLY.
+		// Ability uses are NOT restored.
+		CurrentTargets[pc.PlayerId].Clear();
 
-[HarmonyPatch(typeof(MurderPlayerPatch), nameof(MurderPlayerPatch.AfterPlayerDeathTasks))]
-internal static class VisitorGlobalMurderPatch
-{
-    public static void Postfix(PlayerControl killer, PlayerControl target, bool inMeeting, bool fromRole)
-    {
-        Visitor.OnGlobalMurder(killer, target);
+		VisitedRooms.Clear();
+		LastRoom.Clear();
+		VisitKillInfo.Clear();
     }
 }
