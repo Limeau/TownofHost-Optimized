@@ -5281,6 +5281,10 @@
   "VisitorInvalidTarget447": "This target does not exist.\nMake sure you are choosing the correct player ID, you can use <b>/id</b> for player ID's.",
   "VisitorKillerTag447": "The Visitor saw your kill! Find them.",
   "VisitorVisitorTag447": "You have witnessed your targets death!",
-  "VisitorVisitLogs447": "VISITOR VISIT LOGS"
+  "VisitorVisitLogs447": "VISITOR VISIT LOGS",
+  
+  "Marksman": "Marksman",
+  "MarksmanInfo": "Set up your partners to have free kills!",
+  "MarksmanInfoLong": "The Marksman can mark a player with their kill button. When another impostor kills the player, the impostor's kill cooldown will not be reset. Double click or be the last remaining impostor to kill normally."
   
 }

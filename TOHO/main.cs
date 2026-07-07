@@ -758,6 +758,7 @@ public enum CustomRoles
     Lunger,
     Lurker,
     Magnet,
+    Marksman,
     Mastermind,
     Mercenary,
     Meteor,
