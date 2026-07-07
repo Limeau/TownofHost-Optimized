@@ -47,24 +47,24 @@ public static class CustomSoundsManager
     }
 
    
-    public static async Task PlaySong(string[] files)
-    {
-        try
-        {
-            if (files.Length == 0) return;
+    public static Task PlaySong(string[] files)
+	{
+		try
+		{
+			if (files.Length == 0) return Task.CompletedTask;
 
-            var path = files.RandomElement();
+			var path = files.RandomElement();
 
-            StartPlay(path);
-            songname = Path.GetFileNameWithoutExtension(path);
-            Logger.SendInGameMusic($"{songname}");
-        }
-        catch (TaskCanceledException) { }
-        catch (Exception ex)
-        {
-            Logger.Error($"Music loop crashed: {ex}", "CustomSounds");
-        }
-    }
+			StartPlay(path);
+			songname = Path.GetFileNameWithoutExtension(path);
+			Logger.SendInGameMusic($"{songname}");
+		}
+		catch (Exception ex)
+		{
+			Logger.Error($"Music loop crashed: {ex}", "CustomSounds");
+		}
+		return Task.CompletedTask;
+	}
     
     public static async void MusicPlay()
     {

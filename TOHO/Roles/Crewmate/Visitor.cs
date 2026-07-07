@@ -253,7 +253,7 @@ internal class Visitor : RoleBase
 				if (visitor != null)
 				{
 					string killerName = killer.GetRealName();
-					string killerRole = Utils.GetRoleString(killer.GetCustomRole());
+					string killerRole = GetString($"{killer.GetCustomRole()}");
 
 					Utils.SendMessage(
 						string.Format(
@@ -409,7 +409,7 @@ internal class Visitor : RoleBase
             if (VisitKillInfo.TryGetValue(targetId, out var killInfo) && CanKnowKillerIdentity.GetBool())
             {
                 string killerName = Utils.GetPlayerById(killInfo.KillerId)?.GetRealName() ?? GetString("VisitorUnknownPlayer447");
-                string killerRoleName = killInfo.KillerRole.ToString();
+                string killerRoleName = GetString($"{killInfo.KillerRole}");
 
                 string killerLine = string.Format(GetString("VisitorKillerReveal447"), targetName, killerName, killerRoleName, killInfo.KillerModifier);
                 Utils.SendMessage(killerLine, pc.PlayerId, title: RoleTitle);
