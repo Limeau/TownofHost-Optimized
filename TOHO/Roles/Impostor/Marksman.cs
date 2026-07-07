@@ -42,6 +42,15 @@ internal class Marksman : RoleBase
             killer.RpcTeleport(target.GetTruePosition());
             return true;
         }
+
+        if (!killer.IsPlayerImpostorTeam() && Mark.Contains(target))
+        {
+            var tmpcd = Main.AllPlayerKillCooldown[killer.PlayerId];
+            Main.AllPlayerKillCooldown[killer.PlayerId] = tmpcd * 2;
+            killer.RpcMurderPlayer(target);
+            Main.AllPlayerKillCooldown[killer.PlayerId] = tmpcd;
+            return true;
+        }
         
         return false;
     }
