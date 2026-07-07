@@ -142,8 +142,6 @@ internal class Visitor : RoleBase
         CurrentTargets.Remove(playerId);
     }
 
-    // GetSuffix renders text on the role-owner's OWN nameplate only (dispatched via the seer's
-    // own role class), so this handles the Visitor's own tag.
 	public override string GetSuffix(PlayerControl seer, PlayerControl target = null, bool isForMeeting = false)
 	{
 		if (isForMeeting) return string.Empty;
@@ -153,8 +151,6 @@ internal class Visitor : RoleBase
 		return Utils.ColorString(RoleColor, GetString("VisitorVisitorTag447"));
 	}
 
-    // GetSuffixOthers is broadcast to every player's own nameplate regardless of their own role -
-    // this is what lets the KILLER's tag show even though the killer usually isn't a Visitor.
     public override string GetSuffixOthers(PlayerControl seer, PlayerControl target, bool isForMeeting = false)
     {
         if (isForMeeting) return string.Empty;
@@ -164,8 +160,6 @@ internal class Visitor : RoleBase
         return Utils.ColorString(RoleColor, GetString("VisitorKillerTag447"));
     }
 
-    // Shows remaining visit uses next to the task counter, straight from the built-in ability
-    // system (GetAbilityUseLimit), which RegisterVisit below keeps in sync via RpcRemoveAbilityUse.
     public override string GetProgressText(byte playerId, bool comms)
     {
         var taskState = Main.PlayerStates?[playerId].TaskState;
@@ -186,7 +180,7 @@ internal class Visitor : RoleBase
     public override void OnFixedUpdate(PlayerControl player, bool lowLoad, long nowTime, int timerLowLoad)
     {
         if (!player.Is(CustomRoles.Visitor)) return;
-        if (GameStates.IsMeeting) return; // only track movement outside meetings
+        if (GameStates.IsMeeting) return;
         if (!CurrentTargets.TryGetValue(player.PlayerId, out var targets) || targets.Count == 0) return;
 
         foreach (var targetId in targets)
@@ -208,8 +202,6 @@ internal class Visitor : RoleBase
         }
     }
 
-    // Broadcast to every active role whenever anyone is murdered, regardless of who's involved -
-    // no separate Harmony patch needed.
     public override bool CheckMurderOnOthersTarget(PlayerControl killer, PlayerControl target)
     {
         OnGlobalMurder(killer, target);
@@ -310,7 +302,6 @@ internal class Visitor : RoleBase
 		return true;
 	}
 
-    // Assumes the caller has already validated ability-use-limit and duplicate-target checks.
     private static void RegisterVisit(PlayerControl visitor, PlayerControl target)
     {
         if (!CurrentTargets.ContainsKey(visitor.PlayerId)) CurrentTargets[visitor.PlayerId] = [];
@@ -430,8 +421,6 @@ internal class Visitor : RoleBase
 
         LastReport[pc.PlayerId] = reportLines;
 
-		// Clear tracking for the next meeting ONLY.
-		// Ability uses are NOT restored.
 		CurrentTargets[pc.PlayerId].Clear();
 
 		VisitedRooms.Clear();
