@@ -41,10 +41,13 @@ internal class AnomalyManager
             {
                 which1.Add("Shuffle");
             }
-
             if (Options.CrazyColors.GetBool())
             {
                 which1.Add("CrazyColors");
+            }
+            if (Options.TruthPotion.GetBool())
+            {
+                which1.Add("TruthPotion");
             }
             var which2 = which1.RandomElement();
             switch (which2)
@@ -73,6 +76,10 @@ internal class AnomalyManager
                     AfterAnomaly();
                     CrazyColors = true;
                     break;
+                case "TruthPotion":
+                    AfterAnomaly();
+                    TruthPotion();
+                    break;
             }
         }
         else AfterAnomaly();
@@ -92,6 +99,16 @@ internal class AnomalyManager
         }
     }
 
+    public static void TruthPotion()
+    {
+        var randpc = Main.AllAlivePlayerControls.RandomElement();
+
+        foreach (var pc in Main.AllAlivePlayerControls)
+        {
+            pc.Notify($"The Truth Potion anomaly has revealed {randpc.name} as the {randpc.GetCustomRole()}!");
+        }
+    }
+    
     public static void ClownFest()
     {
         foreach (var clown in Main.AllAlivePlayerControls)

@@ -476,6 +476,7 @@ public static class Options
     public static OptionItem Holiday;
     public static OptionItem Shuffle;
     public static OptionItem CrazyColors;
+    public static OptionItem TruthPotion;
     public static OptionItem ColorChangeCoolDown;
     public static OptionItem AnomalyMeetingPCT;
     // public static OptionItem EnableWills;
@@ -2168,6 +2169,9 @@ public static class Options
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(EnableAnomalies);
         CrazyColors = BooleanOptionItem.Create(60960, "CrazyColors", false, TabGroup.ModSettings, false)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetParent(EnableAnomalies);
+        TruthPotion = BooleanOptionItem.Create(60990, "TruthPotion", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(EnableAnomalies);
         ColorChangeCoolDown = IntegerOptionItem.Create(60970, "CrazyColorsCD", new(5, 15, 1), 10, TabGroup.ModSettings, false)
