@@ -5261,7 +5261,7 @@
   "SupervisorInfoLong": "When the Supervisor's tasks are completed, they can view everyone else's task status, including how many they have and how many remain. If a player does not have tasks, the Supervisor will know.",
 
   "Visitor": "Visitor",
-  "VisitorInfo": "Visit players each meeting to track their movements, tasks, and kills.",
+  "VisitorInfo": "Visit players each meeting to track them.",
   "VisitorInfoLong": "Each meeting, choose players to visit next round - either by casting your vote on them, or with the /visit {player id} command, depending on the host's settings.\n\nAt the start of the following meeting, you'll automatically receive a report on everyone you visited:\n- The rooms they passed through, in order\n- How many tasks they completed\n- How many kills they got\n\nUse /visits at any time to see your most recent report again.\n\nIf one of your targets is killed while you're visiting them, you may also learn the killer's role and any modifiers they have, depending on host settings. Depending on those same settings, the killer might be warned that you saw them, or you and the killer may each get an arrow pointing to one another.",
   "VisitorVisitAmount447": "Amount of visits",
   "VisitorVisitType447": "Visiting type",

@@ -13,6 +13,7 @@ using TOHO.Patches;
 using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Impostor;
+using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Neutral;
 using static TOHO.Translator;
 
@@ -79,6 +80,7 @@ public enum CustomRPC : byte // 185/255 USED
     SniperSync,
     SetLoversPlayers,
     SendFireworkerState,
+	RageKillGranted,
 
     // BetterAmongUs (BAU) RPC, This is sent to allow other BAU users know who's using BAU!
     BetterCheck = 150,
@@ -544,6 +546,10 @@ internal class RPCHandlerPatch
             case CustomRPC.SetKillTimer:
                 float time = reader.ReadSingle();
                 PlayerControl.LocalPlayer.SetKillTimer(time);
+                break;
+			case CustomRPC.RageKillGranted:
+                byte rageTargetId = reader.ReadByte();
+                Rage.ReceiveKillGranted(rageTargetId);
                 break;
             case CustomRPC.SyncFFAPlayer:
                 FFAManager.ReceiveRPCSyncFFAPlayer(reader);
