@@ -5261,7 +5261,7 @@
   "SupervisorInfoLong": "When the Supervisor's tasks are completed, they can view everyone else's task status, including how many they have and how many remain. If a player does not have tasks, the Supervisor will know.",
 
   "Visitor": "Visitor",
-  "VisitorInfo": "Visit players each meeting to track their movements, tasks, and kills.",
+  "VisitorInfo": "Visit players each meeting to track them.",
   "VisitorInfoLong": "Each meeting, choose players to visit next round - either by casting your vote on them, or with the /visit {player id} command, depending on the host's settings.\n\nAt the start of the following meeting, you'll automatically receive a report on everyone you visited:\n- The rooms they passed through, in order\n- How many tasks they completed\n- How many kills they got\n\nUse /visits at any time to see your most recent report again.\n\nIf one of your targets is killed while you're visiting them, you may also learn the killer's role and any modifiers they have, depending on host settings. Depending on those same settings, the killer might be warned that you saw them, or you and the killer may each get an arrow pointing to one another.",
   "VisitorVisitAmount447": "Amount of visits",
   "VisitorVisitType447": "Visiting type",
@@ -5286,6 +5286,17 @@
   
   "Marksman": "Marksman",
   "MarksmanInfo": "Set up your partners to have free kills!",
-  "MarksmanInfoLong": "The Marksman can mark a player with their kill button. When another impostor kills the player, the impostor's kill cooldown will not be reset. Double click or be the last remaining impostor to kill normally."
+  "MarksmanInfoLong": "The Marksman can mark a player with their kill button. When another impostor kills the player, the impostor's kill cooldown will not be reset. Double click or be the last remaining impostor to kill normally.",
+  
+  "Rage": "Rage",
+  "RageInfo": "Finish all your tasks to earn a kill button",
+  "RageInfoLong": "As Rage, you are given extra tasks on top of your normal ones.\nOnce every task is complete - your original ones and the extra Rage tasks - you gain a kill button and can kill other players.\n\nOnly assigned to task-based Crewmates. Scientist-basis roles (Doctor, Tracefinder, etc.) can never be given Rage.",
+  "RageExtraTasks": "Amount of extra tasks <color=#ab3232>Rage</color> can get has to complete",
+  "RageKillCooldown": "<color=#ab3232>Rage</color> kill cooldown",
+  "RageAffectTaskRole": "Roles that rely on tasks for abilities can get <color=#ab3232>Rage</color>",
+  "RageAllowShortTasks": "<color=#ab3232>Rage</color> can give <color=#43a047>Short Tasks</color>",
+  "RageAllowCommonTasks": "<color=#ab3232>Rage</color> can give <color=#fbc02d>Common Tasks</color>",
+  "RageAllowLongTasks": "<color=#ab3232>Rage</color> can give <color=#1e88e5>Long Tasks</color>",
+  "RageKillButtonGranted": "You kept the rage in for so long... UNLEASH IT!"
   
 }

@@ -1849,6 +1849,10 @@ class PlayerControlCompleteTaskPatch
                         case CustomRoles.Rookie when player.IsAlive():
                             Rookie.OnTaskComplete(player);
                             break;
+							
+						case CustomRoles.Rage when player.IsAlive() && taskState.CompletedTasksCount >= taskState.AllTasksCount:
+                            Rage.OnTaskComplete(player);
+                            break;
 
                         case CustomRoles.Ghoul when taskState.CompletedTasksCount >= taskState.AllTasksCount:
                             Ghoul.OnTaskComplete(player);
