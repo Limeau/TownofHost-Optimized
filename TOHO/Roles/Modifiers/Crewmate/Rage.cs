@@ -1,4 +1,3 @@
-@ -0,0 +1,174 @@
 using System.Collections.Generic;
 using AmongUs.GameOptions;
 using Hazel;
