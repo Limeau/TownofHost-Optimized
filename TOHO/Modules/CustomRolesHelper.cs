@@ -633,6 +633,26 @@ public static class CustomRolesHelper
                     else return false;
                 }
                 else return false;
+			
+				case CustomRoles.Rage:
+				    // Only task-based Crewmates - no Impostor/Coven, no already-killing roles, no taskless Crewmates
+				    if (!pc.GetCustomRole().IsCrewmate()
+						|| pc.HasImpKillButton()
+						|| pc.CanUseKillButton()
+						|| !Utils.HasTasks(pc.Data, false)
+						|| pc.GetCustomRole().IsTasklessCrewmate())
+						return false;
+
+					// Scientist Basis roles (Doctor, Tracefinder, ForensicScientist, etc.) can't get Rage
+					if (pc.GetCustomRole().GetVNRole() is CustomRoles.Scientist)
+						return false;
+
+					// Roles which rely on their task count for their ability (Merchant, Alchemist, etc.)
+					// are excluded unless the host explicitly allows it, since Rage's extra tasks would
+					// throw off their balance
+					if (!Rage.RageAffectTaskRole.GetBool() && Options.OverrideTasksData.AllData.ContainsKey(pc.GetCustomRole()))
+						return false;
+				break;
 
             case CustomRoles.Onbound:
                 if (pc.Is(CustomRoles.SuperStar)

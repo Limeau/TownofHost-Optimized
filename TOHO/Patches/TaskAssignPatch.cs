@@ -181,6 +181,11 @@ class RpcSetTasksPatch
         {
             (hasCommonTasks, NumLongTasks, NumShortTasks) = Workhorse.TaskData;
         }
+		
+		if (pc.Is(CustomRoles.Rage))
+        {
+            (hasCommonTasks, NumLongTasks, NumShortTasks) = Rage.ApplyExtraTasks(hasCommonTasks, NumLongTasks, NumShortTasks);
+        }
 
         if (pc.Is(CustomRoles.Solsticer))
         {
