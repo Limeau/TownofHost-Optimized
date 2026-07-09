@@ -1166,7 +1166,6 @@ public enum CustomRoles
     Prohibited,
     Quota,
     Radar,
-    Rage,
     Rainbow,
     Rascal,
     Reach,

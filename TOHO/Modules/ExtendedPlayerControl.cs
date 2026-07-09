@@ -10,7 +10,6 @@ using TOHO.Modules;
 using TOHO.Patches;
 using TOHO.Roles._Ghosts_.Crewmate;
 using TOHO.Roles.Modifiers.Common;
-using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Modifiers.Impostor;
 using TOHO.Roles.Core;
 using TOHO.Roles.Coven;
@@ -1234,7 +1233,7 @@ static class ExtendedPlayerControl
         }
         if (!pc.IsAlive() || Pelican.IsEaten(pc.PlayerId) || DollMaster.IsDoll(pc.PlayerId)) return false;
         if (pc.GetClient().GetHashedPuid() == Main.FirstDiedPrevious && !Options.ShieldedCanUseKillButton.GetBool() && MeetingStates.FirstMeeting) return false;
-        if (pc.Is(CustomRoles.Killer) || pc.Is(CustomRoles.Red) || pc.Is(CustomRoles.Blue) || pc.Is(CustomRoles.KingOfTheHill) || Mastermind.PlayerIsManipulated(pc) || Rage.HasRageKill(pc.PlayerId)) return true;
+        if (pc.Is(CustomRoles.Killer) || pc.Is(CustomRoles.Red) || pc.Is(CustomRoles.Blue) || pc.Is(CustomRoles.KingOfTheHill) || Mastermind.PlayerIsManipulated(pc)) return true;
 
         var playerRoleClass = pc.GetRoleClass();
         if (playerRoleClass != null && playerRoleClass.CanUseKillButton(pc)) return true;
@@ -1339,10 +1338,6 @@ static class ExtendedPlayerControl
                             case CustomRoles.Mare:
                                 Main.AllPlayerKillCooldown[player.PlayerId] = Mare.KillCooldownInLightsOut.GetFloat();
                                 break;
-								
-							case CustomRoles.Rage when Rage.HasRageKill(player.PlayerId):
-                                Main.AllPlayerKillCooldown[player.PlayerId] = Rage.GetKillCooldown();
-                                break;
 
                             case CustomRoles.Overclocked:
                                 Main.AllPlayerKillCooldown[player.PlayerId] -= Main.AllPlayerKillCooldown[player.PlayerId] * (Overclocked.OverclockedReduction.GetFloat() / 100);
@@ -1365,7 +1360,7 @@ static class ExtendedPlayerControl
         }
 
 
-        if (!player.HasImpKillButton(considerVanillaShift: false) && !Rage.HasRageKill(player.PlayerId))
+        if (!player.HasImpKillButton(considerVanillaShift: false))
             Main.AllPlayerKillCooldown[player.PlayerId] = 300f;
 
         if (Main.AllPlayerKillCooldown[player.PlayerId] == 0)

@@ -5286,17 +5286,6 @@
   
   "Marksman": "Marksman",
   "MarksmanInfo": "Set up your partners to have free kills!",
-  "MarksmanInfoLong": "The Marksman can mark a player with their kill button. When another impostor kills the player, the impostor's kill cooldown will not be reset. Double click or be the last remaining impostor to kill normally.",
-  
-  "Rage": "Rage",
-  "RageInfo": "Finish all your tasks to earn a kill button",
-  "RageInfoLong": "As Rage, you are given extra tasks on top of your normal ones.\nOnce every task is complete - your original ones and the extra Rage tasks - you gain a kill button and can kill other players.\n\nOnly assigned to task-based Crewmates. Scientist-basis roles (Doctor, Tracefinder, etc.) can never be given Rage.",
-  "RageExtraTasks": "Amount of extra tasks <color=#ab3232>Rage</color> can get has to complete",
-  "RageKillCooldown": "<color=#ab3232>Rage</color> kill cooldown",
-  "RageAffectTaskRole": "Roles that rely on tasks for abilities can get <color=#ab3232>Rage</color>",
-  "RageAllowShortTasks": "<color=#ab3232>Rage</color> can give <color=#43a047>Short Tasks</color>",
-  "RageAllowCommonTasks": "<color=#ab3232>Rage</color> can give <color=#fbc02d>Common Tasks</color>",
-  "RageAllowLongTasks": "<color=#ab3232>Rage</color> can give <color=#1e88e5>Long Tasks</color>",
-  "RageKillButtonGranted": "You kept the rage in for so long... UNLEASH IT!"
+  "MarksmanInfoLong": "The Marksman can mark a player with their kill button. When another impostor kills the player, the impostor's kill cooldown will not be reset. Double click or be the last remaining impostor to kill normally."
   
 }

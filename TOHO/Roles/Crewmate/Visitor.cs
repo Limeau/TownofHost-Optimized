@@ -90,7 +90,7 @@ internal class Visitor : RoleBase
     {
         SetupSingleRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Visitor);
 
-        VisitAmount = IntegerOptionItem.Create(Id + 10, "VisitorVisitAmount447", new(1, 5, 1), 1, TabGroup.CrewmateRoles, false)
+        VisitAmount = IntegerOptionItem.Create(Id + 10, "VisitorVisitAmount447", new(1, 3, 1), 1, TabGroup.CrewmateRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Visitor]);
 
         VisitType = StringOptionItem.Create(Id + 11, "VisitorVisitType447", new string[] { "VisitorVisitByVote447", "VisitorVisitbyCommand447" }, 0, TabGroup.CrewmateRoles, false)
