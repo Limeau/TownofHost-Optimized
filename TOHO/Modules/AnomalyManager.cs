@@ -105,7 +105,8 @@ internal class AnomalyManager
 
         foreach (var pc in Main.AllAlivePlayerControls)
         {
-            pc.Notify($"The Truth Potion anomaly has revealed {randpc.name} as the {randpc.GetCustomRole()}!");
+            var rolestr = GetString($"randpc.GetCustomRole()");
+            pc.Notify($"The Truth Potion anomaly has revealed {randpc.name} as the {rolestr}!");
         }
     }
     
