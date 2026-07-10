@@ -5297,6 +5297,10 @@
   "RageAllowShortTasks": "<color=#ab3232>Rage</color> can give <color=#43a047>Short Tasks</color>",
   "RageAllowCommonTasks": "<color=#ab3232>Rage</color> can give <color=#fbc02d>Common Tasks</color>",
   "RageAllowLongTasks": "<color=#ab3232>Rage</color> can give <color=#1e88e5>Long Tasks</color>",
-  "RageKillButtonGranted": "You kept the rage in for so long... UNLEASH IT!"
+  "RageKillButtonGranted": "You kept the rage in for so long... UNLEASH IT!",
   
+  "Drone": "Drone",
+  "DroneInfo": "Protect players near you",
+  "DroneInfoLong": "The Drone can protect players near themself for a certain amount of time by doing a task. While players are protected, if they do a task, the amount of time they are protected increases by 5 seconds.",
+  "ProtectRadius450": "Protection Radius"
 }

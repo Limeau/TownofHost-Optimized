@@ -842,6 +842,7 @@ public enum CustomRoles
     Dictator,
     Director,
     Doctor,
+    Drone,
     Druid,
     Enigma,
     Exorcist,
