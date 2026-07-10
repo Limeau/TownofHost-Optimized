@@ -474,6 +474,10 @@ class GameEndCheckerForNormal
                                 WinnerIds.Add(pc.PlayerId);
                                 AdditionalWinnerTeams.Add(AdditionalWinners.Taskinator);
                                 break;
+                            case CustomRoles.Catalyst when WinnerTeam != CustomWinner.Crewmate && !CheckForConvertedWinner(pc.PlayerId):
+                                WinnerIds.Add(pc.PlayerId);
+                                AdditionalWinnerTeams.Add(AdditionalWinners.Catalyst);
+                                break;
                             case CustomRoles.Duck when WinnerTeam != CustomWinner.Crewmate && !CheckForConvertedWinner(pc.PlayerId):
                                 WinnerIds.Add(pc.PlayerId);
                                 AdditionalWinnerTeams.Add(AdditionalWinners.Duck);

@@ -938,6 +938,7 @@ public enum CustomRoles
     Berserker,
     Blade,
     BloodKnight,
+    Catalyst,
     Collector,
     Communist,
     Contaminator,
@@ -1356,6 +1357,7 @@ public enum AdditionalWinners
     Extremist = CustomRoles.Extremist,
     Duck = CustomRoles.Duck,
     DodoBird = CustomRoles.DodoBird,
+    Catalyst = CustomRoles.Catalyst,
     //   NiceMini = CustomRoles.NiceMini,
     //   Baker = CustomRoles.Baker,
 }
