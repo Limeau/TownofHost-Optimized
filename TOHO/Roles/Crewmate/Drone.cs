@@ -83,6 +83,13 @@ internal class Drone : RoleBase
                     player.Notify($"You are protected for {SwitchTime} seconds while close to the Drone!");
                 }
             }
+            else
+            {
+                foreach (var player in Main.AllAlivePlayerControls.Where(x => Utils.GetDistance(x.transform.position, PCDrone.transform.position) <= ProtectRadiusOpt.GetFloat()))
+                {
+                    player.Notify($"Protection has ended.");
+                }
+            }
         }
     }
 }
