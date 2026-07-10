@@ -5306,5 +5306,9 @@
   
   "Catalyst": "Catalyst",
   "CatalystInfo": "Set kill cooldowns to 0",
-  "CatalystInfoLong": "The Catalyst can set another person's kill cooldown to 0. Win with anyone but the Crewmates."
+  "CatalystInfoLong": "The Catalyst can set another person's kill cooldown to 0. Win with anyone but the Crewmates.",
+  
+  "Pathogen": "Pathogen",
+  "PathogenInfo": "Shift to make a player constantly perform the shapeshift animation",
+  "PathogenInfoLong": "The Pathogen can Shift to make a player constantly perform the shapeshift animation. They will shift until the next meeting."
 }

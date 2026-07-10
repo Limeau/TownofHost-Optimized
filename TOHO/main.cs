@@ -768,6 +768,7 @@ public enum CustomRoles
     Ninja,
     Nuancer,
     Parasite,
+    Pathogen,
     Penguin,
     Pitfall,
     Professor,
