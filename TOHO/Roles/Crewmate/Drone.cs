@@ -53,7 +53,7 @@ internal class Drone : RoleBase
     {
         if (!player.Is(CustomRoles.Drone)) return true;
         if (IsInProtect) return false;
-        SwitchTime = ProtectRadiusOpt.GetFloat();
+        SwitchTime = SkillDuration.GetFloat();
         IsInProtect = true;
         return true;
     }
