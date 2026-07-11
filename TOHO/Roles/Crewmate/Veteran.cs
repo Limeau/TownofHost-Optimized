@@ -14,7 +14,7 @@ internal class Veteran : RoleBase
 {
     //===========================SETUP================================\\
     public override CustomRoles Role => CustomRoles.Veteran;
-    private const int Id = 11350;
+    private const int Id = 45300;
     public static bool HasEnabled => CustomRoleManager.HasEnabled(CustomRoles.Veteran);
     public override CustomRoles ThisRoleBase => CustomRoles.Engineer;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
