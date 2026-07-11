@@ -1473,6 +1473,10 @@ public static class Utils
             + $"\n  ○ /qt {GetString("Command.quit")}"
             + $"\n  ○ /icons {GetString("Command.iconinfo")}"
             + $"\n  ○ /death {GetString("Command.death")}"
+            + $"\n  ○ /vipname {GetString("Command.vipname")}"
+            + $"\n  ○ /modname {GetString("Command.modname")}"
+            + $"\n  ○ /vipcolor {GetString("Command.vipcolor")}"
+            + $"\n  ○ /modcolor {GetString("Command.modcolor")}"
             + "\n\n" + GetString("CommandHostList")
             + $"\n  ○ /s {GetString("Command.say")}"
             + $"\n  ○ /rn {GetString("Command.rename")}"
@@ -1485,7 +1489,8 @@ public static class Utils
             + $"\n  ○ /id {GetString("Command.idlist")}"
             + $"\n  ○ /qq {GetString("Command.qq")}"
             + $"\n  ○ /dump {GetString("Command.dump")}"
-            + $"\n  ○ /start {GetString("Command.start")}"
+            + $"\n  ○ /vip {GetString("Command.vip")}"
+            + $"\n  ○ /mod {GetString("Command.mod")}"
             , ID);
     }
     public static string[] SplitMessage(this string LongMsg)
