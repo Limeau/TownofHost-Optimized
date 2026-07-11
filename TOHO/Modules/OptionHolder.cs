@@ -971,11 +971,6 @@ public static class Options
         }
 
         /*
-         * MINI 
-         */
-        CustomRoles.Mini.GetStaticRoleClass().SetupCustomOption();
-
-        /*
          * HINDERING ROLES
          */
         TextOptionItem.Create(10000007, "RoleType.CrewHindering", TabGroup.CrewmateRoles)
@@ -1020,6 +1015,13 @@ public static class Options
 
         CustomRoleManager.GetNormalOptions(Custom_RoleType.CrewmatePower).ForEach(r => r.SetupCustomOption());
 
+        
+        /*
+         * MINI
+         */
+        CustomRoles.Mini.GetStaticRoleClass().SetupCustomOption();
+
+        
         /*
          * Crewmate Ghost Roles
          */
