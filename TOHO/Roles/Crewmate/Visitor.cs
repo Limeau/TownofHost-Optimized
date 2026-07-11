@@ -25,7 +25,7 @@ internal class Visitor : RoleBase
     private static OptionItem VisitType;
     private static OptionItem CanKnowKillerIdentity;
     private static OptionItem WarnKillerAboutVisitor;
-    private static OptionItem Reveal;
+    private static OptionItem ArrowRevealDelay;
 
     private static readonly Color RoleColor = Utils.GetRoleColor(CustomRoles.Visitor);
 
@@ -102,8 +102,9 @@ internal class Visitor : RoleBase
         WarnKillerAboutVisitor = BooleanOptionItem.Create(Id + 13, "VisitorWarnKillerAboutVisitor447", false, TabGroup.CrewmateRoles, false)
             .SetParent(CanKnowKillerIdentity);
 
-        Reveal = BooleanOptionItem.Create(Id + 14, "VisitorReveal447", false, TabGroup.CrewmateRoles, false)
-            .SetParent(CanKnowKillerIdentity);
+        ArrowRevealDelay = FloatOptionItem.Create(Id + 15, "VisitorArrowRevealDelay447", new(0f, 60f, 1f), 5f, TabGroup.CrewmateRoles, false)
+            .SetParent(CanKnowKillerIdentity)
+            .SetValueFormat(OptionFormat.Seconds);
     }
 
     private static readonly Dictionary<byte, List<byte>> CurrentTargets = [];
@@ -114,8 +115,8 @@ internal class Visitor : RoleBase
     private static readonly Dictionary<byte, int> TotalKillCount = [];
     private static readonly Dictionary<byte, (byte KillerId, CustomRoles KillerRole, string KillerModifier)> VisitKillInfo = [];
     private static readonly Dictionary<byte, List<string>> LastReport = [];
-    private static readonly HashSet<byte> RevealedAsVisitor = [];
-	private static readonly HashSet<byte> RevealedAsKiller = [];
+    private static readonly Dictionary<byte, (byte KillerId, long RevealAt)> PendingArrowReveal = [];
+    private static readonly HashSet<byte> ProcessedKillNotifications = [];
 
     public override void Init()
     {
@@ -127,8 +128,8 @@ internal class Visitor : RoleBase
         TotalKillCount.Clear();
         VisitKillInfo.Clear();
         LastReport.Clear();
-        RevealedAsVisitor.Clear();
-		RevealedAsKiller.Clear();
+        PendingArrowReveal.Clear();
+        ProcessedKillNotifications.Clear();
     }
 
     public override void Add(byte playerId)
@@ -140,24 +141,15 @@ internal class Visitor : RoleBase
     public override void Remove(byte playerId)
     {
         CurrentTargets.Remove(playerId);
+        PendingArrowReveal.Remove(playerId);
     }
-
-	public override string GetSuffix(PlayerControl seer, PlayerControl target = null, bool isForMeeting = false)
-	{
-		if (isForMeeting) return string.Empty;
-		if (target != null && seer.PlayerId != target.PlayerId) return string.Empty;
-		if (!RevealedAsVisitor.Contains(seer.PlayerId)) return string.Empty;
-
-		return Utils.ColorString(RoleColor, GetString("VisitorVisitorTag447"));
-	}
 
     public override string GetSuffixOthers(PlayerControl seer, PlayerControl target, bool isForMeeting = false)
     {
         if (isForMeeting) return string.Empty;
         if (target != null && seer.PlayerId != target.PlayerId) return string.Empty;
-        if (!RevealedAsKiller.Contains(seer.PlayerId)) return string.Empty;
 
-        return Utils.ColorString(RoleColor, GetString("VisitorKillerTag447"));
+        return Utils.ColorString(RoleColor, TargetArrow.GetArrows(seer));
     }
 
     public override string GetProgressText(byte playerId, bool comms)
@@ -180,6 +172,18 @@ internal class Visitor : RoleBase
     public override void OnFixedUpdate(PlayerControl player, bool lowLoad, long nowTime, int timerLowLoad)
     {
         if (!player.Is(CustomRoles.Visitor)) return;
+
+        if (PendingArrowReveal.TryGetValue(player.PlayerId, out var pending) && nowTime >= pending.RevealAt)
+        {
+            var killer = Utils.GetPlayerById(pending.KillerId);
+            if (killer != null)
+            {
+                TargetArrow.Add(player.PlayerId, pending.KillerId);
+                TargetArrow.Add(pending.KillerId, player.PlayerId);
+            }
+            PendingArrowReveal.Remove(player.PlayerId);
+        }
+
         if (GameStates.IsMeeting) return;
         if (!CurrentTargets.TryGetValue(player.PlayerId, out var targets) || targets.Count == 0) return;
 
@@ -212,6 +216,12 @@ internal class Visitor : RoleBase
 	{
 		if (target == null) return;
 
+		// A player only ever dies once - if this hook somehow fires again for the
+		// same target (duplicate RPC echo, double dispatch, etc.), bail out instead
+		// of re-running Notify()/KillFlash() a second time, which visually resets
+		// their on-screen timers and makes the notif look like it's stuck.
+		if (!ProcessedKillNotifications.Add(target.PlayerId)) return;
+
 		if (killer != null)
 		{
 			TotalKillCount.TryAdd(killer.PlayerId, 0);
@@ -234,40 +244,43 @@ internal class Visitor : RoleBase
 
 			if (CanKnowKillerIdentity.GetBool())
 			{
-				if (Reveal.GetBool())
-				{
-					RevealedAsVisitor.Add(visitorId);
-					RevealedAsKiller.Add(killer.PlayerId);
-				}
-
 				var visitor = Utils.GetPlayerById(visitorId);
 
 				if (visitor != null)
 				{
 					string killerName = killer.GetRealName();
 					string killerRole = GetString($"{killer.GetCustomRole()}");
+					string revealText = string.Format(
+						GetString("VisitorKillerReveal447"),
+						target.GetRealName(),
+						killerName,
+						killerRole,
+						GetKillerModifierInfo(killer.PlayerId));
+					string warnText = string.Format(GetString("VisitorWarnKiller447"), visitor.GetRealName());
 
-					Utils.SendMessage(
-						string.Format(
-							GetString("VisitorKillerReveal447"),
-							target.GetRealName(),
-							killerName,
-							killerRole,
-							GetKillerModifierInfo(killer.PlayerId)),
-						visitor.PlayerId,
-						title: RoleTitle
-					);
-				}
+					// The old permanent nameplate tags are gone - their text now just
+					// leads the transient notif instead, so it still fades like every
+					// other role's notif. The arrow reveal (visitor->killer,
+					// killer->visitor) is scheduled after ArrowRevealDelay below and
+					// fires for both at once.
+					string visitorNotifText = $"{GetString("VisitorVisitorTag447")}\n{revealText}";
+					string killerNotifText = $"{GetString("VisitorKillerTag447")}\n{warnText}";
 
-				if (WarnKillerAboutVisitor.GetBool() && visitor != null)
-				{
-					Utils.SendMessage(
-						string.Format(
-							GetString("VisitorWarnKiller447"),
-							visitor.GetRealName()),
-						killer.PlayerId,
-						title: RoleTitle
-					);
+					Utils.SendMessage(revealText, visitor.PlayerId, title: RoleTitle);
+					visitor.KillFlash(playKillSound: false);
+					visitor.Notify(visitorNotifText);
+
+					killer.Notify(killerNotifText);
+
+					// WarnKillerAboutVisitor only controls whether the killer's warning
+					// is also logged to their persistent chat history - the transient
+					// flash/notif itself always happens once identities are known.
+					if (WarnKillerAboutVisitor.GetBool())
+					{
+						Utils.SendMessage(warnText, killer.PlayerId, title: RoleTitle);
+					}
+
+					PendingArrowReveal[visitor.PlayerId] = (killer.PlayerId, Utils.GetTimeStamp() + (long)ArrowRevealDelay.GetFloat());
 				}
 
 				Utils.NotifyRoles();
@@ -372,6 +385,9 @@ internal class Visitor : RoleBase
     public override void OnMeetingHudStart(PlayerControl pc)
     {
         if (!pc.Is(CustomRoles.Visitor)) return;
+
+        PendingArrowReveal.Remove(pc.PlayerId);
+
         if (!CurrentTargets.TryGetValue(pc.PlayerId, out var targets) || targets.Count == 0)
 			return;
 
@@ -411,11 +427,8 @@ internal class Visitor : RoleBase
                     Utils.SendMessage(string.Format(GetString("VisitorWarnKiller447"), pc.GetRealName()), killInfo.KillerId, title: RoleTitle);
                 }
 
-                if (Reveal.GetBool())
-				{
-					RevealedAsVisitor.Add(pc.PlayerId);
-					RevealedAsKiller.Add(killInfo.KillerId);
-				}
+                TargetArrow.Remove(pc.PlayerId, killInfo.KillerId);
+                TargetArrow.Remove(killInfo.KillerId, pc.PlayerId);
             }
         }
 
