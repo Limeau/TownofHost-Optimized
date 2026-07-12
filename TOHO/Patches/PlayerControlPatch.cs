@@ -1849,6 +1849,9 @@ class PlayerControlCompleteTaskPatch
                         case CustomRoles.Rookie when player.IsAlive():
                             Rookie.OnTaskComplete(player);
                             break;
+                        case CustomRoles.Rusher when player.IsAlive():
+                            Rusher.OnTaskCompleteOrMurderPlayer(player);
+                            break;
 							
 						case CustomRoles.Rage when player.IsAlive() && taskState.CompletedTasksCount >= taskState.AllTasksCount:
                             Rage.OnTaskComplete(player);

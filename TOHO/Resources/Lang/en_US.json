@@ -5317,5 +5317,10 @@
   
   "Pathogen": "Pathogen",
   "PathogenInfo": "Shift to make a player constantly perform the shapeshift animation",
-  "PathogenInfoLong": "The Pathogen can Shift to make a player constantly perform the shapeshift animation. They will shift until the next meeting."
+  "PathogenInfoLong": "The Pathogen can Shift to make a player constantly perform the shapeshift animation. They will shift until the next meeting.",
+  
+  "Rusher": "Rusher",
+  "RusherInfo": "Become faster by tasking or killing",
+  "RusherInfoLong": "Every time the Rusher finishes a task/kill they become faster.",
+  "RusherSpeedIncrease": "Speed increase for Rusher on task complete or kill"
 }
