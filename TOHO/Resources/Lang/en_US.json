@@ -5317,5 +5317,23 @@
   
   "Pathogen": "Pathogen",
   "PathogenInfo": "Shift to make a player constantly perform the shapeshift animation",
-  "PathogenInfoLong": "The Pathogen can Shift to make a player constantly perform the shapeshift animation. They will shift until the next meeting."
+  "PathogenInfoLong": "The Pathogen can Shift to make a player constantly perform the shapeshift animation. They will shift until the next meeting.",
+  
+  "Empath" : "Empath",
+  "EmpathInfo" : "Feel the vibes of a player.",
+  "EmpathInfoLong" : "Use Sense Intent on a nearby player to feel their emotional state. Calm, Agitated, or Guilty - each reading hints at their alignment and recent actions, but never confirms it outright. If you are killed, your killer is marked with a lasting Bloodlust curse.",
+  "EmpathAbilitySense" : "Sense Intent",
+  "EmpathAbilityChoose" : "Select Player",
+  "EmpathBloodlustApplied" : "You feel a lingering curse take hold of you - Bloodlust.",
+  "EmpathBloodlustNotifyOthers" : "{0} has been marked with Bloodlust!",
+  "EmpathSenseCooldown" : "Empath Sense Intent Cooldown",
+  "EmpathSenseRange" : "Empath Sense Intent Range",
+  "EmpathBloodlustCooldownMultiplier" : "Empath Bloodlust Kill Cooldown Multiplier",
+  "EmpathTargetSelected" : "You focus on {0}.",
+  "EmpathNoTargetSelected" : "Select a target with the shapeshift panel first.",
+  "EmpathTargetUnavailable" : "You can no longer sense them.",
+  "EmpathReadingCalm" : "Calm.",
+  "EmpathReadingAgitated" : "Agitated.",
+  "EmpathReadingGuilty" : "Guilty.",
+  "EmpathSenseResult" : "You sense {0}... {1}"
 }
