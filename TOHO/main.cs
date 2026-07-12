@@ -1176,6 +1176,7 @@ public enum CustomRoles
     Reach,
     Rebound,
     Redo,
+    Rusher,
     Spurt,
     Recruit,
     Seer,

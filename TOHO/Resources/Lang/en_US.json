@@ -5335,5 +5335,9 @@
   "EmpathReadingCalm" : "<color=#6fcf97>Calm</color>.",
   "EmpathReadingAgitated" : "<color=#f2c94c>Agitated</color>.",
   "EmpathReadingGuilty" : "<color=#eb5757>Guilty</color>.",
-  "EmpathSenseResult" : "<color=#ffffff>You sense <b>{0}</b> is... {1}</color>"
+  "EmpathSenseResult" : "<color=#ffffff>You sense <b>{0}</b> is... {1}</color>",
+  "Rusher": "Rusher",
+  "RusherInfo": "Become faster by tasking or killing",
+  "RusherInfoLong": "Every time the Rusher finishes a task/kill they become faster.",
+  "RusherSpeedIncrease": "Speed increase for Rusher on task complete or kill"
 }

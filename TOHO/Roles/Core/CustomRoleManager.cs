@@ -272,6 +272,10 @@ public static class CustomRoleManager
                         if (!Swift.OnCheckMurder(killer, target))
                             cancelbutkill = true;
                         break;
+                    
+                    case CustomRoles.Rusher:
+                        Rusher.OnTaskCompleteOrMurderPlayer(killer);
+                        break;
                 }
             }
 
