@@ -1363,7 +1363,10 @@ static class ExtendedPlayerControl
                     }
                 break;
         }
-
+		if (Empath.HasBurden(player.PlayerId))
+		{
+			Main.AllPlayerKillCooldown[player.PlayerId] *= Empath.GetBurdenMultiplier();
+		}
 
         if (!player.HasImpKillButton(considerVanillaShift: false) && !Rage.HasRageKill(player.PlayerId))
             Main.AllPlayerKillCooldown[player.PlayerId] = 300f;

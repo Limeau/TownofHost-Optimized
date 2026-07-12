@@ -847,6 +847,7 @@ public enum CustomRoles
     Druid,
     Enigma,
     Exorcist,
+	Empath,
     Firefighter,
     ForensicScientist,
     FortuneTeller,
