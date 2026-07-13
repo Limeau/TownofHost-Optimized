@@ -84,4 +84,9 @@ internal class Fury : RoleBase
         hud.AbilityButton.OverrideText(GetString("FuryShapeshiftText"));
     }
     public override Sprite GetAbilityButtonSprite(PlayerControl player, bool shapeshifting) => CustomButton.Get("Fury");
+
+    public override void SetKillCooldown(byte id)
+    {
+        Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
+    }
 }
