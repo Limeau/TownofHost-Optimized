@@ -1115,6 +1115,7 @@ public enum CustomRoles
     Contagious,
     CorruptedA,
     Cyber,
+	Chronos,
     Darkened,
     Diseased,
     Distracted,

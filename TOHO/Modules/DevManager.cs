@@ -44,7 +44,7 @@ public static class DevManager
             new(code: "tighttune#4221", color: "#00ff00", tag: "Mod Developer", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Lime"),
 			
 			// Andriess
-			new(code: "teemothy#6171", color: "#3d34eb", tag: "Mod Dev Team", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Andriess"),
+			new(code: "teemothy#6171", color: "#3d34eb", tag: "Head Of Development", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Andriess"),
 
             // Ape old
             new(code: "simianpair#1270", color: "#0e2f44", tag: "Executive", isUp: true, isDev: true, deBug: true, colorCmd: true, upName: "Ape"),

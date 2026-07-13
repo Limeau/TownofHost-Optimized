@@ -3,6 +3,7 @@ using System;
 using TOHO.Roles.Crewmate;
 using TOHO.Roles.Impostor;
 using TOHO.Roles.Neutral;
+using TOHO.Roles.Modifiers.Common;
 
 namespace TOHO.Modules;
 
@@ -30,7 +31,7 @@ public class MeetingTimeManager
         DiscussionTime = DefaultDiscussionTime;
         VotingTime = DefaultVotingTime;
     }
-    public static void OnReportDeadBody()
+    public static void OnReportDeadBody(PlayerControl reporter = null)
     {
         if (Options.AllAliveMeeting.GetBool() && Utils.IsAllAlive)
         {
@@ -78,6 +79,13 @@ public class MeetingTimeManager
                 VotingTime += DiscussionTime; // Shorten voting time for missing
                 DiscussionTime = 0;
             }
+        }
+		if (CustomRoles.Chronos.RoleExist())
+        {
+            if (TOHO.Roles.Modifiers.Common.Chronos.IsReporterChronos(reporter))
+				DiscussionTime /= 2; // Rushed trial
+			else
+				DiscussionTime += TOHO.Roles.Modifiers.Common.Chronos.TotalExtendedMeetingTime(reporter); // Dragged out deliberation
         }
         Logger.Info($"DiscussionTime:{DiscussionTime}, VotingTime{VotingTime}", "MeetingTimeManager.OnReportDeadBody");
     }

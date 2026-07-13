@@ -1032,7 +1032,7 @@ class ReportDeadBodyPatch
         // WILLS - v1.6.0
         // WillManager.OnReportDeadBody(target);
         // Set meeting time
-        MeetingTimeManager.OnReportDeadBody();
+        MeetingTimeManager.OnReportDeadBody(player);
 
         // Clear all Notice Players
         NameNotifyManager.Reset();
