@@ -1200,6 +1200,7 @@ class MeetingHudStartPatch
                 suffixBuilder.Append(myRole.GetSuffix(PlayerControl.LocalPlayer, pc, isForMeeting: true));
             }
             suffixBuilder.Append(CustomRoleManager.GetSuffixOthers(PlayerControl.LocalPlayer, pc, isForMeeting: true));
+			suffixBuilder.Append(Chronos.GetSuffix(pc));
 
             // If Doppelganger.CurrentVictimCanSeeRolesAsDead is disabled and Player is the most recent victim from the Doppelganger hide Role information for Player
             var player = PlayerControl.LocalPlayer;

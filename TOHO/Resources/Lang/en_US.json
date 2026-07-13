@@ -5336,6 +5336,7 @@
   "EmpathReadingAgitated" : "<color=#f2c94c>Agitated</color>.",
   "EmpathReadingGuilty" : "<color=#eb5757>Guilty</color>.",
   "EmpathSenseResult" : "<color=#ffffff>You sense <b>{0}</b> is... {1}</color>",
+  
   "Rusher": "Rusher",
   "RusherInfo": "Become faster by tasking or killing",
   "RusherInfoLong": "Every time the Rusher finishes a task/kill they become faster.",
@@ -5347,5 +5348,11 @@
   "DragonTimeBeforeKill": "Time before players that are on fire die",
   "DragonRadius": "Radius for others to catch on fire",
   "DragonKillText": "Burn",
-  "CanUseDoubleClick": "Can use Double Click to kill normally"
+  "CanUseDoubleClick": "Can use Double Click to kill normally",
+  
+  "Chronos": "Chronos",
+  "ChronosInfo": "Your very existence bends meeting time",
+  "ChronosInfoLong": "As Chronos, your presence warps how meetings play out.\nIf you call the meeting, the discussion timer is halved for a rushed trial.\nIf someone else calls a meeting while you are alive, the discussion timer is extended instead, dragging out the deliberation.\nA subtle icon appears next to your name during meetings, hinting at your modifier without revealing its exact effect.",
+  "ChronosExtendedMeetingTime": "Amount of seconds discussion is extended",
+  "ChronosShowModifierPresence": "Show Chronos's presence during meetings"
 }
