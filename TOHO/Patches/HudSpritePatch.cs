@@ -8,7 +8,7 @@ namespace TOHO;
 
 public static class CustomButton
 {
-    public static Sprite Get(string name) => Utils.LoadSprite($"TOHO.Resources.Images.Skills.{name}.png", 115f);
+    public static Sprite Get(string name, float ppu = 115f) => Utils.LoadSprite($"TOHO.Resources.Images.Skills.{name}.png", ppu);
 }
 
 [HarmonyPriority(Priority.First)]

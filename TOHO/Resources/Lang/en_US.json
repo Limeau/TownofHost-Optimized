@@ -5339,5 +5339,13 @@
   "Rusher": "Rusher",
   "RusherInfo": "Become faster by tasking or killing",
   "RusherInfoLong": "Every time the Rusher finishes a task/kill they become faster.",
-  "RusherSpeedIncrease": "Speed increase for Rusher on task complete or kill"
+  "RusherSpeedIncrease": "Speed increase for Rusher on task complete or kill",
+
+  "Dragon": "Dragon",
+  "DragonInfo": "Set players on fire!",
+  "DragonInfoLong": "Use the kill button to set a player on fire. They will be aware that they are on fire. After a certain amount of time, the player will die. The fire can spread among players, when a player gets close to a player that is on fire, they will also catch on fire.\n",
+  "DragonTimeBeforeKill": "Time before players that are on fire die",
+  "DragonRadius": "Radius for others to catch on fire",
+  "DragonKillText": "Burn",
+  "CanUseDoubleClick": "Can use Double Click to kill normally"
 }

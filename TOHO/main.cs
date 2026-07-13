@@ -732,6 +732,7 @@ public enum CustomRoles
     Diviner,
     DollMaster,
     DoubleAgent,
+    Dragon,
     Eraser,
     Escapist,
     EvilGuesser,
