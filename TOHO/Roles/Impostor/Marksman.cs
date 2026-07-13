@@ -13,9 +13,7 @@ internal class Marksman : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
     public override bool TOHORole => true;
     public override string IdeaRole => "den6211epic";
-
-    public override bool NewRole => true;
-    //==================================================================\\
+//==================================================================\\
     private static List<PlayerControl> Mark = [];
     private static OptionItem KillCooldown;
     public override void SetupCustomOption()

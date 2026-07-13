@@ -15,8 +15,6 @@ internal class Dreadsteed : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
-
     public override string IdeaRole => "puffyxavy";
     //==================================================================\\
 

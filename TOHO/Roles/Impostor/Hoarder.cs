@@ -15,7 +15,6 @@ internal class Hoarder : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     public override string IdeaRole => "runsterv";
     //==================================================================\\
 

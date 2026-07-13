@@ -13,7 +13,6 @@ internal class Supervisor : RoleBase
 
     public override bool TOHORole => true;
     public override string IdeaRole => "bearyyy_cocoa";
-    public override bool NewRole => true;
     //==================================================================\\
 
     public override void SetupCustomOption()

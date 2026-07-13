@@ -15,7 +15,6 @@ internal class Catalyst : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralBenign;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     public override string IdeaRole => "bxogamesyt";
     //==================================================================\\
     public override void SetupCustomOption()
