@@ -926,7 +926,7 @@ public static class Utils
                     mode = GetChance(spawnRate.GetFloat());
 
                 }
-                var roleDisplay = $"{GetRoleName(role)}: {mode} x{role.GetCount()}";
+                var roleDisplay = $"<b>{ColorString(GetRoleColor(role), GetRoleName(role))}</b>";
                 if (role.IsAdditionRole()) Modifiersb.Add(roleDisplay);
                 else if (role.IsCrewmate()) crewsb.Add(roleDisplay);
                 else if (role.IsImpostor() || role.IsMadmate()) impsb.Add(roleDisplay);
@@ -941,11 +941,11 @@ public static class Utils
         covenb.Sort();
         Modifiersb.Sort();
 
-        SendMessage(string.Join("\n", impsb), PlayerId, ColorString(GetRoleColor(CustomRoles.Impostor), GetString("ImpostorRoles")), ShouldSplit: true);
-        SendMessage(string.Join("\n", crewsb), PlayerId, ColorString(GetRoleColor(CustomRoles.Crewmate), GetString("CrewmateRoles")), ShouldSplit: true);
-        SendMessage(string.Join("\n", neutralsb), PlayerId, ColorString(new Color32(127, 140, 141, byte.MaxValue), GetString("NeutralRoles")), ShouldSplit: true);
-        SendMessage(string.Join("\n", covenb), PlayerId, ColorString(GetRoleColor(CustomRoles.Coven), GetString("CovenRoles")), ShouldSplit: true);
-        SendMessage(string.Join("\n", Modifiersb), PlayerId, ColorString(new Color32(255, 154, 206, byte.MaxValue), GetString("ModifierRoles")), ShouldSplit: true);
+        SendMessage(string.Join(", ", impsb), PlayerId, ColorString(GetRoleColor(CustomRoles.Impostor), GetString("ImpostorRoles")), ShouldSplit: true);
+        SendMessage(string.Join(", ", crewsb), PlayerId, ColorString(GetRoleColor(CustomRoles.Crewmate), GetString("CrewmateRoles")), ShouldSplit: true);
+        SendMessage(string.Join(", ", neutralsb), PlayerId, ColorString(new Color32(127, 140, 141, byte.MaxValue), GetString("NeutralRoles")), ShouldSplit: true);
+        SendMessage(string.Join(", ", covenb), PlayerId, ColorString(GetRoleColor(CustomRoles.Coven), GetString("CovenRoles")), ShouldSplit: true);
+        SendMessage(string.Join(", ", Modifiersb), PlayerId, ColorString(new Color32(255, 154, 206, byte.MaxValue), GetString("ModifierRoles")), ShouldSplit: true);
     }
     public static void ShowChildrenSettings(OptionItem option, ref StringBuilder sb, int deep = 0, bool command = false)
     {
