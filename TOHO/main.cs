@@ -1046,6 +1046,7 @@ public enum CustomRoles
     War,
     Werewolf,
     Widow,
+    Wildcard,
     Wight,
     Workaholic,
     Wraith,

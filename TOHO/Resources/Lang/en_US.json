@@ -5354,5 +5354,9 @@
   "ChronosInfo": "Your very existence bends meeting time",
   "ChronosInfoLong": "As Chronos, your presence warps how meetings play out.\nIf you call the meeting, the discussion timer is halved for a rushed trial.\nIf someone else calls a meeting while you are alive, the discussion timer is extended instead, dragging out the deliberation.\nA subtle icon appears next to your name during meetings, hinting at your modifier without revealing its exact effect.",
   "ChronosExtendedMeetingTime": "Amount of seconds discussion is extended",
-  "ChronosShowModifierPresence": "Show Chronos's presence during meetings"
+  "ChronosShowModifierPresence": "Show Chronos's presence during meetings",
+  
+  "Wildcard": "Wildcard",
+  "WildcardInfo": "Become a random Betrayal team!",
+  "WildcardInfoLong": "The Wildcard can use the kill button to give a player a random Betrayal addon (e.g Charmed, Contagious, Egoist, etc.). The Betrayal addon is randomly selected at the beginning of the game."
 }
