@@ -4944,7 +4944,7 @@
   "ShadeX": "Shade",
   "ShadeXInfo": "Control people from the dead",
   "ShadeXInfoLong": "As the Shade, you have no abilities when you are alive. You can select up to a certain amount of alive players to possess (adding them the Shaded Modifier) with your protect button. You can use the protect button on a Shaded player again to possess them and control their body for a limited amount of time, but this reduces your total ability uses.\n",
-  "Shaded": "Shaded",
+  "Shaded-": "Shaded",
   "ShadedInfo": "You are controlled by the Shade",
   "ShadedInfoLong": "You are recruited to the Shade's team, who is a dead player. They can choose to control your movement and actions at any time.",
   "ShadeAbilityUses": "Ability Uses",
