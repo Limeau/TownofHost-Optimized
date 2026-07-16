@@ -5358,5 +5358,9 @@
   
   "Wildcard": "Wildcard",
   "WildcardInfo": "Become a random Betrayal team!",
-  "WildcardInfoLong": "The Wildcard can use the kill button to give a player a random Betrayal addon (e.g Charmed, Contagious, Egoist, etc.). The Betrayal addon is randomly selected at the beginning of the game."
+  "WildcardInfoLong": "The Wildcard can use the kill button to give a player a random Betrayal addon (e.g Charmed, Contagious, Egoist, etc.). The Betrayal addon is randomly selected at the beginning of the game.",
+
+  "Lifestealer": "Lifestealer",
+  "LifestealerInfo": "Steal lives from dead players!",
+  "LifestealerInfoLong": "When the Lifestealer reports a body, the Lifestealer will take the skin of the dead body, and vice versa. Use the Unshift button to switch between Steal and Report modes."
 }

@@ -754,6 +754,7 @@ public enum CustomRoles
     Kamikaze,
     Kidnapper,
     KillingMachine,
+    Lifestealer,
     Lightning,
     Ludopath,
     Lunger,
