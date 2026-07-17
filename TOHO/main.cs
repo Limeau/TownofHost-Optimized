@@ -37,7 +37,7 @@ public class Main : BasePlugin
     // == Program Config ==
     public const string OriginalForkId = "OriginalTOH";
 
-    public static string StarData => Environment.GetEnvironmentVariable("STAR_DATA_PATH");    
+    private static string StarData => Environment.GetEnvironmentVariable("STAR_DATA_PATH");    
 
     public static readonly string BasePath =
         OperatingSystem.IsAndroid() ? StarData
@@ -532,7 +532,7 @@ public class Main : BasePlugin
     public override void Load()
     {
         Instance = this;
-        Directory.CreateDirectory(TohoData);
+        if (!Directory.Exists(TohoData)) Directory.CreateDirectory(TohoData);
 
         //Client Options
         HideName = Config.Bind("Client Options", "Hide Game Code Name", "TOHO");

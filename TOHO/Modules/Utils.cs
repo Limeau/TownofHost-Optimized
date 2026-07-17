@@ -2697,6 +2697,7 @@ public static class Utils
     public static void DumpLog()
     {
         string f = $"{Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)}/TOHO-logs/";
+        if (OperatingSystem.IsAndroid()) f = $"{Main.TohoData}/LOGS/";;
         string t = DateTime.Now.ToString("yyyy-MM-dd_HH.mm.ss");
         string filename = $"{f}TOHO-v{Main.PluginVersion}-{t}.log";
         if (!Directory.Exists(f)) Directory.CreateDirectory(f);
