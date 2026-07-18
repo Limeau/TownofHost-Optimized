@@ -21,6 +21,7 @@ internal class Lifestealer : RoleBase
 
     private static OptionItem KillCooldown;
 
+    private static int Shields = 0;
     private static bool StealMode;
     
     public override void SetupCustomOption()
@@ -33,6 +34,7 @@ internal class Lifestealer : RoleBase
 
     public override void Add(byte playerId)
     {
+        Shields = 0;
         StealMode = false;
     }
 
@@ -64,6 +66,8 @@ internal class Lifestealer : RoleBase
         Logger.Info("Changed reporter skin", "Lifestealer");
         RPC.SyncAllPlayerNames();
         Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
+
+        Shields++;
         return false;
     }
 
@@ -83,5 +87,16 @@ internal class Lifestealer : RoleBase
     {
         StealMode = false;
         SwitchMode(_Player);
+    }
+
+    public override bool OnCheckMurderAsTarget(PlayerControl killer, PlayerControl target)
+    {
+        if (Shields > 0)
+        {
+            Shields--;
+            killer.RpcGuardAndKill();
+            return false;
+        }
+        return true;
     }
 }
