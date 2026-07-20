@@ -5362,5 +5362,10 @@
 
   "Lifestealer": "Lifestealer",
   "LifestealerInfo": "Steal lives from dead players!",
-  "LifestealerInfoLong": "When the Lifestealer reports a body, the Lifestealer will take the skin of the dead body, and vice versa. Use the Unshift button to switch between Steal and Report modes. For each time they steal a body, they will get a Shield preventing them from being killed."
+  "LifestealerInfoLong": "When the Lifestealer reports a body, the Lifestealer will take the skin of the dead body, and vice versa. Use the Unshift button to switch between Steal and Report modes. For each time they steal a body, they will get a Shield preventing them from being killed.",
+
+  "Incinerator": "Incinerator",
+  "IncineratorInfo": "Burn your targets to ash",
+  "IncineratorInfoLong": "When the Incinerator kills a player, the target will lose their outfit, and be given the name 'ASHES'."
+  
 }
