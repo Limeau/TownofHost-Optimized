@@ -94,6 +94,11 @@ namespace TOHO.Roles.Neutral
             PlayerSkinsPainted[killer.PlayerId].Add(target.PlayerId);
             killer.RpcGuardAndKill();
             killer.SetKillCooldown(PaintCooldown.GetFloat());
+            
+            Main.OvverideOutfit[target.PlayerId] = (PaintedOutfit, "");
+            RPC.SyncAllPlayerNames();
+            Main.Instance.StartCoroutine(Utils.NotifyEveryoneAsync(speed: 5));
+            
             return false;
         }
     }
