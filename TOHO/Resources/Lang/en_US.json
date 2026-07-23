@@ -5366,6 +5366,9 @@
 
   "Incinerator": "Incinerator",
   "IncineratorInfo": "Burn your targets to ash",
-  "IncineratorInfoLong": "When the Incinerator kills a player, the target will lose their outfit, and be given the name 'ASHES'."
-  
+  "IncineratorInfoLong": "When the Incinerator kills a player, the target will lose their outfit, and be given the name 'ASHES'.",
+
+  "EasyButton": "Beginner Preset",
+  "ModerateButton": "Intermediate Preset",
+  "HardButton": "Advanced Preset"
 }
