@@ -447,6 +447,13 @@ internal class ChatCommands
                     }
                     Utils.SendMessage("All roles enabled!");
                     break;
+                case "/disableallroles":
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        option.Value.SetValue(0, false);
+                    }
+                    Utils.SendMessage("All roles enabled!");
+                    break;
                 
                 case "/setplayers":
                 case "/maxjogadores":
