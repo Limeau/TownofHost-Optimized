@@ -446,7 +446,7 @@ public abstract class RoleBase
 		if (_cachedRoleIcon != null)
 			return _cachedRoleIcon;
 
-		_cachedRoleIcon = Utils.LoadSprite(RoleIconPath);
+		_cachedRoleIcon = Utils.LoadSprite(RoleIconPath) ?? Modules.RoleIconGenerator.GetIcon(Role);
 		return _cachedRoleIcon;
 	}
 

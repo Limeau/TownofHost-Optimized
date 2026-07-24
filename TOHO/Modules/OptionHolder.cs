@@ -740,6 +740,23 @@ public static class Options
     }
     public static float GetRoleChance(CustomRoles role)
     {
+        // Same off-gate GetRoleCount already applies: if the modifier's
+        // on/off toggle is off, its stored spawn-rate default (e.g. the
+        // 65% every modifier defaults to) is irrelevant and shouldn't be
+        // displayed as if it were the effective chance.
+        var mode = GetRoleSpawnMode(role);
+        if (mode is 0) return 0;
+
+        // For modifiers ("addition" roles), the on/off StringOptionItem in
+        // CustomRoleSpawnChances only reflects the RatesZeroOne toggle, not
+        // the actual percentage - that lives separately in
+        // CustomAdtRoleSpawnRate ("AdditionRolesSpawnRate"). This mirrors
+        // the same lookup Utils.GetRoleMode already does correctly.
+        if (role.IsAdditionRole() && CustomAdtRoleSpawnRate.TryGetValue(role, out var spawnRate))
+        {
+            return spawnRate.GetFloat();
+        }
+
         if (CustomRoleSpawnChances.TryGetValue(role, out var option))
         {
             return option is StringOptionItem stringOption

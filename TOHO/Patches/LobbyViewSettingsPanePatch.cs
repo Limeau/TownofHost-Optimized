@@ -25,6 +25,122 @@ public static class LobbyViewSettingsPanePatch
         _roleBySpawnOption ??= CustomRoleSpawnChances.ToDictionary(kv => (OptionItem)kv.Value, kv => kv.Key);
     private static Dictionary<OptionItem, CustomRoles> _roleBySpawnOption;
 
+    private static readonly Sprite NextModeIconNormal = Utils.LoadSprite("TOHO.Resources.Images.NextModeArrow.png", 100f);
+    private static readonly Sprite NextModeIconHover = Utils.LoadSprite("TOHO.Resources.Images.NextModeArrow_Hover.png", 100f);
+    private static readonly Sprite PrevModeIconNormal = Utils.LoadSprite("TOHO.Resources.Images.PrevModeArrow.png", 100f);
+    private static readonly Sprite PrevModeIconHover = Utils.LoadSprite("TOHO.Resources.Images.PrevModeArrow_Hover.png", 100f);
+
+    // Same purple used for the "TOHO" mode label, reused here so the arrow
+    // hover tint matches it instead of introducing a second purple.
+    private static readonly Color ArrowHoverColor = new Color32(0x80, 0x00, 0x80, 0xFF);
+	
+	
+	/// <summary>
+	/// Clones rolesTabButton - the same template ModifiersTabButton already
+	/// uses without any issues - and only repaints its sprites and hides its
+	/// label text. Nothing about PassiveButton's own click/hover/collider/
+	/// sound wiring is touched at all this time, since that's exactly what
+	/// kept breaking when building one from scratch.
+	/// </summary>
+	private static PassiveButton CreateTabIconButton(
+		PassiveButton template,
+		Transform parent,
+		string name,
+		Vector3 position,
+		Sprite icon,
+		Sprite hoverIcon,
+		UnityAction onClick)
+	{
+		var clone = Object.Instantiate(template, parent);
+		clone.name = name;
+		clone.transform.localPosition = position;
+		clone.transform.localScale = new Vector3(0.2f, 0.8f, 1f);
+
+		if (icon != null)
+		{
+			foreach (var renderer in clone.GetComponentsInChildren<SpriteRenderer>(true))
+			{
+				renderer.sprite = icon;
+			}
+		}
+		else
+		{
+			Logger.Error(
+				$"{name}: custom icon missing - check the PNG exists under TOHO/Resources/Images and the project was rebuilt.",
+				"LobbyViewSettingsPanePatch");
+		}
+
+		// The hover-state child is actually named "Highlight" (not
+		// "Active"/"Hover" like the PassiveButton field names implied) -
+		// repaint just that subtree with the hover icon, after the blanket
+		// pass above already put the normal icon everywhere.
+		if (hoverIcon != null)
+		{
+			var highlight = clone.GetComponentsInChildren<Transform>(true)
+				.FirstOrDefault(t => t.name == "Highlight");
+
+			if (highlight != null)
+			{
+				foreach (var renderer in highlight.GetComponentsInChildren<SpriteRenderer>(true))
+				{
+					renderer.sprite = hoverIcon;
+				}
+			}
+			else
+			{
+				Logger.Error($"{name}: no \"Highlight\" child found to apply the hover icon to.", "LobbyViewSettingsPanePatch");
+			}
+		}
+
+		// Tab buttons carry a decorative "Shine" child per state (see the
+		// Icon/Shine layout in MainMenuPatch.cs) - we don't want that
+		// highlight sweeping across a plain icon button, so switch it off
+		// wherever it shows up (Inactive, Active, Selected, ...).
+		foreach (var shine in clone.GetComponentsInChildren<Transform>(true))
+		{
+			if (shine.name == "Shine")
+				shine.gameObject.SetActive(false);
+		}
+
+		// It's a tab button, so it comes with label text ("Roles" etc.) -
+		// we only want the icon, not a leftover word under/behind it.
+		if (clone.buttonText != null)
+		{
+			var translator = clone.buttonText.GetComponent<TextTranslatorTMP>();
+			if (translator != null) Object.Destroy(translator);
+			clone.buttonText.text = "";
+		}
+
+		clone.OnClick = new Button.ButtonClickedEvent();
+		clone.OnClick.AddListener(onClick);
+
+		// Purple tint applied only while the pointer is actually over the
+		// button - captured per-renderer up front so OnMouseOut can restore
+		// each one to whatever it started as (icon vs. Highlight child may
+		// not share the same base color) rather than assuming white.
+		var normalColors = clone.GetComponentsInChildren<SpriteRenderer>(true)
+			.Where(r => r != null)
+			.ToDictionary(r => r, r => r.color);
+
+		clone.OnMouseOver.AddListener((UnityAction)(() =>
+		{
+			foreach (var renderer in normalColors.Keys)
+			{
+				if (renderer != null) renderer.color = ArrowHoverColor;
+			}
+		}));
+
+		clone.OnMouseOut.AddListener((UnityAction)(() =>
+		{
+			foreach (var kvp in normalColors)
+			{
+				if (kvp.Key != null) kvp.Key.color = kvp.Value;
+			}
+		}));
+
+		return clone;
+	}
+
     [HarmonyPostfix]
     [HarmonyPatch(nameof(LobbyViewSettingsPane.Awake))]
     public static void AwakePostfix(LobbyViewSettingsPane __instance)
@@ -32,31 +148,33 @@ public static class LobbyViewSettingsPanePatch
         SelectedIdx = 0;
         _roleBySpawnOption = null;
 
-        var nextButton = Object.Instantiate(__instance.BackButton, __instance.BackButton.transform.parent).gameObject;
-        nextButton.name = "TOHO_NextModeButton";
-        nextButton.transform.localPosition = new Vector3(-5.4f, 2.4f, -2f);
-        nextButton.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
+        ApplyGameModeTextStyle(__instance);
 
-        var nextPassive = nextButton.GetComponent<PassiveButton>();
-        nextPassive.OnClick = new Button.ButtonClickedEvent();
-        nextPassive.OnClick.AddListener((UnityAction)(() =>
-        {
-            SelectedIdx = SelectedIdx == 0 ? 1 : 0;
-            Refresh(__instance);
-        }));
+        CreateTabIconButton(
+			__instance.rolesTabButton,
+			__instance.BackButton.transform.parent,
+			"TOHO_NextModeButton",
+			new Vector3(-4.4f, 2.5f, -2f),
+			NextModeIconNormal,
+			NextModeIconHover,
+			(UnityAction)(() =>
+			{
+				SelectedIdx = SelectedIdx == 0 ? 1 : 0;
+				Refresh(__instance);
+			}));
 
-        var backButton = Object.Instantiate(__instance.BackButton, __instance.BackButton.transform.parent).gameObject;
-        backButton.name = "TOHO_PrevModeButton";
-        backButton.transform.localPosition = new Vector3(-6.3f, 2.4f, -2f);
-        backButton.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
-
-        var backPassive = backButton.GetComponent<PassiveButton>();
-        backPassive.OnClick = new Button.ButtonClickedEvent();
-        backPassive.OnClick.AddListener((UnityAction)(() =>
-        {
-            SelectedIdx = SelectedIdx == 0 ? 1 : 0;
-            Refresh(__instance);
-        }));
+        CreateTabIconButton(
+			__instance.rolesTabButton,
+			__instance.BackButton.transform.parent,
+			"TOHO_PrevModeButton",
+			new Vector3(-6.6f, 2.5f, -2f),
+			PrevModeIconNormal,
+			PrevModeIconHover,
+			(UnityAction)(() =>
+			{
+				SelectedIdx = SelectedIdx == 0 ? 1 : 0;
+				Refresh(__instance);
+			}));
 
         ModifiersTabButton = Object.Instantiate(__instance.rolesTabButton, __instance.rolesTabButton.transform.parent);
         ModifiersTabButton.name = "TOHO_ModifiersTabButton";
@@ -85,9 +203,19 @@ public static class LobbyViewSettingsPanePatch
         ShowModifiers = false;
     }
 
+    private static void ApplyGameModeTextStyle(LobbyViewSettingsPane menu)
+    {
+        menu.gameModeText.text = SelectedIdx == 0 ? "<color=#fc8c03>Classic</color>" : "<color=#800080>TOHO</color>";
+        menu.gameModeText.transform.localPosition = new Vector3(
+            -3.6586f,
+            2.4241f,
+            -1.9999f
+        );
+    }
+
     private static void Refresh(LobbyViewSettingsPane menu)
     {
-        menu.gameModeText.text = SelectedIdx == 0 ? "Classic" : "TOHO";
+        ApplyGameModeTextStyle(menu);
         ModifiersTabButton?.gameObject.SetActive(SelectedIdx == 1);
         ModifiersTabButton?.SelectButton(SelectedIdx == 1 && ShowModifiers);
         if (SelectedIdx == 0) ShowModifiers = false;
@@ -95,13 +223,6 @@ public static class LobbyViewSettingsPanePatch
         menu.scrollBar.ScrollToTop();
     }
 
-    // Vanilla's DrawNormalTab/DrawRolesTab normally clear out the previous
-    // tab's panels as their first step. Since our Harmony prefixes return
-    // false and skip those methods entirely, we have to do that clearing
-    // ourselves. Destroying settingsContainer's children directly (rather
-    // than only trusting the settingsInfo list) so nothing untracked is
-    // left behind, and each destroy is isolated so one bad object can't
-    // abort the rest of the pass.
     private static void ClearSettingsInfo(LobbyViewSettingsPane instance)
     {
         var container = instance.settingsContainer;
@@ -382,7 +503,7 @@ public static class LobbyViewSettingsPanePatch
             (int)chance,
             61,
             Utils.GetRoleColor(role),
-            null,
+            RoleIconGenerator.GetIcon(role),
             tab == TabGroup.CrewmateRoles,
             disabled);
 
@@ -391,16 +512,28 @@ public static class LobbyViewSettingsPanePatch
 
     private static void CollectVisibleOptions(
     OptionItem option,
+    CustomRoles role,
     List<OptionItem> output)
     {
+        // The count ("Maximum") and, for modifiers, the actual spawn-rate
+        // percent ("AdditionRolesSpawnRate" / "Spawn Chance") are already
+        // rendered directly on the card via GetRoleCount/GetRoleChance -
+        // listing them again as extra rows here just duplicates (and for
+        // the rate option, can look like it disagrees with) the card.
+        var countOption = CustomRoleCounts.GetValueOrDefault(role);
+        var rateOption = CustomAdtRoleSpawnRate.GetValueOrDefault(role);
+
         foreach (var child in option.Children)
         {
             if (child.IsHiddenOn(Options.CurrentGameMode))
                 continue;
 
+            if (ReferenceEquals(child, countOption) || ReferenceEquals(child, rateOption))
+                continue;
+
             output.Add(child);
 
-            CollectVisibleOptions(child, output);
+            CollectVisibleOptions(child, role, output);
         }
     }
 
@@ -425,7 +558,7 @@ public static class LobbyViewSettingsPanePatch
                 if (!CustomRoleSpawnChances.TryGetValue(role, out var spawnOption)) continue;
 
                 var extras = new List<OptionItem>();
-                CollectVisibleOptions(spawnOption, extras);
+                CollectVisibleOptions(spawnOption, role, extras);
 
                 if (extras.Count == 0) continue;
 
@@ -475,6 +608,54 @@ public static class LobbyViewSettingsPanePatch
         viewPanel.header.Title.text = GetString(role.ToString());
         viewPanel.header.Background.color = viewPanel.header.Divider.color = Utils.GetRoleColor(role);
         viewPanel.divider.material.SetInt(PlayerMaterial.MaskLayer, maskLayer);
+
+        // AdvancedRoleViewPanel's header has no icon slot of its own (unlike
+        // the role card, which gets one via SetInfo) - add a small icon
+        // renderer so the expanded options panel still shows which role
+        // it's for, using the same icon source as the card. Match the
+        // ribbon's own layer/sorting exactly and render one order in front
+        // of it, rather than guessing at a Z offset that could put the icon
+        // behind the ribbon depending on how it's drawn.
+        //
+        // These header panels are pooled/reused, so find-or-create rather
+        // than always creating a new one - otherwise repeated refreshes
+        // (e.g. scrolling) just keep stacking new icons on top of old ones.
+        var headerIconTransform = viewPanel.header.transform.Find("TOHO_RoleIcon");
+        GameObject headerIcon;
+        if (headerIconTransform != null)
+        {
+            headerIcon = headerIconTransform.gameObject;
+        }
+        else
+        {
+            headerIcon = new GameObject("TOHO_RoleIcon") { layer = viewPanel.header.Background.gameObject.layer };
+            headerIcon.transform.SetParent(viewPanel.header.transform, false);
+            headerIcon.AddComponent<SpriteRenderer>();
+        }
+
+        var headerIconRenderer = headerIcon.GetComponent<SpriteRenderer>();
+        headerIconRenderer.sprite = RoleIconGenerator.GetIcon(role);
+        headerIconRenderer.sortingLayerID = viewPanel.header.Background.sortingLayerID;
+        headerIconRenderer.sortingOrder = viewPanel.header.Background.sortingOrder + 1;
+
+        // The rest of this panel clips to the scroll/panel bounds via a
+        // masked shader (see the divider's MaskLayer set below) - a plain
+        // default SpriteRenderer material doesn't know about that mask at
+        // all, so it can render outside/through panel edges regardless of
+        // where it's positioned. Copying the header's own material and
+        // mask layer keeps the icon clipped the same way everything else
+        // in this header already is.
+        headerIconRenderer.material = viewPanel.header.Background.material;
+        headerIconRenderer.material.SetInt(PlayerMaterial.MaskLayer, maskLayer);
+
+        // Back to a fixed local offset/scale - the bounds-based world-space
+        // version scattered icons across the whole screen instead of onto
+        // their headers (Background.bounds evidently isn't what I assumed
+        // it was here), which is worse than the original issue it was
+        // meant to fix. This fixed version was the one confirmed correctly
+        // positioned; bumped up a bit per request.
+        headerIcon.transform.localPosition = new Vector3(-2.85f, 0f, -0.1f);
+        headerIcon.transform.localScale = Vector3.one * 0.15f;
 
         var num = viewPanel.yPosStart;
         var num2 = 1.08f;
