@@ -14,7 +14,7 @@ public class Chronos : IModifier
     public void SetupCustomOption()
     {
         SetupAdtRoleOptions(Id, CustomRoles.Chronos, canSetNum: true, teamSpawnOptions: true);
-        ExtendedMeetingTime = IntegerOptionItem.Create(Id + 10, "ChronosExtendedMeetingTime", new(15, 40, 1), 20, TabGroup.Modifiers, false)
+        ExtendedMeetingTime = IntegerOptionItem.Create(Id + 10, "ChronosExtendedMeetingTime", new(15, 45, 5), 20, TabGroup.Modifiers, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.Chronos])
             .SetValueFormat(OptionFormat.Seconds);
         ShowModifierPresence = BooleanOptionItem.Create(Id + 11, "ChronosShowModifierPresence", true, TabGroup.Modifiers, false)

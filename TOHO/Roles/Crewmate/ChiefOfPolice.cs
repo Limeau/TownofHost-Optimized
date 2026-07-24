@@ -93,8 +93,8 @@ internal class ChiefOfPolice : RoleBase
                 killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.ChiefOfPolice), GetString("SheriffSuccessfullyRecruited")));
                 target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.ChiefOfPolice), GetString("BeSheriffByPolice")));
 
-                // Utils.NotifyRoles(killer);
-                // Utils.NotifyRoles(target);
+                Utils.NotifyRoles(killer);
+                Utils.NotifyRoles(target);
                 isSuccess = true;
             }
         }
@@ -132,8 +132,8 @@ internal class ChiefOfPolice : RoleBase
                     killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.ChiefOfPolice), GetString("SheriffSuccessfullyRecruited")));
                     target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.ChiefOfPolice), GetString("BeSheriffByPolice")));
 
-                    // Utils.NotifyRoles(killer);
-                    // Utils.NotifyRoles(target);
+                    Utils.NotifyRoles(killer);
+                    Utils.NotifyRoles(target);
                     isSuccess = true;
                 }
             }
@@ -164,7 +164,7 @@ internal class ChiefOfPolice : RoleBase
             killer.ResetKillCooldown();
             killer.SetKillCooldown(forceAnime: true);
             killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.ChiefOfPolice), GetString("PoliceFailedRecruit")));
-            // Utils.NotifyRoles(killer);
+            Utils.NotifyRoles(killer);
         }
 
         return false;

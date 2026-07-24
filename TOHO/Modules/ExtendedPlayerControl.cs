@@ -148,6 +148,12 @@ static class ExtendedPlayerControl
         player.SetKillCooldown();
         player.RpcResetAbilityCooldown();
         player.SyncGeneralOptions();
+		
+		if (AmongUsClient.Instance.AmHost)
+		{
+			player.Data.IsDead = false;
+			Utils.SendGameData();
+		}
     }
     /// <summary>
     /// Changes the Role Basis of Player during the game
@@ -734,7 +740,7 @@ static class ExtendedPlayerControl
 
             if (updateName)
             {
-                // Utils.NotifyRoles(SpecifySeer: unshifter, NoCache: true, ForceLoop: false);
+                Utils.NotifyRoles(SpecifySeer: unshifter, NoCache: true, ForceLoop: false);
             }
         }, 0.2f, "Wait and change outfit", shoudLog: false);
     }

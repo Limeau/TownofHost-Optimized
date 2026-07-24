@@ -130,7 +130,7 @@ internal class EvilTracker : RoleBase
         shapeshifter.SyncSettings();
 
         Logger.Info($"{shapeshifter.GetNameWithRole()} target to {target.GetNameWithRole()}", "EvilTrackerTarget");
-        // Utils.NotifyRoles(SpecifySeer: shapeshifter, SpecifyTarget: target, ForceLoop: true);
+        Utils.NotifyRoles(SpecifySeer: shapeshifter, SpecifyTarget: target, ForceLoop: true);
 
         return false;
     }

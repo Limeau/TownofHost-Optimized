@@ -168,7 +168,7 @@ internal class Seeker : RoleBase
 
 
         SendRPC(targetId);
-        //NotifyRoles(SpecifySeer: _Player, ForceLoop: true);
+        NotifyRoles(SpecifySeer: _Player, ForceLoop: true);
         FreezeSeeker();
         return targetId;
     }

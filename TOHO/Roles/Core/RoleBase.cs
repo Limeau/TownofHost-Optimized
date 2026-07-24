@@ -432,6 +432,23 @@ public abstract class RoleBase
     public virtual Sprite ImpostorVentButtonSprite(PlayerControl player) => null;
     public virtual Sprite ReportButtonSprite { get; }
     public virtual Sprite SabotageButtonSprite { get; }
+	
+	private Sprite _cachedRoleIcon;
+
+	/// <summary>
+	/// Override this if the icon filename differs from the role name.
+	/// </summary>
+	public virtual string RoleIconPath =>
+		$"Images/RoleIcons/{Role}.png";
+
+	public virtual Sprite GetRoleIcon()
+	{
+		if (_cachedRoleIcon != null)
+			return _cachedRoleIcon;
+
+		_cachedRoleIcon = Utils.LoadSprite(RoleIconPath) ?? Modules.RoleIconGenerator.GetIcon(Role);
+		return _cachedRoleIcon;
+	}
 
     /// <summary>
     /// Set PlayerName text for the Role

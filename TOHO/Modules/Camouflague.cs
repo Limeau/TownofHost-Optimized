@@ -112,6 +112,11 @@ public static class Camouflage
                 CamouflageOutfit = new NetworkedPlayerInfo.PlayerOutfit()
                     .Set("", 7, "hat_pk04_Snowman", "", "", "", "");
                 break;
+			
+			case 7: // Andries
+                CamouflageOutfit = new NetworkedPlayerInfo.PlayerOutfit()
+                    .Set("", 1, "hat_pk04_Snowman", "", "", "", "");
+                break;
         }
     }
     public static void CheckCamouflage()

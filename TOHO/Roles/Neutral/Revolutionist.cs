@@ -195,7 +195,7 @@ internal class Revolutionist : RoleBase
         if (!IsDraw[(killer.PlayerId, target.PlayerId)] && !RevolutionistTimer.ContainsKey(killer.PlayerId))
         {
             RevolutionistTimer.TryAdd(killer.PlayerId, (target, 0f));
-            //NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
+            NotifyRoles(SpecifySeer: killer, SpecifyTarget: target);
             SetCurrentDrawTargetRPC(killer.PlayerId, target.PlayerId);
             killer.RpcSetVentInteraction();
         }
@@ -206,7 +206,7 @@ internal class Revolutionist : RoleBase
         if (!_Player.IsAlive() || target.PlayerId == _Player.PlayerId || inMeeting || Main.MeetingIsStarted) return;
 
         _Player.RpcSetVentInteraction();
-        //_ = new LateTask(() => { NotifyRoles(SpecifySeer: _Player, ForceLoop: false); }, 1f, $"Update name for Revolutionist {_Player?.PlayerId}", shoudLog: false);
+        _ = new LateTask(() => { NotifyRoles(SpecifySeer: _Player, ForceLoop: false); }, 1f, $"Update name for Revolutionist {_Player?.PlayerId}", shoudLog: false);
     }
     private static void OnFixUpdateOthers(PlayerControl player, bool lowLoad, long nowTime)
     {
@@ -216,7 +216,7 @@ internal class Revolutionist : RoleBase
             if (!player.IsAlive() || Pelican.IsEaten(playerId))
             {
                 RevolutionistTimer.Remove(playerId);
-                //NotifyRoles(SpecifySeer: player);
+                NotifyRoles(SpecifySeer: player);
                 ResetCurrentDrawTarget(playerId);
             }
             else
@@ -234,7 +234,7 @@ internal class Revolutionist : RoleBase
                     RevolutionistTimer.Remove(playerId);
                     IsDraw[(playerId, rvTargetId)] = true;
                     SetDrawPlayerRPC(player, rv_target, true);
-                    //NotifyRoles(SpecifySeer: player, SpecifyTarget: rv_target);
+                    NotifyRoles(SpecifySeer: player, SpecifyTarget: rv_target);
                     ResetCurrentDrawTarget(playerId);
                     if (IRandom.Instance.Next(1, 100) <= RevolutionistKillProbability.GetInt())
                     {
@@ -256,7 +256,7 @@ internal class Revolutionist : RoleBase
                     else
                     {
                         RevolutionistTimer.Remove(playerId);
-                        //NotifyRoles(SpecifySeer: player, SpecifyTarget: rv_target);
+                        NotifyRoles(SpecifySeer: player, SpecifyTarget: rv_target);
                         ResetCurrentDrawTarget(playerId);
                         Logger.Info($"Canceled: {player.GetNameWithRole()}", "Revolutionist");
                     }
@@ -289,7 +289,7 @@ internal class Revolutionist : RoleBase
                             pc.SetDeathReason(PlayerState.DeathReason.Sacrifice);
                             pc.RpcMurderPlayer(pc);
                             Main.PlayerStates[pc.PlayerId].SetDead();
-                            //NotifyRoles(SpecifySeer: pc);
+                            NotifyRoles(SpecifySeer: pc);
                         }
                         player.Data.IsDead = true;
                         playerId.SetDeathReason(PlayerState.DeathReason.Sacrifice);
@@ -299,7 +299,7 @@ internal class Revolutionist : RoleBase
                     else
                     {
                         RevolutionistCountdown.TryAdd(playerId, countdown);
-                        //NotifyRoles(SpecifySeer: player, ForceLoop: false);
+                        NotifyRoles(SpecifySeer: player, ForceLoop: false);
                     }
                 }
                 else

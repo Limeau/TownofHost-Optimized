@@ -225,8 +225,8 @@ internal class Jackal : RoleBase
                 killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("GangsterSuccessfullyRecruited")));
                 target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("BeRecruitedByJackal")));
 
-                // Utils.NotifyRoles(killer, target, true);
-                // Utils.NotifyRoles(target, killer, true);
+                Utils.NotifyRoles(killer, target, true);
+                Utils.NotifyRoles(target, killer, true);
 
                 target.ResetKillCooldown();
                 target.SetKillCooldown(forceAnime: true);
@@ -247,8 +247,8 @@ internal class Jackal : RoleBase
                 killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("GangsterSuccessfullyRecruited")));
                 target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("BeRecruitedByJackal")));
 
-                // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-                // Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+                Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+                Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
 
                 killer.ResetKillCooldown();
                 killer.SetKillCooldown(forceAnime: !DisableShieldAnimations.GetBool());
@@ -274,8 +274,8 @@ internal class Jackal : RoleBase
                 killer.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("GangsterSuccessfullyRecruited")));
                 target.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), GetString("BeRecruitedByJackal")));
 
-                // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-                // Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+                Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+                Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
 
                 killer.ResetKillCooldown();
                 killer.SetKillCooldown(forceAnime: !DisableShieldAnimations.GetBool());
@@ -416,7 +416,7 @@ internal class Jackal : RoleBase
                 {
                     player.Notify(Utils.ColorString(Utils.GetRoleColor(CustomRoles.Jackal), string.Format(GetString("Jackal_OnNewJackalSelected"), newJackal.GetRealName())));
                 }
-                // Utils.NotifyRoles(SpecifyTarget: newJackal);
+                Utils.NotifyRoles(SpecifyTarget: newJackal);
 
                 hasConverted = true;
             }

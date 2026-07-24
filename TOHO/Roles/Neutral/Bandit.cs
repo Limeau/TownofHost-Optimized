@@ -141,8 +141,8 @@ internal class Bandit : RoleBase
         killer.RpcRemoveAbilityUse();
         SendRPC(target.PlayerId, (CustomRoles)SelectedModifier, StealMode.GetValue() == 1);
 
-        // Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
-        // Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
+        Utils.NotifyRoles(SpecifySeer: killer, SpecifyTarget: target, ForceLoop: true);
+        Utils.NotifyRoles(SpecifySeer: target, SpecifyTarget: killer, ForceLoop: true);
 
         killer.ResetKillCooldown();
         killer.SetKillCooldown();

@@ -824,7 +824,7 @@ internal static class CopsAndRobbersManager
                 var player = Utils.GetPlayerById(pid);
                 if (player != null)
                 {
-                    // Utils.NotifyRoles(SpecifySeer: player);
+                    Utils.NotifyRoles(SpecifySeer: player);
                 }
             }
 
@@ -1154,7 +1154,7 @@ internal static class CopsAndRobbersManager
                 var player = Utils.GetPlayerById(pid);
                 if (player != null)
                 {
-                    // Utils.NotifyRoles(SpecifySeer: player);
+                    Utils.NotifyRoles(SpecifySeer: player);
                 }
             }
         }
@@ -1312,7 +1312,7 @@ internal static class CopsAndRobbersManager
                             var player = Utils.GetPlayerById(pid);
                             if (player != null)
                             {
-                                // Utils.NotifyRoles(SpecifySeer: player);
+                                Utils.NotifyRoles(SpecifySeer: player);
                             }
                         }
                     }

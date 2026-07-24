@@ -1091,7 +1091,7 @@ internal class ChatCommands
 
                         _ = new LateTask(() =>
                         {
-                            // Utils.NotifyRoles(ForceLoop: false, NoCache: true);
+                            Utils.NotifyRoles(ForceLoop: false, NoCache: true);
 
                         }, 0.2f, "Update NotifyRoles players after /kill");
                     }

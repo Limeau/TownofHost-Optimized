@@ -700,11 +700,11 @@ class GameEndCheckerForNormal
             if (winnerPC == null) continue;
 
             // Update winner name
-            // Utils.NotifyRoles();
+            Utils.NotifyRoles();
         }
 
         // Update all Notify Roles
-        // Utils.NotifyRoles();
+        Utils.NotifyRoles();
 
         // Start End Game
         GameManager.Instance.RpcEndGame(reason, false);

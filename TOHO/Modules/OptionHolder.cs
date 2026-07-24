@@ -148,6 +148,7 @@ public static class Options
         "CamouflageMode.Karpe",
         "CamouflageMode.Lime",
         "CamouflageMode.Gurge44",
+		"CamouflageMode.Andries",
     ];
     [Obfuscation(Exclude = true)]
     public enum QuickChatSpamMode
@@ -739,7 +740,31 @@ public static class Options
     }
     public static float GetRoleChance(CustomRoles role)
     {
-        return CustomRoleSpawnChances.TryGetValue(role, out var option) ? option.GetValue()/* / 10f */ : roleSpawnChances[role];
+        // Same off-gate GetRoleCount already applies: if the modifier's
+        // on/off toggle is off, its stored spawn-rate default (e.g. the
+        // 65% every modifier defaults to) is irrelevant and shouldn't be
+        // displayed as if it were the effective chance.
+        var mode = GetRoleSpawnMode(role);
+        if (mode is 0) return 0;
+
+        // For modifiers ("addition" roles), the on/off StringOptionItem in
+        // CustomRoleSpawnChances only reflects the RatesZeroOne toggle, not
+        // the actual percentage - that lives separately in
+        // CustomAdtRoleSpawnRate ("AdditionRolesSpawnRate"). This mirrors
+        // the same lookup Utils.GetRoleMode already does correctly.
+        if (role.IsAdditionRole() && CustomAdtRoleSpawnRate.TryGetValue(role, out var spawnRate))
+        {
+            return spawnRate.GetFloat();
+        }
+
+        if (CustomRoleSpawnChances.TryGetValue(role, out var option))
+        {
+            return option is StringOptionItem stringOption
+                ? stringOption.GetChance()
+                : option.GetValue();
+        }
+
+        return roleSpawnChances[role];
     }
     private static System.Collections.IEnumerator CoLoadOptions()
     {
@@ -878,7 +903,7 @@ public static class Options
 
         #region Impostors Settings
         // Impostor
-        TextOptionItem.Create(10000000, "RoleType.VanillaRoles", TabGroup.ImpostorRoles) // Vanilla
+        TextOptionItem.Create(10000000, "RoleType.ImpostorVanilla", TabGroup.ImpostorRoles) // Vanilla
             .SetGameMode(CustomGameMode.Standard)
             .SetHeader(true)
             .SetColor(new Color32(250, 218, 105, byte.MaxValue));
@@ -954,7 +979,7 @@ public static class Options
         /*
          * VANILLA ROLES
          */
-        TextOptionItem.Create(10000006, "RoleType.VanillaRoles", TabGroup.CrewmateRoles)
+        TextOptionItem.Create(10000006, "RoleType.CrewmateVanilla", TabGroup.CrewmateRoles)
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(250, 218, 105, byte.MaxValue));
 
@@ -1198,6 +1223,9 @@ public static class Options
         yield return null;
 
         #region System Settings
+		TextOptionItem.Create(10000157, "MenuTitle.SystemSettings", TabGroup.SystemSettings)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetColor(new Color32(255, 238, 232, byte.MaxValue));
         BypassRateLimitAC = BooleanOptionItem.Create(60049, "BypassRateLimitAC", true, TabGroup.SystemSettings, false)
             .SetHeader(true);
         

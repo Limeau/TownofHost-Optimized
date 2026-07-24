@@ -50,7 +50,7 @@ public class Tricky : IModifier
             Main.PlayerStates[target.PlayerId].deathReason = randomDeathReason;
             Main.PlayerStates[target.PlayerId].SetDead();
 
-            // Utils.NotifyRoles(SpecifySeer: target);
+            Utils.NotifyRoles(SpecifySeer: target);
             Logger.Info($"Set death reason: {randomDeathReason}", "Tricky");
         }, 0.3f, "Tricky random death reason");
     }

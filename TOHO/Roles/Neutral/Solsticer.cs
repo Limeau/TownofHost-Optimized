@@ -124,7 +124,7 @@ internal class Solsticer : RoleBase
         }
         warningActived = true;
         SendRPC();
-        // Utils.NotifyRoles(SpecifyTarget: pc);
+        Utils.NotifyRoles(SpecifyTarget: pc);
     }
     public override bool OnCheckMurderAsTarget(PlayerControl killer, PlayerControl target)
     {

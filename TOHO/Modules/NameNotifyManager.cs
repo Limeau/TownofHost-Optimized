@@ -20,7 +20,7 @@ public static class NameNotifyManager
         Notice.Add(pc.PlayerId, new(text, Utils.TimeStamp + (long)time));
 
         SendRPC(pc.PlayerId);
-        // Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: false);
+        Utils.NotifyRoles(SpecifySeer: pc, ForceLoop: false);
 
         if (sendInLog) Logger.Info($"New name notify for {pc.GetNameWithRole().RemoveHtmlTags()}: {text} ({time}s)", "Name Notify");
     }
