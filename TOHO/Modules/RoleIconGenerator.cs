@@ -100,7 +100,7 @@ public static class RoleIconGenerator
 
     private static RoleIconStyle ResolveStyle(CustomRoles role)
     {
-        if (Styles.TryGetValue(role, out var curated))
+        if (CategoryStyles.TryGetValue(role.GetCustomRoleType(), out var curated))
             return curated;
 
         if (CustomRoleManager.RoleClass.TryGetValue(role, out var roleClass) && roleClass != null)
