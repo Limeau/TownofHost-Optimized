@@ -533,7 +533,7 @@ public class Main : BasePlugin
     public override void Load()
     {
         Instance = this;
-        Directory.CreateDirectory(TohoData);
+        if (!Directory.Exists(TohoData)) Directory.CreateDirectory(TohoData);
 
         //Client Options
         HideName = Config.Bind("Client Options", "Hide Game Code Name", "TOHO");
@@ -749,12 +749,14 @@ public enum CustomRoles
     Hangman,
     Harbourer,
     Hoarder,
+    Incinerator,
     Inhibitor,
     Instigator,
     Investor,
     Kamikaze,
     Kidnapper,
     KillingMachine,
+    Lifestealer,
     Lightning,
     Ludopath,
     Lunger,
@@ -1047,6 +1049,7 @@ public enum CustomRoles
     War,
     Werewolf,
     Widow,
+    Wildcard,
     Wight,
     Workaholic,
     Wraith,

@@ -4947,7 +4947,7 @@
   "ShadeX": "Shade",
   "ShadeXInfo": "Control people from the dead",
   "ShadeXInfoLong": "As the Shade, you have no abilities when you are alive. You can select up to a certain amount of alive players to possess (adding them the Shaded Modifier) with your protect button. You can use the protect button on a Shaded player again to possess them and control their body for a limited amount of time, but this reduces your total ability uses.\n",
-  "Shaded": "Shaded",
+  "Shaded-": "Shaded",
   "ShadedInfo": "You are controlled by the Shade",
   "ShadedInfoLong": "You are recruited to the Shade's team, who is a dead player. They can choose to control your movement and actions at any time.",
   "ShadeAbilityUses": "Ability Uses",
@@ -5358,5 +5358,21 @@
   "ChronosInfo": "Your very existence bends meeting time",
   "ChronosInfoLong": "As Chronos, your presence warps how meetings play out.\nIf you call the meeting, the discussion timer is halved for a rushed trial.\nIf someone else calls a meeting while you are alive, the discussion timer is extended instead, dragging out the deliberation.\nA subtle icon appears next to your name during meetings, hinting at your modifier without revealing its exact effect.",
   "ChronosExtendedMeetingTime": "Amount of seconds discussion is extended",
-  "ChronosShowModifierPresence": "Show Chronos's presence during meetings"
+  "ChronosShowModifierPresence": "Show Chronos's presence during meetings",
+  
+  "Wildcard": "Wildcard",
+  "WildcardInfo": "Become a random Betrayal team!",
+  "WildcardInfoLong": "The Wildcard can use the kill button to give a player a random Betrayal addon (e.g Charmed, Contagious, Egoist, etc.). The Betrayal addon is randomly selected at the beginning of the game.",
+
+  "Lifestealer": "Lifestealer",
+  "LifestealerInfo": "Steal lives from dead players!",
+  "LifestealerInfoLong": "When the Lifestealer reports a body, the Lifestealer will take the skin of the dead body, and vice versa. Use the Unshift button to switch between Steal and Report modes. For each time they steal a body, they will get a Shield preventing them from being killed.",
+
+  "Incinerator": "Incinerator",
+  "IncineratorInfo": "Burn your targets to ash",
+  "IncineratorInfoLong": "When the Incinerator kills a player, the target will lose their outfit, and be given the name 'ASHES'.",
+
+  "EasyButton": "Beginner Preset",
+  "ModerateButton": "Intermediate Preset",
+  "HardButton": "Advanced Preset"
 }

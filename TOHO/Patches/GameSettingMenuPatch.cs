@@ -42,6 +42,8 @@ public class GameSettingMenuPatch
             _ => []
         };
         
+        SetUpPresetPickerButtons(__instance);
+        
         var presetButton = __instance.GamePresetsButton;
         var pos = presetButton.transform.localPosition;
         pos = __instance.GamePresetsButton.transform.parent.parent.FindChild("GameSettingsLabel").transform.localPosition;
@@ -166,8 +168,312 @@ public class GameSettingMenuPatch
     public static List<OptionItem> HiddenBySearch = [];
     public static Action _SearchForOptions;
 
+    public static void SetUpPresetPickerButtons(GameSettingMenu instance)
+    {
+        // Beginner
+        var BpresetPickerButton = Object.Instantiate(instance.GamePresetsButton, instance.GamePresetsButton.transform.parent);
+        var posB = BpresetPickerButton.transform.localPosition;
+        posB = instance.GamePresetsButton.transform.parent.parent.FindChild("GameSettingsLabel").transform.localPosition;
+        posB.x = -3f;
+        posB.y = 2.5f;
+        posB.z = -5f;
+        BpresetPickerButton.transform.localPosition = posB;
+        var pkblabel = BpresetPickerButton.GetComponentInChildren<TextMeshPro>();
+        pkblabel.DestroyTranslator();
+        pkblabel.fontStyle = FontStyles.UpperCase;
+        pkblabel.text = "<color=#ffffff>" + GetString("EasyButton") + "</color>";
+        BpresetPickerButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+        BpresetPickerButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0, 100, 0);
+        BpresetPickerButton.selectedSprites.GetComponent<SpriteRenderer>().color = new Color(0, 150, 0);
+        BpresetPickerButton.transform.localScale = ButtonSize;
+        BpresetPickerButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        if (BeginnerRoles.Contains(option.Key)) option.Value.SetValue(100, false);
+                        else option.Value.SetValue(0, false);                    }
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }
+            ));
+        // Intermediate
+        var IpresetPickerButton = Object.Instantiate(instance.GamePresetsButton, instance.GamePresetsButton.transform.parent);
+        var posI = IpresetPickerButton.transform.localPosition;
+        posI = instance.GamePresetsButton.transform.parent.parent.FindChild("GameSettingsLabel").transform.localPosition;
+        posI.x = 0f;
+        posI.y = 2.5f;
+        posI.z = -5f;
+        IpresetPickerButton.transform.localPosition = posI;
+        var pkilabel = IpresetPickerButton.GetComponentInChildren<TextMeshPro>();
+        pkilabel.DestroyTranslator();
+        pkilabel.fontStyle = FontStyles.UpperCase;
+        pkilabel.text = "<color=#ffffff>" + GetString("ModerateButton") + "</color>";
+        IpresetPickerButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+        IpresetPickerButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0, 0, 100);
+        IpresetPickerButton.selectedSprites.GetComponent<SpriteRenderer>().color = new Color(0, 0, 150);
+        IpresetPickerButton.transform.localScale = ButtonSize;
+        IpresetPickerButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        if (BeginnerRoles.Contains(option.Key) || IntermediateRoles.Contains(option.Key)) option.Value.SetValue(100, false);
+                        else option.Value.SetValue(0, false);                    }
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }
+            ));
+        // Advanced
+        var ApresetPickerButton = Object.Instantiate(instance.GamePresetsButton, instance.GamePresetsButton.transform.parent);
+        var posA = ApresetPickerButton.transform.localPosition;
+        posA = instance.GamePresetsButton.transform.parent.parent.FindChild("GameSettingsLabel").transform.localPosition;
+        posA.x = 3f;
+        posA.y = 2.5f;
+        posA.z = -5f;
+        ApresetPickerButton.transform.localPosition = posA;
+        var pkalabel = ApresetPickerButton.GetComponentInChildren<TextMeshPro>();
+        pkalabel.DestroyTranslator();
+        pkalabel.fontStyle = FontStyles.UpperCase;
+        pkalabel.text = "<color=#ffffff>" + GetString("HardButton") + "</color>";
+        ApresetPickerButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+        ApresetPickerButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(100, 0, 0);
+        ApresetPickerButton.selectedSprites.GetComponent<SpriteRenderer>().color = new Color(150, 0, 0);
+        ApresetPickerButton.transform.localScale = ButtonSize;
+        ApresetPickerButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+                {
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        if (BeginnerRoles.Contains(option.Key) || IntermediateRoles.Contains(option.Key) || AdvancedRoles.Contains(option.Key)) option.Value.SetValue(100, false);
+                        else option.Value.SetValue(0, false);
+                    }
+                    GameOptionsMenuPatch.ReOpenSettings();
+                }
+            ));
+        
+    }
+
+    private static List<CustomRoles> BeginnerRoles =
+    [
+// IMPOSTORS
+CustomRoles.Agent,
+CustomRoles.Bane,
+CustomRoles.Crewpostor,
+CustomRoles.Kidnapper,
+CustomRoles.Lunger,
+CustomRoles.Lurker,
+CustomRoles.Saboteur,
+CustomRoles.Witch,
+CustomRoles.Cleaner,
+CustomRoles.Gangster,
+CustomRoles.Kamikaze,
+CustomRoles.TimeThief,
+CustomRoles.Scavenger,
+CustomRoles.Shapetricker,
+CustomRoles.Vampire,
+
+// CREWMATES
+CustomRoles.Deputy,
+CustomRoles.Sheriff,
+CustomRoles.Grenadier,
+CustomRoles.Medic,
+CustomRoles.Firefighter,
+CustomRoles.Oracle,
+CustomRoles.Snitch,
+CustomRoles.Villager,
+CustomRoles.Benefactor,
+CustomRoles.Chameleon,
+CustomRoles.Exorcist,
+CustomRoles.Retributionist,
+CustomRoles.Sentinel,
+CustomRoles.Veteran,
+CustomRoles.Dictator,
+
+// NEUTRALS
+CustomRoles.Jester,
+CustomRoles.Jackal,
+CustomRoles.Cultist,
+CustomRoles.Opportunist,
+CustomRoles.Innocent,
+CustomRoles.Executioner,
+CustomRoles.Amnesiac,
+CustomRoles.Lawyer,
+CustomRoles.Revenant,
+CustomRoles.Arsonist,
+CustomRoles.Doomsayer,
+CustomRoles.PunchingBag,
+CustomRoles.God,
+CustomRoles.Workaholic,
+CustomRoles.Specter,
+
+// MODIFIERS
+CustomRoles.Bait,
+CustomRoles.Autopsy,
+CustomRoles.Fragile,
+CustomRoles.Diseased,
+CustomRoles.Gravestone,
+CustomRoles.Oblivious,
+CustomRoles.Unreportable,
+CustomRoles.Susceptible,
+CustomRoles.Trapper,
+CustomRoles.Bewilder,
+CustomRoles.Cyber,
+CustomRoles.Evader,
+CustomRoles.Reach,
+CustomRoles.Overclocked,
+CustomRoles.Underclocked
+    ];
+    
+    private static List<CustomRoles> IntermediateRoles =
+    [
+// IMPOSTORS
+CustomRoles.Bomber,
+CustomRoles.BountyHunter,
+CustomRoles.Councillor,
+CustomRoles.Diviner,
+CustomRoles.Fury,
+CustomRoles.Rogue,
+CustomRoles.WildShot,
+CustomRoles.Zombie,
+CustomRoles.Blackmailer,
+CustomRoles.Consigliere,
+CustomRoles.Detonator,
+CustomRoles.Vindicator,
+CustomRoles.Blinder,
+CustomRoles.Butcher,
+CustomRoles.Pathogen,
+
+// CREWMATES
+CustomRoles.Valkyrie,
+CustomRoles.Admirer,
+CustomRoles.Savior,
+CustomRoles.Constable,
+CustomRoles.Guardian,
+CustomRoles.Protector,
+CustomRoles.Bastion,
+CustomRoles.Jailer,
+CustomRoles.Webweaver,
+CustomRoles.Crusader,
+CustomRoles.ForensicScientist,
+CustomRoles.Technician,
+CustomRoles.Judge,
+CustomRoles.Vigilante,
+CustomRoles.Reverie,
+
+// NEUTRALS
+CustomRoles.Skeleton,
+CustomRoles.Pixie,
+CustomRoles.Specter,
+CustomRoles.Gunslinger,
+CustomRoles.Godzilla,
+CustomRoles.DarkFairy,
+CustomRoles.Narc,
+CustomRoles.Seeker,
+CustomRoles.Communist,
+CustomRoles.Developer,
+CustomRoles.Quizmaster,
+CustomRoles.Terrorist,
+CustomRoles.Vector,
+CustomRoles.Vulture,
+CustomRoles.Doppelganger,
+
+// MODIFIERS
+CustomRoles.FragileHunter,
+CustomRoles.Burst,
+CustomRoles.Egoist,
+CustomRoles.Tiebreaker,
+CustomRoles.Windy,
+CustomRoles.Fool,
+CustomRoles.Unlucky,
+CustomRoles.Hurried,
+CustomRoles.Influenced,
+CustomRoles.VoidBallot,
+CustomRoles.Rainbow,
+CustomRoles.Randomizer,
+CustomRoles.Glow,
+CustomRoles.Youtuber,
+CustomRoles.Oiiai
+    ];
+    
+    private static List<CustomRoles> AdvancedRoles =
+    [
+// IMPOSTORS
+CustomRoles.Propagandist,
+CustomRoles.Anonymous,
+CustomRoles.DollMaster,
+CustomRoles.Chronomancer,
+CustomRoles.Dragon,
+CustomRoles.Hangman,
+CustomRoles.Incinerator,
+CustomRoles.Harbourer,
+CustomRoles.Meteor,
+CustomRoles.Nuancer,
+CustomRoles.Gravedigger,
+CustomRoles.Lifestealer,
+CustomRoles.Lightning,
+CustomRoles.Puppeteer,
+CustomRoles.Staller,
+
+// CREWMATES
+CustomRoles.Raven,
+CustomRoles.Archivist,
+CustomRoles.Overseer,
+CustomRoles.Supervisor,
+CustomRoles.Mayor,
+CustomRoles.Altruist,
+CustomRoles.Keeper,
+CustomRoles.Medium,
+CustomRoles.Merchant,
+CustomRoles.Survivalist,
+CustomRoles.TimeMaster,
+CustomRoles.Mage,
+CustomRoles.Protester,
+CustomRoles.Cursebearer,
+CustomRoles.Hawk,
+
+// NEUTRALS
+CustomRoles.Abzorbaloff,
+CustomRoles.ShadowKing,
+CustomRoles.Wight,
+CustomRoles.Slaad,
+CustomRoles.Bandit,
+CustomRoles.Contaminator,
+CustomRoles.Falcon,
+CustomRoles.Glitch,
+CustomRoles.Hacker,
+CustomRoles.Pelican,
+CustomRoles.Shroud,
+CustomRoles.Virus,
+CustomRoles.Werewolf,
+CustomRoles.Predator,
+CustomRoles.Keymaster,
+
+// MODIFIERS
+CustomRoles.Avanger,
+CustomRoles.Bloodthirst,
+CustomRoles.Chronos,
+CustomRoles.Gross,
+CustomRoles.Radiator,
+CustomRoles.Circumvent,
+CustomRoles.Quota,
+CustomRoles.Swift,
+CustomRoles.Identifier,
+CustomRoles.Necroview,
+CustomRoles.Nimble,
+CustomRoles.Sleuth,
+CustomRoles.Watcher,
+CustomRoles.Spurt,
+CustomRoles.Flash
+    ];
+    
     private static void SetupAdittionalButtons(GameSettingMenu __instance)
     {
+       /* CreateButton("", new Vector3(0f, 2f, 1f), new Color32(0, 0, 255, 200), Color32.Lerp(new Color32(0, 0, 255, 200), new Color32(0, 0, 0, 200), 0.5f), (UnityEngine.Events.UnityAction)(
+            () =>
+            {
+                foreach (var option in Options.CustomRoleSpawnChances)
+                {
+                    option.Value.SetValue(0, false);
+                }
+            }), "Set Basic Preset");
+        */
+        
         if (__instance == null) return;
         
         var ParentLeftPanel = __instance.GamePresetsButton.transform.parent;
