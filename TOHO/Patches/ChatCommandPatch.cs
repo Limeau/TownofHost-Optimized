@@ -440,6 +440,14 @@ internal class ChatCommands
                     SendRolesInfo(subArgs, PlayerControl.LocalPlayer.PlayerId, isUp: true);
                     break;
 
+                case "/enableallroles":
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        option.Value.SetValue(100, false);
+                    }
+                    Utils.SendMessage("All roles enabled!");
+                    break;
+                
                 case "/setplayers":
                 case "/maxjogadores":
                 case "/设置最大玩家数":
