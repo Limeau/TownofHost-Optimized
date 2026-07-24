@@ -452,7 +452,7 @@ internal class ChatCommands
                     {
                         option.Value.SetValue(0, false);
                     }
-                    Utils.SendMessage("All roles enabled!");
+                    Utils.SendMessage("All roles disabled!");
                     break;
                 
                 case "/setplayers":
