@@ -4029,6 +4029,7 @@
   "HaterCanKillEnchanted": "Can kill <color=#ac42f2>Enchanted</color>",
   "HorseMode": "Enable to become a horse",
   "LongMode": "Enable to have a long neck",
+  "ClassicMode": "Enable to become an old bean",
   "InfluencedChangeVote": "Oops! You are so influenced by others!\nYou can not contain your fear that you change voted {0}!",
 
   "FFA": "Free For All",

@@ -27,6 +27,11 @@ public static class GetNormalBodyType_Patch
             __result = PlayerBodyTypes.Long;
             return;
         }
+        if (Main.ClassicMode.Value)
+        {
+            __result = PlayerBodyTypes.Classic;
+            return;
+        }
         __result = PlayerBodyTypes.Normal;
     }
 }
@@ -46,6 +51,11 @@ public static class GetHnsBodyType_Patch
             if (Main.LongMode.Value)
             {
                 __result = PlayerBodyTypes.Long;
+                return;
+            }
+            if (Main.ClassicMode.Value)
+            {
+                __result = PlayerBodyTypes.Classic;
                 return;
             }
             __result = PlayerBodyTypes.Normal;
@@ -69,6 +79,15 @@ public static class GetHnsBodyType_Patch
                 return;
             }
             __result = PlayerBodyTypes.Long;
+            return;
+        }else if (Main.ClassicMode.Value)
+        {
+            if (player.Data.Role.IsImpostor)
+            {
+                __result = PlayerBodyTypes.Seeker;
+                return;
+            }
+            __result = PlayerBodyTypes.Classic;
             return;
         }
         else
