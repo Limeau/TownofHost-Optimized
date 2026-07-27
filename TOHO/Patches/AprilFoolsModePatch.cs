@@ -27,11 +27,14 @@ public static class GetNormalBodyType_Patch
             __result = PlayerBodyTypes.Long;
             return;
         }
+        #if ANDROID
+        #else
         if (Main.ClassicMode.Value)
         {
             __result = PlayerBodyTypes.Classic;
             return;
         }
+        #endif
         __result = PlayerBodyTypes.Normal;
     }
 }
@@ -53,11 +56,14 @@ public static class GetHnsBodyType_Patch
                 __result = PlayerBodyTypes.Long;
                 return;
             }
+#if ANDROID
+#else
             if (Main.ClassicMode.Value)
             {
                 __result = PlayerBodyTypes.Classic;
                 return;
             }
+#endif
             __result = PlayerBodyTypes.Normal;
             return;
         }
@@ -87,7 +93,11 @@ public static class GetHnsBodyType_Patch
                 __result = PlayerBodyTypes.Seeker;
                 return;
             }
+            #if ANDROID
+            __result = PlayerBodyTypes.Normal;
+            #else
             __result = PlayerBodyTypes.Classic;
+            #endif
             return;
         }
         else
