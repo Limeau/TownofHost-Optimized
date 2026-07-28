@@ -16,7 +16,6 @@ internal class Dragon : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorKilling;
     public override CustomRoles Role => CustomRoles.Dragon;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     //==================================================================\\
 
     public static OptionItem KillCooldown;

@@ -18,7 +18,6 @@ internal class Empath : RoleBase
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
 	
 	public override bool TOHORole => true;
-	public override bool NewRole => true;
 	
 	public override string CodedRole => ".angel24.";
     public override string IdeaRole => ".angel24.";
