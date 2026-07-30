@@ -1842,6 +1842,10 @@ class PlayerControlCompleteTaskPatch
                         case CustomRoles.Tired when player.IsAlive():
                             Tired.AfterActionTasks(player);
                             break;
+                        
+                        case CustomRoles.SurpriseAttack when player.IsAlive():
+                            SurpriseAttack.AfterActionTasks(player);
+                            break;
 
                         case CustomRoles.Bloodthirst when player.IsAlive():
                             Bloodthirst.OnTaskComplete(player);

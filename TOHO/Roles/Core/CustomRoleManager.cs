@@ -253,6 +253,10 @@ public static class CustomRoleManager
                     case CustomRoles.Tired:
                         Tired.AfterActionTasks(killer);
                         break;
+                    
+                    case CustomRoles.SurpriseAttack:
+                        SurpriseAttack.AfterActionTasks(killer);
+                        break;
 
                     case CustomRoles.Mare:
                         if (Mare.IsLightsOut)

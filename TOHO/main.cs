@@ -1198,6 +1198,7 @@ public enum CustomRoles
     Statue,
     Stubborn,
     Subversion,
+    SurpriseAttack,
     Susceptible,
     Swift,
     Tiebreaker,

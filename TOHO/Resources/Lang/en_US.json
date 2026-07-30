@@ -5380,5 +5380,9 @@
   "Scribe": "Scribe",
   "ScribeInfo": "Chat while in game!",
   "ScribeInfoLong": "The Scribe can use the chat UI at all times, making them able to chat at any point within the game.",
-  "ScribeGuessed": "Scribe can be guessed"
+  "ScribeGuessed": "Scribe can be guessed",
+
+  "SurpriseAttack": "Surprise Attack",
+  "SurpriseAttackInfo": "Surprise players by transporting them",
+  "SurpriseAttackInfoLong": "With the Surprise Attack Modifier, each kill you make or each task you do, a random player will be transported with another random player."
 }
