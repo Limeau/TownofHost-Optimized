@@ -5375,5 +5375,10 @@
 
   "EasyButton": "Beginner Preset",
   "ModerateButton": "Intermediate Preset",
-  "HardButton": "Advanced Preset"
+  "HardButton": "Advanced Preset",
+
+  "Scribe": "Scribe",
+  "ScribeInfo": "Chat while in game!",
+  "ScribeInfoLong": "The Scribe can use the chat UI at all times, making them able to chat at any point within the game.",
+  "ScribeGuessed": "Scribe can be guessed"
 }

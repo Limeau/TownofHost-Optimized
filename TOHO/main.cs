@@ -903,6 +903,7 @@ public enum CustomRoles
     Reverie,
     Santa,
     Savior,
+    Scribe,
     Sentinel,
     Sheriff,
     Snitch,
