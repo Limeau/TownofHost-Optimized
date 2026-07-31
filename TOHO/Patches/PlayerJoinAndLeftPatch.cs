@@ -272,8 +272,11 @@ public static class OnPlayerJoinedPatch
         }, 4.5f, "green bean kick late task", false);
 
 
-        if (AmongUsClient.Instance.AmHost && HasInvalidFriendCode(client.FriendCode) && Options.KickPlayerFriendCodeInvalid.GetBool() && !GameStates.IsLocalGame && Utils.GetRegionName() != "Modded NA" && Utils.GetRegionName() != "Modded EU" && Utils.GetRegionName() != "Modded AS")
+        if (AmongUsClient.Instance.AmHost && HasInvalidFriendCode(client.FriendCode) && Options.KickPlayerFriendCodeInvalid.GetBool() && !GameStates.IsLocalGame)
         {
+            if (Utils.GetRegionName() != "Modded NA (MNA)" || 
+                Utils.GetRegionName() != "Modded EU (MEU)" ||
+                Utils.GetRegionName() != "Modded AS (MAS)") return;
             if (!Options.TempBanPlayerFriendCodeInvalid.GetBool())
             {
                 AmongUsClient.Instance.KickPlayer(client.Id, false);
