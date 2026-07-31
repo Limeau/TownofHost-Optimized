@@ -5384,5 +5384,10 @@
 
   "SurpriseAttack": "Surprise Attack",
   "SurpriseAttackInfo": "Surprise players by transporting them",
-  "SurpriseAttackInfoLong": "With the Surprise Attack Modifier, each kill you make or each task you do, a random player will be transported with another random player."
+  "SurpriseAttackInfoLong": "With the Surprise Attack Modifier, each kill you make or each task you do, a random player will be transported with another random player.",
+
+  "Temporal": "Temporal",
+  "TemporalInfo": "Increase the emergency meeting button cooldown",
+  "TemporalInfoLong": "As the Temporal, after you kill, you increase the emergency meeting button cooldown.",
+  "TemporalIncreaseTime": "Increase emergency meeting cooldown by"
 }

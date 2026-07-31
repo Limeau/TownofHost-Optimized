@@ -128,6 +128,7 @@ public static class CustomRoleManager
 
         if (Grenadier.HasEnabled) Grenadier.ApplyGameOptionsForOthers(opt, player);
         if (CustomRoles.Slaad.RoleExist()) Slaad.ApplyGameOptionsForOthers(opt, player);
+        if (CustomRoles.Temporal.RoleExist()) Temporal.SetGameOptions(opt);
         if (CustomRoles.Dazzler.RoleExist()) Dazzler.SetDazzled(player, opt);
         if (CustomRoles.Deathpact.RoleExist()) Deathpact.SetDeathpactVision(player, opt);
         if (Spiritcaller.HasEnabled) Spiritcaller.ReduceVision(opt, player);
@@ -413,6 +414,10 @@ public static class CustomRoleManager
                 {
                     case CustomRoles.Stealer when !inMeeting && !isSuicide:
                         Stealer.OnMurderPlayer(killer);
+                        break;
+                    
+                    case CustomRoles.Temporal when !isSuicide:
+                        Temporal.OnMurderPlayer(killer);
                         break;
 
                     case CustomRoles.Tricky:

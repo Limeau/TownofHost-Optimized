@@ -470,6 +470,7 @@ public static class CustomRolesHelper
             CustomRoles.Stealer or
             CustomRoles.Circumvent or
             CustomRoles.Quota or
+            CustomRoles.Temporal or
             CustomRoles.Swift;
     }
 
@@ -1144,6 +1145,10 @@ public static class CustomRolesHelper
                 break;
 
             case CustomRoles.Quota:
+                if (!pc.GetCustomRole().IsImpostor())
+                    return false;
+                break;
+            case CustomRoles.Temporal:
                 if (!pc.GetCustomRole().IsImpostor())
                     return false;
                 break;

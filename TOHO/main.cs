@@ -1202,6 +1202,7 @@ public enum CustomRoles
     Susceptible,
     Swift,
     Tiebreaker,
+    Temporal,
     Stealer, //stealer
     Torch,
     Toxic,
