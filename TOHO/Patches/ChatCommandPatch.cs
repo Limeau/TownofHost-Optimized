@@ -2068,7 +2068,7 @@ internal class ChatCommands
             "規避者" or "规避者" or "规避" => GetString("Circumvent"),
             "名人" or "网络员" or "网络" => GetString("Cyber"),
             "焦急者" or "焦急的" or "焦急" => GetString("Hurried"),
-            "OIIAI" => GetString("Oiiai"),
+            "Oblivion" => GetString("Oblivion"),
             "順從者" or "影响者" or "順從" or "影响" => GetString("Influenced"),
             "沉默者" or "沉默" => GetString("Silent"),
             "易感者" or "易感" => GetString("Susceptible"),

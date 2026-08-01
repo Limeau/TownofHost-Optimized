@@ -1170,7 +1170,7 @@ public enum CustomRoles
     Necroview,
     Nimble,
     Oblivious,
-    Oiiai,
+    Oblivion,
     Onbound,
     Overclocked,
     Paranoia,

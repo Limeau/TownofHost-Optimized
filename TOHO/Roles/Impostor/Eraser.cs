@@ -98,7 +98,7 @@ internal class Eraser : RoleBase
             var player = Utils.GetPlayerById(pc);
             if (player == null) continue;
 
-            player.RPCPlayCustomSound("Oiiai");
+            player.RPCPlayCustomSound("Oblivion");
             player.Notify(GetString("LostRoleByEraser"));
         }
     }

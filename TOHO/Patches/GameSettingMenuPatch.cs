@@ -388,7 +388,7 @@ CustomRoles.Rainbow,
 CustomRoles.Randomizer,
 CustomRoles.Glow,
 CustomRoles.Youtuber,
-CustomRoles.Oiiai
+CustomRoles.Oblivion
     ];
     
     private static List<CustomRoles> AdvancedRoles =

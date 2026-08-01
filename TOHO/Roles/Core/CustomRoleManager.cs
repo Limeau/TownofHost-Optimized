@@ -302,7 +302,7 @@ public static class CustomRoleManager
             {
                 target.RpcMurderPlayer(target);
                 target.SetRealKiller(killer);
-                Oiiai.OnMurderPlayer(killer, target);
+                Oblivion.OnMurderPlayer(killer, target);
             }
 
             Logger.Info("Cancels because for killer no need kill target", "OnCheckMurderAsKiller");
@@ -331,7 +331,7 @@ public static class CustomRoleManager
         {
             target.RpcMurderPlayer(target);
             target.SetRealKiller(killer);
-            Oiiai.OnMurderPlayer(killer, target);
+            Oblivion.OnMurderPlayer(killer, target);
             return false;
         }
 
@@ -388,8 +388,8 @@ public static class CustomRoleManager
                         Burst.AfterBurstDeadTasks(killer, target);
                         break;
 
-                    case CustomRoles.Oiiai when !isSuicide:
-                        Oiiai.OnMurderPlayer(killer, target);
+                    case CustomRoles.Oblivion when !isSuicide:
+                        Oblivion.OnMurderPlayer(killer, target);
                         break;
 
                     case CustomRoles.EvilSpirit when !inMeeting && !isSuicide:

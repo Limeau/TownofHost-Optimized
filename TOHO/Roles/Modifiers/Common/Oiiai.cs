@@ -10,9 +10,9 @@ using static TOHO.Translator;
 
 namespace TOHO.Roles.Modifiers.Common;
 
-public class Oiiai : IModifier
+public class Oblivion : IModifier
 {
-    public CustomRoles Role => CustomRoles.Oiiai;
+    public CustomRoles Role => CustomRoles.Oblivion;
     private const int Id = 25700;
     private readonly static List<byte> playerIdList = [];
     public static bool IsEnable = false;
@@ -38,9 +38,9 @@ public class Oiiai : IModifier
 
     public void SetupCustomOption()
     {
-        SetupAdtRoleOptions(Id, CustomRoles.Oiiai, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
-        CanPassOn = BooleanOptionItem.Create(Id + 14, "OiiaiCanPassOn", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oiiai]);
-        ChangeNeutralRole = StringOptionItem.Create(Id + 15, "NeutralChangeRolesForOiiai", EnumHelper.GetAllNames<ChangeRolesSelectList>(), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oiiai]);
+        SetupAdtRoleOptions(Id, CustomRoles.Oblivion, canSetNum: true, tab: TabGroup.Modifiers, teamSpawnOptions: true);
+        CanPassOn = BooleanOptionItem.Create(Id + 14, "OblivionCanPassOn", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oblivion]);
+        ChangeNeutralRole = StringOptionItem.Create(Id + 15, "NeutralChangeRolesForOblivion", EnumHelper.GetAllNames<ChangeRolesSelectList>(), 1, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Oblivion]);
     }
     public void Init()
     {
@@ -74,31 +74,31 @@ public class Oiiai : IModifier
         if (killer.PlayerId == target.PlayerId) return;
         if (killer.Is(CustomRoles.KillingMachine) || killer.Is(CustomRoles.Rulebook) || killer.Is(CustomRoles.Massacre) || killer.IsTransformedNeutralApocalypse()) return;
         if ((killer.Is(CustomRoles.Ghoul) || killer.Is(CustomRoles.Burst)) && !killer.IsAlive()) return;
-        if (!target.Is(CustomRoles.Oiiai)) return;
-        if (!CanGetOiiaied(killer)) return;
+        if (!target.Is(CustomRoles.Oblivion)) return;
+        if (!CanGetOblivioned(killer)) return;
 
         if (CanPassOn.GetBool() && !playerIdList.Contains(killer.PlayerId))
         {
             PassOnKiller(killer.PlayerId);
-            killer.RpcSetCustomRole(CustomRoles.Oiiai);
-            Logger.Info(killer.GetNameWithRole() + " gets Oiiai Modifier by " + target.GetNameWithRole(), "Oiiai");
+            killer.RpcSetCustomRole(CustomRoles.Oblivion);
+            Logger.Info(killer.GetNameWithRole() + " gets Oblivion Modifier by " + target.GetNameWithRole(), "Oblivion");
         }
 
         if (!Eraser.ErasedRoleStorage.ContainsKey(killer.PlayerId))
         {
             Eraser.ErasedRoleStorage.Add(killer.PlayerId, killer.GetCustomRole());
-            Logger.Info($"Added {killer.GetNameWithRole()} to ErasedRoleStorage", "Oiiai");
+            Logger.Info($"Added {killer.GetNameWithRole()} to ErasedRoleStorage", "Oblivion");
         }
         else
         {
-            Logger.Info($"Canceled {killer.GetNameWithRole()} Oiiai bcz already erased.", "Oiiai");
+            Logger.Info($"Canceled {killer.GetNameWithRole()} Oblivion bcz already erased.", "Oblivion");
             return;
         }
 
         var killerRole = killer.GetCustomRole();
         if (killer.HasGhostRole() || CopyCat.playerIdList.Contains(killer.PlayerId) || killer.Is(CustomRoles.Stubborn))
         {
-            Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} cannot eraser crew imp-based role", "Oiiai");
+            Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} cannot eraser crew imp-based role", "Oblivion");
             return;
         }
         else if (killerRole.IsCoven() && !CovenManager.HasNecronomicon(killer))
@@ -110,12 +110,12 @@ public class Oiiai : IModifier
             killer.GetRoleClass().OnAdd(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Enchanted, false);
             killer.AddInSwitchModifiers(killer, CustomRoles.Enchanted);
-            Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Coven without Necronomicon.", "Oiiai");
+            Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} with Coven without Necronomicon.", "Oblivion");
         }
         else if (CovenManager.HasNecronomicon(killer))
         {
-            // Necronomicon holder immune to OIIAI
-            Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Coven with Necronomicon.", "Oiiai");
+            // Necronomicon holder immune to Oblivion
+            Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} with Coven with Necronomicon.", "Oblivion");
         }
         else if (killerRole.IsMadmate())
         {
@@ -126,7 +126,7 @@ public class Oiiai : IModifier
             Main.DesyncPlayerList.Remove(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Madmate);
             killer.AddInSwitchModifiers(killer, CustomRoles.Madmate);
-            Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Madmates assign.", "Oiiai");
+            Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} with Madmates assign.", "Oblivion");
         }
         else if (killer.Is(CustomRoles.Sidekick))
         {
@@ -137,7 +137,7 @@ public class Oiiai : IModifier
             killer.GetRoleClass().OnAdd(killer.PlayerId);
             killer.RpcSetCustomRole(CustomRoles.Recruit);
             killer.AddInSwitchModifiers(killer, CustomRoles.Recruit);
-            Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Sidekicks assign.", "Oiiai");
+            Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} with Sidekicks assign.", "Oblivion");
         }
         else if (!killerRole.IsNeutral())
         {
@@ -148,7 +148,7 @@ public class Oiiai : IModifier
             killer.RpcSetCustomRole(readyrole);
             Main.DesyncPlayerList.Remove(killer.PlayerId);
             killer.GetRoleClass()?.OnAdd(killer.PlayerId);
-            Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with eraser assign.", "Oiiai");
+            Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} with eraser assign.", "Oblivion");
         }
         else
         {
@@ -164,17 +164,17 @@ public class Oiiai : IModifier
 
                 killer.SyncSettings();
 
-                Logger.Info($"Oiiai {killer.GetNameWithRole().RemoveHtmlTags()} with Neutrals assign.", "Oiiai");
+                Logger.Info($"Oblivion {killer.GetNameWithRole().RemoveHtmlTags()} with Neutrals assign.", "Oblivion");
             }
         }
         killer.ResetKillCooldown();
         killer.SetKillCooldown();
-        killer.Notify(GetString("LostRoleByOiiai"));
-        killer.RPCPlayCustomSound("Oiiai");
-        Logger.Info($"{killer.GetRealName()} was OIIAIed", "Oiiai");
+        killer.Notify(GetString("LostRoleByOblivion"));
+        killer.RPCPlayCustomSound("Oblivion");
+        Logger.Info($"{killer.GetRealName()} was Oblivioned", "Oblivion");
     }
 
-    private static bool CanGetOiiaied(PlayerControl player)
+    private static bool CanGetOblivioned(PlayerControl player)
     {
         if (player.GetCustomRole().IsNeutral() && ChangeNeutralRole.GetValue() == 0) return false;
         if (player.Is(CustomRoles.Loyal) || player.Is(CustomRoles.Stubborn)) return false;

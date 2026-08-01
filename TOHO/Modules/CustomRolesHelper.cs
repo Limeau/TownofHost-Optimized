@@ -1195,7 +1195,7 @@ public static class CustomRolesHelper
 
             case CustomRoles.Loyal:
                 if (pc.Is(CustomRoles.Madmate)
-                    || pc.Is(CustomRoles.Oiiai)
+                    || pc.Is(CustomRoles.Oblivion)
                     || pc.Is(CustomRoles.GuardianAngelTOHO)
                     || pc.Is(CustomRoles.Influenced)
                     || pc.Is(CustomRoles.Solsticer)
@@ -1271,7 +1271,7 @@ public static class CustomRolesHelper
                     return false;
                 break;
 
-            case CustomRoles.Oiiai:
+            case CustomRoles.Oblivion:
                 if (pc.Is(CustomRoles.Loyal)
                     || pc.Is(CustomRoles.Solsticer)
                     || pc.Is(CustomRoles.Innocent)
