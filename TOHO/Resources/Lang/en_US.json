@@ -5389,5 +5389,9 @@
   "Temporal": "Temporal",
   "TemporalInfo": "Increase the emergency meeting button cooldown",
   "TemporalInfoLong": "As the Temporal, after you kill, you increase the emergency meeting button cooldown.",
-  "TemporalIncreaseTime": "Increase emergency meeting cooldown by"
+  "TemporalIncreaseTime": "Increase emergency meeting cooldown by",
+
+  "Hamsa": "Hamsa",
+  "HamsaInfo": "Redirect ability uses to the good",
+  "HamsaInfoLong": "The Hamsa can use their shield button to give an extra Ability use to Crewmates and remove them from Impostors."
 }

@@ -820,6 +820,7 @@ public enum CustomRoles
     //Crewmate Ghost
     Cursebearer,
     Ghastly,
+    Hamsa,
     Hawk,
     Warden,
 
