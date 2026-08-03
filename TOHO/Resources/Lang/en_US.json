@@ -2332,6 +2332,7 @@
   "DeathReason.Electrocuted": "Electrocuted",
   "DeathReason.Scavenged": "Scavenged",
   "DeathReason.BlastedOff": "Blasted Off",
+  "DeathReason.OldAge": "Old Age",
   "OnlyEnabledDeathReasons": "Only Enabled Death Reasons",
   "Alive": "Alive",
   "Disconnected": "Disconnected",
@@ -5393,5 +5394,10 @@
 
   "Hamsa": "Hamsa",
   "HamsaInfo": "Redirect ability uses to the good",
-  "HamsaInfoLong": "The Hamsa can use their shield button to give an extra Ability use to Crewmates and remove them from Impostors."
+  "HamsaInfoLong": "The Hamsa can use their shield button to give an extra Ability use to Crewmates and remove them from Impostors.",
+
+  "Clock": "Clock",
+  "ClockInfo": "Speed up the time!",
+  "ClockInfoLong": "The Clock can unshift after killing someone to reduce everyone's kill cooldown by a certain amount of seconds. The players' speed will be increased for the same amount of time. At the end of this, one random player (it might be you!) will die of Old Age. Survive until the end to win.",
+  "ClockSpeedUpDuration": "Speed Up Duration"
 }

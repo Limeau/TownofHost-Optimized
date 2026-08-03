@@ -949,6 +949,7 @@ public enum CustomRoles
     Blade,
     BloodKnight,
     Catalyst,
+    Clock,
     Collector,
     Communist,
     Contaminator,

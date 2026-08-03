@@ -411,7 +411,8 @@ public class PlayerState(byte playerId)
         Destroyed,
         Enflamed,
         Scarred,
-
+        OldAge,
+        
         //Please add all new Roles with deathreason & new deathreason in Utils.DeathReasonIsEnable();
         etc = -1,
     }
