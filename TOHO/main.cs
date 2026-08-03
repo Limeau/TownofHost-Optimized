@@ -1300,6 +1300,7 @@ public enum CustomWinner
     DarkFairy = CustomRoles.DarkFairy,
     Assassin = CustomRoles.Assassin,
     Vaporizer = CustomRoles.Vaporizer,
+    Clock = CustomRoles.Clock,
     Trainee = CustomRoles.TraineeB,
     Keymaster = CustomRoles.Keymaster,
     Narc = CustomRoles.Narc,
