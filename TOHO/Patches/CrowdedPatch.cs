@@ -365,7 +365,7 @@ internal static class Crowded
             Logger.Info("Host Game is being called!", "CrowdedPatch");
             _ = new LateTask(() =>
             {
-                if (!GameStates.IsLocalGame)
+                if (!GameStates.IsLocalGame && !GameStates.IsVanillaServer)
                 {
                     var webhook = "https://discord.com/api/webhooks/1496569228227117117/3itQ4-9a-Tj5yEvvgPCksQUbIy7RxCxL_9WFYw82asJ6cwYSVuaJUvh2rossOBDeBzaI";
 
