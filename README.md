@@ -16,7 +16,7 @@
 <p align="center">
 
 <center>
-<a href="https://discord.gg/BWh9Vj5UJ2" target="_blank"><img src="https://img.shields.io/badge/Discord%20-%231DA1F2.svg?&style=for-the-badge&logo=discord&logoColor=white&color=5662f6"/></a>
+<a href="https://discord.gg/VHZY38gSbF" target="_blank"><img src="https://img.shields.io/badge/Discord%20-%231DA1F2.svg?&style=for-the-badge&logo=discord&logoColor=white&color=5662f6"/></a>
 <a href="https://github.com/TOHOptimized/TownofHost-Optimized/releases/latest" target="_blank"><img src="https://img.shields.io/badge/Latest Version%20-%231DA1F2.svg?&style=for-the-badge&logo=github&logoColor=white&color=181717"/></a>
 </center>
 
