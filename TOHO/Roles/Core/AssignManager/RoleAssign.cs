@@ -1060,10 +1060,17 @@ public class RoleAssign
             FinalRolesList.Remove(assignedRole);
         }
 
+        if (Main.UpDict.Any()) foreach (var entry in Main.UpDict)
+        {
+            RoleResult[entry.Key] = entry.Value;
+            Main.UpDict.Remove(entry.Key);
+        }
+        
         if (AllPlayers.Any())
             Logger.Warn("Role assignment warirng: There are players who have not been assigned a role", "RoleAssign");
         if (FinalRolesList.Any())
             Logger.Warn("Team assignment warirng: There is an unassigned team", "RoleAssign");
+        
         return;
 
         RoleAssignInfo GetAssignInfo(CustomRoles role) => Roles.Values.FirstOrDefault(x => x.Any(y => y.Role == role))?.FirstOrDefault(x => x.Role == role);

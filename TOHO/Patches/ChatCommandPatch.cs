@@ -2211,7 +2211,11 @@ internal class ChatCommands
                     if (rl.GetCount() < 1 || rl.GetMode() == 0) devMark = "";
                     if (isUp)
                     {
-                        if (devMark == "▲") Utils.SendMessage(string.Format(GetString("Message.YTPlanSelected"), roleName), playerId);
+                        if (devMark == "▲")
+                        {
+                            Utils.SendMessage(string.Format(GetString("Message.YTPlanSelected"), roleName), playerId);
+                            Main.UpDict[playerId] = rl;
+                        }
                         else Utils.SendMessage(string.Format(GetString("Message.YTPlanSelectFailed"), roleName), playerId);
                     }
                     if (devMark == "▲")
