@@ -793,6 +793,7 @@ public enum CustomRoles
     ShapeMaster,
     Shapetricker,
     Shovel,
+    Silencer,
     Sniper,
     SoulCatcher,
     Staller,

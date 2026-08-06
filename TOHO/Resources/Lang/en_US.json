@@ -5399,5 +5399,10 @@
   "Clock": "Clock",
   "ClockInfo": "Speed up the time!",
   "ClockInfoLong": "The Clock can unshift after killing someone to reduce everyone's kill cooldown by a certain amount of seconds. The players' speed will be increased for the same amount of time. At the end of this, one random player (it might be you!) will die of Old Age. Survive until the end to win.",
-  "ClockSpeedUpDuration": "Speed Up Duration"
+  "ClockSpeedUpDuration": "Speed Up Duration",
+
+  "Silencer": "Silencer",
+  "SilencerInfo": "Silence all potential meetings!",
+  "SilencerInfoLong": "When the Silencer kills a player, all reports will be temporarily paused. No one can report a body and no one can call a meeting for a short time.",
+  "SilencerReportDelay": "Silence Time"
 }
