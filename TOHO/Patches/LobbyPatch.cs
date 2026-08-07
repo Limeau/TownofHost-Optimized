@@ -107,7 +107,10 @@ public class LobbyBehaviourPatch
     [HarmonyPatch(nameof(LobbyBehaviour.Update)), HarmonyPostfix]
     public static void Update_Postfix(LobbyBehaviour __instance)
     {
+        #if ANDROID
+        #else
         if (!Directory.Exists(@$"TOHO-DATA\music\")) Directory.CreateDirectory(@$"TOHO-DATA\music\");
+        #endif
         if (Main.DisableLobbyMusic.Value || Directory.GetFiles(@$"TOHO-DATA\music\", "*.wav").Count != 0) SoundManager.Instance.StopNamedSound("MapTheme");
     } 
 }
