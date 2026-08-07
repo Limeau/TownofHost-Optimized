@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Unity.Jobs;
 using static TOHO.Options;
 namespace TOHO.Roles.Impostor;
 
@@ -30,7 +31,8 @@ internal class Gravedigger : RoleBase
         var roomToSend = validRooms[IRandom.Instance.Next(0, validRooms.Count)];
 
         target.RpcTeleport(roomToSend.transform.position);
-        new LateTask(() =>
+        killer.Notify($"Target was sent to {Translator.GetString(roomToSend.RoomId.ToString())}");
+        _ = new LateTask(() =>
         {
             target.RpcMurderPlayer(target);
             target.SetRealKiller(killer);
