@@ -11,7 +11,6 @@ internal class Scribe : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Crewmate;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateKilling;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     //==================================================================\\
     
     public static OptionItem ScribeCanBeGuessed;
