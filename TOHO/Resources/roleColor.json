@@ -383,5 +383,7 @@
   "SurpriseAttack": "#ebcc34",
   "Temporal": "#ff1919",
   "Hamsa": "#b6e330",
-  "Clock": "#808080"
+  "Clock": "#808080",
+  "Rebel": "#40415c",
+  "RebelLeader": "#40415c"
 }

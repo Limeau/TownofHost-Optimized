@@ -135,6 +135,10 @@ public class PlayerState(byte playerId)
         {
             countTypes = CountTypes.OutOfGame;
         }
+        if (pc.Is(CustomRoles.Rebel))
+        {
+            countTypes = CountTypes.Rebels;
+        }
         if (pc.Is(CustomRoles.Enchanted))
         {
             countTypes = CountTypes.Coven;
@@ -299,6 +303,10 @@ public class PlayerState(byte playerId)
 
             case CustomRoles.Soulless:
                 countTypes = CountTypes.OutOfGame;
+                break;
+            
+            case CustomRoles.Rebel:
+                countTypes = CountTypes.Rebels;
                 break;
 
             case CustomRoles.Enchanted:

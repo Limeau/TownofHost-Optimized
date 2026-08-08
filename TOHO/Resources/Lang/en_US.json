@@ -5404,5 +5404,14 @@
   "Silencer": "Silencer",
   "SilencerInfo": "Silence all potential meetings!",
   "SilencerInfoLong": "When the Silencer kills a player, all reports will be temporarily paused. No one can report a body and no one can call a meeting for a short time.",
-  "SilencerReportDelay": "Silence Time"
+  "SilencerReportDelay": "Silence Time",
+
+  "Rebel": "Rebel",
+  "Rebel-": "Rebel",
+  "RebelInfo": "Your life is linked to the other Rebel",
+  "RebelInfoLong": "You have been recruited by the Rebel Leader from the start of the game. If the other Rebel dies, you will also die. Win by staying alive until the end of the game with the other Rebel and Rebel Leader.",
+  "RebelLeader": "Rebel Leader",
+  "RebelLeaderInfo": "Win with your Rebels",
+  "RebelLeaderInfoLong": "The Rebel Leader spawns with two people having the Rebel add-on. You cannot kill, and cannot be killed while the Rebels are alive. If one of the Rebels die, the other one will also die. Survive until the end to win with your Rebels.",
+  "WinnerRoleText.RebelLeader": "Rebels overthrow the Crew!"
 }

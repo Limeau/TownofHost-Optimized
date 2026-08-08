@@ -1403,6 +1403,7 @@ static class ExtendedPlayerControl
             CustomRoles.Admired and not
             CustomRoles.CorruptedA and not
             CustomRoles.Soulless and not
+            CustomRoles.Rebel and not
             CustomRoles.Lovers and not
             CustomRoles.Infected and not
             CustomRoles.Enchanted and not

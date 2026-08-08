@@ -245,6 +245,7 @@ public static class CustomRolesHelper
             CustomRoles.Blade or
             CustomRoles.Beholder or
             CustomRoles.Abzorbaloff or
+            CustomRoles.RebelLeader or
             CustomRoles.Sonic or
             CustomRoles.Prototype or
             CustomRoles.ShadowKing or
@@ -390,6 +391,7 @@ public static class CustomRolesHelper
             CustomRoles.Infected or
             CustomRoles.Contagious or
             CustomRoles.Soulless or
+            CustomRoles.Rebel or
             CustomRoles.Madmate or
             CustomRoles.Darkened or
             CustomRoles.Undead or
@@ -440,6 +442,7 @@ public static class CustomRolesHelper
             or CustomRoles.Contagious
             or CustomRoles.Rascal
             or CustomRoles.Soulless
+            or CustomRoles.Rebel
             or CustomRoles.Darkened
             or CustomRoles.Shaded
             or CustomRoles.Enchanted or
@@ -1559,6 +1562,7 @@ public static class CustomRolesHelper
            CustomRoles.Blade => CountTypes.Blade,
            CustomRoles.Beholder => CountTypes.Beholder,
            CustomRoles.Abzorbaloff => CountTypes.Abzorbaloff,
+           CustomRoles.RebelLeader => CountTypes.Rebels,
            CustomRoles.Sonic => CountTypes.Sonic,
            CustomRoles.Prototype => CountTypes.Prototype,
            CustomRoles.Swan => CountTypes.Swan,
@@ -1650,6 +1654,7 @@ public static class CustomRolesHelper
             CustomRoles.Blade => CustomWinner.Blade,
             CustomRoles.Beholder => CustomWinner.Beholder,
             CustomRoles.Abzorbaloff => CustomWinner.Abzorbaloff,
+            CustomRoles.RebelLeader => CustomWinner.Rebels,
             CustomRoles.Sonic => CustomWinner.Sonic,
             CustomRoles.Prototype => CustomWinner.Prototype,
             CustomRoles.Swan => CustomWinner.Swan,
@@ -1717,6 +1722,7 @@ public static class CustomRolesHelper
             CountTypes.Blade => CustomRoles.Blade,
             CountTypes.Beholder => CustomRoles.Beholder,
             CountTypes.Abzorbaloff => CustomRoles.Abzorbaloff,
+            CountTypes.Rebels => CustomRoles.RebelLeader,
             CountTypes.Sonic => CustomRoles.Sonic,
             CountTypes.Prototype => CustomRoles.Prototype,
             CountTypes.Swan => CustomRoles.Swan,
@@ -1849,5 +1855,6 @@ public enum CountTypes
     Abzorbaloff,
     Sonic,
     Prototype,
-    Swan
+    Swan,
+    Rebels,
 }
