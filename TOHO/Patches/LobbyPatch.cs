@@ -110,8 +110,9 @@ public class LobbyBehaviourPatch
         #if ANDROID
         #else
         if (!Directory.Exists(@$"TOHO-DATA\music\")) Directory.CreateDirectory(@$"TOHO-DATA\music\");
-        #endif
         if (Main.DisableLobbyMusic.Value || Directory.GetFiles(@$"TOHO-DATA\music\", "*.wav").Count != 0) SoundManager.Instance.StopNamedSound("MapTheme");
+        #endif
+
     } 
 }
 [HarmonyPatch(typeof(HostInfoPanel), nameof(HostInfoPanel.SetUp))]
