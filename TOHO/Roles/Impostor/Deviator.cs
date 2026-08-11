@@ -7,7 +7,7 @@ internal class Deviator : RoleBase
     //===========================SETUP================================\\
     private const int Id = 40100;
     public override CustomRoles Role => CustomRoles.Deviator;
-    public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
+    public override CustomRoles ThisRoleBase => CustomRoles.Shapeshifter;
 
     public override Custom_RoleType ThisRoleType => Custom_RoleType.ImpostorSupport;
     public override bool TOHORole => true;
