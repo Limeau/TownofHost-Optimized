@@ -440,6 +440,31 @@ internal class ChatCommands
                     SendRolesInfo(subArgs, PlayerControl.LocalPlayer.PlayerId, isUp: true);
                     break;
 
+                case "/enable":
+                    var subArgsEN = text.Remove(0, 7);
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        var roleName = option.Key.ToString().ToLower().Trim().TrimStart('*').Replace(" ", string.Empty);
+                        if (subArgsEN.ToLower().Trim().TrimStart('*').Replace(" ", string.Empty) == roleName)
+                        {
+                            option.Value.SetValue(100, false);
+                            Utils.SendMessage($"Enabled role: {Utils.ColorString(Utils.GetRoleColor(option.Key), GetString(option.Key.ToString()))}");
+                        }
+                    }
+                    break;
+                case "/disable":
+                    var subArgsDA = text.Remove(0, 8);
+                    foreach (var option in Options.CustomRoleSpawnChances)
+                    {
+                        var roleName = option.Key.ToString().ToLower().Trim().TrimStart('*').Replace(" ", string.Empty);
+                        if (subArgsDA.ToLower().Trim().TrimStart('*').Replace(" ", string.Empty) == roleName)
+                        {
+                            option.Value.SetValue(0, false);
+                            Utils.SendMessage($"Disabled role: {Utils.ColorString(Utils.GetRoleColor(option.Key), GetString(option.Key.ToString()))}");
+                        }
+                    }
+                    break;
+                
                 case "/enableallroles":
                     foreach (var option in Options.CustomRoleSpawnChances)
                     {
