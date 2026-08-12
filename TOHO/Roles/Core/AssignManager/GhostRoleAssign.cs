@@ -28,6 +28,7 @@ public static class GhostRoleAssign
             || Options.CurrentGameMode == CustomGameMode.FFA
             || Options.CurrentGameMode == CustomGameMode.CandR
             || Options.CurrentGameMode == CustomGameMode.UltimateTeam
+            || Options.CurrentGameMode == CustomGameMode.SharksAndMinnows
             || Options.CurrentGameMode == CustomGameMode.FourCorners
             || Options.CurrentGameMode == CustomGameMode.KOTH
             || player == null

@@ -32,7 +32,7 @@ class CheckTaskCompletionPatch
 {
     public static bool Prefix(ref bool __result)
     {
-        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.FFA)
+        if (Options.DisableTaskWin.GetBool() || Options.NoGameEnd.GetBool() || TaskState.InitialTotalTasks == 0 || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.SharksAndMinnows || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.FFA)
         {
             __result = false;
             return false;
@@ -64,6 +64,7 @@ class GameEndCheckerForNormal
         {
             case CustomGameMode.FFA:
             case CustomGameMode.CandR:
+            case CustomGameMode.SharksAndMinnows:
             case CustomGameMode.UltimateTeam:
             case CustomGameMode.FourCorners:
             case CustomGameMode.KOTH:
@@ -729,6 +730,7 @@ class GameEndCheckerForNormal
     public static void SetPredicateToKoth() => predicate = new KothGameEndPredicate();
     public static void SetPredicateToCandR() => predicate = new CandRGameEndPredicate(); //C&R
     public static void SetPredicateToUltimateTeam() => predicate = new UltimateTeamGameEndPredicate();
+    public static void SetPredicateToSharksAndMinnows() => predicate = new SharksAndMinnowsGameEndPredicate();
     public static void SetPredicateToFourCorners() => predicate = new FourCornersGameEndPredicate();
 
     // ===== Check Game End =====
@@ -1105,6 +1107,58 @@ class UltimateTeamGameEndPredicate : GameEndPredicate
 
                 }
             Logger.Info("Game end because blue is dead", "Ultimate Team");
+            return true;
+        }
+
+        return false;
+    }
+}
+// For Ultimate Team games
+class SharksAndMinnowsGameEndPredicate : GameEndPredicate
+{
+    public override bool CheckForEndGame(out GameOverReason reason)
+    {
+        reason = GameOverReason.ImpostorsByKill;
+        if (CheckGameEndByLivingTeam(out reason)) return true;
+        return false;
+    }
+    public static bool CheckGameEndByLivingTeam(out GameOverReason reason)
+    {
+        bool minnowAlive = false;
+        reason = GameOverReason.ImpostorsByKill;
+        if (SharksAndMinnows.RoundsLeft <= 0)
+        {
+            ResetAndSetWinner(CustomWinner.Minnows);
+            foreach (var pc in Main.AllPlayerControls)
+            {
+                if (pc.Is(CustomRoles.Minnow))
+                { 
+                    WinnerIds.Add(pc.PlayerId);
+                }
+            }
+
+            Main.DoBlockNameChange = true;
+
+            return true;
+        }
+
+        foreach (var player in Main.AllAlivePlayerControls)
+        {
+            if (player.GetCustomRole() == CustomRoles.Minnow) minnowAlive = true;
+        }
+
+        if (!minnowAlive)
+        {
+            ResetAndSetWinner(CustomWinner.Sharks);
+            foreach (var pc in Main.AllPlayerControls)
+            { 
+                if (pc.Is(CustomRoles.Shark)) 
+                { 
+                    WinnerIds.Add(pc.PlayerId);
+                }
+
+            }
+            Logger.Info("Game end because minnows are dead", "Sharks and Minnows");
             return true;
         }
 

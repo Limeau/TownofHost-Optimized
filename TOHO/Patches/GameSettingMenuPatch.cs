@@ -37,6 +37,7 @@ public class GameSettingMenuPatch
             CustomGameMode.FFA => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.KOTH => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.UltimateTeam => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
+            CustomGameMode.SharksAndMinnows => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.FourCorners => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             CustomGameMode.CandR => Enum.GetValues<TabGroup>().Skip(2).ToArray(),
             _ => []
@@ -808,7 +809,7 @@ CustomRoles.Flash
             backgroundcs1.size = new Vector2(4.48f, 5.23f);
             cs1.transform.localPosition = new Vector3(-0.8f, -1f, 0f);
             
-            //Coming Soon 2
+            //Sharks and Minnows
             var cs2 = Object.Instantiate(original, original.transform.parent);
             cs2.transform.localScale = new Vector3(original.transform.localScale.x / 2, original.transform.localScale.y / 2, original.transform.localScale.z);
             cs2.SetActive(true);
@@ -820,12 +821,12 @@ CustomRoles.Flash
             {
                 cs2Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
                 {
-                    Options.GameMode.SetValue(0);
+                    Options.GameMode.SetValue(6);
                     GameOptionsMenuPatch.ReOpenSettings();
                 }));
             }
             var backgroundcs2 = cs2.AddComponent<SpriteRenderer>();
-            backgroundcs2.sprite = Utils.LoadSprite("TOHO.Resources.Images.ComingSoon.png", 150f);
+            backgroundcs2.sprite = Utils.LoadSprite("TOHO.Resources.Images.SharksAndMinnows.png", 150f);
             backgroundcs2.size = new Vector2(4.48f, 5.23f);
             cs2.transform.localPosition = new Vector3(0.8f, -1f, 0f);
             

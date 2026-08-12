@@ -246,6 +246,7 @@ internal class ChangeRoleSettings
             CopsAndRobbersManager.Init();
             //Ultimate Team
             UltimateTeam.Init();
+            SharksAndMinnows.Init();
             FourCorners.Init();
 
             FallFromLadder.Reset();
@@ -479,6 +480,12 @@ internal class StartGameHostPatch
                         pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
                     }
                     goto EndOfSelectRolePatch; 
+                case CustomGameMode.SharksAndMinnows:
+                    foreach (var pair in RoleAssign.RoleResult)
+                    {
+                        pair.Key.GetPlayer()?.RpcSetCustomRole(pair.Value, checkModifiers: false);
+                    }
+                    goto EndOfSelectRolePatch; 
                 case CustomGameMode.FourCorners:
                     foreach (var pair in RoleAssign.RoleResult)
                     {
@@ -582,6 +589,9 @@ internal class StartGameHostPatch
                     break;
                 case CustomGameMode.UltimateTeam:
                     GameEndCheckerForNormal.SetPredicateToUltimateTeam();
+                    break;
+                case CustomGameMode.SharksAndMinnows:
+                    GameEndCheckerForNormal.SetPredicateToSharksAndMinnows();
                     break;
                 case CustomGameMode.FourCorners:
                     GameEndCheckerForNormal.SetPredicateToFourCorners();

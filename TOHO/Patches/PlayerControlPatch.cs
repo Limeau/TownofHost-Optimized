@@ -228,6 +228,10 @@ class CheckMurderPatch
         {
             return UltimateTeam.OnTag(killer, target);
         }
+        if (Options.CurrentGameMode == CustomGameMode.SharksAndMinnows)
+        {
+            return SharksAndMinnows.OnMurder(killer, target);
+        }
 
         //If Player hacked by Glitch
         if (Glitch.HasEnabled && !Glitch.OnCheckMurderOthers(killer, target))
@@ -783,7 +787,7 @@ class ReportDeadBodyPatch
             return false;
         }
         if (Options.DisableMeeting.GetBool()) return false;
-        if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.KOTH or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam) return false;
+        if (Options.CurrentGameMode is CustomGameMode.FFA or CustomGameMode.KOTH or CustomGameMode.FourCorners or CustomGameMode.CandR or CustomGameMode.UltimateTeam or CustomGameMode.SharksAndMinnows) return false;
 
         if (!CanReport[__instance.PlayerId])
         {
@@ -1650,17 +1654,7 @@ class CoEnterVentPatch
         {
             return true;
         }
-        if (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
-        {
-            return false;
-        }
-        
-        if (Options.CurrentGameMode == CustomGameMode.FourCorners)
-        {
-            return false;
-        }
-        
-        if (Options.CurrentGameMode == CustomGameMode.KOTH)
+        if (Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.SharksAndMinnows || Options.CurrentGameMode == CustomGameMode.FourCorners ||Options.CurrentGameMode == CustomGameMode.KOTH)
         {
             return false;
         }

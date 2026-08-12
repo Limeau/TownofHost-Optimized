@@ -2167,6 +2167,9 @@ internal class ChatCommands
             case CustomGameMode.UltimateTeam:
                 Utils.SendMessage(GetString("ModeDescribe.UltimateTeam"), playerId);
                 return;
+            case CustomGameMode.SharksAndMinnows:
+                Utils.SendMessage(GetString("ModeDescribe.SharksAndMinnows"), playerId);
+                return;
             case CustomGameMode.FourCorners:
                 Utils.SendMessage(GetString("ModeDescribe.FourCorners"), playerId);
                 return;

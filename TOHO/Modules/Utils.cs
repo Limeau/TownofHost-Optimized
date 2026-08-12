@@ -627,7 +627,7 @@ public static class Utils
         if (States.Disconnected) return false;
 
         if (Options.CurrentGameMode == CustomGameMode.FourCorners) return true;
-        if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam) return false;
+        if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.SharksAndMinnows || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.UltimateTeam) return false;
         if (playerData.IsDead && Options.GhostIgnoreTasks.GetBool()) hasTasks = false;
 
         if (GameStates.IsHideNSeek) return hasTasks;
@@ -717,6 +717,9 @@ public static class Utils
                     break;
                 case CustomGameMode.UltimateTeam:
                     ProgressText.Append(UltimateTeam.GetProgressText(playerId));
+                    break;
+                case CustomGameMode.SharksAndMinnows:
+                    ProgressText.Append(SharksAndMinnows.GetNotifyText(playerId));
                     break;
                 case CustomGameMode.KOTH:
                     ProgressText.Append(KOTH.GetProgressText(playerId));
@@ -1726,6 +1729,8 @@ public static class Utils
                 name = $"<color=#007bff><size=1.7>{GetString("ModeC&R")}</size></color>\r\n" + name;
             else if (Options.CurrentGameMode == CustomGameMode.UltimateTeam)
                 name = $"<color=#16c910><size=1.7>{GetString("ModeUltimateTeam")}</size></color>\r\n" + name;
+            else if (Options.CurrentGameMode == CustomGameMode.SharksAndMinnows)
+                name = $"<color=#70859c><size=1.7>{GetString("ModeSharksAndMinnows")}</size></color>\r\n" + name;
             else if (Options.CurrentGameMode == CustomGameMode.FourCorners)
                 name = $"<color=#eb4034><size=1.7>{GetString("ModeFourCorners")}</size></color>\r\n" + name;
         }

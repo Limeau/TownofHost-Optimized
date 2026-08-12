@@ -82,6 +82,7 @@ class CoBeginPatch
         KOTH.SetData();
         CopsAndRobbersManager.SetData();
         UltimateTeam.SetData();
+        SharksAndMinnows.SetData();
         FourCorners.SetData();
     }
 }
@@ -487,6 +488,13 @@ class BeginCrewmatePatch
                 PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                 __instance.ImpostorText.gameObject.SetActive(true);
                 __instance.ImpostorText.text = GetString("UltimateInfo");
+                break;
+            case CustomGameMode.SharksAndMinnows:
+                __instance.TeamTitle.text = GetString("SharksAndMinnows"); ;
+                __instance.TeamTitle.color = __instance.BackgroundBar.material.color = Utils.GetRoleColor(role);
+                PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
+                __instance.ImpostorText.gameObject.SetActive(true);
+                __instance.ImpostorText.text = GetString("SharksAndMinnowsInfo");
                 break;
             case CustomGameMode.FourCorners:
                 __instance.TeamTitle.text = GetString("FourCorners");
@@ -966,7 +974,7 @@ class IntroCutsceneDestroyPatch
                 {
                     pc.RpcResetAbilityCooldown();
 
-                    if (Options.FixFirstKillCooldown.GetBool() && Options.CurrentGameMode != CustomGameMode.KOTH && Options.CurrentGameMode != CustomGameMode.FFA && Options.CurrentGameMode != CustomGameMode.UltimateTeam && Options.CurrentGameMode != CustomGameMode.FourCorners)
+                    if (Options.FixFirstKillCooldown.GetBool() && Options.CurrentGameMode != CustomGameMode.KOTH && Options.CurrentGameMode != CustomGameMode.FFA && Options.CurrentGameMode != CustomGameMode.UltimateTeam && Options.CurrentGameMode != CustomGameMode.SharksAndMinnows && Options.CurrentGameMode != CustomGameMode.FourCorners)
                     {
                         _ = new LateTask(() =>
                         {
@@ -1018,6 +1026,7 @@ class IntroCutsceneDestroyPatch
                 CustomGameMode.KOTH => KOTH.ShowChatInGame.GetBool(),
                 CustomGameMode.CandR => CopsAndRobbersManager.ShowChatInGame.GetBool(),
                 CustomGameMode.UltimateTeam => UltimateTeam.ShowChatInGame.GetBool(),
+                CustomGameMode.SharksAndMinnows => SharksAndMinnows.ShowChatInGame.GetBool(),
                 CustomGameMode.FourCorners => FourCorners.ShowChatInGame.GetBool(),
                 _ => false
             };
@@ -1027,6 +1036,7 @@ class IntroCutsceneDestroyPatch
                 CustomGameMode.KOTH => KOTH.ShowChatInGame.GetBool(),
                 CustomGameMode.CandR => CopsAndRobbersManager.ShowChatInGame.GetBool(),
                 CustomGameMode.UltimateTeam => UltimateTeam.ShowChatInGame.GetBool(),
+                CustomGameMode.SharksAndMinnows => SharksAndMinnows.ShowChatInGame.GetBool(),
                 CustomGameMode.FourCorners => FourCorners.ShowChatInGame.GetBool(),
                 _ => false
             };

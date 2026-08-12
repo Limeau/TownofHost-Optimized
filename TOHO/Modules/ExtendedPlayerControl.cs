@@ -1235,8 +1235,12 @@ static class ExtendedPlayerControl
         if (GameStates.IsLobby) return false;
         if (Options.CurrentGameMode is CustomGameMode.CandR) //C&R
         {
-
             return (pc.Is(CustomRoles.Cop));
+        }
+        if (Options.CurrentGameMode is CustomGameMode.SharksAndMinnows) //C&R
+        {
+            if (SharksAndMinnows.WAIT) return false;
+            return (pc.Is(CustomRoles.Shark));
         }
         if (!pc.IsAlive() || Pelican.IsEaten(pc.PlayerId) || DollMaster.IsDoll(pc.PlayerId)) return false;
         if (pc.GetClient().GetHashedPuid() == Main.FirstDiedPrevious && !Options.ShieldedCanUseKillButton.GetBool() && MeetingStates.FirstMeeting) return false;
@@ -1325,6 +1329,12 @@ static class ExtendedPlayerControl
                 if (player.Is(CustomRoles.Red) || player.Is(CustomRoles.Blue))
                 {
                     Main.AllPlayerKillCooldown[player.PlayerId] = UltimateTeam.PlayerKillCooldown.GetFloat();
+                }
+                break;
+            case CustomGameMode.SharksAndMinnows:
+                if (player.Is(CustomRoles.Shark))
+                {
+                    Main.AllPlayerKillCooldown[player.PlayerId] = 0.1f;
                 }
                 break;
             default:

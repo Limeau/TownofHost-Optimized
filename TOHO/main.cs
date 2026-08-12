@@ -1099,7 +1099,9 @@ public enum CustomRoles
     KingOfTheHill,
     // Four Corners
     FourCorners,
-    
+    // Sharks & Minnows
+    Shark,
+    Minnow,
     //GM
     GM,
 
@@ -1344,6 +1346,8 @@ public enum CustomWinner
     Swan = CustomRoles.Swan,
     Falcon = CustomRoles.Falcon,
     Gastlighter = CustomRoles.Gastlighter,
+    Minnows = CustomRoles.Minnow,
+    Sharks = CustomRoles.Shark,
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

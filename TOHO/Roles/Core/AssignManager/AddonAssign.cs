@@ -38,6 +38,7 @@ public static class ModifierAssign
             case CustomGameMode.FFA:
             case CustomGameMode.CandR:
             case CustomGameMode.UltimateTeam:
+            case CustomGameMode.SharksAndMinnows:
             case CustomGameMode.FourCorners:
             case CustomGameMode.KOTH:
                 return;
@@ -61,7 +62,7 @@ public static class ModifierAssign
     }
     public static void StartSortAndAssign()
     {
-           if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.CandR || Options.CurrentGameMode == CustomGameMode.UltimateTeam) return;
+           if (Options.CurrentGameMode == CustomGameMode.FFA || Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.KOTH || Options.CurrentGameMode == CustomGameMode.CandR || Options.CurrentGameMode == CustomGameMode.UltimateTeam || Options.CurrentGameMode == CustomGameMode.SharksAndMinnows) return;
 
         var rd = IRandom.Instance;
         List<CustomRoles> ModifiersList = [];

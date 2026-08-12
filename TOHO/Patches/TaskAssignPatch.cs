@@ -170,7 +170,7 @@ class RpcSetTasksPatch
             NumLongTasks = 0;
         }
         
-        if (Options.CurrentGameMode == CustomGameMode.FourCorners)
+        if (Options.CurrentGameMode == CustomGameMode.FourCorners || Options.CurrentGameMode == CustomGameMode.SharksAndMinnows)
         {
             hasCommonTasks = false;
             NumShortTasks = 1;

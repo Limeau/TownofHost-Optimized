@@ -21,7 +21,8 @@ public enum CustomGameMode
     UltimateTeam = 0x04,
     KOTH = 0x05,
     FourCorners = 0x06,
-    HidenSeekTOHO = 0x08, // HidenSeekTOHO must be after other Gamemodes
+    SharksAndMinnows = 0x07,
+    HidenSeekTOHO = 0x09, // HidenSeekTOHO must be after other Gamemodes
     All = int.MaxValue
 }
 
@@ -60,6 +61,7 @@ public static class Options
             3 => CustomGameMode.UltimateTeam,
             4 => CustomGameMode.FourCorners,
             5 => CustomGameMode.KOTH,
+            6 => CustomGameMode.SharksAndMinnows,
             9 => CustomGameMode.HidenSeekTOHO,
             _ => CustomGameMode.Standard
         };
@@ -71,6 +73,7 @@ public static class Options
             CustomGameMode.UltimateTeam => 3,
             CustomGameMode.FourCorners => 4,
             CustomGameMode.KOTH => 5,
+            CustomGameMode.SharksAndMinnows => 6,
             CustomGameMode.HidenSeekTOHO => 5, // HidenSeekTOHO must be after other Gamemodes
             _ => 0
         };
@@ -83,6 +86,7 @@ public static class Options
         "UltimateTeam",
         "FourCorners",
         "KOTH",
+        "SharksAndMinnows",
 
         "Hide&SeekTOHO", // HidenSeekTOHO must be after other Gamemodes
     ];
@@ -1412,6 +1416,8 @@ public static class Options
         UltimateTeam.SetupCustomOption();
         
         FourCorners.SetupCustomOption();
+
+        SharksAndMinnows.SetupCustomOption();
 
         // Hide & Seek
         

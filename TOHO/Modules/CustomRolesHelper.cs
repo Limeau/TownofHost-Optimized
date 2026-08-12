@@ -23,15 +23,21 @@ public static class CustomRolesHelper
         if (Options.CurrentGameMode is CustomGameMode.FFA && role is CustomRoles.Killer) return CustomRoles.Impostor;
         if (Options.CurrentGameMode is CustomGameMode.KOTH && role is CustomRoles.KingOfTheHill) return CustomRoles.Impostor;
         
-        //C&R
+        // C&R
         if (Options.CurrentGameMode is CustomGameMode.CandR && role is CustomRoles.Robber) return CustomRoles.Engineer;
         if (Options.CurrentGameMode is CustomGameMode.CandR && role is CustomRoles.Cop) return CustomRoles.Shapeshifter;
 
-        //Ultimate Team
+        // Ultimate Team
         if (Options.CurrentGameMode is CustomGameMode.UltimateTeam && role is CustomRoles.Red) return CustomRoles.Impostor;
         if (Options.CurrentGameMode is CustomGameMode.UltimateTeam && role is CustomRoles.Blue) return CustomRoles.Impostor;
 
+        // Four Corners
         if (Options.CurrentGameMode is CustomGameMode.FourCorners && role is CustomRoles.FourCorners) return CustomRoles.Crewmate;
+        
+        // Four Corners
+        if (Options.CurrentGameMode is CustomGameMode.SharksAndMinnows && role is CustomRoles.Shark) return CustomRoles.Impostor;
+        // Four Corners
+        if (Options.CurrentGameMode is CustomGameMode.SharksAndMinnows && role is CustomRoles.Minnow) return CustomRoles.Crewmate;
         
         // Vanilla Roles
         if (role.IsVanilla()) return role;
@@ -70,6 +76,10 @@ public static class CustomRolesHelper
             case CustomGameMode.UltimateTeam: //Ultimate Team
                 if (role is CustomRoles.Red) return RoleTypes.Impostor;
                 if (role is CustomRoles.Blue) return RoleTypes.Impostor;
+                break;
+            case CustomGameMode.SharksAndMinnows: //Ultimate Team
+                if (role is CustomRoles.Shark) return RoleTypes.Impostor;
+                if (role is CustomRoles.Minnow) return RoleTypes.Crewmate;
                 break;
             case CustomGameMode.FourCorners:
                 if (role is CustomRoles.FourCorners) return RoleTypes.Crewmate;
