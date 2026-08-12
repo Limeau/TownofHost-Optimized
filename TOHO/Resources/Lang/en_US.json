@@ -5424,11 +5424,15 @@
   "MinnowInfo": "Survive the Sharks",
   "SharkInfoLong": "As a Shark, you must catch all the Minnows to win! Catch them with your kill button!",
   "MinnowInfoLong": "As the Minnow, you must cross a certain room multiple times without getting caught by the Sharks to win!",
-  "SharksAndMinnows": "Four Corners",
+  "SharksAndMinnows": "Sharks And Minnows",
   "ModeSharksAndMinnows": "Gamemode: Sharks and Minnows",
   "ModeDescribe.SharksAndMinnows": "It is highly recommended for only the host to have the mod installed with this game mode, as well as use the map Skeld.\n\nIn the Sharks and Minnows game mode, Sharks will attempt to catch Minnows with their kill button. Sharks cannot leave one room on the map, and Minnows must travel through the rooms multiple times to win the game. If there are any Minnows left after the time is up, the Minnows will win! If all the Minnows die, the Sharks will win!",
   "SharksAndMinnowsInfo": "A classic playground game",
   "SharksAndMinnowsInfoLong": "It is highly recommended for only the host to have the mod installed with this game mode, as well as use the map Skeld.\n\nIn the Sharks and Minnows game mode, Sharks will attempt to catch Minnows with their kill button. Sharks cannot leave one room on the map, and Minnows must travel through the rooms multiple times to win the game. If there are any Minnows left after the time is up, the Minnows will win! If all the Minnows die, the Sharks will win!",
   
-  "KickModdedPlayer": "Kick players who have TOHO installed"
+  "KickModdedPlayer": "Kick players who have TOHO installed",
+  
+  "Samurai": "Samurai",
+  "SamuraiInfo": "Kill players by blinding them first",
+  "SamuraiInfoLong": "The Samurai can unshift to temporarily blind everyone around them, including themself. They have no kill cooldown, but can only kill players that are currently blinded by them."
 }

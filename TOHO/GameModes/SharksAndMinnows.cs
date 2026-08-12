@@ -44,6 +44,8 @@ internal static class SharksAndMinnows
     
     public static void SetData()
     {
+        if (Options.CurrentGameMode != CustomGameMode.SharksAndMinnows) return;
+        
         WAIT = true;
         RoundsLeft = AmountOfRounds.GetInt();
         RemainingTime = RoundTime.GetFloat();

@@ -789,6 +789,7 @@ public enum CustomRoles
     RiftMaker,
     Rogue,
     Saboteur,
+    Samurai,
     Scavenger,
     ShapeMaster,
     Shapetricker,
