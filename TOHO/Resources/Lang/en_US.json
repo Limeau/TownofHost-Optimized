@@ -5428,5 +5428,7 @@
   "ModeSharksAndMinnows": "Gamemode: Sharks and Minnows",
   "ModeDescribe.SharksAndMinnows": "It is highly recommended for only the host to have the mod installed with this game mode, as well as use the map Skeld.\n\nIn the Sharks and Minnows game mode, Sharks will attempt to catch Minnows with their kill button. Sharks cannot leave one room on the map, and Minnows must travel through the rooms multiple times to win the game. If there are any Minnows left after the time is up, the Minnows will win! If all the Minnows die, the Sharks will win!",
   "SharksAndMinnowsInfo": "A classic playground game",
-  "SharksAndMinnowsInfoLong": "It is highly recommended for only the host to have the mod installed with this game mode, as well as use the map Skeld.\n\nIn the Sharks and Minnows game mode, Sharks will attempt to catch Minnows with their kill button. Sharks cannot leave one room on the map, and Minnows must travel through the rooms multiple times to win the game. If there are any Minnows left after the time is up, the Minnows will win! If all the Minnows die, the Sharks will win!"
+  "SharksAndMinnowsInfoLong": "It is highly recommended for only the host to have the mod installed with this game mode, as well as use the map Skeld.\n\nIn the Sharks and Minnows game mode, Sharks will attempt to catch Minnows with their kill button. Sharks cannot leave one room on the map, and Minnows must travel through the rooms multiple times to win the game. If there are any Minnows left after the time is up, the Minnows will win! If all the Minnows die, the Sharks will win!",
+  
+  "KickModdedPlayer": "Kick players who have TOHO installed"
 }

@@ -254,6 +254,13 @@ public static class OnPlayerJoinedPatch
                     return;
                 }
 
+                if (AmongUsClient.Instance.AmHost && Options.KickModdedPlayer.GetBool() && client.Character.IsModded())
+                {
+                    AmongUsClient.Instance.KickPlayer(client.Id, false);
+                    Logger.Warn($"Kicked player because they had the mod installed: {client.PlayerName}", "Kick Modded Players");
+                    return;
+                }
+
                 if (AmongUsClient.Instance.AmHost && !client.IsDisconnected() && client.Character.Data.IsIncomplete)
                 {
                     Logger.SendInGame(GetString("Error.InvalidColor") + $" {client.Id}/{client.PlayerName}");
