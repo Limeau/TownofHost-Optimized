@@ -26,7 +26,7 @@ internal class Rogue : RoleBase
             .SetValueFormat(OptionFormat.Seconds);
         RogueSpeedBoost = FloatOptionItem.Create(Id + 10, "SpeedBoost375", new(1f, 5f, 0.25f), 3f, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Rogue])
             .SetValueFormat(OptionFormat.Multiplier);
-        BoostDuration = FloatOptionItem.Create(Id + 11, "Duration375", new(1f, 5f, 1f), 3f, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Rogue])
+        BoostDuration = FloatOptionItem.Create(Id + 11, "Duration375", new(1f, 10f, 1f), 5f, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Rogue])
             .SetValueFormat(OptionFormat.Seconds);
     }
 
