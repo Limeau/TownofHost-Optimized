@@ -480,6 +480,10 @@ internal class ChatCommands
                     Utils.SendMessage("All roles disabled!");
                     break;
                 
+                case "/ismoddedregion":
+                    Utils.SendMessage($"{!GameStates.IsVanillaServer}");
+                    break;
+                
                 case "/setplayers":
                 case "/maxjogadores":
                 case "/设置最大玩家数":

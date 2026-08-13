@@ -816,7 +816,7 @@ CustomRoles.Flash
             var cs2Button = cs2.GetComponent<PassiveButton>();
             var cs2Text = cs2.FindChild<Transform>("ModeText");
             var cs2TMP = cs2Text.GetComponent<TextMeshPro>();
-            cs2TMP.text = "Coming Soon";
+            cs2TMP.text = "Sharks And Minnows";
             if (cs2Button != null)
             {
                 cs2Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
