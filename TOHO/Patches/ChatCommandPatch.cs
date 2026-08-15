@@ -2239,7 +2239,7 @@ internal class ChatCommands
                 if ((isDev || isUp) && GameStates.IsLobby)
                 {
                     devMark = "▲";
-                    if (CustomRolesHelper.IsAdditionRole(rl) || rl is CustomRoles.GM or CustomRoles.Mini) devMark = "";
+                    if (CustomRolesHelper.IsAdditionRole(rl) || rl is CustomRoles.GM or CustomRoles.Mini || rl.IsGhostRole()) devMark = "";
                     if (rl.GetCount() < 1 || rl.GetMode() == 0) devMark = "";
                     if (isUp)
                     {
