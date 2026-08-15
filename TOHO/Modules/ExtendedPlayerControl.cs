@@ -121,39 +121,52 @@ static class ExtendedPlayerControl
     /// </summary>
     public static void RpcRevive(this PlayerControl player)
     {
-        if (player == null) return;
-        if (!player.Data.IsDead && player.IsAlive())
+        try
         {
-            Logger.Warn($"Invalid Revive for {player.GetRealName()} / player have data is dead: {player.Data.IsDead}, in game states is dead: {!player.IsAlive()}", "RpcRevive");
-            return;
-        }
 
-        if (player.HasGhostRole())
+            if (player == null) return;
+            if (!player.Data.IsDead && player.IsAlive())
+            {
+                Logger.Warn(
+                    $"Invalid Revive for {player.GetRealName()} / player have data is dead: {player.Data.IsDead}, in game states is dead: {!player.IsAlive()}",
+                    "RpcRevive");
+                return;
+            }
+
+            if (player.HasGhostRole())
+            {
+                player.GetRoleClass().OnRemove(player.PlayerId);
+                player.RpcSetCustomRole(player.GetRoleMap().CustomRole);
+                player.GetRoleClass().OnAdd(player.PlayerId);
+            }
+
+            if (Camouflage.IsCamouflage)
+                Camouflage.RpcSetSkin(player);
+
+            var customRole = player.GetCustomRole();
+            Main.PlayerStates[player.PlayerId].IsDead = false;
+            Main.PlayerStates[player.PlayerId].deathReason = PlayerState.DeathReason.etc;
+
+            player.RpcChangeRoleBasis(customRole, true);
+            player.ResetKillCooldown();
+            player.SyncSettings();
+            player.SetKillCooldown();
+            player.RpcResetAbilityCooldown();
+            player.SyncGeneralOptions();
+
+            if (AmongUsClient.Instance.AmHost)
+            {
+                player.Data.IsDead = false;
+                Utils.SendGameData();
+            }
+            
+            Utils.NotifyRoles();
+            Utils.NotifyEveryoneAsync();
+        }
+        catch (Exception e)
         {
-            player.GetRoleClass().OnRemove(player.PlayerId);
-            player.RpcSetCustomRole(player.GetRoleMap().CustomRole);
-            player.GetRoleClass().OnAdd(player.PlayerId);
+            TOHO.Logger.Info($"{e}", "RpcRevive");
         }
-
-        if (Camouflage.IsCamouflage)
-            Camouflage.RpcSetSkin(player);
-
-        var customRole = player.GetCustomRole();
-        Main.PlayerStates[player.PlayerId].IsDead = false;
-        Main.PlayerStates[player.PlayerId].deathReason = PlayerState.DeathReason.etc;
-
-        player.RpcChangeRoleBasis(customRole, true);
-        player.ResetKillCooldown();
-        player.SyncSettings();
-        player.SetKillCooldown();
-        player.RpcResetAbilityCooldown();
-        player.SyncGeneralOptions();
-		
-		if (AmongUsClient.Instance.AmHost)
-		{
-			player.Data.IsDead = false;
-			Utils.SendGameData();
-		}
     }
     /// <summary>
     /// Changes the Role Basis of Player during the game
