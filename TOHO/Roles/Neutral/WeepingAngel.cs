@@ -55,11 +55,13 @@ internal class WeepingAngel : RoleBase
 
         var tmpspeed = Main.AllPlayerSpeed[shapeshifter.PlayerId];
         Main.AllPlayerSpeed[shapeshifter.PlayerId] = SpeedIncrease.GetFloat();
+        shapeshifter.MarkDirtySettings();
 
         _ = new LateTask(() =>
         {
             IsAbility = false;
             Main.AllPlayerSpeed[shapeshifter.PlayerId] = tmpspeed;
+            shapeshifter.MarkDirtySettings();
             foreach (var player in Main.AllAlivePlayerControls.Where(x => x != shapeshifter))
             {
                 Main.PlayerStates[player.PlayerId].IsBlackOut = false;
