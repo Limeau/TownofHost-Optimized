@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HarmonyLib;
+using InnerNet;
 using TMPro;
 using TOHO.Modules;
 using TOHO.Roles.Modifiers.Common;
@@ -676,7 +677,7 @@ class CheckForEndVotingPatch
 [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CastVote))]
 class CastVotePatch
 {
-    public static bool Prefix(MeetingHud __instance, byte srcPlayerId, byte suspectPlayerId)
+    public static bool Prefix(MeetingHud __instance, PlayerId srcPlayerId, PlayerId suspectPlayerId)
     {
         if (!AmongUsClient.Instance.AmHost) return true;
         var voter = GetPlayerById(srcPlayerId);
