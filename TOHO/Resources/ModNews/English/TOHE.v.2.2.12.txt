@@ -28,7 +28,7 @@ Thank you for using TOHO!
 
 ## New Feature
 - Press F1 while using a mod to display your role's description
-- Some pop-up prompts for the UI of Guesser, Judge, and Mafia
+- Some pop-up prompts for the UI of Guesser, Justice, and Mafia
 - Sound effects for some role skills for mods
 - Show role mode if Hide Game Settings is OFF
 - Kill count for last results

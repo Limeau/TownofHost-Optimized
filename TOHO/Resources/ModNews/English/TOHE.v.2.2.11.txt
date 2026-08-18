@@ -15,15 +15,15 @@ Thank you for using TOHO!
 - Fixed bug that The title of the Revenge of the Mafia message was not translated
 - Fixed bug that The Executioner's Victory text will be displayed after the Executioner is dead
 - Fixed bug that When the Host uses the UI to guess as a Guesser, a repeated command will be send
-- Fixed bug that Garbled messages appear when hiding Guesser and Judge command
+- Fixed bug that Garbled messages appear when hiding Guesser and Justice command
 - Fixed bug that Sheriff's killable target option has no effect
 - Fixed bug that the /m command is invalid when becoming a hidden role
 - Fixed bug that Greedy kill cooldown is always an even cooldown
 - Fixed bug that Celebrity death message may be seen by Imp or Neutral players and the title is wrong
 - Fixed bug that Madmates are counted in the crew team causing the game not to end
 - Fixed bug that Fortune Teller divination Sooper result is wrong
-- Fixed bug that The Guesser, Judge, and Mafia skill buttons may not respond when clicked
-- Fixed bug that The Guesser, Judge, and Mafia skill buttons may have chosen a wrong target when the click button
+- Fixed bug that The Guesser, Justice, and Mafia skill buttons may not respond when clicked
+- Fixed bug that The Guesser, Justice, and Mafia skill buttons may have chosen a wrong target when the click button
 - Fixed numerous bugs that could result from meetings held by Paranoid, Hacker, and Host commands
 
 ## Changing

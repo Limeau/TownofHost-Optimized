@@ -17,7 +17,7 @@ Among Us v2023.3.28 is recommended so the roles work correctly.
 - Other various bug fixes (they're hard to keep track of)
 
 ## Changes
-- Judge now supports Guesser Mode
+- Justice now supports Guesser Mode
 - Background image reverted to use the AU v2023.3.28 size due to the recommended Among Us version being v2023.3.28
 - Many other unlisted changes
 - Mario renamed to Vector due to copyright concerns

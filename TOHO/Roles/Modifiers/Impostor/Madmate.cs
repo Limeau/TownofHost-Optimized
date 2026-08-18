@@ -21,7 +21,7 @@ public static class Madmate
     public static OptionItem SnitchCanBeMadmate;
     public static OptionItem MadSnitchTasks;
     public static OptionItem RetributionistCanBeMadmate;
-    public static OptionItem JudgeCanBeMadmate;
+    public static OptionItem JusticeCanBeMadmate;
 
     public static OptionItem ImpKnowWhosMadmate;
     public static OptionItem ImpCanKillMadmate;
@@ -63,7 +63,7 @@ public static class Madmate
         SnitchCanBeMadmate = BooleanOptionItem.Create(Id2 + 11, "SnitchCanBeMadmate", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Madmate]);
         MadSnitchTasks = IntegerOptionItem.Create(Id2 + 12, "MadSnitchTasks", new(1, 30, 1), 3, TabGroup.Modifiers, false).SetParent(SnitchCanBeMadmate)
             .SetValueFormat(OptionFormat.Pieces);
-        JudgeCanBeMadmate = BooleanOptionItem.Create(Id2 + 13, "JudgeCanBeMadmate", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Madmate]);
+        JusticeCanBeMadmate = BooleanOptionItem.Create(Id2 + 13, "JusticeCanBeMadmate", false, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.Madmate]);
     }
 
     public static void ApplyGameOptions(IGameOptions opt)
@@ -123,7 +123,7 @@ public static class Madmate
             (pc.Is(CustomRoles.Mayor) && (!forGangster ? !MayorCanBeMadmate.GetBool() : !Gangster.MayorCanBeMadmate.GetBool())) ||
             (pc.Is(CustomRoles.NiceGuesser) && (!forGangster ? !NGuesserCanBeMadmate.GetBool() : !Gangster.NGuesserCanBeMadmate.GetBool())) ||
             (pc.Is(CustomRoles.Snitch) && !SnitchCanBeMadmate.GetBool()) ||
-            (pc.Is(CustomRoles.Judge) && (!forGangster ? !JudgeCanBeMadmate.GetBool() : !Gangster.JudgeCanBeMadmate.GetBool())) ||
+            (pc.Is(CustomRoles.Justice) && (!forGangster ? !JusticeCanBeMadmate.GetBool() : !Gangster.JusticeCanBeMadmate.GetBool())) ||
             (pc.Is(CustomRoles.Marshall) && (!forGangster ? !MarshallCanBeMadmate.GetBool() : !Gangster.MarshallCanBeMadmate.GetBool())) ||
             (pc.Is(CustomRoles.Retributionist) && (!forGangster ? !RetributionistCanBeMadmate.GetBool() : !Gangster.RetributionistCanBeMadmate.GetBool())) ||
             (pc.Is(CustomRoles.Overseer) && (!forGangster ? !OverseerCanBeMadmate.GetBool() : !Gangster.OverseerCanBeMadmate.GetBool()));

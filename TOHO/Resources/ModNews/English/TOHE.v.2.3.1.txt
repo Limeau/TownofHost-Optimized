@@ -12,7 +12,7 @@ Thank you for using TOHO!
 
 ## Fix
 - Fixed bug that CrewPostor may black screen after meeting
-- Fixed bug that Buttons for Guesser, Judge, Mafia may disappear
+- Fixed bug that Buttons for Guesser, Justice, Mafia may disappear
 - Fixed bug that Terrorists may not trigger victory checks after being killed by Pelican, guessed by Guesser, killed by Deceiver, cursed by Witch
 - Fixed bug that Executioner may not change role after their target being killed by Pelican, guessed by Guesser, killed by Deceiver, cursed by Witch
 - Fixed bug that the player swallowed by the Pelican may not return to the map after the pelican being killed by Pelican, guessed by Guesser, killed by Deceiver, cursed by Witch

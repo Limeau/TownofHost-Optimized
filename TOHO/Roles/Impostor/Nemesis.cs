@@ -238,10 +238,10 @@ internal class Nemesis : RoleBase
         public static void Postfix(MeetingHud __instance)
         {
             if (PlayerControl.LocalPlayer.Is(CustomRoles.Nemesis) && !PlayerControl.LocalPlayer.IsAlive())
-                CreateJudgeButton(__instance);
+                CreateJusticeButton(__instance);
         }
     }
-    public static void CreateJudgeButton(MeetingHud __instance)
+    public static void CreateJusticeButton(MeetingHud __instance)
     {
         foreach (var pva in __instance.playerStates.ToArray())
         {

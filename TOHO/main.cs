@@ -868,7 +868,7 @@ public enum CustomRoles
     Inspector,
     Investigator,
     Jailer,
-    Judge,
+    Justice,
     Jury,
     Keeper,
     Knight,

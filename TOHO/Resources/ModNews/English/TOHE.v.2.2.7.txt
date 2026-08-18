@@ -19,7 +19,7 @@ Thank you for using TOHO!
 
 ## Changing
 - Some hotkeys are only available in debug mode
-- Delay the message of the judge's trial and the guesser's guess to prevent being override by hiding messages
+- Delay the message of the Justice's trial and the guesser's guess to prevent being override by hiding messages
 - System messages can send when nobody alive
 - Show discord button on main menu
 - Replaced 'Practice' button to Github link mod in menu game

@@ -26,11 +26,11 @@ internal class Councillor : RoleBase
 
     private static OptionItem MurderLimitPerMeeting;
     private static OptionItem MurderLimitPerGame;
-    private static OptionItem MakeEvilJudgeClear;
+    private static OptionItem MakeEvilJusticeClear;
     private static OptionItem TryHideMsg;
     private static OptionItem CanMurderMadmate;
     private static OptionItem CanMurderImpostor;
-    private static OptionItem SuicideOnJudgeImpTeam;
+    private static OptionItem SuicideOnJusticeImpTeam;
     private static OptionItem CanMurderTaskDoneSnitch;
     private static OptionItem KillCooldown;
 
@@ -46,11 +46,11 @@ internal class Councillor : RoleBase
             .SetValueFormat(OptionFormat.Times);
         MurderLimitPerGame = IntegerOptionItem.Create(Id + 12, "CouncillorMurderLimitPerGame", new(1, 15, 1), 4, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor])
             .SetValueFormat(OptionFormat.Times);
-        MakeEvilJudgeClear = BooleanOptionItem.Create(Id + 18, "CouncillorMakeEvilJudgeClear", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
+        MakeEvilJusticeClear = BooleanOptionItem.Create(Id + 18, "CouncillorMakeEvilJusticeClear", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
         CanMurderMadmate = BooleanOptionItem.Create(Id + 13, "CouncillorCanMurderMadmate", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
         CanMurderImpostor = BooleanOptionItem.Create(Id + 14, "CouncillorCanMurderImpostor", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
         CanMurderTaskDoneSnitch = BooleanOptionItem.Create(Id + 16, "CouncillorCanMurderTaskDoneSnitch", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
-        SuicideOnJudgeImpTeam = BooleanOptionItem.Create(Id + 17, "CouncillorSuicideOnJudgeImpTeam", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
+        SuicideOnJusticeImpTeam = BooleanOptionItem.Create(Id + 17, "CouncillorSuicideOnJusticeImpTeam", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor]);
         TryHideMsg = BooleanOptionItem.Create(Id + 15, "CouncillorTryHideMsg", true, TabGroup.ImpostorRoles, false).SetParent(Options.CustomRoleSpawnChances[CustomRoles.Councillor])
             .SetColor(Color.green);
     }
@@ -159,7 +159,7 @@ internal class Councillor : RoleBase
 
                 if (target.Is(CustomRoles.Rebound))
                 {
-                    Logger.Info($"{pc.GetNameWithRole()} judged {target.GetNameWithRole()}, councillor sucide = true because target rebound", "CouncillorTrialMsg");
+                    Logger.Info($"{pc.GetNameWithRole()} Justiced {target.GetNameWithRole()}, councillor sucide = true because target rebound", "CouncillorTrialMsg");
                     CouncillorSuicide = true;
                 }
                 else if (target.Is(CustomRoles.Solsticer))
@@ -205,7 +205,7 @@ internal class Councillor : RoleBase
                     {
                         CouncillorSuicide = false;
                     }
-                    else if (!SuicideOnJudgeImpTeam.GetBool())
+                    else if (!SuicideOnJusticeImpTeam.GetBool())
                     {
                         pc.ShowInfoMessage(isUI, GetString("Councillor_CannotMurderImpTeam"));
                         return true;
@@ -226,7 +226,7 @@ internal class Councillor : RoleBase
                     {
                         CouncillorSuicide = false;
                     }
-                    else if (!SuicideOnJudgeImpTeam.GetBool())
+                    else if (!SuicideOnJusticeImpTeam.GetBool())
                     {
                         pc.ShowInfoMessage(isUI, GetString("Councillor_CannotMurderImpTeam"));
                         return true;
@@ -267,9 +267,9 @@ internal class Councillor : RoleBase
 
                         _ = new LateTask(() =>
                         {
-                            if (!MakeEvilJudgeClear.GetBool())
+                            if (!MakeEvilJusticeClear.GetBool())
                             {
-                                Utils.SendMessage(string.Format(GetString("Judge_TrialKill"), Name), 255, Utils.ColorString(Utils.GetRoleColor(CustomRoles.Judge), GetString("Judge_TrialKillTitle")), true);
+                                Utils.SendMessage(string.Format(GetString("Justice_TrialKill"), Name), 255, Utils.ColorString(Utils.GetRoleColor(CustomRoles.Justice), GetString("Justice_TrialKillTitle")), true);
                             }
                             else
                             {
@@ -340,7 +340,7 @@ internal class Councillor : RoleBase
 
     private static void SendRPC(byte playerId)
     {
-        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CouncillorJudge, SendOption.Reliable, -1);
+        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.CouncillorJustice, SendOption.Reliable, -1);
         writer.Write(playerId);
         AmongUsClient.Instance.FinishRpcImmediately(writer);
     }

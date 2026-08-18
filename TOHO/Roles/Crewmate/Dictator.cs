@@ -208,7 +208,7 @@ internal class Dictator : RoleBase
             targetBox.transform.localPosition = new Vector3(-0.35f, 0.03f, -1.31f);
             SpriteRenderer renderer = targetBox.GetComponent<SpriteRenderer>();
             PassiveButton button = targetBox.GetComponent<PassiveButton>();
-            renderer.sprite = CustomButton.Get("JudgeIcon");
+            renderer.sprite = CustomButton.Get("JusticeIcon");
 
             button.OnClick.RemoveAllListeners();
             button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>

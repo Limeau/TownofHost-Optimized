@@ -20,8 +20,8 @@ No more bugs plz!
 - Fixed bug that The format of the vanilla player name prompt is wrong
 - Fixed bug that The Madmate on mod will show everyone as teammates at the intro
 - Fixed bug that Succubus may cause black screen
-- Fixed bug that The trial of the Judge and the revenge of the Mafia at the meeting may cause the Terrorist to fail to win, the Executioner's role will not change, and the Celebrity skills will not be triggered, etc.
-- Fixed bug that Lovers will leave dead bodies after meeting with Gueser guessing, Judge trial, Mafia revenge
+- Fixed bug that The trial of the Justice and the revenge of the Mafia at the meeting may cause the Terrorist to fail to win, the Executioner's role will not change, and the Celebrity skills will not be triggered, etc.
+- Fixed bug that Lovers will leave dead bodies after meeting with Gueser guessing, Justice trial, Mafia revenge
 - Fixed bug that Mafia's revenge in non-meetings may cause the vanilla player's name and roles to display abnormally
 - Fixed bug that if the Mafia takes revenge multiple times in quick succession, the limit can be bypassed
 - Fixed bug that Revolutionist and Arsonists who become Reach may be terminated immediately when dousing or recruiting due to too far away

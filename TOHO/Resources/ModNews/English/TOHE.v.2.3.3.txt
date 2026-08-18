@@ -46,7 +46,7 @@ No any bugs plz!
 - Option: Madmate Count Mode
 - Automatically add modded servers
 - Option: Sheriff can kill Charmed players
-- Option: Judge can trail Charmed player
+- Option: Justice can trail Charmed player
 - Option: Charmed players count mode
 - Option: Hide Eraser's Votes
 - Options: Imp/Neutral/Crew can be Bait

@@ -353,7 +353,7 @@ CustomRoles.Webweaver,
 CustomRoles.Crusader,
 CustomRoles.ForensicScientist,
 CustomRoles.Technician,
-CustomRoles.Judge,
+CustomRoles.Justice,
 CustomRoles.Vigilante,
 CustomRoles.Reverie,
 

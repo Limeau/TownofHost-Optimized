@@ -48,10 +48,10 @@ public enum CustomRPC : byte // 185/255 USED
     SyncRoleSkill,
     SetNameColorData,
     GuessKill,
-    Judge,
-    KNChat = 119, // Kill network chat, may conflicts with judge and guess calls
+    Justice,
+    KNChat = 119, // Kill network chat, may conflicts with Justice and guess calls
     Guess,
-    CouncillorJudge,
+    CouncillorJustice,
     NemesisRevenge,
     RetributionistRevenge,
     SetFriendCode,
@@ -157,8 +157,8 @@ internal class RPCHandlerPatch
     => (CustomRPC)id is CustomRPC.VersionCheck
         or CustomRPC.RequestRetryVersionCheck
         or CustomRPC.AntiBlackout
-        or CustomRPC.Judge
-        or CustomRPC.CouncillorJudge
+        or CustomRPC.Justice
+        or CustomRPC.CouncillorJustice
         or CustomRPC.NemesisRevenge
         or CustomRPC.RetributionistRevenge
         or CustomRPC.Guess
@@ -573,8 +573,8 @@ internal class RPCHandlerPatch
             case CustomRPC.SyncNameNotify:
                 NameNotifyManager.ReceiveRPC(reader);
                 break;
-            case CustomRPC.Judge:
-                Judge.ReceiveRPC_Custom(reader, __instance);
+            case CustomRPC.Justice:
+                Justice.ReceiveRPC_Custom(reader, __instance);
                 break;
             case CustomRPC.PresidentEnd:
                 President.ReceiveRPC(reader, __instance);
@@ -582,7 +582,7 @@ internal class RPCHandlerPatch
             case CustomRPC.PresidentReveal:
                 President.ReceiveRPC(reader, __instance, isEnd: false);
                 break;
-            case CustomRPC.CouncillorJudge:
+            case CustomRPC.CouncillorJustice:
                 Councillor.ReceiveRPC_Custom(reader, __instance);
                 break;
             case CustomRPC.Guess:

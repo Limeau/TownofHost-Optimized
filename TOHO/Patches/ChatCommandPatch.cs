@@ -68,7 +68,7 @@ internal class ChatCommands
         if (text.Length >= 4) if (text[..3] == "/up") args[0] = "/up";
 
         if (GuessManager.GuesserMsg(PlayerControl.LocalPlayer, text)) goto Canceled;
-        if (Judge.TrialMsg(PlayerControl.LocalPlayer, text)) goto Canceled;
+        if (Justice.TrialMsg(PlayerControl.LocalPlayer, text)) goto Canceled;
         if (President.EndMsg(PlayerControl.LocalPlayer, text)) goto Canceled;
         if (Inspector.InspectCheckMsg(PlayerControl.LocalPlayer, text)) goto Canceled;
         if (Pirate.DuelCheckMsg(PlayerControl.LocalPlayer, text)) goto Canceled;
@@ -1915,7 +1915,7 @@ internal class ChatCommands
             "擲彈兵" or "掷雷兵" => GetString("Grenadier"),
             "軍醫" or "医生" => GetString("Medic"),
             "占卜師" or "调查员" or "占卜师" => GetString("FortuneTeller"),
-            "法官" or "正义法官" or "正义审判" => GetString("Judge"),
+            "法官" or "正义法官" or "正义审判" => GetString("Justice"),
             "殯葬師" or "入殓师" => GetString("Mortician"),
             "通靈師" or "通灵师" => GetString("Mediumshiper"),
             "和平之鴿" or "和平之鸽" => GetString("Pacifist"),
@@ -2314,7 +2314,7 @@ internal class ChatCommands
         string subArgs2 = "";
 
         if (GuessManager.GuesserMsg(player, text)) { canceled = true; Logger.Info($"Is Guesser command", "OnReceiveChat"); return; }
-        if (Judge.TrialMsg(player, text)) { canceled = true; Logger.Info($"Is Judge command", "OnReceiveChat"); return; }
+        if (Justice.TrialMsg(player, text)) { canceled = true; Logger.Info($"Is Justice command", "OnReceiveChat"); return; }
         if (President.EndMsg(player, text)) { canceled = true; Logger.Info($"Is President command", "OnReceiveChat"); return; }
         if (Inspector.InspectCheckMsg(player, text)) { canceled = true; Logger.Info($"Is Inspector command", "OnReceiveChat"); return; }
         if (Pirate.DuelCheckMsg(player, text)) { canceled = true; Logger.Info($"Is Pirate command", "OnReceiveChat"); return; }
