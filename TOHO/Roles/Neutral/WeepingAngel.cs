@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AmongUs.GameOptions;
 using static TOHO.Options;
 
 namespace TOHO.Roles.Neutral;
@@ -33,6 +34,11 @@ internal class WeepingAngel : RoleBase
     public override void Add(byte playerId)
     {
         IsAbility = false;
+    }
+
+    public override void ApplyGameOptions(IGameOptions opt, byte playerId)
+    {
+        AURoleOptions.ShapeshifterCooldown = AbilityCooldown.GetFloat();
     }
 
     public override void SetKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = DefaultKillCooldown;
