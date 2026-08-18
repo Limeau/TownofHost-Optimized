@@ -17,6 +17,7 @@ public class LabRat : IModifier
     public static OptionItem CanBeTracker;
     public static OptionItem CanBeNoisemaker;
     public static OptionItem CanBeDetective;
+    public static OptionItem CanBeJudge;
 
     public void SetupCustomOption()
     {
@@ -26,6 +27,7 @@ public class LabRat : IModifier
         CanBeTracker = BooleanOptionItem.Create(Id + 12, "CanBeTracker417", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.LabRat]);
         CanBeNoisemaker = BooleanOptionItem.Create(Id + 13, "CanBeNoisemaker417", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.LabRat]);
         CanBeDetective = BooleanOptionItem.Create(Id + 14, "CanBeDetective417", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.LabRat]);
+        CanBeJudge = BooleanOptionItem.Create(Id + 15, "CanBeJudge417", true, TabGroup.Modifiers, false).SetParent(CustomRoleSpawnChances[CustomRoles.LabRat]);
     }
     public void Init()
     {        
@@ -48,6 +50,7 @@ public class LabRat : IModifier
         if (CanBeTracker.GetBool()) roles.Add(CustomRoles.TrackerTOHO);
         if (CanBeNoisemaker.GetBool()) roles.Add(CustomRoles.NoisemakerTOHO);
         if (CanBeDetective.GetBool()) roles.Add(CustomRoles.DetectiveTOHO);
+        if (CanBeJudge.GetBool()) roles.Add(CustomRoles.JudgeTOHO);
         
         foreach (var player in Main.AllAlivePlayerControls.Where(x => x.Is(CustomRoles.LabRat)))
         {

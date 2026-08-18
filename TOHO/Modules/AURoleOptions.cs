@@ -111,4 +111,9 @@ public static class AURoleOptions
         get => Opt.GetFloat(FloatOptionNames.DetectiveSuspectLimit);
         set => Opt.SetFloat(FloatOptionNames.DetectiveSuspectLimit, value);
     }
+    public static float JudgeTaskRequirementPercentage
+    {
+        get => Opt.GetFloat(FloatOptionNames.JudgeTaskRequirementPercentage);
+        set => Opt.SetFloat(FloatOptionNames.JudgeTaskRequirementPercentage, value);
+    }
 }

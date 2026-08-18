@@ -47,6 +47,7 @@ internal class ChangeRoleSettings
                     Main.NormalOptions.roleOptions.SetRoleRate(RoleTypes.Engineer, 0, 0);
                     Main.NormalOptions.roleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
                     Main.NormalOptions.roleOptions.SetRoleRate(RoleTypes.Noisemaker, 0, 0);
+                    Main.NormalOptions.roleOptions.SetRoleRate(RoleTypes.Judge, 0, 0);
                     Main.NormalOptions.roleOptions.SetRoleRate(RoleTypes.Phantom, 0, 0);
                     Main.NormalOptions.roleOptions.SetRoleRate(RoleTypes.Tracker, 0, 0);
                 }
@@ -291,6 +292,7 @@ internal class StartGameHostPatch
             { RoleTypes.Engineer, RoleAssign.AddEngineerNum },
             { RoleTypes.Shapeshifter, RoleAssign.AddShapeshifterNum },
             { RoleTypes.Noisemaker, RoleAssign.AddNoisemakerNum },
+            { RoleTypes.Judge, RoleAssign.AddJudgeNum },
             { RoleTypes.Phantom, RoleAssign.AddPhantomNum },
             { RoleTypes.Tracker, RoleAssign.AddTrackerNum },
             { RoleTypes.Viper, RoleAssign.AddViperNum },
@@ -452,6 +454,7 @@ internal class StartGameHostPatch
                     RoleTypes.GuardianAngel => CustomRoles.GuardianAngel,
                     RoleTypes.Shapeshifter => CustomRoles.Shapeshifter,
                     RoleTypes.Noisemaker => CustomRoles.Noisemaker,
+                    RoleTypes.Judge => CustomRoles.Judge,
                     RoleTypes.Phantom => CustomRoles.Phantom,
                     RoleTypes.Tracker => CustomRoles.Tracker,
                     _ => CustomRoles.NotAssigned

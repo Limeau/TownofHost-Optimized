@@ -53,6 +53,7 @@ public static class CustomRolesHelper
             CustomRoles.ScientistTOHO => CustomRoles.Scientist,
             CustomRoles.EngineerTOHO => CustomRoles.Engineer,
             CustomRoles.NoisemakerTOHO => CustomRoles.Noisemaker,
+            CustomRoles.JudgeTOHO => CustomRoles.Judge,
             CustomRoles.TrackerTOHO => CustomRoles.Tracker,
             CustomRoles.ViperTOHO => CustomRoles.Viper,
             CustomRoles.DetectiveTOHO => CustomRoles.Detective,

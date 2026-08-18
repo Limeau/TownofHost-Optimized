@@ -1102,6 +1102,7 @@ public class RoleAssign
     public static int AddTrackerNum;
     public static int AddViperNum;
     public static int AddDetectiveNum;
+    public static int AddJudgeNum;
     public static void CalculateVanillaRoleCount()
     {
         // Calculate the number of base Roles
@@ -1113,6 +1114,7 @@ public class RoleAssign
         AddTrackerNum = 0;
         AddViperNum = 0;
         AddDetectiveNum = 0;
+        AddJudgeNum = 0;
         foreach (var role in AllRoles)
         {
             switch (role.GetVNRole())
@@ -1128,6 +1130,9 @@ public class RoleAssign
                     break;
                 case CustomRoles.Noisemaker:
                     AddNoisemakerNum++;
+                    break;
+                case CustomRoles.Judge:
+                    AddJudgeNum++;
                     break;
                 case CustomRoles.Phantom:
                     AddPhantomNum++;

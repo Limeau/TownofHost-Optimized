@@ -2179,6 +2179,7 @@ class PlayerControlLocalSetRolePatch
                 RoleTypes.Engineer => CustomRoles.EngineerTOHO,
                 RoleTypes.Shapeshifter => CustomRoles.ShapeshifterTOHO,
                 RoleTypes.Noisemaker => CustomRoles.NoisemakerTOHO,
+                RoleTypes.Judge => CustomRoles.JudgeTOHO,
                 RoleTypes.Phantom => CustomRoles.PhantomTOHO,
                 RoleTypes.Tracker => CustomRoles.TrackerTOHO,
                 RoleTypes.Viper => CustomRoles.ViperTOHO,

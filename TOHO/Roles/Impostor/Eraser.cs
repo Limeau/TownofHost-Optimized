@@ -147,6 +147,7 @@ internal class Eraser : RoleBase
                 RoleTypes.Scientist => CustomRoles.ScientistTOHO,
                 RoleTypes.Tracker => CustomRoles.TrackerTOHO,
                 RoleTypes.Noisemaker => CustomRoles.NoisemakerTOHO,
+                RoleTypes.Judge => CustomRoles.JudgeTOHO,
                 RoleTypes.Engineer => CustomRoles.EngineerTOHO,
                 RoleTypes.Impostor when role.IsCrewmate() => CustomRoles.CrewmateTOHO,
                 RoleTypes.Impostor => CustomRoles.ImpostorTOHO,
