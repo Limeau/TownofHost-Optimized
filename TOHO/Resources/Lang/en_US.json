@@ -5434,5 +5434,10 @@
   
   "Samurai": "Samurai",
   "SamuraiInfo": "Kill players by blinding them first",
-  "SamuraiInfoLong": "The Samurai can unshift to temporarily blind everyone around them, including themself. They have no kill cooldown, but can only kill players that are currently blinded by them."
+  "SamuraiInfoLong": "The Samurai can unshift to temporarily blind everyone around them, including themself. They have no kill cooldown, but can only kill players that are currently blinded by them.",
+
+  "WeepingAngel": "Weeping Angel",
+  "WeepingAngelInfo": "Blind everyone and kill players fast!",
+  "WeepingAngelInfoLong": "The Weeping Angel can use Unshift to blind everyone for a very short amount of time. During this time, the Weeping Angel is extremely fast. When the Weeping Angel touches anyone during this time, the player dies. The Weeping Angel cannot kill normally.",
+  "SpeedIncrease": "Speed Increase"
 }
