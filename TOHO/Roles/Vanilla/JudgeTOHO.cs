@@ -21,7 +21,7 @@ internal class JudgeTOHO : RoleBase
     public override void SetupCustomOption()
     {
         Options.SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.JudgeTOHO);
-        TaskReq = IntegerOptionItem.Create(Id + 3, GeneralOption.JudgeBase_JudgeTaskRequirementPercentage, new(1, 100, 5), 25, TabGroup.CrewmateRoles, false)
+        TaskReq = IntegerOptionItem.Create(Id + 3, GeneralOption.JudgeBase_JudgeTaskRequirementPercentage, new(0, 100, 5), 25, TabGroup.CrewmateRoles, false)
             .SetParent(Options.CustomRoleSpawnChances[CustomRoles.JudgeTOHO])
             .SetValueFormat(OptionFormat.Percent);
     }
