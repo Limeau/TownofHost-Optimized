@@ -1383,6 +1383,7 @@ public static class CustomRolesHelper
             CustomRoles.GuardianAngel => RoleTypes.GuardianAngel,
             CustomRoles.Shapeshifter => RoleTypes.Shapeshifter,
             CustomRoles.Noisemaker => RoleTypes.Noisemaker,
+            CustomRoles.Judge => RoleTypes.Judge,
             CustomRoles.Phantom => RoleTypes.Phantom,
             CustomRoles.Tracker => RoleTypes.Tracker,
             CustomRoles.Detective => RoleTypes.Detective,
@@ -1400,6 +1401,7 @@ public static class CustomRolesHelper
             CustomRoles.GuardianAngel => RoleTypes.GuardianAngel,
             CustomRoles.Shapeshifter => RoleTypes.Shapeshifter,
             CustomRoles.Noisemaker => RoleTypes.Noisemaker,
+            CustomRoles.Judge => RoleTypes.Judge,
             CustomRoles.Phantom => RoleTypes.Phantom,
             CustomRoles.Tracker => RoleTypes.Tracker,
             CustomRoles.Detective => RoleTypes.Detective,
@@ -1446,6 +1448,7 @@ public static class CustomRolesHelper
             CustomRoles.GuardianAngel or
             CustomRoles.Shapeshifter or
             CustomRoles.Noisemaker or
+            CustomRoles.Judge or
             CustomRoles.Phantom or
             CustomRoles.Tracker or 
             CustomRoles.Viper or 
@@ -1479,6 +1482,7 @@ public static class CustomRolesHelper
                 CustomRoles.GuardianAngel => roleOpt.GetNumPerGame(RoleTypes.GuardianAngel),
                 CustomRoles.Shapeshifter => roleOpt.GetNumPerGame(RoleTypes.Shapeshifter),
                 CustomRoles.Noisemaker => roleOpt.GetNumPerGame(RoleTypes.Noisemaker),
+                CustomRoles.Judge => roleOpt.GetNumPerGame(RoleTypes.Judge),
                 CustomRoles.Phantom => roleOpt.GetNumPerGame(RoleTypes.Phantom),
                 CustomRoles.Tracker => roleOpt.GetNumPerGame(RoleTypes.Tracker),
                 CustomRoles.Viper => roleOpt.GetNumPerGame(RoleTypes.Viper),
@@ -1505,6 +1509,7 @@ public static class CustomRolesHelper
                 CustomRoles.GuardianAngel => roleOpt.GetChancePerGame(RoleTypes.GuardianAngel),
                 CustomRoles.Shapeshifter => roleOpt.GetChancePerGame(RoleTypes.Shapeshifter),
                 CustomRoles.Noisemaker => roleOpt.GetChancePerGame(RoleTypes.Noisemaker),
+                CustomRoles.Judge => roleOpt.GetChancePerGame(RoleTypes.Judge),
                 CustomRoles.Phantom => roleOpt.GetChancePerGame(RoleTypes.Phantom),
                 CustomRoles.Tracker => roleOpt.GetChancePerGame(RoleTypes.Tracker),
                 CustomRoles.Viper => roleOpt.GetChancePerGame(RoleTypes.Viper),
