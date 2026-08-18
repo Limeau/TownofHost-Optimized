@@ -89,7 +89,7 @@ public class Aware : IModifier
         {
             case CustomRoles.FortuneTeller:
             case CustomRoles.Oracle:
-                AwareInteracted[pva.VotedFor].Add(Utils.GetRoleName(pc.GetCustomRole()));
+                AwareInteracted[pva.VotedForId].Add(Utils.GetRoleName(pc.GetCustomRole()));
                 break;
         }
     }

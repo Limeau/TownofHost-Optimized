@@ -29,7 +29,7 @@ internal class Dictator : RoleBase
     }
 
     public static bool CheckVotingForTarget(PlayerControl pc, PlayerVoteArea pva)
-        => pc.Is(CustomRoles.Dictator) && pva.DidVote && pc.PlayerId != pva.VotedFor && pva.VotedFor < 253 && !pc.Data.IsDead;
+        => pc.Is(CustomRoles.Dictator) && pva.DidVote && pc.PlayerId != pva.VotedForId && pva.VotedForId < 253 && !pc.Data.IsDead;
     public bool ExilePlayer(PlayerControl pc, string msg, bool isUI = false)
     {
         if (!ChangeCommandToExpel.GetBool()) return false;
@@ -106,18 +106,18 @@ internal class Dictator : RoleBase
                 if (isBlackOut)
                     MeetingHud.Instance.AntiBlackRpcVotingComplete(states, exiled, false);
                 else
-                    MeetingHud.Instance.RpcVotingComplete(statesList.ToArray(), exiled, false);
+                    MeetingHud.Instance.RpcVotingComplete(statesList.ToArray(), exiled, false, false, byte.MaxValue);
                 if (exiled != null)
                 {
                     AntiBlackout.ShowExiledInfo = isBlackOut;
                     CheckForEndVotingPatch.ConfirmEjections(exiled, isBlackOut);
-                    MeetingHud.Instance.RpcVotingComplete(statesList.ToArray(), null, true);
+                    MeetingHud.Instance.RpcVotingComplete(statesList.ToArray(), null, true, false, byte.MaxValue);
                     MeetingHud.Instance.RpcClose();
                 }
             }
             else
             {
-                MeetingHud.Instance.RpcVotingComplete(states, exiled, false);
+                MeetingHud.Instance.RpcVotingComplete(states, exiled, false, false, byte.MaxValue);
 
                 if (exiled != null)
                 {
@@ -198,7 +198,7 @@ internal class Dictator : RoleBase
         {
             if (pva.transform.Find("DictatorButton") != null) UnityEngine.Object.Destroy(pva.transform.Find("DictatorButton").gameObject);
 
-            var pc = pva.TargetPlayerId.GetPlayer();
+            var pc = pva.PlayerId.Value.GetPlayer();
             var local = PlayerControl.LocalPlayer;
             if (pc == null || !pc.IsAlive()) continue;
 
@@ -213,7 +213,7 @@ internal class Dictator : RoleBase
             button.OnClick.RemoveAllListeners();
             button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
             {
-                DictatorOnClick(pva.TargetPlayerId, __instance);
+                DictatorOnClick(pva.PlayerId, __instance);
             }));
         }
     }

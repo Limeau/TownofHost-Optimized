@@ -31,8 +31,8 @@ internal class Vindicator : RoleBase
         {
             statesList.Add(new MeetingHud.VoterState()
             {
-                VoterId = votedPlayer.TargetPlayerId,
-                VotedForId = votedPlayer.VotedFor
+                VoterId = votedPlayer.PlayerId,
+                VotedForId = votedPlayer.VotedForId
             });
         }
     }

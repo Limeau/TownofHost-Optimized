@@ -444,7 +444,7 @@ static class ExtendedPlayerControl
             }
             if (AmongUsClient.Instance.ClientId == clientId)
             {
-                meeting.ClearVote();
+                meeting.ClearVote(meeting.PlayerButtonPrefab.PlayerId, false);
                 return;
             }
             var writer = CustomRpcSender.Create("Clear Vote", SendOption.Reliable);
@@ -1119,7 +1119,7 @@ static class ExtendedPlayerControl
     }
 
     public static float GetKillDistances(bool ovverideValue = false, int newValue = 2)
-        => NormalGameOptionsV10.KillDistances[Mathf.Clamp(ovverideValue ? newValue : Main.NormalOptions.KillDistance, 0, 2)];
+        => NormalGameOptionsV11.KillDistances[Mathf.Clamp(ovverideValue ? newValue : Main.NormalOptions.KillDistance, 0, 2)];
 
     public static void MarkDirtySettings(this PlayerControl player)
     {

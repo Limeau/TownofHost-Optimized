@@ -209,7 +209,7 @@ public static class AntiBlackout
     {
         if (AmongUsClient.Instance.AmClient)
         {
-            __instance.VotingComplete(states, exiled, tie);
+            __instance.VotingComplete(states, exiled, tie, false, byte.MaxValue);
         }
 
         foreach (var pc in Main.AllPlayerControls)

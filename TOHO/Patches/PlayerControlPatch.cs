@@ -1600,7 +1600,7 @@ class FixedUpdateInNormalGamePatch
                                 partnerPlayer.Data.IsDead = true;
                                 partnerPlayer.RpcExileV2();
                                 Main.PlayerStates[partnerPlayer.PlayerId].SetDead();
-                                if (MeetingHud.Instance?.state is MeetingHud.VoteStates.Discussion or MeetingHud.VoteStates.NotVoted or MeetingHud.VoteStates.Voted)
+                                if (MeetingHud.Instance?.state is MeetingHud.MeetingStates.Discussion or MeetingHud.MeetingStates.NotVoted or MeetingHud.MeetingStates.Voted)
                                 {
                                     MeetingHud.Instance?.CheckForEndVoting();
                                 }

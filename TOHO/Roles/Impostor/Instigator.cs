@@ -45,10 +45,10 @@ internal class Instigator : RoleBase
         if (!killer.IsAlive()) return;
 
         List<PlayerControl> killPotentials = [];
-        var votedForExiled = MeetingHud.Instance.playerStates.Where(a => a.VotedFor == exiled.PlayerId && a.TargetPlayerId != exiled.PlayerId).ToArray();
+        var votedForExiled = MeetingHud.Instance.playerStates.Where(a => a.VotedForId == exiled.PlayerId && a.PlayerId != exiled.PlayerId).ToArray();
         foreach (var playerVote in votedForExiled)
         {
-            var crewPlayer = Main.AllPlayerControls.FirstOrDefault(a => a.PlayerId == playerVote.TargetPlayerId);
+            var crewPlayer = Main.AllPlayerControls.FirstOrDefault(a => a.PlayerId == playerVote.PlayerId);
             if (crewPlayer == null || !crewPlayer.GetCustomRole().IsCrewmate() || crewPlayer.IsAnySubRole(x => !x.IsCrewmateTeamV2()) || !crewPlayer.IsAlive()) continue;
             killPotentials.Add(crewPlayer);
         }

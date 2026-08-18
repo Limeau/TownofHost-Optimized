@@ -45,20 +45,20 @@ internal class Pickpocket : RoleBase
 
     public override int AddRealVotesNum(PlayerVoteArea ps)
     {
-        return (int)(Main.AllPlayerControls.Count(x => x.GetRealKiller()?.PlayerId == ps.TargetPlayerId) * VotesPerKill.GetFloat());
+        return (int)(Main.AllPlayerControls.Count(x => x.GetRealKiller()?.PlayerId == ps.PlayerId) * VotesPerKill.GetFloat());
     }
     public override void AddVisualVotes(PlayerVoteArea votedPlayer, ref List<MeetingHud.VoterState> statesList)
     {
         if (HideAdditionalVotes.GetBool()) return;
 
-        var additionalVotes = (int)(Main.AllPlayerControls.Count(x => x.GetRealKiller()?.PlayerId == votedPlayer.TargetPlayerId) * VotesPerKill.GetFloat());
+        var additionalVotes = (int)(Main.AllPlayerControls.Count(x => x.GetRealKiller()?.PlayerId == votedPlayer.PlayerId) * VotesPerKill.GetFloat());
 
         for (var i = 0; i < additionalVotes; i++)
         {
             statesList.Add(new MeetingHud.VoterState()
             {
-                VoterId = votedPlayer.TargetPlayerId,
-                VotedForId = votedPlayer.VotedFor
+                VoterId = votedPlayer.PlayerId,
+                VotedForId = votedPlayer.VotedForId
             });
         }
     }
