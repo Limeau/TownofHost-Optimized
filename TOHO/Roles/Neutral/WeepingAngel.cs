@@ -24,7 +24,7 @@ internal class WeepingAngel : RoleBase
         SetupSingleRoleOptions(Id, TabGroup.NeutralRoles, CustomRoles.WeepingAngel, 1, zeroOne: false);
         AbilityCooldown = FloatOptionItem.Create(Id + 10, GeneralOption.AbilityCooldown, new(0f, 180f, 2.5f), 35f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.WeepingAngel])
             .SetValueFormat(OptionFormat.Seconds);
-        AbilityDuration = FloatOptionItem.Create(Id + 10, GeneralOption.AbilityDuration, new(0f, 60f, 1f), 10f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.WeepingAngel])
+        AbilityDuration = FloatOptionItem.Create(Id + 11, GeneralOption.AbilityDuration, new(0f, 60f, 1f), 10f, TabGroup.NeutralRoles, false).SetParent(CustomRoleSpawnChances[CustomRoles.WeepingAngel])
             .SetValueFormat(OptionFormat.Seconds);
         SpeedIncrease = FloatOptionItem.Create(Id + 12, "SpeedIncrease", new(2f, 5f, 0.2f), 3f, TabGroup.NeutralRoles, false)
             .SetParent(CustomRoleSpawnChances[CustomRoles.WeepingAngel]) 
