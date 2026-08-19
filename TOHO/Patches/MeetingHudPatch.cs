@@ -418,6 +418,8 @@ class CheckForEndVotingPatch
     // Credit：https://github.com/music-discussion/TownOfHost-TheOtherRoles
     public static void ConfirmEjections(NetworkedPlayerInfo exiledPlayer, bool AntiBlackoutStore = false)
     {
+        //AntiBlackoutStore = true;
+        
         if (!AmongUsClient.Instance.AmHost) return;
         if (exiledPlayer == null) return;
 
@@ -488,20 +490,29 @@ class CheckForEndVotingPatch
 
                 break;
             case 2:
-                name = string.Format(GetString("PlayerIsRole"), realName, coloredRole);
-                if (Options.ShowTeamNextToRoleNameOnEject.GetBool())
+                try
+
                 {
-                    name += " (";
-                    if (player.GetCustomRole().IsImpostor() || player.Is(CustomRoles.Madmate))
-                        name += ColorString(new Color32(255, 25, 25, byte.MaxValue), GetString("TeamImpostor"));
-                    else if (player.GetCustomRole().IsNeutral() || player.Is(CustomRoles.Charmed))
-                        name += ColorString(new Color32(127, 140, 141, byte.MaxValue), GetString("TeamNeutral"));
-                    else if (player.GetCustomRole().IsCrewmate())
-                        name += ColorString(new Color32(140, 255, 255, byte.MaxValue), GetString("TeamCrewmate"));
-                    else if (player.GetCustomRole().IsCoven() || player.Is(CustomRoles.Enchanted))
-                        name += ColorString(new Color32(172, 66, 242, byte.MaxValue), GetString("TeamCoven"));
-                    name += ")";
+                    name = string.Format(GetString("PlayerIsRole"), realName, coloredRole);
+                    if (Options.ShowTeamNextToRoleNameOnEject.GetBool())
+                    {
+                        name += " (";
+                        if (player.GetCustomRole().IsImpostor() || player.Is(CustomRoles.Madmate))
+                            name += ColorString(new Color32(255, 25, 25, byte.MaxValue), GetString("TeamImpostor"));
+                        else if (player.GetCustomRole().IsNeutral() || player.Is(CustomRoles.Charmed))
+                            name += ColorString(new Color32(127, 140, 141, byte.MaxValue), GetString("TeamNeutral"));
+                        else if (player.GetCustomRole().IsCrewmate())
+                            name += ColorString(new Color32(140, 255, 255, byte.MaxValue), GetString("TeamCrewmate"));
+                        else if (player.GetCustomRole().IsCoven() || player.Is(CustomRoles.Enchanted))
+                            name += ColorString(new Color32(172, 66, 242, byte.MaxValue), GetString("TeamCoven"));
+                        name += ")";
+                    }
                 }
+                catch (Exception e)
+                {
+                    Logger.Info($"{e}", "ConfirmEjections");
+                }
+
                 break;
         }
         var DecidedWinner = false;
@@ -530,8 +541,8 @@ class CheckForEndVotingPatch
                 name += string.Format(GetString("CovenRemain"), covennum) + comma;
         }
 
-    EndOfSession:
-        name += "<size=0>";
+        EndOfSession:
+        //name += "<size=0>";
         TempExileMsg = name;
 
         _ = new LateTask(() =>
@@ -548,7 +559,7 @@ class CheckForEndVotingPatch
             {
                 Logger.Error($"Error after change exiled player name: {error}", "ConfirmEjections");
             }
-        }, 4f, "Change Exiled Player Name");
+        }, 0.1f, "Change Exiled Player Name");
 
         _ = new LateTask(() =>
         {
@@ -577,6 +588,7 @@ class CheckForEndVotingPatch
             AntiBlackout.StoreExiledMessage = name;
             Logger.Info(AntiBlackout.StoreExiledMessage, "AntiBlackoutStore");
         }
+        Logger.Info($"Name: {name}", "ConfirmEjections");
     }
     public static bool CheckRole(byte id, CustomRoles role)
     {
