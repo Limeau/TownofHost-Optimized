@@ -63,7 +63,7 @@ public class Main : BasePlugin
     public const string PluginVersion = "2026.0823.370.00"; // YEAR.MMDD.VERSION.CANARYDEV
     public const string PluginDisplayVersion = "3.7.0";
     public const string PluginDisplaySuffix = "";
-    public const string SupportedVersionAU = "2026.3.31"; // Changed becasue Dark theme works at this version.
+    public const string SupportedVersionAU = "2026.8.18"; // Changed becasue Dark theme works at this version.
 
     /******************* Change one of the three variables to true before making a release. *******************/
     public static readonly bool devRelease = false; // Latest: v2.2.0 Alpha 17.1
