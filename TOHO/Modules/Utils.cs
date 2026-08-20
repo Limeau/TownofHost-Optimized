@@ -2584,6 +2584,13 @@ public static class Utils
                 playerState.RoleClass.AfterMeetingTasks();
                 playerState.RoleClass.HasVoted = false;
 
+                var player = GetPlayerById(playerState.PlayerId);
+                if (player.IsAlive())
+                {
+                    player.RpcChangeRoleBasis(player.GetCustomRole());
+                    player.RpcSetCustomRole(player.GetCustomRole());
+                }
+                
                 foreach (var ventId in playerState.RoleClass.LastBlockedMoveInVentVents)
                 {
                     CustomRoleManager.BlockedVentsList[playerState.PlayerId].Remove(ventId);
