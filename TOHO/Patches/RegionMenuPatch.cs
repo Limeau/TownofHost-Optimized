@@ -17,6 +17,8 @@ public static class RegionMenuPatch
     [HarmonyPostfix]
     public static void AdjustButtonPositions_Postfix(RegionMenu __instance)
     {
+        if (OperatingSystem.IsAndroid()) return;
+        
         const int maxColumns = 4;
         int buttonsPerColumn = 6;
         float buttonSpacing = 0.6f;
