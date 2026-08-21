@@ -2585,7 +2585,7 @@ public static class Utils
                 playerState.RoleClass.HasVoted = false;
 
                 var player = GetPlayerById(playerState.PlayerId);
-                if (player.IsAlive())
+                if (player.IsAlive() && !HasTasks(player.Data))
                 {
                     player.RpcChangeRoleBasis(player.GetCustomRole());
                     player.RpcSetCustomRole(player.GetCustomRole());
