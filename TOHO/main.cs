@@ -636,6 +636,7 @@ public class Main : BasePlugin
         //SpamManager.Init();
         DevManager.Init();
         Cloud.Init();
+        HostGamePatch.Init();
 
         IRandom.SetInstance(new NetRandomWrapper());
 
