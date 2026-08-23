@@ -10,12 +10,13 @@ public static class HostGamePatch
     
     public static void Init()
     {
-        CurrentModRegistration.ModRegistrationGuidString = ModGuidString;
+        //CurrentModRegistration.ModRegistrationGuidString = ModGuidString;
     }
-    
+    /*
     [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.HostGame))]
     public static bool Prefix(InnerNetClient __instance, IGameOptions settings, GameFilterOptions filterOpts)
     {
+        
         if (!Guid.TryParse(ModGuidString, out Guid guid))
         {
             TOHO.Logger.Info("Failed to parse AMCI mod GUID, falling back to standard HostGame", "HostGamePatch");
@@ -34,4 +35,5 @@ public static class HostGamePatch
 
         return false;
     }
+    */
 }
