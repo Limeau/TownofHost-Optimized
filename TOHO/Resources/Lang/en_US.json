@@ -5459,5 +5459,9 @@
 
   "Priest": "Priest",
   "PriestInfo": "Grant Holy Power",
-  "PriestInfoLong": "The priest can use the kill button on players to give them holy power. If the player is a Crewmate, the player will not be able to be ejected the next meeting. If the player is an Evil, the player's kill cooldown will be permanently increased."
+  "PriestInfoLong": "The priest can use the kill button on players to give them holy power. If the player is a Crewmate, the player will not be able to be ejected the next meeting. If the player is an Evil, the player's kill cooldown will be permanently increased.",
+
+  "Spider": "Spider",
+  "SpiderInfo": "Wrap up players in webs",
+  "SpiderInfoLong": "The Spider can mark one player to set their speed to 0. If anyone comes near the marked player, their movement will also be set to 0. This web of frozen players will grow until the Spider kills one of them, and in this case, all of the players in the web will die."
 }

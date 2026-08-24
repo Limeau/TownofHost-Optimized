@@ -253,6 +253,7 @@ public static class CustomRolesHelper
             CustomRoles.Massacre or
             CustomRoles.Rulebook or
             CustomRoles.Volatile or
+            CustomRoles.Spider or
             CustomRoles.Mutant or
             CustomRoles.Blade or
             CustomRoles.Beholder or
@@ -1596,6 +1597,7 @@ public static class CustomRolesHelper
            CustomRoles.Rulebook => CountTypes.Rulebook,
            CustomRoles.Massacre => CountTypes.Massacre,
            CustomRoles.Volatile => CountTypes.Volatile,
+           CustomRoles.Spider => CountTypes.Spider,
            CustomRoles.Godzilla => CountTypes.Godzilla,
            CustomRoles.Wight => CountTypes.Wight,
            CustomRoles.Undead => CountTypes.Wight,
@@ -1688,6 +1690,7 @@ public static class CustomRolesHelper
             CustomRoles.Massacre => CustomWinner.Massacre,
             CustomRoles.Rulebook => CustomWinner.Rulebook,
             CustomRoles.Volatile => CustomWinner.Volatile,
+            CustomRoles.Spider => CustomWinner.Spider,
             CustomRoles.Gunslinger => CustomWinner.Gunslinger,
             CustomRoles.Godzilla => CustomWinner.Godzilla,
             CustomRoles.Wight => CustomWinner.Wight,
@@ -1754,6 +1757,7 @@ public static class CustomRolesHelper
             CountTypes.Massacre => CustomRoles.Massacre,
             CountTypes.Rulebook => CustomRoles.Rulebook,
             CountTypes.Volatile => CustomRoles.Volatile,
+            CountTypes.Spider => CustomRoles.Spider,
             CountTypes.Godzilla => CustomRoles.Godzilla,
             CountTypes.Wight => CustomRoles.Wight,
             CountTypes.Slaad => CustomRoles.Slaad,
@@ -1863,6 +1867,7 @@ public enum CountTypes
     Massacre,
     Rulebook,
     Volatile,
+    Spider,
     Mutant,
     Blade,
     Beholder,
