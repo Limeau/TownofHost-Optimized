@@ -55,6 +55,8 @@ internal class Priest : RoleBase
             target.MarkDirtySettings();
         }
         
+        killer.RpcGuardAndKill();
+        
         return false;
     }
 

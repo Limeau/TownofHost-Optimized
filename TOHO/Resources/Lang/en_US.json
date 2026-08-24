@@ -5458,6 +5458,6 @@
   "SpeedIncrease": "Speed Increase",
 
   "Priest": "Priest",
-  "PriestInfo": "Priest",
+  "PriestInfo": "Grant Holy Power",
   "PriestInfoLong": "The priest can use the kill button on players to give them holy power. If the player is a Crewmate, the player will not be able to be ejected the next meeting. If the player is an Evil, the player's kill cooldown will be permanently increased."
 }
