@@ -12,7 +12,6 @@ internal class RebelLeader : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
     public override string IdeaRole => "scary_trickster";
 
     //==================================================================\\
