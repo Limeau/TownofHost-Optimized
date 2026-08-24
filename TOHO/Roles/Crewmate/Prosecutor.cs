@@ -43,6 +43,7 @@ internal class Prosecutor : RoleBase
     public override bool CheckVote(PlayerControl voter, PlayerControl target)
     {
         if (voter.GetAbilityUseLimit() <= 0) return true;
+        voter.RpcRemoveAbilityUse();
         if (target)
         {
             foreach (var player in Main.AllAlivePlayerControls)
