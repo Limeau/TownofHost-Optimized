@@ -17,6 +17,7 @@ internal class Priest : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.CrewmateSupport;
     public override bool TOHORole => true;
+    public override bool NewRole => true;
 
     //==================================================================\\
     public static OptionItem AbilityUses;
