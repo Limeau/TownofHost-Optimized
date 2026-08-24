@@ -940,6 +940,8 @@ static class ExtendedMeetingHud
                 {
                     Evader.CheckExile(ps.VotedForId, ref VoteNum);
                 }
+                
+                if (target != null && Priest.PlayerList.Contains(target)) VoteNum = 0;
 
                 if (CheckForEndVotingPatch.CheckTeam(ps.PlayerId, Custom_Team.Impostor) &&
                     CustomRoles.Peacemaker.RoleExist()) VoteNum = 0;

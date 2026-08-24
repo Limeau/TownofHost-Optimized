@@ -5455,5 +5455,9 @@
   "WeepingAngel": "Weeping Angel",
   "WeepingAngelInfo": "Blind everyone and kill players fast!",
   "WeepingAngelInfoLong": "The Weeping Angel can use Unshift to blind everyone for a very short amount of time. During this time, the Weeping Angel is extremely fast. When the Weeping Angel touches anyone during this time, the player dies. The Weeping Angel cannot kill normally.",
-  "SpeedIncrease": "Speed Increase"
+  "SpeedIncrease": "Speed Increase",
+
+  "Priest": "Priest",
+  "PriestInfo": "Priest",
+  "PriestInfoLong": "The priest can use the kill button on players to give them holy power. If the player is a Crewmate, the player will not be able to be ejected the next meeting. If the player is an Evil, the player's kill cooldown will be permanently increased."
 }

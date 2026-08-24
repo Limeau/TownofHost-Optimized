@@ -901,6 +901,7 @@ public enum CustomRoles
     Phantasm,
     Plumber,
     President,
+    Priest,
     Prosecutor,
     Protector,
     Protester,
