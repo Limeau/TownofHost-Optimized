@@ -159,8 +159,15 @@ static class ExtendedPlayerControl
                 player.Data.IsDead = false;
                 Utils.SendGameData();
             }
+            if (AmongUsClient.Instance.AmClient)
+            {
+                player.Visible = true;
+                player.SetRole(customRole.GetVNRole().GetRoleTypes(), true);
+            }
             
             Utils.NotifyRoles();
+            Utils.SyncAllSettings();
+            foreach (var everyone in Main.AllAlivePlayerControls) Utils.SyncGeneralOptions(everyone);
             Utils.NotifyEveryoneAsync();
         }
         catch (Exception e)
