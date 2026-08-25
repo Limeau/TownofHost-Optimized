@@ -1205,6 +1205,7 @@ public enum CustomRoles
     Recruit,
     Seer,
     Shaded,
+    Shuffle,
     Silent,
     Sleuth,
     Sloth,

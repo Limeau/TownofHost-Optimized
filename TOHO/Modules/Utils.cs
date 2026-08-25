@@ -2618,6 +2618,7 @@ public static class Utils
             if (Windy.IsEnable) Windy.AfterMeetingTasks();
             if (Web.IsEnable) Web.AfterMeetingTasks();
             if (Distracted.IsEnable) Distracted.AfterMeetingTasks();
+            if (Shuffle.IsEnable) Shuffle.AfterMeetingTasks();
             if (Burst.IsEnable) Burst.AfterMeetingTasks();
             if (Forgetful.IsEnable) Forgetful.AfterMeetingTasks();
             if (LabRat.IsEnable) LabRat.AfterMeetingTasks();
