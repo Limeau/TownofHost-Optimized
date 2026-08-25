@@ -169,6 +169,11 @@ static class ExtendedPlayerControl
             Utils.SyncAllSettings();
             foreach (var everyone in Main.AllAlivePlayerControls) Utils.SyncGeneralOptions(everyone);
             Utils.NotifyEveryoneAsync();
+            
+            if (!Main.PlayerStates.TryGetValue(player.PlayerId, out var state)) return;
+            state.IsDead = false;
+            
+            player.Revive();
         }
         catch (Exception e)
         {
