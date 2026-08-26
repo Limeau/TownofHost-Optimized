@@ -5466,5 +5466,10 @@
   "SpiderInfoLong": "The Spider can mark one player to set their speed to 0. If anyone comes near the marked player, their movement will also be set to 0. This web of frozen players will grow until the Spider kills one of them, and in this case, all of the players in the web will die.",
 
   "ShuffleInfo": "Your modifiers change!",
-  "ShuffleInfoLong": "The Shuffle will gain a random extra modifier that is enabled. After a meeting, this modifier will be changed."
+  "ShuffleInfoLong": "The Shuffle will gain a random extra modifier that is enabled. After a meeting, this modifier will be changed.",
+
+  "Telephone": "Telephone",
+  "TelephoneInfo": "Pass the Telephone around to players!",
+  "TelephoneInfoLong": "The Telephone can use the kill button to tell a player to go find another random alive player. If the target does not find the random player, they will die. If the target finds the random player, the random player will then repeat the process. Basically, it’s a game of Telephone, and whoever breaks the chain dies. If the chain is not broken, the Telephone dies. If a meeting is called, no one dies.",
+  "TelephoneTimer": "Time to find the player"
 }

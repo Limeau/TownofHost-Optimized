@@ -2985,7 +2985,7 @@ public static class Utils
                 start = new Color32(255, 255, 190, byte.MaxValue);
                 end = new Color32(210, 188, 37, byte.MaxValue);
                 break;
-            case 15: 
+            case 15:
                 start = new Color32(131, 151, 167, byte.MaxValue);
                 end = new Color32(70, 86, 100, byte.MaxValue);
                 break;
@@ -3011,6 +3011,50 @@ public static class Utils
         }
 
         return sb.ToString();
+    }
+
+    public static string ColorText(int ColorId)
+    {
+        switch (ColorId)
+        {
+            case 0:
+                return Utils.ColorTOHOx(new Color32(215, 30, 34, byte.MaxValue));
+            case 1:
+                return Utils.ColorTOHOx(new Color32(29, 60, 233, byte.MaxValue));
+            case 2:
+                return Utils.ColorTOHOx(new Color32(27, 145, 62, byte.MaxValue));
+            case 3:
+                return Utils.ColorTOHOx(new Color32(255, 9, 212, byte.MaxValue));
+            case 4:
+                return Utils.ColorTOHOx(new Color32(255, 141, 28, byte.MaxValue));
+            case 5:
+                return Utils.ColorTOHOx(new Color32(195, 136, 24, byte.MaxValue));
+            case 6:
+                return Utils.ColorTOHOx(new Color32(74, 86, 94, byte.MaxValue));
+            case 7:
+                return Utils.ColorTOHOx(new Color32(233, 247, 255, byte.MaxValue));
+            case 8:
+                return Utils.ColorTOHOx(new Color32(120, 62, 210, byte.MaxValue));
+            case 9:
+                return Utils.ColorTOHOx(new Color32(128, 88, 45, byte.MaxValue));
+            case 10:
+                return Utils.ColorTOHOx(new Color32(68, 255, 247, byte.MaxValue));
+            case 11:
+                return Utils.ColorTOHOx(new Color32(91, 254, 75, byte.MaxValue));
+            case 12:
+                return Utils.ColorTOHOx(new Color32(108, 43, 61, byte.MaxValue));
+            case 13:
+                return Utils.ColorTOHOx(new Color32(255, 214, 236, byte.MaxValue));
+            case 14:
+                return Utils.ColorTOHOx(new Color32(255, 255, 190, byte.MaxValue));
+            case 15:
+                return Utils.ColorTOHOx(new Color32(131, 151, 167, byte.MaxValue));
+            case 16:
+                return Utils.ColorTOHOx(new Color32(159, 153, 137, byte.MaxValue));
+            case 17:
+                return Utils.ColorTOHOx(new Color32(236, 117, 120, byte.MaxValue));
+        }
+        return string.Empty; 
     }
     
     public static void SetChatVisibleSpecific(this PlayerControl player)
