@@ -173,6 +173,7 @@ public static class Options
     }
 
     public static OptionItem BastionAbilityUseGainWithEachTaskCompleted;
+    public static OptionItem LearnerAbilityUseGainWithEachTaskCompleted;
     public static OptionItem OverthinkerAbilityUseGainWithEachTaskCompleted;
     public static OptionItem ChameleonAbilityUseGainWithEachTaskCompleted;
     public static OptionItem ContaminatorAbilityUseGainWithEachTaskCompleted;

@@ -5471,5 +5471,9 @@
   "Telephone": "Telephone",
   "TelephoneInfo": "Pass the Telephone around to players!",
   "TelephoneInfoLong": "The Telephone can use the kill button to tell a player to go find another random alive player. If the target does not find the random player, they will die. If the target finds the random player, the random player will then repeat the process. Basically, it’s a game of Telephone, and whoever breaks the chain dies. If the chain is not broken, the Telephone dies. If a meeting is called, no one dies.",
-  "TelephoneTimer": "Time to find the player"
+  "TelephoneTimer": "Time to find the player",
+
+  "Learner": "Learner",
+  "LearnerInfo": "Learn who kills players",
+  "LearnerInfoLong": "As the Learner, vote for a player to check them for the next round. If they kill in the next round, their name will show as red to you. Vote skip to cancel your ability, then you can vote normally."
 }

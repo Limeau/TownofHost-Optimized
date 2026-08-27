@@ -877,6 +877,7 @@ public enum CustomRoles
     Keeper,
     Knight,
     LazyGuy,
+    Learner,
     Lighter,
     Lookout,
     Mage,
