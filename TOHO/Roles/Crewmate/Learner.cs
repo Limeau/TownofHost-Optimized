@@ -48,7 +48,12 @@ internal class Learner : RoleBase
 
     public override bool CheckMurderOnOthersTarget(PlayerControl killer, PlayerControl target)
     {
-        if (killer == Suspect) Offenders.Add(killer);
+        if (killer == Suspect)
+        {
+            Offenders.Add(killer);
+            Utils.NotifyRoles();
+            Logger.Info("Calling", "Learner");
+        }
         return false;
     }
 
@@ -59,6 +64,7 @@ internal class Learner : RoleBase
         voter.RpcRemoveAbilityUse();
         IsVoted = true;
         Suspect = target;
+        MeetingHud.Instance.RpcClearVote(voter.PlayerId);
         return false;
     }
 
