@@ -2605,7 +2605,7 @@ public static class Utils
             //Set kill timer
             foreach (var player in Main.AllAlivePlayerControls)
             {
-                player.SetKillTimer();
+                player.SetKillTimer(Main.AllPlayerKillCooldown[player.PlayerId]);
 
                 if (player.Is(CustomRoles.Prohibited))
                 {
