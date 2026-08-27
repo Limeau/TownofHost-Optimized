@@ -529,7 +529,7 @@ public static class GuessManager
                 playerVoteArea.UnsetVote();
                 var voteAreaPlayer = playerVoteArea.PlayerId.Value.GetPlayer();
                 if (!voteAreaPlayer.AmOwner) continue;
-                meetingHud.ClearVote(playerVoteArea.PlayerId, false);
+                meetingHud.RpcClearVote(playerVoteArea.PlayerId);
             }
             Swapper.CheckSwapperTarget(pc.PlayerId);
 
@@ -583,7 +583,7 @@ public static class GuessManager
             playerVoteArea.UnsetVote();
             var voteAreaPlayer = playerVoteArea.PlayerId.Value.GetPlayer();
             if (!voteAreaPlayer.AmOwner) continue;
-            meetingHud.ClearVote(playerVoteArea.PlayerId, false);
+            meetingHud.RpcClearVote(playerVoteArea.PlayerId);
         }
         hudManager.SetHudActive(false);
         _ = new LateTask(() => hudManager.SetHudActive(false), 0.3f, "SetHudActive in ClientGuess", shoudLog: false);

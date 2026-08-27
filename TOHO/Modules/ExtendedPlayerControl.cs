@@ -456,7 +456,7 @@ static class ExtendedPlayerControl
             }
             if (AmongUsClient.Instance.ClientId == clientId)
             {
-                meeting.ClearVote(meeting.PlayerButtonPrefab.PlayerId, false);
+                meeting.RpcClearVote(meeting.PlayerButtonPrefab.PlayerId);
                 return;
             }
             var writer = CustomRpcSender.Create("Clear Vote", SendOption.Reliable);
