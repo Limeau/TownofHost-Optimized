@@ -25,7 +25,7 @@ class HudManagerUpdatePatch
     public static GameObject TempLowerInfoText;
     public static void Postfix(HudManager __instance)
     {
-        if (!GameStates.IsModHost || __instance == null) return;
+        if (__instance == null) return;
 
         var player = PlayerControl.LocalPlayer;
         if (player == null) return;
