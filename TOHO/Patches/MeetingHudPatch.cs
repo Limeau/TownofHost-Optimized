@@ -863,6 +863,16 @@ static class ExtendedMeetingHud
         {
             if (ps == null) continue;
 
+            var plc = GetPlayerById(ps.PlayerId);
+            if (plc == null)
+            {
+                Logger.Info(
+                    $"Skipping vote from invalid/disconnected player: {ps.PlayerId}",
+                    "Vote"
+                );
+                continue;
+            }
+            
             // whether this player is voted for in the player panel
             if (ps.VotedForId.Value is not 252 and not byte.MaxValue and not 254)
             {
