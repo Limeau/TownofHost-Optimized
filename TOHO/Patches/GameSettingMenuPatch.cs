@@ -826,7 +826,7 @@ CustomRoles.Flash
                 }));
             }
             var backgroundcs2 = cs2.AddComponent<SpriteRenderer>();
-            backgroundcs2.sprite = Utils.LoadSprite("TOHO.Resources.Images.SharksAndMinnows.png", 150f);
+            backgroundcs2.sprite = Utils.LoadSprite("TOHO.Resources.Images.SharksAndMinnows.png", 50f);
             backgroundcs2.size = new Vector2(4.48f, 5.23f);
             cs2.transform.localPosition = new Vector3(0.8f, -1f, 0f);
             
