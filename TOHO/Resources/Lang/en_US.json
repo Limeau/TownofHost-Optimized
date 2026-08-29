@@ -1299,6 +1299,7 @@
   "EnableCustomSoundEffect": "Enable Custom Sound Effects",
   "EnableCustomDecorations": "Enable Custom Map Decorations",
   "SwitchVanilla": "Switch Vanilla",
+  "HideRulesButton": "Hide Rules Button",
   "UnlockFPS": "Unlock FPS",
   "ForceOwnLanguage": "Force mod to use your language if possible",
   "ForceOwnLanguageRoleName": "Force role names in your language if possible",
@@ -5366,7 +5367,7 @@
 
   "Dragon": "Dragon",
   "DragonInfo": "Set players on fire!",
-  "DragonInfoLong": "Use the kill button to set a player on fire. They will be aware that they are on fire. After a certain amount of time, the player will die. The fire can spread among players, when a player gets close to a player that is on fire, they will also catch on fire.\n",
+  "DragonInfoLong": "Use the kill button to set a player on fire. They will be aware that they are on fire. After a certain amount of time, the player will die. The fire can spread among players, when a player gets close to a player that is on fire, they will also catch on fire.",
   "DragonTimeBeforeKill": "Time before players that are on fire die",
   "DragonRadius": "Radius for others to catch on fire",
   "DragonKillText": "Burn",
@@ -5459,5 +5460,21 @@
 
   "Priest": "Priest",
   "PriestInfo": "Grant Holy Power",
-  "PriestInfoLong": "The priest can use the kill button on players to give them holy power. If the player is a Crewmate, the player will not be able to be ejected the next meeting. If the player is an Evil, the player's kill cooldown will be permanently increased."
+  "PriestInfoLong": "The priest can use the kill button on players to give them holy power. If the player is a Crewmate, the player will not be able to be ejected the next meeting. If the player is an Evil, the player's kill cooldown will be permanently increased.",
+
+  "Spider": "Spider",
+  "SpiderInfo": "Wrap up players in webs",
+  "SpiderInfoLong": "The Spider can mark one player to set their speed to 0. If anyone comes near the marked player, their movement will also be set to 0. This web of frozen players will grow until the Spider kills one of them, and in this case, all of the players in the web will die.",
+
+  "ShuffleInfo": "Your modifiers change!",
+  "ShuffleInfoLong": "The Shuffle will gain a random extra modifier that is enabled. After a meeting, this modifier will be changed.",
+
+  "Telephone": "Telephone",
+  "TelephoneInfo": "Pass the Telephone around to players!",
+  "TelephoneInfoLong": "The Telephone can use the kill button to tell a player to go find another random alive player. If the target does not find the random player, they will die. If the target finds the random player, the random player will then repeat the process. Basically, it’s a game of Telephone, and whoever breaks the chain dies. If the chain is not broken, the Telephone dies. If a meeting is called, no one dies.",
+  "TelephoneTimer": "Time to find the player",
+
+  "Learner": "Learner",
+  "LearnerInfo": "Learn who kills players",
+  "LearnerInfoLong": "As the Learner, vote for a player to check them for the next round. If they kill in the next round, their name will show as red to you. Vote skip to cancel your ability, then you can vote normally."
 }

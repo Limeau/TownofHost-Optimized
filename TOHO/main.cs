@@ -118,6 +118,7 @@ public class Main : BasePlugin
     public static ConfigEntry<bool> EnableCustomSoundEffect { get; private set; }
     public static ConfigEntry<bool> EnableCustomDecorations { get; private set; }
     public static ConfigEntry<bool> SwitchVanilla { get; private set; }
+    public static ConfigEntry<bool> HideRulesButton { get; private set; }
 
     // Debug
     public static ConfigEntry<bool> VersionCheat { get; private set; }
@@ -557,6 +558,7 @@ public class Main : BasePlugin
         EnableCustomSoundEffect = Config.Bind("Client Options", "EnableCustomSoundEffect", true);
         EnableCustomDecorations = Config.Bind("Client Options", "EnableCustomDecorations", true);
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
+        HideRulesButton = Config.Bind("Client Options", "HideRulesButton", false);
 
         // Debug
         VersionCheat = Config.Bind("Client Options", "VersionCheat", false);
@@ -806,6 +808,7 @@ public enum CustomRoles
     Sun,
     YinYanger,
     Swooper,
+    Telephone,
     Threat,
     TimeThief,
     Trapmaker,
@@ -876,6 +879,7 @@ public enum CustomRoles
     Keeper,
     Knight,
     LazyGuy,
+    Learner,
     Lighter,
     Lookout,
     Mage,
@@ -1041,6 +1045,7 @@ public enum CustomRoles
     Sorcerer,
     SoulCollector,
     Specter,
+    Spider,
     Spiritcaller,
     Stalker,
     Sunnyboy,
@@ -1204,6 +1209,7 @@ public enum CustomRoles
     Recruit,
     Seer,
     Shaded,
+    Shuffle,
     Silent,
     Sleuth,
     Sloth,
@@ -1327,6 +1333,7 @@ public enum CustomWinner
     Rulebook = CustomRoles.Rulebook,
     Predator = CustomRoles.Predator,
     Volatile = CustomRoles.Volatile,
+    Spider = CustomRoles.Spider,
     Gunslinger = CustomRoles.Gunslinger,
     Mutant = CustomRoles.Mutant,
     Godzilla = CustomRoles.Godzilla,
