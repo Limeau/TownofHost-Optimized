@@ -13,7 +13,6 @@ internal class Spider : RoleBase
     public override CustomRoles ThisRoleBase => CustomRoles.Impostor;
     public override Custom_RoleType ThisRoleType => Custom_RoleType.NeutralKilling;
     public override bool TOHORole => true;
-    public override bool NewRole => true;
 
     //==================================================================\\
     public static bool IsWebActive = false;
