@@ -22,6 +22,7 @@ public static class OptionsMenuBehaviourStartPatch
     private static ClientOptionItem EnableCustomSoundEffect;
     private static ClientOptionItem EnableCustomDecorations;
     private static ClientOptionItem SwitchVanilla;
+    private static ClientOptionItem HideRulesButton;
     private static ThemeOptionItem TOI;
 
 #if DEBUG
@@ -168,6 +169,10 @@ public static class OptionsMenuBehaviourStartPatch
                 Main.Instance.Unload();
             }
         }
+        if (HideRulesButton == null || HideRulesButton.ToggleButton == null)
+        {
+            HideRulesButton = ClientOptionItem.Create("HideRulesButton", Main.HideRulesButton, __instance);
+        }
         
         if ((TOI == null || TOI.modOptionsButton == null))
         {
@@ -191,6 +196,14 @@ public static class OptionsMenuBehaviourStartPatch
             }
         }
 #endif
+
+        // All ClientOptionItem.Create() calls above only actually build a
+        // fresh toggle the first time this menu instance opens (they're
+        // each guarded by "== null" checks), but ShowPage() needs to run
+        // every time regardless — it's what applies visibility/position
+        // for whichever page is currently selected, and it's cheap even
+        // when nothing changed.
+        ClientOptionItem.RefreshPaging();
     }
 }
 [HarmonyPatch(typeof(OptionsMenuBehaviour), nameof(OptionsMenuBehaviour.Close))]

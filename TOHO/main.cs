@@ -118,6 +118,7 @@ public class Main : BasePlugin
     public static ConfigEntry<bool> EnableCustomSoundEffect { get; private set; }
     public static ConfigEntry<bool> EnableCustomDecorations { get; private set; }
     public static ConfigEntry<bool> SwitchVanilla { get; private set; }
+    public static ConfigEntry<bool> HideRulesButton { get; private set; }
 
     // Debug
     public static ConfigEntry<bool> VersionCheat { get; private set; }
@@ -557,6 +558,7 @@ public class Main : BasePlugin
         EnableCustomSoundEffect = Config.Bind("Client Options", "EnableCustomSoundEffect", true);
         EnableCustomDecorations = Config.Bind("Client Options", "EnableCustomDecorations", true);
         SwitchVanilla = Config.Bind("Client Options", "SwitchVanilla", false);
+        HideRulesButton = Config.Bind("Client Options", "HideRulesButton", false);
 
         // Debug
         VersionCheat = Config.Bind("Client Options", "VersionCheat", false);
