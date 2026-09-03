@@ -943,7 +943,8 @@ public enum CustomRoles
     Witness,
 
     //Neutral Ghost
-
+    Banshee,
+    
     //Neutral
     Abzorbaloff,
     Agitater,
@@ -1362,6 +1363,7 @@ public enum CustomWinner
     Gastlighter = CustomRoles.Gastlighter,
     Minnows = CustomRoles.Minnow,
     Sharks = CustomRoles.Shark,
+    Banshee = CustomRoles.Banshee,
 }
 [Obfuscation(Exclude = true)]
 public enum AdditionalWinners

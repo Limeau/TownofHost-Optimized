@@ -5476,5 +5476,11 @@
 
   "Learner": "Learner",
   "LearnerInfo": "Learn who kills players",
-  "LearnerInfoLong": "As the Learner, vote for a player to check them for the next round. If they kill in the next round, their name will show as red to you. Vote skip to cancel your ability, then you can vote normally."
+  "LearnerInfoLong": "As the Learner, vote for a player to check them for the next round. If they kill in the next round, their name will show as red to you. Vote skip to cancel your ability, then you can vote normally.",
+
+  "Banshee": "Banshee",
+  "BansheeInfo": "Win at the end while dead",
+  "BansheeInfoLong": "When the Banshee dies, after a certain amount of meetings, the Banshee will win the game alone. The players will be aware of this.",
+  "BansheeMeetingsToWin": "Meetings needed to win",
+  "BansheeGoingToWin": "The Banshee is dead, and will win in {0} meetings if no one else wins before then!"
 }
