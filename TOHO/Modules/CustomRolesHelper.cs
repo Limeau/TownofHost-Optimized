@@ -312,11 +312,15 @@ public static class CustomRolesHelper
             //FFA
             CustomRoles.Killer) return true;
 
-        return role.IsNK() || role.IsNonNK() || role.IsNA() || role.IsMadmate();
+        return role.IsNK() || role.IsNGhost() || role.IsNonNK() || role.IsNA() || role.IsMadmate();
     }
     public static bool IsNK(this CustomRoles role)
     {
         return role.GetStaticRoleClass().ThisRoleType is Custom_RoleType.NeutralKilling;
+    }
+    public static bool IsNGhost(this CustomRoles role)
+    {
+        return role.GetStaticRoleClass().ThisRoleType is Custom_RoleType.NeutralGhosts;
     }
     public static bool IsNonNK(this CustomRoles role) // ROLE ASSIGNING, NOT NEUTRAL TYPE
     {
