@@ -1056,6 +1056,13 @@ static class ExtendedPlayerControl
         Logger.Info($" {vent.transform.position}", "RpcVentTeleportPosition");
         player.RpcTeleport(new Vector2(vent.transform.position.x, vent.transform.position.y + 0.3636f));
     }
+    
+    public static Vent GetRandomVent()
+    {
+        var vents = ShipStatus.Instance.AllVents;
+        var vent = vents.RandomElement();
+        return vent;
+    }
 
     public static ClientData GetClient(this PlayerControl player)
     {

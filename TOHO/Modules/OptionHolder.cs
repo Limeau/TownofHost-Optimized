@@ -487,6 +487,8 @@ public static class Options
     public static OptionItem TruthPotion;
     public static OptionItem ColorChangeCoolDown;
     public static OptionItem AnomalyMeetingPCT;
+
+    public static OptionItem PowerUpChance;
     // public static OptionItem EnableWills;
 
 
@@ -2216,7 +2218,10 @@ public static class Options
         EnablePowerUps = BooleanOptionItem.Create(61000, "EnablePowerUps", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(29, 156, 122, byte.MaxValue));
-
+        PowerUpChance = IntegerOptionItem.Create(61100, "PowerUpChance", new(0, 20, 1), 0, TabGroup.ModSettings, false)
+            .SetValueFormat(OptionFormat.Percent)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetParent(EnablePowerUps);
 
         #endregion
 

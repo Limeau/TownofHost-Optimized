@@ -2137,6 +2137,7 @@ public static class Utils
                 SelfSuffix.Append(CustomRoleManager.GetSuffixOthers(seer, seer, isForMeeting: isForMeeting));
 
                 SelfSuffix.Append(Radar.GetPlayerArrow(seer, seer, isForMeeting: isForMeeting));
+                SelfSuffix.Append(PowerUpManager.GetArrow(seer));
                 SelfSuffix.Append(Spurt.GetSuffix(seer, isformeeting: isForMeeting));
 
 
@@ -2594,6 +2595,7 @@ public static class Utils
 
             //Anomalies
             AnomalyManager.AnomalyChance();
+            PowerUpManager.AfterMeetingTasks();
 
 
             //Set kill timer
