@@ -1279,6 +1279,8 @@ class FixedUpdateInNormalGamePatch
                         
                         if (Options.EnableAnomalies.GetBool())
                             AnomalyManager.OnFixedUpdate();
+                        if (Options.EnablePowerUps.GetBool())
+                            PowerUpManager.OnFixedUpdate();
                     }
                 }
             }

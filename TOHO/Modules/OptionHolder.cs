@@ -477,6 +477,7 @@ public static class Options
 
     // Modifiers
     public static OptionItem EnableAnomalies;
+    public static OptionItem EnablePowerUps;
     public static OptionItem ClownFest;
     public static OptionItem Retrial;
     public static OptionItem NewYear;
@@ -2211,10 +2212,10 @@ public static class Options
             .SetValueFormat(OptionFormat.Percent)
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(EnableAnomalies);
-        /* EnableWills = BooleanOptionItem.Create(60970, "EnableWills", false, TabGroup.ModSettings, false)
+        
+        EnablePowerUps = BooleanOptionItem.Create(61000, "EnablePowerUps", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
-            .SetColor(new Color32(3, 219, 252, byte.MaxValue));
-        */
+            .SetColor(new Color32(29, 156, 122, byte.MaxValue));
 
 
         #endregion

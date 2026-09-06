@@ -5483,5 +5483,7 @@
   "BansheeInfo": "Win at the end while dead",
   "BansheeInfoLong": "When the Banshee dies, after a certain amount of meetings, the Banshee will win the game alone. The players will be aware of this.",
   "BansheeMeetingsToWin": "Meetings needed to win",
-  "BansheeGoingToWin": "The Banshee is dead, and will win in {0} meetings if no one else wins before then!"
+  "BansheeGoingToWin": "The Banshee is dead, and will win in {0} meetings if no one else wins before then!",
+  
+  "EnablePowerUps": "Enable Power Ups"
 }
