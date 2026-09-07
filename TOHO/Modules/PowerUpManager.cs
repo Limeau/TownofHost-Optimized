@@ -20,7 +20,7 @@ internal class PowerUpManager
         ClaimedPowerUps.Clear();
         CanAndWillSpawn = false;
         if (!EnablePowerUps.GetBool()) return;
-        foreach (var player in Main.AllAlivePlayerControls)
+        foreach (var player in Main.AllPlayerControls)
         {
             player.RpcSetPet("pet_Crewmate");
             UnclaimedPowerUps[player] = PowerUp.Create(PowerUpType.Null, player);
@@ -62,7 +62,14 @@ internal class PowerUpManager
             if (UnclaimedPowerUps[player].PowerUpType != PowerUpType.Null || ClaimedPowerUps[player].PowerUpType != PowerUpType.Null) inactiveList.Add(player);
         }
         foreach (var item in inactiveList) activeList.Remove(item);
-        var type = Enum.GetValues<PowerUpType>().Where(x => x != PowerUpType.Null).RandomElement();
+        
+        List<PowerUpType> typeList = [];
+        if (EnableSpeedBoost.GetBool()) typeList.Add(PowerUpType.SpeedBoost);
+        if (EnableReduceCooldown.GetBool()) typeList.Add(PowerUpType.ReduceCooldown);
+        if (EnableAbilityIncrease.GetBool()) typeList.Add(PowerUpType.AbilityIncrease);
+        if (!typeList.Any()) return;
+        var type = typeList.RandomElement();
+        
         var pc = activeList.RandomElement();
         UnclaimedPowerUps[pc] = PowerUp.Create(type, pc);
         var powerUp = UnclaimedPowerUps[pc];
@@ -131,6 +138,14 @@ public class PowerUp
                     pc.MarkDirtySettings();
                 }, 10f);
                 break;
+            case PowerUpType.ReduceCooldown:
+                pc.Notify("You have had your kill timer reduced by 5 seconds");
+                pc.UpdateKillCooldown(-5f);
+                break;
+            case PowerUpType.AbilityIncrease:
+                pc.Notify("You have gained 1 ability use");
+                pc.RpcIncreaseAbilityUseLimitBy(1);
+                break;
         }
         PowerUpManager.ClaimedPowerUps[pc] = Create(PowerUpType.Null, pc);
     }
@@ -140,4 +155,6 @@ public enum PowerUpType
 {
     Null,
     SpeedBoost,
+    ReduceCooldown,
+    AbilityIncrease
 }

@@ -489,7 +489,9 @@ public static class Options
     public static OptionItem AnomalyMeetingPCT;
 
     public static OptionItem PowerUpChance;
-    // public static OptionItem EnableWills;
+    public static OptionItem EnableSpeedBoost;
+    public static OptionItem EnableReduceCooldown;
+    public static OptionItem EnableAbilityIncrease;
 
 
     // ------------ Task Management Tab ------------
@@ -2218,8 +2220,17 @@ public static class Options
         EnablePowerUps = BooleanOptionItem.Create(61000, "EnablePowerUps", false, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetColor(new Color32(29, 156, 122, byte.MaxValue));
-        PowerUpChance = IntegerOptionItem.Create(61100, "PowerUpChance", new(0, 20, 1), 0, TabGroup.ModSettings, false)
+        PowerUpChance = IntegerOptionItem.Create(61010, "PowerUpChance", new(0, 20, 1), 0, TabGroup.ModSettings, false)
             .SetValueFormat(OptionFormat.Percent)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetParent(EnablePowerUps);
+        EnableSpeedBoost = BooleanOptionItem.Create(61020, "EnableSpeedBoost", true, TabGroup.ModSettings, false)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetParent(EnablePowerUps);
+        EnableReduceCooldown = BooleanOptionItem.Create(61030, "EnableReduceCooldown", true, TabGroup.ModSettings, false)
+            .SetGameMode(CustomGameMode.Standard)
+            .SetParent(EnablePowerUps);
+        EnableAbilityIncrease = BooleanOptionItem.Create(61040, "EnableAbilityIncrease", true, TabGroup.ModSettings, false)
             .SetGameMode(CustomGameMode.Standard)
             .SetParent(EnablePowerUps);
 

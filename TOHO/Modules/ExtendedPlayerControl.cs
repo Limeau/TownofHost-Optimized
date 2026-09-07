@@ -604,6 +604,17 @@ static class ExtendedPlayerControl
 
         if (!fromSetKCD) killer.SetKillTimer(half: true);
     }
+
+    public static void UpdateKillCooldown(this PlayerControl player, float time)
+    {
+        if (player == null) return;
+
+        if (!player.HasImpKillButton(considerVanillaShift: true)) return;
+        if (player.HasImpKillButton(false) && !player.CanUseKillButton()) return;
+        var timer = player.GetKillTimer();
+        player.SetKillTimer(timer + time);
+        player.SyncSettings();
+    }
     public static void SetKillCooldown(this PlayerControl player, float time = -1f, PlayerControl target = null, bool forceAnime = false)
     {
         if (player == null) return;

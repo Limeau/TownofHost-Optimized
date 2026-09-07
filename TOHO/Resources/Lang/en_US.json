@@ -5487,5 +5487,10 @@
   
   "EnablePowerUps": "Enable Power Ups",
   "PowerUpChance": "Power Up Chance",
-  "SpeedBoost": "Speed Boost"
+  "SpeedBoost": "Speed Boost",
+  "ReduceCooldown": "Reduce Kill Timer",
+  "AbilityIncrease": "Ability Increase",
+  "EnableSpeedBoost": "Enable Speed Boost",
+  "EnableReduceCooldown": "Enable Reduce Kill Timer",
+  "EnableAbilityIncrease": "Enable Ability Increase"
 }
