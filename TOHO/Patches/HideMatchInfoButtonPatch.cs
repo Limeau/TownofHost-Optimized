@@ -36,7 +36,7 @@ internal static class HideMatchInfoButton_HudManager_Update_Patch
         var button = __instance.MatchInfoButton;
         if (button == null) return;
 
-        var shouldBeVisible = !Main.HideRulesButton.Value;
+        var shouldBeVisible = GameStates.IsInGame;
         if (button.gameObject.activeSelf != shouldBeVisible)
             button.gameObject.SetActive(shouldBeVisible);
     }
