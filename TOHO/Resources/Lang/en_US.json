@@ -5492,5 +5492,9 @@
   "AbilityIncrease": "Ability Increase",
   "EnableSpeedBoost": "Enable Speed Boost",
   "EnableReduceCooldown": "Enable Reduce Kill Timer",
-  "EnableAbilityIncrease": "Enable Ability Increase"
+  "EnableAbilityIncrease": "Enable Ability Increase",
+
+  "Owl": "Owl",
+  "OwlInfo": "Join another team's victory",
+  "OwlInfoLong": "By using the Protect button as an Owl, you can choose to win with the target player's faction (Impostor/Crewmate/Neutral/Coven/Apocalypse). This can only be done once"
 }

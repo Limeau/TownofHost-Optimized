@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using TOHO.Modules;
+using TOHO.Roles._Ghosts_.Neutral;
 using TOHO.Roles.Modifiers.Common;
 using TOHO.Roles.Modifiers.Crewmate;
 using TOHO.Roles.Modifiers.Impostor;
@@ -518,6 +519,13 @@ class GameEndCheckerForNormal
                                 {
                                     WinnerIds.Add(pc.PlayerId);
                                     AdditionalWinnerTeams.Add(AdditionalWinners.Provocateur);
+                                }
+                                break;
+                            case CustomRoles.Owl:
+                                if (Owl.CheckWinnerTeam(WinnerTeam))
+                                {
+                                    WinnerIds.Add(pc.PlayerId);
+                                    AdditionalWinnerTeams.Add(AdditionalWinners.Owl);
                                 }
                                 break;
                             case CustomRoles.DodoBird:

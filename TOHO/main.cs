@@ -944,6 +944,7 @@ public enum CustomRoles
 
     //Neutral Ghost
     Banshee,
+    Owl,
     
     //Neutral
     Abzorbaloff,
@@ -1370,6 +1371,7 @@ public enum AdditionalWinners
 {
     None = -1,
     Lovers = CustomRoles.Lovers,
+    Owl = CustomRoles.Owl,
     Opportunist = CustomRoles.Opportunist,
     Dreadsteed = CustomRoles.Dreadsteed,
     Executioner = CustomRoles.Executioner,
