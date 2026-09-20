@@ -1545,7 +1545,6 @@ class FixedUpdateInNormalGamePatch
                         Main.LowLoadUpdateName[__instance.PlayerId] = false;
                     }
                 }
-                Utils.NotifyRoles(SpecifySeer: __instance);
             }
             else
             {
