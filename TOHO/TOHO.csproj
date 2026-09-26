@@ -4,10 +4,10 @@
 		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
 		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
 		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-		<Description>Town Of Host Enhanced</Description>
-		<Authors>Lime</Authors>
+		<Description>Town Of Host Optimized</Description>
+		<Authors>Limeau</Authors>
 		<LangVersion>12.0</LangVersion>
-		<Configurations>Debug;Release;Canary</Configurations>
+		<Configurations>Debug;Release</Configurations>
         <Platforms>Windows;Android</Platforms>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<Optimize>True</Optimize>
@@ -24,7 +24,6 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include=".\Resources\**" />
-		<EmbeddedResource Include="token.env" Condition="Exists('token.env')" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -47,9 +46,4 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-
-	<Target Name="EnsureTokenEnvExists" BeforeTargets="BeforeBuild">
-		<Exec Condition=" '$(OS)' == 'Windows_NT' " Command="if not exist token.env (echo API_TOKEN=REPLACE THIS ONLY IF YOU GOT YOUR OWN API TOKEN &gt; token.env)" />
-		<Exec Condition=" '$(OS)' != 'Windows_NT' " Command="if [ ! -f token.env ]; then echo API_TOKEN=REPLACE THIS ONLY IF YOU GOT YOUR OWN API TOKEN &gt; token.env; fi" />
-	</Target>
 </Project>

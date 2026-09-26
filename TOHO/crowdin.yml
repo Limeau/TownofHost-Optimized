@@ -1,5 +1,0 @@
-files:
-  - source: /Resources/Lang/en_US.json
-    translation: /Resources/Lang/%locale_with_underscore%.json
-  - source: /Resources/Announcements/modNews-en_US.json
-    translation: /Resources/Announcements/modNews-%locale_with_underscore%.json
