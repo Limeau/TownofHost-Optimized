@@ -16,6 +16,8 @@ public class Main : BasePlugin
     public static Main Instance;
     public static ManualLogSource Logger;
     public Harmony harmony = new("com.Limeau.TownofHostOptimized");
+
+    public static int CurrentLanguageId;
     
     public override void Load()
     {
@@ -27,7 +29,8 @@ public class Main : BasePlugin
         #if RELEASE
         ConsoleManager.DetachConsole();
         #endif
-        
+
+        CurrentLanguageId = 0;
         Logger.LogInfo("========= TOHO loaded! =========");
     }
 }
