@@ -46,9 +46,4 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Resources\Background\" />
-	  <Folder Include="Resources\Images\" />
-	</ItemGroup>
 </Project>

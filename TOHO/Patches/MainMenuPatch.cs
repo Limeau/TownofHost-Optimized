@@ -15,7 +15,7 @@ public class MainMenuManagerStartPatch
         var amongUsLogo = GameObject.Find("LOGO-AU");
         if (amongUsLogo)
         {
-            amongUsLogo.GetComponent<SpriteRenderer>().sprite = Utils.LoadSprite("TOHO.Resources.Images.tohologo.png");
+            amongUsLogo.GetComponent<SpriteRenderer>().sprite = Utils.LoadSprite("TOHO.Resources.Images.TohoLogo.png");
         }
         
         var rightpanel = __instance.gameModeButtons.transform.parent;
