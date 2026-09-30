@@ -1115,7 +1115,7 @@ public static class Utils
             }
         }
 
-        if (region.PingServer.EndsWith("among.us", StringComparison.Ordinal))
+        if (region.PingServer.EndsWith(".among.us", StringComparison.Ordinal))
         {
             // Official Server
             if (name == "North America") name = "NA";

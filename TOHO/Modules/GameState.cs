@@ -564,7 +564,7 @@ public static class GameStates
         get
         {
             if (IsLocalGame && !IsNotJoined) return true;
-            const string Domain = "among.us";
+            const string Domain = ".among.us";
 
             // From Reactor.gg
             return ServerManager.Instance.CurrentRegion?.TryCast<StaticHttpRegionInfo>() is { } regionInfo &&
