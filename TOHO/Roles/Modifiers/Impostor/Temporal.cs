@@ -15,7 +15,7 @@ public class Temporal : IModifier
 
     private static OptionItem TemporalIncreaseTime;
 
-    public static IGameOptions BasedGameOptions => GameStates.IsNormalGame ? Main.RealOptionsData.Restore(new NormalGameOptionsV11(new UnityLogger().Cast<ILogger>()).Cast<IGameOptions>()) : Main.RealOptionsData.Restore(new HideNSeekGameOptionsV11(new UnityLogger().Cast<ILogger>()).Cast<IGameOptions>());
+    public static IGameOptions BasedGameOptions => GameStates.IsNormalGame ? Main.RealOptionsData.Restore(new NormalGameOptionsV12(new UnityLogger().Cast<ILogger>()).Cast<IGameOptions>()) : Main.RealOptionsData.Restore(new HideNSeekGameOptionsV12(new UnityLogger().Cast<ILogger>()).Cast<IGameOptions>());
     
     public void SetupCustomOption()
     {
