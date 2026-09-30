@@ -60,8 +60,8 @@ public class Main : BasePlugin
     public static ConfigEntry<string> DebugKeyInput { get; private set; }
 
     public const string PluginGuid = "com.Limeau.townofhostoptimized";
-    public const string PluginVersion = "2026.1003.390.00";
-    public const string PluginDisplayVersion = "3.9.0";
+    public const string PluginVersion = "2026.1003.391.00";
+    public const string PluginDisplayVersion = "3.9.1";
     public const string PluginDisplaySuffix = "";
     public const string SupportedVersionAU = "2026.8.18";
 
