@@ -119,7 +119,9 @@ public class PlayerGameOptionsSender(PlayerControl player) : GameOptionsSender
         }
 
         if (role.IsGhostRole())
+        {
             AURoleOptions.GuardianAngelCooldown = Options.DefaultAngelCooldown.GetFloat();
+        }
 
         /*
          * Builds Modified GameOptions

@@ -5496,5 +5496,13 @@
 
   "Owl": "Owl",
   "OwlInfo": "Join another team's victory",
-  "OwlInfoLong": "By using the Protect button as an Owl, you can choose to win with the target player's faction (Impostor/Crewmate/Neutral/Coven/Apocalypse). This can only be done once"
+  "OwlInfoLong": "By using the Protect button as an Owl, you can choose to win with the target player's faction (Impostor/Crewmate/Neutral/Coven/Apocalypse). This can only be done once",
+
+  "Influencer": "Influencer",
+  "InfluencerInfo": "Show messages to living Crewmates",
+  "InfluencerInfoLong": "As the Influencer, you can show alive players certain messages.",
+  "InfluencerTOHO": "Influencer",
+  "InfluencerTOHOInfo": "Show messages to living Crewmates",
+  "InfluencerTOHOInfoLong": "As the Influencer, you can show alive players certain messages.",
+  "InfluencerAbilityCooldown": "Message Cooldown"
 }

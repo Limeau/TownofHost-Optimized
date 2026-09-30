@@ -2112,6 +2112,12 @@ class PlayerControlSetRolePatch
             // If all Players see Player as Guardian Angel
             if (GhostRoles.All(kvp => kvp.Value == RoleTypes.GuardianAngel))
             {
+                if (__instance.GetCustomRole() == CustomRoles.Influencer)
+                {
+                    roleType = RoleTypes.SpiritGuide;
+                    __instance.RpcSetRoleDesync(RoleTypes.SpiritGuide, __instance.GetClientId());
+                    return true;
+                }
                 roleType = RoleTypes.GuardianAngel;
                 __instance.RpcSetRoleDesync(RoleTypes.GuardianAngel, __instance.GetClientId());
                 foreach (var seer in Main.AllPlayerControls)
@@ -2132,6 +2138,12 @@ class PlayerControlSetRolePatch
             else if (GhostRoles.All(kvp => kvp.Value == RoleTypes.ImpostorGhost))
             {
                 roleType = RoleTypes.ImpostorGhost;
+                return true;
+            }
+            // If all Players see Player as Spirit Guide
+            else if (GhostRoles.All(kvp => kvp.Value == RoleTypes.SpiritGuide))
+            {
+                roleType = RoleTypes.SpiritGuide;
                 return true;
             }
             else

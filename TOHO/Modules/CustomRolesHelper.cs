@@ -1386,6 +1386,7 @@ public static class CustomRolesHelper
             CustomRoles.Scientist => RoleTypes.Scientist,
             CustomRoles.Engineer => RoleTypes.Engineer,
             CustomRoles.GuardianAngel => RoleTypes.GuardianAngel,
+            CustomRoles.Influencer => RoleTypes.SpiritGuide,
             CustomRoles.Shapeshifter => RoleTypes.Shapeshifter,
             CustomRoles.Noisemaker => RoleTypes.Noisemaker,
             CustomRoles.Judge => RoleTypes.Judge,
@@ -1404,6 +1405,7 @@ public static class CustomRolesHelper
             CustomRoles.Scientist => RoleTypes.Scientist,
             CustomRoles.Engineer => RoleTypes.Engineer,
             CustomRoles.GuardianAngel => RoleTypes.GuardianAngel,
+            CustomRoles.Influencer => RoleTypes.SpiritGuide,
             CustomRoles.Shapeshifter => RoleTypes.Shapeshifter,
             CustomRoles.Noisemaker => RoleTypes.Noisemaker,
             CustomRoles.Judge => RoleTypes.Judge,
@@ -1451,6 +1453,7 @@ public static class CustomRolesHelper
             CustomRoles.Scientist or
             CustomRoles.Engineer or
             CustomRoles.GuardianAngel or
+            CustomRoles.Influencer or
             CustomRoles.Shapeshifter or
             CustomRoles.Noisemaker or
             CustomRoles.Judge or
@@ -1485,6 +1488,7 @@ public static class CustomRolesHelper
                 CustomRoles.Scientist => roleOpt.GetNumPerGame(RoleTypes.Scientist),
                 CustomRoles.Engineer => roleOpt.GetNumPerGame(RoleTypes.Engineer),
                 CustomRoles.GuardianAngel => roleOpt.GetNumPerGame(RoleTypes.GuardianAngel),
+                CustomRoles.Influencer => roleOpt.GetNumPerGame(RoleTypes.SpiritGuide),
                 CustomRoles.Shapeshifter => roleOpt.GetNumPerGame(RoleTypes.Shapeshifter),
                 CustomRoles.Noisemaker => roleOpt.GetNumPerGame(RoleTypes.Noisemaker),
                 CustomRoles.Judge => roleOpt.GetNumPerGame(RoleTypes.Judge),
@@ -1512,6 +1516,7 @@ public static class CustomRolesHelper
                 CustomRoles.Scientist => roleOpt.GetChancePerGame(RoleTypes.Scientist),
                 CustomRoles.Engineer => roleOpt.GetChancePerGame(RoleTypes.Engineer),
                 CustomRoles.GuardianAngel => roleOpt.GetChancePerGame(RoleTypes.GuardianAngel),
+                CustomRoles.Influencer => roleOpt.GetChancePerGame(RoleTypes.SpiritGuide),
                 CustomRoles.Shapeshifter => roleOpt.GetChancePerGame(RoleTypes.Shapeshifter),
                 CustomRoles.Noisemaker => roleOpt.GetChancePerGame(RoleTypes.Noisemaker),
                 CustomRoles.Judge => roleOpt.GetChancePerGame(RoleTypes.Judge),

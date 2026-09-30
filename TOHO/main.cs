@@ -63,7 +63,7 @@ public class Main : BasePlugin
     public const string PluginVersion = "2026.1003.391.00";
     public const string PluginDisplayVersion = "3.9.1";
     public const string PluginDisplaySuffix = "";
-    public const string SupportedVersionAU = "2026.8.18";
+    public const string SupportedVersionAU = "2026.9.29";
 
     /******************* Change one of the three variables to true before making a release. *******************/
     public static readonly bool devRelease = false; // Latest: v2.2.0 Alpha 17.1
@@ -679,6 +679,7 @@ public enum CustomRoles
     Detective,
     Engineer,
     GuardianAngel,
+    Influencer,
     Judge,
     Noisemaker,
     Scientist,
@@ -695,6 +696,7 @@ public enum CustomRoles
     DetectiveTOHO,
     EngineerTOHO,
     GuardianAngelTOHO,
+    InfluencerTOHO,
     JudgeTOHO,
     NoisemakerTOHO,
     ScientistTOHO,
