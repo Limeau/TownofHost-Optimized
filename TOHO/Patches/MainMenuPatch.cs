@@ -45,6 +45,7 @@ public class MainMenuManagerStartPatch
 
     public static void SetButtonColor(PassiveButton playButton)
     {
+        if (playButton == null) return;
         playButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color32(180, 126, 222, byte.MaxValue);
         playButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color32(180, 126, 222, byte.MaxValue);
     }
@@ -59,13 +60,14 @@ class MainMenuManagerLateUpdatePatch
         var playOnlineButton = __instance.PlayOnlineButton;
         if (playOnlineButton != null)
         {
-            var playLocalButton = __instance.playLocalButton;
-            if (playLocalButton != null) playLocalButton.gameObject.SetActive(false);
-
-            playOnlineButton.gameObject.SetActive(false);
+            MainMenuManagerStartPatch.SetButtonColor(__instance.PlayOnlineButton);
         }
-        MainMenuManagerStartPatch.SetButtonColor(__instance.PlayOnlineButton);
-        MainMenuManagerStartPatch.SetButtonColor(__instance.playLocalButton);
+        
+        var playLocalButton = __instance.playLocalButton;
+        if (playLocalButton != null)
+        {
+            MainMenuManagerStartPatch.SetButtonColor(__instance.playLocalButton);
+        }
     }
 }
 [HarmonyPatch(typeof(MainMenuManager))]

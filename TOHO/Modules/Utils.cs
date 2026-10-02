@@ -68,4 +68,80 @@ public static class Utils
         }
         return string.Empty;
     }
+    
+    public static string GetRegionName(IRegionInfo region = null)
+    {
+        try
+        {
+            region ??= ServerManager.Instance.CurrentRegion;
+        }
+
+        catch (Exception e)
+        {
+            Main.Logger.LogInfo($"{e}");
+        }
+
+        string name = "";
+        try
+        {
+            name = region.Name;
+        }
+        
+        catch (Exception e)
+        {
+            Main.Logger.LogInfo($"{e}");
+        }
+
+        if (AmongUsClient.Instance.NetworkMode != NetworkModes.OnlineGame)
+        {
+            name = "Local Games";
+            return name;
+        }
+
+        if (region.PingServer.EndsWith(".among.us", StringComparison.Ordinal))
+        {
+            // Official Server
+            if (name == "North America") name = "NA";
+            else if (name == "Europe") name = "EU";
+            else if (name == "Asia") name = "AS";
+
+            return name;
+        } 
+        var Ip = region.Servers.FirstOrDefault()?.Ip ?? string.Empty;
+
+        if (Ip.Contains("aumods.us", StringComparison.Ordinal) || Ip.Contains("duikbo.at", StringComparison.Ordinal))
+        {
+            // Official Modded Server
+            if (Ip.Contains("au-eu")) name = "MEU";
+            else if (Ip.Contains("au-as")) name = "MAS";
+            else if (Ip.Contains("www.")) name = "MNA";
+
+            return name;
+        }
+
+        if (Ip.Contains("moddedamong.us", StringComparison.Ordinal))
+        {
+            // MAUL Server
+            if (Ip.Contains("au")) name = "MAUL NA";
+            else if (Ip.Contains("eu")) name = "MAUL EU";
+
+            return name;
+        }
+
+        if (Ip.Contains("gurge44.eu", StringComparison.Ordinal))
+        {
+            // EHR Server
+            if (Ip.Contains("play-hu")) name = "GG HU";
+            else if (Ip.Contains("play-us")) name = "GG US";
+
+            return name;
+        }
+
+        if (name.Contains("nikocat233", StringComparison.OrdinalIgnoreCase))
+        {
+            name = name.Replace("nikocat233", "Niko233", StringComparison.OrdinalIgnoreCase);
+        }
+
+        return name;
+    }
 }

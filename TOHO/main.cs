@@ -1,4 +1,5 @@
-﻿using AmongUs.InnerNet.GameDataMessages;
+﻿using System;
+using AmongUs.InnerNet.GameDataMessages;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
@@ -17,7 +18,14 @@ public class Main : BasePlugin
     public static ManualLogSource Logger;
     public Harmony harmony = new("com.Limeau.TownofHostOptimized");
 
+    public static string ModColor = "#b47ede";
+    public static string ModName = "Town of Host Optimized";
+    public static string DisplayVersion = "v4.0.0";
+    public static string DisplaySuffix = " Beta 1";
+    
     public static int CurrentLanguageId;
+    
+    public static bool IsInitialRelease = DateTime.Now.Month == 7 && DateTime.Now.Day == 27;
     
     public override void Load()
     {

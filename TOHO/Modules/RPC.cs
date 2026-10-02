@@ -46,7 +46,6 @@ public static class RPC
     {
         if (Time.realtimeSinceStartup - LastFlushTime >= TimeoutSeconds)
         {
-            Main.Logger.LogInfo("Tick");
             if (Queue.Count == 0) return;
             TryFlush(force: true);
         }
