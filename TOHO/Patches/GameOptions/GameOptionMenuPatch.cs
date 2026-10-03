@@ -25,13 +25,16 @@ public static class GameSettingMenuPatch
     public static List<GameObject> NeutralObjects = [];
     public static List<GameObject> CovenObjects = [];
     public static List<GameObject> ModifierObjects = [];
+    public static List<GameObject> ModSettingObjects = [];
     
-    public static List<CustomOption> CrewmateSettings = [];
-    public static List<CustomOption> ImpostorSettings = [];
-    public static List<CustomOption> NeutralSettings = [];
-    public static List<CustomOption> CovenSettings = [];
-    public static List<CustomOption> ModifierSettings = [];
-    public static List<CustomOption> ModSettings = [];
+    public static List<BooleanOptionItem> BoolCrewmateSettings = [];
+    public static List<BooleanOptionItem> BoolImpostorSettings = [];
+    public static List<BooleanOptionItem> BoolNeutralSettings = [];
+    public static List<BooleanOptionItem> BoolCovenSettings = [];
+    public static List<BooleanOptionItem> BoolModifierSettings = [];
+    public static List<BooleanOptionItem> BoolModSettings = [];
+    
+    private static bool ModSettingsInitialized;
 
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
     public static void StartPostfix(GameSettingMenu __instance)
@@ -113,22 +116,19 @@ public static class GameSettingMenuPatch
             obj.gameObject.SetActive(false);
         }
 
-        var testoption = new CustomOption
+        if (!ModSettingsInitialized)
         {
-            OptionName = "Example",
-            OptionType = OptionTypes.Bool,
-            OptionTab = OptionTabs.ModSettings,
-            Value = false,
-            DefaultValue = false,
-        
-            OnValueChanged = value =>
-            {
-                Main.Logger.LogInfo($"{value}")
-            }
+            var testoption = new BooleanOptionItem("Example", OptionTabs.ModSettings, false, value => { Main.Logger.LogInfo($"{value}"); });
+            testoption.obj = new GameObject();
+            BoolModSettings.Add(testoption);
+            SetupModSettingsTab();
+            ModSettingsInitialized = true;
         }
-        ModSettings.Add(testoption);
-        
-        SetupModSettingsTab();
+
+        foreach (var obj in ModSettingObjects)
+        {
+            obj.SetActive(true);
+        }
     }
 
     public static void SetRoleSettingsTab()
@@ -345,53 +345,62 @@ public static class GameSettingMenuPatch
         }
     }
     
-    public static void SetupOption(this CustomOption option, float y)
+    public static void SetupBooleanOption(this BooleanOptionItem option, float y)
     {
-        switch (option.OptionType)
+        ToggleOption template = null;
+
+        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
         {
-            case OptionTypes.Bool:
-                option.obj = Object.Instantiate(GameObject.Find("GameOption_Checkbox"));
-                var boolopt = option.obj.GetComponent<ToggleOption>();
-                boolopt.boolOptionName = BoolOptionNames.Invalid;
-                option.obj.GetComponentInChildren<TextMeshPro>().text = option.OptionName;
-                option.obj.transform.localPosition = new(-0.9f, y, -2f);
-                break;
-            case OptionTypes.Number:
-                option.obj = Object.Instantiate(GameObject.Find("GameOption_Number"));
-                var numberopt = option.obj.AddComponent<NumberOption>();
-                numberopt.floatOptionName = FloatOptionNames.Invalid;
-                option.obj.transform.localPosition = new(-0.9f, y, -2f);
-                break;
-            case OptionTypes.String:
-                option.obj = Object.Instantiate(GameObject.Find("GameOption_String"));
-                var stringopt = option.obj.AddComponent<StringOption>();
-                stringopt.stringOptionName = Int32OptionNames.Invalid;
-                option.obj.transform.localPosition = new(-0.9f, y, -2f);
-                break;
+            template = item.TryCast<ToggleOption>();
+            if (template != null) break;
         }
+
+        if (template == null)
+        {
+            Main.Logger.LogError("[Settings] No ToggleOption template found.");
+            return;
+        }
+
+        option.obj = Object.Instantiate(template.gameObject, ModSettingsTab.settingsContainer);
+
+        var toggle = option.obj.GetComponent<ToggleOption>();
+        toggle.boolOptionName = BoolOptionNames.Invalid;
+
+        option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
+        option.obj.SetActive(true);
+
+        var text = toggle.TitleText;
+
+        new LateTask(() =>
+        {
+            text.DestroyTranslator();
+            text.text = option.OptionName;
+
+            ModSettingObjects.Add(option.obj);
+        }, 0.01f);
     }
 
     public static void SetupModSettingsTab()
     {
         var y = 1.9f;
 
-        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero,
-            Quaternion.identity, RoleSettingsTab.settingsContainer);
-        vanilla.SetHeader(StringNames.RolesCategory, 20);
-        vanilla.Title.text = "Ejection";
-        vanilla.Background.color = vanilla.Divider.color = Color.green;
-        vanilla.transform.localScale = Vector3.one * 0.68f;
-        vanilla.transform.localPosition = new(-0.9f, y, -2f);
-        var chmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        CategoryHeaderMasked ejection = Object.Instantiate(ModSettingsTab.categoryHeaderOrigin, Vector3.zero,
+            Quaternion.identity, ModSettingsTab.settingsContainer);
+        ejection.SetHeader(StringNames.RolesCategory, 20);
+        ejection.Title.text = "Ejection";
+        ejection.Background.color = ejection.Divider.color = Color.green;
+        ejection.transform.localScale = Vector3.one * 0.68f;
+        ejection.transform.localPosition = new(-0.9f, y, -2f);
+        var chmText = ejection.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
         chmText.fontStyle = FontStyles.Bold;
         chmText.outlineWidth = 0.17f;
-        vanilla.gameObject.SetActive(false);
-        CrewmateObjects.Add(vanilla.gameObject);
+        ejection.gameObject.SetActive(false);
+        ModSettingObjects.Add(ejection.gameObject);
 
-        foreach (var option in ModSettings)
+        foreach (var option in BoolModSettings)
         {
-            y -= 0.5f;
-            option.SetupOption(y);
+            y -= 0.6f;
+            option.SetupBooleanOption(y);
         }
     }
 
@@ -425,36 +434,6 @@ public static class GameSettingMenuPatch
         ImpostorObjects.Add(vanilla.gameObject);
     }
 }
-
-public class CustomOption
-{
-    public OptionTypes OptionType;
-    public OptionTabs OptionTab;
-    public string OptionName;
-    public GameObject obj;
-    
-    public object Value;
-    public object DefaultValue;
-
-    public UnityAction<object> OnValueChanged;
-    
-    public void SetValue(object value)
-    {
-        if (Equals(Value, value))
-            return;
-
-        Value = value;
-        OnValueChanged?.Invoke(Value);
-    }
-}
-
-public enum OptionTypes
-{
-    Bool,
-    Number,
-    String,
-}
-
 public enum OptionTabs
 {
     Crewmate,
@@ -463,28 +442,4 @@ public enum OptionTabs
     Coven,
     Modifier,
     ModSettings
-}
-
-[HarmonyPatch(typeof(ToggleOption), nameof(ToggleOption.UpdateValue))]
-public static class BoolTogglePatch
-{
-    public static void Prefix(ToggleOption __instance)
-    {
-        foreach (var option in GameSettingMenuPatch.ModSettings)
-        {
-            if (option.obj == null)
-                continue;
-
-            if (!option.obj.TryGetComponent<ToggleOption>(
-                    out var toggleOption))
-                continue;
-
-            if (toggleOption != __instance)
-                continue;
-
-            option.SetValue(__instance.GetBool());
-
-            break;
-        }
-    }
 }
