@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using UnityEngine;
 using TMPro;
@@ -15,6 +17,12 @@ public class GameSettingMenuPatch
     public static PassiveButton ModSettingsButton;
     public static PassiveButton VanillaSettingsButton;
     public static PassiveButton RoleSettingsButton;
+
+    public static List<GameObject> CrewmateObjects = [];
+    public static List<GameObject> ImpostorObjects = [];
+    public static List<GameObject> NeutralObjects = [];
+    public static List<GameObject> CovenObjects = [];
+    public static List<GameObject> ModifierObjects = [];
 
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
     public static void StartPostfix(GameSettingMenu __instance)
@@ -85,6 +93,12 @@ public class GameSettingMenuPatch
 
     public static void SetRoleSettingsTab()
     {
+        foreach (var child in RoleSettingsTab.Children)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        RoleSettingsTab.MapPicker.gameObject.SetActive(true);
         RoleSettingsTab.MapPicker.Labeltext.DestroyTranslator();
         RoleSettingsTab.MapPicker.Labeltext.text = "Roles";
         
@@ -119,6 +133,13 @@ public class GameSettingMenuPatch
         ModifierButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToModifierTab()));
 
         new LateTask(() => { SwitchToCrewmateTab(); }, 0.1f);
+        
+        SetupTabs();
+        
+        foreach (var obj in Object.FindObjectsOfType<CategoryHeaderMasked>())
+        {
+            obj.gameObject.SetActive(false);
+        }
     }
 
     public static void SwitchToCrewmateTab()
@@ -131,6 +152,27 @@ public class GameSettingMenuPatch
         NeutralButton.Button.SelectButton(false);
         CovenButton.Button.SelectButton(false);
         ModifierButton.Button.SelectButton(false);
+        
+        foreach (var obj in CrewmateObjects)
+        {
+            obj.SetActive(true);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            obj.SetActive(false);
+        }
     }
     public static void SwitchToImpostorTab()
     {
@@ -142,6 +184,28 @@ public class GameSettingMenuPatch
         NeutralButton.Button.SelectButton(false);
         CovenButton.Button.SelectButton(false);
         ModifierButton.Button.SelectButton(false);
+        
+        
+        foreach (var obj in CrewmateObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            obj.SetActive(true);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            obj.SetActive(false);
+        }
     }
     public static void SwitchToNeutralTab()
     {
@@ -153,6 +217,27 @@ public class GameSettingMenuPatch
         NeutralButton.Button.SelectButton(true);
         CovenButton.Button.SelectButton(false);
         ModifierButton.Button.SelectButton(false);
+        
+        foreach (var obj in CrewmateObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            obj.SetActive(true);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            obj.SetActive(false);
+        }
     }
     public static void SwitchToCovenTab()
     {
@@ -164,6 +249,27 @@ public class GameSettingMenuPatch
         NeutralButton.Button.SelectButton(false);
         CovenButton.Button.SelectButton(true);
         ModifierButton.Button.SelectButton(false);
+        
+        foreach (var obj in CrewmateObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            obj.SetActive(true);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            obj.SetActive(false);
+        }
     }
     public static void SwitchToModifierTab()
     {
@@ -175,5 +281,53 @@ public class GameSettingMenuPatch
         NeutralButton.Button.SelectButton(false);
         CovenButton.Button.SelectButton(false);
         ModifierButton.Button.SelectButton(true);
+
+        foreach (var obj in CrewmateObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            obj.SetActive(true);
+        }
+    }
+
+    public static void SetupTabs()
+    {
+        CategoryHeaderMasked crewmateVanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        crewmateVanilla.SetHeader(StringNames.RolesCategory, 20);
+        crewmateVanilla.Title.text = "Crewmate Vanilla";
+        crewmateVanilla.Background.color = crewmateVanilla.Divider.color = Color.cyan;
+        crewmateVanilla.transform.localScale = Vector3.one * 0.68f;
+        crewmateVanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
+        var chmText = crewmateVanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        chmText.fontStyle = FontStyles.Bold;
+        chmText.outlineWidth = 0.17f;
+        crewmateVanilla.gameObject.SetActive(false);
+        CrewmateObjects.Add(crewmateVanilla.gameObject);
+        
+        CategoryHeaderMasked impostorVanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        impostorVanilla.SetHeader(StringNames.RolesCategory, 20);
+        impostorVanilla.Title.text = "Impostor Vanilla";
+        impostorVanilla.Background.color = impostorVanilla.Divider.color = Color.red;
+        impostorVanilla.transform.localScale = Vector3.one * 0.68f;
+        impostorVanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
+        var ihmText = impostorVanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        ihmText.fontStyle = FontStyles.Bold;
+        ihmText.outlineWidth = 0.17f;
+        impostorVanilla.gameObject.SetActive(false);
+        ImpostorObjects.Add(impostorVanilla.gameObject);
     }
 }
