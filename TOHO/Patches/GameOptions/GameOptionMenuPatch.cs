@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmongUs.GameOptions;
 using HarmonyLib;
 using UnityEngine;
 using TMPro;
 using TOHO;
+using UnityEngine.Events;
 using Object = UnityEngine.Object;
 
 [HarmonyPatch(typeof(GameSettingMenu))]
-public class GameSettingMenuPatch
+public static class GameSettingMenuPatch
 {
     public static GameOptionsMenu ModSettingsTab;
     public static GameOptionsMenu VanillaSettingsTab;
@@ -23,6 +25,13 @@ public class GameSettingMenuPatch
     public static List<GameObject> NeutralObjects = [];
     public static List<GameObject> CovenObjects = [];
     public static List<GameObject> ModifierObjects = [];
+    
+    public static List<CustomOption> CrewmateSettings = [];
+    public static List<CustomOption> ImpostorSettings = [];
+    public static List<CustomOption> NeutralSettings = [];
+    public static List<CustomOption> CovenSettings = [];
+    public static List<CustomOption> ModifierSettings = [];
+    public static List<CustomOption> ModSettings = [];
 
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
     public static void StartPostfix(GameSettingMenu __instance)
@@ -82,6 +91,7 @@ public class GameSettingMenuPatch
         
         menu.gameObject.SetActive(true);
         
+        if (menu == ModSettingsTab) SetModSettingsTab(); 
         if (menu == RoleSettingsTab) SetRoleSettingsTab(); 
     }
 
@@ -91,10 +101,40 @@ public class GameSettingMenuPatch
     public static MapSelectButton CovenButton;
     public static MapSelectButton ModifierButton;
 
-    public static void SetRoleSettingsTab()
+    public static void SetModSettingsTab()
     {
-        foreach (var child in RoleSettingsTab.Children)
+        foreach (var child in ModSettingsTab.Children)
         {
+            child.gameObject.SetActive(false);
+        }
+        ModSettingsTab.MapPicker.gameObject.SetActive(false);
+        foreach (var obj in Object.FindObjectsOfType<CategoryHeaderMasked>())
+        {
+            obj.gameObject.SetActive(false);
+        }
+
+        var testoption = new CustomOption
+        {
+            OptionName = "Example",
+            OptionType = OptionTypes.Bool,
+            OptionTab = OptionTabs.ModSettings,
+            Value = false,
+            DefaultValue = false,
+        
+            OnValueChanged = value =>
+            {
+                Main.Logger.LogInfo($"{value}")
+            }
+        }
+        ModSettings.Add(testoption);
+        
+        SetupModSettingsTab();
+    }
+
+    public static void SetRoleSettingsTab()
+    { 
+        foreach (var child in RoleSettingsTab.Children) 
+        { 
             child.gameObject.SetActive(false);
         }
 
@@ -134,7 +174,8 @@ public class GameSettingMenuPatch
 
         new LateTask(() => { SwitchToCrewmateTab(); }, 0.1f);
         
-        SetupTabs();
+        SetupCrewmateTab();
+        SetupImpostorTab();
         
         foreach (var obj in Object.FindObjectsOfType<CategoryHeaderMasked>())
         {
@@ -303,31 +344,147 @@ public class GameSettingMenuPatch
             obj.SetActive(true);
         }
     }
-
-    public static void SetupTabs()
+    
+    public static void SetupOption(this CustomOption option, float y)
     {
-        CategoryHeaderMasked crewmateVanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
-        crewmateVanilla.SetHeader(StringNames.RolesCategory, 20);
-        crewmateVanilla.Title.text = "Crewmate Vanilla";
-        crewmateVanilla.Background.color = crewmateVanilla.Divider.color = Color.cyan;
-        crewmateVanilla.transform.localScale = Vector3.one * 0.68f;
-        crewmateVanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
-        var chmText = crewmateVanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        switch (option.OptionType)
+        {
+            case OptionTypes.Bool:
+                option.obj = Object.Instantiate(GameObject.Find("GameOption_Checkbox"));
+                var boolopt = option.obj.GetComponent<ToggleOption>();
+                boolopt.boolOptionName = BoolOptionNames.Invalid;
+                option.obj.GetComponentInChildren<TextMeshPro>().text = option.OptionName;
+                option.obj.transform.localPosition = new(-0.9f, y, -2f);
+                break;
+            case OptionTypes.Number:
+                option.obj = Object.Instantiate(GameObject.Find("GameOption_Number"));
+                var numberopt = option.obj.AddComponent<NumberOption>();
+                numberopt.floatOptionName = FloatOptionNames.Invalid;
+                option.obj.transform.localPosition = new(-0.9f, y, -2f);
+                break;
+            case OptionTypes.String:
+                option.obj = Object.Instantiate(GameObject.Find("GameOption_String"));
+                var stringopt = option.obj.AddComponent<StringOption>();
+                stringopt.stringOptionName = Int32OptionNames.Invalid;
+                option.obj.transform.localPosition = new(-0.9f, y, -2f);
+                break;
+        }
+    }
+
+    public static void SetupModSettingsTab()
+    {
+        var y = 1.9f;
+
+        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero,
+            Quaternion.identity, RoleSettingsTab.settingsContainer);
+        vanilla.SetHeader(StringNames.RolesCategory, 20);
+        vanilla.Title.text = "Ejection";
+        vanilla.Background.color = vanilla.Divider.color = Color.green;
+        vanilla.transform.localScale = Vector3.one * 0.68f;
+        vanilla.transform.localPosition = new(-0.9f, y, -2f);
+        var chmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
         chmText.fontStyle = FontStyles.Bold;
         chmText.outlineWidth = 0.17f;
-        crewmateVanilla.gameObject.SetActive(false);
-        CrewmateObjects.Add(crewmateVanilla.gameObject);
-        
-        CategoryHeaderMasked impostorVanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
-        impostorVanilla.SetHeader(StringNames.RolesCategory, 20);
-        impostorVanilla.Title.text = "Impostor Vanilla";
-        impostorVanilla.Background.color = impostorVanilla.Divider.color = Color.red;
-        impostorVanilla.transform.localScale = Vector3.one * 0.68f;
-        impostorVanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
-        var ihmText = impostorVanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        vanilla.gameObject.SetActive(false);
+        CrewmateObjects.Add(vanilla.gameObject);
+
+        foreach (var option in ModSettings)
+        {
+            y -= 0.5f;
+            option.SetupOption(y);
+        }
+    }
+
+    public static void SetupCrewmateTab()
+    {
+        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        vanilla.SetHeader(StringNames.RolesCategory, 20);
+        vanilla.Title.text = "Crewmate Vanilla";
+        vanilla.Background.color = vanilla.Divider.color = Color.cyan;
+        vanilla.transform.localScale = Vector3.one * 0.68f;
+        vanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
+        var chmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        chmText.fontStyle = FontStyles.Bold;
+        chmText.outlineWidth = 0.17f;
+        vanilla.gameObject.SetActive(false);
+        CrewmateObjects.Add(vanilla.gameObject);
+    }
+
+    public static void SetupImpostorTab()
+    {
+        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        vanilla.SetHeader(StringNames.RolesCategory, 20);
+        vanilla.Title.text = "Impostor Vanilla";
+        vanilla.Background.color = vanilla.Divider.color = Color.red;
+        vanilla.transform.localScale = Vector3.one * 0.68f;
+        vanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
+        var ihmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
         ihmText.fontStyle = FontStyles.Bold;
         ihmText.outlineWidth = 0.17f;
-        impostorVanilla.gameObject.SetActive(false);
-        ImpostorObjects.Add(impostorVanilla.gameObject);
+        vanilla.gameObject.SetActive(false);
+        ImpostorObjects.Add(vanilla.gameObject);
+    }
+}
+
+public class CustomOption
+{
+    public OptionTypes OptionType;
+    public OptionTabs OptionTab;
+    public string OptionName;
+    public GameObject obj;
+    
+    public object Value;
+    public object DefaultValue;
+
+    public UnityAction<object> OnValueChanged;
+    
+    public void SetValue(object value)
+    {
+        if (Equals(Value, value))
+            return;
+
+        Value = value;
+        OnValueChanged?.Invoke(Value);
+    }
+}
+
+public enum OptionTypes
+{
+    Bool,
+    Number,
+    String,
+}
+
+public enum OptionTabs
+{
+    Crewmate,
+    Impostor,
+    Neutral,
+    Coven,
+    Modifier,
+    ModSettings
+}
+
+[HarmonyPatch(typeof(ToggleOption), nameof(ToggleOption.UpdateValue))]
+public static class BoolTogglePatch
+{
+    public static void Prefix(ToggleOption __instance)
+    {
+        foreach (var option in GameSettingMenuPatch.ModSettings)
+        {
+            if (option.obj == null)
+                continue;
+
+            if (!option.obj.TryGetComponent<ToggleOption>(
+                    out var toggleOption))
+                continue;
+
+            if (toggleOption != __instance)
+                continue;
+
+            option.SetValue(__instance.GetBool());
+
+            break;
+        }
     }
 }
