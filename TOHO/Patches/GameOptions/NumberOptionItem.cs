@@ -12,6 +12,8 @@ public class NumberOptionItem
     public OptionTabs OptionTab;
     public string OptionName;
 
+    public int Id;
+    
     public GameObject obj;
     public ToggleOption Toggle;
     public Action<object> OnValueChanged;
@@ -22,8 +24,9 @@ public class NumberOptionItem
     public float MaxValue;
     public float Step;
     
-    public NumberOptionItem(string name, OptionTabs tab, float defaultValue, float minValue, float maxValue, float step, Action<object> onValueChanged = null)
+    public NumberOptionItem(int id, string name, OptionTabs tab, float defaultValue, float minValue, float maxValue, float step, Action<object> onValueChanged = null)
     {
+        Id = id;
         OptionName = name;
         OptionTab = tab;
         Value = defaultValue;
@@ -41,5 +44,7 @@ public class NumberOptionItem
 
         Value = value;
         OnValueChanged?.Invoke(Value);
+        OptionSaver.NumberValues[Id] = value;
+        OptionSaver.Save();
     }
 }

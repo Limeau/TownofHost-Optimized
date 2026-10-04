@@ -125,9 +125,8 @@ public static class GameSettingMenuPatch
 
         if (!ModSettingsInitialized)
         {
-            BoolModSettings.Add(new BooleanOptionItem("Example", OptionTabs.ModSettings, false));
-            
-            NumberModSettings.Add(new NumberOptionItem("Example", OptionTabs.ModSettings, 3f, 1f, 5f, 1f, value => { Main.Logger.LogInfo($"{value}"); }));
+            BoolModSettings.Add(new BooleanOptionItem(10, "Example", OptionTabs.ModSettings, false));
+            NumberModSettings.Add(new NumberOptionItem(10, "Example", OptionTabs.ModSettings, 3f, 1f, 5f, 1f, value => { Main.Logger.LogInfo($"{value}"); }));
             
             SetupModSettingsTab();
             ModSettingsInitialized = true;
@@ -426,7 +425,7 @@ public static class OptionManager
     public static void SetupBooleanOption(this BooleanOptionItem option, float y)
     {
         ToggleOption template = null;
-
+        option.SetInitialBooleanValue();
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
@@ -456,7 +455,7 @@ public static class OptionManager
             text.DestroyTranslator();
             text.text = option.OptionName;
 
-            toggle.CheckMark.enabled = option.DefaultValue;
+            toggle.CheckMark.enabled = option.Value;
             
             GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
         }, 0.01f);
@@ -464,7 +463,7 @@ public static class OptionManager
     public static void SetupNumberOption(this NumberOptionItem option, float y)
     {
         NumberOption template = null;
-        
+        option.SetInitialNumberValue();
         option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
@@ -497,7 +496,7 @@ public static class OptionManager
             text.DestroyTranslator();
             text.text = option.OptionName;
 
-            number.Value = option.DefaultValue;
+            number.Value = option.Value;
             number.ValueText.text = $"{number.Value}";
             GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
         }, 0.01f);

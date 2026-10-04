@@ -153,4 +153,15 @@ public static class Utils
         }
     }
     public static void DestroyTranslator(this MonoBehaviour obj) => obj.gameObject.DestroyTranslator();
+
+    public static BooleanOptionItem GetBooleanOptionItemFromId(int id)
+    {
+        foreach (var option in Main.AllBooleanOptionItems.Where(x => x.Id == id)) return option;
+        return null;
+    }
+    public static NumberOptionItem GetNumberOptionItemFromId(int id)
+    {
+        foreach (var option in Main.AllNumberOptionItems.Where(x => x.Id == id)) return option;
+        return null;
+    }
 }
