@@ -196,6 +196,9 @@ public static class GameSettingMenuPatch
         
         SetupCrewmateTab();
         SetupImpostorTab();
+        SetupNeutralTab();
+        SetupModifierTab();
+        SetupCovenTab();
         
         foreach (var obj in Object.FindObjectsOfType<CategoryHeaderMasked>())
         {
@@ -396,36 +399,106 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupStringOption(y: y);
         }
+
+        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
+        ModSettingsTab.scrollBar.ScrollToTop();
     }
 
     public static void SetupCrewmateTab()
     {
+        var y = 0.9f;
+
         CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
         vanilla.SetHeader(StringNames.RolesCategory, 20);
         vanilla.Title.text = "Crewmate Vanilla";
         vanilla.Background.color = vanilla.Divider.color = Color.cyan;
         vanilla.transform.localScale = Vector3.one * 0.68f;
-        vanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
+        vanilla.transform.localPosition = new(-0.9f, y, -2f);
         var chmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
         chmText.fontStyle = FontStyles.Bold;
         chmText.outlineWidth = 0.17f;
         vanilla.gameObject.SetActive(false);
         CrewmateObjects.Add(vanilla.gameObject);
+        
+        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
+        ModSettingsTab.scrollBar.ScrollToTop();
     }
 
     public static void SetupImpostorTab()
     {
+        var y = 0.9f;
+        
         CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
         vanilla.SetHeader(StringNames.RolesCategory, 20);
         vanilla.Title.text = "Impostor Vanilla";
         vanilla.Background.color = vanilla.Divider.color = Color.red;
         vanilla.transform.localScale = Vector3.one * 0.68f;
-        vanilla.transform.localPosition = new(-0.9f, 0.9f, -2f);
+        vanilla.transform.localPosition = new(-0.9f, y, -2f);
         var ihmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
         ihmText.fontStyle = FontStyles.Bold;
         ihmText.outlineWidth = 0.17f;
         vanilla.gameObject.SetActive(false);
         ImpostorObjects.Add(vanilla.gameObject);
+        
+        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
+        ModSettingsTab.scrollBar.ScrollToTop();
+    }
+    public static void SetupNeutralTab()
+    {
+        var y = 0.9f;
+        
+        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        vanilla.SetHeader(StringNames.RolesCategory, 20);
+        vanilla.Title.text = "Coming Soon...";
+        vanilla.Background.color = vanilla.Divider.color = Color.gray;
+        vanilla.transform.localScale = Vector3.one * 0.68f;
+        vanilla.transform.localPosition = new(-0.9f, y, -2f);
+        var ihmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        ihmText.fontStyle = FontStyles.Bold;
+        ihmText.outlineWidth = 0.17f;
+        vanilla.gameObject.SetActive(false);
+        NeutralObjects.Add(vanilla.gameObject);
+        
+        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
+        ModSettingsTab.scrollBar.ScrollToTop();
+    }
+    public static void SetupCovenTab()
+    {
+        var y = 0.9f;
+        
+        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        vanilla.SetHeader(StringNames.RolesCategory, 20);
+        vanilla.Title.text = "Coming Soon...";
+        vanilla.Background.color = vanilla.Divider.color = Color.magenta;
+        vanilla.transform.localScale = Vector3.one * 0.68f;
+        vanilla.transform.localPosition = new(-0.9f, y, -2f);
+        var ihmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        ihmText.fontStyle = FontStyles.Bold;
+        ihmText.outlineWidth = 0.17f;
+        vanilla.gameObject.SetActive(false);
+        CovenObjects.Add(vanilla.gameObject);
+        
+        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
+        ModSettingsTab.scrollBar.ScrollToTop();
+    }
+    public static void SetupModifierTab()
+    {
+        var y = 0.9f;
+        
+        CategoryHeaderMasked vanilla = Object.Instantiate(RoleSettingsTab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, RoleSettingsTab.settingsContainer);
+        vanilla.SetHeader(StringNames.RolesCategory, 20);
+        vanilla.Title.text = "Coming Soon...";
+        vanilla.Background.color = vanilla.Divider.color = Color.yellow;
+        vanilla.transform.localScale = Vector3.one * 0.68f;
+        vanilla.transform.localPosition = new(-0.9f, y, -2f);
+        var ihmText = vanilla.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
+        ihmText.fontStyle = FontStyles.Bold;
+        ihmText.outlineWidth = 0.17f;
+        vanilla.gameObject.SetActive(false);
+        ModifierObjects.Add(vanilla.gameObject);
+        
+        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
+        ModSettingsTab.scrollBar.ScrollToTop();
     }
 }
 public enum OptionTabs
