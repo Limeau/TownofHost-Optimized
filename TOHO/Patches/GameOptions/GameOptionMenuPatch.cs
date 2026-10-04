@@ -34,6 +34,13 @@ public static class GameSettingMenuPatch
     public static List<BooleanOptionItem> BoolModifierSettings = [];
     public static List<BooleanOptionItem> BoolModSettings = [];
     
+    public static List<NumberOptionItem> NumberCrewmateSettings = [];
+    public static List<NumberOptionItem> NumberImpostorSettings = [];
+    public static List<NumberOptionItem> NumberNeutralSettings = [];
+    public static List<NumberOptionItem> NumberCovenSettings = [];
+    public static List<NumberOptionItem> NumberModifierSettings = [];
+    public static List<NumberOptionItem> NumberModSettings = [];
+    
     private static bool ModSettingsInitialized;
 
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
@@ -118,9 +125,14 @@ public static class GameSettingMenuPatch
 
         if (!ModSettingsInitialized)
         {
-            var testoption = new BooleanOptionItem("Example", OptionTabs.ModSettings, false, value => { Main.Logger.LogInfo($"{value}"); });
-            testoption.obj = new GameObject();
-            BoolModSettings.Add(testoption);
+            var testoption1 = new BooleanOptionItem("Example", OptionTabs.ModSettings, false);
+            testoption1.obj = new GameObject();
+            BoolModSettings.Add(testoption1);
+            
+            var testoption2 = new NumberOptionItem("Example", OptionTabs.ModSettings, 3f, 1f, 5f, 1f, value => { Main.Logger.LogInfo($"{value}"); });
+            testoption2.obj = new GameObject();
+            NumberModSettings.Add(testoption2);
+            
             SetupModSettingsTab();
             ModSettingsInitialized = true;
         }
@@ -172,7 +184,7 @@ public static class GameSettingMenuPatch
         ModifierButton.Button.OnClick.RemoveAllListeners();
         ModifierButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToModifierTab()));
 
-        new LateTask(() => { SwitchToCrewmateTab(); }, 0.1f);
+        new LateTask(() => { SwitchToCrewmateTab(); }, 0.01f);
         
         SetupCrewmateTab();
         SetupImpostorTab();
@@ -344,42 +356,6 @@ public static class GameSettingMenuPatch
             obj.SetActive(true);
         }
     }
-    
-    public static void SetupBooleanOption(this BooleanOptionItem option, float y)
-    {
-        ToggleOption template = null;
-
-        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
-        {
-            template = item.TryCast<ToggleOption>();
-            if (template != null) break;
-        }
-
-        if (template == null)
-        {
-            Main.Logger.LogError("[Settings] No ToggleOption template found.");
-            return;
-        }
-
-        option.obj = Object.Instantiate(template.gameObject, ModSettingsTab.settingsContainer);
-
-        var toggle = option.obj.GetComponent<ToggleOption>();
-        toggle.boolOptionName = BoolOptionNames.Invalid;
-
-        option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
-        option.obj.SetActive(true);
-
-        var text = toggle.TitleText;
-
-        new LateTask(() =>
-        {
-            text.DestroyTranslator();
-            text.text = option.OptionName;
-
-            ModSettingObjects.Add(option.obj);
-        }, 0.01f);
-    }
-
     public static void SetupModSettingsTab()
     {
         var y = 1.9f;
@@ -400,7 +376,12 @@ public static class GameSettingMenuPatch
         foreach (var option in BoolModSettings)
         {
             y -= 0.6f;
-            option.SetupBooleanOption(y);
+            option.SetupBooleanOption(y: y);
+        }        
+        foreach (var option in NumberModSettings)
+        {
+            y -= 0.6f;
+            option.SetupNumberOption(y: y);
         }
     }
 
@@ -442,4 +423,83 @@ public enum OptionTabs
     Coven,
     Modifier,
     ModSettings
+}
+
+public static class OptionManager
+{
+    public static void SetupBooleanOption(this BooleanOptionItem option, float y)
+    {
+        ToggleOption template = null;
+
+        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
+        {
+            template = item.TryCast<ToggleOption>();
+            if (template != null) break;
+        }
+
+        if (template == null)
+        {
+            Main.Logger.LogError("[Settings] No ToggleOption template found.");
+            return;
+        }
+
+        option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
+
+        var toggle = option.obj.GetComponent<ToggleOption>();
+        toggle.boolOptionName = BoolOptionNames.Invalid;
+
+        option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
+        option.obj.SetActive(true);
+
+        var text = toggle.TitleText;
+        
+        new LateTask(() =>
+        {
+            text.DestroyTranslator();
+            text.text = option.OptionName;
+
+            toggle.CheckMark.enabled = option.DefaultValue;
+            
+            GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
+        }, 0.01f);
+    }
+    public static void SetupNumberOption(this NumberOptionItem option, float y)
+    {
+        NumberOption template = null;
+
+        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
+        {
+            template = item.TryCast<NumberOption>();
+            if (template != null) break;
+        }
+
+        if (template == null)
+        {
+            Main.Logger.LogError("[Settings] No NumberOption template found.");
+            return;
+        }
+
+        option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
+
+        var number = option.obj.GetComponent<NumberOption>();
+        number.floatOptionName = FloatOptionNames.Invalid;
+
+        number.Increment = option.Step;
+        number.ValidRange = new FloatRange(option.MinValue, option.MaxValue);
+        
+        option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
+        option.obj.SetActive(true);
+
+        var text = number.TitleText;
+
+        new LateTask(() =>
+        {
+            text.DestroyTranslator();
+            text.text = option.OptionName;
+
+            number.Value = option.DefaultValue;
+            number.ValueText.text = $"{number.Value}";
+            GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
+        }, 0.01f);
+    }
 }

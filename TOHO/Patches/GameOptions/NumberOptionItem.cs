@@ -5,35 +5,40 @@ using TOHO;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class BooleanOptionItem
+public class NumberOptionItem
 {
-    private static readonly Dictionary<ToggleOption, BooleanOptionItem> OptionMap = new();
+    private static readonly Dictionary<ToggleOption, NumberOptionItem> OptionMap = new();
 
     public OptionTabs OptionTab;
     public string OptionName;
 
     public GameObject obj;
     public ToggleOption Toggle;
-
-    public bool Value;
     public Action<object> OnValueChanged;
-    public bool DefaultValue;
+
+    public float Value;
+    public float DefaultValue;
+    public float MinValue;
+    public float MaxValue;
+    public float Step;
     
-    public BooleanOptionItem(string name, OptionTabs tab, bool defaultValue, Action<object> onValueChanged = null)
+    public NumberOptionItem(string name, OptionTabs tab, float defaultValue, float minValue, float maxValue, float step, Action<object> onValueChanged = null)
     {
         OptionName = name;
         OptionTab = tab;
         Value = defaultValue;
         DefaultValue = defaultValue;
+        MinValue = minValue;
+        MaxValue = maxValue;
         OnValueChanged = onValueChanged;
+        Step = step;
     }
 
-    public void SetValue(bool value)
+    public void SetValue(float value)
     {
         if (Equals(Value, value))
             return;
 
         Value = value;
-        OnValueChanged?.Invoke(Value);
     }
 }
