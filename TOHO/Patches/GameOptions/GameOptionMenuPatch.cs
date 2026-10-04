@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
 using HarmonyLib;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using TMPro;
 using TOHO;
@@ -40,6 +41,13 @@ public static class GameSettingMenuPatch
     public static List<NumberOptionItem> NumberCovenSettings = [];
     public static List<NumberOptionItem> NumberModifierSettings = [];
     public static List<NumberOptionItem> NumberModSettings = [];
+    
+    public static List<StringOptionItem> StringCrewmateSettings = [];
+    public static List<StringOptionItem> StringImpostorSettings = [];
+    public static List<StringOptionItem> StringNeutralSettings = [];
+    public static List<StringOptionItem> StringCovenSettings = [];
+    public static List<StringOptionItem> StringModifierSettings = [];
+    public static List<StringOptionItem> StringModSettings = [];
     
     private static bool ModSettingsInitialized;
 
@@ -125,8 +133,13 @@ public static class GameSettingMenuPatch
 
         if (!ModSettingsInitialized)
         {
-            BoolModSettings.Add(new BooleanOptionItem(10, "Example", OptionTabs.ModSettings, false));
-            NumberModSettings.Add(new NumberOptionItem(10, "Example", OptionTabs.ModSettings, 3f, 1f, 5f, 1f, value => { Main.Logger.LogInfo($"{value}"); }));
+            BoolModSettings.Add(new BooleanOptionItem(10, "Example Boolean", OptionTabs.ModSettings, false));
+            NumberModSettings.Add(new NumberOptionItem(10, "Example Number", OptionTabs.ModSettings, 3f, 1f, 5f, 1f));
+            Dictionary<int, string> dict = [];
+            dict.Add(0, "Option 0");
+            dict.Add(1, "Option 1");
+            dict.Add(2, "Option 2");
+            StringModSettings.Add(new StringOptionItem(10, "Example String", OptionTabs.ModSettings, dict));
             
             SetupModSettingsTab();
             ModSettingsInitialized = true;
@@ -378,6 +391,11 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupNumberOption(y: y);
         }
+        foreach (var option in StringModSettings)
+        {
+            y -= 0.6f;
+            option.SetupStringOption(y: y);
+        }
     }
 
     public static void SetupCrewmateTab()
@@ -500,5 +518,69 @@ public static class OptionManager
             number.ValueText.text = $"{number.Value}";
             GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
         }, 0.01f);
+    }
+    public static void SetupStringOption(this StringOptionItem option, float y)
+    {
+        StringOption template = null;
+        option.SetInitialStringValue();
+        option.obj = new GameObject();
+
+        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("StringOption, Assembly-CSharp")))
+        {
+            template = item.TryCast<StringOption>();
+            if (template != null) break;
+        }
+
+        if (template == null)
+        {
+            Main.Logger.LogError("[Settings] No StringOption template found.");
+            return;
+        }
+
+        option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
+
+        var stringo = option.obj.GetComponent<StringOption>();
+        StringOptionItem.OptionMap[stringo] = option;
+        
+        stringo.stringOptionName = Int32OptionNames.Invalid;
+
+        option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
+        option.obj.SetActive(true);
+
+        var text = stringo.TitleText;
+        StringNames[] arr = [];
+
+        foreach (var item in option.AllValues)
+        {
+            arr.AddItem<StringNames>(StringNames.Fine);
+        }
+        
+        stringo.Values = new Il2CppStructArray<StringNames>(arr);
+        
+        new LateTask(() =>
+        {
+            text.DestroyTranslator();
+            text.text = option.OptionName;
+
+            stringo.Value = option.Value;
+            stringo.ValueText.text = $"{option.AllValues[stringo.Value]}";
+            
+            GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
+        }, 0.01f);
+    }
+
+    public static void PlusClick(StringOptionItem option, StringOption stringo)
+    {
+        Main.Logger.LogInfo($"Before: {option.Value}");
+        option.SetValue(option.Value+1);
+        Main.Logger.LogInfo($"After: {option.Value}");
+        stringo.ValueText.text = $"{option.AllValues[option.Value]}";
+    }
+    public static void MinusClick(StringOptionItem option, StringOption stringo)
+    {
+        Main.Logger.LogInfo($"Before: {option.Value}");
+        option.SetValue(option.Value-1);
+        Main.Logger.LogInfo($"After: {option.Value}");
+        stringo.ValueText.text = $"{option.AllValues[option.Value]}";
     }
 }

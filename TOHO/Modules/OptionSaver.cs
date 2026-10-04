@@ -15,13 +15,13 @@ public static class OptionSaver
 
     public static Dictionary<int, bool> BoolValues = [];
     public static Dictionary<int, float> NumberValues = [];
-    //public static Dictionary<int, string> StringValues = [];
+    public static Dictionary<int, int> StringValues = [];
 
     public static void Save()
     {
         File.WriteAllText(Path.Combine(Folder, "bools.json"), JsonSerializer.Serialize(BoolValues, Options));
         File.WriteAllText(Path.Combine(Folder, "floats.json"), JsonSerializer.Serialize(NumberValues, Options));
-        //File.WriteAllText(Path.Combine(Folder, "strings.json"), JsonSerializer.Serialize(StringValues, Options));
+        File.WriteAllText(Path.Combine(Folder, "strings.json"), JsonSerializer.Serialize(StringValues, Options));
     }
 
     public static void Load()
@@ -30,7 +30,7 @@ public static class OptionSaver
 
         BoolValues = LoadFile<Dictionary<int, bool>>(Path.Combine(Folder, "bools.json"));
         NumberValues = LoadFile<Dictionary<int, float>>(Path.Combine(Folder, "floats.json"));
-        //StringValues = LoadFile<Dictionary<int, string>>("strings.json");
+        StringValues = LoadFile<Dictionary<int, int>>(Path.Combine(Folder, "strings.json"));
     }
 
     private static T LoadFile<T>(string fileName) where T : new()
@@ -59,7 +59,13 @@ public static class OptionSaver
     public static void SetInitialNumberValue(this NumberOptionItem option)
     {
         if (option == null) return;
-        if (BoolValues.ContainsKey(option.Id)) option.SetValue(NumberValues[option.Id]);
+        if (NumberValues.ContainsKey(option.Id)) option.SetValue(NumberValues[option.Id]);
         else option.SetValue(option.DefaultValue);
+    }
+    public static void SetInitialStringValue(this StringOptionItem option)
+    {
+        if (option == null) return;
+        if (StringValues.ContainsKey(option.Id)) option.SetValue(StringValues[option.Id]);
+        else option.SetValue(0);
     }
 }
