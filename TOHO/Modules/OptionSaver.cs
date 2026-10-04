@@ -51,14 +51,14 @@ public static class OptionSaver
 
     public static void SetInitialBooleanValue(this BooleanOptionItem option)
     {
-        if (option != null) return;
+        if (option == null) return;
         if (BoolValues.ContainsKey(option.Id)) option.SetValue(BoolValues[option.Id]);
         else option.SetValue(option.DefaultValue);
     }
     
     public static void SetInitialNumberValue(this NumberOptionItem option)
     {
-        if (option != null) return;
+        if (option == null) return;
         if (BoolValues.ContainsKey(option.Id)) option.SetValue(NumberValues[option.Id]);
         else option.SetValue(option.DefaultValue);
     }
