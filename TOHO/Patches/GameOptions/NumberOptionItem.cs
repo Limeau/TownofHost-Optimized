@@ -40,5 +40,6 @@ public class NumberOptionItem
             return;
 
         Value = value;
+        OnValueChanged?.Invoke(Value);
     }
 }

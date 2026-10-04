@@ -125,13 +125,9 @@ public static class GameSettingMenuPatch
 
         if (!ModSettingsInitialized)
         {
-            var testoption1 = new BooleanOptionItem("Example", OptionTabs.ModSettings, false);
-            testoption1.obj = new GameObject();
-            BoolModSettings.Add(testoption1);
+            BoolModSettings.Add(new BooleanOptionItem("Example", OptionTabs.ModSettings, false));
             
-            var testoption2 = new NumberOptionItem("Example", OptionTabs.ModSettings, 3f, 1f, 5f, 1f, value => { Main.Logger.LogInfo($"{value}"); });
-            testoption2.obj = new GameObject();
-            NumberModSettings.Add(testoption2);
+            NumberModSettings.Add(new NumberOptionItem("Example", OptionTabs.ModSettings, 3f, 1f, 5f, 1f, value => { Main.Logger.LogInfo($"{value}"); }));
             
             SetupModSettingsTab();
             ModSettingsInitialized = true;
@@ -431,6 +427,8 @@ public static class OptionManager
     {
         ToggleOption template = null;
 
+        option.obj = new GameObject();
+        
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
         {
             template = item.TryCast<ToggleOption>();
@@ -466,6 +464,8 @@ public static class OptionManager
     public static void SetupNumberOption(this NumberOptionItem option, float y)
     {
         NumberOption template = null;
+        
+        option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
         {
