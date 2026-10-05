@@ -133,14 +133,7 @@ public static class GameSettingMenuPatch
 
         if (!ModSettingsInitialized)
         {
-            BoolModSettings.Add(new BooleanOptionItem(10, "Example Boolean", OptionTabs.ModSettings, false));
-            NumberModSettings.Add(new NumberOptionItem(10, "Example Number", OptionTabs.ModSettings, 3f, 1f, 5f, 1f));
-            Dictionary<int, string> dict = [];
-            dict.Add(0, "Option 0");
-            dict.Add(1, "Option 1");
-            dict.Add(2, "Option 2");
-            StringModSettings.Add(new StringOptionItem(10, "Example String", OptionTabs.ModSettings, dict));
-            
+            GameOptionMenuConfig.InitModSettings();
             SetupModSettingsTab();
             ModSettingsInitialized = true;
         }
