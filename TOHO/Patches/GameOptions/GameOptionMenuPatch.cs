@@ -364,7 +364,7 @@ public static class GameSettingMenuPatch
     {
         var y = 1.9f;
 
-        OptionManager.SetupHeader(y, "Ejection", ModSettingObjects, ModSettingsTab, Color.green);
+        OptionManager.SetupHeader(y, "Ejection Settings", ModSettingObjects, ModSettingsTab, Color.green);
 
         foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsEjection))
         {
@@ -377,6 +377,101 @@ public static class GameSettingMenuPatch
             option.SetupNumberOption(y: y);
         }
         foreach (var option in StringModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsEjection))
+        {
+            y -= 0.6f;
+            option.SetupStringOption(y: y);
+        }
+
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Game Settings", ModSettingObjects, ModSettingsTab, Color.green);
+
+        foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsGame))
+        {
+            y -= 0.6f;
+            option.SetupBooleanOption(y: y);
+        }        
+        foreach (var option in NumberModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsGame))
+        {
+            y -= 0.6f;
+            option.SetupNumberOption(y: y);
+        }
+        foreach (var option in StringModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsGame))
+        {
+            y -= 0.6f;
+            option.SetupStringOption(y: y);
+        }
+        
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Lobby Settings", ModSettingObjects, ModSettingsTab, Color.green);
+
+        foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsLobby))
+        {
+            y -= 0.6f;
+            option.SetupBooleanOption(y: y);
+        }        
+        foreach (var option in NumberModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsLobby))
+        {
+            y -= 0.6f;
+            option.SetupNumberOption(y: y);
+        }
+        foreach (var option in StringModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsLobby))
+        {
+            y -= 0.6f;
+            option.SetupStringOption(y: y);
+        }
+
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Map Settings", ModSettingObjects, ModSettingsTab, Color.green);
+
+        foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsMaps))
+        {
+            y -= 0.6f;
+            option.SetupBooleanOption(y: y);
+        }        
+        foreach (var option in NumberModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsMaps))
+        {
+            y -= 0.6f;
+            option.SetupNumberOption(y: y);
+        }
+        foreach (var option in StringModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsMaps))
+        {
+            y -= 0.6f;
+            option.SetupStringOption(y: y);
+        }
+
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Meeting Settings", ModSettingObjects, ModSettingsTab, Color.green);
+
+        foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsMeeting))
+        {
+            y -= 0.6f;
+            option.SetupBooleanOption(y: y);
+        }        
+        foreach (var option in NumberModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsMeeting))
+        {
+            y -= 0.6f;
+            option.SetupNumberOption(y: y);
+        }
+        foreach (var option in StringModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsMeeting))
+        {
+            y -= 0.6f;
+            option.SetupStringOption(y: y);
+        }
+
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Sabotage Settings", ModSettingObjects, ModSettingsTab, Color.green);
+
+        foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsSabotage))
+        {
+            y -= 0.6f;
+            option.SetupBooleanOption(y: y);
+        }        
+        foreach (var option in NumberModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsSabotage))
+        {
+            y -= 0.6f;
+            option.SetupNumberOption(y: y);
+        }
+        foreach (var option in StringModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsSabotage))
         {
             y -= 0.6f;
             option.SetupStringOption(y: y);
