@@ -2,11 +2,10 @@
 using Discord;
 using InnerNet;
 using HarmonyLib;
+using System;
 
 namespace TOHO.Patches
 {
-#if ANDROID
-#else
     // Originally from Town of Us Rewritten, by Det
     [HarmonyPatch(typeof(ActivityManager), nameof(ActivityManager.UpdateActivity))]
     public class DiscordRPC
@@ -15,7 +14,7 @@ namespace TOHO.Patches
         private static string region = "";
         public static void Prefix([HarmonyArgument(0)] Activity activity)
         {
-            if (activity == null) return;
+            if (activity == null || OperatingSystem.IsAndroid()) return;
 
             var details = $"TOHO {Main.DisplayVersion + Main.DisplaySuffix}";
             activity.Details = details;
@@ -54,5 +53,4 @@ namespace TOHO.Patches
             }
         }
     }
-#endif
 }

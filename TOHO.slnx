@@ -1,13 +1,8 @@
 ﻿<Solution>
     <Configurations>
-        <BuildType Name="Canary" />
         <BuildType Name="Debug" />
         <BuildType Name="Release" />
-        <Platform Name="Windows" />
-        <Platform Name="Android" />
     </Configurations>
     <Project Path="TOHO/TOHO.csproj">
-        <Platform Solution="*|Windows" Project="Windows" />
-        <Platform Solution="*|Android" Project="Android" />
     </Project>
 </Solution>

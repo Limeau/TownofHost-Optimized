@@ -8,7 +8,7 @@
 		<Authors>Limeau</Authors>
 		<LangVersion>12.0</LangVersion>
 		<Configurations>Debug;Release</Configurations>
-        <Platforms>Windows;Android</Platforms>
+        <Platforms>Windows</Platforms>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<Optimize>True</Optimize>
 		<CodePage>65001</CodePage>
@@ -18,17 +18,12 @@
         <AmongUs>C:\Program Files\Epic Games\AmongUs</AmongUs>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Platform)' == 'Android'">
-        <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
-    </PropertyGroup>
-
 	<ItemGroup>
 		<EmbeddedResource Include=".\Resources\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="AmongUs.GameLibs.Steam" Version="2026.9.29" Condition="'$(Platform)' == 'Windows'" PrivateAssets="all" />
-        <PackageReference Include="AmongUs.GameLibs.Android" Version="2026.8.18" Condition="'$(Platform)' == 'Android'" />
+        <PackageReference Include="AmongUs.GameLibs.Steam" Version="2026.9.29" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="2.1.0-rc.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
