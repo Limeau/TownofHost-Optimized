@@ -363,7 +363,7 @@ public static class GameSettingMenuPatch
     public static void SetupModSettingsTab()
     {
         var y = 1.9f;
-
+        
         OptionManager.SetupHeader(y, "Ejection Settings", ModSettingObjects, ModSettingsTab, Color.green);
 
         foreach (var option in BoolModSettings.Where(x => x.OptionTab == OptionTabs.ModSettingsEjection))
@@ -476,9 +476,8 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupStringOption(y: y);
         }
-
-        ModSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
-        ModSettingsTab.scrollBar.ScrollToTop();
+        ModSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        ModSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
 
     public static void SetupCrewmateTab()
@@ -487,8 +486,8 @@ public static class GameSettingMenuPatch
 
         OptionManager.SetupHeader(y, "Crewmate Vanilla", CrewmateObjects, RoleSettingsTab, Color.cyan);
         
-        RoleSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
-        RoleSettingsTab.scrollBar.ScrollToTop();
+        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
 
     public static void SetupImpostorTab()
@@ -497,8 +496,8 @@ public static class GameSettingMenuPatch
         
         OptionManager.SetupHeader(y, "Impostor Vanilla", ImpostorObjects, RoleSettingsTab, Color.red);
         
-        RoleSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
-        RoleSettingsTab.scrollBar.ScrollToTop();
+        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SetupNeutralTab()
     {
@@ -506,8 +505,8 @@ public static class GameSettingMenuPatch
         
         OptionManager.SetupHeader(y, "Coming soon...", NeutralObjects, RoleSettingsTab, Color.gray);
         
-        RoleSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
-        RoleSettingsTab.scrollBar.ScrollToTop();
+        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SetupCovenTab()
     {
@@ -515,8 +514,8 @@ public static class GameSettingMenuPatch
         
         OptionManager.SetupHeader(y, "Coming soon...", CovenObjects, RoleSettingsTab, Color.magenta);
         
-        RoleSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
-        RoleSettingsTab.scrollBar.ScrollToTop();
+        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SetupModifierTab()
     {
@@ -524,18 +523,18 @@ public static class GameSettingMenuPatch
         
         OptionManager.SetupHeader(y, "Coming soon...", ModifierObjects, RoleSettingsTab, Color.yellow);
         
-        RoleSettingsTab.scrollBar.ContentYBounds = new FloatRange(y, 2f);
-        RoleSettingsTab.scrollBar.ScrollToTop();
+        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
 }
 public enum OptionTabs
 {
     ModSettingsEjection,
-    ModSettingsMaps,
-    ModSettingsSabotage,
-    ModSettingsMeeting,
-    ModSettingsLobby,
     ModSettingsGame,
+    ModSettingsLobby,
+    ModSettingsMaps,
+    ModSettingsMeeting,
+    ModSettingsSabotage
 }
 
 public static class OptionManager
@@ -673,10 +672,10 @@ public static class OptionManager
     {
         CategoryHeaderMasked header = Object.Instantiate(tab.categoryHeaderOrigin, Vector3.zero, Quaternion.identity, tab.settingsContainer);
         header.SetHeader(StringNames.RolesCategory, 20);
-        header.Title.text = "title";
+        header.Title.text = title;
         header.Background.color = header.Divider.color = color;
         header.transform.localScale = Vector3.one * 0.68f;
-        header.transform.localPosition = new(-0.9f, y, -2f);
+        header.transform.localPosition = new(-0.9f, y, 2f);
         var chmText = header.transform.FindChild("HeaderText").GetComponent<TextMeshPro>();
         chmText.fontStyle = FontStyles.Bold;
         chmText.outlineWidth = 0.17f;
