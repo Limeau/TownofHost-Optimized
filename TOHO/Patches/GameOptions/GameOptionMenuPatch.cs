@@ -582,7 +582,10 @@ public static class OptionManager
             toggle.CheckMark.enabled = option.Value;
             
             team.Add(option.obj);
+            
+            SetupHelpIcon(option);
         }, 0.01f);
+        
     }
     public static void SetupNumberOption(this NumberOptionItem option, float y)
     {
@@ -688,5 +691,82 @@ public static class OptionManager
         chmText.outlineWidth = 0.17f;
         header.gameObject.SetActive(false);
         list.Add(header.gameObject);
+    }
+    private static void SetupHelpIcon(RoleOptionItem option)
+    {
+        NumberOption template = null;
+        
+        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
+        {
+            template = item.TryCast<NumberOption>();
+            if (template != null) break;
+        }
+
+        if (template == null)
+        {
+            Main.Logger.LogError("[Settings] No NumberOption template found.");
+            return;
+        }
+        
+        template.gameObject.SetActive(true);
+        
+        var icontemplate = template.transform.FindChild("MinusButton");
+        
+        // Help Button
+        
+        var help = Object.Instantiate(icontemplate, option.obj.transform, true);
+        help.gameObject.SetActive(true);
+        help.name = $"{option.Role.RoleName}HelpIcon";
+        var htext = help.GetComponentInChildren<TextMeshPro>();
+        htext.text = "?";
+        _ = ColorUtility.TryParseHtmlString("#000000", out var hclr2);
+        ColorUtility.TryParseHtmlString(option.Role.RoleColor, out var hc);
+        var hGameOptionsButton = help.GetComponent<GameOptionButton>();
+        hGameOptionsButton.OnClick = new();
+        hGameOptionsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+        {
+            var str = $"{option.Role.LongDescription}";
+            int size = str.Length > 500 ? str.Length > 550 ? 65 : 70 : 100;
+            var ColorRole = $"<color={option.Role.RoleColor}>{option.Role.RoleName}</color>";
+            var info = $"<size={size}%>{ColorRole}: {str}</size>"; 
+            GameSettingMenu.Instance.MenuDescriptionText.text = info;
+        }));
+        
+        
+        help.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = hGameOptionsButton.interactableClickColor;
+        hGameOptionsButton.interactableColor = hGameOptionsButton.interactableClickColor;
+        hGameOptionsButton.interactableHoveredColor = Color.Lerp(hGameOptionsButton.interactableClickColor, hclr2, 0.5f);
+        hGameOptionsButton.interactableClickColor = hclr2;
+        htext.color = hc;
+        help.localPosition = option.obj.transform.localPosition;
+        help.localPosition += new Vector3(2.05f, -0.35f, 0f);
+        help.SetAsLastSibling();
+        
+        // Settings Button
+        
+        var settings = Object.Instantiate(icontemplate, option.obj.transform, true);
+        settings.gameObject.SetActive(true);
+        settings.name = $"{option.Role.RoleName}HelpIcon";
+        var text = settings.GetComponentInChildren<TextMeshPro>();
+        text.text = "!";
+        _ = ColorUtility.TryParseHtmlString("#000000", out var clr2);
+        ColorUtility.TryParseHtmlString(option.Role.RoleColor, out var c);
+        var GameOptionsButton = settings.GetComponent<GameOptionButton>();
+        GameOptionsButton.OnClick = new();
+        GameOptionsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
+        {
+            Main.Logger.LogInfo("Settings button pressed!");
+        }));
+
+        settings.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = GameOptionsButton.interactableClickColor;
+        GameOptionsButton.interactableColor = GameOptionsButton.interactableClickColor;
+        GameOptionsButton.interactableHoveredColor = Color.Lerp(GameOptionsButton.interactableClickColor, clr2, 0.5f);
+        GameOptionsButton.interactableClickColor = clr2;
+        settings.localPosition = option.obj.transform.localPosition;
+        settings.localPosition += new Vector3(2.6f, -0.35f, 0f);
+        settings.SetAsLastSibling();        
+        text.color = c;
+        
+        template.gameObject.SetActive(false);
     }
 }
