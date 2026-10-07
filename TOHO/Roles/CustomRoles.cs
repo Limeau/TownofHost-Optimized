@@ -32,4 +32,9 @@ public class CustomRoles
         Option = new RoleOptionItem(this, RoleID, $"<color={RoleColor}>{RoleName}</color>", RoleCategories.CrewmateVanilla);
         GameSettingMenuPatch.CrewmateSettings.Add(Option);
     }
+
+    public void SetupAdvancedOptions()
+    {
+        
+    }
 }

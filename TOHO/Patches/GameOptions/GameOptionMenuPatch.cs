@@ -363,6 +363,33 @@ public static class GameSettingMenuPatch
             obj.SetActive(true);
         }
     }
+
+    public static void SwitchToAdvancedRoleSettings(CustomRoles role)
+    {
+        foreach (var obj in CrewmateObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            obj.SetActive(false);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            obj.SetActive(false);
+        }
+        
+        role.SetupAdvancedOptions();
+    }
+
     public static void SetupModSettingsTab()
     {
         var y = 1.9f;
@@ -755,7 +782,7 @@ public static class OptionManager
         GameOptionsButton.OnClick = new();
         GameOptionsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
         {
-            Main.Logger.LogInfo("Settings button pressed!");
+            GameSettingMenuPatch.SwitchToAdvancedRoleSettings(option.Role);
         }));
 
         settings.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = GameOptionsButton.interactableClickColor;
