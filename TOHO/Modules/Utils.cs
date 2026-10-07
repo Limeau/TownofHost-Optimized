@@ -164,4 +164,18 @@ public static class Utils
         foreach (var option in Main.AllNumberOptionItems.Where(x => x.Id == id)) return option;
         return null;
     }
+
+    public static List<RoleOptionItem> GetRoleOptionItemFromCategory(this RoleCategories category)
+    {
+        switch (category)
+        {
+            case RoleCategories.CrewmateVanilla:
+                return GameSettingMenuPatch.CrewmateSettings;
+            case RoleCategories.CrewmateVanillaGhost:                
+                return GameSettingMenuPatch.CrewmateSettings;
+            case RoleCategories.ImpostorVanilla:
+                return GameSettingMenuPatch.ImpostorSettings;
+        }
+        return null;
+    }
 }

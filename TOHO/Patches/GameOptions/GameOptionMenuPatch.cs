@@ -212,10 +212,13 @@ public static class GameSettingMenuPatch
         NeutralButton.Button.SelectButton(false);
         CovenButton.Button.SelectButton(false);
         ModifierButton.Button.SelectButton(false);
+
+        var y = 0.9f;
         
         foreach (var obj in CrewmateObjects)
         {
             obj.SetActive(true);
+            y -= 0.6f;
         }
         foreach (var obj in ImpostorObjects)
         {
@@ -233,6 +236,9 @@ public static class GameSettingMenuPatch
         {
             obj.SetActive(false);
         }
+        
+        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SwitchToImpostorTab()
     {
@@ -366,26 +372,8 @@ public static class GameSettingMenuPatch
 
     public static void SwitchToAdvancedRoleSettings(CustomRoles role)
     {
-        foreach (var obj in CrewmateObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (var obj in ImpostorObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (var obj in NeutralObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (var obj in CovenObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (var obj in ModifierObjects)
-        {
-            obj.SetActive(false);
-        }
+        RoleSettingsTab.gameObject.SetActive(false);
+        GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.SetActive(true);
         
         role.SetupAdvancedOptions();
     }
@@ -472,9 +460,6 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupRoleOption(CrewmateObjects, y);
         }
-        
-        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
-        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
 
     public static void SetupImpostorTab()
@@ -488,36 +473,24 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupRoleOption(ImpostorObjects, y);
         }
-        
-        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
-        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SetupNeutralTab()
     {
         var y = 0.9f;
         
         OptionManager.SetupHeader(y, "Coming soon...", NeutralObjects, RoleSettingsTab, Color.gray);
-        
-        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
-        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SetupCovenTab()
     {
         var y = 0.9f;
         
         OptionManager.SetupHeader(y, "Coming soon...", CovenObjects, RoleSettingsTab, Color.magenta);
-        
-        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
-        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     public static void SetupModifierTab()
     {
         var y = 0.9f;
         
         OptionManager.SetupHeader(y, "Coming soon...", ModifierObjects, RoleSettingsTab, Color.yellow);
-        
-        RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
-        RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
 }
 public enum OptionTabs
@@ -595,7 +568,9 @@ public static class OptionManager
 
         var toggle = option.obj.GetComponent<ToggleOption>();
         toggle.boolOptionName = BoolOptionNames.Invalid;
-
+        _ = ColorUtility.TryParseHtmlString("#000000", out var rclr2);
+        ColorUtility.TryParseHtmlString(option.Role.RoleColor, out var rc);
+        toggle.LabelBackground.color = Color.Lerp(rc, rclr2, 0.5f);
         option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
         option.obj.SetActive(true);
 
@@ -761,12 +736,12 @@ public static class OptionManager
         
         
         help.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = hGameOptionsButton.interactableClickColor;
-        hGameOptionsButton.interactableColor = hGameOptionsButton.interactableClickColor;
-        hGameOptionsButton.interactableHoveredColor = Color.Lerp(hGameOptionsButton.interactableClickColor, hclr2, 0.5f);
+        help.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = Color.Lerp(hc, hclr2, 0.75f);
+        hGameOptionsButton.interactableColor = Color.Lerp(hc, hclr2, 0.75f);
+        hGameOptionsButton.interactableHoveredColor = Color.Lerp(hGameOptionsButton.interactableColor, hclr2, 0.5f);
         hGameOptionsButton.interactableClickColor = hclr2;
+        help.localPosition = new Vector3(1.55f, 0f, 0f);
         htext.color = hc;
-        help.localPosition = option.obj.transform.localPosition;
-        help.localPosition += new Vector3(2.05f, -0.35f, 0f);
         help.SetAsLastSibling();
         
         // Settings Button
@@ -785,12 +760,11 @@ public static class OptionManager
             GameSettingMenuPatch.SwitchToAdvancedRoleSettings(option.Role);
         }));
 
-        settings.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = GameOptionsButton.interactableClickColor;
-        GameOptionsButton.interactableColor = GameOptionsButton.interactableClickColor;
-        GameOptionsButton.interactableHoveredColor = Color.Lerp(GameOptionsButton.interactableClickColor, clr2, 0.5f);
+        settings.FindChild("ButtonSprite").GetComponent<SpriteRenderer>().color = Color.Lerp(c, clr2, 0.75f);
+        GameOptionsButton.interactableColor = Color.Lerp(c, clr2, 0.75f);
+        GameOptionsButton.interactableHoveredColor = Color.Lerp(GameOptionsButton.interactableColor, clr2, 0.5f);
         GameOptionsButton.interactableClickColor = clr2;
-        settings.localPosition = option.obj.transform.localPosition;
-        settings.localPosition += new Vector3(2.6f, -0.35f, 0f);
+        settings.localPosition = new Vector3(2.1f, 0f, 0f);
         settings.SetAsLastSibling();        
         text.color = c;
         
