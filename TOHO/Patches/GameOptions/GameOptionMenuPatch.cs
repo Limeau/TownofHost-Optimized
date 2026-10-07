@@ -28,28 +28,18 @@ public static class GameSettingMenuPatch
     public static List<GameObject> ModifierObjects = [];
     public static List<GameObject> ModSettingObjects = [];
     
-    public static List<BooleanOptionItem> BoolCrewmateSettings = [];
-    public static List<BooleanOptionItem> BoolImpostorSettings = [];
-    public static List<BooleanOptionItem> BoolNeutralSettings = [];
-    public static List<BooleanOptionItem> BoolCovenSettings = [];
-    public static List<BooleanOptionItem> BoolModifierSettings = [];
+    public static List<RoleOptionItem> CrewmateSettings = [];
+    public static List<RoleOptionItem> ImpostorSettings = [];
+    public static List<RoleOptionItem> NeutralSettings = [];
+    public static List<RoleOptionItem> CovenSettings = [];
+    public static List<RoleOptionItem> ModifierSettings = [];
+    
     public static List<BooleanOptionItem> BoolModSettings = [];
-    
-    public static List<NumberOptionItem> NumberCrewmateSettings = [];
-    public static List<NumberOptionItem> NumberImpostorSettings = [];
-    public static List<NumberOptionItem> NumberNeutralSettings = [];
-    public static List<NumberOptionItem> NumberCovenSettings = [];
-    public static List<NumberOptionItem> NumberModifierSettings = [];
     public static List<NumberOptionItem> NumberModSettings = [];
-    
-    public static List<StringOptionItem> StringCrewmateSettings = [];
-    public static List<StringOptionItem> StringImpostorSettings = [];
-    public static List<StringOptionItem> StringNeutralSettings = [];
-    public static List<StringOptionItem> StringCovenSettings = [];
-    public static List<StringOptionItem> StringModifierSettings = [];
     public static List<StringOptionItem> StringModSettings = [];
     
     private static bool ModSettingsInitialized;
+    private static bool RoleSettingsInitialized;
 
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
     public static void StartPostfix(GameSettingMenu __instance)
@@ -154,44 +144,57 @@ public static class GameSettingMenuPatch
         RoleSettingsTab.MapPicker.gameObject.SetActive(true);
         RoleSettingsTab.MapPicker.Labeltext.DestroyTranslator();
         RoleSettingsTab.MapPicker.Labeltext.text = "Roles";
-        
-        // Crewmate Tab
-        CrewmateButton = RoleSettingsTab.MapPicker.mapButtons[0];
-        CrewmateButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_CrewmateRoles.png", 120f), CrewmateButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
-        CrewmateButton.Button.OnClick.RemoveAllListeners();
-        CrewmateButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToCrewmateTab()));
-        
-        // Impostor Tab
-        ImpostorButton = RoleSettingsTab.MapPicker.mapButtons[1];
-        ImpostorButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_ImpostorRoles.png", 120f), ImpostorButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
-        ImpostorButton.Button.OnClick.RemoveAllListeners();
-        ImpostorButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToImpostorTab()));
-        
-        // Neutral Tab
-        NeutralButton = RoleSettingsTab.MapPicker.mapButtons[2];
-        NeutralButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_NeutralRoles.png", 120f), NeutralButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
-        NeutralButton.Button.OnClick.RemoveAllListeners();
-        NeutralButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToNeutralTab()));
-        
-        // Coven Tab
-        CovenButton = RoleSettingsTab.MapPicker.mapButtons[3];
-        CovenButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_CovenRoles.png", 120f), CovenButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
-        CovenButton.Button.OnClick.RemoveAllListeners();
-        CovenButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToCovenTab()));
-        
-        // Modifier Tab
-        ModifierButton = RoleSettingsTab.MapPicker.mapButtons[4];
-        ModifierButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_Modifiers.png", 120f), ModifierButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
-        ModifierButton.Button.OnClick.RemoveAllListeners();
-        ModifierButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToModifierTab()));
+
+
+        if (!RoleSettingsInitialized)
+        {
+
+            // Crewmate Tab
+            CrewmateButton = RoleSettingsTab.MapPicker.mapButtons[0];
+            CrewmateButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_CrewmateRoles.png", 120f),
+                CrewmateButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
+            CrewmateButton.Button.OnClick.RemoveAllListeners();
+            CrewmateButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToCrewmateTab()));
+
+            // Impostor Tab
+            ImpostorButton = RoleSettingsTab.MapPicker.mapButtons[1];
+            ImpostorButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_ImpostorRoles.png", 120f),
+                ImpostorButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
+            ImpostorButton.Button.OnClick.RemoveAllListeners();
+            ImpostorButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToImpostorTab()));
+
+            // Neutral Tab
+            NeutralButton = RoleSettingsTab.MapPicker.mapButtons[2];
+            NeutralButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_NeutralRoles.png", 120f),
+                NeutralButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
+            NeutralButton.Button.OnClick.RemoveAllListeners();
+            NeutralButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToNeutralTab()));
+
+            // Coven Tab
+            CovenButton = RoleSettingsTab.MapPicker.mapButtons[3];
+            CovenButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_CovenRoles.png", 120f),
+                CovenButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
+            CovenButton.Button.OnClick.RemoveAllListeners();
+            CovenButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToCovenTab()));
+
+            // Modifier Tab
+            ModifierButton = RoleSettingsTab.MapPicker.mapButtons[4];
+            ModifierButton.SetImage(Utils.LoadSprite("TOHO.Resources.Images.TabIcon_Modifiers.png", 120f),
+                ModifierButton.GetComponentInChildren<SpriteRenderer>().material.GetInt(PlayerMaterial.MaskLayer));
+            ModifierButton.Button.OnClick.RemoveAllListeners();
+            ModifierButton.Button.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => SwitchToModifierTab()));
+            
+            SetupCrewmateTab();
+            SetupImpostorTab();
+            SetupNeutralTab();
+            SetupModifierTab();
+            SetupCovenTab();
+            
+            RoleSettingsInitialized = true;
+        }
 
         new LateTask(() => { SwitchToCrewmateTab(); }, 0.01f);
         
-        SetupCrewmateTab();
-        SetupImpostorTab();
-        SetupNeutralTab();
-        SetupModifierTab();
-        SetupCovenTab();
         
         foreach (var obj in Object.FindObjectsOfType<CategoryHeaderMasked>())
         {
@@ -429,6 +432,20 @@ public static class GameSettingMenuPatch
 
         OptionManager.SetupHeader(y, "Crewmate Vanilla", CrewmateObjects, RoleSettingsTab, Color.cyan);
         
+        foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateVanilla))
+        {
+            y -= 0.6f;
+            option.SetupRoleOption(CrewmateObjects, y);
+        }
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Crewmate Vanilla Ghost", CrewmateObjects, RoleSettingsTab, Color.cyan);
+        
+        foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateVanillaGhost))
+        {
+            y -= 0.6f;
+            option.SetupRoleOption(CrewmateObjects, y);
+        }
+        
         RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
         RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
@@ -438,6 +455,12 @@ public static class GameSettingMenuPatch
         var y = 0.9f;
         
         OptionManager.SetupHeader(y, "Impostor Vanilla", ImpostorObjects, RoleSettingsTab, Color.red);
+        
+        foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorVanilla))
+        {
+            y -= 0.6f;
+            option.SetupRoleOption(ImpostorObjects, y);
+        }
         
         RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
         RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
@@ -475,6 +498,12 @@ public enum OptionTabs
     ModSettingsEjection,
     ModSettingsGame,
     ModSettingsLobby,
+}
+public enum RoleCategories
+{
+    CrewmateVanilla,
+    CrewmateVanillaGhost,
+    ImpostorVanilla
 }
 
 public static class OptionManager
@@ -515,6 +544,44 @@ public static class OptionManager
             toggle.CheckMark.enabled = option.Value;
             
             GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
+        }, 0.01f);
+    }
+    public static void SetupRoleOption(this RoleOptionItem option, List<GameObject> team, float y)
+    {
+        ToggleOption template = null;
+        option.SetInitialRoleValue();
+        option.obj = new GameObject();
+        
+        foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
+        {
+            template = item.TryCast<ToggleOption>();
+            if (template != null) break;
+        }
+
+        if (template == null)
+        {
+            Main.Logger.LogError("[Settings] No ToggleOption template found.");
+            return;
+        }
+
+        option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.RoleSettingsTab.settingsContainer);
+
+        var toggle = option.obj.GetComponent<ToggleOption>();
+        toggle.boolOptionName = BoolOptionNames.Invalid;
+
+        option.obj.transform.localPosition = new Vector3(-0.4f, y, -2f);
+        option.obj.SetActive(true);
+
+        var text = toggle.TitleText;
+        
+        new LateTask(() =>
+        {
+            text.DestroyTranslator();
+            text.text = option.OptionName;
+
+            toggle.CheckMark.enabled = option.Value;
+            
+            team.Add(option.obj);
         }, 0.01f);
     }
     public static void SetupNumberOption(this NumberOptionItem option, float y)
