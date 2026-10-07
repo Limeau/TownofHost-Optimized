@@ -21,7 +21,7 @@ public class Main : BasePlugin
     public static ManualLogSource Logger;
     public Harmony harmony = new("com.Limeau.TownofHostOptimized");
 
-    public static List<CustomRoles> AllRoles = [];
+    public static Dictionary<string, CustomRoles> AllRoles = [];
     
     public static string ModColor = "#b47ede";
     public static string ModName = "Town of Host Optimized";
@@ -55,7 +55,7 @@ public class Main : BasePlugin
         
         foreach (var role in AllRoles)
         {
-            role.SetupCustomOption();
+            role.Value.SetupCustomOption();
         }
         OptionSaver.Load();
         harmony.PatchAll();
@@ -71,5 +71,17 @@ public class Main : BasePlugin
     public static void SetupCustomRoles()
     {
         new CustomRoles(100, "Crewmate", "Find and eject the Impostors", "The Crewmate wins at the end of the game if all of the Impostors, Neutral Killers, and Coven are no longer living.", "#00ffff", RoleTypes.Crewmate, RoleCategories.CrewmateVanilla);
+        new CustomRoles(200, "Engineer", "Use the vents", "The Engineer has the ability to use the vents at all times except during Comms sabotages.", "#E6731E", RoleTypes.Engineer, RoleCategories.CrewmateVanilla);
+        new CustomRoles(300, "Scientist", "Access player vitals", "The Scientist can access portable vitals anywhere, allowing them to see if players are currently living or dead.", "#2A27F5", RoleTypes.Scientist, RoleCategories.CrewmateVanilla);
+        new CustomRoles(400, "Tracker", "Track players' location", "The Tracker can pick one player to track, and for a duration of time will know where they are on the map.", "#827153", RoleTypes.Tracker, RoleCategories.CrewmateVanilla);
+        new CustomRoles(500, "Noisemaker", "Alert players when you die", "When the Noisemaker is killed, all players will receive an alert that tells the players where the Noisemaker's body is.", "#24cf69", RoleTypes.Noisemaker, RoleCategories.CrewmateVanilla);
+        new CustomRoles(600, "Detective", "Take notes & discover Impostors", "The Detective can use the Interrogate button to try and find an Impostor, and take notes on players.", "#D3DFE3", RoleTypes.Detective, RoleCategories.CrewmateVanilla);
+        new CustomRoles(700, "Judge", "Take control of a meeting", "Once the Judge completes a certain amount of tasks, they can eject a player during a meeting single handedly.", "#7F8385", RoleTypes.Judge, RoleCategories.CrewmateVanilla);
+        new CustomRoles(800, "Impostor", "Stay hidden and kill all Crewmates", "The Impostor wins at the end of the game if the Impostor team outnumbers the Crewmates, and all other killers (Neutral Killers and Coven) are dead.", "#ff1919", RoleTypes.Impostor, RoleCategories.ImpostorVanilla);
+        new CustomRoles(900, "Shapeshifter", "Disguise yourself as another player", "The Shapeshifter can use the Shift button to temporarily disguise themself as a select player.", "#ff1919", RoleTypes.Shapeshifter, RoleCategories.ImpostorVanilla);
+        new CustomRoles(1000, "Phantom", "Go invisible to conceal your kills", "The Phantom can use the Vanish button to temporarily go invisible. The Phantom cannot kill players while they are inviisible.", "#ff1919", RoleTypes.Phantom, RoleCategories.ImpostorVanilla);
+        new CustomRoles(1100, "Viper", "Slowly discard of all of your kills", "When the Viper kills, the body will slowly rot, to the point it is not visible to other players and cannot be reported.", "#ff1919", RoleTypes.Viper, RoleCategories.ImpostorVanilla);
+        new CustomRoles(1200, "Guardian Angel", "Protect Crewmates from Impostors' attacks", "The Guardian Angel can use the Protect button to temporarily protect players from kill button attacks.", "#A0FAFA", RoleTypes.GuardianAngel, RoleCategories.CrewmateVanillaGhost);
+        new CustomRoles(1300, "Influencer", "Send the alive Crewmates hints about the game", "The Influencer can send the alive Crewmates hints about the game, in the form of pictures pre-decided by the game.", "#E8D125", RoleTypes.SpiritGuide, RoleCategories.CrewmateVanillaGhost);
     }
 }

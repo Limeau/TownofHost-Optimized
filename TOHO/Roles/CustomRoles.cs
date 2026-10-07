@@ -24,7 +24,7 @@ public class CustomRoles
         Basis = basis;
         Category = category;
         
-        Main.AllRoles.Add(this);
+        Main.AllRoles.Add(roleName, this);
     }
 
     public void SetupCustomOption()
