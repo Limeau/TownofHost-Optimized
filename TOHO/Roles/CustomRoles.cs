@@ -7,6 +7,7 @@ public class CustomRoles
     public int RoleID;
     public string RoleName;
     public string ShortDescription;
+    public string ScreenshotPath;
     public string LongDescription;
     public string RoleColor;
     public RoleTypes Basis;
@@ -38,5 +39,10 @@ public class CustomRoles
     public void SetupAdvancedOptions()
     {
         
+    }
+
+    public void SetupScreenshot(string path)
+    {
+        ScreenshotPath = path;
     }
 }

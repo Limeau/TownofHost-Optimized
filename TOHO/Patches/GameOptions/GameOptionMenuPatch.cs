@@ -90,6 +90,7 @@ public static class GameSettingMenuPatch
         ModSettingsTab.gameObject.SetActive(false);
         VanillaSettingsTab.gameObject.SetActive(false);
         RoleSettingsTab.gameObject.SetActive(false);
+        GameSettingMenu.Instance.RoleSettingsTab.gameObject.SetActive(false);
         
         ModSettingsButton.SelectButton(false);
         VanillaSettingsButton.SelectButton(false);
@@ -372,11 +373,44 @@ public static class GameSettingMenuPatch
 
     public static void SwitchToAdvancedRoleSettings(CustomRoles role)
     {
+        var menu = GameSettingMenu.Instance; 
+        var advanced = menu.RoleSettingsTab; 
+        advanced.gameObject.SetActive(true);
         RoleSettingsTab.gameObject.SetActive(false);
-        GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.SetActive(true);
+        advanced.AllButton.ReceiveClickDown();
+        advanced.roleTabs[1].ReceiveClickDown();
+
+        foreach (var obj in advanced.roleTabs)
+        {
+            obj.gameObject.SetActive(false);
+        }
+
+        foreach (var obj in advanced.advancedSettingChildren)
+        {
+            obj.gameObject.SetActive(false);
+        }
+
+        var newallbutton = Object.Instantiate(advanced.AllButton, advanced.AllButton.transform.parent);
+        
+        newallbutton.OnClick.RemoveAllListeners();
+        newallbutton.OnClick.AddListener((UnityAction)(() =>
+        {
+            ChangeCustomTab(RoleSettingsTab, RoleSettingsButton);
+            Object.Destroy(newallbutton);
+        }));
+        newallbutton.gameObject.SetActive(true);
+        
+        advanced.roleHeaderText.text = role.RoleName;
+        advanced.roleScreenshot.sprite = Utils.LoadSprite(role.ScreenshotPath, 500f);
+        advanced.roleDescriptionText.text = role.LongDescription;
+        ColorUtility.TryParseHtmlString(role.RoleColor, out var c);
+        advanced.roleHeaderText.color = c;
+        _ = ColorUtility.TryParseHtmlString("#000000", out var c2);
+        advanced.roleHeaderSprite.color = Color.Lerp(c, c2, 0.5f);
         
         role.SetupAdvancedOptions();
     }
+
 
     public static void SetupModSettingsTab()
     {
@@ -756,7 +790,7 @@ public static class OptionManager
         var GameOptionsButton = settings.GetComponent<GameOptionButton>();
         GameOptionsButton.OnClick = new();
         GameOptionsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() =>
-        {
+        { 
             GameSettingMenuPatch.SwitchToAdvancedRoleSettings(option.Role);
         }));
 

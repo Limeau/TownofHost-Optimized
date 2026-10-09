@@ -70,7 +70,7 @@ public class Main : BasePlugin
 
     public static void SetupCustomRoles()
     {
-        new CustomRoles(100, "Crewmate", "Find and eject the Impostors", "The Crewmate wins at the end of the game if all of the Impostors, Neutral Killers, and Coven are no longer living.", "#00ffff", RoleTypes.Crewmate, RoleCategories.CrewmateVanilla);
+        new CustomRoles(100, "Crewmate", "Find and eject the Impostors", "The Crewmate wins at the end of the game if all of the Impostors, Neutral Killers, and Coven are no longer living.", "#00ffff", RoleTypes.Crewmate, RoleCategories.CrewmateVanilla).SetupScreenshot("TOHO.Resources.RoleScreenshots.Crewmate.png");
         new CustomRoles(200, "Engineer", "Use the vents", "The Engineer has the ability to use the vents at all times except during Comms sabotages.", "#E6731E", RoleTypes.Engineer, RoleCategories.CrewmateVanilla);
         new CustomRoles(300, "Scientist", "Access player vitals", "The Scientist can access portable vitals anywhere, allowing them to see if players are currently living or dead.", "#2A27F5", RoleTypes.Scientist, RoleCategories.CrewmateVanilla);
         new CustomRoles(400, "Tracker", "Track players' location", "The Tracker can pick one player to track, and for a duration of time will know where they are on the map.", "#827153", RoleTypes.Tracker, RoleCategories.CrewmateVanilla);
