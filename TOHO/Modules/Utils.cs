@@ -178,4 +178,13 @@ public static class Utils
         }
         return null;
     }
+
+    public static bool IsKillButton(this CustomRoles role)
+    {
+        if (role.Basis == RoleTypes.Impostor) return true;
+        if (role.Basis == RoleTypes.Shapeshifter) return true;
+        if (role.Basis == RoleTypes.Viper) return true;
+        if (role.Basis == RoleTypes.Phantom) return true;
+        return false;
+    }
 }
