@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace TOHO;
 
-public static class GameOptionMenuConfig
+public static class Options
 {
     public static BooleanOptionItem EjectionImpostors;
     public static BooleanOptionItem EjectionNeutralKillers;

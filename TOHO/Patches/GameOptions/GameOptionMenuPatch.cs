@@ -122,7 +122,7 @@ public static class GameSettingMenuPatch
 
         if (!ModSettingsInitialized)
         {
-            GameOptionMenuConfig.InitModSettings();
+            Options.InitModSettings();
             SetupModSettingsTab();
             ModSettingsInitialized = true;
         }
@@ -519,6 +519,68 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupRoleOption(CrewmateObjects, y);
         }
+
+        if (CrewmateSettings.Any(x => x.OptionTab == RoleCategories.CrewmateHindering))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Crewmate Hindering", CrewmateObjects, RoleSettingsTab, Color.cyan);
+            foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateHindering))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CrewmateObjects, y);
+            }
+        }
+        if (CrewmateSettings.Any(x => x.OptionTab == RoleCategories.CrewmateInvestigative))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Crewmate Investigative", CrewmateObjects, RoleSettingsTab, Color.cyan);
+            foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateInvestigative))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CrewmateObjects, y);
+            }
+        }
+        if (CrewmateSettings.Any(x => x.OptionTab == RoleCategories.CrewmateKilling))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Crewmate Killing", CrewmateObjects, RoleSettingsTab, Color.cyan);
+            foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateKilling))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CrewmateObjects, y);
+            }
+        }
+        if (CrewmateSettings.Any(x => x.OptionTab == RoleCategories.CrewmatePower))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Crewmate Power", CrewmateObjects, RoleSettingsTab, Color.cyan);
+            foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmatePower))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CrewmateObjects, y);
+            }
+        }
+        if (CrewmateSettings.Any(x => x.OptionTab == RoleCategories.CrewmateSupport))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Crewmate Support", CrewmateObjects, RoleSettingsTab, Color.cyan);
+            foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateSupport))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CrewmateObjects, y);
+            }
+        }
+        
+        if (CrewmateSettings.Any(x => x.OptionTab == RoleCategories.CrewmateGhosts))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Crewmate Ghosts", CrewmateObjects, RoleSettingsTab, Color.cyan);
+            foreach (var option in CrewmateSettings.Where(x => x.OptionTab == RoleCategories.CrewmateGhosts))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CrewmateObjects, y);
+            }
+        }
     }
 
     public static void SetupImpostorTab()
@@ -532,24 +594,170 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupRoleOption(ImpostorObjects, y);
         }
+        if (ImpostorSettings.Any(x => x.OptionTab == RoleCategories.ImpostorConcealing))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Impostor Concealing", ImpostorObjects, RoleSettingsTab, Color.red);
+            foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorConcealing))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(ImpostorObjects, y);
+            }
+        }
+        if (ImpostorSettings.Any(x => x.OptionTab == RoleCategories.ImpostorHindering))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Impostor Hindering", ImpostorObjects, RoleSettingsTab, Color.red);
+            foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorHindering))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(ImpostorObjects, y);
+            }
+        }
+        if (ImpostorSettings.Any(x => x.OptionTab == RoleCategories.ImpostorKilling))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Impostor Killing", ImpostorObjects, RoleSettingsTab, Color.red);
+            foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorKilling))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(ImpostorObjects, y);
+            }
+        }
+        if (ImpostorSettings.Any(x => x.OptionTab == RoleCategories.ImpostorSupport))
+        {                   
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Impostor Support", ImpostorObjects, RoleSettingsTab, Color.red);
+            foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorSupport))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(ImpostorObjects, y);
+            }
+        }
+        if (ImpostorSettings.Any(x => x.OptionTab == RoleCategories.ImpostorGhosts))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Impostor Ghosts", ImpostorObjects, RoleSettingsTab, Color.red);
+            foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorGhosts))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(ImpostorObjects, y);
+            }
+        }
     }
     public static void SetupNeutralTab()
     {
-        var y = 0.9f;
+        var y = 1.5f;
         
-        OptionManager.SetupHeader(y, "Coming soon...", NeutralObjects, RoleSettingsTab, Color.gray);
+        if (NeutralSettings.Any(x => x.OptionTab == RoleCategories.NeutralBenign))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Neutral Benign", NeutralObjects, RoleSettingsTab, Color.gray);
+            foreach (var option in NeutralSettings.Where(x => x.OptionTab == RoleCategories.NeutralBenign))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(NeutralObjects, y);
+            }
+        }
+        if (NeutralSettings.Any(x => x.OptionTab == RoleCategories.NeutralChaos))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Neutral Chaos", NeutralObjects, RoleSettingsTab, Color.gray);
+            foreach (var option in NeutralSettings.Where(x => x.OptionTab == RoleCategories.NeutralChaos))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(NeutralObjects, y);
+            }
+        }
+        if (NeutralSettings.Any(x => x.OptionTab == RoleCategories.NeutralEvil))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Neutral Evil", NeutralObjects, RoleSettingsTab, Color.gray);
+            foreach (var option in NeutralSettings.Where(x => x.OptionTab == RoleCategories.NeutralEvil))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(NeutralObjects, y);
+            }
+        }
+        if (NeutralSettings.Any(x => x.OptionTab == RoleCategories.NeutralKilling))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Neutral Killing", NeutralObjects, RoleSettingsTab, Color.gray);
+            foreach (var option in NeutralSettings.Where(x => x.OptionTab == RoleCategories.NeutralKilling))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(NeutralObjects, y);
+            }
+        }
+        if (NeutralSettings.Any(x => x.OptionTab == RoleCategories.NeutralGhosts))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Neutral Ghosts", NeutralObjects, RoleSettingsTab, Color.gray);
+            foreach (var option in NeutralSettings.Where(x => x.OptionTab == RoleCategories.NeutralGhosts))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(NeutralObjects, y);
+            }
+        }
     }
     public static void SetupCovenTab()
     {
-        var y = 0.9f;
-        
-        OptionManager.SetupHeader(y, "Coming soon...", CovenObjects, RoleSettingsTab, Color.magenta);
+        var y = 1.5f;
+
+        if (CovenSettings.Any(x => x.OptionTab == RoleCategories.CovenKilling))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Coven Killing", CovenObjects, RoleSettingsTab, Color.magenta);
+            foreach (var option in CovenSettings.Where(x => x.OptionTab == RoleCategories.CovenKilling))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CovenObjects, y);
+            }
+        }   
+
+        if (CovenSettings.Any(x => x.OptionTab == RoleCategories.CovenPower))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Coven Power", CovenObjects, RoleSettingsTab, Color.magenta);
+            foreach (var option in CovenSettings.Where(x => x.OptionTab == RoleCategories.CovenPower))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CovenObjects, y);
+            }
+        }   
+
+        if (CovenSettings.Any(x => x.OptionTab == RoleCategories.CovenTrickery))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Coven Trickery", CovenObjects, RoleSettingsTab, Color.magenta);
+            foreach (var option in CovenSettings.Where(x => x.OptionTab == RoleCategories.CovenTrickery))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CovenObjects, y);
+            }
+        }   
+
+        if (CovenSettings.Any(x => x.OptionTab == RoleCategories.CovenUtility))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Coven Utility", CovenObjects, RoleSettingsTab, Color.magenta);
+            foreach (var option in CovenSettings.Where(x => x.OptionTab == RoleCategories.CovenUtility))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CovenObjects, y);
+            }
+        }    
     }
     public static void SetupModifierTab()
     {
         var y = 0.9f;
         
-        OptionManager.SetupHeader(y, "Coming soon...", ModifierObjects, RoleSettingsTab, Color.yellow);
+        OptionManager.SetupHeader(y, "Modifiers", ModifierObjects, RoleSettingsTab, Color.yellow);
+        foreach (var option in ModifierSettings.Where(x => x.OptionTab == RoleCategories.Modifier))
+        {
+            y -= 0.6f;
+            option.SetupRoleOption(ModifierObjects, y);
+        }
     }
 }
 public enum OptionTabs
@@ -563,5 +771,30 @@ public enum RoleCategories
 {
     CrewmateVanilla,
     CrewmateVanillaGhost,
-    ImpostorVanilla
+    CrewmateHindering,
+    CrewmateInvestigative,
+    CrewmateSupport,
+    CrewmateKilling,
+    CrewmatePower,
+    CrewmateGhosts,
+    
+    ImpostorVanilla,
+    ImpostorKilling,
+    ImpostorSupport,
+    ImpostorConcealing,
+    ImpostorHindering,
+    ImpostorGhosts,
+    
+    NeutralBenign,
+    NeutralEvil,
+    NeutralChaos,
+    NeutralKilling,
+    NeutralGhosts,
+    
+    CovenPower,
+    CovenKilling,
+    CovenTrickery,
+    CovenUtility,
+    
+    Modifier
 }

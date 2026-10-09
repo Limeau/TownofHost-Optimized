@@ -199,19 +199,39 @@ public static class Utils
     {
         if (player.GetCustomRole().Category == RoleCategories.CrewmateVanilla) return true;
         if (player.GetCustomRole().Category == RoleCategories.CrewmateVanillaGhost) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateHindering) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateInvestigative) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateKilling) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmatePower) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateSupport) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateGhosts) return true;
         return false;
     }
     public static bool IsPlayerImpostor(this PlayerControl player)
     {
         if (player.GetCustomRole().Category == RoleCategories.ImpostorVanilla) return true;
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorConcealing) return true;
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorGhosts) return true;
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorHindering) return true;
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorKilling) return true;
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorSupport) return true;
         return false;
     }
     public static bool IsPlayerNeutral(this PlayerControl player)
     {
+        if (player.GetCustomRole().Category == RoleCategories.NeutralBenign) return true;
+        if (player.GetCustomRole().Category == RoleCategories.NeutralEvil) return true;
+        if (player.GetCustomRole().Category == RoleCategories.NeutralChaos) return true;
+        if (player.GetCustomRole().Category == RoleCategories.NeutralGhosts) return true;
+        if (player.GetCustomRole().Category == RoleCategories.NeutralKilling) return true;
         return false;
     }
     public static bool IsPlayerCoven(this PlayerControl player)
-    {
+    {        
+        if (player.GetCustomRole().Category == RoleCategories.CovenUtility) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CovenTrickery) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CovenPower) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CovenKilling) return true;
         return false;
     }
 
@@ -221,6 +241,54 @@ public static class Utils
         if (IsPlayerImpostor(player)) return Custom_Team.Impostor;
         if (IsPlayerNeutral(player)) return Custom_Team.Neutral;
         if (IsPlayerCoven(player)) return Custom_Team.Coven;
+        return Custom_Team.Unknown;
+    }
+    public static bool IsRoleCrewmate(this CustomRoles role)
+    {
+        if (role.Category == RoleCategories.CrewmateVanilla) return true;
+        if (role.Category == RoleCategories.CrewmateVanillaGhost) return true;
+        if (role.Category == RoleCategories.CrewmateHindering) return true;
+        if (role.Category == RoleCategories.CrewmateInvestigative) return true;
+        if (role.Category == RoleCategories.CrewmateKilling) return true;
+        if (role.Category == RoleCategories.CrewmatePower) return true;
+        if (role.Category == RoleCategories.CrewmateSupport) return true;
+        if (role.Category == RoleCategories.CrewmateGhosts) return true;
+        return false;
+    }
+    public static bool IsRoleImpostor(this CustomRoles role)
+    {
+        if (role.Category == RoleCategories.ImpostorVanilla) return true;
+        if (role.Category == RoleCategories.ImpostorConcealing) return true;
+        if (role.Category == RoleCategories.ImpostorGhosts) return true;
+        if (role.Category == RoleCategories.ImpostorHindering) return true;
+        if (role.Category == RoleCategories.ImpostorKilling) return true;
+        if (role.Category == RoleCategories.ImpostorSupport) return true;
+        return false;
+    }
+    public static bool IsRoleNeutral(this CustomRoles role)
+    {
+        if (role.Category == RoleCategories.NeutralBenign) return true;
+        if (role.Category == RoleCategories.NeutralEvil) return true;
+        if (role.Category == RoleCategories.NeutralChaos) return true;
+        if (role.Category == RoleCategories.NeutralGhosts) return true;
+        if (role.Category == RoleCategories.NeutralKilling) return true;
+        return false;
+    }
+    public static bool IsRoleCoven(this CustomRoles role)
+    {        
+        if (role.Category == RoleCategories.CovenUtility) return true;
+        if (role.Category == RoleCategories.CovenTrickery) return true;
+        if (role.Category == RoleCategories.CovenPower) return true;
+        if (role.Category == RoleCategories.CovenKilling) return true;
+        return false;
+    }
+
+    public static Custom_Team GetCustomRoleTeamFromRole(this CustomRoles role)
+    {
+        if (IsRoleCrewmate(role)) return Custom_Team.Crewmate;
+        if (IsRoleImpostor(role)) return Custom_Team.Impostor;
+        if (IsRoleNeutral(role)) return Custom_Team.Neutral;
+        if (IsRoleCoven(role)) return Custom_Team.Coven;
         return Custom_Team.Unknown;
     }
 }
