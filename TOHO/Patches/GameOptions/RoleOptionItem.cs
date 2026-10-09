@@ -8,9 +8,6 @@ using Object = UnityEngine.Object;
 public class RoleOptionItem
 {
     private static readonly Dictionary<ToggleOption, RoleOptionItem> OptionMap = new();
-    public static List<BooleanOptionItem> SubBooleanOptions = [];
-    public static List<NumberOptionItem> SubNumberOptions = [];
-    public static List<StringOptionItem> SubStringOptions = [];
     
     public int Id;
 
