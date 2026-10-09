@@ -187,4 +187,49 @@ public static class Utils
         if (role.Basis == RoleTypes.Phantom) return true;
         return false;
     }
+
+    public static CustomRoles GetCustomRole(this PlayerControl player)
+    {
+        var role = Main.CustomRoles[player];
+        if (role != null) return role;
+        return null;
+    }
+
+    public static bool IsPlayerCrewmate(this PlayerControl player)
+    {
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateVanilla) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CrewmateVanillaGhost) return true;
+        return false;
+    }
+    public static bool IsPlayerImpostor(this PlayerControl player)
+    {
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorVanilla) return true;
+        return false;
+    }
+    public static bool IsPlayerNeutral(this PlayerControl player)
+    {
+        return false;
+    }
+    public static bool IsPlayerCoven(this PlayerControl player)
+    {
+        return false;
+    }
+
+    public static Custom_Team GetCustomRoleTeam(this PlayerControl player)
+    {
+        if (IsPlayerCrewmate(player)) return Custom_Team.Crewmate;
+        if (IsPlayerImpostor(player)) return Custom_Team.Impostor;
+        if (IsPlayerNeutral(player)) return Custom_Team.Neutral;
+        if (IsPlayerCoven(player)) return Custom_Team.Coven;
+        return Custom_Team.Unknown;
+    }
+}
+
+public enum Custom_Team
+{
+    Crewmate,
+    Impostor,
+    Neutral,
+    Coven,
+    Unknown
 }
