@@ -15,7 +15,7 @@ public static class GameStartManagerPatchPostfix
 {
     public static void Postfix(GameStartManager __instance)
     {
-        /*
+        
         new LateTask(() =>
         {
             __instance.ClickEdit();
@@ -35,6 +35,6 @@ public static class GameStartManagerPatchPostfix
         new LateTask(() =>
         {
             GameSettingMenu.Instance.Close();
-        }, 0.9f);*/
+        }, 0.9f);
     }
 }

@@ -43,6 +43,17 @@ public static class GameSettingMenuPatch
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
     public static void StartPostfix(GameSettingMenu __instance)
     {
+        ModSettingsInitialized = false;
+        RoleSettingsInitialized = false;
+
+        ModSettingObjects.Clear();
+
+        CrewmateObjects.Clear();
+        ImpostorObjects.Clear();
+        NeutralObjects.Clear();
+        CovenObjects.Clear();
+        ModifierObjects.Clear();
+        
         Main.Logger.LogInfo("[Settings] StartPostfix entered!");
         
         __instance.GamePresetsButton.gameObject.SetActive(false);
@@ -72,7 +83,6 @@ public static class GameSettingMenuPatch
         __instance.ControllerSelectable.Add(RoleSettingsButton);
         
         ModSettingsTab = Object.Instantiate(__instance.GameSettingsTab, __instance.GameSettingsTab.transform.parent);
-
         VanillaSettingsTab = Object.Instantiate(__instance.GameSettingsTab, __instance.GameSettingsTab.transform.parent);
         RoleSettingsTab = Object.Instantiate(__instance.GameSettingsTab, __instance.GameSettingsTab.transform.parent);
 
