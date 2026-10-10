@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hazel;
-using LibCpp2IL;
 
 namespace TOHO;
 
@@ -31,14 +29,14 @@ public static class RoleAssign
             switch (role.GetCustomRoleTeamFromRole())
             {
                 case Custom_Team.Crewmate:
-                    Crewmates.Add(role);
+                    if (role.Category != RoleCategories.CrewmateVanillaGhost && role.Category != RoleCategories.CrewmateGhosts) Crewmates.Add(role);
                     break;
                 case Custom_Team.Impostor:
-                    Impostors.Add(role);
+                    if (role.Category != RoleCategories.ImpostorGhosts) Impostors.Add(role);
                     break;
                 case Custom_Team.Neutral:
                     if (role.Category == RoleCategories.NeutralKilling) NKs.Add(role);
-                    else NNKs.Add(role);
+                    else if (role.Category != RoleCategories.NeutralGhosts) NNKs.Add(role);
                     break;
                 case Custom_Team.Coven:
                     Covens.Add(role);

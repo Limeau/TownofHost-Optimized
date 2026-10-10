@@ -39,6 +39,53 @@ public static class GameSettingMenuPatch
     private static bool ModSettingsInitialized;
     private static bool RoleSettingsInitialized;
 
+    public static void InitializeSettings()
+    {
+        if (!ModSettingsInitialized)
+        {
+            Options.InitModSettings();
+            SetupModSettingsTab();
+
+            // Build the UI, but don't show it yet.
+            foreach (var obj in ModSettingObjects)
+                obj.SetActive(false);
+
+            ModSettingsInitialized = true;
+        }
+
+        if (!RoleSettingsInitialized)
+        {
+            InitializeRoleSettings();
+
+            // Start with every role option hidden.
+            foreach (var obj in CrewmateObjects
+                         .Concat(ImpostorObjects)
+                         .Concat(NeutralObjects)
+                         .Concat(CovenObjects)
+                         .Concat(ModifierObjects))
+            {
+                obj.SetActive(false);
+            }
+
+            RoleSettingsInitialized = true;
+        }
+    }
+    
+    private static void InitializeRoleSettings()
+    {
+        // Move the five button setup blocks here:
+        // CrewmateButton, ImpostorButton, NeutralButton,
+        // CovenButton, ModifierButton.
+
+        // Keep their existing SetImage and OnClick code.
+
+        SetupCrewmateTab();
+        SetupImpostorTab();
+        SetupNeutralTab();
+        SetupModifierTab();
+        SetupCovenTab();
+    }
+    
     [HarmonyPatch(nameof(GameSettingMenu.Start)), HarmonyPostfix]
     public static void StartPostfix(GameSettingMenu __instance)
     {
@@ -80,7 +127,8 @@ public static class GameSettingMenuPatch
         ModSettingsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => ChangeCustomTab(ModSettingsTab, ModSettingsButton)));
         VanillaSettingsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => ChangeCustomTab(VanillaSettingsTab, VanillaSettingsButton)));
         RoleSettingsButton.OnClick.AddListener((UnityEngine.Events.UnityAction)(() => ChangeCustomTab(RoleSettingsTab, RoleSettingsButton)));
-
+        
+        InitializeSettings();
     }
 
     public static void ChangeCustomTab(GameOptionsMenu menu, PassiveButton button)
