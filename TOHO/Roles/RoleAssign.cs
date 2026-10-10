@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hazel;
+using LibCpp2IL;
 
 namespace TOHO;
 
@@ -15,7 +17,15 @@ public static class RoleAssign
     public static List<CustomRoles> ThisGameRoles = [];
     public static void AssignRoles()
     {
-        foreach (var kvp in Main.AllRoles.Where(x => x.Value.Option.Value))
+        Main.CustomRoles.Clear();
+        
+        Crewmates.Clear();
+        Impostors.Clear();
+        NKs.Clear();
+        NNKs.Clear();
+        Covens.Clear();
+        ThisGameRoles.Clear();
+        foreach (var kvp in Main.AllRoles.Where(x => x.Value.Enabled))
         {
             var role = kvp.Value;
             switch (role.GetCustomRoleTeamFromRole())
@@ -35,7 +45,9 @@ public static class RoleAssign
                     break;
             }
         }
-
+        
+        // logs here
+        
         var srandom = new Random();
         
         int impCount = 0;
@@ -70,9 +82,11 @@ public static class RoleAssign
             Covens.Remove(Covens[i]);
             covCount++;
         }
-
+        
+        // does not log here
+        
         var togo = PlayerControl.AllPlayerControls.Count - (covCount + impCount + nnkCount + nkCount);
-
+        
         while (togo > 0 && Crewmates.Count > 0)
         {
             var i = srandom.Next(Crewmates.Count);
@@ -86,12 +100,32 @@ public static class RoleAssign
             ThisGameRoles.Add(Main.AllRoles["Crewmate"]);
             togo--;
         }
-
-        foreach (var player in PlayerControl.AllPlayerControls)
+        
+        try
         {
-            var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
-            Main.CustomRoles.Add(player, role);
-            ThisGameRoles.Remove(role);
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
+                Main.CustomRoles.Add(player, role);
+                ThisGameRoles.Remove(role);
+            }
+        }
+        catch (Exception e)
+        {
+            Main.Logger.LogInfo(e);
+        }
+
+        new LateTask(() => { SetRoleBasisOfPlayers(); }, 5f, "Set Initial Role Basis");
+    }
+
+    public static void SetRoleBasisOfPlayers()
+    {
+        foreach (var kvp in Main.CustomRoles)
+        {
+            var player = kvp.Key;
+            var role = kvp.Value;
+            
+            RoleManager.Instance.SetRole(player, role.Basis);
         }
     }
 }

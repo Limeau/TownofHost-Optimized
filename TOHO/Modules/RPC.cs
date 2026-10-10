@@ -10,7 +10,7 @@ public static class RPC
 {
     public class PendingMsg
     {
-        public int TargetClientId;
+        public uint TargetClientId;
         public Action<MessageWriter> SerializeBody;
     }
 
@@ -19,7 +19,7 @@ public static class RPC
     private const float TimeoutSeconds = 3f;
     private const int SoftMaxBytes = 1100;
 
-    public static void EnqueueGameDataTo(int targetClientId, Action<MessageWriter> serializeBody)
+    public static void EnqueueGameDataTo(uint targetClientId, Action<MessageWriter> serializeBody)
     {
         Queue.Enqueue(new PendingMsg
         {
@@ -30,7 +30,7 @@ public static class RPC
         TryFlush(force: false);
     }
 
-    public static void EnqueueRpc(int targetClientId, uint netId, byte rpcCallId, Action<MessageWriter> writeRpcArgs)
+    public static void EnqueueRpc(uint targetClientId, uint netId, byte rpcCallId, Action<MessageWriter> writeRpcArgs)
     {
         EnqueueGameDataTo(targetClientId, writer =>
         {

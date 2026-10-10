@@ -22,6 +22,7 @@ public class CustomRoles
     public List<StringOptionItem> SubStringOptions = [];
     
     public RoleOptionItem Option;
+    public bool Enabled;
 
     public CustomRoles(int roleID, string roleName, string shortDescription, string longDescription, string roleColor, RoleTypes basis, RoleCategories category)
     {

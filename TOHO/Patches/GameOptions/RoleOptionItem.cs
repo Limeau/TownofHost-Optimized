@@ -30,6 +30,7 @@ public class RoleOptionItem
         OptionName = name;
         OptionTab = tab;
         Value = false;
+        Role.Enabled = false;
         DefaultValue = false;
         OnValueChanged = onValueChanged;
     }
@@ -40,8 +41,9 @@ public class RoleOptionItem
             return;
 
         Value = value;
+        Role.Enabled = value;
         OnValueChanged?.Invoke(Value);
-        OptionSaver.BoolValues[Id] = value;
+        OptionSaver.RoleValues[Id] = value;
         OptionSaver.Save();
     }
 }

@@ -14,6 +14,8 @@ class CoShowIntroPatch
     {
         if (!AmongUsClient.Instance.AmHost) return;
 
+        RoleAssign.AssignRoles();
+        
         _ = new LateTask(() =>
         {
             if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Ended) return;
