@@ -14,12 +14,43 @@ using System.Text;
 using System.Text.RegularExpressions;
 using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using Rewired;
 using UnityEngine;
 
 namespace TOHO;
 
 public static class Utils
 {
+    public static string GetNameWithRole(this PlayerControl player)
+    {
+        var role = player.GetCustomRole();
+        var s = "";
+
+        s += Main.PlayerNames[player];
+        s += "\n";
+        s += "<size=50%>";
+        s += $"<color={role.RoleColor}>";
+        s += role.RoleName;
+        s += "</color>";
+        
+        var color = "#ffbb00";
+
+        int completedTasks = 0;
+        
+        foreach (var task in player.Data.Tasks)
+        {
+            if (task.Complete) completedTasks += 1;
+        }
+
+        if (completedTasks >= player.Data.Tasks.Count) color = "#00ff00";
+        
+        if (!role.IsKillButton()) s += $"<color={color}>{completedTasks}/{player.Data.Tasks.Count}</color>";
+        
+        s += "</size>";
+        
+        return s;
+    }
+    
     public static Dictionary<string, Sprite> CachedSprites = [];
     public static Sprite LoadSprite(string path, float pixelsPerUnit = 1f)
     {

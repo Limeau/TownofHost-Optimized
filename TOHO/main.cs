@@ -23,6 +23,7 @@ public class Main : BasePlugin
 
     public static Dictionary<string, CustomRoles> AllRoles = [];
     public static Dictionary<PlayerControl, CustomRoles> CustomRoles = [];
+    public static Dictionary<PlayerControl, string> PlayerNames = [];
     
     public static string ModColor = "#b47ede";
     public static string ModName = "Town of Host Optimized";

@@ -124,6 +124,7 @@ public static class RoleAssign
             var role = kvp.Value;
             
             RoleManager.Instance.SetRole(player, role.Basis);
+            player.RpcSetName(player.GetNameWithRole());
         }
     }
 }
