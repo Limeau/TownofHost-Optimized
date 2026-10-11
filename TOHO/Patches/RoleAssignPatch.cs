@@ -10,6 +10,8 @@ public static class RpcSetRolePatch
     [HarmonyPrefix] public static void Prefix(PlayerControl __instance, ref RoleTypes __0)
     {
         if (!RoleAssign.RoleSet) RoleAssign.AssignRoles();
+
+        if (__instance.Data.IsDead) return;
         
         Main.Logger.LogInfo(
             $"[RoleSync] RpcSetRole called: " +
