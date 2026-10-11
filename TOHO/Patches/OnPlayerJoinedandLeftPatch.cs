@@ -59,8 +59,6 @@ public static class OnPlayerJoinedPatch
     }
     public static void Postfix([HarmonyArgument(0)] ClientData client)
     {
-        Main.PlayerNames[client.Character] = client.PlayerName;
-
         if (AmongUsClient.Instance.GetHost() == client)
         {
             Main.Logger.LogInfo("Host joined game");

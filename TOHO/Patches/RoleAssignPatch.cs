@@ -45,6 +45,8 @@ public static class RpcSetRolePatch
         }
 
         __0 = customRole.Basis;
+        
+        __instance.SetNameWithRole();
 
         Main.Logger.LogInfo(
             $"[RoleSync] Replaced role with {__0}"

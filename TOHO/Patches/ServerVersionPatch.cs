@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using InnerNet;
 
 namespace TOHO.Patches;
 
@@ -25,5 +26,22 @@ public static class IsVersionModdedPatch
     {
         __result = true;
         return false;
+    }
+}
+
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckName))]
+class PlayerControlCheckNamePatch
+{
+    public static void Postfix(PlayerControl __instance, ref string playerName)
+    {
+        if (!AmongUsClient.Instance.AmHost) return;
+        
+        playerName = __instance.Data.PlayerName ?? playerName;
+        
+        if (!Main.PlayerNames.ContainsKey(__instance))
+        {
+            Main.PlayerNames.Add(__instance, playerName);
+        }
+        __instance.SetNameWithRole();
     }
 }

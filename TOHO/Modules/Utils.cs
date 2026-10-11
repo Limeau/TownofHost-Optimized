@@ -21,9 +21,23 @@ namespace TOHO;
 
 public static class Utils
 {
-    public static string GetNameWithRole(this PlayerControl player)
+    public static void RpcSetNameLocal(this PlayerControl player, string name)
     {
-        var role = player.GetCustomRole();
+        var sender = new CustomRpcSender("RpcSetNameLocal", SendOption.Reliable, false);
+        sender.RpcSetName(player, name, player);
+        sender.SendMessage();
+    }
+    
+    public static void SetNameWithRole(this PlayerControl player)
+    {
+        CustomRoles role = null;
+        role = player.GetCustomRole();
+        
+        if (role == null)
+        {
+            player.RpcSetNameLocal(Main.PlayerNames[player]);
+        }
+        
         var s = "";
 
         s += Main.PlayerNames[player];
@@ -44,11 +58,11 @@ public static class Utils
 
         if (completedTasks >= player.Data.Tasks.Count) color = "#00ff00";
         
-        if (!role.IsKillButton()) s += $"<color={color}>{completedTasks}/{player.Data.Tasks.Count}</color>";
+        if (!role.IsKillButton()) s += $" (<color={color}>{completedTasks}/{player.Data.Tasks.Count}</color>)";
         
         s += "</size>";
         
-        return s;
+        player.RpcSetNameLocal(s);
     }
     
     public static Dictionary<string, Sprite> CachedSprites = [];
@@ -221,6 +235,7 @@ public static class Utils
 
     public static CustomRoles GetCustomRole(this PlayerControl player)
     {
+        if (!Main.CustomRoles.ContainsKey(player)) return null;
         var role = Main.CustomRoles[player];
         if (role != null) return role;
         return null;
