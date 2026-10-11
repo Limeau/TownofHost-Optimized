@@ -34,7 +34,7 @@ class CheckTaskCompletionPatch
             kvp.Key.RpcSetName(kvp.Value);
         }
         Main.PlayerNames.Clear();
-        
+
         return true;
     }
 }

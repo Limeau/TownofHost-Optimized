@@ -59,9 +59,15 @@ public static class OnPlayerJoinedPatch
     }
     public static void Postfix([HarmonyArgument(0)] ClientData client)
     {
-        Main.Logger.LogInfo($"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/Puid:{client.ProductUserId}/Platform:{client.PlatformData.Platform}) Joining room");
-        
         Main.PlayerNames[client.Character] = client.PlayerName;
+
+        if (AmongUsClient.Instance.GetHost() == client)
+        {
+            Main.Logger.LogInfo("Host joined game");
+            RoleAssign.RoleSet = false;
+        }
+        
+        Main.Logger.LogInfo($"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/Puid:{client.ProductUserId}/Platform:{client.PlatformData.Platform}) Joining room");
         
         _ = new LateTask(() =>
         {

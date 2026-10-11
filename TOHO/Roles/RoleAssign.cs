@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmongUs.GameOptions;
+using Hazel;
 
 namespace TOHO;
 
 public static class RoleAssign
 {
+    public static bool RoleSet = false;
+    
     public static List<CustomRoles> Crewmates = [];
     public static List<CustomRoles> Impostors = [];
     public static List<CustomRoles> NKs = [];
@@ -15,6 +19,7 @@ public static class RoleAssign
     public static List<CustomRoles> ThisGameRoles = [];
     public static void AssignRoles()
     {
+        RoleSet = true;
         Main.CustomRoles.Clear();
         
         Crewmates.Clear();
@@ -43,8 +48,6 @@ public static class RoleAssign
                     break;
             }
         }
-        
-        // logs here
         
         var srandom = new Random();
         
@@ -111,20 +114,6 @@ public static class RoleAssign
         catch (Exception e)
         {
             Main.Logger.LogInfo(e);
-        }
-
-        new LateTask(() => { SetRoleBasisOfPlayers(); }, 5f, "Set Initial Role Basis");
-    }
-
-    public static void SetRoleBasisOfPlayers()
-    {
-        foreach (var kvp in Main.CustomRoles)
-        {
-            var player = kvp.Key;
-            var role = kvp.Value;
-            
-            RoleManager.Instance.SetRole(player, role.Basis);
-            player.RpcSetName(player.GetNameWithRole());
         }
     }
 }

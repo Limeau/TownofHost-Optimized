@@ -12,9 +12,9 @@ class CoShowIntroPatch
 {
     public static void Prefix()
     {
-        if (!AmongUsClient.Instance.AmHost) return;
-
         RoleAssign.AssignRoles();
+        
+        if (!AmongUsClient.Instance.AmHost) return;
         
         _ = new LateTask(() =>
         {
