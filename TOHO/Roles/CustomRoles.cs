@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AmongUs.GameOptions;
 using UnityEngine;
+using UnityEngine.Events;
 using static TOHO.OptionManager;
 
 namespace TOHO;
@@ -115,4 +116,48 @@ public class CustomRoles
     {
         ScreenshotPath = path;
     }
+
+    /* Triggers  */
+    public UnityAction<PlayerControl, PlayerControl> MurderAsKillerAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> MurderAsTargetAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> MurderAsSpectAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public bool MurderAsKillerBool = true;
+    public bool MurderAsTargetBool = true;
+    public bool MurderAsSpectBool = true;
+    public bool OnMurderAsKiller(PlayerControl killer, PlayerControl target)
+    {
+        MurderAsKillerAction.Invoke(killer, target);
+        return MurderAsKillerBool;
+    }
+    public bool OnMurderAsTarget(PlayerControl killer, PlayerControl target)
+    {
+        MurderAsTargetAction.Invoke(killer, target);
+        return MurderAsTargetBool;
+    }
+    public bool OnMurderAsSpect(PlayerControl killer, PlayerControl target)
+    {
+        MurderAsSpectAction.Invoke(killer, target);
+        return MurderAsSpectBool;
+    }
+
+    public void AddOnMurder(UnityAction<PlayerControl, PlayerControl> onMurder, bool isKiller = false, bool isTarget = false, bool allowKill = true)
+    {
+        if (isKiller)
+        {
+            MurderAsKillerAction = onMurder;
+            MurderAsKillerBool = allowKill;
+        }
+        else if (isTarget)
+        {
+            MurderAsTargetAction = onMurder;
+            MurderAsTargetBool = allowKill;
+        }
+        else
+        {
+            MurderAsSpectAction = onMurder;
+            MurderAsSpectBool = allowKill;
+        }
+    }
+
+    /* Abilities */
 }
