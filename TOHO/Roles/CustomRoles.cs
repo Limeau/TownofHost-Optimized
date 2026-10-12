@@ -118,6 +118,8 @@ public class CustomRoles
     }
 
     /* Triggers  */
+
+    // Murder
     public UnityAction<PlayerControl, PlayerControl> MurderAsKillerAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
     public UnityAction<PlayerControl, PlayerControl> MurderAsTargetAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
     public UnityAction<PlayerControl, PlayerControl> MurderAsSpectAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
@@ -140,22 +142,52 @@ public class CustomRoles
         return MurderAsSpectBool;
     }
 
-    public void AddOnMurder(UnityAction<PlayerControl, PlayerControl> onMurder, bool isKiller = false, bool isTarget = false, bool allowKill = true)
+    public void AddOnMurder(UnityAction<PlayerControl, PlayerControl> onMurder, bool isKiller = false, bool isTarget = false, bool allow = true)
     {
         if (isKiller)
         {
             MurderAsKillerAction = onMurder;
-            MurderAsKillerBool = allowKill;
+            MurderAsKillerBool = allow;
         }
         else if (isTarget)
         {
             MurderAsTargetAction = onMurder;
-            MurderAsTargetBool = allowKill;
+            MurderAsTargetBool = allow;
         }
         else
         {
             MurderAsSpectAction = onMurder;
-            MurderAsSpectBool = allowKill;
+            MurderAsSpectBool = allow;
+        }
+    }
+
+    // Ejection
+    public UnityAction<PlayerControl> EjectAsTargetAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public UnityAction<PlayerControl> EjectAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public bool EjectAsTargetBool = true;
+    public bool EjectAsSpectBool = true;
+    public bool OnEjectAsTarget(PlayerControl target)
+    {
+        EjectAsTargetAction.Invoke(target);
+        return EjectAsTargetBool;
+    }
+    public bool OnEjectAsSpect(PlayerControl target)
+    {
+        EjectAsSpectAction.Invoke(target);
+        return EjectAsSpectBool;
+    }
+
+    public void AddOnEject(UnityAction<PlayerControl> onEject, bool isTarget = false, bool allow = true)
+    {
+        if (isTarget)
+        {
+            EjectAsTargetAction = onEject;
+            EjectAsTargetBool = allow;
+        }
+        else
+        {
+            EjectAsSpectAction = onEject;
+            EjectAsSpectBool = allow;
         }
     }
 
