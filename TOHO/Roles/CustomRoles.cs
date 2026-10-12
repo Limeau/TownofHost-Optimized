@@ -9,7 +9,7 @@ namespace TOHO;
 public class CustomRoles
 {
     public bool IsOptionIninialized;
-    public int RoleID;
+    public string RoleID;
     public string RoleName;
     public string ShortDescription;
     public string ScreenshotPath;
@@ -25,7 +25,7 @@ public class CustomRoles
     public RoleOptionItem Option;
     public bool Enabled;
 
-    public CustomRoles(int roleID, string roleName, string shortDescription, string longDescription, string roleColor, RoleTypes basis, RoleCategories category)
+    public CustomRoles(string roleID, string roleName, string shortDescription, string longDescription, string roleColor, RoleTypes basis, RoleCategories category)
     {
         RoleID = roleID;
         RoleName = roleName;
@@ -43,7 +43,7 @@ public class CustomRoles
     {
         Option = new RoleOptionItem(this, RoleID, $"<color={RoleColor}>{RoleName}</color>", Category);
         Utils.GetRoleOptionItemFromCategory(Category).Add(Option);
-        SubNumberOptions.Add(new NumberOptionItem(RoleID + 1, "Max", OptionTabs.RoleSetting, 1f, 1f, 10f, 1f));
+        SubNumberOptions.Add(new NumberOptionItem(RoleID + ".Max", "Max", OptionTabs.RoleSetting, 1f, 1f, 10f, 1f));
     }
 
     public void StopAdvancedOptions()

@@ -13,10 +13,10 @@ public static class OptionSaver
     
     public static string Folder = Path.Combine(Main.TohoData, "Options");
 
-    public static Dictionary<int, bool> BoolValues = [];
-    public static Dictionary<int, bool> RoleValues = [];
-    public static Dictionary<int, float> NumberValues = [];
-    public static Dictionary<int, int> StringValues = [];
+    public static Dictionary<string, bool> BoolValues = [];
+    public static Dictionary<string, bool> RoleValues = [];
+    public static Dictionary<string, float> NumberValues = [];
+    public static Dictionary<string, int> StringValues = [];
 
     public static void Save()
     {
@@ -30,10 +30,10 @@ public static class OptionSaver
     {
         Directory.CreateDirectory(Folder);
 
-        BoolValues = LoadFile<Dictionary<int, bool>>(Path.Combine(Folder, "bools.json"));
-        RoleValues = LoadFile<Dictionary<int, bool>>(Path.Combine(Folder, "roles.json"));
-        NumberValues = LoadFile<Dictionary<int, float>>(Path.Combine(Folder, "floats.json"));
-        StringValues = LoadFile<Dictionary<int, int>>(Path.Combine(Folder, "strings.json"));
+        BoolValues = LoadFile<Dictionary<string, bool>>(Path.Combine(Folder, "bools.json"));
+        RoleValues = LoadFile<Dictionary<string, bool>>(Path.Combine(Folder, "roles.json"));
+        NumberValues = LoadFile<Dictionary<string, float>>(Path.Combine(Folder, "floats.json"));
+        StringValues = LoadFile<Dictionary<string, int>>(Path.Combine(Folder, "strings.json"));
     }
 
     private static T LoadFile<T>(string fileName) where T : new()

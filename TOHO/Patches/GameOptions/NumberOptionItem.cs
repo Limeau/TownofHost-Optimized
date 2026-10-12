@@ -12,7 +12,7 @@ public class NumberOptionItem
     public OptionTabs OptionTab;
     public string OptionName;
 
-    public int Id;
+    public string Id;
     
     public GameObject obj;
     public ToggleOption Toggle;
@@ -24,7 +24,7 @@ public class NumberOptionItem
     public float MaxValue;
     public float Step;
     
-    public NumberOptionItem(int id, string name, OptionTabs tab, float defaultValue, float minValue, float maxValue, float step, Action<object> onValueChanged = null)
+    public NumberOptionItem(string id, string name, OptionTabs tab, float defaultValue, float minValue, float maxValue, float step, Action<object> onValueChanged = null)
     {
         Id = id;
         OptionName = name;

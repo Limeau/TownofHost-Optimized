@@ -9,7 +9,7 @@ public class RoleOptionItem
 {
     private static readonly Dictionary<ToggleOption, RoleOptionItem> OptionMap = new();
     
-    public int Id;
+    public string Id;
 
     public CustomRoles Role;
     
@@ -23,7 +23,7 @@ public class RoleOptionItem
     public Action<object> OnValueChanged;
     public bool DefaultValue;
     
-    public RoleOptionItem(CustomRoles role, int id, string name, RoleCategories tab, Action<object> onValueChanged = null)
+    public RoleOptionItem(CustomRoles role, string id, string name, RoleCategories tab, Action<object> onValueChanged = null)
     {
         Role = role;
         Id = id;

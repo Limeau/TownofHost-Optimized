@@ -9,7 +9,7 @@ public class BooleanOptionItem
 {
     private static readonly Dictionary<ToggleOption, BooleanOptionItem> OptionMap = new();
 
-    public int Id;
+    public string Id;
     
     public OptionTabs OptionTab;
     public string OptionName;
@@ -21,7 +21,7 @@ public class BooleanOptionItem
     public Action<object> OnValueChanged;
     public bool DefaultValue;
     
-    public BooleanOptionItem(int id, string name, OptionTabs tab, bool defaultValue, Action<object> onValueChanged = null)
+    public BooleanOptionItem(string id, string name, OptionTabs tab, bool defaultValue, Action<object> onValueChanged = null)
     {
         Id = id;
         OptionName = name;

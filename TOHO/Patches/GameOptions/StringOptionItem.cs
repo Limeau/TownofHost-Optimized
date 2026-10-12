@@ -12,7 +12,7 @@ public class StringOptionItem
     public OptionTabs OptionTab;
     public string OptionName;
 
-    public int Id;
+    public string Id;
     
     public GameObject obj;
     public ToggleOption Toggle;
@@ -22,7 +22,7 @@ public class StringOptionItem
     public int Value;
     public Dictionary<int, string> AllValues = [];
     
-    public StringOptionItem(int id, string name, OptionTabs tab, Dictionary<int, string> allValues, Action<object> onValueChanged = null)
+    public StringOptionItem(string id, string name, OptionTabs tab, Dictionary<int, string> allValues, Action<object> onValueChanged = null)
     {
         Id = id;
         OptionName = name;
