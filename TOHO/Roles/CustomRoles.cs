@@ -161,6 +161,66 @@ public class CustomRoles
         }
     }
 
+    // Enter, Exit Vent
+    public UnityAction<PlayerControl> EnterVentAsTargetAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public UnityAction<PlayerControl> EnterVentAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public bool EnterVentAsTargetBool = true;
+    public bool EnterVentAsSpectBool = true;
+    public bool OnEnterVentAsTarget(PlayerControl target)
+    {
+        EnterVentAsTargetAction.Invoke(target);
+        return EnterVentAsTargetBool;
+    }
+    public bool OnEnterVentAsSpect(PlayerControl target)
+    {
+        EnterVentAsSpectAction.Invoke(target);
+        return EnterVentAsSpectBool;
+    }
+
+    public void AddOnEnterVent(UnityAction<PlayerControl> onEnterVent, bool isTarget = false, bool allow = true)
+    {
+        if (isTarget)
+        {
+            EnterVentAsTargetAction = onEnterVent;
+            EnterVentAsTargetBool = allow;
+        }
+        else
+        {
+            EnterVentAsSpectAction = onEnterVent;
+            EnterVentAsSpectBool = allow;
+        }
+    }
+   
+    public UnityAction<PlayerControl> ExitVentAsTargetAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public UnityAction<PlayerControl> ExitVentAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public bool ExitVentAsTargetBool = true;
+    public bool ExitVentAsSpectBool = true;
+    public bool OnExitVentAsTarget(PlayerControl target)
+    {
+        ExitVentAsTargetAction.Invoke(target);
+        return ExitVentAsTargetBool;
+    }
+    public bool OnExitVentAsSpect(PlayerControl target)
+    {
+        ExitVentAsSpectAction.Invoke(target);
+        return ExitVentAsSpectBool;
+    }
+
+    public void AddOnExitVent(UnityAction<PlayerControl> onExitVent, bool isTarget = false, bool allow = true)
+    {
+        if (isTarget)
+        {
+            ExitVentAsTargetAction = onExitVent;
+            ExitVentAsTargetBool = allow;
+        }
+        else
+        {
+            ExitVentAsSpectAction = onExitVent;
+            ExitVentAsSpectBool = allow;
+        }
+    }
+
+
     // Ejection
     public UnityAction<PlayerControl> EjectAsTargetAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
     public UnityAction<PlayerControl> EjectAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
