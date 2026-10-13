@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AmongUs.GameOptions;
 using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
@@ -51,6 +52,17 @@ public static class OptionManager
             
             if (option.OptionTab != OptionTabs.RoleSetting) GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
         }, 0.01f);
+
+        if (option.OptionTab == OptionTabs.RoleSetting)
+        {
+            var optionBehaviour = option.obj.GetComponent<OptionBehaviour>();
+
+            optionBehaviour.SetClickMask(
+                GameSettingMenu.Instance.RoleSettingsTab.ButtonClickMask
+            );
+            
+            option.OnValueChanged = new Action<object>((object1) => ToggleOptionPatch.Postfix(toggle));
+        }
     }
     public static void SetupRoleOption(this RoleOptionItem option, List<GameObject> team, float y)
     {
@@ -134,6 +146,17 @@ public static class OptionManager
             number.ValueText.text = $"{number.Value}";
             if (option.OptionTab != OptionTabs.RoleSetting) GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
         }, 0.01f);
+        
+        if (option.OptionTab == OptionTabs.RoleSetting)
+        {
+            var optionBehaviour = option.obj.GetComponent<OptionBehaviour>();
+
+            optionBehaviour.SetClickMask(
+                GameSettingMenu.Instance.RoleSettingsTab.ButtonClickMask
+            );
+
+            option.OnValueChanged = new Action<object>((object1) => NumberOptionPatch.Postfix(number));
+        }
     }
     public static void SetupStringOption(this StringOptionItem option, float y)
     {
@@ -184,6 +207,13 @@ public static class OptionManager
             
             if (option.OptionTab != OptionTabs.RoleSetting) GameSettingMenuPatch.ModSettingObjects.Add(option.obj);
         }, 0.01f);
+        
+        if (option.OptionTab == OptionTabs.RoleSetting)
+        {
+            var optionBehaviour = option.obj.GetComponent<OptionBehaviour>();
+
+            optionBehaviour.SetClickMask(GameSettingMenu.Instance.RoleSettingsTab.ButtonClickMask);
+        }
     }
 
     public static void SetupHeader(float y, string title, List<GameObject> list, GameOptionsMenu tab, Color color)

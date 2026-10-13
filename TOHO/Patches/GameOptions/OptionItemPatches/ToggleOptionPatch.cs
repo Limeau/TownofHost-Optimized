@@ -8,8 +8,10 @@ public static class ToggleOptionPatch
     {
         foreach (var role in Main.AllRoles)
         {
+            if (role.Value == null) continue;
             foreach (var roption in role.Value.SubBooleanOptions)
             {
+                if (roption == null || roption.obj == null) continue;
                 if (roption.obj.GetComponent<ToggleOption>() == __instance)
                 {
                     roption.SetValue(__instance.GetBool());

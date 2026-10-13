@@ -15,7 +15,7 @@ public class StringOptionItem
     public string Id;
     
     public GameObject obj;
-    public ToggleOption Toggle;
+    public StringOption String;
     public Action<object> OnValueChanged;
 
     

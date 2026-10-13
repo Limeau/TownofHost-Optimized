@@ -10,9 +10,11 @@ public static class StringOptionPatch
     public static bool IncreasePrefix(StringOption __instance)
     {
         foreach (var role in Main.AllRoles)
-        {
+        {            
+            if (role.Value == null) continue;
             foreach (var roption in role.Value.SubStringOptions)
             {
+                if (roption == null || roption.obj == null) continue;
                 if (roption.obj.GetComponent<StringOption>() == __instance)
                 {
                     __instance.ValueText.text = $"{roption.Value + 1}";
@@ -36,8 +38,10 @@ public static class StringOptionPatch
     {
         foreach (var role in Main.AllRoles)
         {
+            if (role.Value == null) continue;
             foreach (var roption in role.Value.SubStringOptions)
             {
+                if (roption == null || roption.obj == null) continue;
                 if (roption.obj.GetComponent<StringOption>() == __instance)
                 {
                     __instance.ValueText.text = $"{roption.Value - 1}";

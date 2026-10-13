@@ -15,7 +15,7 @@ public class NumberOptionItem
     public string Id;
     
     public GameObject obj;
-    public ToggleOption Toggle;
+    public NumberOption Number;
     public Action<object> OnValueChanged;
 
     public float Value;
