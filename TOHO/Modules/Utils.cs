@@ -102,6 +102,16 @@ public static class Utils
         return null;
     }
 
+    public static PlayerControl GetPlayerById(this byte PlayerId)
+    {
+        foreach (var pc in PlayerControl.AllPlayerControls)
+        {
+            if (pc.PlayerId == PlayerId) return pc;
+        }
+
+        return null;
+    }
+
     public static string GetString(string key)
     {
         switch (Main.CurrentLanguageId)
