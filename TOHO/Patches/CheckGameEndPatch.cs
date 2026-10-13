@@ -23,29 +23,30 @@ class CheckTaskCompletionPatch
 {
     public static bool Prefix(ref bool __result)
     {
-        if (Options.NoGameEnd.Value)
+        if (Options.DisableTaskWin.Value)
         {
             __result = false;
             return false;
         }
         
-        foreach (var kvp in Main.PlayerNames)
-        {
-            kvp.Key.RpcSetName(kvp.Value);
-        }
-        Main.PlayerNames.Clear();
+        GameEndCheckerForNormal.Prefix();
 
-        return true;
+        __result = false;
+        return false;
     }
 }
 [HarmonyPatch(typeof(LogicGameFlowNormal), nameof(LogicGameFlowNormal.CheckEndCriteria))]
 class GameEndCheckerForNormal
 {
+    public static List<PlayerControl> Winners = [];
+    public static Custom_Team WinnerTeam;
+    public static bool IsGameEnd = false;
     public static bool Prefix()
     {
         if (!AmongUsClient.Instance.AmHost) return true;
 
         if (Options.NoGameEnd.Value) return false;
+        if (!IsGameEnd) return false;
 
         foreach (var kvp in Main.PlayerNames)
         {
@@ -53,6 +54,8 @@ class GameEndCheckerForNormal
         }
         Main.PlayerNames.Clear();
         
+        IsGameEnd = false;
+
         return true;
     }
 }

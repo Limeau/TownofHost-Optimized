@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using AmongUs.GameOptions;
-using UnityEngine;
 using UnityEngine.Events;
-using static TOHO.OptionManager;
 
 namespace TOHO;
 
@@ -38,6 +36,8 @@ public class CustomRoles
         
         Main.AllRoles.Add(roleName, this);
     }
+
+    /* Settings */
 
     public void SetupCustomOption()
     {
@@ -121,7 +121,7 @@ public class CustomRoles
         ScreenshotPath = path;
     }
 
-    /* Triggers  */
+    /* Triggers */
 
     // Murder
     public UnityAction<PlayerControl, PlayerControl> MurderAsKillerAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
@@ -254,6 +254,19 @@ public class CustomRoles
             EjectAsSpectBool = allow;
         }
     }
+}
 
-    /* Abilities */
+public static class CustomRoleExtentions
+{
+    public static void MurderPlayer(PlayerControl killer, PlayerControl target)
+    {
+        killer.RpcMurderPlayer(target, true);
+    }
+
+    public static void WinTheGame(List<PlayerControl> winners, Custom_Team winnerTeam)
+    {
+        GameEndCheckerForNormal.IsGameEnd = true;
+        GameEndCheckerForNormal.Winners = winners;
+        GameEndCheckerForNormal.WinnerTeam = winnerTeam;
+    }
 }
