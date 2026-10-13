@@ -11,45 +11,36 @@ public static class RpcSetRolePatch
     {
         if (!RoleAssign.RoleSet) RoleAssign.AssignRoles();
 
-        if (__instance.Data.IsDead) return;
-        
-        Main.Logger.LogInfo(
-            $"[RoleSync] RpcSetRole called: " +
-            $"player={__instance?.Data?.PlayerName}, " +
-            $"requestedRole={__0}"
-        );
-        
-        Main.Logger.LogInfo(
-            $"[RoleSync] Call stack:\n{Environment.StackTrace}");
-
-        if (__instance == null)
-            return;
-
-        if (Main.CustomRoles == null)
+        if (__instance == null || Main.CustomRoles == null)
         {
-            Main.Logger.LogWarning("[RoleSync] CustomRoles is null");
             return;
         }
 
-        Main.Logger.LogInfo(
-            $"[RoleSync] CustomRoles count: {Main.CustomRoles.Count}"
-        );
-
-        if (!Main.CustomRoles.TryGetValue(__instance, out var customRole))
+        if (__instance.Data.IsDead)
         {
-            Main.Logger.LogWarning(
-                $"[RoleSync] Player not found in CustomRoles: " +
-                $"{__instance.Data?.PlayerName}"
-            );
-            return;
+            SetAsAGhost(__instance);
+            return;   
         }
 
-        __0 = customRole.Basis;
+        else 
+        {
+            if (!Main.CustomRoles.TryGetValue(__instance, out var customRole))
+            {
+                return;
+            }
+
+            __0 = customRole.Basis;
+        }
         
         __instance.SetNameWithRole();
+    }
 
-        Main.Logger.LogInfo(
-            $"[RoleSync] Replaced role with {__0}"
-        );
+    public static RoleTypes SetAsAGhost(PlayerControl player)
+    {
+        if (Main.GhostRoles.TryGetValue(player, out var customRole))
+        {
+            return customRole.Basis;
+        }
+        return player.GetCustomRole().Basis;
     }
 }

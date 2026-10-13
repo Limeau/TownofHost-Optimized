@@ -31,7 +31,7 @@ public static class Utils
     public static void SetNameWithRole(this PlayerControl player)
     {
         CustomRoles role = null;
-        role = player.GetCustomRole();
+        role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
         
         if (role == null)
         {
@@ -260,6 +260,13 @@ public static class Utils
     {
         if (!Main.CustomRoles.ContainsKey(player)) return null;
         var role = Main.CustomRoles[player];
+        if (role != null) return role;
+        return null;
+    }
+    public static CustomRoles GetGhostRole(this PlayerControl player)
+    {
+        if (!Main.GhostRoles.ContainsKey(player)) return null;
+        var role = Main.GhostRoles[player];
         if (role != null) return role;
         return null;
     }
