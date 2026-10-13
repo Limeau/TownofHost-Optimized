@@ -18,7 +18,7 @@ public static class RpcSetRolePatch
 
         if (__instance.Data.IsDead)
         {
-            SetAsAGhost(__instance);
+            __0 = SetAsAGhost(__instance);
             return;   
         }
 
