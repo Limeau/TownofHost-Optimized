@@ -55,10 +55,6 @@ public class Main : BasePlugin
 
         SetupCustomRoles();
         
-        foreach (var role in AllRoles)
-        {
-            role.Value.SetupCustomOption();
-        }
         OptionSaver.Load();
         harmony.PatchAll();
         
@@ -68,6 +64,16 @@ public class Main : BasePlugin
         
         CurrentLanguageId = 0;
         Logger.LogInfo("========= TOHO loaded! =========");
+
+        LoadRoles();
+    }
+
+    public static void LoadRoles()
+    {
+        foreach (var role in AllRoles)
+        {
+            role.Value.SetupCustomOption();
+        }
     }
 
     public static void SetupCustomRoles()

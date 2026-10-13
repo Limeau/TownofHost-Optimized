@@ -447,11 +447,11 @@ public static class GameSettingMenuPatch
         
         if (!role.IsOptionIninialized)
         {
-            role.SetupAdvancedOptions(-0.9f);
+            role.SetupAdvancedOptions(-1.5f);
             role.IsOptionIninialized = true;
         }
 
-        role.StartAdvancedOptions();
+        role.StartAdvancedOptions(-1.5f);
     }
 
 

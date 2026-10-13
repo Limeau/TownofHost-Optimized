@@ -215,11 +215,34 @@ public static class Utils
         switch (category)
         {
             case RoleCategories.CrewmateVanilla:
+            case RoleCategories.CrewmateVanillaGhost:        
+            case RoleCategories.CrewmateHindering:
+            case RoleCategories.CrewmateGhosts:
+            case RoleCategories.CrewmateInvestigative:         
+            case RoleCategories.CrewmateKilling:
+            case RoleCategories.CrewmatePower:           
+            case RoleCategories.CrewmateSupport:             
                 return GameSettingMenuPatch.CrewmateSettings;
-            case RoleCategories.CrewmateVanillaGhost:                
-                return GameSettingMenuPatch.CrewmateSettings;
+            case RoleCategories.ImpostorGhosts:
+            case RoleCategories.ImpostorConcealing:
+            case RoleCategories.ImpostorHindering:
+            case RoleCategories.ImpostorKilling:
+            case RoleCategories.ImpostorSupport:
             case RoleCategories.ImpostorVanilla:
                 return GameSettingMenuPatch.ImpostorSettings;
+            case RoleCategories.NeutralBenign:
+            case RoleCategories.NeutralChaos:
+            case RoleCategories.NeutralEvil:
+            case RoleCategories.NeutralGhosts:
+            case RoleCategories.NeutralKilling:
+                return GameSettingMenuPatch.NeutralSettings;
+            case RoleCategories.CovenTrickery:
+            case RoleCategories.CovenUtility:
+            case RoleCategories.CovenKilling:
+            case RoleCategories.CovenPower:
+                return GameSettingMenuPatch.CovenSettings;
+            case RoleCategories.Modifier:
+                return GameSettingMenuPatch.ModifierSettings;
         }
         return null;
     }

@@ -61,20 +61,26 @@ public class CustomRoles
             option.obj.SetActive(false);
         }
     }
-    public void StartAdvancedOptions()
+    public void StartAdvancedOptions(float y)
     {
         foreach (var option in SubBooleanOptions)
         {
             option.obj.SetActive(true);
+            y -= 0.6f;
         }
         foreach (var option in SubNumberOptions)
         {
             option.obj.SetActive(true);
+            y -= 0.6f;
         }
         foreach (var option in SubStringOptions)
         {
             option.obj.SetActive(true);
+            y -= 0.6f;
         }
+        
+        GameSettingMenu.Instance.RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
+        GameSettingMenu.Instance.RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     
     public void SetupAdvancedOptions(float y)
@@ -89,14 +95,12 @@ public class CustomRoles
             option.SetupNumberOption(y);
             y -= 0.6f;
         }
+
         foreach (var option in SubStringOptions)
         {
             option.SetupStringOption(y);
             y -= 0.6f;
         }
-        
-        GameSettingMenu.Instance.RoleSettingsTab.scrollBar.SetYBoundsMin(-2f + 2f);
-        GameSettingMenu.Instance.RoleSettingsTab.scrollBar.SetYBoundsMax(-y - 1f);
     }
     
     public void SetupAdvancedBooleanOption(BooleanOptionItem option)

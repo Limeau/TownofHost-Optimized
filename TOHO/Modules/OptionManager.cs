@@ -11,26 +11,28 @@ namespace TOHO;
 
 public static class OptionManager
 {
+    public static ToggleOption ttemplate = null;
+    public static NumberOption ntemplate = null;
+    public static NumberOption stemplate = null;
     public static void SetupBooleanOption(this BooleanOptionItem option, float y)
     {
-        ToggleOption template = null;
         option.SetInitialBooleanValue();
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
         {
-            template = item.TryCast<ToggleOption>();
-            if (template != null) break;
+            if (ttemplate != null) break;
+            ttemplate = item.TryCast<ToggleOption>();
         }
 
-        if (template == null)
+        if (ttemplate == null)
         {
-            Main.Logger.LogError("[Settings] No ToggleOption template found.");
+            Main.Logger.LogError("[Settings] No ToggleOption ttemplate found.");
             return;
         }
 
-        if (option.OptionTab != OptionTabs.RoleSetting) option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
-        else option.obj = Object.Instantiate(template.gameObject, GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.transform);
+        if (option.OptionTab != OptionTabs.RoleSetting) option.obj = Object.Instantiate(ttemplate.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
+        else option.obj = Object.Instantiate(ttemplate.gameObject, GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.transform);
 
         var toggle = option.obj.GetComponent<ToggleOption>();
         toggle.boolOptionName = BoolOptionNames.Invalid;
@@ -52,23 +54,22 @@ public static class OptionManager
     }
     public static void SetupRoleOption(this RoleOptionItem option, List<GameObject> team, float y)
     {
-        ToggleOption template = null;
         option.SetInitialRoleValue();
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
         {
-            template = item.TryCast<ToggleOption>();
-            if (template != null) break;
+            if (ttemplate != null) break;
+            ttemplate = item.TryCast<ToggleOption>();
         }
 
-        if (template == null)
+        if (ttemplate == null)
         {
-            Main.Logger.LogError("[Settings] No ToggleOption template found.");
+            Main.Logger.LogError("[Settings] No ToggleOption ttemplate found.");
             return;
         }
 
-        option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.RoleSettingsTab.settingsContainer);
+        option.obj = Object.Instantiate(ttemplate.gameObject, GameSettingMenuPatch.RoleSettingsTab.settingsContainer);
 
         var toggle = option.obj.GetComponent<ToggleOption>();
         toggle.boolOptionName = BoolOptionNames.Invalid;
@@ -95,24 +96,23 @@ public static class OptionManager
     }
     public static void SetupNumberOption(this NumberOptionItem option, float y)
     {
-        NumberOption template = null;
         option.SetInitialNumberValue();
         option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
-        {
-            template = item.TryCast<NumberOption>();
-            if (template != null) break;
+        {         
+            if (ntemplate != null) break;
+            ntemplate = item.TryCast<NumberOption>();
         }
 
-        if (template == null)
+        if (ntemplate == null)
         {
-            Main.Logger.LogError("[Settings] No NumberOption template found.");
+            Main.Logger.LogError("[Settings] No NumberOption ntemplate found.");
             return;
         }
 
-        if (option.OptionTab != OptionTabs.RoleSetting) option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
-        else option.obj = Object.Instantiate(template.gameObject, GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.transform);
+        if (option.OptionTab != OptionTabs.RoleSetting) option.obj = Object.Instantiate(ntemplate.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
+        else option.obj = Object.Instantiate(ntemplate.gameObject, GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.transform);
 
         var number = option.obj.GetComponent<NumberOption>();
         number.floatOptionName = FloatOptionNames.Invalid;
@@ -137,24 +137,24 @@ public static class OptionManager
     }
     public static void SetupStringOption(this StringOptionItem option, float y)
     {
-        StringOption template = null;
+        StringOption stemplate = null;
         option.SetInitialStringValue();
         option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("StringOption, Assembly-CSharp")))
         {
-            template = item.TryCast<StringOption>();
-            if (template != null) break;
+            stemplate = item.TryCast<StringOption>();
+            if (stemplate != null) break;
         }
 
-        if (template == null)
+        if (stemplate == null)
         {
-            Main.Logger.LogError("[Settings] No StringOption template found.");
+            Main.Logger.LogError("[Settings] No StringOption stemplate found.");
             return;
         }
 
-        if (option.OptionTab != OptionTabs.RoleSetting) option.obj = Object.Instantiate(template.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
-        else option.obj = Object.Instantiate(template.gameObject, GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.transform);
+        if (option.OptionTab != OptionTabs.RoleSetting) option.obj = Object.Instantiate(stemplate.gameObject, GameSettingMenuPatch.ModSettingsTab.settingsContainer);
+        else option.obj = Object.Instantiate(stemplate.gameObject, GameSettingMenu.Instance.RoleSettingsTab.AdvancedRolesSettings.transform);
 
         var stringo = option.obj.GetComponent<StringOption>();
         StringOptionItem.OptionMap[stringo] = option;
@@ -202,23 +202,21 @@ public static class OptionManager
     }
     private static void SetupHelpIcon(RoleOptionItem option)
     {
-        NumberOption template = null;
-        
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
         {
-            template = item.TryCast<NumberOption>();
-            if (template != null) break;
+            ntemplate = item.TryCast<NumberOption>();
+            if (ntemplate != null) break;
         }
 
-        if (template == null)
+        if (ntemplate == null)
         {
             Main.Logger.LogError("[Settings] No NumberOption template found.");
             return;
         }
         
-        template.gameObject.SetActive(true);
+        ntemplate.gameObject.SetActive(true);
         
-        var icontemplate = template.transform.FindChild("MinusButton");
+        var icontemplate = ntemplate.transform.FindChild("MinusButton");
         
         // Help Button
         
@@ -274,6 +272,6 @@ public static class OptionManager
         settings.SetAsLastSibling();        
         text.color = c;
         
-        template.gameObject.SetActive(false);
+        ntemplate.gameObject.SetActive(false);
     }
 }
