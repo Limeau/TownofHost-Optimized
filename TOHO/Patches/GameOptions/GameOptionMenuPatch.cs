@@ -797,6 +797,7 @@ public enum RoleCategories
     CrewmateGhosts,
     
     ImpostorVanilla,
+    ImpostorVanillaGhosts,
     ImpostorKilling,
     ImpostorSupport,
     ImpostorConcealing,
@@ -813,6 +814,7 @@ public enum RoleCategories
     CovenKilling,
     CovenTrickery,
     CovenUtility,
+    CovenGhosts,
     
     Modifier
 }

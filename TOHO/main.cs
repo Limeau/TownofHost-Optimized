@@ -23,6 +23,7 @@ public class Main : BasePlugin
 
     public static Dictionary<string, CustomRoles> AllRoles = [];
     public static Dictionary<PlayerControl, CustomRoles> CustomRoles = [];
+    public static Dictionary<PlayerControl, CustomRoles> GhostRoles = [];
     public static Dictionary<PlayerControl, string> PlayerNames = [];
     
     public static string ModColor = "#b47ede";
@@ -95,5 +96,9 @@ public class Main : BasePlugin
         .SetupAdvancedNumberOption(new NumberOptionItem("Innersloth.Viper.KillCd", "Kill Cooldown", OptionTabs.RoleSetting, 20f, 10f, 60f, 1f));
         new CustomRoles("Innersloth.GuardianAngel", "Guardian Angel", "Protect Crewmates from Impostors' attacks", "The Guardian Angel can use the Protect button to temporarily protect players from kill button attacks.", "#A0FAFA", RoleTypes.GuardianAngel, RoleCategories.CrewmateVanillaGhost);
         new CustomRoles("Innersloth.Influencer", "Influencer", "Send the alive Crewmates hints about the game", "The Influencer can send the alive Crewmates hints about the game, in the form of pictures pre-decided by the game.", "#E8D125", RoleTypes.SpiritGuide, RoleCategories.CrewmateVanillaGhost);
+        new CustomRoles("Innersloth.CrewGhost", "Crewmate Ghost", "Ghost form of Crewmate", "Ghost form of Crewmate", "#00ffff", RoleTypes.CrewmateGhost, RoleCategories.CrewmateVanillaGhost);
+        new CustomRoles("Innersloth.ImpGhost", "Impostor Ghost", "Ghost form of Impostor", "Ghost form of Impostor", "#ff1919", RoleTypes.ImpostorGhost, RoleCategories.ImpostorVanillaGhosts);
+        new CustomRoles("TOHO.NeutralGhost", "Neutral Ghost", "Ghost form for Neutral roles", "Ghost form for Neutral roles", "#808080", RoleTypes.ImpostorGhost, RoleCategories.NeutralGhosts);
+        new CustomRoles("TOHO.CovenGhost", "Coven Ghost", "Ghost form for Coven roles", "Ghost form for Coven roles", "#9933ff", RoleTypes.ImpostorGhost, RoleCategories.CovenGhosts);
     }
 }

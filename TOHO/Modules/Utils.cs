@@ -332,6 +332,7 @@ public static class Utils
         if (role.Category == RoleCategories.ImpostorHindering) return true;
         if (role.Category == RoleCategories.ImpostorKilling) return true;
         if (role.Category == RoleCategories.ImpostorSupport) return true;
+        if (role.Category == RoleCategories.ImpostorVanillaGhosts) return true;
         return false;
     }
     public static bool IsRoleNeutral(this CustomRoles role)
@@ -349,6 +350,7 @@ public static class Utils
         if (role.Category == RoleCategories.CovenTrickery) return true;
         if (role.Category == RoleCategories.CovenPower) return true;
         if (role.Category == RoleCategories.CovenKilling) return true;
+        if (role.Category == RoleCategories.CovenGhosts) return true;
         return false;
     }
 
