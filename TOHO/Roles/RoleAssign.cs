@@ -113,6 +113,8 @@ public static class RoleAssign
         {
             Main.Logger.LogInfo(e);
         }
+        
+        GhostRoleAssign.AssignGhostRoles();
     }
 }
 
@@ -123,7 +125,6 @@ public static class GhostRoleAssign
     public static List<CustomRoles> Impostors = [];
     public static List<CustomRoles> Neutrals = [];
     public static List<CustomRoles> Covens = [];
-    public static List<CustomRoles> ThisGameRoles = [];
     public static void AssignGhostRoles()
     {
         foreach (var kvp in Main.AllRoles.Where(x => x.Value.Enabled))
@@ -153,31 +154,51 @@ public static class GhostRoleAssign
             switch (kvp.Value.GetCustomRoleTeamFromRole())
             {
                 case Custom_Team.Crewmate:
+                    if (!Crewmates.Any())
+                    {
+                        var ncm = Main.AllRoles["Crewmate Ghost"];
+                        Main.GhostRoles.Add(kvp.Key, ncm);
+                        break;
+                    }
                     var i = srandom.Next(Crewmates.Count);
                     var cm = Crewmates[i];
-                    if (cm != null) Crewmates.Remove(cm);
-                    else cm = Main.AllRoles["Crewmate Ghost"];
+                    Crewmates.Remove(cm);
                     Main.GhostRoles.Add(kvp.Key, cm);
                     break;
                 case Custom_Team.Impostor:
+                    if (!Impostors.Any())
+                    {
+                        var ncm = Main.AllRoles["Impostor Ghost"];
+                        Main.GhostRoles.Add(kvp.Key, ncm);
+                        break;
+                    }
                     var n = srandom.Next(Impostors.Count);
                     var im = Impostors[n];
-                    if (im != null) Impostors.Remove(im); 
-                    else im = Main.AllRoles["Impostor Ghost"];
+                    Impostors.Remove(im); 
                     Main.GhostRoles.Add(kvp.Key, im);
                     break;
                 case Custom_Team.Neutral:
+                    if (!Neutrals.Any())
+                    {
+                        var ncm = Main.AllRoles["Neutral Ghost"];
+                        Main.GhostRoles.Add(kvp.Key, ncm);
+                        break;
+                    }
                     var x = srandom.Next(Neutrals.Count);
-                    var nt = Neutrals[x];
-                    if (nt != null) Neutrals.Remove(nt);                    
-                    else nt = Main.AllRoles["Neutral Ghost"];
+                    var nt = Neutrals[x]; 
+                    Neutrals.Remove(nt);                    
                     Main.GhostRoles.Add(kvp.Key, nt);
                     break;
                 case Custom_Team.Coven:
+                    if (!Covens.Any())
+                    {
+                        var ncm = Main.AllRoles["Coven Ghost"];
+                        Main.GhostRoles.Add(kvp.Key, ncm);
+                        break;
+                    }
                     var y = srandom.Next(Covens.Count);
-                    var cv = Covens[y];
-                    if (cv != null) Covens.Remove(cv);               
-                    else cv = Main.AllRoles["Coven Ghost"];
+                    var cv = Covens[y]; 
+                    Covens.Remove(cv);               
                     Main.GhostRoles.Add(kvp.Key, cv);
                     break;
             }

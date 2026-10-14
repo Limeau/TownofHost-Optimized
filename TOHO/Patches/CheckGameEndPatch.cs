@@ -50,7 +50,7 @@ class GameEndCheckerForNormal
 
         foreach (var kvp in Main.PlayerNames)
         {
-            kvp.Key.RpcSetName(kvp.Value);
+            kvp.Key.RpcSetNameLocal(kvp.Value);
         }
         Main.PlayerNames.Clear();
         

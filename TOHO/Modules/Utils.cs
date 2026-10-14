@@ -27,6 +27,12 @@ public static class Utils
         sender.RpcSetName(player, name, player);
         sender.SendMessage();
     }
+    public static void RpcSetName(this PlayerControl player, string name)
+    {
+        var sender = new CustomRpcSender("RpcSetName", SendOption.Reliable, false);
+        sender.RpcSetName(player, name);
+        sender.SendMessage();
+    }
     
     public static void SetNameWithRole(this PlayerControl player)
     {
