@@ -269,6 +269,7 @@ public static class Utils
         if (role.Basis == RoleTypes.Shapeshifter) return true;
         if (role.Basis == RoleTypes.Viper) return true;
         if (role.Basis == RoleTypes.Phantom) return true;
+        if (role.Basis == RoleTypes.ImpostorGhost) return true;
         return false;
     }
 
