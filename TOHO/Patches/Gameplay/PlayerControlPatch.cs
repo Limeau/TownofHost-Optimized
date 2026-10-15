@@ -22,7 +22,6 @@ class CheckMurderPatch
 
         return c;
     }
-
 }
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckProtect))]
 class CheckProtectPatch
@@ -43,7 +42,6 @@ class CheckProtectPatch
 
         return c;
     }
-
 }
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckShapeshift))]
 class CheckShapeshiftPatch
@@ -63,5 +61,4 @@ class CheckShapeshiftPatch
 
         return c;
     }
-
 }
