@@ -472,6 +472,49 @@ public class CustomRoles
         }
     }
 
+    // Protect
+
+    public UnityAction<PlayerControl, PlayerControl> ProtectAsKillerAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> ProtectAsTargetAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> ProtectAsSpectAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public bool ProtectAsKillerBool = true;
+    public bool ProtectAsTargetBool = true;
+    public bool ProtectAsSpectBool = true;
+    public bool OnProtectAsKiller(PlayerControl killer, PlayerControl target)
+    {
+        ProtectAsKillerAction.Invoke(killer, target);
+        return ProtectAsKillerBool;
+    }
+    public bool OnProtectAsTarget(PlayerControl killer, PlayerControl target)
+    {
+        ProtectAsTargetAction.Invoke(killer, target);
+        return ProtectAsTargetBool;
+    }
+    public bool OnProtectAsSpect(PlayerControl killer, PlayerControl target)
+    {
+        ProtectAsSpectAction.Invoke(killer, target);
+        return ProtectAsSpectBool;
+    }
+
+    public void AddOnProtect(UnityAction<PlayerControl, PlayerControl> onProtect, bool isKiller = false, bool isTarget = false, bool allow = true)
+    {
+        if (isKiller)
+        {
+            ProtectAsKillerAction = onProtect;
+            ProtectAsKillerBool = allow;
+        }
+        else if (isTarget)
+        {
+            ProtectAsTargetAction = onProtect;
+            ProtectAsTargetBool = allow;
+        }
+        else
+        {
+            ProtectAsSpectAction = onProtect;
+            ProtectAsSpectBool = allow;
+        }
+    }
+
     // Enter, Exit Vent
     public UnityAction<PlayerControl> EnterVentAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
     public UnityAction<PlayerControl> EnterVentAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
