@@ -42,6 +42,6 @@ class PlayerControlCheckNamePatch
         {
             Main.PlayerNames.Add(__instance, playerName);
         }
-        __instance.SetNameWithRole();
+        //__instance.SetNameWithRole();
     }
 }

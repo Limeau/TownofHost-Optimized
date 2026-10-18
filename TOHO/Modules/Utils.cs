@@ -48,25 +48,10 @@ public static class Utils
 
         s += Main.PlayerNames[player];
         s += "\n";
-        s += "<size=50%>";
+        s += "<size=70%>";
         s += $"<color={role.RoleColor}>";
         s += role.RoleName;
         s += "</color>";
-        
-        var color = "#ffbb00";
-
-        int completedTasks = 0;
-        
-        foreach (var task in player.Data.Tasks)
-        {
-            if (task.Complete) completedTasks += 1;
-        }
-
-        if (completedTasks >= player.Data.Tasks.Count) color = "#00ff00";
-        
-        if (!role.IsKillButton()) s += $" (<color={color}>{completedTasks}/{player.Data.Tasks.Count}</color>)";
-        
-        s += "</size>";
         
         player.RpcSetNameLocal(s);
     }
@@ -245,6 +230,7 @@ public static class Utils
             case RoleCategories.ImpostorKilling:
             case RoleCategories.ImpostorSupport:
             case RoleCategories.ImpostorVanilla:
+            case RoleCategories.ImpostorVanillaGhosts:
                 return GameSettingMenuPatch.ImpostorSettings;
             case RoleCategories.NeutralBenign:
             case RoleCategories.NeutralChaos:
@@ -256,6 +242,7 @@ public static class Utils
             case RoleCategories.CovenUtility:
             case RoleCategories.CovenKilling:
             case RoleCategories.CovenPower:
+            case RoleCategories.CovenGhosts:
                 return GameSettingMenuPatch.CovenSettings;
             case RoleCategories.Modifier:
                 return GameSettingMenuPatch.ModifierSettings;
@@ -305,6 +292,7 @@ public static class Utils
         if (player.GetCustomRole().Category == RoleCategories.ImpostorVanilla) return true;
         if (player.GetCustomRole().Category == RoleCategories.ImpostorConcealing) return true;
         if (player.GetCustomRole().Category == RoleCategories.ImpostorGhosts) return true;
+        if (player.GetCustomRole().Category == RoleCategories.ImpostorVanillaGhosts) return true;
         if (player.GetCustomRole().Category == RoleCategories.ImpostorHindering) return true;
         if (player.GetCustomRole().Category == RoleCategories.ImpostorKilling) return true;
         if (player.GetCustomRole().Category == RoleCategories.ImpostorSupport) return true;
@@ -325,6 +313,7 @@ public static class Utils
         if (player.GetCustomRole().Category == RoleCategories.CovenTrickery) return true;
         if (player.GetCustomRole().Category == RoleCategories.CovenPower) return true;
         if (player.GetCustomRole().Category == RoleCategories.CovenKilling) return true;
+        if (player.GetCustomRole().Category == RoleCategories.CovenGhosts) return true;
         return false;
     }
 

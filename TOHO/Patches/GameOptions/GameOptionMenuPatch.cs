@@ -413,19 +413,36 @@ public static class GameSettingMenuPatch
         {
             newallbutton.gameObject.SetActive(false);
             ChangeCustomTab(RoleSettingsTab, RoleSettingsButton);
-            switch (role.Category)
+            switch (role.GetCustomRoleTeamFromRole())
             {
-                case RoleCategories.CrewmateVanilla:
-                case RoleCategories.CrewmateVanillaGhost:
+                case Custom_Team.Crewmate:
                     new LateTask(() =>
                     {
                         SwitchToCrewmateTab();
                     }, 0.02f);                   
                     break;
-                case RoleCategories.ImpostorVanilla:
+                case Custom_Team.Impostor:
                     new LateTask(() =>
                     {
                         SwitchToImpostorTab();
+                    }, 0.02f); 
+                    break;
+                case Custom_Team.Neutral:
+                    new LateTask(() =>
+                    {
+                        SwitchToNeutralTab();
+                    }, 0.02f); 
+                    break;
+                case Custom_Team.Coven:
+                    new LateTask(() =>
+                    {
+                        SwitchToCovenTab();
+                    }, 0.02f); 
+                    break;
+                case Custom_Team.Unknown:
+                    new LateTask(() =>
+                    {
+                        SwitchToModifierTab();
                     }, 0.02f); 
                     break;
             }
@@ -612,6 +629,15 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             option.SetupRoleOption(ImpostorObjects, y);
         }
+        y -= 0.6f;
+        OptionManager.SetupHeader(y, "Impostor Vanilla Ghosts", ImpostorObjects, RoleSettingsTab, Color.red);
+        
+        foreach (var option in ImpostorSettings.Where(x => x.OptionTab == RoleCategories.ImpostorVanillaGhosts))
+        {
+            y -= 0.6f;
+            option.SetupRoleOption(ImpostorObjects, y);
+        }
+        
         if (ImpostorSettings.Any(x => x.OptionTab == RoleCategories.ImpostorConcealing))
         {       
             y -= 0.6f;
@@ -760,6 +786,16 @@ public static class GameSettingMenuPatch
             y -= 0.6f;
             OptionManager.SetupHeader(y, "Coven Utility", CovenObjects, RoleSettingsTab, Color.magenta);
             foreach (var option in CovenSettings.Where(x => x.OptionTab == RoleCategories.CovenUtility))
+            {
+                y -= 0.6f;
+                option.SetupRoleOption(CovenObjects, y);
+            }
+        }
+        if (CovenSettings.Any(x => x.OptionTab == RoleCategories.CovenGhosts))
+        {       
+            y -= 0.6f;
+            OptionManager.SetupHeader(y, "Coven Ghosts", CovenObjects, RoleSettingsTab, Color.magenta);
+            foreach (var option in CovenSettings.Where(x => x.OptionTab == RoleCategories.CovenGhosts))
             {
                 y -= 0.6f;
                 option.SetupRoleOption(CovenObjects, y);

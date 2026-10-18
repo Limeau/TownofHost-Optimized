@@ -127,6 +127,13 @@ public static class GhostRoleAssign
     public static List<CustomRoles> Covens = [];
     public static void AssignGhostRoles()
     {
+        Crewmates.Clear();
+        Impostors.Clear();
+        Neutrals.Clear();
+        Covens.Clear();
+        
+        Main.GhostRoles.Clear();
+        
         foreach (var kvp in Main.AllRoles.Where(x => x.Value.Enabled))
         {
             var role = kvp.Value;
