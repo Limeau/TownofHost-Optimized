@@ -104,7 +104,7 @@ class CallMeetingPatch
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckVanish))]
 class VanishPatch
 {
-    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo target)
+    public static bool Prefix(PlayerControl __instance)
     {
         var a = __instance.GetCustomRole().OnVanish(__instance);
 
@@ -124,7 +124,7 @@ class VanishPatch
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckAppear))]
 class AppearPatch
 {
-    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo target)
+    public static bool Prefix(PlayerControl __instance)
     {
         var a = __instance.GetCustomRole().OnAppear(__instance);
 
@@ -144,7 +144,7 @@ class AppearPatch
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
 class CompleteTaskPatch
 {
-    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo target)
+    public static bool Prefix(PlayerControl __instance)
     {
         var a = __instance.GetCustomRole().OnCompleteTask(__instance);
 
