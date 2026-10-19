@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AmongUs.GameOptions;
 using UnityEngine.Events;
+using Hazel;
 
 namespace TOHO;
 
@@ -608,12 +609,36 @@ public class CustomRoles
 
 public static class CustomRoleExtentions
 {
-    public static void MurderPlayer(PlayerControl killer, PlayerControl target)
+    public static void AddShield(this PlayerControl shielded, int colorid = -1)
+    {
+        if (colorid == -1) colorid = shielded.Data.DefaultOutfit.ColorId;
+        shielded.RpcProtectPlayer(shielded, colorid);
+    }
+    public static void RevivePlayer(this PlayerControl player)
+    {
+        var sender = CustomRpcSender.Create("Change Role Basis", SendOption.Reliable);
+        sender.RpcSetRole(player, player.GetCustomRole().Basis);
+        sender.SendMessage();
+    }
+
+    public static void CallMeeting(this PlayerControl player, NetworkedPlayerInfo target = null)
+    {
+        player.RpcStartMeeting(target);
+    }
+
+    public static void Vaporize(this PlayerControl target)
+    {
+        target.Data.IsDead = true;
+        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(target.NetId, (byte)RpcCalls.Exiled, SendOption.None, target.Data.ClientId);
+        AmongUsClient.Instance.FinishRpcImmediately(writer);
+    }
+
+    public static void MurderPlayer(this PlayerControl killer, PlayerControl target)
     {
         killer.RpcMurderPlayer(target, true);
     }
 
-    public static void WinTheGame(List<PlayerControl> winners, Custom_Team winnerTeam)
+    public static void WinTheGame(this Custom_Team winnerTeam, List<PlayerControl> winners)
     {
         GameEndCheckerForNormal.IsGameEnd = true;
         GameEndCheckerForNormal.Winners = winners;
