@@ -56,6 +56,21 @@ class GameEndCheckerForNormal
         
         IsGameEnd = false;
 
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (Winners.Contains(player))
+            {
+                Main.GhostRoles[player] = Main.AllRoles["Impostor Ghost"];
+            }
+            else
+            {
+                Main.GhostRoles[player] = Main.AllRoles["Crewmate Ghost"];
+            }
+            player.MurderPlayer(player);
+        }
+
+        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorsByKill, false);
+
         return true;
     }
 }
