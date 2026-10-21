@@ -24,7 +24,30 @@ class CheckForEndVotingPatch
         byte exiledPlayerId = winners[0].PlayerId;
         var player = exiledPlayerId.GetPlayerById();
         
-        player.RpcSetName($"{Main.PlayerNames[player]} was the {player.GetCustomRole().RoleName}");
+        var name = $"<size=75%>";
+        
+        switch (Options.ConfirmEjectionsMode.Value)
+        {
+            case 0:
+                name += $"{Main.PlayerNames[player]} was a {player.GetCustomRole().GetCustomRoleTeamFromRole()}";
+                break;
+            
+            case 1:
+                name += $"{Main.PlayerNames[player]} was the {player.GetCustomRole().RoleName}";
+                break;
+            
+            case 2:
+                name += $"{Main.PlayerNames[player]} was ejected";
+                break;
+            
+        }
+        name += Options.EjectionImpostors.Value ? $"\n{Utils.GetImpostorCount()} Impostors remain." : "";
+        name += Options.EjectionNeutralKillers.Value ? $"\n{Utils.GetNKcount()} Neutral Killers remain." : "";
+        name += Options.EjectionCoven.Value ? $"\n{Utils.GetCovenCount()} Coven remain." : "";
+
+        name += "<size=0%>";
+
+        player.RpcSetName(name);
         
         return true;
     }

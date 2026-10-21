@@ -21,6 +21,42 @@ namespace TOHO;
 
 public static class Utils
 {
+    public static int GetImpostorCount()
+    {
+        var n = 0;
+
+        foreach (var Player in PlayerControl.AllPlayerControls)
+        {
+            if (Player.Data.IsDead) continue;
+            if (Player.IsPlayerImpostor()) n += 1;
+        }
+
+        return n;
+    }    
+    public static int GetNKcount()
+    {
+        var n = 0;
+
+        foreach (var Player in PlayerControl.AllPlayerControls)
+        {
+            if (Player.Data.IsDead) continue;
+            if (Player.GetCustomRole().Category == RoleCategories.NeutralKilling) n += 1;
+        }
+
+        return n;
+    }    
+    public static int GetCovenCount()
+    {
+        var n = 0;
+
+        foreach (var Player in PlayerControl.AllPlayerControls)
+        {
+            if (Player.Data.IsDead) continue;
+            if (Player.IsPlayerCoven()) n += 1;
+        }
+
+        return n;
+    }    
     public static void RpcSetNameLocal(this PlayerControl player, string name)
     {
         var sender = new CustomRpcSender("RpcSetNameLocal", SendOption.Reliable, false);

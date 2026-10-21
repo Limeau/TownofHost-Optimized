@@ -46,7 +46,7 @@ public static class Options
 
     public static void InitModSettings()
     {
-        /***** Ejection Settings Tab *****/ /* 100-199 */
+        /***** Ejection Settings Tab *****/
         EjectionImpostors = new BooleanOptionItem("Ejection.Impostors", "Show Impostors remaining on ejection", OptionTabs.ModSettingsEjection, true);
         EjectionNeutralKillers = new BooleanOptionItem("Ejection.NeutralKillers", "Show Neutral Killers remaining on ejection", OptionTabs.ModSettingsEjection, true);
         EjectionCoven = new BooleanOptionItem("Ejection.Coven", "Show Coven remaining on ejection", OptionTabs.ModSettingsEjection, true);
@@ -61,7 +61,7 @@ public static class Options
         ConfirmEjectionsMode = new StringOptionItem("Ejection.ConfirmEjects", "Confirm Ejections mode", OptionTabs.ModSettingsEjection, dict);
         GameSettingMenuPatch.StringModSettings.Add(ConfirmEjectionsMode);
 
-        /***** Game Settings Tab *****/ /* 200-299 */
+        /***** Game Settings Tab *****/
         EveryoneCanSeeDeathReason = new BooleanOptionItem("Game.DeathReason", "Everyone can see Death Reasons", OptionTabs.ModSettingsGame, false);
         GhostIgnoreTasks = new BooleanOptionItem("Game.GhostTasks", "Ghosts dont count toward tasks", OptionTabs.ModSettingsGame, true);
         DisableTaskWin = new BooleanOptionItem("Game.TaskWin", "Disable Task Win", OptionTabs.ModSettingsGame, false);
@@ -102,7 +102,7 @@ public static class Options
         GameSettingMenuPatch.NumberModSettings.Add(ModifiersPerPlayer);
         GameSettingMenuPatch.NumberModSettings.Add(SabotageCooldown);
         
-        /***** Lobby Settings Tab *****/ /* 300-399 */
+        /***** Lobby Settings Tab *****/
         GradientTagsOpt = new BooleanOptionItem("Lobby.GradientTags", "Enable Gradient Tags", OptionTabs.ModSettingsLobby, false);
         EnableKcount = new BooleanOptionItem("Lobby.Kcount", "Enable /kcount command in-game", OptionTabs.ModSettingsLobby, true);
         KickPlayerFriendCodeInvalid = new BooleanOptionItem("Lobby.InvalidFC", "Kick players with invalid friend codes", OptionTabs.ModSettingsLobby, true);
