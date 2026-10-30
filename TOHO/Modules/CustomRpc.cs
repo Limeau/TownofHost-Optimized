@@ -226,5 +226,8 @@ public static class CustomRpcSenderExtensions
             .Write(name)
             .Write(false)
             .EndRpc();
+        
+        if (seerIsNull) Main.Logger.LogInfo($"Setting {Main.PlayerNames[player]}'s name to {name} for all");
+        else Main.Logger.LogInfo($"Setting {Main.PlayerNames[player]}'s name to {name} for {Main.PlayerNames[seer]}");
     }
 }

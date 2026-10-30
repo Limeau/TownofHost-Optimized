@@ -63,6 +63,12 @@ public static class Utils
         sender.RpcSetName(player, name, player);
         sender.SendMessage();
     }
+    public static void RpcSetNameSpecific(this PlayerControl seer, PlayerControl target, string name)
+    {
+        var sender = new CustomRpcSender("RpcSetNameLocal", SendOption.Reliable, false);
+        sender.RpcSetName(target, name, seer);
+        sender.SendMessage();
+    }
     public static void RpcSetName(this PlayerControl player, string name)
     {
         var sender = new CustomRpcSender("RpcSetName", SendOption.Reliable, false);
@@ -75,9 +81,31 @@ public static class Utils
         CustomRoles role = null;
         role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
         
+        
+        if (player.OwnerId == AmongUsClient.Instance.HostId)
+        {
+            if (role == null)
+            {
+                player.cosmetics.nameText.text = Main.PlayerNames[player];
+                return;
+            }   
+            var h = "";
+
+            h += Main.PlayerNames[player];
+            h += "\n";
+            h += "<size=70%>";
+            h += $"<color={role.RoleColor}>";
+            h += role.RoleName;
+            h += "</color>";
+            
+            player.cosmetics.nameText.text = h;
+            return;
+        }
+        
         if (role == null)
         {
             player.RpcSetNameLocal(Main.PlayerNames[player]);
+            return;
         }
         
         var s = "";

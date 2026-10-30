@@ -1,6 +1,44 @@
-﻿using System.Linq;
+﻿using UnityEngine;
+using System.Linq;
 using HarmonyLib;
 using TOHO;
+
+
+[HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Start))]
+class MeetingHudStartPatch
+{
+    public static void Postfix(MeetingHud __instance)
+    {
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (player.OwnerId != AmongUsClient.Instance.HostId) player.SetNameWithRole();
+        }
+    }
+}
+
+
+[HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CoIntro))]
+class MeetingHudIntroPatch
+{
+    public static void Postfix(MeetingHud __instance)
+    {
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (player.OwnerId == AmongUsClient.Instance.HostId)
+            {
+                CustomRoles role = null;
+                role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
+                if (role != null)
+                {
+                    new LateTask(() =>
+                    {
+                        __instance.TitleText.SetText($"Your role is: <color={role.RoleColor}>{role.RoleName}</color>");
+                    }, 10f);
+                }
+            }
+        }
+    }
+}
 
 [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CheckForEndVoting))]
 class CheckForEndVotingPatch
