@@ -253,7 +253,6 @@ class IntroCutsceneDestroyPatch
     {
         if (__instance.TryCast<IntroCutscene_CoBegin>() is { __1__state: >= 0 })
         {
-            // return if using enumerator movenext and we are not at last state
             return;
         }
     }
