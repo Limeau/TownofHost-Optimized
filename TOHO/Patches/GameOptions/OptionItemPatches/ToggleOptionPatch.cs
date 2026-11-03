@@ -14,7 +14,7 @@ public static class ToggleOptionPatch
                 if (roption == null || roption.obj == null) continue;
                 if (roption.obj.GetComponent<ToggleOption>() == __instance)
                 {
-                    roption.SetValue(__instance.GetBool());
+                    roption.SetValue(!roption.Value);
                 }
             }
         }

@@ -49,6 +49,8 @@ public static class RoleAssign
             }
         }
         
+        Main.Logger.LogInfo("Logs 1");
+        
         var srandom = new Random();
         
         int impCount = 0;
@@ -84,6 +86,8 @@ public static class RoleAssign
             covCount++;
         }
                 
+        Main.Logger.LogInfo("Logs 2");
+
         var togo = PlayerControl.AllPlayerControls.Count - (covCount + impCount + nnkCount + nkCount);
         
         while (togo > 0 && Crewmates.Count > 0)

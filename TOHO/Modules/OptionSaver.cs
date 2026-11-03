@@ -40,7 +40,10 @@ public static class OptionSaver
     {
         string path = Path.Combine(Folder, fileName);
 
-        if (!File.Exists(path)) return new T();
+        if (!File.Exists(path))
+        {
+            File.Create(path).Close();
+        }
 
         try
         {
