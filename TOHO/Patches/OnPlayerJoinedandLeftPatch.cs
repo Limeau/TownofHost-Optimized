@@ -62,7 +62,6 @@ public static class OnPlayerJoinedPatch
         if (AmongUsClient.Instance.GetHost() == client)
         {
             Main.Logger.LogInfo("Host joined game");
-            RoleAssign.RoleSet = false;
         }
         
         Main.Logger.LogInfo($"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/Puid:{client.ProductUserId}/Platform:{client.PlatformData.Platform}) Joining room");

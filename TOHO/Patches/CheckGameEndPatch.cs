@@ -71,6 +71,8 @@ class GameEndCheckerForNormal
 
         GameManager.Instance.RpcEndGame(GameOverReason.ImpostorsByKill, false);
 
+        RoleAssign.RoleSet = false;
+        
         return true;
     }
 }
