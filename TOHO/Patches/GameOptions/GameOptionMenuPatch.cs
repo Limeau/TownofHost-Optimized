@@ -46,8 +46,32 @@ public static class GameSettingMenuPatch
         ModSettingsInitialized = false;
         RoleSettingsInitialized = false;
 
+        foreach (var obj in ModSettingObjects)
+        {
+            Object.Destroy(obj);
+        }
+        foreach (var obj in CrewmateObjects)
+        {
+            Object.Destroy(obj);
+        }
+        foreach (var obj in ImpostorObjects)
+        {
+            Object.Destroy(obj);
+        }
+        foreach (var obj in NeutralObjects)
+        {
+            Object.Destroy(obj);
+        }
+        foreach (var obj in CovenObjects)
+        {
+            Object.Destroy(obj);
+        }
+        foreach (var obj in ModifierObjects)
+        {
+            Object.Destroy(obj);
+        }
+        
         ModSettingObjects.Clear();
-
         CrewmateObjects.Clear();
         ImpostorObjects.Clear();
         NeutralObjects.Clear();
@@ -133,9 +157,12 @@ public static class GameSettingMenuPatch
         
         if (!ModSettingsInitialized)
         {
+            ModSettingsInitialized = true;
+            BoolModSettings.Clear();
+            NumberModSettings.Clear();
+            StringModSettings.Clear();
             Options.InitModSettings();
             SetupModSettingsTab();
-            ModSettingsInitialized = true;
         }
         
         foreach (var obj in ModSettingObjects)

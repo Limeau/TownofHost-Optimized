@@ -100,5 +100,7 @@ public class Main : BasePlugin
         new CustomRoles("Innersloth.ImpGhost", "Impostor Ghost", "Ghost form of Impostor", "Ghost form of Impostor", "#ff1919", RoleTypes.ImpostorGhost, RoleCategories.ImpostorVanillaGhosts);
         new CustomRoles("TOHO.NeutralGhost", "Neutral Ghost", "Ghost form for Neutral roles", "Ghost form for Neutral roles", "#808080", RoleTypes.ImpostorGhost, RoleCategories.NeutralGhosts);
         new CustomRoles("TOHO.CovenGhost", "Coven Ghost", "Ghost form for Coven roles", "Ghost form for Coven roles", "#9933ff", RoleTypes.ImpostorGhost, RoleCategories.CovenGhosts);
+
+        ClassicPkg.SetupCustomRoles();
     }
 }
