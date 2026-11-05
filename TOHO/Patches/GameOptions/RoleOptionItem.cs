@@ -33,8 +33,6 @@ public class RoleOptionItem
         Role.Enabled = false;
         DefaultValue = false;
         OnValueChanged = onValueChanged;
-        obj = new GameObject();
-        Toggle = obj.AddComponent<ToggleOption>();
     }
 
     public void SetValue(bool value)

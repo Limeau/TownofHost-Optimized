@@ -28,7 +28,7 @@ public static class RoleAssign
         NNKs.Clear();
         Covens.Clear();
         ThisGameRoles.Clear();
-        foreach (var kvp in Main.AllRoles.Where(x => x.Value.Enabled))
+        foreach (var kvp in Main.AllRoles.Where(x => x.Value != null && x.Value.Enabled))
         {
             var role = kvp.Value;
             switch (role.GetCustomRoleTeamFromRole())
