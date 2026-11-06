@@ -69,9 +69,9 @@ class GameEndCheckerForNormal
             player.MurderPlayer(player);
         }
 
-        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorsByKill, false);
-
         RoleAssign.RoleSet = false;
+        
+        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorsByKill, false);
         
         return true;
     }

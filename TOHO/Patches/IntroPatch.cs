@@ -273,3 +273,14 @@ class IntroCutsceneDestroyPatch
         }
     }
 }
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
+class EndGamePatch
+{
+    public static void Postfix(AmongUsClient __instance, [HarmonyArgument(0)] ref EndGameResult endGameResult)
+    {
+        foreach (var pc in GameEndCheckerForNormal.Winners)
+        {
+            EndGameResult.CachedWinners.Add(new CachedPlayerData(pc.Data));
+        }
+    }
+}
