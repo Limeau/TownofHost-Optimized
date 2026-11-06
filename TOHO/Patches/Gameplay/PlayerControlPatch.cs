@@ -160,3 +160,23 @@ class CompleteTaskPatch
         return c;
     }
 }
+
+[HarmonyPatch(typeof(Vent), nameof(Vent.EnterVent))]
+class EnterVentPatch
+{
+    public static bool Prefix(Vent __instance, [HarmonyArgument(0)] PlayerControl pc)
+    {
+        var a = pc.GetCustomRole().OnEnterVent(pc);
+
+        if (!a) return false;
+
+        var c = true;
+        foreach (var spect in PlayerControl.AllPlayerControls)
+        {
+            var d = spect.GetCustomRole().OnEnterVentAsSpect(pc);
+            if (!d) c = false;
+        }
+
+        return c;
+    }
+}

@@ -111,6 +111,12 @@ public static class RoleAssign
                 var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
                 Main.CustomRoles.Add(player, role);
                 ThisGameRoles.Remove(role);
+                
+                _ = new LateTask(() =>
+                {
+                    player.Set();
+                    role.OnGameStart(player);
+                }, 2f, "Game Start");
             }
         }
         catch (Exception e)

@@ -126,6 +126,17 @@ public class CustomRoles
 
     /* Non-Cancellable */
 
+    // Game Start
+    public UnityAction<PlayerControl> GameStartAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+
+    public void OnGameStart(PlayerControl target)
+    {
+        GameStartAction.Invoke(target);
+    }
+    public void AddOnGameStart(UnityAction<PlayerControl> onGameStart)
+    {
+        GameStartAction = onGameStart;
+    }
     // After Meeting
     public UnityAction<PlayerControl> AfterMeetingAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
 
