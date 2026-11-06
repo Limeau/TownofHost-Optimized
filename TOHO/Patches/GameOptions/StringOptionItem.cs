@@ -29,6 +29,8 @@ public class StringOptionItem
         OptionTab = tab;
         AllValues = allValues;
         OnValueChanged = onValueChanged;
+        
+        this.SetInitialStringValue();
     }
 
     public void SetValue(int value)

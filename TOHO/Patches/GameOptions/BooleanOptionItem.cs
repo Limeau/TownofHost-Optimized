@@ -29,6 +29,8 @@ public class BooleanOptionItem
         Value = defaultValue;
         DefaultValue = defaultValue;
         OnValueChanged = onValueChanged;
+        
+        this.SetInitialBooleanValue();
     }
 
     public void SetValue(bool value)

@@ -71,7 +71,7 @@ public static class OptionSaver
     public static void SetInitialNumberValue(this NumberOptionItem option)
     {
         if (option == null) return;
-        if (NumberValues.ContainsKey(option.Id)) option.SetValue(NumberValues[option.Id]);
+        if (NumberValues.ContainsKey($"{option.Id}")) option.SetValue(NumberValues[option.Id]);
         else option.SetValue(option.DefaultValue);
     }
     public static void SetInitialStringValue(this StringOptionItem option)

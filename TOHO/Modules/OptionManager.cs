@@ -17,7 +17,6 @@ public static class OptionManager
     public static NumberOption stemplate = null;
     public static void SetupBooleanOption(this BooleanOptionItem option, float y)
     {
-        option.SetInitialBooleanValue();
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
@@ -66,7 +65,6 @@ public static class OptionManager
     }
     public static void SetupRoleOption(this RoleOptionItem option, List<GameObject> team, float y)
     {
-        option.SetInitialRoleValue();
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
@@ -108,7 +106,6 @@ public static class OptionManager
     }
     public static void SetupNumberOption(this NumberOptionItem option, float y)
     {
-        option.SetInitialNumberValue();
         option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
@@ -161,7 +158,6 @@ public static class OptionManager
     public static void SetupStringOption(this StringOptionItem option, float y)
     {
         StringOption stemplate = null;
-        option.SetInitialStringValue();
         option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("StringOption, Assembly-CSharp")))

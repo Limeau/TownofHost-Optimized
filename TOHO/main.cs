@@ -54,9 +54,11 @@ public class Main : BasePlugin
         Logger.LogInfo($"{Application.version} Among Us Version");
         if (!Directory.Exists(TohoData)) Directory.CreateDirectory(TohoData);
 
-        SetupCustomRoles();
-        
         OptionSaver.Load();
+        
+        SetupCustomRoles();
+        Options.InitModSettings();
+
         harmony.PatchAll();
         
         #if RELEASE

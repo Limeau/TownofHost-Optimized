@@ -158,10 +158,6 @@ public static class GameSettingMenuPatch
         if (!ModSettingsInitialized)
         {
             ModSettingsInitialized = true;
-            BoolModSettings.Clear();
-            NumberModSettings.Clear();
-            StringModSettings.Clear();
-            Options.InitModSettings();
             SetupModSettingsTab();
         }
         

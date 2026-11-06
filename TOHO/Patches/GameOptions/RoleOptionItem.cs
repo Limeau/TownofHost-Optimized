@@ -33,6 +33,8 @@ public class RoleOptionItem
         Role.Enabled = false;
         DefaultValue = false;
         OnValueChanged = onValueChanged;
+        
+        this.SetInitialRoleValue();
     }
 
     public void SetValue(bool value)

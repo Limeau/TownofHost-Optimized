@@ -35,6 +35,8 @@ public class NumberOptionItem
         MaxValue = maxValue;
         OnValueChanged = onValueChanged;
         Step = step;
+        
+        this.SetInitialNumberValue();
     }
 
     public void SetValue(float value)
@@ -46,5 +48,14 @@ public class NumberOptionItem
         OnValueChanged?.Invoke(Value);
         OptionSaver.NumberValues[Id] = value;
         OptionSaver.Save();
+    }
+
+    public float GetValue(string key)
+    {
+        if (OptionSaver.NumberValues.ContainsKey(Id))
+        {
+            return OptionSaver.NumberValues[Id];
+        }
+        else return 0;
     }
 }
