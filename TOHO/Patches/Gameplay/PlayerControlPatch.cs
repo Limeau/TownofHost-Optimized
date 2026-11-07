@@ -20,6 +20,8 @@ class CheckMurderPatch
             if (!d) c = false;
         }
 
+        if (c) Main.RealKillers[target] = __instance;
+        
         return c;
     }
 }

@@ -31,6 +31,39 @@ public static class ClassicPkg
             }
         }), isKiller: true, allow: false);
         
+        var doctor = new CustomRoles("Limeau.Doctor", "Doctor", "See which role killed players", "The Doctor can see the role that dead players were killed by.", "#32a89d", RoleTypes.Scientist, RoleCategories.CrewmateInvestigative);
+        doctor.AddOnCallMeeting((UnityAction<PlayerControl>)((PlayerControl seer) =>
+        {
+            foreach (var pc in PlayerControl.AllPlayerControls)
+            {
+                if (pc.Data.IsDead)
+                {
+                    var s = Main.PlayerNames[pc];
+                    s += "\n<size=70%>";
+                    if (Main.RealKillers.ContainsKey(pc))
+                    {
+                        var role = Main.RealKillers[pc].GetCustomRole();
+                        s += $"<color={role.RoleColor}>";
+                        s += role.RoleName;
+                        s += "</color>";
+                    }
+                    else s += "(No killer)";
+                    s += "</size>";
+                    seer.RpcSetNameSpecific(pc, s);
+                }
+            }
+        }));
+        doctor.AddOnAfterMeeting((UnityAction<PlayerControl>)((PlayerControl seer) =>
+        {
+            foreach (var pc in PlayerControl.AllPlayerControls)
+            {
+                if (pc.Data.IsDead)
+                {
+                    seer.RpcSetNameSpecific(pc, Main.PlayerNames[pc]);
+                }
+            }
+        }));
+        
         var jester = new CustomRoles("Limeau.Jester", "Jester", "Get ejected to win",
                 "The Jester wins by being ejected from a meeting.", "#ff3385", RoleTypes.Crewmate, RoleCategories.NeutralEvil);
         jester.AddOnEject((UnityAction<PlayerControl>)((PlayerControl a) =>

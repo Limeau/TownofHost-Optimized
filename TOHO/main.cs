@@ -25,6 +25,7 @@ public class Main : BasePlugin
     public static Dictionary<PlayerControl, CustomRoles> CustomRoles = [];
     public static Dictionary<PlayerControl, CustomRoles> GhostRoles = [];
     public static Dictionary<PlayerControl, string> PlayerNames = [];
+    public static Dictionary<PlayerControl, PlayerControl> RealKillers = [];
     
     public static string ModColor = "#b47ede";
     public static string ModName = "Town of Host Optimized";

@@ -69,19 +69,24 @@ public static class Utils
         sender.RpcSetName(target, name, seer);
         sender.SendMessage();
     }
-    public static void RpcSetName(this PlayerControl player, string name)
+    public static void RpcSetNameToAll(this PlayerControl player, string name)
     {
         var sender = new CustomRpcSender("RpcSetName", SendOption.Reliable, false);
         sender.RpcSetName(player, name);
         sender.SendMessage();
     }
     
-    public static void SetNameWithRole(this PlayerControl player)
+    public static void SetNameWithRole(this PlayerControl seer, PlayerControl player = null, bool toAll = false, bool overrideToLivingRole = false)
     {
         CustomRoles role = null;
+
+        if (player == null) player = seer;
+        
         role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
-        
-        
+
+        if (overrideToLivingRole) role = player.GetCustomRole();
+        else role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
+            
         if (player.OwnerId == AmongUsClient.Instance.HostId)
         {
             if (role == null)
@@ -101,10 +106,12 @@ public static class Utils
             player.cosmetics.nameText.text = h;
             return;
         }
-        
+
         if (role == null)
         {
-            player.RpcSetNameLocal(Main.PlayerNames[player]);
+            if (toAll) player.RpcSetNameToAll(Main.PlayerNames[player]);
+            else if (player == seer) player.RpcSetNameLocal(Main.PlayerNames[player]);
+            else seer.RpcSetNameSpecific(player, Main.PlayerNames[player]);
             return;
         }
         
@@ -116,8 +123,10 @@ public static class Utils
         s += $"<color={role.RoleColor}>";
         s += role.RoleName;
         s += "</color>";
-        
-        player.RpcSetNameLocal(s);
+
+        if (toAll) player.RpcSetNameToAll(s);
+        else if (player == seer) player.RpcSetNameLocal(s);
+        else seer.RpcSetNameSpecific(player, s);
     }
     
     public static Dictionary<string, Sprite> CachedSprites = [];
