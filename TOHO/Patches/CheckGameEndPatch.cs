@@ -38,6 +38,7 @@ class CheckTaskCompletionPatch
 [HarmonyPatch(typeof(LogicGameFlowNormal), nameof(LogicGameFlowNormal.CheckEndCriteria))]
 class GameEndCheckerForNormal
 {
+    public static List<string> Results = [];
     public static List<PlayerControl> Winners = [];
     public static Custom_Team WinnerTeam;
     public static bool IsGameEnd = false;
@@ -60,13 +61,40 @@ class GameEndCheckerForNormal
         {
             if (Winners.Contains(player))
             {
+                var w = "★ ";
+                w += Main.PlayerNames[player];
+                w += " - ";
+                w += $"<color={player.GetCustomRole().RoleColor}>";
+                w += player.GetCustomRole().RoleName;
+                w += "</color>";
+                w += " - (";
+                w += $"<color={player.GetGhostRole().RoleColor}>";
+                w += player.GetGhostRole().RoleName;
+                w += "</color>)";
+                Results.Add(w);
                 Main.GhostRoles[player] = Main.AllRoles["Impostor Ghost"];
+                player.MurderPlayer(player);
             }
-            else
+        }
+
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (!Winners.Contains(player))
             {
+                var w = "";
+                w += Main.PlayerNames[player];
+                w += " - ";
+                w += $"<color={player.GetCustomRole().RoleColor}>";
+                w += player.GetCustomRole().RoleName;
+                w += "</color>";
+                w += " - (";
+                w += $"<color={player.GetGhostRole().RoleColor}>";
+                w += player.GetGhostRole().RoleName;
+                w += "</color>)";
+                Results.Add(w);
                 Main.GhostRoles[player] = Main.AllRoles["Crewmate Ghost"];
+                player.MurderPlayer(player);
             }
-            player.MurderPlayer(player);
         }
 
         RoleAssign.RoleSet = false;

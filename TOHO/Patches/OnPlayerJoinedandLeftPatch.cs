@@ -66,6 +66,21 @@ public static class OnPlayerJoinedPatch
         
         Main.Logger.LogInfo($"{client.PlayerName}(ClientID:{client.Id}/FriendCode:{client.FriendCode}/Puid:{client.ProductUserId}/Platform:{client.PlatformData.Platform}) Joining room");
         
+        string endGameRoles = "";
+
+        foreach (var entry in GameEndCheckerForNormal.Results)
+        {
+            endGameRoles += entry;
+            endGameRoles += "\n";
+        }
+
+        if (endGameRoles == "") endGameRoles = "Nothing to show.";
+        
+        _ = new LateTask(() =>
+        {
+            client.Character.SendChatMessage(endGameRoles, "Last Game's Roles");
+        }, 2f, "Send Message to new player");
+        
         _ = new LateTask(() =>
         {
             try

@@ -448,6 +448,32 @@ public static class Utils
         if (IsRoleCoven(role)) return Custom_Team.Coven;
         return Custom_Team.Unknown;
     }
+    
+    public static void SendChatMessage(this PlayerControl sendTo, string text, string title = "")
+    {
+        if (!AmongUsClient.Instance.AmHost) return;
+        if (title == "") title = "<color=#aaaaff>System Message</color>";
+        if (title.Count(x => x == '\u2605') == 2 && !title.Contains('\n'))
+        {
+            if (title.Contains('<') && title.Contains('>') && title.Contains('#'))
+                title = $"{title[..(title.IndexOf('>') + 1)]}\u27a1{title.Replace("\u2605", "")[..(title.LastIndexOf('<') - 2)]}\u2b05";
+            else title = "\u27a1" + title.Replace("\u2605", "") + "\u2b05";
+        }
+
+        text = text.Replace("color=", string.Empty);
+
+        if (text.Length > 1000)
+        {
+            var msg = text.Substring(0, 1000);
+            var excess = text.Substring(1000);
+
+            sendTo.RpcSendChatMessage(msg, title);
+            sendTo.SendChatMessage(excess, title);
+            return;
+        };
+        
+        sendTo.RpcSendChatMessage(text, title);
+    }
 }
 
 public enum Custom_Team

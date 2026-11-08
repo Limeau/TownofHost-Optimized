@@ -230,4 +230,23 @@ public static class CustomRpcSenderExtensions
         if (seerIsNull) Main.Logger.LogInfo($"Setting {Main.PlayerNames[player]}'s name to {name} for all");
         else Main.Logger.LogInfo($"Setting {Main.PlayerNames[player]}'s name to {name} for {Main.PlayerNames[seer]}");
     }
+
+    public static void RpcSendChatMessage(this PlayerControl target, string msg, string title)
+    {
+        var writer = CustomRpcSender.Create("MessagesToSend", SendOption.Reliable);
+        writer.StartMessage(target.Data.ClientId);
+        writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
+            .Write(target.Data.NetId)
+            .Write(title)
+            .EndRpc();
+        writer.StartRpc(target.NetId, (byte)RpcCalls.SendChat)
+            .Write(msg)
+            .EndRpc();
+        writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
+            .Write(target.Data.NetId)
+            .Write(target.Data.PlayerName)
+            .EndRpc();
+        writer.EndMessage();
+        writer.SendMessage();
+    }
 }
