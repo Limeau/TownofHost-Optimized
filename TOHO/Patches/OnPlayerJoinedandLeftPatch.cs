@@ -120,7 +120,7 @@ public static class OnPlayerLeftPatch
 {
     public static void Prefix([HarmonyArgument(0)] ClientData client)
     {
-        client.UpdatePlayerName(Main.PlayerNames[client.Character]);
-        Main.PlayerNames.Remove(client.Character);
+        client.UpdatePlayerName(Main.PlayerNames[client.Character.PlayerId]);
+        Main.PlayerNames.Remove(client.Character.PlayerId);
     }
 }

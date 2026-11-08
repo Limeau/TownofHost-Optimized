@@ -91,12 +91,12 @@ public static class Utils
         {
             if (role == null)
             {
-                player.cosmetics.nameText.text = Main.PlayerNames[player];
+                player.cosmetics.nameText.text = Main.PlayerNames[player.PlayerId];
                 return;
             }   
             var h = "";
 
-            h += Main.PlayerNames[player];
+            h += Main.PlayerNames[player.PlayerId];
             h += "\n";
             h += "<size=70%>";
             h += $"<color={role.RoleColor}>";
@@ -109,15 +109,15 @@ public static class Utils
 
         if (role == null)
         {
-            if (toAll) player.RpcSetNameToAll(Main.PlayerNames[player]);
-            else if (player == seer) player.RpcSetNameLocal(Main.PlayerNames[player]);
-            else seer.RpcSetNameSpecific(player, Main.PlayerNames[player]);
+            if (toAll) player.RpcSetNameToAll(Main.PlayerNames[player.PlayerId]);
+            else if (player == seer) player.RpcSetNameLocal(Main.PlayerNames[player.PlayerId]);
+            else seer.RpcSetNameSpecific(player, Main.PlayerNames[player.PlayerId]);
             return;
         }
         
         var s = "";
 
-        s += Main.PlayerNames[player];
+        s += Main.PlayerNames[player.PlayerId];
         s += "\n";
         s += "<size=70%>";
         s += $"<color={role.RoleColor}>";
@@ -332,18 +332,23 @@ public static class Utils
         if (role.Basis == RoleTypes.ImpostorGhost) return true;
         return false;
     }
+    
+    public static PlayerControl GetPlayerById(int PlayerId)
+    {
+        return PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(pc => pc.PlayerId == PlayerId) ?? null;
+    }
 
     public static CustomRoles GetCustomRole(this PlayerControl player)
     {
-        if (!Main.CustomRoles.ContainsKey(player)) return null;
-        var role = Main.CustomRoles[player];
+        if (!Main.CustomRoles.ContainsKey(player.PlayerId)) return null;
+        var role = Main.CustomRoles[player.PlayerId];
         if (role != null) return role;
         return null;
     }
     public static CustomRoles GetGhostRole(this PlayerControl player)
     {
-        if (!Main.GhostRoles.ContainsKey(player)) return null;
-        var role = Main.GhostRoles[player];
+        if (!Main.GhostRoles.ContainsKey(player.PlayerId)) return null;
+        var role = Main.GhostRoles[player.PlayerId];
         if (role != null) return role;
         return null;
     }

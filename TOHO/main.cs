@@ -22,10 +22,10 @@ public class Main : BasePlugin
     public Harmony harmony = new("com.Limeau.TownofHostOptimized");
 
     public static Dictionary<string, CustomRoles> AllRoles = [];
-    public static Dictionary<PlayerControl, CustomRoles> CustomRoles = [];
-    public static Dictionary<PlayerControl, CustomRoles> GhostRoles = [];
-    public static Dictionary<PlayerControl, string> PlayerNames = [];
-    public static Dictionary<PlayerControl, PlayerControl> RealKillers = [];
+    public static Dictionary<byte, CustomRoles> CustomRoles = [];
+    public static Dictionary<byte, CustomRoles> GhostRoles = [];
+    public static Dictionary<byte, string> PlayerNames = [];
+    public static Dictionary<byte, byte> RealKillers = [];
     
     public static string ModColor = "#b47ede";
     public static string ModName = "Town of Host Optimized";

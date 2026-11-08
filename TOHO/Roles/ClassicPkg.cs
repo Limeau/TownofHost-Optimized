@@ -21,7 +21,21 @@ public static class ClassicPkg
         }));
         sheriff.AddOnMurder((UnityAction<PlayerControl, PlayerControl>)((PlayerControl killer, PlayerControl target) =>
         {
-            if (target.GetCustomRoleTeam() == Custom_Team.Crewmate)
+            Main.Logger.LogInfo($"Target: {target.Data.PlayerName}");
+            
+            var targetRole = Main.CustomRoles[target.PlayerId];
+
+            Main.Logger.LogInfo($"Role: {targetRole.RoleName}");
+            Main.Logger.LogInfo($"Category: {targetRole.Category}");
+
+            if (targetRole.Category == RoleCategories.CrewmateVanilla ||
+                targetRole.Category == RoleCategories.CrewmateVanillaGhost ||
+                targetRole.Category == RoleCategories.CrewmateHindering ||
+                targetRole.Category == RoleCategories.CrewmateInvestigative ||
+                targetRole.Category == RoleCategories.CrewmateKilling ||
+                targetRole.Category == RoleCategories.CrewmatePower ||
+                targetRole.Category == RoleCategories.CrewmateSupport ||
+                targetRole.Category == RoleCategories.CrewmateGhosts)
             {
                 killer.MurderPlayer(killer);
             }
@@ -38,11 +52,11 @@ public static class ClassicPkg
             {
                 if (pc.Data.IsDead)
                 {
-                    var s = Main.PlayerNames[pc];
+                    var s = Main.PlayerNames[pc.PlayerId];
                     s += "\n<size=70%>";
-                    if (Main.RealKillers.ContainsKey(pc))
+                    if (Main.RealKillers.ContainsKey(pc.PlayerId))
                     {
-                        var role = Main.RealKillers[pc].GetCustomRole();
+                        var role = Utils.GetPlayerById(Main.RealKillers[pc.PlayerId]).GetCustomRole();
                         s += $"<color={role.RoleColor}>";
                         s += role.RoleName;
                         s += "</color>";
@@ -59,7 +73,7 @@ public static class ClassicPkg
             {
                 if (pc.Data.IsDead)
                 {
-                    seer.RpcSetNameSpecific(pc, Main.PlayerNames[pc]);
+                    seer.RpcSetNameSpecific(pc, Main.PlayerNames[pc.PlayerId]);
                 }
             }
         }));

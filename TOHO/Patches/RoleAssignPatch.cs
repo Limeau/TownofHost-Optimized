@@ -23,7 +23,7 @@ public static class RpcSetRolePatch
 
         else 
         {
-            if (!Main.CustomRoles.TryGetValue(__instance, out var customRole))
+            if (!Main.CustomRoles.TryGetValue(__instance.PlayerId, out var customRole))
             {
                 return;
             }
@@ -36,7 +36,7 @@ public static class RpcSetRolePatch
 
     public static RoleTypes SetAsAGhost(PlayerControl player)
     {
-        if (Main.GhostRoles.TryGetValue(player, out var customRole))
+        if (Main.GhostRoles.TryGetValue(player.PlayerId, out var customRole))
         {
             return customRole.Basis;
         }

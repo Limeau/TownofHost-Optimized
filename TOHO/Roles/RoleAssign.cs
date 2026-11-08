@@ -109,7 +109,7 @@ public static class RoleAssign
             foreach (var player in PlayerControl.AllPlayerControls)
             {
                 var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
-                Main.CustomRoles.Add(player, role);
+                Main.CustomRoles.Add(player.PlayerId, role);
                 ThisGameRoles.Remove(role);
                 
                 _ = new LateTask(() =>

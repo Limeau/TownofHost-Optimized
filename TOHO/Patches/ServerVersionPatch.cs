@@ -38,9 +38,9 @@ class PlayerControlCheckNamePatch
         
         playerName = __instance.Data.PlayerName ?? playerName;
         
-        if (!Main.PlayerNames.ContainsKey(__instance))
+        if (!Main.PlayerNames.ContainsKey(__instance.PlayerId))
         {
-            Main.PlayerNames.Add(__instance, playerName);
+            Main.PlayerNames.Add(__instance.PlayerId, playerName);
         }
     }
 }

@@ -11,7 +11,7 @@ class ExileControllerWrapUpPatch
         public static void Postfix(ExileController __instance)
         {
             var pc = __instance.initData.networkedPlayer.PlayerId.GetPlayerById();
-            pc.RpcSetName(Main.PlayerNames[pc]);
+            pc.RpcSetName(Main.PlayerNames[pc.PlayerId]);
             pc.SetNameWithRole();
             foreach (var player in PlayerControl.AllPlayerControls)
             {

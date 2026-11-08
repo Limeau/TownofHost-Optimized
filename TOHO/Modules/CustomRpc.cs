@@ -227,8 +227,8 @@ public static class CustomRpcSenderExtensions
             .Write(false)
             .EndRpc();
         
-        if (seerIsNull) Main.Logger.LogInfo($"Setting {Main.PlayerNames[player]}'s name to {name} for all");
-        else Main.Logger.LogInfo($"Setting {Main.PlayerNames[player]}'s name to {name} for {Main.PlayerNames[seer]}");
+        if (seerIsNull) Main.Logger.LogInfo($"Setting {Main.PlayerNames[player.PlayerId]}'s name to {name} for all");
+        else Main.Logger.LogInfo($"Setting {Main.PlayerNames[player.PlayerId]}'s name to {name} for {Main.PlayerNames[seer.PlayerId]}");
     }
 
     public static void RpcSendChatMessage(this PlayerControl target, string msg, string title)

@@ -6,7 +6,7 @@ namespace TOHO;
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CheckMurder))]
 class CheckMurderPatch
 {
-    public static bool Prefix(PlayerControl __instance, PlayerControl target)
+    public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
     {
         var a = target.GetCustomRole().OnMurderAsTarget(__instance, target);
         var b = __instance.GetCustomRole().OnMurderAsKiller(__instance, target);
@@ -20,7 +20,7 @@ class CheckMurderPatch
             if (!d) c = false;
         }
 
-        if (c) Main.RealKillers[target] = __instance;
+        if (c) Main.RealKillers[target.PlayerId] = __instance.PlayerId;
         
         return c;
     }

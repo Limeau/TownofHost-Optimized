@@ -51,7 +51,7 @@ class GameEndCheckerForNormal
 
         foreach (var kvp in Main.PlayerNames)
         {
-            kvp.Key.RpcSetNameLocal(kvp.Value);
+            Utils.GetPlayerById(kvp.Key).RpcSetNameLocal(kvp.Value);
         }
         Main.PlayerNames.Clear();
         
@@ -62,7 +62,7 @@ class GameEndCheckerForNormal
             if (Winners.Contains(player))
             {
                 var w = "★ ";
-                w += Main.PlayerNames[player];
+                w += Main.PlayerNames[player.PlayerId];
                 w += " - ";
                 w += $"<color={player.GetCustomRole().RoleColor}>";
                 w += player.GetCustomRole().RoleName;
@@ -72,7 +72,7 @@ class GameEndCheckerForNormal
                 w += player.GetGhostRole().RoleName;
                 w += "</color>)";
                 Results.Add(w);
-                Main.GhostRoles[player] = Main.AllRoles["Impostor Ghost"];
+                Main.GhostRoles[player.PlayerId] = Main.AllRoles["Impostor Ghost"];
                 player.MurderPlayer(player);
             }
         }
@@ -82,7 +82,7 @@ class GameEndCheckerForNormal
             if (!Winners.Contains(player))
             {
                 var w = "";
-                w += Main.PlayerNames[player];
+                w += Main.PlayerNames[player.PlayerId];
                 w += " - ";
                 w += $"<color={player.GetCustomRole().RoleColor}>";
                 w += player.GetCustomRole().RoleName;
@@ -92,7 +92,7 @@ class GameEndCheckerForNormal
                 w += player.GetGhostRole().RoleName;
                 w += "</color>)";
                 Results.Add(w);
-                Main.GhostRoles[player] = Main.AllRoles["Crewmate Ghost"];
+                Main.GhostRoles[player.PlayerId] = Main.AllRoles["Crewmate Ghost"];
                 player.MurderPlayer(player);
             }
         }

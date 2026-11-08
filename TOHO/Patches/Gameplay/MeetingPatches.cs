@@ -67,15 +67,15 @@ class CheckForEndVotingPatch
         switch (Options.ConfirmEjectionsMode.Value)
         {
             case 0:
-                name += $"{Main.PlayerNames[player]} was a {player.GetCustomRole().GetCustomRoleTeamFromRole()}";
+                name += $"{Main.PlayerNames[player.PlayerId]} was a {player.GetCustomRole().GetCustomRoleTeamFromRole()}";
                 break;
             
             case 1:
-                name += $"{Main.PlayerNames[player]} was the {player.GetCustomRole().RoleName}";
+                name += $"{Main.PlayerNames[player.PlayerId]} was the {player.GetCustomRole().RoleName}";
                 break;
             
             case 2:
-                name += $"{Main.PlayerNames[player]} was ejected";
+                name += $"{Main.PlayerNames[player.PlayerId]} was ejected";
                 break;
             
         }
