@@ -96,10 +96,10 @@ public static class Utils
             }   
             var h = "";
 
+            h += $"<color={role.RoleColor}>";
             h += Main.PlayerNames[player.PlayerId];
             h += "\n";
             h += "<size=70%>";
-            h += $"<color={role.RoleColor}>";
             h += role.RoleName;
             h += "</color>";
             
@@ -116,11 +116,11 @@ public static class Utils
         }
         
         var s = "";
-
+            
+        s += $"<color={role.RoleColor}>";
         s += Main.PlayerNames[player.PlayerId];
         s += "\n";
         s += "<size=70%>";
-        s += $"<color={role.RoleColor}>";
         s += role.RoleName;
         s += "</color>";
 
