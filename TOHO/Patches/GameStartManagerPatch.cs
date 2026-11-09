@@ -9,3 +9,13 @@ public static class GameStartManagerPatch
         __instance.MinPlayers = 1;
     }
 }
+
+[HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.CoStartGameHost))]
+public static class CoStartGamePatch
+{
+    public static bool Prefix(AmongUsClient __instance, ref Il2CppSystem.Collections.IEnumerator __result)
+    {
+        RoleAssign.RoleSet = false;
+        return true;
+    }
+}

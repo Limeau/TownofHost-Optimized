@@ -142,8 +142,6 @@ class GameEndCheckerForNormal
         }
 
         Main.PlayerNames.Clear();
-
-        RoleAssign.RoleSet = false;
         
         GameManager.Instance.RpcEndGame(GameOverReason.ImpostorsByKill, false);
         
