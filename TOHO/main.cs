@@ -24,6 +24,7 @@ public class Main : BasePlugin
     public static Dictionary<string, CustomRoles> AllRoles = [];
     public static Dictionary<byte, CustomRoles> CustomRoles = [];
     public static Dictionary<byte, CustomRoles> GhostRoles = [];
+    public static Dictionary<byte, List<CustomRoles>> Modifiers = [];
     public static Dictionary<byte, string> PlayerNames = [];
     public static Dictionary<byte, byte> RealKillers = [];
     

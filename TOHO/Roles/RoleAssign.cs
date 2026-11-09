@@ -124,7 +124,52 @@ public static class RoleAssign
             Main.Logger.LogInfo(e);
         }
         
+        ModifierAssign.AssignModifiers();
         GhostRoleAssign.AssignGhostRoles();
+    }
+}
+
+public static class ModifierAssign
+{
+    public static List<CustomRoles> Modifiers = [];
+
+    public static void AssignModifiers()
+    {
+        Modifiers.Clear();
+        Main.Modifiers.Clear();
+
+        if (Options.ModifiersPerPlayer.Value == 0) return;
+        
+        foreach (var kvp in Main.AllRoles.Where(x => x.Value.Enabled && x.Value.Category == RoleCategories.Modifier))
+        {
+            var role = kvp.Value;
+            Modifiers.Add(role);
+        }
+        
+        var srandom = new Random();
+        Dictionary<PlayerControl, int> active = [];
+        List<PlayerControl> activeL = [];
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            active[player] = 0;
+            activeL.Add(player);
+            Main.Modifiers[player.PlayerId] = [];
+        }
+
+        foreach (var modifier in Modifiers)
+        {
+            var r = srandom.Next(active.Count);
+            var pc = activeL[r];
+
+            active[pc] += 1;
+
+            Main.Modifiers[pc.PlayerId].Add(modifier);
+
+            if (active[pc] >= Options.ModifiersPerPlayer.Value)
+            {
+                activeL.Remove(pc);
+            }
+        }
     }
 }
 

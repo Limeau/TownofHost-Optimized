@@ -126,5 +126,9 @@ public static class ClassicPkg
         {
             a.SetEngineerCooldown(VectorCooldown.Value);
         }));
+        
+        var bait = new CustomRoles("Limeau.Bait", "Bait", "Have your body instantly reported when someone kills you",
+            "When the Bait is killed, the killer will instantly self report.", "#00ffff", RoleTypes.Crewmate, RoleCategories.Modifier);
+
     }
 }
