@@ -86,7 +86,8 @@ public static class ClassicPkg
         var vampire = new CustomRoles("Limeau.Vampire", "Vampire", "Kill with a delay", "When the Vampire kills, their kill will be delayed by a certain amount of time before it takes place.", "#ff1919", RoleTypes.Impostor, RoleCategories.ImpostorKilling);
         vampire.AddOnMurder((UnityAction<PlayerControl, PlayerControl>)((PlayerControl killer, PlayerControl target) =>
         {
-            killer.SetKillTimer(VampireCooldown.Value);
+            killer.ProtectPlayer(killer, killer.CurrentOutfit.ColorId);
+            killer.SetKillCooldown(VampireCooldown.Value);
             _ = new LateTask(() =>
             {
                 target.MurderPlayer(target);

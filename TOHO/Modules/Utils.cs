@@ -278,6 +278,12 @@ public static class Utils
         foreach (var option in Main.AllBooleanOptionItems.Where(x => x.Id == id)) return option;
         return null;
     }
+
+    public static void SyncSettings(this PlayerControl player)
+    {
+        
+    }
+    
     public static NumberOptionItem GetNumberOptionItemFromId(string id)
     {
         foreach (var option in Main.AllNumberOptionItems.Where(x => x.Id == id)) return option;
