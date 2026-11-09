@@ -273,6 +273,7 @@ class IntroCutsceneDestroyPatch
         }
     }
 }
+/*
 [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
 class EndGamePatch
 {
@@ -284,3 +285,4 @@ class EndGamePatch
         }
     }
 }
+*/

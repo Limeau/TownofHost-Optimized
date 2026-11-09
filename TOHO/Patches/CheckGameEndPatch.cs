@@ -40,23 +40,67 @@ class GameEndCheckerForNormal
 {
     public static List<string> Results = [];
     public static List<PlayerControl> Winners = [];
-    public static Custom_Team WinnerTeam;
     public static bool IsGameEnd = false;
     public static bool Prefix()
     {
         if (!AmongUsClient.Instance.AmHost) return true;
 
         if (Options.NoGameEnd.Value) return false;
-        if (!IsGameEnd) return false;
+
+        var crewWin = true;
+        var impWin = true;
+        var covWin = true;
+        var count = 0;
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (!player.Data.IsDead)
+            {
+                count++;
+                if (!player.IsPlayerCrewmate()) crewWin = false;
+                if (!player.IsPlayerImpostor()) impWin = false;
+                if (!player.IsPlayerCoven()) covWin = false;
+            }
+        }
+        
+        if (!IsGameEnd && !crewWin && !impWin && !covWin && count > 1) return false;
 
         foreach (var kvp in Main.PlayerNames)
         {
-            Utils.GetPlayerById(kvp.Key).RpcSetNameLocal(kvp.Value);
+            Utils.GetPlayerById(kvp.Key).RpcSetNameToAll(kvp.Value);
         }
-        Main.PlayerNames.Clear();
         
         IsGameEnd = false;
 
+        if (crewWin)
+        {
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (player.IsPlayerCrewmate()) Winners.Add(player);
+            }
+        }
+        if (impWin)
+        {
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (player.IsPlayerImpostor()) Winners.Add(player);
+            }
+        }
+        if (covWin)
+        {
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (player.IsPlayerCoven()) Winners.Add(player);
+            }
+        }
+
+        if (count == 1)
+        {
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (!player.Data.IsDead && player.IsPlayerNeutral()) Winners.Add(player);
+            }
+        }
+        
         foreach (var player in PlayerControl.AllPlayerControls)
         {
             if (Winners.Contains(player))
@@ -96,6 +140,8 @@ class GameEndCheckerForNormal
                 player.MurderPlayer(player);
             }
         }
+
+        Main.PlayerNames.Clear();
 
         RoleAssign.RoleSet = false;
         

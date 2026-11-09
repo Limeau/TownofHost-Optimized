@@ -84,7 +84,7 @@ public static class ClassicPkg
             {
                 List<PlayerControl> win = [];
                 win.Add(a);
-                CustomRoleExtentions.WinTheGame(Custom_Team.Neutral, win);
+                CustomRoleExtentions.WinTheGame(win);
             }), true);
         
         var vector = new CustomRoles("Limeau.Vector", "Vector", "Vent enough times to win",
@@ -102,7 +102,7 @@ public static class ClassicPkg
                     List<PlayerControl> win = [];
                     win.Add(a);
                     VectorCount = 0;
-                    CustomRoleExtentions.WinTheGame(Custom_Team.Neutral, win);
+                    CustomRoleExtentions.WinTheGame(win);
                 }
             }), true);
         vector.AddOnGameStart((UnityAction<PlayerControl>)((PlayerControl a) =>

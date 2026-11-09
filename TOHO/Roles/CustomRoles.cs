@@ -649,10 +649,9 @@ public static class CustomRoleExtentions
         killer.RpcMurderPlayer(target, true);
     }
 
-    public static void WinTheGame(this Custom_Team winnerTeam, List<PlayerControl> winners)
+    public static void WinTheGame(List<PlayerControl> winners)
     {
         GameEndCheckerForNormal.IsGameEnd = true;
         GameEndCheckerForNormal.Winners = winners;
-        GameEndCheckerForNormal.WinnerTeam = winnerTeam;
     }
 }
