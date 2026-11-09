@@ -86,7 +86,17 @@ public static class Utils
 
         if (overrideToLivingRole) role = player.GetCustomRole();
         else role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
-            
+
+        var k = "";
+        foreach (var modifier in Main.Modifiers[player.PlayerId])
+        {
+            k += $" <color={modifier.RoleColor}>";
+            k += "(";
+            k += modifier.RoleName;
+            k += ")";
+            k += "</color>";
+        }
+        
         if (player.OwnerId == AmongUsClient.Instance.HostId)
         {
             if (role == null)
@@ -102,6 +112,7 @@ public static class Utils
             h += "<size=70%>";
             h += role.RoleName;
             h += "</color>";
+            h += k;
             
             player.cosmetics.nameText.text = h;
             return;
@@ -123,7 +134,8 @@ public static class Utils
         s += "<size=70%>";
         s += role.RoleName;
         s += "</color>";
-
+        s += k;
+        
         if (toAll) player.RpcSetNameToAll(s);
         else if (player == seer) player.RpcSetNameLocal(s);
         else seer.RpcSetNameSpecific(player, s);
