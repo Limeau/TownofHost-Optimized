@@ -70,14 +70,16 @@ class ReportDeadBodyPatch
 {
     public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo target)
     {
-        var a = __instance.GetCustomRole().OnReportDeadBody(__instance);
+        var a = __instance.GetCustomRole().OnReportDeadBody(__instance, target.Object);
 
+        var b = target.Object.GetCustomRole().OnReportDeadBodyAsTarget(__instance, target.Object);
         if (!a) return false;
+        if (!b) return false;
 
         var c = true;
         foreach (var spect in PlayerControl.AllPlayerControls)
         {
-            var d = spect.GetCustomRole().OnReportDeadBodyAsSpect(__instance);
+            var d = spect.GetCustomRole().OnReportDeadBodyAsSpect(__instance, target.Object);
             if (!d) c = false;
         }
 

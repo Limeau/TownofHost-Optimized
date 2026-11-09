@@ -195,28 +195,40 @@ public class CustomRoles
     }
 
     // Report Dead Body / Start Meeting
-    public UnityAction<PlayerControl> ReportDeadBodyAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
-    public UnityAction<PlayerControl> ReportDeadBodyAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public UnityAction<PlayerControl, PlayerControl> ReportDeadBodyAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> ReportDeadBodyAsTargetAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> ReportDeadBodyAsSpectAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
 
     public bool ReportDeadBodyBool = true;
+    public bool ReportDeadBodyAsTargetBool = true;
     public bool ReportDeadBodyAsSpectBool = true;
-    public bool OnReportDeadBody(PlayerControl target)
+    public bool OnReportDeadBody(PlayerControl reporter, PlayerControl target)
     {
-        ReportDeadBodyAction.Invoke(target);
+        ReportDeadBodyAction.Invoke(reporter, target);
         return ReportDeadBodyBool;
     }
-    public bool OnReportDeadBodyAsSpect(PlayerControl target)
+    public bool OnReportDeadBodyAsSpect(PlayerControl reporter, PlayerControl target)
     {
-        ReportDeadBodyAsSpectAction.Invoke(target);
+        ReportDeadBodyAsSpectAction.Invoke(reporter, target);
         return ReportDeadBodyAsSpectBool;
     }
-
-    public void AddOnReportDeadBody(UnityAction<PlayerControl> onReportDeadBody, bool isTarget = false, bool allow = true)
+    public bool OnReportDeadBodyAsTarget(PlayerControl reporter, PlayerControl target)
     {
-        if (isTarget)
+        ReportDeadBodyAsTargetAction.Invoke(reporter, target);
+        return ReportDeadBodyAsTargetBool;
+    }
+
+    public void AddOnReportDeadBody(UnityAction<PlayerControl, PlayerControl> onReportDeadBody, bool isReporter = false, bool isTarget = false, bool allow = true)
+    {
+        if (isReporter)
         {
-            ReportDeadBodyAction = onReportDeadBody;
+            ReportDeadBodyAction = onReportDeadBody; 
             ReportDeadBodyBool = allow;
+        }
+        else if (isTarget)
+        {
+            ReportDeadBodyAsTargetAction = onReportDeadBody;
+            ReportDeadBodyAsTargetBool = allow;
         }
         else
         {
