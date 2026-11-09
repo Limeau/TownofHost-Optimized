@@ -7,6 +7,9 @@ public static class ClassicPkg
 {
     public static NumberOptionItem SheriffCooldown;
     
+    public static NumberOptionItem VampireCooldown;
+    public static NumberOptionItem VampireTimer;
+    
     public static int VectorCount;
     public static NumberOptionItem VectorVentsRequired;
     public static NumberOptionItem VectorCooldown;
@@ -77,6 +80,19 @@ public static class ClassicPkg
                 }
             }
         }));
+
+        VampireCooldown = new NumberOptionItem("Limeau.Vampire.Cooldown", "Kill cooldown", OptionTabs.RoleSetting, 20f, 1f, 60f, 1f);
+        VampireTimer = new NumberOptionItem("Limeau.Vampire.Timer", "Delay Timer", OptionTabs.RoleSetting, 10f, 1f, 20f, 1f);
+        var vampire = new CustomRoles("Limeau.Vampire", "Vampire", "Kill with a delay", "When the Vampire kills, their kill will be delayed by a certain amount of time before it takes place.", "#ff1919", RoleTypes.Impostor, RoleCategories.ImpostorKilling);
+        vampire.AddOnMurder((UnityAction<PlayerControl, PlayerControl>)((PlayerControl killer, PlayerControl target) =>
+        {
+            killer.SetKillTimer(VampireCooldown.Value);
+            _ = new LateTask(() =>
+            {
+                target.MurderPlayer(target);
+                Main.RealKillers[target.PlayerId] = killer.PlayerId;
+            }, VampireTimer.Value, "Vampire Kill");
+        }), isKiller: true, allow: false);
         
         var jester = new CustomRoles("Limeau.Jester", "Jester", "Get ejected to win",
                 "The Jester wins by being ejected from a meeting.", "#ff3385", RoleTypes.Crewmate, RoleCategories.NeutralEvil);

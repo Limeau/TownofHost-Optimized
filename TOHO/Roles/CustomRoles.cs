@@ -44,7 +44,6 @@ public class CustomRoles
     {
         Option = new RoleOptionItem(this, RoleID, $"<color={RoleColor}>{RoleName}</color>", Category);
         Utils.GetRoleOptionItemFromCategory(Category).Add(Option);
-        SubNumberOptions.Add(new NumberOptionItem(RoleID + ".Max", "Max", OptionTabs.RoleSetting, 1f, 1f, 10f, 1f));
     }
 
     public void StopAdvancedOptions()
