@@ -132,7 +132,10 @@ public static class ClassicPkg
         bait.AddOnMurder((UnityAction<PlayerControl, PlayerControl>)((PlayerControl reporter, PlayerControl target) =>
         {
             Main.Logger.LogInfo("lol");
-            reporter.ReportBody(target.Data);
+            _ = new LateTask(() =>
+            {
+                reporter.CmdReportDeadBody(target.Data);
+            }, 1f, "Bait Self Report");
         }), isTarget: true);
     }
 }
