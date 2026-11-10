@@ -129,9 +129,10 @@ public static class ClassicPkg
         
         var bait = new CustomRoles("Limeau.Bait", "Bait", "Have your body instantly reported when someone kills you",
             "When the Bait is killed, the killer will instantly self report.", "#00ffff", RoleTypes.Crewmate, RoleCategories.Modifier);
-        bait.AddOnReportDeadBody((UnityAction<PlayerControl, PlayerControl>)((PlayerControl reporter, PlayerControl target) =>
+        bait.AddOnMurder((UnityAction<PlayerControl, PlayerControl>)((PlayerControl reporter, PlayerControl target) =>
         {
-            reporter.ReportDeadBody(target.Data);
-        }));
+            Main.Logger.LogInfo("lol");
+            reporter.ReportBody(target.Data);
+        }), isTarget: true);
     }
 }

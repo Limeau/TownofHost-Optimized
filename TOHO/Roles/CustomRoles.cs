@@ -642,6 +642,12 @@ public static class CustomRoleExtentions
         sender.RpcSetRole(player, player.GetCustomRole().Basis);
         sender.SendMessage();
     }
+    public static void ReportBody(this PlayerControl player, NetworkedPlayerInfo body)
+    {
+        var sender = CustomRpcSender.Create("Report Dead Body", SendOption.Reliable);
+        sender.RpcReportDeadBody(player, body);
+        sender.SendMessage();
+    }
 
     public static void CallMeeting(this PlayerControl player, NetworkedPlayerInfo target = null)
     {
