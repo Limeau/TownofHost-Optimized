@@ -12,11 +12,10 @@ namespace TOHO;
 
 public static class OptionManager
 {
-    public static ToggleOption ttemplate = null;
-    public static NumberOption ntemplate = null;
-    public static NumberOption stemplate = null;
     public static void SetupBooleanOption(this BooleanOptionItem option, float y)
     {
+        ToggleOption ttemplate = null;
+        
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
@@ -65,6 +64,8 @@ public static class OptionManager
     }
     public static void SetupRoleOption(this RoleOptionItem option, List<GameObject> team, float y)
     {
+        ToggleOption ttemplate = null;
+        
         option.obj = new GameObject();
         
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("ToggleOption, Assembly-CSharp")))
@@ -106,6 +107,8 @@ public static class OptionManager
     }
     public static void SetupNumberOption(this NumberOptionItem option, float y)
     {
+        NumberOption ntemplate = null;
+        
         option.obj = new GameObject();
 
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
@@ -228,6 +231,8 @@ public static class OptionManager
     }
     private static void SetupHelpIcon(RoleOptionItem option)
     {
+        NumberOption ntemplate = null;
+
         foreach (var item in Resources.FindObjectsOfTypeAll(Il2CppSystem.Type.GetType("NumberOption, Assembly-CSharp")))
         {
             ntemplate = item.TryCast<NumberOption>();
