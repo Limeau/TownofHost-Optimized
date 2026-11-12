@@ -2,6 +2,7 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
 using Hazel;
+using InnerNet;
 using TOHO;
 
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
@@ -40,6 +41,23 @@ public static class ChatCommands
     {
         string[] args = message.Trim().Split(' ');
         
+        bool send = true;
+
+        if (Main.CustomRoles.ContainsKey(sender.PlayerId) && AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
+        {
+            var r = Main.CustomRoles[sender.PlayerId];
+            r.OnSendChat(sender, message);
+        }
+
+        foreach (var player in PlayerControl.AllPlayerControls)
+        {
+            if (Main.CustomRoles.ContainsKey(player.PlayerId) && AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
+            {
+                var r = Main.CustomRoles[player.PlayerId];
+                r.OnSendChatAsSpect(sender, message);
+            }
+        }
+        
         switch (args[0])
         {
             case "/m":
@@ -73,6 +91,6 @@ public static class ChatCommands
                 break;
         }
         
-        return true;
+        return send;
     }
 }

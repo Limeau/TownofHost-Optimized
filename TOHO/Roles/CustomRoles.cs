@@ -194,6 +194,38 @@ public class CustomRoles
         }
     }
 
+    // Send Chat
+    
+    public UnityAction<PlayerControl, string> SendChatAction = (UnityAction<PlayerControl, string>)((PlayerControl a, string msg) => { });
+    public UnityAction<PlayerControl, string> SendChatAsSpectAction = (UnityAction<PlayerControl, string>)((PlayerControl a, string msg) => { });
+
+    public bool SendChatBool = true;
+    public bool SendChatAsSpectBool = true;
+    public bool OnSendChat(PlayerControl target, string msg)
+    {
+        SendChatAction.Invoke(target, msg);
+        return SendChatBool;
+    }
+    public bool OnSendChatAsSpect(PlayerControl target, string msg)
+    {
+        SendChatAsSpectAction.Invoke(target, msg);
+        return SendChatAsSpectBool;
+    }
+
+    public void AddOnSendChat(UnityAction<PlayerControl, string> onSendChat, bool isTarget = false, bool allow = true)
+    {
+        if (isTarget)
+        {
+            SendChatAction = onSendChat;
+            SendChatBool = allow;
+        }
+        else
+        {
+            SendChatAsSpectAction = onSendChat;
+            SendChatAsSpectBool = allow;
+        }
+    }
+    
     // Report Dead Body / Start Meeting
     public UnityAction<PlayerControl, PlayerControl> ReportDeadBodyAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
     public UnityAction<PlayerControl, PlayerControl> ReportDeadBodyAsTargetAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
