@@ -254,4 +254,23 @@ public static class CustomRpcSenderExtensions
         writer.EndMessage();
         writer.SendMessage();
     }
+    
+    public static void RpcSendChatMessageToAll(this PlayerControl target, string msg, string title)
+    {
+        var writer = CustomRpcSender.Create("MessagesToSend", SendOption.Reliable);
+        writer.StartMessage(-1);
+        writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
+            .Write(target.Data.NetId)
+            .Write(title)
+            .EndRpc();
+        writer.StartRpc(target.NetId, (byte)RpcCalls.SendChat)
+            .Write(msg)
+            .EndRpc();
+        writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
+            .Write(target.Data.NetId)
+            .Write(target.Data.PlayerName)
+            .EndRpc();
+        writer.EndMessage();
+        writer.SendMessage();
+    }
 }

@@ -17,9 +17,20 @@ internal class RPCHandlerPatch
             var text = subReader.ReadString();
             Main.Logger.LogInfo($"{Main.PlayerNames[__instance.PlayerId]}:{text}");
             var canceled = ChatCommands.OnReceiveChat(__instance, text);
-            return !canceled;
+            if (canceled)
+            {
+                ChatCommands.SendChatHistory();
+            }
+            else
+            {
+                ChatCommands.ChatHistory.Add(new ChatMessage(__instance, text));
+
+                if (ChatCommands.ChatHistory.Count > 30)
+                {
+                    ChatCommands.ChatHistory.RemoveAt(0);
+                }
+            }
         }
-        
         return true;
     }
 }
@@ -35,8 +46,29 @@ internal class SendChatPatch
     }
 }
 
+public class ChatMessage
+{
+    public PlayerControl Sender;
+    public string Message;
+    public ChatMessage(PlayerControl sender, string message)
+    {
+        Sender = sender;
+        Message = message;
+    }
+}
+
 public static class ChatCommands
 {
+    public static List<ChatMessage> ChatHistory = [];
+
+    public static void SendChatHistory()
+    {
+        foreach (var message in ChatHistory)
+        {
+            message.Sender.SendChatMessageToAll(message.Message, Main.PlayerNames[message.Sender.PlayerId]);   
+        }
+    }
+    
     public static bool OnReceiveChat(PlayerControl sender, string message)
     {
         string[] args = message.Trim().Split(' ');
@@ -46,7 +78,8 @@ public static class ChatCommands
         if (Main.CustomRoles.ContainsKey(sender.PlayerId) && AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
         {
             var r = Main.CustomRoles[sender.PlayerId];
-            r.OnSendChat(sender, message);
+            var b = r.OnSendChat(sender, message);
+            if (!b) send = false;
         }
 
         foreach (var player in PlayerControl.AllPlayerControls)
@@ -54,7 +87,8 @@ public static class ChatCommands
             if (Main.CustomRoles.ContainsKey(player.PlayerId) && AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
             {
                 var r = Main.CustomRoles[player.PlayerId];
-                r.OnSendChatAsSpect(sender, message);
+                var b = r.OnSendChatAsSpect(sender, message);
+                if (!b) send = false;
             }
         }
         
