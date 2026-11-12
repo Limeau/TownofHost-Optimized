@@ -42,7 +42,10 @@ public static class ChatCommands
         
         switch (args[0])
         {
-            
+            case "/m":
+                if (Main.CustomRoles.ContainsKey(sender.PlayerId)) sender.SendChatMessage(Main.CustomRoles[sender.PlayerId].LongDescription, Main.CustomRoles[sender.PlayerId].RoleName);
+                else sender.SendChatMessage("You do not have a custom role assigned.");
+                break;
             case "/r":
                 string en = "";
                 string db = "";
