@@ -137,5 +137,41 @@ public static class ClassicPkg
                 reporter.CmdReportDeadBody(target.Data);
             }, 1f, "Bait Self Report");
         }), isTarget: true);
+        
+        var allow = true;
+
+        var guesser = new CustomRoles("Limeau.Guesser", "Guesser", "Be able to guess a player's role!",
+            "The Guesser can use a command to guess a player's role. If they guess correctly, said player dies. If they guess incorrectly, the Guesser will die. An example of this command would be /bt [playerid] [role name], or /bt 3 crewmate.", "#00ffff", RoleTypes.Crewmate, RoleCategories.Modifier);
+        guesser.AddOnSendChat((UnityAction<PlayerControl, string>)((PlayerControl sender, string message) =>
+        {
+            string[] args = message.Trim().Split(' ');
+            if (args[0].ToLower() == "/bt" && args.Length >= 2)
+            { 
+                allow = false;
+                if (int.TryParse(args[1], out int playerId))
+                {
+                    var player = Utils.GetPlayerById(playerId);
+                    if (Main.AllRoles.ContainsKey(args[2]) && player != null)
+                    {
+                        if (args[2].ToLower() == player.GetCustomRole().RoleName.ToLower())
+                        {
+                            CustomRoleExtentions.Vaporize(player);
+                            foreach (var pc in PlayerControl.AllPlayerControls)
+                            {
+                                pc.SendChatMessage($"{Main.PlayerNames[player.PlayerId]} was guessed");
+                            }
+                        }
+                        else
+                        {
+                            CustomRoleExtentions.Vaporize(sender);
+                            foreach (var pc in PlayerControl.AllPlayerControls)
+                            {
+                                pc.SendChatMessage($"{Main.PlayerNames[sender.PlayerId]} has misguessed");
+                            }
+                        }
+                    }
+                }
+            }
+        }), allow: allow);
     }
 }
