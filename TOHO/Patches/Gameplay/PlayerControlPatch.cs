@@ -116,6 +116,8 @@ class ReportDeadBodyPatch
 {
     public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo target)
     {
+        if (target == null) return true;
+        
         var a = __instance.GetCustomRole().OnReportDeadBody(__instance, target.Object);
         var b = target.Object.GetCustomRole().OnReportDeadBodyAsTarget(__instance, target.Object);
         
