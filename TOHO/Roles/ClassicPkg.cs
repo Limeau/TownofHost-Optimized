@@ -170,6 +170,14 @@ public static class ClassicPkg
                             }
                         }
                     }
+                    else
+                    {
+                        sender.SendChatMessage("Incorrectly used guesser command. The player is either null or you did not type a role.");
+                    }
+                }
+                else
+                {
+                    sender.SendChatMessage("Incorrectly used guesser command. No PlayerId found from the command you entered.");
                 }
             }
         }), allow: allow);

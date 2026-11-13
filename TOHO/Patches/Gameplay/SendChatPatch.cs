@@ -79,6 +79,13 @@ public static class ChatCommands
         {
             var r = Main.CustomRoles[sender.PlayerId];
             var b = r.OnSendChat(sender, message);
+            
+            foreach (var modifier in Main.Modifiers[sender.PlayerId])
+            {
+                var c = modifier.OnSendChat(sender, message);
+                if (b && !c) b = false;
+            }
+            
             if (!b) send = false;
         }
 
@@ -88,6 +95,13 @@ public static class ChatCommands
             {
                 var r = Main.CustomRoles[player.PlayerId];
                 var b = r.OnSendChatAsSpect(sender, message);
+                
+                foreach (var modifier in Main.Modifiers[player.PlayerId])
+                {
+                    var c = modifier.OnSendChatAsSpect(sender, message);
+                    if (b && !c) b = false;
+                }
+                
                 if (!b) send = false;
             }
         }
