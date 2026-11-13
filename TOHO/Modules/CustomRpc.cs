@@ -238,18 +238,31 @@ public static class CustomRpcSenderExtensions
 
     public static void RpcSendChatMessage(this PlayerControl target, string msg, string title)
     {
+        if (target.AmOwner)
+        {
+            var tn = target.cosmetics.nameText.text;
+            target.SetName(title);
+            HudManager.Instance.Chat.AddChat(target, msg);
+            target.SetName(tn);
+            return;
+        }
+        
         var writer = CustomRpcSender.Create("MessagesToSend", SendOption.Reliable);
         writer.StartMessage(target.Data.ClientId);
         writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
             .Write(target.Data.NetId)
             .Write(title)
+            .Write(false)
             .EndRpc();
+        
         writer.StartRpc(target.NetId, (byte)RpcCalls.SendChat)
             .Write(msg)
             .EndRpc();
+        
         writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
             .Write(target.Data.NetId)
             .Write(target.Data.PlayerName)
+            .Write(false)
             .EndRpc();
         writer.EndMessage();
         writer.SendMessage();

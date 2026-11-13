@@ -101,12 +101,24 @@ public static class ChatCommands
             case "/r":
                 string en = "";
                 string db = "";
+                bool enfirst = true;
+                bool dbfirst = true;
                 foreach (var role in Main.AllRoles)
                 {
                     if (args.Length <= 1)
                     {
-                        if (role.Value.Enabled) en += $"<color={role.Value.RoleColor}>{role.Value.RoleName}</color>\n";
-                        else db += $"{role.Value.RoleName}\n";
+                        if (role.Value.Enabled)
+                        {
+                            if (!enfirst) en += ", ";
+                            else enfirst = false;
+                            en += $"<b><color={role.Value.RoleColor}>{role.Value.RoleName}</color></b>";
+                        }
+                        else
+                        {
+                            if (!dbfirst) db += ", ";
+                            else dbfirst = false;
+                            db += $"<i>{role.Value.RoleName}</i>";
+                        }
                     }
                     
                     else if (args[1].ToLower() == role.Key.ToLower())
@@ -115,6 +127,8 @@ public static class ChatCommands
                         break;
                     }
                 }
+
+                en.TrimEnd();
                 
                 if (en.Length > 0)
                 {
