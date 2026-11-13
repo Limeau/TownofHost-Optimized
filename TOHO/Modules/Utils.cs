@@ -97,7 +97,7 @@ public static class Utils
             k += "</color>";
         }
         
-        if (player.OwnerId == AmongUsClient.Instance.HostId)
+        if (player.AmOwner)
         {
             if (role == null)
             {
