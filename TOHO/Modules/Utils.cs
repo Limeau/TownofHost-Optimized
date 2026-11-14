@@ -371,6 +371,14 @@ public static class Utils
         return null;
     }
 
+    public static void SetCustomRole(this PlayerControl player, CustomRoles role)
+    {
+        Main.CustomRoles[player.PlayerId] = role;
+        var sender = new CustomRpcSender("RpcSetRole", SendOption.Reliable, false);
+        sender.RpcSetRole(player, role.Basis);
+        sender.SendMessage();
+    }
+    
     public static bool IsPlayerCrewmate(this PlayerControl player)
     {
         if (player.GetCustomRole().Category == RoleCategories.CrewmateVanilla) return true;

@@ -668,12 +668,6 @@ public static class CustomRoleExtentions
         if (colorid == -1) colorid = shielded.Data.DefaultOutfit.ColorId;
         shielded.RpcProtectPlayer(shielded, colorid);
     }
-    public static void RevivePlayer(this PlayerControl player)
-    {
-        var sender = CustomRpcSender.Create("Change Role Basis", SendOption.Reliable);
-        sender.RpcSetRole(player, player.GetCustomRole().Basis);
-        sender.SendMessage();
-    }
     public static void ReportBody(this PlayerControl player, NetworkedPlayerInfo body)
     {
         var sender = CustomRpcSender.Create("Report Dead Body", SendOption.Reliable);
