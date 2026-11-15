@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 using HarmonyLib;
+using InnerNet;
 using TOHO;
 
 
@@ -40,7 +41,50 @@ class MeetingHudIntroPatch
     }
 }
 
-[HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CheckForEndVoting))]
+[HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CastVote))]
+class CastVotePatch
+{
+    public static bool Prefix(MeetingHud __instance, PlayerId srcPlayerId, PlayerId suspectPlayerId)
+    {
+        var target = Utils.GetPlayerById(suspectPlayerId);
+        var voter = Utils.GetPlayerById(srcPlayerId);
+        
+        if (target == null || voter == null) return true;
+        
+        var a = target.GetCustomRole().OnVoteAsTarget(voter, target);
+        var b = voter.GetCustomRole().OnVote(voter, target);
+
+        foreach (var modifier in Main.Modifiers[voter.PlayerId])
+        {
+            var xa = modifier.OnVote(voter, target);
+            if (!xa && a) a = false;
+        }
+        foreach (var modifier in Main.Modifiers[target.PlayerId])
+        {
+            var xa = modifier.OnVoteAsTarget(voter, target);
+            if (!xa && a) a = false;
+        }
+        
+        if (!a || !b) return false;
+
+        var c = true;
+        foreach (var spect in PlayerControl.AllPlayerControls)
+        {
+            var d = spect.GetCustomRole().OnVoteAsSpect(voter, target);
+            if (!d) c = false;
+            
+            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            {
+                var xc = modifier.OnVoteAsSpect(voter, target);
+                if (!xc && c) c = false;
+            }
+        }
+
+        return c;
+    }
+}
+
+    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CheckForEndVoting))]
 class CheckForEndVotingPatch
 {
     public static bool Prefix(MeetingHud __instance)

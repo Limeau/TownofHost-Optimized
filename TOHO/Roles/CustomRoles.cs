@@ -164,28 +164,40 @@ public class CustomRoles
     /* Cancellable */
 
     // Vote
-    public UnityAction<PlayerControl> VoteAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
-    public UnityAction<PlayerControl> VoteAsSpectAction = (UnityAction<PlayerControl>)((PlayerControl a) => { });
+    public UnityAction<PlayerControl, PlayerControl> VoteAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> VoteAsTargetAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
+    public UnityAction<PlayerControl, PlayerControl> VoteAsSpectAction = (UnityAction<PlayerControl, PlayerControl>)((PlayerControl a, PlayerControl b) => { });
 
     public bool VoteBool = true;
+    public bool VoteAsTargetBool = true;
     public bool VoteAsSpectBool = true;
-    public bool OnVote(PlayerControl target)
+    public bool OnVote(PlayerControl voter, PlayerControl target)
     {
-        VoteAction.Invoke(target);
+        VoteAction.Invoke(voter, target);
         return VoteBool;
     }
-    public bool OnVoteAsSpect(PlayerControl target)
+    public bool OnVoteAsTarget(PlayerControl voter, PlayerControl target)
     {
-        VoteAsSpectAction.Invoke(target);
+        VoteAsTargetAction.Invoke(voter, target);
+        return VoteAsTargetBool;
+    }
+    public bool OnVoteAsSpect(PlayerControl voter, PlayerControl target)
+    {
+        VoteAsSpectAction.Invoke(voter, target);
         return VoteAsSpectBool;
     }
 
-    public void AddOnVote(UnityAction<PlayerControl> onVote, bool isTarget = false, bool allow = true)
+    public void AddOnVote(UnityAction<PlayerControl, PlayerControl> onVote, bool isVoter = false, bool isTarget = false, bool allow = true)
     {
-        if (isTarget)
+        if (isVoter)
         {
             VoteAction = onVote;
             VoteBool = allow;
+        }
+        if (isTarget)
+        {
+            VoteAsTargetAction = onVote;
+            VoteAsTargetBool = allow;
         }
         else
         {

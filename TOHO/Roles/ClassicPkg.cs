@@ -94,6 +94,24 @@ public static class ClassicPkg
                 Main.RealKillers[target.PlayerId] = killer.PlayerId;
             }, VampireTimer.Value, "Vampire Kill");
         }), isKiller: true, allow: false);
+
+        var eraser = new CustomRoles("Limeau.Eraser", "Eraser", "Erase someone's role",
+            "When the Eraser votes for someone, their role will be erased, meaning they will become a vanilla role. Neutrals will revert to becoming Crewmates, and Coven will not be affected.",
+            "#ff1919", RoleTypes.Impostor, RoleCategories.ImpostorHindering);
+        eraser.AddOnVote((UnityAction<PlayerControl, PlayerControl>)((PlayerControl player, PlayerControl target) =>
+        {
+            switch (target.GetCustomRoleTeam())
+            {
+                case Custom_Team.Impostor:
+                    Main.CustomRoles[target.PlayerId] = Main.AllRoles["Impostor"];
+                    break;
+                case Custom_Team.Crewmate:
+                case Custom_Team.Neutral:
+                    Main.CustomRoles[target.PlayerId] = Main.AllRoles["Crewmate"];
+                    break;
+            }
+            target.SetCustomRole(Main.CustomRoles[target.PlayerId]);
+        }), isVoter: true, allow: false);
         
         var jester = new CustomRoles("Limeau.Jester", "Jester", "Get ejected to win",
                 "The Jester wins by being ejected from a meeting.", "#ff3385", RoleTypes.Crewmate, RoleCategories.NeutralEvil);
