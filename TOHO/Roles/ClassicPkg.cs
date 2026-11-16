@@ -13,6 +13,8 @@ public static class ClassicPkg
     public static int VectorCount;
     public static NumberOptionItem VectorVentsRequired;
     public static NumberOptionItem VectorCooldown;
+
+    public static bool EraserAbility;
     public static void SetupCustomRoles()
     {
         var sheriff = new CustomRoles("Limeau.Sheriff", "Sheriff", "Kill evils as a Crewmate", "The Sheriff can use their kill button to kill a player. However, if the Sheriff tries to kill a Crewmate, they will die instead.", "#f5bf42", RoleTypes.Impostor, RoleCategories.CrewmateKilling);
@@ -45,6 +47,7 @@ public static class ClassicPkg
             else
             {
                 killer.MurderPlayer(target);
+                killer.SetKillCooldown(SheriffCooldown.Value);
             }
         }), isKiller: true, allow: false);
         
@@ -98,8 +101,10 @@ public static class ClassicPkg
         var eraser = new CustomRoles("Limeau.Eraser", "Eraser", "Erase someone's role",
             "When the Eraser votes for someone, their role will be erased, meaning they will become a vanilla role. Neutrals will revert to becoming Crewmates, and Coven will not be affected.",
             "#ff1919", RoleTypes.Impostor, RoleCategories.ImpostorHindering);
+        eraser.AddOnCallMeeting((UnityAction<PlayerControl>)((PlayerControl player) => EraserAbility = false));
         eraser.AddOnVote((UnityAction<PlayerControl, PlayerControl>)((PlayerControl player, PlayerControl target) =>
         {
+            if (EraserAbility) return;
             switch (target.GetCustomRoleTeam())
             {
                 case Custom_Team.Impostor:
@@ -111,7 +116,8 @@ public static class ClassicPkg
                     break;
             }
             target.SetCustomRole(Main.CustomRoles[target.PlayerId]);
-        }), isVoter: true, allow: false);
+            _ = new LateTask(() => EraserAbility = true, 0.01f, "Eraser use");
+        }), isVoter: true, allow: EraserAbility);
         
         var jester = new CustomRoles("Limeau.Jester", "Jester", "Get ejected to win",
                 "The Jester wins by being ejected from a meeting.", "#ff3385", RoleTypes.Crewmate, RoleCategories.NeutralEvil);
