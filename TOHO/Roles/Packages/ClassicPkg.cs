@@ -47,7 +47,7 @@ public static class ClassicPkg
             else
             {
                 killer.MurderPlayer(target);
-                killer.SetKillCooldown(SheriffCooldown.Value);
+                killer.ResetKillCooldown();
             }
         }), isKiller: true, allow: false);
         
@@ -87,10 +87,13 @@ public static class ClassicPkg
         VampireCooldown = new NumberOptionItem("Limeau.Vampire.Cooldown", "Kill cooldown", OptionTabs.RoleSetting, 20f, 1f, 60f, 1f);
         VampireTimer = new NumberOptionItem("Limeau.Vampire.Timer", "Delay Timer", OptionTabs.RoleSetting, 10f, 1f, 20f, 1f);
         var vampire = new CustomRoles("Limeau.Vampire", "Vampire", "Kill with a delay", "When the Vampire kills, their kill will be delayed by a certain amount of time before it takes place.", "#ff1919", RoleTypes.Impostor, RoleCategories.ImpostorKilling);
+        vampire.AddOnGameStart((UnityAction<PlayerControl>)((PlayerControl a) =>
+        {
+            a.SetKillCooldown(SheriffCooldown.Value);
+        }));
         vampire.AddOnMurder((UnityAction<PlayerControl, PlayerControl>)((PlayerControl killer, PlayerControl target) =>
         {
-            killer.ProtectPlayer(killer, killer.CurrentOutfit.ColorId);
-            killer.SetKillCooldown(VampireCooldown.Value);
+            killer.ResetKillCooldown();
             _ = new LateTask(() =>
             {
                 target.MurderPlayer(target);
@@ -125,7 +128,7 @@ public static class ClassicPkg
             {
                 List<PlayerControl> win = [];
                 win.Add(a);
-                CustomRoleExtentions.WinTheGame(win);
+                Utils.WinTheGame(win);
             }), true);
         
         var vector = new CustomRoles("Limeau.Vector", "Vector", "Vent enough times to win",
@@ -143,7 +146,7 @@ public static class ClassicPkg
                     List<PlayerControl> win = [];
                     win.Add(a);
                     VectorCount = 0;
-                    CustomRoleExtentions.WinTheGame(win);
+                    Utils.WinTheGame(win);
                 }
             }), true);
         vector.AddOnGameStart((UnityAction<PlayerControl>)((PlayerControl a) =>
@@ -179,7 +182,7 @@ public static class ClassicPkg
                     {
                         if (args[2].ToLower() == player.GetCustomRole().RoleName.ToLower())
                         {
-                            CustomRoleExtentions.Vaporize(player);
+                            player.Vaporize();
                             foreach (var pc in PlayerControl.AllPlayerControls)
                             {
                                 pc.SendChatMessage($"{Main.PlayerNames[player.PlayerId]} was guessed");
@@ -187,7 +190,7 @@ public static class ClassicPkg
                         }
                         else
                         {
-                            CustomRoleExtentions.Vaporize(sender);
+                            sender.Vaporize();
                             foreach (var pc in PlayerControl.AllPlayerControls)
                             {
                                 pc.SendChatMessage($"{Main.PlayerNames[sender.PlayerId]} has misguessed");

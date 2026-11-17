@@ -207,18 +207,31 @@ public class CustomRpcSender
 }
 public static class CustomRpcSenderExtensions
 {
-    public static void RpcSetRole(this CustomRpcSender sender, PlayerControl player, RoleTypes role)
-    {
-        sender.AutoStartRpc(player.NetId, (byte)RpcCalls.SetRole, player.Data.ClientId)
-            .Write((ushort)role)
-            .Write(true) // canOverride
-            .EndRpc();
-    }public static void RpcReportDeadBody(this CustomRpcSender sender, PlayerControl player, NetworkedPlayerInfo body)
+    public static void RpcReportDeadBody(this CustomRpcSender sender, PlayerControl player, NetworkedPlayerInfo body)
     {
         sender.AutoStartRpc(player.NetId, (byte)RpcCalls.ReportDeadBody, player.Data.ClientId)
             .Write(body)
             .EndRpc();
     }
+
+    public static void RpcSetRoleBasis(this PlayerControl player, RoleTypes role)
+    {
+        if (!AmongUsClient.Instance.AmHost) return;
+        if (player == null) return;
+
+        if (player.AmOwner)
+        {
+            player.StartCoroutine(player.CoSetRole(role, true));
+        }
+        else
+        {
+            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(player.NetId, (byte)RpcCalls.SetRole, SendOption.Reliable, player.Data.ClientId);
+            writer.Write((ushort)role);
+            writer.Write(true);
+            AmongUsClient.Instance.FinishRpcImmediately(writer);
+        }
+    }
+    
     public static void RpcSetName(this CustomRpcSender sender, PlayerControl player, string name, PlayerControl seer = null)
     {
         if (player.AmOwner) return;

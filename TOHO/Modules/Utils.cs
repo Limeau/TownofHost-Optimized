@@ -374,9 +374,7 @@ public static class Utils
     public static void SetCustomRole(this PlayerControl player, CustomRoles role)
     {
         Main.CustomRoles[player.PlayerId] = role;
-        var sender = new CustomRpcSender("RpcSetRole", SendOption.Reliable, false);
-        sender.RpcSetRole(player, role.Basis);
-        sender.SendMessage();
+        player.RpcSetRoleBasis(role.Basis);
     }
     
     public static bool IsPlayerCrewmate(this PlayerControl player)
@@ -420,7 +418,30 @@ public static class Utils
         if (player.GetCustomRole().Category == RoleCategories.CovenGhosts) return true;
         return false;
     }
+    
+    public static void Vaporize(this PlayerControl target)
+    {
+        target.Data.IsDead = true;
+        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(target.NetId, (byte)RpcCalls.Exiled, SendOption.None, target.Data.ClientId);
+        AmongUsClient.Instance.FinishRpcImmediately(writer);
+    }
 
+    public static void ResetKillCooldown(this PlayerControl player)
+    {
+        player.SetKillTimer(CustomGameOptionsManager.PlayerOptions[player].GetFloat(FloatOptionNames.KillCooldown));
+    }
+    
+    public static void MurderPlayer(this PlayerControl killer, PlayerControl target)
+    {
+        killer.RpcMurderPlayer(target, true);
+    }
+
+    public static void WinTheGame(List<PlayerControl> winners)
+    {
+        GameEndCheckerForNormal.IsGameEnd = true;
+        GameEndCheckerForNormal.Winners = winners;
+    }
+    
     public static Custom_Team GetCustomRoleTeam(this PlayerControl player)
     {
         if (IsPlayerCrewmate(player)) return Custom_Team.Crewmate;

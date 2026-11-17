@@ -37,7 +37,7 @@ public static class CustomGameOptionsManager
         }
     }
 
-    public static void SetKillCooldown(this PlayerControl player, float cooldown)
+    public static void SetKillCooldown(this PlayerControl player, float cooldown = -1f)
     {
         if (player == null || player.Data == null || player.Data.Disconnected) return;
 
@@ -45,7 +45,7 @@ public static class CustomGameOptionsManager
         
         var options = PlayerOptions[player];
 
-        options.SetFloat(FloatOptionNames.KillCooldown, cooldown);
+        if (cooldown >= 0) options.SetFloat(FloatOptionNames.KillCooldown, cooldown);
         
         PlayerOptions[player] = options;
         
@@ -54,5 +54,10 @@ public static class CustomGameOptionsManager
             LogicOptions logicOptions = component.TryCast<LogicOptions>();
             if (logicOptions != null) logicOptions.SetGameOptions(options);
         }
+        
+        MessageWriter writer = MessageWriter.Get(SendOption.Reliable);
+
+        AmongUsClient.Instance.SendOrDisconnect(writer);
+        writer.Recycle();
     }
 }

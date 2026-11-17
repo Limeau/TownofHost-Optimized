@@ -106,5 +106,6 @@ public class Main : BasePlugin
         new CustomRoles("TOHO.CovenGhost", "Coven Ghost", "Ghost form for Coven roles", "Ghost form for Coven roles", "#9933ff", RoleTypes.ImpostorGhost, RoleCategories.CovenGhosts);
 
         ClassicPkg.SetupCustomRoles();
+        CrewmatePkg.SetupCustomRoles();
     }
 }
