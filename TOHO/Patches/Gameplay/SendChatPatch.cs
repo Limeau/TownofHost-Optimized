@@ -80,7 +80,7 @@ public static class ChatCommands
             var r = Main.CustomRoles[sender.PlayerId];
             var b = r.OnSendChat(sender, message);
             
-            foreach (var modifier in Main.Modifiers[sender.PlayerId])
+            if (Main.Modifiers.ContainsKey(sender.PlayerId)) foreach (var modifier in Main.Modifiers[sender.PlayerId])
             {
                 var c = modifier.OnSendChat(sender, message);
                 if (b && !c) b = false;
@@ -96,7 +96,7 @@ public static class ChatCommands
                 var r = Main.CustomRoles[player.PlayerId];
                 var b = r.OnSendChatAsSpect(sender, message);
                 
-                foreach (var modifier in Main.Modifiers[player.PlayerId])
+                if (Main.Modifiers.ContainsKey(player.PlayerId)) foreach (var modifier in Main.Modifiers[player.PlayerId])
                 {
                     var c = modifier.OnSendChatAsSpect(sender, message);
                     if (b && !c) b = false;

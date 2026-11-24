@@ -110,18 +110,11 @@ public static class RoleAssign
             {
                 var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
                 ThisGameRoles.Remove(role);
-                if (role.IsRoleImpostor()) Main.CustomRoles.Add(player.PlayerId, Main.AllRoles["Impostor"]);
-                else Main.CustomRoles.Add(player.PlayerId, Main.AllRoles["Crewmate"]);
-                
-                _ = new LateTask(() =>
-                {
-                    Main.CustomRoles[player.PlayerId] = role;
-                    player.RpcSetRoleBasis(role.Basis);
+                Main.CustomRoles[player.PlayerId] = role;
                     
-                    player.SetNameWithRole();
-                    player.Set();
-                    role.OnGameStart(player);
-                }, 10f, "Game Start");
+                player.SetNameWithRole();
+                player.Set();
+                role.OnGameStart(player);
             }
         }
         catch (Exception e)
@@ -129,11 +122,8 @@ public static class RoleAssign
             Main.Logger.LogInfo(e);
         }
         
-        new LateTask(() =>
-        {
-            ModifierAssign.AssignModifiers();
-            GhostRoleAssign.AssignGhostRoles();
-        }, 10f, "Assign Ghost roles and Modifiers");
+        ModifierAssign.AssignModifiers();
+        GhostRoleAssign.AssignGhostRoles();
     }
 }
 

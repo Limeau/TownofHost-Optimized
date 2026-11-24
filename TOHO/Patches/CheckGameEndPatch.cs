@@ -53,7 +53,7 @@ class GameEndCheckerForNormal
         var count = 0;
         foreach (var player in PlayerControl.AllPlayerControls)
         {
-            if (!player.Data.IsDead)
+            if (!player.Data.IsDead && Main.CustomRoles.TryGetValue(player.PlayerId, out var role))
             {
                 count++;
                 if (!player.IsPlayerCrewmate()) crewWin = false;

@@ -11,12 +11,12 @@ class CheckMurderPatch
         var a = target.GetCustomRole().OnMurderAsTarget(__instance, target);
         var b = __instance.GetCustomRole().OnMurderAsKiller(__instance, target);
 
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnMurderAsKiller(__instance, target);
             if (!xa && a) a = false;
         }
-        foreach (var modifier in Main.Modifiers[target.PlayerId])
+        if (Main.Modifiers.ContainsKey(target.PlayerId)) foreach (var modifier in Main.Modifiers[target.PlayerId])
         {
             var xa = modifier.OnMurderAsTarget(__instance, target);
             if (!xa && a) a = false;
@@ -30,7 +30,7 @@ class CheckMurderPatch
             var d = spect.GetCustomRole().OnMurderAsSpect(__instance, target);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnMurderAsSpect(__instance, target);
                 if (!xc && c) c = false;
@@ -50,12 +50,12 @@ class CheckProtectPatch
         var a = target.GetCustomRole().OnProtectAsTarget(__instance, target);
         var b = __instance.GetCustomRole().OnProtectAsKiller(__instance, target);
 
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnProtectAsKiller(__instance, target);
             if (!xa && a) a = false;
         }
-        foreach (var modifier in Main.Modifiers[target.PlayerId])
+        if (Main.Modifiers.ContainsKey(target.PlayerId)) foreach (var modifier in Main.Modifiers[target.PlayerId])
         {
             var xa = modifier.OnProtectAsTarget(__instance, target);
             if (!xa && a) a = false;
@@ -69,7 +69,7 @@ class CheckProtectPatch
             var d = spect.GetCustomRole().OnProtectAsSpect(__instance, target);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnProtectAsSpect(__instance, target);
                 if (!xc && c) c = false;
@@ -86,7 +86,7 @@ class CheckShapeshiftPatch
     {
         var a = __instance.GetCustomRole().OnShapeshift(__instance);
         
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnShapeshift(__instance);
             if (!xa && a) a = false;
@@ -100,7 +100,7 @@ class CheckShapeshiftPatch
             var d = spect.GetCustomRole().OnShapeshiftAsSpect(__instance);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnShapeshiftAsSpect(__instance);
                 if (!xc && c) c = false;
@@ -121,12 +121,12 @@ class ReportDeadBodyPatch
         var a = __instance.GetCustomRole().OnReportDeadBody(__instance, target.Object);
         var b = target.Object.GetCustomRole().OnReportDeadBodyAsTarget(__instance, target.Object);
         
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnReportDeadBody(__instance, target.Object);
             if (!xa && a) a = false;
         }
-        foreach (var modifier in Main.Modifiers[target.PlayerId])
+        if (Main.Modifiers.ContainsKey(target.PlayerId)) foreach (var modifier in Main.Modifiers[target.PlayerId])
         {
             var xa = modifier.OnReportDeadBodyAsTarget(__instance, target.Object);
             if (!xa && a) a = false;
@@ -141,7 +141,7 @@ class ReportDeadBodyPatch
             var d = spect.GetCustomRole().OnReportDeadBodyAsSpect(__instance, target.Object);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnReportDeadBodyAsSpect(__instance, target.Object);
                 if (!xc && c) c = false;
@@ -158,7 +158,7 @@ class CallMeetingPatch
     {
         var a = __instance.GetCustomRole().OnCallMeeting(__instance);
 
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnCallMeeting(__instance);
             if (!xa && a) a = false;
@@ -172,7 +172,7 @@ class CallMeetingPatch
             var d = spect.GetCustomRole().OnCallMeetingAsSpect(__instance);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnCallMeetingAsSpect(__instance);
                 if (!xc && c) c = false;
@@ -189,7 +189,7 @@ class VanishPatch
     {
         var a = __instance.GetCustomRole().OnVanish(__instance);
         
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnVanish(__instance);
             if (!xa && a) a = false;
@@ -203,7 +203,7 @@ class VanishPatch
             var d = spect.GetCustomRole().OnVanishAsSpect(__instance);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnVanishAsSpect(__instance);
                 if (!xc && c) c = false;
@@ -221,7 +221,7 @@ class AppearPatch
     {
         var a = __instance.GetCustomRole().OnAppear(__instance);
         
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnAppear(__instance);
             if (!xa && a) a = false;
@@ -235,7 +235,7 @@ class AppearPatch
             var d = spect.GetCustomRole().OnAppearAsSpect(__instance);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnAppearAsSpect(__instance);
                 if (!xc && c) c = false;
@@ -254,7 +254,7 @@ class CompleteTaskPatch
         var a = __instance.GetCustomRole().OnCompleteTask(__instance);
 
         
-        foreach (var modifier in Main.Modifiers[__instance.PlayerId])
+        if (Main.Modifiers.ContainsKey(__instance.PlayerId)) foreach (var modifier in Main.Modifiers[__instance.PlayerId])
         {
             var xa = modifier.OnCompleteTask(__instance);
             if (!xa && a) a = false;
@@ -268,7 +268,7 @@ class CompleteTaskPatch
             var d = spect.GetCustomRole().OnCompleteTaskAsSpect(__instance);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnCompleteTaskAsSpect(__instance);
                 if (!xc && c) c = false;
@@ -286,7 +286,7 @@ class EnterVentPatch
     {
         var a = pc.GetCustomRole().OnEnterVent(pc);
         
-        foreach (var modifier in Main.Modifiers[pc.PlayerId])
+        if (Main.Modifiers.ContainsKey(pc.PlayerId)) foreach (var modifier in Main.Modifiers[pc.PlayerId])
         {
             var xa = modifier.OnEnterVent(pc);
             if (!xa && a) a = false;
@@ -300,7 +300,7 @@ class EnterVentPatch
             var d = spect.GetCustomRole().OnEnterVentAsSpect(pc);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnCompleteTaskAsSpect(pc);
                 if (!xc && c) c = false;

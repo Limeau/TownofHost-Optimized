@@ -1,9 +1,12 @@
 ﻿using AmongUs.GameOptions;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 using HarmonyLib;
 using Il2CppSystem;
+using InnerNet;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace TOHO;
-
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.RpcSetRole))]
 public static class RpcSetRolePatch
 {
@@ -18,10 +21,10 @@ public static class RpcSetRolePatch
 
         if (__instance.Data.IsDead)
         {
-            __0 = SetAsAGhost(__instance); 
+            __0 = SetAsAGhost(__instance);
         }
 
-        else 
+        else
         {
             if (!Main.CustomRoles.TryGetValue(__instance.PlayerId, out var customRole))
             {
@@ -30,7 +33,7 @@ public static class RpcSetRolePatch
 
             __0 = customRole.Basis;
         }
-        
+
         __instance.SetNameWithRole();
     }
 

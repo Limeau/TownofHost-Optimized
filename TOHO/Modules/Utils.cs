@@ -88,7 +88,7 @@ public static class Utils
         else role = player.Data.IsDead ? player.GetGhostRole() : player.GetCustomRole();
 
         var k = "";
-        foreach (var modifier in Main.Modifiers[player.PlayerId])
+        if (Main.Modifiers.ContainsKey(player.PlayerId)) foreach (var modifier in Main.Modifiers[player.PlayerId])
         {
             k += $" <color={modifier.RoleColor}>";
             k += "(";

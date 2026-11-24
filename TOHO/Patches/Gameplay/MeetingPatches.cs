@@ -54,12 +54,12 @@ class CastVotePatch
         var a = target.GetCustomRole().OnVoteAsTarget(voter, target);
         var b = voter.GetCustomRole().OnVote(voter, target);
 
-        foreach (var modifier in Main.Modifiers[voter.PlayerId])
+        if (Main.Modifiers.ContainsKey(voter.PlayerId)) foreach (var modifier in Main.Modifiers[voter.PlayerId])
         {
             var xa = modifier.OnVote(voter, target);
             if (!xa && a) a = false;
         }
-        foreach (var modifier in Main.Modifiers[target.PlayerId])
+        if (Main.Modifiers.ContainsKey(target.PlayerId)) foreach (var modifier in Main.Modifiers[target.PlayerId])
         {
             var xa = modifier.OnVoteAsTarget(voter, target);
             if (!xa && a) a = false;
@@ -73,7 +73,7 @@ class CastVotePatch
             var d = spect.GetCustomRole().OnVoteAsSpect(voter, target);
             if (!d) c = false;
             
-            foreach (var modifier in Main.Modifiers[spect.PlayerId])
+            if (Main.Modifiers.ContainsKey(spect.PlayerId)) foreach (var modifier in Main.Modifiers[spect.PlayerId])
             {
                 var xc = modifier.OnVoteAsSpect(voter, target);
                 if (!xc && c) c = false;
