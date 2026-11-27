@@ -1,48 +1,11 @@
-﻿using AmongUs.GameOptions;
-using BepInEx.Unity.IL2CPP.Utils.Collections;
-using HarmonyLib;
-using Il2CppSystem;
-using InnerNet;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using HarmonyLib;
 
 namespace TOHO;
-[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.RpcSetRole))]
-public static class RpcSetRolePatch
+[HarmonyPatch(typeof(RoleManager), nameof(RoleManager.SelectRoles))]
+public static class SelectRolePatch
 {
-    [HarmonyPrefix] public static void Prefix(PlayerControl __instance, ref RoleTypes __0)
+    [HarmonyPrefix] public static void Prefix()
     {
         if (!RoleAssign.RoleSet) RoleAssign.AssignRoles();
-
-        if (__instance == null || Main.CustomRoles == null)
-        {
-            return;
-        }
-
-        if (__instance.Data.IsDead)
-        {
-            __0 = SetAsAGhost(__instance);
-        }
-
-        else
-        {
-            if (!Main.CustomRoles.TryGetValue(__instance.PlayerId, out var customRole))
-            {
-                return;
-            }
-
-            __0 = customRole.Basis;
-        }
-
-        __instance.SetNameWithRole();
-    }
-
-    public static RoleTypes SetAsAGhost(PlayerControl player)
-    {
-        if (Main.GhostRoles.TryGetValue(player.PlayerId, out var customRole))
-        {
-            return customRole.Basis;
-        }
-        return player.GetCustomRole().Basis;
     }
 }

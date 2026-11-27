@@ -111,10 +111,15 @@ public static class RoleAssign
                 var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
                 ThisGameRoles.Remove(role);
                 Main.CustomRoles[player.PlayerId] = role;
-                    
+                player.RpcSetRoleBasis(RoleTypes.Crewmate);
                 player.SetNameWithRole();
-                player.Set();
-                role.OnGameStart(player);
+
+                _ = new LateTask(() =>
+                {
+                    player.RpcSetRoleBasis(role.Basis);
+                    player.Set();
+                    role.OnGameStart(player);
+                }, 10f);
             }
         }
         catch (Exception e)
