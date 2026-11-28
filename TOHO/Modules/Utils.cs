@@ -422,7 +422,7 @@ public static class Utils
     public static void Vaporize(this PlayerControl target)
     {
         target.Data.IsDead = true;
-        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(target.NetId, (byte)RpcCalls.Exiled, SendOption.None, target.Data.ClientId);
+        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(target.NetId, (byte)RpcCalls.Exiled, SendOption.None, target.OwnerId);
         AmongUsClient.Instance.FinishRpcImmediately(writer);
     }
 

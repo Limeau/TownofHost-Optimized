@@ -209,13 +209,14 @@ public static class CustomRpcSenderExtensions
 {
     public static void RpcReportDeadBody(this CustomRpcSender sender, PlayerControl player, NetworkedPlayerInfo body)
     {
-        sender.AutoStartRpc(player.NetId, (byte)RpcCalls.ReportDeadBody, player.Data.ClientId)
+        sender.AutoStartRpc(player.NetId, (byte)RpcCalls.ReportDeadBody, player.OwnerId)
             .Write(body)
             .EndRpc();
     }
 
     public static void RpcSetRoleBasis(this PlayerControl player, RoleTypes role)
     {
+        player.roleAssigned = false;
         if (!AmongUsClient.Instance.AmHost) return;
         if (player == null) return;
 
@@ -225,7 +226,7 @@ public static class CustomRpcSenderExtensions
         }
         else
         {
-            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(player.NetId, (byte)RpcCalls.SetRole, SendOption.Reliable, player.Data.ClientId);
+            MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(player.NetId, (byte)RpcCalls.SetRole, SendOption.Reliable, player.OwnerId);
             writer.Write((ushort)role);
             writer.Write(true);
             AmongUsClient.Instance.FinishRpcImmediately(writer);
@@ -263,7 +264,7 @@ public static class CustomRpcSenderExtensions
         }
         
         var writer = CustomRpcSender.Create("MessagesToSend", SendOption.Reliable);
-        writer.StartMessage(target.Data.ClientId);
+        writer.StartMessage(target.OwnerId);
         writer.StartRpc(target.NetId, (byte)RpcCalls.SetName)
             .Write(target.Data.NetId)
             .Write(title)

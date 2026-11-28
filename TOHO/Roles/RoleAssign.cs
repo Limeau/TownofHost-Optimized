@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AmongUs.GameOptions;
 using Hazel;
+using UnityEngine;
+using Random = System.Random;
 
 namespace TOHO;
+
+// Thanks - https://github.com/Gurge44/EndlessHostRoles
+// I was stuck on this for like a week lol
 
 public static class RoleAssign
 {
@@ -104,31 +110,57 @@ public static class RoleAssign
             togo--;
         }
         
-        try
+        foreach (var player in PlayerControl.AllPlayerControls)
         {
-            foreach (var player in PlayerControl.AllPlayerControls)
-            {
-                var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
-                ThisGameRoles.Remove(role);
-                Main.CustomRoles[player.PlayerId] = role;
-                player.RpcSetRoleBasis(RoleTypes.Crewmate);
-                player.SetNameWithRole();
+            if (!player.Data) continue;
 
-                _ = new LateTask(() =>
+            player.Data.Disconnected = true;
+            player.Data.SendGameData();
+            var role = ThisGameRoles[srandom.Next(ThisGameRoles.Count)];
+            ThisGameRoles.Remove(role);
+            Main.CustomRoles[player.PlayerId] = role;
+            
+            _ = new LateTask(() =>
+            {
+                player.RpcSetRoleBasis(RoleTypes.Crewmate);
+                player.SetNameWithRole();            
+            }, 1.25f, $"Set crewmate role for {player.PlayerId}");
+            
+            _ = new LateTask(() =>
+            {
+                if (player || player.Data)
                 {
-                    player.RpcSetRoleBasis(role.Basis);
-                    player.Set();
-                    role.OnGameStart(player);
-                }, 10f);
-            }
-        }
-        catch (Exception e)
-        {
-            Main.Logger.LogInfo(e);
+                    player.Data.Disconnected = false;
+                    player.Data.SendGameData();
+                }
+            }, 2.5f, $"Set disconnected false for {player.PlayerId}");
+            
+            _ = new LateTask(() =>
+            { 
+                player.RpcSetRoleBasis(role.Basis); 
+                player.Set(); 
+                role.OnGameStart(player);
+            }, 10f, $"Set real Roles for {player.PlayerId}");
+            
         }
         
         ModifierAssign.AssignModifiers();
         GhostRoleAssign.AssignGhostRoles();
+    }
+    
+    public static void SendGameData(this NetworkedPlayerInfo playerInfo)
+    {
+        if (!playerInfo) return;
+        MessageWriter writer = MessageWriter.Get(SendOption.Reliable);
+        writer.StartMessage(5);
+        writer.Write(AmongUsClient.Instance.GameId);
+        writer.StartMessage(1);
+        writer.WritePacked(playerInfo.NetId);
+        playerInfo.Serialize(writer, false);
+        writer.EndMessage();
+        writer.EndMessage();
+        AmongUsClient.Instance.SendOrDisconnect(writer);
+        writer.Recycle();
     }
 }
 
